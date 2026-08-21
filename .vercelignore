@@ -1,0 +1,6 @@
+# Exclude internal canon work from public Vercel deploy.
+#
+# History:
+# - 2026-05-12: native/ EXCLUDED per founder direction ("remove from Vercel, don't expose").
+# - 2026-05-13: native/ RE-INCLUDED per founder direction ("deploy to Vercel Asawa, which we removed yesterday"). PRD back on Vercel.
+# (no exclusions currently)

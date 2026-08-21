@@ -1,0 +1,319 @@
+<!doctype html>
+<!-- PAGE: platform-model-work-atom (v1, DRAFT). PRD subpage of platform-the-model (ruled vocabulary cluster, founder sittings 2026-08-05/06).
+     Uniform skeleton s1-s7: purpose / how it works / product use cases / operational scenarios / contract / implementation today / open questions.
+     Facts trace to DESIGN-DECISION-SHEET.md + GROUNDING-MAP.md + the-model.html only; gaps are bare TODO(founder) markers. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Work-Atom</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; work-atom</div>
+<h1>Work-Atom <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-work-atom</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr></table>
+
+<h2 id="s1">Purpose</h2>
+<p>The <strong>Work-Atom</strong> is the smallest unit of work in the ruled model: one goal, ONE verify, 1..n internal steps. It exists so accountability has a floor — an atom is atomic in <em>accountability</em>, not size (RULED, sheet A1-ext). Everything above it composes atoms (a Workflow — the written blueprint — is 1..n atoms; a single atom is a workflow of one, per axiom X1: no naked work), and everything below it is a particle (goal, constraints, context, HOW) that cannot run alone. When the HOW is undecided, the atom defaults to the <strong>intelligence floor</strong>: hand the whole atom to the LLM (RULED, sheet A1-FINAL). This page is the engineering contract for that unit; the conceptual home is <a href="../the-model.html#work-atom">the hub's Work-Atom level</a>.</p>
+
+<h2 id="s2">How it works</h2>
+<svg viewBox="0 0 880 175" role="img" aria-label="Triggers fire a workflow; context sources feed the PromptBuilder">
+<defs><marker id="ff" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<line x1="352" y1="22" x2="352" y2="160" stroke="#e5e7eb" stroke-width="1.5"/>
+<text x="170" y="16" text-anchor="middle" font-size="9" font-weight="800">FIRES &#8212; what starts it (Trigger primitive)</text>
+<rect x="20" y="28" width="124" height="26" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="82" y="45" text-anchor="middle" font-size="8">operator utterance</text>
+<rect x="20" y="64" width="124" height="26" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="82" y="81" text-anchor="middle" font-size="8">cadence / cron</text>
+<rect x="20" y="100" width="124" height="26" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="82" y="117" text-anchor="middle" font-size="8">event</text>
+<rect x="206" y="58" width="120" height="40" rx="7" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/><text x="266" y="76" text-anchor="middle" font-size="9" font-weight="700" fill="#047857">Workflow fires</text><text x="266" y="89" text-anchor="middle" font-size="7" fill="#475569">a Trigger matched</text>
+<path d="M144,41 L206,70" stroke="#334155" stroke-width="1.2" marker-end="url(#ff)"/>
+<path d="M144,77 L206,78" stroke="#334155" stroke-width="1.2" marker-end="url(#ff)"/>
+<path d="M144,113 L206,86" stroke="#334155" stroke-width="1.2" marker-end="url(#ff)"/>
+<text x="120" y="146" text-anchor="middle" font-size="6.5" fill="#6b7280">Trigger primitive &#183; cadence per ADR-017</text>
+<text x="640" y="16" text-anchor="middle" font-size="9" font-weight="800">FEEDS &#8212; what fills the context (B11 inputs)</text>
+<rect x="402" y="26" width="168" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="486" y="41" text-anchor="middle" font-size="7.3">7a context-structuring</text>
+<rect x="402" y="54" width="168" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="486" y="69" text-anchor="middle" font-size="7.3">B6 research-on-fly</text>
+<rect x="402" y="82" width="168" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="486" y="97" text-anchor="middle" font-size="7.3">SoR memory (B5.a-d)</text>
+<rect x="402" y="110" width="168" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="486" y="125" text-anchor="middle" font-size="7.3">Domain + Charter config (B10)</text>
+<rect x="620" y="56" width="110" height="46" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/><text x="675" y="76" text-anchor="middle" font-size="9" font-weight="700">PromptBuilder</text><text x="675" y="89" text-anchor="middle" font-size="7" fill="#6b7280">B11 deterministic</text>
+<rect x="762" y="60" width="98" height="38" rx="6" fill="#fff" stroke="#b45309" stroke-width="1.5"/><text x="811" y="82" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b45309">Work-Atom</text>
+<path d="M570,37 L620,72" stroke="#334155" stroke-width="1.1" marker-end="url(#ff)"/>
+<path d="M570,65 L620,77" stroke="#334155" stroke-width="1.1" marker-end="url(#ff)"/>
+<path d="M570,93 L620,83" stroke="#334155" stroke-width="1.1" marker-end="url(#ff)"/>
+<path d="M570,121 L620,90" stroke="#334155" stroke-width="1.1" marker-end="url(#ff)"/>
+<path d="M730,79 L762,79" stroke="#b45309" stroke-width="1.4" marker-end="url(#ff)"/>
+</svg>
+<p class="figcap">What fires an atom&#39;s workflow and what feeds its context particle.</p>
+
+<svg viewBox="0 0 880 180" role="img" aria-label="Intent decomposed by method into atom goals, each a subset of intent">
+<defs><marker id="ks" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="30" y="60" width="180" height="60" rx="9" fill="#fff" stroke="#334155" stroke-width="1.8"/><text x="120" y="86" text-anchor="middle" font-size="11" font-weight="800">INTENT</text><text x="120" y="103" text-anchor="middle" font-size="8" fill="#6b7280">the whole goal (B1)</text>
+<rect x="300" y="66" width="180" height="48" rx="8" fill="#fff7ed" stroke="#b45309" stroke-width="1.8"/><text x="390" y="86" text-anchor="middle" font-size="10" font-weight="800" fill="#b45309">METHOD = splitter</text><text x="390" y="101" text-anchor="middle" font-size="7.5" fill="#6b7280">frame &#8594; decompose (HOW &#167;3 / B2)</text>
+<rect x="600" y="22" width="250" height="34" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/><text x="725" y="43" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">atom-goal &#8834; intent</text>
+<rect x="600" y="68" width="250" height="34" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/><text x="725" y="89" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">atom-goal &#8834; intent</text>
+<rect x="600" y="114" width="250" height="34" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/><text x="725" y="135" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">atom-goal &#8834; intent</text>
+<path d="M210,90 L300,90" stroke="#334155" stroke-width="1.4" marker-end="url(#ks)"/>
+<path d="M480,86 L600,39" stroke="#047857" stroke-width="1.2" marker-end="url(#ks)"/><path d="M480,90 L600,85" stroke="#047857" stroke-width="1.2" marker-end="url(#ks)"/><path d="M480,94 L600,131" stroke="#047857" stroke-width="1.2" marker-end="url(#ks)"/>
+</svg>
+<p class="figcap">The keystone: intent is the whole, each atom-goal a part.</p>
+
+<svg viewBox="0 0 880 200" role="img" aria-label="The work-atom: goal, constraints, context, HOW, plus workflow as the recursion edge">
+<defs><marker id="at" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="30" width="560" height="150" rx="10" fill="#fff" stroke="#b45309" stroke-width="2"/>
+<text x="34" y="50" font-size="11" font-weight="800" fill="#b45309">WORK-ATOM = a fully-constructed WorkflowStep (smallest dispatchable work)</text>
+<rect x="40" y="64" width="120" height="46" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="100" y="84" text-anchor="middle" font-size="9.5" font-weight="700">1 GOAL</text><text x="100" y="98" text-anchor="middle" font-size="7.5" fill="#6b7280">B1 intent + expected_output</text>
+<rect x="172" y="64" width="120" height="46" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="232" y="84" text-anchor="middle" font-size="9.5" font-weight="700">2 CONSTRAINTS</text><text x="232" y="98" text-anchor="middle" font-size="7.5" fill="#6b7280">Charter + preconditions</text>
+<rect x="304" y="64" width="120" height="46" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="364" y="84" text-anchor="middle" font-size="9.5" font-weight="700">3 CONTEXT</text><text x="364" y="98" text-anchor="middle" font-size="7.5" fill="#6b7280">B11 PromptBuilder</text>
+<rect x="436" y="64" width="124" height="46" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="498" y="84" text-anchor="middle" font-size="9.5" font-weight="700">4 HOW</text><text x="498" y="98" text-anchor="middle" font-size="7.5" fill="#6b7280">dispatch: llm | skill | bash | manual</text>
+<text x="34" y="134" font-size="8.5" fill="#374151">construct (B11) &#8594; pre-check (B7) &#8594; dispatch (host, ADR-005) &#8594; post-check (B7) &#8594; persist (B9)</text>
+<text x="34" y="158" font-size="8.5" fill="#6b7280">deterministic surface around a stochastic core (P12) &#183; "we construct a problem and give it to the reasoning part"</text>
+<rect x="640" y="64" width="200" height="80" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/><text x="740" y="92" text-anchor="middle" font-size="10" font-weight="800" fill="#047857">WORKFLOW</text><text x="740" y="108" text-anchor="middle" font-size="8" fill="#475569">step_graph of atoms</text><text x="740" y="122" text-anchor="middle" font-size="8" fill="#475569">the recursion edge — not a particle</text><text x="740" y="136" text-anchor="middle" font-size="7.5" fill="#6b7280">a step can call a sub-workflow</text>
+<path d="M580,104 L640,104" stroke="#047857" stroke-width="1.5" fill="none" marker-end="url(#at)"/><text x="584" y="98" font-size="8" fill="#047857">composes into</text>
+</svg>
+<p class="figcap">The atom&#39;s anatomy — migrated from the v2 page; fourth block relabeled HOW per the ruling (A1-FINAL-3). Block IDs on first use: B7 = pre/post-check block &#183; B9 = persistence block &#183; B11 = PromptBuilder (context construction) &#183; P12 = deterministic-surface-around-stochastic-core principle — see <a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a>.</p>
+
+<p>An atom is the container of exactly four particles — goal, constraints, context, HOW (A1-FINAL-3). Canonical owner: <a href="particles.html">Particles</a> — this page depends on it for the per-particle definitions and ruled tests.</p>
+<div class="key"><strong>Atomicity rule (RULED, A1-ext):</strong> one goal, ONE verify; 1..n internal steps allowed under that single verify. The moment an internal step needs its own verify, split — two atoms in a workflow.</div>
+<p>The verify is split across two parties (sheet R8):</p>
+<table>
+<tr><th>Side</th><th>Who</th><th>Meaning</th></tr>
+<tr><td>asserted-done</td><td>the executor</td><td>the atom's own verify passed on this attempt</td></tr>
+<tr><td>accepted</td><td>a counter-party, via Authority</td><td>the checking engine must not be the writing engine; no instrument verified solely by its own author</td></tr>
+</table>
+<ul>
+<li><strong>X1 — no naked work:</strong> every atom belongs to a workflow; nothing dispatches outside a workflow. A single atom is a workflow of one.</li>
+<li><strong>Intelligence floor:</strong> HOW undecided &rarr; the whole atom is handed to the LLM (RULED, A1-FINAL).</li>
+<li><strong>Verify templates:</strong> three pinned templates today — <code>file-exists</code>, <code>grep-count</code>, <code>named-test</code> (grounding, Work-Atom row).</li>
+<li><strong>Retry:</strong> loop canonical in <a href="#s5">s5 Lifecycle</a>; budget A8 RULED as REC at the 2026-08-17 sitting (Quick eight: charter field <code>retry_budget</code>, default 3 — a labeled v1 dial).</li>
+</ul>
+
+<h2 id="s3">Product use cases</h2>
+<table>
+<tr><th>Actor</th><th>Wants</th><th>How the Work-Atom serves it</th></tr>
+<tr><td>Lending ops manager (the digital lending company, sheet §8)</td><td>close the branch nightly with an auditable gate</td><td>the gate step of <code>W-disburse-loan</code> is one atom: goal = branch closed + its check; an in-tolerance delta leaves the approval step inert</td></tr>
+<tr><td>Docs author (founder: "create a doc explaining the vocabulary ladder", sheet 8c)</td><td>a file that passes the writing standard</td><td>the <code>A-author</code> atom: goal = file exists + checklist passes (runnable); constraints = R1-R10 + tenant path; verify fail routes to attempt 2, not silent shipping</td></tr>
+<tr><td>Lending KYC operator (<code>W-kyc-verify</code>, sheet §8)</td><td>the hot deterministic repayment-ledger-read step to get cheaper over time</td><td>attempt evidence logged on the atom's HOW earns a gated C0&rarr;C1 <code>reuse_tag</code> promotion (A9)</td></tr>
+<tr><td>Governance operator (sheet R8)</td><td>no green-but-false checks</td><td>the verify split: executor asserts done; a counter-party engine accepts via Authority</td></tr>
+<tr><td>Governance stack (sheet R6)</td><td>un-workflowed mutations impossible</td><td>X1 at the atom floor: a structural move outside any open atom cannot dispatch</td></tr>
+</table>
+
+<h2 id="s4">Operational scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Path through the concept</th><th>Outcome</th></tr>
+<tr><td>Happy — gate step, in-tolerance delta (sheet §8)</td><td>open (goal + verify bound) &rarr; attempt 1 &rarr; verify passes &rarr; approval step inert &rarr; close &rarr; ledger row</td><td>done asserted, accepted, recorded</td></tr>
+<tr><td>Failure — verify fails 3x (sheet §8)</td><td>loop per <a href="#s5">s5 Lifecycle</a> (canonical); decision_trail persists</td><td>a human rules; budget A8 RULED as REC (charter field, default 3 — 2026-08-17 sitting)</td></tr>
+<tr><td>Failure — self-verifying instrument (sheet R8)</td><td>executor's verify green, but instrument written and checked by the same engine &rarr; acceptance withheld until counter-party check</td><td>predicate proven against a row the REAL writer produced</td></tr>
+<tr><td>Growth — hot deterministic step (sheet §8, A9)</td><td>repeated passing attempts logged on HOW &rarr; C0&rarr;C1 <code>reuse_tag</code> promotion PROPOSED — always gated, never auto</td><td>the HOW crystallizes; the other three particles untouched</td></tr>
+<tr><td>Growth — S6 case #1 walkthrough (sheet 8c)</td><td>see the walkthrough below</td><td>PASS with gaps; the atom layers compose with zero forcing</td></tr>
+</table>
+<h3>S6 case #1 executed — "create a doc explaining the vocabulary ladder" (sheet 8c, atom-relevant layers)</h3>
+<table>
+<tr><th>Layer</th><th>Concrete value in the run</th><th>Exists today?</th></tr>
+<tr><td>WORKFLOW (written)</td><td>3 atoms, sequence: A-outline &rarr; A-author &rarr; A-audit</td><td>YES</td></tr>
+<tr><td>ATOM + PARTICLES (A-author)</td><td>goal: file exists + checklist passes (runnable) · constraints: R1-R10, tenant path, no ASCII art · context: rulings + standard + sibling docs (minimal slice) · HOW: LLM + skill, already C1</td><td>YES</td></tr>
+<tr><td>Attempt log (on HOW)</td><td>run 1: checklist fail &rarr; attempt 2 of N — N undefined: "A8 bites on the first real walk"</td><td>PARTIAL (A8)</td></tr>
+<tr><td>ENGINE (grown)</td><td>Md-Authoring Engine = workflow + record slice + learned patterns + charter binding; run 50 &ne; run 1, provably</td><td>PARTIAL (state scattered in memory files, not a typed slice)</td></tr>
+<tr><td>RECORD &rarr; EVIDENCE</td><td>attempts write; "which sections draw corrections" across runs = the evidence — no schema</td><td>PARTIAL (A3)</td></tr>
+</table>
+<div class="note"><strong>Result (sheet 8c):</strong> PASS with gaps — A8 retry budget (bit at the attempt layer), A3 evidence schema, A4 classifier/matcher, plus Engine-state-as-typed-slice (canonized at S7). Each already queued; the architecture finds its own gaps.</div>
+
+<h2 id="s5">Contract</h2>
+<h3>Data model</h3>
+<table>
+<tr><th>Field</th><th>Type-ish</th><th>Meaning</th><th>Source of truth</th></tr>
+<tr><td><code>goal</code></td><td>string, mandatory, paired with verify</td><td>target state + the check that detects it</td><td>RULED A1-ext; enforced at open (grounding: sutra-atom:267)</td></tr>
+<tr><td><code>verify</code></td><td>one of 3 pinned templates: <code>file-exists</code> | <code>grep-count</code> | <code>named-test</code></td><td>the ONE check; passing it = asserted-done</td><td>grounding Work-Atom row; verify split per sheet R8</td></tr>
+<tr><td><code>constraints</code></td><td><code>[{text, check}]</code></td><td>conditions holding independent of goal progress</td><td>RULED A1-ext; grounding: sutra-atom:262,268 — <code>check</code> never populated today</td></tr>
+<tr><td><code>context_refs</code></td><td><code>[path]</code></td><td>minimal record slice the HOW needs</td><td>RULED A1-ext; grounding: sutra-atom:268 — read by nothing today</td></tr>
+<tr><td><code>how</code></td><td><code>{dispatch_kind: llm|skill|bash|manual, ref}</code></td><td>the swappable motor; C-state home (A9)</td><td>RULED A1-FINAL-3 (runtime rename <code>work</code>&rarr;<code>how</code>); grounding: field still named <code>work</code>, <code>model</code> sits outside it (sutra-atom:269,:14)</td></tr>
+<tr><td>attempt log (on HOW)</td><td>ruled: count + history; today: int counter</td><td>record of live runs, for systemic purposes; the retry budget reads it</td><td>RULED A1-FINAL-3 (data field, never an object); grounding: sutra-atom:337,:325</td></tr>
+<tr><td><code>retry_budget</code></td><td>int — charter field, default 3</td><td>max attempts N before ESCALATED</td><td>A8 RULED as REC, 2026-08-17 sitting (Quick eight — budgets are labeled v1 dials); grounding: no retry budget exists in the build yet</td></tr>
+<tr><td>internal steps (1..n)</td><td>TODO(founder):</td><td>the steps under the single verify</td><td>ruled to exist (A1-ext); grounding: no internal-steps field — the built atom is flat</td></tr>
+</table>
+<h3>Invariants</h3>
+<ul>
+<li>One goal, ONE verify — enforced at open (grounding: sutra-atom:267).</li>
+<li>Atomic in accountability, not size: an internal step needing its own verify forces a split into two atoms in a workflow (RULED A1-ext).</li>
+<li>X1 — no naked work: the atom always belongs to a workflow; a single atom is a workflow of one; nothing dispatches outside a workflow.</li>
+<li>Intelligence floor: HOW undecided &rarr; the whole atom goes to the LLM (RULED A1-FINAL).</li>
+<li>The attempt log is a data field on the HOW particle — never a ladder noun, never an object (RULED A1-FINAL-3).</li>
+<li>C-state lives on the HOW particle (template side); promotions are earned by attempt evidence and are always gated, never auto (A9; sheet §2 GROW edge).</li>
+<li>X2 — every attempt writes to some engine's record slice from run 1; the Engine (grown form of the Workflow) is born at the workflow's first attempt.</li>
+</ul>
+<h3>Lifecycle</h3>
+<table>
+<tr><th>From</th><th>Event</th><th>To</th><th>Notes</th></tr>
+<tr><td>—</td><td><code>open</code></td><td>open atom</td><td>goal + verify pairing mandatory at open (grounding: sutra-atom:267)</td></tr>
+<tr><td>open</td><td>attempt runs the HOW</td><td>verify</td><td>attempt counter increments on close and on hash-mismatch (grounding: sutra-atom:337,:325)</td></tr>
+<tr><td>verify pass</td><td><code>close</code></td><td>closed</td><td>asserted-done by executor; acceptance by counter-party via Authority (sheet R8); ledger row appended</td></tr>
+<tr><td>verify fail, attempts &lt; N</td><td>retry</td><td>next attempt</td><td>N = <code>retry_budget</code>, default 3 (A8 RULED as REC, 2026-08-17 sitting)</td></tr>
+<tr><td>verify fail, attempts = N</td><td>escalate</td><td>ESCALATED</td><td>Approval on escalate; decision_trail persists (sheet §2 VERIFY loop)</td></tr>
+<tr><td>any</td><td><code>abandon</code></td><td>abandoned</td><td>ledger row appended (grounding: sutra-atom:361-388)</td></tr>
+</table>
+<h3>Ownership</h3>
+<ul>
+<li>Every atom belongs to exactly one workflow (X1).</li>
+<li>Its attempt records belong to the owning engine's record slice (X2).</li>
+<li>Today: ledger rows are keyed by session+atom, never by workflow — so no Engine is ever born from atom runs (grounding X2 row).</li>
+</ul>
+<h3>Failure modes</h3>
+<table>
+<tr><th>Mode</th><th>Behavior</th><th>Source</th></tr>
+<tr><td>Verify fail</td><td>loop canonical in <a href="#s5">s5 Lifecycle</a> above</td><td>sheet §2 VERIFY loop; N = <code>retry_budget</code> (A8 RULED as REC, default 3 — 2026-08-17 sitting)</td></tr>
+<tr><td>Stochastic HOW output (ATOM&rarr;HOST edge)</td><td>caught only by the verify; per-Step P2 checks gate the dispatch</td><td>sheet §2</td></tr>
+<tr><td>Record unwritable (ATOM&rarr;RECORD edge)</td><td><a href="../../engineering/catalog-hardstops.html">HS-4</a>; run goes DEGRADED</td><td>sheet §2. <div class="key">B7 (RULED, 2026-08-17 sitting, Group B — the honest sentence): "no detectors shipped; failure = founder intervenes manually".</div></td></tr>
+<tr><td>Self-verifying instrument</td><td>acceptance withheld — the checking engine must not be the writing engine</td><td>sheet R8</td></tr>
+</table>
+<h3>Observability / audit</h3>
+<ul>
+<li>Every close/abandon appends a ledger row (grounding: sutra-atom:361-388; <code>.sutra/atom-ledger.jsonl</code>, keyed sid+atom).</li>
+<li>ATOM&rarr;RECORD payload: artifact + ExecutionResult + audit; append-only; authority auto (sheet §2).</li>
+<li>Dispatch freeze-at-bind is coordination glue around the atom run (grounding §2; sutra-atom:310-318).</li>
+<li>Escalations persist a decision_trail (sheet §2).</li>
+</ul>
+
+<h2 id="s6">Implementation today</h2>
+<div class="key"><strong>Headline (grounding):</strong> the Work-Atom is the nearly-faithful rung of the ruled ladder — <code>sutra-atom open/close/abandon</code> is rated FAITHFUL, with ONE verify and 3 pinned templates.</div>
+<table>
+<tr><th>What exists</th><th>File evidence</th><th>Fidelity</th><th>Gap</th></tr>
+<tr><td>Work-Atom object: open/close/abandon, ONE verify (3 pinned templates)</td><td><code>holding/bin/sutra-atom</code> (408 ln)</td><td>FAITHFUL</td><td>no internal-steps field (flat atom)</td></tr>
+<tr><td>goal particle: mandatory <code>goal</code> + verify pairing enforced at open</td><td>sutra-atom:267</td><td>FAITHFUL</td><td>none material</td></tr>
+<tr><td>constraints particle: <code>[{text, check:null}]</code></td><td>sutra-atom:262,268</td><td>PARTIAL</td><td>undecidable prose; <code>check</code> never populated; live atoms ship <code>[]</code></td></tr>
+<tr><td>context particle: <code>context_refs:[]</code> bare path list</td><td>sutra-atom:268</td><td>PARTIAL</td><td>decorative — read by nothing; no minimality test</td></tr>
+<tr><td>HOW particle: field named <code>work</code> {dispatch_kind: llm|skill|bash|manual, ref}</td><td>sutra-atom:269,:14</td><td>PARTIAL</td><td>wrong word (ruled name: HOW); motor split across two fields — <code>model</code> sits outside the particle</td></tr>
+<tr><td>attempt log: int counter incremented on close/hash-mismatch</td><td>sutra-atom:337,:325</td><td>PARTIAL</td><td>no retry budget exists (only a model-escalation cap, sutra-dispatch:237-239); attempts are a scalar, not records</td></tr>
+<tr><td>X1 floor: atom-floor.sh HARD-blocks mutations without an open atom</td><td>plugin hooks/atom-floor.sh:14-70</td><td>PARTIAL</td><td>enforced one rung BELOW the ruling (atom floor, not workflow floor)</td></tr>
+<tr><td>X2 tie: every close/abandon appends a ledger row</td><td>sutra-atom:361-388</td><td>PARTIAL</td><td>rows keyed by session+atom, never by workflow &rarr; no Engine is ever born</td></tr>
+</table>
+<div class="planned"><strong>Convergence moves touching this page (grounding §5, PROPOSED — not ruled):</strong> (1) rename the runtime field to the ruled particle name and fold <code>model</code> into the particle (~30m; SCHEMA_VERSION bump with null-safe old-key read; grounding recorded this move under the pre-A1-FINAL-3 word "means" — the ruled name is HOW) — makes the Work-Atom the first fully-faithful ruled object in the build. (2) add <code>retry_budget</code> to atom.json and enforce in <code>cmd_close</code> (~1h) — closes A8 as running code, not prose.</div>
+
+<h2 id="s7">Open questions</h2>
+<table>
+<tr><th>Question</th><th>State</th><th>Where it bit</th></tr>
+<tr><td>A8 — retry budget: charter field <code>retry_budget</code>, default 3 — a labeled v1 dial</td><td>RULED as REC (2026-08-17 sitting, Quick eight); build gap remains — no retry budget in code</td><td>sheet 8c attempt layer ("A8 bites on the first real walk"); grounding: no retry budget exists</td></tr>
+<tr><td>Internal steps: ruled 1..n, but the built atom is flat — representation TODO(founder):</td><td>OPEN (grounding gap)</td><td>grounding Work-Atom row</td></tr>
+<tr><td>CONSTRAINT-PROPAGATION — how constraints flow system &rarr; engine &rarr; workflow &rarr; atom</td><td>DEFERRED (named open question)</td><td>sheet A1-FINAL constraint levels; hub open-questions table</td></tr>
+<tr><td>How is the HOW made (the how-of-how)</td><td>DEFERRED (Mode 3 / FQ1; B5 schedules the research cycle post-S5)</td><td>sheet A1-FINAL-3; hub open-questions table</td></tr>
+<tr><td>Zero runtime workflows: X1 is enforced at the atom floor because no workflow registry exists yet — registry build FUNDED as the first v1 act, P1 at v1 start</td><td>RULED (2026-08-17 sitting, Shelves/A11 + Host-rule/B1 rows); build status: registry not yet shipped</td><td>grounding §6; WHAT-WE-DECIDED.md sitting index</td></tr>
+</table>
+
+<h3>Proposed features — 2026-08-07 sitting queue</h3>
+<p>Status refreshed against the 2026-08-17 sitting: both rows below were RULED there; the decision sheet remains the authority.</p>
+<table>
+<tr><th>Feature</th><th>What it requires</th><th>Status</th><th>Source</th></tr>
+<tr><td>Authority EXERCISED at the atom gate</td><td>Under the ruled 5-part authority model (written at system, narrowed down-cascade, earned at engine, exercised at atom, min-wins), the atom gate is where every ASK is realized; separate engine-evidence track; authority schema lands on all 219 records</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>A1-FINAL-4 (2026-08-17 sitting)</td></tr>
+<tr><td>B1 exclusivity — Work-Atom as the platform's only LLM-call site</td><td>ALL LLM calls are SoP Work-Atoms — consults and effector included; each Host call is an attempt logged on the HOW particle; registry P1 at v1 start</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>B1 (2026-08-17 sitting)</td></tr>
+</table>
+
+<h2 id="s-output">Output looks like</h2>
+<p>The persisted records an atom run produces: the <code>atom.json</code> object at open, and the run-ledger row appended at close/abandon. Field shapes follow the <b>ratified v1 schema</b> (<code>sutra/os/native/schemas/run-ledger-row.schema.json</code>, ADR-007 draft); the example below is the golden fixture row itself (byte-matched by test <code>test_docs_match.sh</code>), with lending-company values. The older sutra-atom ledger (<code>.sutra/atom-ledger.jsonl</code>, <code>atom-ledger-v0.3</code>) remains the runner&#8217;s own log and predates the ratified shape.</p>
+<p><code>atom.json</code> — the bureau-check step of <code>W-kyc-verify</code>, at open:</p>
+<pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">{
+  "goal": "Bureau check complete for applicant LN-2214: report fetched and score recorded",
+  "verify": {"template": "grep-count", "target": "applicants/LN-2214/bureau.json", "pattern": "\"score\":", "expect": 1},
+  "constraints": [{"text": "RBI KYC norms; no manual score overrides", "check": null}],
+  "context_refs": ["applicants/LN-2214/kyc-docs/", "policies/bureau-policy.md"],
+  "work": {"dispatch_kind": "skill", "ref": "bureau-fetch"},
+  "attempt": 1
+}</pre>
+<p class="figcap">The motor field is named <code>work</code> in the build today; the ruled particle name is HOW (A1-FINAL-3) — the rename is convergence move 1 in s6. <code>constraints[].check</code> ships null today (s6).</p>
+<p>Ledger row appended at close — keyed sid+atom, which is exactly the X2 gap (no workflow key, so no Engine is born):</p>
+<!-- source: sutra/os/native/schemas/fixtures/run-ledger-row.valid.jsonl row 1 (pretty-printed, content verbatim) -->
+<pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">{
+  "schema_version": "1.0.0",
+  "run_id": "run-20260818-0001",
+  "atom_id": "atom-7f3a2c",
+  "ts_open": "2026-08-18T09:12:04+05:30",
+  "ts_close": "2026-08-18T09:14:31+05:30",
+  "goal": "Verify KYC documents (PAN + Aadhaar match) for loan application LN-88213",
+  "verify_template": {
+    "template_id": "VT-kyc-pan-aadhaar-match",
+    "template_version": "1.2.0"
+  },
+  "verify_args": [
+    {
+      "name": "application_id",
+      "value": "LN-88213"
+    },
+    {
+      "name": "pan_last4",
+      "value": "441F"
+    }
+  ],
+  "outcome": "pass",
+  "attempts": 1,
+  "workflow_ref": "W-kyc-verify@3",
+  "thread_id": "thr-kyc-20260818-a1",
+  "operator_id": "sankalpasawa",
+  "evidence_ref": "ledger/evidence/2026-08-18-LN-88213-kyc.json"
+}</pre>
+<p class="figcap">this example IS fixture row 1 of run-ledger-row.valid.jsonl — drift impossible</p>
+<p>Operator-facing surface: no dedicated viewer today — rows are read back in-terminal (JSONL tail).</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Rulings of record: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> (A1 family)</li>
+<li>Build grounding: <code>holding/plans/native-sop-program/GROUNDING-MAP.md</code></li>
+<li>Hub: <a href="../the-model.html">The Model</a> &#183; siblings: <a href="particles.html">Particles</a> &#183; <a href="workflow-engine.html">Workflow + Engine</a> &#183; <a href="assembly-system.html">Assembly + System</a> &#183; <a href="internal-system.html">Internal System</a> &#183; <a href="shadow-systems.html">Shadow Systems</a> &#183; <a href="properties.html">Properties (Charter · Domain · Tenancy)</a></li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+
+</div></div></body></html>

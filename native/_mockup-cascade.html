@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOCKUP — Native PRD cascade structure</title>
+<style>
+  :root{--purple:#6d28d9;--purpleL:#ede9fe;--blue:#2563eb;--ink:#1a1a1a;}
+  *{box-sizing:border-box}
+  body{font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;color:var(--ink);background:#fafafa}
+  .banner{background:#fde68a;padding:9px 16px;font-size:12.5px;border-bottom:1px solid #d4a72c}
+  .banner b{color:#92400e}
+  .top{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:10px 16px;background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:5}
+  .top .lbl{font-weight:700;margin-right:6px;font-size:13px;color:#555}
+  .lens-tab{padding:6px 12px;border:1px solid #ccc;border-radius:7px;cursor:pointer;background:#f3f4f6;font-size:13px;user-select:none}
+  .lens-tab:hover{background:#eaecef}
+  .lens-tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .wrap{display:flex;align-items:flex-start}
+  .sidebar{width:288px;min-width:288px;border-right:1px solid #e5e5e5;background:#fff;padding:16px 12px;font-size:13px;position:sticky;top:53px;height:calc(100vh - 53px);overflow:auto}
+  .sb-title{font-weight:700;margin-bottom:4px}
+  .sb-sub{color:#888;font-size:11.5px;margin-bottom:12px}
+  .rung{margin:0 0 4px}
+  .rname{font-weight:800;color:var(--purple);text-transform:uppercase;font-size:10.5px;letter-spacing:.05em}
+  .rung ul{margin:3px 0 10px;padding-left:12px;list-style:none;border-left:2px solid var(--purpleL)}
+  .rung li{padding:2px 7px;color:#444;border-radius:4px}
+  .rung li.cur{background:var(--purpleL);font-weight:700;color:#5b21b6}
+  .arrow{color:#a78bfa;font-size:11px;margin:1px 0 1px 4px}
+  .main{flex:1;padding:24px 30px;max-width:780px}
+  .crumb{color:#999;font-size:12px;margin-bottom:8px}
+  .crumb b{color:var(--purple)}
+  .unit-title{font-size:21px;font-weight:800;margin:0}
+  .rung-badge{display:inline-block;background:var(--purple);color:#fff;font-size:10.5px;padding:3px 9px;border-radius:11px;vertical-align:middle;margin-left:8px;letter-spacing:.03em}
+  .lens-note{margin:14px 0;padding:11px 14px;background:#eff6ff;border-left:3px solid var(--blue);font-size:13px;border-radius:0 6px 6px 0}
+  .lens-note b{color:#1e40af}
+  .links{margin:12px 0;padding:6px 14px 12px;background:#fff;border:1px solid #e5e5e5;border-radius:9px}
+  .linkrow{display:grid;grid-template-columns:118px 1fr;gap:8px 12px;align-items:start;padding:8px 0;border-bottom:1px dashed #eee}
+  .linkrow:last-child{border-bottom:0}
+  .lk{font-weight:800;font-size:11.5px;padding-top:3px}
+  .up{color:#dc2626}.down{color:#059669}.side{color:var(--blue)}
+  .chip{display:inline-block;background:#f3f4f6;border:1px solid #d1d5db;border-radius:14px;padding:3px 10px;margin:2px 3px;font-size:12px}
+  .chip .tag{color:#888;font-size:10.5px}
+  .content{margin-top:18px}
+  .content h4{margin:0 0 6px;font-size:13px;color:#555;text-transform:uppercase;letter-spacing:.04em}
+  table{border-collapse:collapse;width:100%;font-size:12.5px;margin-top:4px}
+  td,th{border:1px solid #e8e8e8;padding:6px 9px;text-align:left;vertical-align:top}
+  tr.ring td{background:#f7f5ff;font-weight:700;color:#5b21b6}
+  .founder{background:#fef3c7;font-style:italic}
+  .foot{padding:18px 30px;color:#aaa;font-size:11.5px;border-top:1px solid #eee}
+</style>
+</head>
+<body>
+<div class="banner">⚠ <b>THROWAWAY MOCKUP</b> — illustrates the HOW-cascade structuring model on real B1 content. The live doc (<code>index.html</code>) is untouched. Safe to delete.</div>
+
+<div class="top">
+  <span class="lbl">See B1 through lens:</span>
+  <span class="lens-tab active" data-lens="cascade" onclick="setLens(this)">Cascade (home)</span>
+  <span class="lens-tab" data-lens="logical" onclick="setLens(this)">Logical flow</span>
+  <span class="lens-tab" data-lens="design" onclick="setLens(this)">Design flow</span>
+  <span class="lens-tab" data-lens="decision" onclick="setLens(this)">Decision flow</span>
+  <span class="lens-tab" data-lens="trace" onclick="setLens(this)">Traceability</span>
+</div>
+
+<div class="wrap">
+  <aside class="sidebar">
+    <div class="sb-title">Realization cascade</div>
+    <div class="sb-sub">the spine — every section has one home rung</div>
+
+    <div class="rung"><div class="rname">Worldview</div><ul><li>§0 What we bring into the world</li></ul></div>
+    <div class="arrow">refines &darr;</div>
+    <div class="rung"><div class="rname">Vision</div><ul><li>§ES Executive Summary</li><li>§2.A.4 Vision</li></ul></div>
+    <div class="arrow">refines &darr;</div>
+    <div class="rung"><div class="rname">Strategy</div><ul><li>§2.A Idea / scope / diff</li><li>§6 Distribution</li><li>§8 Roadmap</li></ul></div>
+    <div class="arrow">refines &darr;</div>
+    <div class="rung"><div class="rname">Architecture</div><ul><li>§1 Layers</li><li>§4 Native Platform</li><li>§5 Connector</li><li>§7 Observability</li></ul></div>
+    <div class="arrow">refines &darr;</div>
+    <div class="rung"><div class="rname">Capability</div><ul><li class="cur">B1 &mdash; Ask in my own words &#9665;</li><li>B2&ndash;B5 pillars</li><li>§2.C Needs (24)</li></ul></div>
+    <div class="arrow">refines &darr;</div>
+    <div class="rung"><div class="rname">Feature / Design</div><ul><li>§2.F Product Design</li><li>§2.E Journeys</li></ul></div>
+    <div class="arrow">refines &darr;</div>
+    <div class="rung"><div class="rname">Implementation</div><ul><li>§11 HLD / LLD</li><li>canon</li></ul></div>
+
+    <div class="sb-sub" style="margin-top:14px;border-top:1px solid #eee;padding-top:10px">
+      <b style="color:var(--purple)">Lenses</b> (cut across all rungs, not rungs themselves):<br>
+      §3 HOW &middot; §12 ADRs &middot; §9 Meta overlays
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="crumb">Worldview &rsaquo; Vision &rsaquo; Strategy &rsaquo; Architecture &rsaquo; <b>Capability</b> &rsaquo; B1</div>
+    <h1 class="unit-title">B1 &mdash; &ldquo;Let me ask in my own words&rdquo; <span class="rung-badge">CAPABILITY rung</span></h1>
+
+    <div class="lens-note" id="lensnote"></div>
+    <div class="links" id="links"></div>
+
+    <div class="content">
+      <h4>Unit content (unchanged by lens — this is its one home)</h4>
+      <table>
+        <tr class="ring"><td>Ring 1</td><td>Surface &mdash; operator voice</td></tr>
+        <tr><td>Problem space</td><td class="founder">Awaiting founder fill (T-G1-02)</td></tr>
+        <tr><td>Need / outcome</td><td class="founder">Awaiting founder fill (T-G1-03)</td></tr>
+        <tr><td>Solution direction</td><td class="founder">Awaiting founder fill (T-G1-04)</td></tr>
+        <tr class="ring"><td>Ring 2</td><td>Contract &mdash; Native&rsquo;s commitments</td></tr>
+        <tr><td>Product</td><td>Intent Layer parses freeform utterance into typed intent + sub-intents. Show-by-example. Trusted-names shortcut.</td></tr>
+        <tr><td>Acceptance</td><td>Freeform in &rarr; parsed intent_type + structured sub-intents in one turn; schema shown before the call, validated after.</td></tr>
+        <tr class="ring"><td>Ring 3</td><td>Mechanism (Phase 2)</td></tr>
+        <tr><td>Connectedness</td><td>see the link panel above &mdash; now first-class + lens-aware</td></tr>
+      </table>
+    </div>
+  </main>
+</div>
+
+<div class="foot">Mockup &middot; the point: ONE connected unit, ONE home rung, and the SAME unit re-read through 5 different flows (lenses) without duplicating its content.</div>
+
+<script>
+  var LENS = {
+    cascade: {
+      note: "<b>Cascade (home view):</b> where B1 sits on the spine and what refines/is-refined-by it. This is the structural backbone &mdash; every other lens is a traversal of these same links.",
+      rows: [
+        ["up","&uarr; refines", '<span class="chip">Capability rung <span class="tag">parent</span></span><span class="chip">§2.B Pillars <span class="tag">set it belongs to</span></span>'],
+        ["down","&darr; refined-by", '<span class="chip">§2.F C.1 TASK journey <span class="tag">design</span></span><span class="chip">§11 LLD/B1 <span class="tag">impl</span></span><span class="chip">intent-layer-design.md <span class="tag">mechanism</span></span>'],
+        ["side","&harr; depends-on", '<span class="chip">B2 Context <span class="tag">feeds intent &rarr;</span></span><span class="chip">B3 Action <span class="tag">intent &rarr; decision</span></span><span class="chip">B5.a Active <span class="tag">writes intake</span></span>']
+      ]
+    },
+    logical: {
+      note: "<b>Logical flow:</b> B1 read as a problem&rarr;need&rarr;solution&rarr;acceptance chain. Same unit, traversed by the 6-block logical lens.",
+      rows: [
+        ["up","problem","&rarr; <span class=\"chip\">re-explaining intent in tool-speak (Ring1, founder)</span>"],
+        ["side","need","&rarr; <span class=\"chip\">say it my way, it lands (Ring1, founder)</span>"],
+        ["down","solution &rarr; accept","&rarr; <span class=\"chip\">Intent Layer (Product)</span> <span class=\"chip\">parsed in one turn (Acceptance)</span>"]
+      ]
+    },
+    design: {
+      note: "<b>Design flow:</b> B1 inside the operator journey. The capability becomes a step in the §2.F flow &mdash; no duplicate journey text, just the traversal.",
+      rows: [
+        ["up","upstream","<span class=\"chip\">operator utterance (§2.F B. Input)</span>"],
+        ["side","B1 step","<span class=\"chip\">parse &rarr; intent_type + sub-intents</span>"],
+        ["down","downstream","<span class=\"chip\">routes to §2.F C.1 TASK journey</span>"]
+      ]
+    },
+    decision: {
+      note: "<b>Decision flow:</b> the WHY behind B1 &mdash; which ADRs govern this capability. The §12 lens over the same unit.",
+      rows: [
+        ["up","governed by","<span class=\"chip\">ADR-012 typed parser over prose</span>"],
+        ["side","related","<span class=\"chip\">§B.2 intent &lsquo;tells&rsquo; (disambiguation)</span>"],
+        ["down","open","<span class=\"chip\">intent-layer-design.md (Phase 2)</span>"]
+      ]
+    },
+    trace: {
+      note: "<b>Traceability:</b> need &rarr; goal &rarr; pillar &rarr; test. Proves B1 earns its place and is verifiable.",
+      rows: [
+        ["up","need","<span class=\"chip\">N01 / N07 input needs</span>"],
+        ["side","goal","<span class=\"chip\">G: first-time-right &ge;80%</span>"],
+        ["down","verified by","<span class=\"chip\">acceptance: parsed schema validated (§4.5)</span>"]
+      ]
+    }
+  };
+  function render(key){
+    var L = LENS[key];
+    document.getElementById('lensnote').innerHTML = L.note;
+    var html = "";
+    for (var i=0;i<L.rows.length;i++){
+      var r = L.rows[i];
+      html += '<div class="linkrow"><div class="lk '+r[0]+'">'+r[1]+'</div><div>'+r[2]+'</div></div>';
+    }
+    document.getElementById('links').innerHTML = html;
+  }
+  function setLens(el){
+    var tabs = document.querySelectorAll('.lens-tab');
+    for (var i=0;i<tabs.length;i++) tabs[i].classList.remove('active');
+    el.classList.add('active');
+    render(el.getAttribute('data-lens'));
+  }
+  render('cascade');
+</script>
+</body>
+</html>

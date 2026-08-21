@@ -1,0 +1,569 @@
+<!doctype html>
+<!-- Native IA v1 page: roadmap (COMPANY band, parent hub). Built from _template.html per BUILD-PROTOCOL.md; content carried from frozen master/index.html#roadmap (IA migration P2, 2026-06-12). -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering Build Ledger &#8212; versions &#183; phases &#183; open questions &#183; risks &#183; assumptions &#183; backlog</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight &#8212; replace with your box id */
+#map-roadmap{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a class="sb-cur" href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native hub</a> &#8594; roadmap &#160;&#183;&#160; spine: <a href="../index.html">&#8592; Hub</a> &#160;&#183;&#160; <a href="../distribution.html">Distribution &#8594;</a></div>
+<h1>Engineering Build Ledger <span class="lvl">COMPANY &#183; zoom 0</span></h1><div style="background:#fef2f2;border-left:3px solid #b91c1c;padding:10px 13px;font-size:13px;margin:12px 0"><b>Build ledger, not a roadmap.</b> This page preserves the engineering build tracker as it stood before the ruled version ladder landed. Its version scheme (v1/v2/v3 with Q2&#8211;Q4 2026 dates and pillar counts) <b>predates and is superseded by</b> the ruled ladder &#8212; <a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a> is normative; the reader-facing story is at <a href="index.html">Roadmap</a>. Kept for the build record: the backlog rows, phase tables and risk register below remain useful as a work ledger.</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="index.html" xlink:href="index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="../platform/index.html" xlink:href="../platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="../platform/observability.html" xlink:href="../platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="../platform/authority-tenancy.html" xlink:href="../platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="../platform/ui.html" xlink:href="../platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="../platform/host.html" xlink:href="../platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="../platform/runtime.html" xlink:href="../platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="../platform/orchestration.html" xlink:href="../platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="../platform/system-of-process.html" xlink:href="../platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="../platform/system-of-record.html" xlink:href="../platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="../platform/connector.html" xlink:href="../platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="../platform/external-world.html" xlink:href="../platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="../platform/compute.html" xlink:href="../platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="390" y="22" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Roadmap</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>roadmap</code></td><td>COMPANY / <a href="../index.html">hub</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">COMPANY-band schedule page &#8212; carries master &#167;8 (&#167;C.1-&#167;C.7) complete: version strategy, implementation phases A-E, ratified open questions Q1-Q11, forward open questions FQ1-FQ3, risks R1-R9, assumptions A1-A7 + constraints C1-C8, and the 122-row backlog G0-G8.</td><td colspan="3">c1-c7 carried over complete incl. &#167;C.6 forward OQs (FQ1/2/3 PROPOSED) + &#167;C.7 backlog group counts with links into master for full row tables; statuses match master at freeze; gaps section lists founder-pending ratifications</td></tr>
+</table>
+
+<h2 id="buildout" style="color:#b45309">How we build it out &#8212; core platform &#8594; downstream &#8594; CoS (one roadmap + timeline)</h2>
+<p>We build the <strong>core of the <a href="../platform/index.html">platform</a> engine first</strong>, then gradually build downstream pieces, until we reach the <strong><a href="../products/cos/index.html">CoS</a></strong> &#8212; the Chief-of-Staff product the operator actually uses. Stage names are the Native canon's own terms (platform blocks, the six surfaces, the CoS pillars B1&#8211;B5). The only version numbers are the releases <strong>v1 / v2 / v3</strong> from <a href="#c1-versions">&#167;C.1</a> &#8212; there is no separate build-numbering. <em>Per-stage detail lands subsequently; this is the readable map.</em></p>
+<p class="note"><strong>CoS appears twice on purpose.</strong> Canon puts the 5 CoS pillars in <a href="#c1-versions">v1</a> (terminal), so a <em>thin</em> CoS rides on the core early; the <em>full</em> CoS is reached only after the downstream platform matures (tenancy &#183; connectors &#183; UI) by v3/GA.</p>
+<p class="figcap">Three lanes: CORE PLATFORM (build first) &#183; DOWNSTREAM PLATFORM (gradually) &#183; CoS PRODUCT (the destination). Timeline = rough weeks from kickoff (estimates). Dashed flags = release cuts v1 / v2 / v3.</p>
+<svg viewBox="0 0 880 272" role="img" aria-label="Native build-out: core platform to CoS, with release milestones">
+<rect x="150" y="3" width="11" height="11" rx="2" fill="#dbeafe" stroke="#1d4ed8"/><text x="165" y="12" font-size="9" fill="#374151">CORE PLATFORM</text>
+<rect x="290" y="3" width="11" height="11" rx="2" fill="#fef3c7" stroke="#92400e"/><text x="305" y="12" font-size="9" fill="#374151">DOWNSTREAM PLATFORM</text>
+<rect x="470" y="3" width="11" height="11" rx="2" fill="#d1fae5" stroke="#047857"/><text x="485" y="12" font-size="9" fill="#374151">CoS PRODUCT</text>
+<line x1="413" y1="32" x2="413" y2="226" stroke="#047857" stroke-width="1.3" stroke-dasharray="4 3"/><text x="413" y="29" text-anchor="middle" font-size="9" font-weight="800" fill="#047857">&#9654; v1 (terminal wedge)</text>
+<line x1="646" y1="32" x2="646" y2="226" stroke="#92400e" stroke-width="1.3" stroke-dasharray="4 3"/><text x="646" y="29" text-anchor="middle" font-size="9" font-weight="800" fill="#92400e">&#9654; v2</text>
+<line x1="850" y1="32" x2="850" y2="226" stroke="#1d4ed8" stroke-width="1.3" stroke-dasharray="4 3"/><text x="850" y="29" text-anchor="end" font-size="9" font-weight="800" fill="#1d4ed8">&#9654; v3 / GA</text>
+<text x="6" y="55" font-size="7.5" font-weight="700" fill="#1e3a8a">S1 Runtime core</text>
+<rect x="150" y="44" width="88" height="16" rx="3" fill="#dbeafe" stroke="#1d4ed8"/><text x="194" y="56" text-anchor="middle" font-size="7.5" fill="#1e3a8a">Host&#183;Compute&#183;SoP&#183;SoR(AUDIT)</text>
+<text x="6" y="78" font-size="7.5" font-weight="700" fill="#1e3a8a">S2 Orchestration</text>
+<rect x="238" y="67" width="58" height="16" rx="3" fill="#dbeafe" stroke="#1d4ed8"/><text x="267" y="79" text-anchor="middle" font-size="7.5" fill="#1e3a8a">ROUTE&#183;RUN</text>
+<text x="6" y="101" font-size="7.5" font-weight="700" fill="#065f46">S3 CoS pillars (thin)</text>
+<rect x="296" y="90" width="117" height="16" rx="3" fill="#d1fae5" stroke="#047857"/><text x="354" y="102" text-anchor="middle" font-size="7.5" fill="#065f46">B1&#8594;B2&#8594;B3&#8594;B4&#8594;B5 (terminal)</text>
+<text x="6" y="124" font-size="7.5" font-weight="700" fill="#7c2d12">S4 Governance+resilience</text>
+<rect x="413" y="113" width="87" height="16" rx="3" fill="#fef3c7" stroke="#92400e"/><text x="456" y="125" text-anchor="middle" font-size="7.5" fill="#7c2d12">GATE&#183;Authority&#183;hardstops</text>
+<text x="6" y="147" font-size="7.5" font-weight="700" fill="#7c2d12">S5 Validation+Emergence</text>
+<rect x="500" y="136" width="88" height="16" rx="3" fill="#fef3c7" stroke="#92400e"/><text x="544" y="148" text-anchor="middle" font-size="7.5" fill="#7c2d12">PNC&#183;EMERGE(k=4)</text>
+<text x="6" y="170" font-size="7.5" font-weight="700" fill="#7c2d12">S6 Tenancy</text>
+<rect x="588" y="159" width="58" height="16" rx="3" fill="#fef3c7" stroke="#92400e"/><text x="617" y="171" text-anchor="middle" font-size="7.5" fill="#7c2d12">TENANT</text>
+<text x="6" y="193" font-size="7.5" font-weight="700" fill="#7c2d12">S7 Connectors</text>
+<rect x="646" y="182" width="87" height="16" rx="3" fill="#fef3c7" stroke="#92400e"/><text x="689" y="194" text-anchor="middle" font-size="7.5" fill="#7c2d12">Connector&#183;External World</text>
+<text x="6" y="216" font-size="7.5" font-weight="700" fill="#065f46">S8 Operator UI &#8594; full CoS</text>
+<rect x="733" y="205" width="117" height="16" rx="3" fill="#d1fae5" stroke="#047857"/><text x="791" y="217" text-anchor="middle" font-size="7.5" fill="#065f46">C1&#183;C2&#183;C3 surfaces</text>
+<line x1="150" y1="232" x2="850" y2="232" stroke="#d1d5db" stroke-width="1"/>
+<text x="179" y="244" text-anchor="middle" font-size="8" fill="#9ca3af">W1</text><text x="413" y="244" text-anchor="middle" font-size="8" fill="#9ca3af">W9</text><text x="646" y="244" text-anchor="middle" font-size="8" fill="#9ca3af">W17</text><text x="850" y="244" text-anchor="end" font-size="8" fill="#9ca3af">W24</text>
+<text x="150" y="260" font-size="8" fill="#9ca3af">weeks from kickoff (rough estimate)</text>
+</svg>
+<table>
+<tr><th>Lane</th><th>Stage</th><th>Native canon pieces</th><th>What it gives the operator</th><th>Weeks</th><th>Release</th></tr>
+<tr><td>Core platform</td><td>S1 Runtime core</td><td><a href="../platform/host.html">Host</a> &#183; <a href="../platform/compute.html">Compute</a> &#183; <a href="../platform/system-of-process.html">System of Process</a> &#183; <a href="../platform/system-of-record.html">System of Record</a> (AUDIT)</td><td>The engine that runs work and durably remembers it</td><td>W1&#8211;3</td><td rowspan="3">v1</td></tr>
+<tr><td>Core platform</td><td>S2 Orchestration</td><td><a href="../platform/orchestration.html">Orchestration</a> &#8212; ROUTE &#183; RUN &#183; triggers</td><td>Turn an utterance into a running workflow</td><td>W4&#8211;5</td></tr>
+<tr><td><strong>CoS (thin)</strong></td><td><strong>S3 CoS pillars</strong></td><td><strong><a href="../products/cos/index.html">CoS</a> B1 Intent &#183; B2 Context &#183; B3 Action &#183; B4 Connector-comms &#183; B5 Governance-substrate</strong> (terminal)</td><td><strong>First usable Chief-of-Staff in the terminal</strong></td><td>W6&#8211;9</td></tr>
+<tr><td>Downstream</td><td>S4 Governance + resilience</td><td>GATE surface &#183; Authority &#183; hardstops (rollback)</td><td>Approval before acting; safe-to-fail</td><td>W10&#8211;12</td><td rowspan="2">v2</td></tr>
+<tr><td>Downstream</td><td>S5 Validation + Emergence</td><td>PNC pre/post-checks &#183; EMERGE (k=4)</td><td>Deterministic checks; system proposes its own workflows</td><td>W13&#8211;15</td></tr>
+<tr><td>Downstream</td><td>S6 Tenancy</td><td>Authority + Tenancy (TENANT surface)</td><td>Safe for multiple clients (unlocks external)</td><td>W16&#8211;17</td><td rowspan="3">v3 / GA</td></tr>
+<tr><td>Downstream</td><td>S7 Connectors</td><td><a href="../platform/connector.html">Connector</a> &#183; <a href="../platform/external-world.html">External World</a></td><td>Reach systems outside the host</td><td>W18&#8211;20</td></tr>
+<tr><td><strong>CoS (full)</strong></td><td><strong>S8 Operator UI</strong></td><td><a href="../platform/ui.html">UI</a> &#8212; C1 Inbox &#183; C2 Browser &#183; C3 Run-board</td><td><strong>Full CoS beyond the terminal</strong></td><td>W21&#8211;24</td></tr>
+</table>
+<p><strong>The flow:</strong> core platform (S1&#8211;S2) &#8594; first thin CoS on top (S3 = <a href="#c1-versions">v1</a> terminal wedge) &#8594; gradually build downstream platform (S4&#8211;S7) &#8594; reach the full CoS (S8 = v3/GA). Canon terms live in <code>sutra/os/native/</code> (D54); release detail in <a href="#c1-versions">&#167;C.1</a>; phases A&#8211;E that run inside each stage in <a href="#c2-phases">&#167;C.2</a>.</p>
+
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 335" role="img" aria-label="Roadmap internal parts and neighbor edges">
+<defs><marker id="rdah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="14" width="150" height="38" rx="8" fill="#f8fafc" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="95" y="31" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6b7280">HUB (parent)</text>
+<text x="95" y="44" text-anchor="middle" font-size="8" fill="#9ca3af">COMPANY &#183; zoom 0</text>
+<rect x="40" y="86" width="190" height="52" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="135" y="106" text-anchor="middle" font-size="10" font-weight="700">&#167;C.3 RATIFIED OQs</text>
+<text x="135" y="121" text-anchor="middle" font-size="8.5" fill="#6b7280">Q1-Q11 &#183; all ratified 2026-05-09</text>
+<rect x="300" y="86" width="220" height="52" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="410" y="106" text-anchor="middle" font-size="10" font-weight="700">&#167;C.1 VERSIONS</text>
+<text x="410" y="121" text-anchor="middle" font-size="8.5" fill="#6b7280">v1 Q2 &#8594; v2 Q3 &#8594; v3 Q4 2026</text>
+<rect x="600" y="86" width="240" height="52" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="720" y="106" text-anchor="middle" font-size="10" font-weight="700">&#167;C.5 ASSUMPTIONS + CONSTRAINTS</text>
+<text x="720" y="121" text-anchor="middle" font-size="8.5" fill="#6b7280">A1-A7 &#183; C1-C8 immovable v1</text>
+<rect x="40" y="186" width="190" height="52" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="135" y="206" text-anchor="middle" font-size="10" font-weight="700">&#167;C.4 RISKS</text>
+<text x="135" y="221" text-anchor="middle" font-size="8.5" fill="#6b7280">R1-R9 &#183; S&#215;L = priority</text>
+<rect x="300" y="186" width="220" height="52" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="410" y="206" text-anchor="middle" font-size="10" font-weight="700">&#167;C.2 PHASES A-E</text>
+<text x="410" y="221" text-anchor="middle" font-size="8.5" fill="#6b7280">PRD &#8594; specs &#8594; impl &#8594; review &#8594; ship</text>
+<rect x="600" y="186" width="240" height="52" rx="8" fill="#fff" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="720" y="206" text-anchor="middle" font-size="10" font-weight="700" fill="#b91c1c">&#167;C.6 FORWARD OQs</text>
+<text x="720" y="221" text-anchor="middle" font-size="8.5" fill="#6b7280">FQ1-FQ3 &#183; PROPOSED 2026-05-13, unratified</text>
+<rect x="300" y="280" width="220" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="410" y="299" text-anchor="middle" font-size="10" font-weight="700">&#167;C.7 BACKLOG</text>
+<text x="410" y="313" text-anchor="middle" font-size="8.5" fill="#6b7280">122 rows &#183; G0-G8</text>
+<rect x="600" y="280" width="240" height="46" rx="8" fill="#f8fafc" stroke="#7c3aed" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="720" y="299" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP</text>
+<text x="720" y="313" text-anchor="middle" font-size="8" fill="#9ca3af">founder ratification gate</text>
+<path d="M95,52 L95,70 L410,70 L410,86" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#rdah)"/>
+<text x="180" y="66" font-size="8" fill="#475569">parent &#8212; zooms into the schedule</text>
+<path d="M230,112 L300,112" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="265" y="105" text-anchor="middle" font-size="7.5" fill="#475569">fix v1/v2/v3 cut</text>
+<path d="M600,112 L520,112" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="560" y="105" text-anchor="middle" font-size="7.5" fill="#475569">bound scope</text>
+<path d="M410,138 L410,186" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="416" y="165" font-size="8" fill="#475569">sequenced as</text>
+<path d="M230,212 L300,212" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="265" y="205" text-anchor="middle" font-size="7.5" fill="#475569">constrain</text>
+<path d="M410,238 L410,280" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="416" y="262" font-size="8" fill="#475569">decomposes into 122 rows</text>
+<path d="M720,238 L720,280" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="726" y="262" font-size="8" fill="#475569">ratification pending</text>
+<path d="M600,225 L560,225 L560,303 L520,303" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/>
+<text x="556" y="262" text-anchor="end" font-size="8" fill="#475569">G4 rows T-G4-01..09</text>
+<rect id="rd-buildout" x="250" y="16" width="320" height="40" rx="8" fill="#fff" stroke="#b45309" stroke-width="1.6"/><text x="410" y="34" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">&#167;C.0 BUILD-OUT</text><text x="410" y="48" text-anchor="middle" font-size="8.5" fill="#6b7280">stages S1&#8211;S8 &#183; timeline &#183; core platform &#8594; CoS</text><path d="M340,56 L340,86" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#rdah)"/><text x="346" y="74" font-size="8" fill="#475569">sequences the releases</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<div style="background:#fffbeb;border-left:3px solid #b45309;padding:8px 12px;font-size:12.5px;margin:10px 0"><b>Stale scheme:</b> this table&#8217;s v1/v2/v3 and its dates predate the ruled ladder &#8212; do not read as current guidance; <a href="../platform/model/versions.html">versions.html</a> governs.</div><h2>Content &#8212; &#167;C.1-&#167;C.7 carried from master &#167;8 (statuses as at freeze)</h2>
+
+<section id="c1-versions">
+<h3>C.1 Version strategy <a href="#c1-versions" class="anchor">#</a></h3>
+<table>
+<tr><th>Version</th><th>Window</th><th>What ships</th><th>Trigger to next</th></tr>
+<tr><td>v1</td><td>Q2 2026</td><td>Terminal-fluent operator wedge. 5 pillars &#183; 25 feature blocks. T2 install (DayFlow / Billu / Paisa).</td><td>T2 N* &#8805;3 OHS/wk for &#8805;2 weeks; &lt;5 critical bugs at 30d</td></tr>
+<tr><td>v2</td><td>Q3 2026</td><td>Capability expansion &#8212; F1 semantic retrieval; B2.c peer-Sutra federation; full A2A; non-terminal-surface PROTOTYPE tested (graduate to v3). Per ratified <a href="#c3-open-questions">Q2 + Q9</a>: full non-terminal launch deferred to v3.</td><td>v1 N* mature &#8805;20 OHS/wk; v2 prototype tested non-terminal</td></tr>
+<tr><td>v3</td><td>Q4 2026</td><td>TAM expansion + operationalize &#8212; non-terminal surfaces ship (voice / web / app per ratified <a href="#c3-open-questions">Q2 + Q9</a>); fleet scale; partnerships; SaaS pricing.</td><td>v2 adoption count + revenue threshold met; v2 non-terminal prototype validated</td></tr>
+</table>
+</section>
+
+<section id="c2-phases">
+<h3>C.2 Implementation phases <a href="#c2-phases" class="anchor">#</a></h3>
+<table>
+<tr><th>Phase</th><th>What's in scope</th><th>Status</th></tr>
+<tr><td>A &#8212; PRD docs</td><td>This file (v1 canonical). r13&#8594;r18 fix passes applied to v2 (archived).</td><td>scaffold complete 2026-05-12; founder fills 1-3 next</td></tr>
+<tr><td>B &#8212; Feature specs</td><td>L8 Feature Specs at <code>sutra/os/native/blocks/B*.md</code> for all 25 blocks</td><td>scaffolded; detailing iterative</td></tr>
+<tr><td>C &#8212; Implementation</td><td>Native runtime daemon; primitives in code; surfaces wired; hardstops live</td><td>partial &#8212; daemon at <code>~/.sutra-native/</code>; v0 dogfood active</td></tr>
+<tr><td>D &#8212; Codex + DeepSeek review</td><td>PROTO-019 cross-AI peer review on every canon change</td><td>r18 PASS on v2; v3 enters review after founder fills 1-3</td></tr>
+<tr><td>E &#8212; Ship + iterate</td><td>T2 onboarding (DayFlow / Billu / Paisa) &#8594; measure OHS/wk</td><td>queued post-v1</td></tr>
+</table>
+</section>
+
+<section id="c3-open-questions">
+<h3>C.3 Open questions <a href="#c3-open-questions" class="anchor">#</a></h3>
+<p>Eleven open questions from v1 design &#8212; <strong>all ratified 2026-05-09</strong>. Canon at <code>sutra/os/native/open-questions/</code>.</p>
+<table>
+<tr><th>#</th><th>Question</th><th>Ratified answer</th></tr>
+<tr><td>Q1</td><td>Primary persona for v1?</td><td>Solo founder, 1-N companies, terminal-fluent</td></tr>
+<tr><td>Q2</td><td>Terminal-only or also web/app v1?</td><td>Terminal-only v1; v3 revisit</td></tr>
+<tr><td>Q3</td><td>Memory framing in v1?</td><td>No &#8212; governance + multi-tenant + emergence instead</td></tr>
+<tr><td>Q4</td><td>Pattern emergence threshold k?</td><td>k=4 default; tunable v2+</td></tr>
+<tr><td>Q5</td><td>Approval scope &#8212; per-step or per-workflow?</td><td>Per-step v1; trust-signal reduces at 30d clean</td></tr>
+<tr><td>Q6</td><td>v1 pricing model?</td><td>Per-Tenant subscription; v2 outcome-based</td></tr>
+<tr><td>Q7</td><td>v1 &#8594; v2 trigger?</td><td>N* mature &#8805;20 OHS/wk; v2 prototype non-terminal</td></tr>
+<tr><td>Q8</td><td>Founder checkpoints during v1?</td><td>Weekly Pulse Friday; mid-week ad-hoc on N* drop</td></tr>
+<tr><td>Q9</td><td>Why terminal-only?</td><td>Wedge requires terminal fluency; v3 broader</td></tr>
+<tr><td>Q10</td><td>Portfolio play in v1?</td><td>Multi-Human-Org architecture; each company = Human-Tenant</td></tr>
+<tr><td>Q11</td><td>Truncated bullet (&#167;12.4 in v2)?</td><td>Resolved as v1.1+ migration plan</td></tr>
+</table>
+</section>
+
+<section id="c4-risks">
+<h3>C.4 Risks + mitigations <a href="#c4-risks" class="anchor">#</a></h3>
+<p>Severity &#215; Likelihood = Priority. Rows sorted desc.</p>
+<table>
+<tr><th>#</th><th>Risk</th><th>S</th><th>L</th><th>P</th><th>Mitigation</th></tr>
+<tr><td>R8</td><td>Multi-agent orchestration cost spikes at scale</td><td>4</td><td>3</td><td>12</td><td>Per-task estimation budget; rate-limited workflows</td></tr>
+<tr><td>R2</td><td>Audit log unwritable &#8594; silent fail-open</td><td>5</td><td>2</td><td>10</td><td>Triple-channel redundancy; HS-4 stops on all-fail</td></tr>
+<tr><td>R3</td><td>Cross-tenant accidental leakage</td><td>5</td><td>2</td><td>10</td><td>Default-deny; explicit auth; HS-3 surfaces breaches</td></tr>
+<tr><td>R4</td><td>Operator review fatigue</td><td>3</td><td>3</td><td>9</td><td>Trust signal: 30d clean &#8594; fewer gates</td></tr>
+<tr><td>R5</td><td>Pricing model wrong for portfolio operator</td><td>3</td><td>3</td><td>9</td><td>v1 subscription; v2 outcome-based experiment</td></tr>
+<tr><td>R9</td><td>Canon drift between docs + runtime</td><td>3</td><td>3</td><td>9</td><td>D54 canon-only; codex + deepseek per-change review</td></tr>
+<tr><td>R6</td><td>v1 wedge too narrow to fund v2</td><td>4</td><td>2</td><td>8</td><td>Wedge validates personalization + governance + audit</td></tr>
+<tr><td>R1</td><td>Pattern-emergence false positives</td><td>2</td><td>3</td><td>6</td><td>k=4 default; operator pause; precision tracked</td></tr>
+<tr><td>R7</td><td>Person-formation overfits short window</td><td>2</td><td>2</td><td>4</td><td>Long baseline; explicit ratings opt-in</td></tr>
+</table>
+</section>
+
+<section id="c5-assumptions">
+<h3>C.5 Assumptions + constraints <a href="#c5-assumptions" class="anchor">#</a></h3>
+<table>
+<tr><th>#</th><th>Assumption</th></tr>
+<tr><td>A1</td><td>Operator is terminal-fluent (NG7)</td></tr>
+<tr><td>A2</td><td>Operator runs 1-7 companies</td></tr>
+<tr><td>A3</td><td>Operator wants compounding outcomes</td></tr>
+<tr><td>A4</td><td>LLM costs stabilize or fall</td></tr>
+<tr><td>A5</td><td>Operator has Mac/Linux</td></tr>
+<tr><td>A6</td><td>Codex + Claude available as host-LLMs</td></tr>
+<tr><td>A7</td><td>Operator opts in to person-formation ratings</td></tr>
+</table>
+<table>
+<tr><th>#</th><th>Constraint (immovable v1)</th></tr>
+<tr><td>C1</td><td>Terminal-only v1 (NG1)</td></tr>
+<tr><td>C2</td><td>Single-LLM-provider abstraction (NG3)</td></tr>
+<tr><td>C3</td><td>No browser automation (NG5)</td></tr>
+<tr><td>C4</td><td>Audit log 3-channel durability (HS-4)</td></tr>
+<tr><td>C5</td><td>Multi-tenant default-deny (ADR-006)</td></tr>
+<tr><td>C6</td><td>Reversibility checked pre-risky actions (P12 + HS-1)</td></tr>
+<tr><td>C7</td><td>Person-formation ratings opt-in</td></tr>
+<tr><td>C8</td><td>Native's own rules not modifiable at runtime (HS-1)</td></tr>
+</table>
+</section>
+
+<section id="c6-forward-open-questions">
+<h3>C.6 Open questions which we need to tackle in the future <a href="#c6-forward-open-questions" class="anchor">#</a></h3>
+<p>Distinct from <a href="#c3-open-questions">&#167;C.3 Open questions</a> (v1 design questions; all ratified 2026-05-09). These are forward-looking open questions about ongoing Native capability &#8212; surfaced 2026-05-13 by founder; not yet ratified. Each may produce ADRs in canon (engineering decisions) + PRD body updates (operator-facing contracts).</p>
+<table>
+<tr><th>#</th><th>Open question</th><th>Where it touches existing PRD</th></tr>
+<tr><td>FQ1</td><td><strong>HOW methodology</strong> &#8212; open questions about Native's HOW Methodology engine. Which approach for which situation? When does cascading recursion stop? How are HOW choices learned vs. operator-overridden? When are HOW choices made silently vs. surfaced for ratification?</td><td>Foundation in <a href="../master/index.html#section-3-how-methodology">&#167;3 HOW Methodology</a> (6 HOW dimensions); operator interaction in <a href="../master/index.html#b3a-think">&#167;2.B B3a THINK</a>; learning loop in <a href="../master/index.html#b5d-learned">&#167;2.B B5.d learned patterns</a></td></tr>
+<tr><td>FQ2</td><td><strong>Accuracy</strong> &#8212; open questions about Native's accuracy contract. What KPIs measure accuracy per task tier (T0-T3)? What's the right test depth at each phase? When does test-before-conclude become test-by-sample (cost tradeoff)? How does accuracy compound vs degrade over time?</td><td>Foundation in <a href="../master/index.html#section-4-native-platform">&#167;4.5 Test-before-conclude gate</a>; observability in <a href="../master/index.html#section-7-observability">&#167;7 Observability</a>; failure surfacing in HS-1 / HS-4 hardstops</td></tr>
+<tr><td>FQ3</td><td><strong>Change-impact awareness for existing systems (including 2nd/3rd-order effects)</strong> &#8212; when making a change to an operator's existing system, how does Native ensure it (a) identifies ALL relevant things that might be affected by the change FIRST, (b) considers all relevant things that need to be considered for making the change, and (c) understands second-order and third-order effects of making the change? What is the cascading-impact-analysis engine &#8212; and how does the operator inspect what was checked vs missed?</td><td>Touches: Authority Model (<a href="../master/index.html#d6-authority">&#167;D.6</a>) escalation triggers; HOW Cascading dimension (<a href="../master/index.html#section-3-how-methodology">&#167;3.1</a>); Workforce state machine (<a href="../master/index.html#section-4-native-platform">&#167;4.2</a>); B3a THINK mode for novel-state work. <strong>Gap</strong>: no current PRD section formally specifies cascade-impact analysis as a Native capability. <span class="marker marker-deeper-founder-impact"><a href="#c7-g4">T-G4-07</a></span> <span class="marker marker-deeper-founder-impact"><a href="#c7-g4">T-G4-08</a></span> <span class="marker marker-deeper-founder-impact"><a href="#c7-g4">T-G4-09</a></span></td></tr>
+</table>
+<p class="callout"><strong>Status: PROPOSED 2026-05-13.</strong> Not yet ratified. Founder surfaced these forward; they enter a future research + design cycle (likely codex + deepseek consult round per question, producing ADRs in canon + capability contracts in PRD body).</p>
+</section>
+
+<section id="c7-backlog">
+<h3>C.7 Backlog &#8212; atomic tasks indexed by inline markers <a href="#c7-backlog" class="anchor">#</a></h3>
+<p>122 atomic tasks across 9 groups (G0-G8). Each row's marker pill matches an inline marker placed in the PRD body (per <a href="../master/index.html#d14-prd-authoring">D.14 rule 4</a>). Items without marker pill (&#8212;) are work-tasks (engineering / verification / ratification) that don't surface as inline gaps. Approx mix (104-row snapshot 2026-05-13; refresh pending): ~17% awaiting founder voice or input, ~37% v2+ activation gates already documented in <a href="../master/index.html#section-1-4-5-activation">&#167;1.4.5</a>, ~26% engineering work, ~20% review &#183; cross-cutting &#183; meta-protocol.</p>
+<p class="callout"><strong>Schema</strong>: <code>ID &#183; Item &#183; Section &#183; Marker &#183; Status &#183; Notes</code>. ID convention <code>T-G{group}-{NN}</code>. Status values: <code>TODO</code> &#183; <code>IN-PROGRESS</code> &#183; <code>BLOCKED</code> &#183; <code>DEFERRED</code> &#183; <code>DONE</code>. Group ownership: G0-G1 founder &#183; G2-G3 founder + Native runtime &#183; G4 founder + codex+deepseek &#183; G5 Sutra Forge + Native runtime &#183; G6 codex+deepseek &#183; G7 Sutra Forge.</p>
+
+<p class="figcap">Frozen originals (acceptance: links into master for full row tables): <a href="../master/index.html#c7-g0">G0</a> &#183; <a href="../master/index.html#c7-g1">G1</a> &#183; <a href="../master/index.html#c7-g2">G2</a> &#183; <a href="../master/index.html#c7-g3">G3</a> &#183; <a href="../master/index.html#c7-g4">G4</a> &#183; <a href="../master/index.html#c7-g5">G5</a> &#183; <a href="../master/index.html#c7-g6">G6</a> &#183; <a href="../master/index.html#c7-g7">G7</a> &#183; <a href="../master/index.html#c7-g8">G8</a> &#8212; master &#167;C.7 anchors are stable for citation.</p>
+
+<h4 id="c7-g0">&#167;C.7.1 G0 &#8212; Meta / protocol (3 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G0-01</td><td>Ring-1-fill protocol &#8212; document how founder fills 15 Ring-1 cells (voice register, length, exemplars from &#167;0 Tuesday narratives)</td><td><a href="../master/index.html#d14-prd-authoring">D.14 rule 2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Predecessor to G1.</td></tr>
+<tr><td>T-G0-02</td><td>D.14 PRD Authoring Contract &#8212; ratify via codex + deepseek r19 review</td><td><a href="../master/index.html#d14-prd-authoring">D.14</a></td><td>&#8212;</td><td>TODO</td><td>Landed C1 (commit bfb0990).</td></tr>
+<tr><td>T-G0-03</td><td>Multi-page restructure (Option A hub-and-spoke split)</td><td><a href="../master/index.html#d14-prd-authoring">D.14 rule 6</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>C4 of current wave.</td></tr>
+</table>
+
+<h4 id="c7-g1">&#167;C.7.2 G1 &#8212; Ring 1 founder fills (18 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G1-01</td><td>&#167;A.1 Problem statement &#8212; founder voice replaces working frame stub</td><td><a href="../master/index.html#a1-problem">&#167;A.1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Working frame in place.</td></tr>
+<tr><td>T-G1-02</td><td>B1 Ring 1 cell 1 &#8212; Problem space ("ask in my own words")</td><td><a href="../master/index.html#pillar-b1">&#167;2.B B1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-03</td><td>B1 Ring 1 cell 2 &#8212; Need / outcome</td><td><a href="../master/index.html#pillar-b1">&#167;2.B B1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-04</td><td>B1 Ring 1 cell 3 &#8212; Solution direction</td><td><a href="../master/index.html#pillar-b1">&#167;2.B B1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-05</td><td>B2 Ring 1 cell 1 &#8212; Problem space ("world's best thinking")</td><td><a href="../master/index.html#pillar-b2">&#167;2.B B2</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-06</td><td>B2 Ring 1 cell 2 &#8212; Need / outcome</td><td><a href="../master/index.html#pillar-b2">&#167;2.B B2</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-07</td><td>B2 Ring 1 cell 3 &#8212; Solution direction</td><td><a href="../master/index.html#pillar-b2">&#167;2.B B2</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-08</td><td>B3 Ring 1 cell 1 &#8212; Problem space ("think with me, do the rest")</td><td><a href="../master/index.html#pillar-b3">&#167;2.B B3</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-09</td><td>B3 Ring 1 cell 2 &#8212; Need / outcome</td><td><a href="../master/index.html#pillar-b3">&#167;2.B B3</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-10</td><td>B3 Ring 1 cell 3 &#8212; Solution direction</td><td><a href="../master/index.html#pillar-b3">&#167;2.B B3</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-11</td><td>B4 Ring 1 cell 1 &#8212; Problem space ("talk to my people for me")</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-12</td><td>B4 Ring 1 cell 2 &#8212; Need / outcome</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-13</td><td>B4 Ring 1 cell 3 &#8212; Solution direction</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-14</td><td>B5 Ring 1 cell 1 &#8212; Problem space ("remember and keep it mine")</td><td><a href="../master/index.html#pillar-b5">&#167;2.B B5</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-15</td><td>B5 Ring 1 cell 2 &#8212; Need / outcome</td><td><a href="../master/index.html#pillar-b5">&#167;2.B B5</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-16</td><td>B5 Ring 1 cell 3 &#8212; Solution direction</td><td><a href="../master/index.html#pillar-b5">&#167;2.B B5</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-17</td><td>&#167;0 First-operator quote &#8212; replace illustrative placeholder with real pilot week-8 quote</td><td><a href="../master/index.html#section-0-press-release">&#167;0</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>BLOCKED</td><td>Blocked on pilot data.</td></tr>
+<tr><td>T-G1-18</td><td>&#167;6.2 Pricing + packaging &#8212; replace placeholder with operator-economics-validated pricing</td><td><a href="../master/index.html#section-6-2-pricing">&#167;6.2</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>BLOCKED</td><td>Blocked on economics data.</td></tr>
+</table>
+
+<h4 id="c7-g2">&#167;C.7.3 G2 &#8212; v2+ activation gates (39 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G2-01</td><td>B2.c Peer Sutras &#8212; federation protocol authored as canon ADR</td><td><a href="../master/index.html#b2c-peer-sutras">&#167;2.B B2.c</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (1/4).</td></tr>
+<tr><td>T-G2-02</td><td>B2.c Peer Sutras &#8212; trust + boundary model ratified per &#167;D.6</td><td><a href="../master/index.html#b2c-peer-sutras">&#167;2.B B2.c</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (2/4).</td></tr>
+<tr><td>T-G2-03</td><td>B2.c Peer Sutras &#8212; &#8805;3 T2/T3 operators opt-in for prototype</td><td><a href="../master/index.html#b2c-peer-sutras">&#167;2.B B2.c</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (3/4).</td></tr>
+<tr><td>T-G2-04</td><td>B2.c Peer Sutras &#8212; HS-3 tenant-boundary extended cross-Native</td><td><a href="../master/index.html#b2c-peer-sutras">&#167;2.B B2.c</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (4/4).</td></tr>
+<tr><td>T-G2-05</td><td>F1 Semantic retrieval &#8212; embedding pipeline ships</td><td><a href="../master/index.html#a6-scope">&#167;A.6</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (1/4).</td></tr>
+<tr><td>T-G2-06</td><td>F1 Semantic retrieval &#8212; per-tenant vector store with HS-3 boundary</td><td><a href="../master/index.html#a6-scope">&#167;A.6</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (2/4).</td></tr>
+<tr><td>T-G2-07</td><td>F1 Semantic retrieval &#8212; A/B &#8805;10pp accuracy delta on T2 dogfood</td><td><a href="../master/index.html#a6-scope">&#167;A.6</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (3/4).</td></tr>
+<tr><td>T-G2-08</td><td>F1 Semantic retrieval &#8212; cost model fits &#167;C.4 R8 budget</td><td><a href="../master/index.html#a6-scope">&#167;A.6</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (4/4).</td></tr>
+<tr><td>T-G2-09</td><td>Full A2A &#8212; B2.c Peer Sutras LIVE (prerequisite)</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (1/4); chains G2-01..04.</td></tr>
+<tr><td>T-G2-10</td><td>Full A2A &#8212; protocol authored as canon ADR</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (2/4).</td></tr>
+<tr><td>T-G2-11</td><td>Full A2A &#8212; identity + auth model for cross-Native calls</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (3/4).</td></tr>
+<tr><td>T-G2-12</td><td>Full A2A &#8212; audit trail extends to cross-Native DecisionProvenance</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2 gate (4/4).</td></tr>
+<tr><td>T-G2-13</td><td>Non-terminal surfaces &#8212; v2 prototype tested with &#8805;5 T4 operators</td><td><a href="#c1-versions">&#167;C.1 v3</a></td><td>&#8212;</td><td>DEFERRED</td><td>v3 gate (1/3).</td></tr>
+<tr><td>T-G2-14</td><td>Non-terminal surfaces &#8212; v1 N* mature &#8805;20 OHS/wk</td><td><a href="#c1-versions">&#167;C.1 v3</a></td><td>&#8212;</td><td>DEFERRED</td><td>v3 gate (2/3); chains G5-19/20.</td></tr>
+<tr><td>T-G2-15</td><td>Non-terminal surfaces &#8212; per-surface UX validated against zero-terminal post-onboarding rule</td><td><a href="../master/index.html#a2-persona">&#167;A.2.2</a></td><td>&#8212;</td><td>DEFERRED</td><td>v3 gate (3/3).</td></tr>
+<tr><td>T-G2-16</td><td>Senior Expert &#8212; ADR-020 Layer-B authoring template ratified</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>chains G6-01.</td></tr>
+<tr><td>T-G2-17</td><td>Senior Expert &#8212; per-product PRD authored per ADR-020 contract</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>baseline draft at senior-expert-prd-baseline-draft.html.</td></tr>
+<tr><td>T-G2-18</td><td>Senior Expert &#8212; per-product codex + deepseek review</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>PROTO-019.</td></tr>
+<tr><td>T-G2-19</td><td>Senior Expert &#8212; Asawa Forge installs first instance for T1 dogfood</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>Dogfood gate.</td></tr>
+<tr><td>T-G2-20</td><td>Project Manager &#8212; ADR-020 template ratified (shared with G2-16)</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>chains G6-01.</td></tr>
+<tr><td>T-G2-21</td><td>Project Manager &#8212; per-product PRD authored per ADR-020 contract</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>v2-test draft at project-manager-prd-v2-test-draft.html.</td></tr>
+<tr><td>T-G2-22</td><td>Project Manager &#8212; per-product codex + deepseek review</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>PROTO-019.</td></tr>
+<tr><td>T-G2-23</td><td>Project Manager &#8212; Asawa Forge installs first instance for T1 dogfood</td><td><a href="../master/index.html#section-1-4-hierarchy">&#167;1.4.4</a></td><td>&#8212;</td><td>TODO</td><td>Dogfood gate.</td></tr>
+<tr><td>T-G2-24</td><td>Phone connector &#8212; telephony provider chosen + integration tested (Twilio/Vonage)</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (1/4).</td></tr>
+<tr><td>T-G2-25</td><td>Phone connector &#8212; per-call Authority gate spec</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (2/4).</td></tr>
+<tr><td>T-G2-26</td><td>Phone connector &#8212; voice-data retention + PII sanitization extends D.12</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (3/4).</td></tr>
+<tr><td>T-G2-27</td><td>Phone connector &#8212; cost model per minute fits &#167;C.4 R8 budget</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (4/4).</td></tr>
+<tr><td>T-G2-28</td><td>Browser co-work &#8212; driver chosen (Playwright/Chromium per gstack pattern)</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v1.x gate (1/4); Charter TODO-005.</td></tr>
+<tr><td>T-G2-29</td><td>Browser co-work &#8212; operator-consent model (read-only default; Authority escalation)</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v1.x gate (2/4).</td></tr>
+<tr><td>T-G2-30</td><td>Browser co-work &#8212; sandbox + identity isolation per HS-3</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v1.x gate (3/4).</td></tr>
+<tr><td>T-G2-31</td><td>Browser co-work &#8212; audit row per Native-issued browser action</td><td><a href="../master/index.html#section-5-1-inventory">&#167;5.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v1.x gate (4/4).</td></tr>
+<tr><td>T-G2-32</td><td>Cloud-hosted channel &#8212; multi-tenant infra spec + HS-3 extended</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (1/4).</td></tr>
+<tr><td>T-G2-33</td><td>Cloud-hosted channel &#8212; per-tenant data-residency + key-isolation</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (2/4).</td></tr>
+<tr><td>T-G2-34</td><td>Cloud-hosted channel &#8212; pricing tier defined (operator-economics validated)</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (3/4); chains G1-18.</td></tr>
+<tr><td>T-G2-35</td><td>Cloud-hosted channel &#8212; onboarding flow &#167;6.3 gains cloud-managed install path</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (4/4).</td></tr>
+<tr><td>T-G2-36</td><td>Partner-deployed channel &#8212; partner contract framework ratified</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (1/4).</td></tr>
+<tr><td>T-G2-37</td><td>Partner-deployed channel &#8212; partner-side onboarding tooling (partner Forge)</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (2/4).</td></tr>
+<tr><td>T-G2-38</td><td>Partner-deployed channel &#8212; partner-fleet observability (HS-3-respecting)</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (3/4).</td></tr>
+<tr><td>T-G2-39</td><td>Partner-deployed channel &#8212; &#8805;1 partner pilot with &#8805;3 participants closed-loop</td><td><a href="../master/index.html#section-6-1-channels">&#167;6.1</a></td><td>&#8212;</td><td>DEFERRED</td><td>v2+ gate (4/4).</td></tr>
+</table>
+
+<h4 id="c7-g3">&#167;C.7.4 G3 &#8212; Phase 2 design docs (7 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G3-01</td><td>intent-layer-design.md &#8212; B1 mechanism deep doc</td><td><a href="../master/index.html#pillar-b1">&#167;2.B B1 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>How freeform&#8594;typed intent compiles.</td></tr>
+<tr><td>T-G3-02</td><td>context-retrieval-design.md &#8212; B2 mechanism deep doc</td><td><a href="../master/index.html#pillar-b2">&#167;2.B B2 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Ranking algo + budget allocator.</td></tr>
+<tr><td>T-G3-03</td><td>action-engine-design.md &#8212; B3 mechanism deep doc</td><td><a href="../master/index.html#pillar-b3">&#167;2.B B3 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Method routing + escalation.</td></tr>
+<tr><td>T-G3-04</td><td>connector-comms-design.md &#8212; B4 mechanism deep doc</td><td><a href="../master/index.html#pillar-b4">&#167;2.B B4 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Connector transport semantics.</td></tr>
+<tr><td>T-G3-05</td><td>governance-substrate-design.md &#8212; B5 mechanism deep doc</td><td><a href="../master/index.html#pillar-b5">&#167;2.B B5 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Multi-tenant state + audit plumbing.</td></tr>
+<tr><td>T-G3-06</td><td>sutra-federation-design.md &#8212; B2.c v2+ federation protocol</td><td><a href="../master/index.html#b2c-peer-sutras">&#167;2.B B2.c</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>DEFERRED</td><td>chains G2-01.</td></tr>
+<tr><td>T-G3-07</td><td>design-v2-deep-doc.html &#8212; global Phase 2 companion doc</td><td><a href="../master/index.html#d5-references">D.5 References</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>D.5 row 7 marked "forthcoming".</td></tr>
+</table>
+
+<h4 id="c7-g4">&#167;C.7.5 G4 &#8212; Forward open questions (9 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G4-01</td><td>FQ1.a HOW &#8212; which approach for which situation</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ1</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ1.</td></tr>
+<tr><td>T-G4-02</td><td>FQ1.b HOW &#8212; cascading stop conditions</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ1</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ1.</td></tr>
+<tr><td>T-G4-03</td><td>FQ1.c HOW &#8212; learned vs operator-overridden</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ1</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ1.</td></tr>
+<tr><td>T-G4-04</td><td>FQ2.a Accuracy &#8212; KPIs per task tier T0-T3</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ2.</td></tr>
+<tr><td>T-G4-05</td><td>FQ2.b Accuracy &#8212; test depth per phase</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ2.</td></tr>
+<tr><td>T-G4-06</td><td>FQ2.c Accuracy &#8212; test-before-conclude vs test-by-sample cost tradeoff</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ2.</td></tr>
+<tr><td>T-G4-07</td><td>FQ3.a Change-impact &#8212; relevant-things identification engine</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ3</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>TODO</td><td>FQ3 explicit PRD gap.</td></tr>
+<tr><td>T-G4-08</td><td>FQ3.b Change-impact &#8212; 2nd/3rd-order analysis engine</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ3</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>TODO</td><td>FQ3 explicit PRD gap.</td></tr>
+<tr><td>T-G4-09</td><td>FQ3.c Change-impact &#8212; operator inspection surface for checked vs missed</td><td><a href="#c6-forward-open-questions">&#167;C.6 FQ3</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>TODO</td><td>FQ3 explicit PRD gap.</td></tr>
+</table>
+
+<h4 id="c7-g5">&#167;C.7.6 G5 &#8212; Implementation phases B-E (20 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G5-01</td><td>Phase B &#8212; L8 Feature Spec for B1 Intent Layer at sutra/os/native/blocks/B01-*.md</td><td><a href="#c2-phases">&#167;C.2 B</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Scaffolded; detailing iterative.</td></tr>
+<tr><td>T-G5-02</td><td>Phase B &#8212; L8 Feature Spec for B2 Context retrieval</td><td><a href="#c2-phases">&#167;C.2 B</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-03</td><td>Phase B &#8212; L8 Feature Spec for B3 Action engine</td><td><a href="#c2-phases">&#167;C.2 B</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-04</td><td>Phase B &#8212; L8 Feature Spec for B4 Connector comms</td><td><a href="#c2-phases">&#167;C.2 B</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-05</td><td>Phase B &#8212; L8 Feature Spec for B5 Governance substrate</td><td><a href="#c2-phases">&#167;C.2 B</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-06</td><td>Phase B &#8212; all 25 block specs at L8 detail (B1-B25)</td><td><a href="#c2-phases">&#167;C.2 B</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Iterative; pegged to Native runtime build pace.</td></tr>
+<tr><td>T-G5-07</td><td>Phase C &#8212; Native runtime daemon production-ready</td><td><a href="#c2-phases">&#167;C.2 C</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>v0 dogfood at ~/.sutra-native/.</td></tr>
+<tr><td>T-G5-08</td><td>Phase C &#8212; 10 canon primitives in code (Domain &#183; Charter &#183; Workflow &#183; Step &#183; Trigger &#183; ExecutionResult &#183; EngineEvent &#183; Tenant &#183; Approval &#183; DecisionProvenance)</td><td><a href="../master/index.html#section-4-1-primitives">&#167;4.1</a></td><td>&#8212;</td><td>IN-PROGRESS</td><td>Per ADR-020.</td></tr>
+<tr><td>T-G5-09</td><td>Phase C &#8212; Hardstops HS-1..HS-8 live in runtime</td><td><a href="#c2-phases">&#167;C.2 C</a></td><td>&#8212;</td><td>TODO</td><td>Per shared hardstop catalog.</td></tr>
+<tr><td>T-G5-10</td><td>Phase C &#8212; 26 EngineEvents emitted from runtime</td><td><a href="#c2-phases">&#167;C.2 C</a></td><td>&#8212;</td><td>TODO</td><td>Per shared event catalog.</td></tr>
+<tr><td>T-G5-11</td><td>Phase C &#8212; 6 surfaces wired (ROUTE &#183; RUN &#183; GATE &#183; EMERGE &#183; AUDIT &#183; TENANT)</td><td><a href="#c2-phases">&#167;C.2 C</a></td><td>&#8212;</td><td>TODO</td><td>Per shared surface set.</td></tr>
+<tr><td>T-G5-12</td><td>Phase D &#8212; r19 codex review on v3 PRD (post founder Ring-1 fills)</td><td><a href="#c2-phases">&#167;C.2 D</a></td><td>&#8212;</td><td>TODO</td><td>Blocked by G1.</td></tr>
+<tr><td>T-G5-13</td><td>Phase D &#8212; r19 deepseek review on v3 PRD</td><td><a href="#c2-phases">&#167;C.2 D</a></td><td>&#8212;</td><td>TODO</td><td>Blocked by G1.</td></tr>
+<tr><td>T-G5-14</td><td>Phase D &#8212; convergence verdict + commit ratification (PROTO-019)</td><td><a href="#c2-phases">&#167;C.2 D</a></td><td>&#8212;</td><td>TODO</td><td>Blocked by G5-12/13.</td></tr>
+<tr><td>T-G5-15</td><td>Phase E &#8212; T2 DayFlow onboarding (first install)</td><td><a href="#c2-phases">&#167;C.2 E</a></td><td>&#8212;</td><td>TODO</td><td>Per CM9.</td></tr>
+<tr><td>T-G5-16</td><td>Phase E &#8212; T2 Billu onboarding</td><td><a href="#c2-phases">&#167;C.2 E</a></td><td>&#8212;</td><td>TODO</td><td>Per portfolio sequence.</td></tr>
+<tr><td>T-G5-17</td><td>Phase E &#8212; T2 Paisa onboarding</td><td><a href="#c2-phases">&#167;C.2 E</a></td><td>&#8212;</td><td>TODO</td><td>Per portfolio sequence.</td></tr>
+<tr><td>T-G5-18</td><td>Phase E &#8212; OHS/wk measurement infrastructure deployed across T2</td><td><a href="#c2-phases">&#167;C.2 E</a></td><td>&#8212;</td><td>TODO</td><td>Per G1 measurement.</td></tr>
+<tr><td>T-G5-19</td><td>Phase E &#8212; N* mature &#8805;3 OHS/wk per T2 within 14d of install</td><td><a href="#c1-versions">&#167;C.1 v1</a></td><td>&#8212;</td><td>TODO</td><td>v1 ship-gate.</td></tr>
+<tr><td>T-G5-20</td><td>Phase E &#8212; v1&#8594;v2 trigger criteria (N* mature &#8805;20 OHS/wk for &#8805;2 weeks; &lt;5 critical bugs at 30d)</td><td><a href="#c1-versions">&#167;C.1 v1</a></td><td>&#8212;</td><td>TODO</td><td>v1 ship-gate.</td></tr>
+</table>
+
+<h4 id="c7-g6">&#167;C.7.7 G6 &#8212; ADR-020 close (4 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G6-01</td><td>ADR-020 &#8212; R11 codex + deepseek review (currently PROPOSED 2026-05-13)</td><td><code>sutra/os/decisions/ADR-020-*</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Blocks G2-16..23.</td></tr>
+<tr><td>T-G6-02</td><td>OQ-020-1 &#8212; cross-product Charter sharing (one Charter scopes both vs one per Product)</td><td><code>ADR-020 OQ-020-1</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>DEFERRED</td><td>Defer to first concrete second-product spec.</td></tr>
+<tr><td>T-G6-03</td><td>OQ-020-2 &#8212; HOW preference inheritance (specialize from base vs compose from scratch)</td><td><code>ADR-020 OQ-020-2</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Likely specialize.</td></tr>
+<tr><td>T-G6-04</td><td>OQ-020-3 &#8212; operator UX switching between products (single thread vs per-product context)</td><td><code>ADR-020 OQ-020-3</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>DEFERRED</td><td>Defer to UX research.</td></tr>
+</table>
+
+<h4 id="c7-g7">&#167;C.7.8 G7 &#8212; Cross-cutting / drift (4 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G7-01</td><td>TOC deep-nav &#167;1-&#167;2 (anchor coverage parity with &#167;3-&#167;7 commit d149f2a)</td><td>TOC sidebar</td><td>&#8212;</td><td>TODO</td><td>Verify &#167;1-&#167;2 sub-anchors render in sidebar.</td></tr>
+<tr><td>T-G7-02</td><td>Memory <code>project_native_prd_phase_a_complete.md</code> &#8212; line count update (901 &#8594; current)</td><td>memory file</td><td>&#8212;</td><td>TODO</td><td>Stale fact in memory.</td></tr>
+<tr><td>T-G7-03</td><td>Memory <code>reference_native_render_path.md</code> &#8212; URL shape update post-C4 restructure</td><td>memory file</td><td>&#8212;</td><td>TODO</td><td>Hub stays at /native/product-prd-native-v1.html; spokes at /native/prd/NN-*.html.</td></tr>
+<tr><td>T-G7-04</td><td>Phase 2 design-doc filenames in PRD Ring 3 &#8212; clarify all 7 are pending (link to G3-01..07)</td><td>per-pillar Ring 3</td><td>&#8212;</td><td>TODO</td><td>C3 applies pending-design markers; this row tracks the trace.</td></tr>
+</table>
+
+<h4 id="c7-g8">&#167;C.7.9 G8 &#8212; Tech Design Hub fill-in (18 rows)</h4>
+<p class="note">SUPERSEDED 2026-06-13 (codex MODIFY-3): the old &#167;11 tech-design HLD/LLD scaffold these rows tracked is retired in place. The work landed instead as the engineering band's three-group model &#8212; 7 HLD views &#8594; <a href="../engineering/index.html">Group 2 cross-cutting views</a>, 4 catalogs &#8594; Group 3, B1-B5 &#8594; pillar LLDs (<code>engineering/pillar-b*.html</code>), content &#8594; the 13 per-part pages. Rows below are preserved with DONE + their new engineering/ home per D.4 (no renumber) / D.12 (never deleted).</p>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G8-01</td><td>tech-design/index.html hub &#8212; onboarding flow + open-questions section ratified by tech leadership</td><td><a href="../engineering/index.html"><code>engineering/index.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups. Tech-design hub replaced by the engineering hub three-group model; old scaffold retired in place under tech-design/ (read-only).</td></tr>
+<tr><td>T-G8-02</td><td>HLD/01 System Overview &#8212; fill 7 sections (5-layer &#183; 10 primitives &#183; 6 surfaces &#183; 26 events &#183; 8 hardstops &#183; 14 pillars &#183; ASCII diagram)</td><td><a href="../engineering/index.html"><code>engineering/index.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups. HLD/01 System-Overview folded into the engineering hub's three-group intro.</td></tr>
+<tr><td>T-G8-03</td><td>HLD/02 Data Model &#8212; fill 12 sections (10 primitives + relationships + lifecycle)</td><td><a href="../engineering/data-model.html"><code>engineering/data-model.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 2 cross-cutting HLD view). Cross-references canon primitives dir.</td></tr>
+<tr><td>T-G8-04</td><td>HLD/03 Control Flow &#8212; fill 7 sections (sequence + state machine + surface orchestration)</td><td><a href="../engineering/control-flow.html"><code>engineering/control-flow.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 2 cross-cutting HLD view). One operator turn sequence diagram.</td></tr>
+<tr><td>T-G8-05</td><td>HLD/04 Interfaces &#8212; fill 7 sections (Connector inventory + 26 events + Native&#8596;CoS API + v2+ federation)</td><td><a href="../engineering/interfaces.html"><code>engineering/interfaces.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 2 cross-cutting HLD view). v2+ A2A protocol design separated as deferred.</td></tr>
+<tr><td>T-G8-06</td><td>HLD/05 Governance &#8212; fill 10 sections (Authority Model 6-dim + HS-1..HS-8 + tenant + DecisionProvenance)</td><td><a href="../engineering/governance.html"><code>engineering/governance.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 2 cross-cutting HLD view). HS-5..HS-8 names now resolved on catalog-hardstops.</td></tr>
+<tr><td>T-G8-07</td><td>HLD/06 Deployment &#8212; fill 9 sections (runtime daemon + 3-artifact + L0/L1/L2 + tier-staged onboarding)</td><td><a href="../engineering/deployment.html"><code>engineering/deployment.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 2 cross-cutting HLD view). Cross-link to D33 firewall &#183; D38 Build-Layer &#183; D52 push.</td></tr>
+<tr><td>T-G8-08</td><td>HLD/07 Non-Functional &#8212; fill 8 sections (perf &#183; security &#183; observability &#183; accuracy &#183; reliability &#183; cost &#183; resilience)</td><td><a href="../engineering/non-functional.html"><code>engineering/non-functional.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 2 cross-cutting HLD view). FQ2 Accuracy KPIs still chains to T-G4-04..06.</td></tr>
+<tr><td>T-G8-09</td><td>LLD/B1 Intent Layer &#8212; fill 9 sections (parser &#183; schema &#183; show-by-example &#183; trusted-names &#183; refinement)</td><td><a href="../engineering/pillar-b1.html"><code>engineering/pillar-b1.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (pillar LLD). Chains G3-01.</td></tr>
+<tr><td>T-G8-10</td><td>LLD/B2 Context Retrieval &#8212; fill 8 sections (3-source assembly &#183; ranking &#183; budget)</td><td><a href="../engineering/pillar-b2.html"><code>engineering/pillar-b2.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (pillar LLD). Chains G3-02.</td></tr>
+<tr><td>T-G8-11</td><td>LLD/B3 Action Engine &#8212; fill 8 sections (method routing &#183; THINK/DO/PRESENT &#183; escalation)</td><td><a href="../engineering/pillar-b3.html"><code>engineering/pillar-b3.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (pillar LLD). Chains G3-03.</td></tr>
+<tr><td>T-G8-12</td><td>LLD/B4 Connector Comms &#8212; fill 8 sections (transport &#183; audience voice &#183; A2A stub)</td><td><a href="../engineering/pillar-b4.html"><code>engineering/pillar-b4.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (pillar LLD). Chains G3-04.</td></tr>
+<tr><td>T-G8-13</td><td>LLD/B5 Governance Substrate &#8212; fill 9 sections (4-horizon state &#183; audit + replay &#183; learned patterns k=4)</td><td><a href="../engineering/pillar-b5.html"><code>engineering/pillar-b5.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (pillar LLD). Chains G3-05.</td></tr>
+<tr><td>T-G8-14</td><td>LLD/primitives catalog &#8212; index per 10 canon primitives</td><td><a href="../engineering/catalog-primitives.html"><code>engineering/catalog-primitives.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 3 catalog). One-line per primitive + canon link.</td></tr>
+<tr><td>T-G8-15</td><td>LLD/hardstops catalog &#8212; index per HS-1..HS-8 + override paths</td><td><a href="../engineering/catalog-hardstops.html"><code>engineering/catalog-hardstops.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 3 catalog). HS-5..HS-8 names now resolved on the catalog.</td></tr>
+<tr><td>T-G8-16</td><td>LLD/surfaces catalog &#8212; index per ROUTE &#183; RUN &#183; GATE &#183; EMERGE &#183; AUDIT &#183; TENANT</td><td><a href="../engineering/catalog-surfaces.html"><code>engineering/catalog-surfaces.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 3 catalog). Surface-to-surface interaction map included.</td></tr>
+<tr><td>T-G8-17</td><td>LLD/interfaces catalog &#8212; wire-level reference for connectors + 26 events + A2A</td><td><a href="../engineering/catalog-interfaces.html"><code>engineering/catalog-interfaces.html</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups (Group 3 catalog). Per-connector spec + 26-event payload shapes.</td></tr>
+<tr><td>T-G8-18</td><td>decisions catalog &#8212; fill one-line summary per ADR (001-020 baseline + future ADRs)</td><td><a href="../engineering/index.html#sec-12-adr"><code>engineering/index.html#sec-12-adr</code></a></td><td>&#8212;</td><td>DONE</td><td>SUPERSEDED 2026-06-13 &#8594; engineering/ groups. ADR catalog renders inline in the engineering hub &#167;12; full text in canon (D54). Old tech-design/decisions.html scaffold retired in place.</td></tr>
+</table>
+
+<p class="callout"><strong>Backlog audit cadence</strong>: rows reviewed at every PROTO-019 review pass (codex + deepseek r-cycle). Closed rows preserved with <code>Status: DONE</code> for traceability per <a href="../master/index.html#d12-artifact-governance">D.12 Artifact Governance</a>; never deleted. New rows append below existing IDs (no renumbering per <a href="../master/index.html#d4-change-control">D.4 Change control</a>).</p>
+<p class="note">Vocabulary note: <code>L0/L1/L2</code> in row T-G8-07 quotes D38 build layers (plugin-shipped / staging / instance-local) and <code>L8</code> in G5/G8 rows quotes the master doc-layer numbering &#8212; neither is a zoom-band label. Bands on this site are words (GOVERNANCE / COMPANY / WHY / PRODUCTS / PLATFORM / ENGINEERING / RUNTIME) per BUILD-PROTOCOL.</p>
+</section>
+
+<h2>Notes</h2>
+<p>This page is the COMPANY-band carry of master &#167;8 Roadmap. Reading order: &#167;C.1 versions set the v1&#8594;v2&#8594;v3 cut (fixed by ratified Q2 + Q9); &#167;C.2 phases A-E sequence the work; &#167;C.3 is CLOSED (all 11 questions ratified 2026-05-09); &#167;C.6 is OPEN (FQ1-FQ3 PROPOSED 2026-05-13, unratified &#8212; founder queue, mirrored under Open gaps below); &#167;C.7 decomposes everything into 122 tracked rows across G0-G8. Row conservation per master D.4 change control (new rows append, no renumbering) + D.12 artifact governance (DONE rows preserved, never deleted). Sutra canon paths cited in rows (e.g. <code>sutra/os/native/blocks/B*.md</code>, <code>sutra/os/native/open-questions/</code>, <code>sutra/os/decisions/ADR-020-*</code>) are linked by literal repo path, never copied (D54).</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li>FQ1 (&#167;C.6 &#8212; PROPOSED 2026-05-13, NOT yet ratified): <strong>HOW methodology</strong> &#8212; open questions about Native's HOW Methodology engine. Which approach for which situation? When does cascading recursion stop? How are HOW choices learned vs. operator-overridden? When are HOW choices made silently vs. surfaced for ratification?</li>
+<li>FQ2 (&#167;C.6 &#8212; PROPOSED 2026-05-13, NOT yet ratified): <strong>Accuracy</strong> &#8212; open questions about Native's accuracy contract. What KPIs measure accuracy per task tier (T0-T3)? What's the right test depth at each phase? When does test-before-conclude become test-by-sample (cost tradeoff)? How does accuracy compound vs degrade over time?</li>
+<li>FQ3 (&#167;C.6 &#8212; PROPOSED 2026-05-13, NOT yet ratified): <strong>Change-impact awareness for existing systems (including 2nd/3rd-order effects)</strong> &#8212; when making a change to an operator's existing system, how does Native ensure it (a) identifies ALL relevant things that might be affected by the change FIRST, (b) considers all relevant things that need to be considered for making the change, and (c) understands second-order and third-order effects of making the change? What is the cascading-impact-analysis engine &#8212; and how does the operator inspect what was checked vs missed? <strong>Gap</strong>: no current PRD section formally specifies cascade-impact analysis as a Native capability (tracked as <a href="#c7-g4">T-G4-07..09</a>).</li>
+<li>T-G0-02 &#8212; D.14 PRD Authoring Contract &#8212; ratify via codex + deepseek r19 review (founder-pending ratification; status TODO at freeze).</li>
+<li>&#167;C.7 approx mix is a 104-row snapshot 2026-05-13; refresh pending &#8212; the carried tables count 122 rows.</li>
+<li>Ring 1 founder fills &#8212; T-G0-01 (founder-input-required: Ring-1-fill protocol) + T-G1-01..T-G1-16 (awaiting-founder-fill: &#167;A.1 problem statement + B1-B5 Ring 1 cells), 17 rows blocked on T-G0-01.</li>
+<li>T-G1-17 &#8212; &#167;0 First-operator quote &#8212; replace illustrative placeholder with real pilot week-8 quote (deeper-founder-impact; BLOCKED on pilot data).</li>
+<li>T-G1-18 &#8212; &#167;6.2 Pricing + packaging &#8212; replace placeholder with operator-economics-validated pricing (deeper-founder-impact; BLOCKED on economics data).</li>
+<li>T-G4-01..T-G4-09 &#8212; FQ1/FQ2/FQ3 sub-questions (6 founder-input-required + 3 deeper-founder-impact) &#8212; enter a future research + design cycle (codex + deepseek consult per question; ADRs in canon + PRD capability contracts).</li>
+<li>T-G6-01..T-G6-04 &#8212; ADR-020 close (founder-input-required &#215;4): R11 codex + deepseek review (ADR-020 currently PROPOSED 2026-05-13) + OQ-020-1/2/3 &#8212; blocks G2-16..23 (Senior Expert + Project Manager activation).</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul><li>None &#8212; roadmap is a COMPANY-band leaf in manifest v1 (no page declares it as parent).</li>
+<li>Downstream by content, not hierarchy: backlog rows fan out to <a href="../products/cos/needs.html">needs/</a>, <a href="../products/cos/index.html">products/cos/</a>, <a href="../platform/index.html">platform/</a>, <a href="../engineering/index.html">engineering/</a> pages, the <a href="../tech-design/index.html">tech-design scaffold</a> (G8), and sutra canon paths cited per row (D54: linked, never copied).</li></ul>
+
+<h2>Sources</h2>
+<ul><li><a href="../master/index.html#roadmap">master &#167;8 Roadmap</a> &#8212; frozen archive; this page carries #c1-versions, #c2-phases, #c3-open-questions, #c4-risks, #c5-assumptions, #c6-forward-open-questions, #c7-backlog (+ #c7-g0..#c7-g8) verbatim with hrefs repointed.</li>
+<li><a href="../manifest.json">manifest.json</a> &#8212; row id=roadmap (band COMPANY, parent hub, sources, acceptance).</li>
+<li><a href="../BUILD-PROTOCOL.md">BUILD-PROTOCOL.md</a> &#8212; anatomy, band words, budgets, gap conservation.</li>
+<li><a href="../tech-design/index.html">tech-design/</a> &#8212; G8 row targets (HLD/LLD scaffold on disk at site root).</li></ul>
+
+</div></div></body></html>

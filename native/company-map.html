@@ -1,0 +1,191 @@
+<!doctype html>
+<!-- PAGE: company-map (v1, 2026-08-18). The refreshed one-page block diagram, per founder direction: "a block diagram
+     which helps connect visually... platform engineering, product, senior products... on the hub page." Codex P1
+     folds: a single top-to-bottom causal chain (not a sitemap); 7 primary blocks max with <=4 child links each;
+     hierarchy through visual weight; every block clickable. Mirrors the sidebar's dependency stack exactly. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Company Map</title>
+<style>
+body{font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:960px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+.lead{font-size:16.5px;color:#374151;margin:10px 0}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+svg{width:100%;height:auto;display:block;margin:14px 0}
+svg a{cursor:pointer}
+.figcap{font-size:12px;color:#9ca3af;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a class="sb-cur" href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="edges.html">Edges</a></div><div style="padding-left:28px"><a href="resource.html">Resource</a></div><div style="padding-left:28px"><a href="time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="index.html">Native hub</a> &#8250; company map</div>
+<h1>The whole thing, in one picture</h1>
+<p class="lead">One causal chain, top to bottom: what is true on paper &#8594; the named objects of work &#8594; the machine that runs them &#8594; the products people buy — with governance checking every layer, and the desktop app as the face of it all. Every block is clickable. Each block answers one question: <i>why does this exist?</i></p>
+
+<svg viewBox="0 0 940 760" role="img" aria-label="The company block diagram: theory to vocabulary to platform to products, governance checking all, the desktop app as the surface">
+<defs><marker id="cmarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#6b7280"/></marker></defs>
+
+<!-- GOVERNANCE wrap -->
+<rect x="12" y="12" width="806" height="736" rx="14" fill="none" stroke="#8B4A6B" stroke-width="1.6" stroke-dasharray="7 5"/>
+<a href="governance/index.html"><text x="30" y="36" font-size="12.5" font-weight="800" fill="#8B4A6B">GOVERNANCE — checks every layer below it &#8250;</text></a>
+
+<!-- L1 THEORY -->
+<a href="the-system-simply.html">
+<rect x="60" y="58" width="710" height="86" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+<text x="415" y="84" text-anchor="middle" font-size="15" font-weight="800" fill="#334155">THEORY — what is true before anything is built</text>
+<text x="415" y="104" text-anchor="middle" font-size="11.5" fill="#64748b">the problem it solves &#183; the method &#183; the axes any company varies on &#183; the six requirements any build must satisfy</text>
+<text x="415" y="126" text-anchor="middle" font-size="10.5" fill="#94a3b8">first principles &#183; the axes &#183; functional specs</text>
+</a>
+<line x1="415" y1="144" x2="415" y2="168" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cmarr)"/>
+<text x="430" y="162" font-size="10" fill="#9ca3af">gives the laws to</text>
+
+<!-- L2 VOCABULARY -->
+<a href="platform/the-model.html">
+<rect x="60" y="172" width="710" height="104" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="415" y="198" text-anchor="middle" font-size="15" font-weight="800" fill="#047857">THE VOCABULARY — the named objects of work</text>
+<text x="415" y="218" text-anchor="middle" font-size="11.5" fill="#065f46">particle &#8594; work-atom &#8594; workflow &#8594; engine &#8594; assembly &#8594; system &#183; written objects are authored, grown objects are earned</text>
+</a>
+<a href="platform/model/versions.html"><text x="230" y="248" text-anchor="middle" font-size="10.5" fill="#047857">versions v1-v5 &#8250;</text></a>
+<a href="platform/model/builders.html"><text x="415" y="248" text-anchor="middle" font-size="10.5" fill="#047857">builders &#8250;</text></a>
+<a href="platform/model/desktop-app.html"><text x="600" y="248" text-anchor="middle" font-size="10.5" fill="#047857">desktop app (reverse-eng) &#8250;</text></a>
+<line x1="415" y1="276" x2="415" y2="300" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cmarr)"/>
+<text x="430" y="294" font-size="10" fill="#9ca3af">is executed by</text>
+
+<!-- L3 PLATFORM + L4 ENGINEERING side pair -->
+<a href="platform/index.html">
+<rect x="60" y="304" width="450" height="150" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8"/>
+<text x="285" y="330" text-anchor="middle" font-size="15" font-weight="800" fill="#1d4ed8">THE PLATFORM — the machine that runs it</text>
+<text x="285" y="350" text-anchor="middle" font-size="11.5" fill="#1e40af">eleven blocks, each stated as WHAT it is with HOW it&#8217;s built beneath</text>
+</a>
+<g font-size="10.5" fill="#1e40af">
+<a href="platform/ui.html"><text x="140" y="378" text-anchor="middle">ui &#8250;</text></a>
+<a href="platform/host.html"><text x="215" y="378" text-anchor="middle">host &#8250;</text></a>
+<a href="platform/runtime.html"><text x="295" y="378" text-anchor="middle">runtime &#8250;</text></a>
+<a href="platform/orchestration.html"><text x="395" y="378" text-anchor="middle">orchestration &#8250;</text></a>
+<a href="platform/system-of-process.html"><text x="180" y="400" text-anchor="middle">system of process &#8250;</text></a>
+<a href="platform/system-of-record.html"><text x="370" y="400" text-anchor="middle">system of record &#8250;</text></a>
+<a href="platform/connector.html"><text x="150" y="422" text-anchor="middle">connector &#8250;</text></a>
+<a href="platform/external-world.html"><text x="280" y="422" text-anchor="middle">external world &#8250;</text></a>
+<a href="platform/compute.html"><text x="400" y="422" text-anchor="middle">compute &#8250;</text></a>
+<a href="platform/authority-tenancy.html"><text x="200" y="444" text-anchor="middle">authority + tenancy &#8250;</text></a>
+<a href="platform/observability.html"><text x="380" y="444" text-anchor="middle">observability &#8250;</text></a>
+</g>
+<a href="engineering/index.html">
+<rect x="530" y="304" width="240" height="150" rx="10" fill="#eef2ff" stroke="#4338ca" stroke-width="1.6"/>
+<text x="650" y="330" text-anchor="middle" font-size="13.5" font-weight="800" fill="#4338ca">ENGINEERING</text>
+<text x="650" y="349" text-anchor="middle" font-size="10.5" fill="#3730a3">the cross-block build substrate</text>
+</a>
+<g font-size="10.5" fill="#3730a3">
+<a href="engineering/data-model.html"><text x="650" y="376" text-anchor="middle">data model &#8250;</text></a>
+<a href="engineering/control-flow.html"><text x="650" y="396" text-anchor="middle">control flow &#8250;</text></a>
+<a href="engineering/catalog-primitives.html"><text x="650" y="416" text-anchor="middle">catalogs &#8250;</text></a>
+<a href="engineering/pillar-b1.html"><text x="650" y="436" text-anchor="middle">pillars B1-B5 &#8250;</text></a>
+</g>
+<line x1="530" y1="379" x2="510" y2="379" stroke="#94a3b8" stroke-width="1.3" marker-end="url(#cmarr)"/>
+<text x="520" y="368" text-anchor="middle" font-size="9.5" fill="#94a3b8">builds</text>
+<line x1="285" y1="454" x2="285" y2="478" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cmarr)"/>
+<text x="300" y="472" font-size="10" fill="#9ca3af">carries</text>
+
+<!-- L5 PRODUCTS -->
+<rect x="60" y="482" width="710" height="108" rx="10" fill="#fdf4ff" stroke="#a21caf" stroke-width="1.8"/>
+<text x="415" y="508" text-anchor="middle" font-size="15" font-weight="800" fill="#a21caf">PRODUCTS — what a customer buys</text>
+<a href="products/cos/index.html">
+<rect x="120" y="522" width="280" height="52" rx="8" fill="#fff" stroke="#a21caf" stroke-width="1.4"/>
+<text x="260" y="544" text-anchor="middle" font-size="13" font-weight="700" fill="#86198f">Chief of Staff &#8250;</text>
+<text x="260" y="562" text-anchor="middle" font-size="10.5" fill="#a21caf">shipping — runs the operator&#8217;s day</text>
+</a>
+<a href="products/senior-expert/index.html">
+<rect x="440" y="522" width="280" height="52" rx="8" fill="#fff" stroke="#d8b4de" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="580" y="544" text-anchor="middle" font-size="13" font-weight="700" fill="#a855b8">Senior Expert &#8250;</text>
+<text x="580" y="562" text-anchor="middle" font-size="10.5" fill="#c084cc">planned — deep domain judgment on demand</text>
+</a>
+<line x1="415" y1="590" x2="415" y2="614" stroke="#6b7280" stroke-width="1.6" marker-end="url(#cmarr)"/>
+<text x="430" y="608" font-size="10" fill="#9ca3af">surfaces as</text>
+
+<!-- THE APP -->
+<a href="consumer-ui.html">
+<rect x="180" y="618" width="470" height="76" rx="12" fill="#1A1714" stroke="#B8945F" stroke-width="2"/>
+<text x="415" y="648" text-anchor="middle" font-size="15" font-weight="800" fill="#F5F0E8">&#10022; THE SUTRA DESKTOP APP</text>
+<text x="415" y="670" text-anchor="middle" font-size="11" fill="#B8945F">the face of everything above — a chat, a decision stack, receipts</text>
+</a>
+<g font-size="10.5">
+<a href="what-is-native.html"><text x="290" y="716" text-anchor="middle" fill="#6b7280">what is Native &#8250;</text></a>
+<a href="consumer-ui-prd.html"><text x="420" y="716" text-anchor="middle" fill="#6b7280">the UI PRD &#8250;</text></a>
+<a href="design-system.html"><text x="545" y="716" text-anchor="middle" fill="#6b7280">design system &#8250;</text></a>
+</g>
+
+<!-- side rail: the two door narratives -->
+<a href="roadmap/index.html">
+<rect x="836" y="172" width="92" height="150" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/>
+<text x="882" y="230" text-anchor="middle" font-size="12" font-weight="800" fill="#c2410c">ROAD</text>
+<text x="882" y="246" text-anchor="middle" font-size="12" font-weight="800" fill="#c2410c">MAP</text>
+<text x="882" y="270" text-anchor="middle" font-size="9.5" fill="#9a3412">five chapters</text>
+</a>
+<a href="distribution.html">
+<rect x="836" y="342" width="92" height="150" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/>
+<text x="882" y="400" text-anchor="middle" font-size="12" font-weight="800" fill="#c2410c">DISTRI</text>
+<text x="882" y="416" text-anchor="middle" font-size="12" font-weight="800" fill="#c2410c">BUTION</text>
+<text x="882" y="440" text-anchor="middle" font-size="9.5" fill="#9a3412">how it spreads</text>
+</a>
+<text x="882" y="530" text-anchor="middle" font-size="9.5" fill="#9ca3af">the two door</text>
+<text x="882" y="544" text-anchor="middle" font-size="9.5" fill="#9ca3af">narratives run</text>
+<text x="882" y="558" text-anchor="middle" font-size="9.5" fill="#9ca3af">alongside the</text>
+<text x="882" y="572" text-anchor="middle" font-size="9.5" fill="#9ca3af">whole stack</text>
+</svg>
+<p class="figcap">Reading order: top to bottom, one arrow at a time. Deliberately not a sitemap — 7 primary blocks, at most 4 child links each; everything deeper lives one click down. The sidebar carries the full 115-page tree in the same order.</p>
+
+<h2>The same chain as one sentence each</h2>
+<table>
+<tr><th>Block</th><th>Why it exists</th></tr>
+<tr><td><a href="the-system-simply.html">Theory</a></td><td>So the rest is derived, not improvised — the laws come first.</td></tr>
+<tr><td><a href="platform/the-model.html">The Vocabulary</a></td><td>So work has names, and names have rules — true on paper before any machine runs.</td></tr>
+<tr><td><a href="platform/index.html">The Platform</a></td><td>So the vocabulary executes — eleven blocks, each honest about what it is and how it&#8217;s built.</td></tr>
+<tr><td><a href="engineering/index.html">Engineering</a></td><td>So the platform can actually be built — the material that cuts across all blocks.</td></tr>
+<tr><td><a href="products/cos/index.html">Products</a></td><td>So someone can buy the result — Chief of Staff shipping, Senior Expert planned.</td></tr>
+<tr><td><a href="consumer-ui.html">The App</a></td><td>So all of it has one face — a chat, a decision stack, receipts.</td></tr>
+<tr><td><a href="governance/index.html">Governance</a></td><td>So every layer above stays honest — the wrap that checks them all.</td></tr>
+</table>
+
+<h2>Provenance</h2>
+<p style="font-size:12px;color:#6b7280">Authored 2026-08-18 (founder direction: refreshed block diagram connecting platform, engineering, products, on the hub). Mirrors the sidebar&#8217;s dependency stack exactly; reviewed against codex map objections (single causal chain, weight hierarchy, &#8804;4 children per block, not a sitemap).</p>
+
+</div></div></body></html>

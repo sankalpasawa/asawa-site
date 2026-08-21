@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Platform — Orchestration block (IA skeleton)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:880px;margin:0 auto;padding:34px 24px 60px}
+.demo{background:#fffbeb;border:1px dashed #b45309;color:#92400e;border-radius:8px;font-size:12.5px;padding:8px 12px;margin-bottom:14px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.dummy{color:#9ca3af;font-style:italic}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+</style>
+</head>
+<body><div class="page">
+<div class="demo"><b>IA SKELETON &#8212; DUMMY DATA.</b> Structure demo only. Real content migrates after IA lock.</div>
+<div class="crumb"><a href="../index.html">hub</a> &#8594; <a href="../products/cos/index.html">products/cos</a> &#8594; platform/orchestration</div>
+<h1>Platform &#8212; Orchestration block <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<svg viewBox="0 0 880 486" role="img" aria-label="Native cascade map">
+<rect x="2" y="12" width="752" height="470" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/>
+<rect x="12" y="3" width="716" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#183; Authority+Tenancy &#8212; gates every zoom level &#8594; governance/</text>
+<rect x="64" y="28" width="660" height="60" fill="#ffffff" stroke="#f3f4f6"/>
+<text x="8" y="54" font-size="8.5" font-weight="700" fill="#3730a3">COMPANY</text>
+<text x="8" y="67" font-size="8" fill="#9ca3af">zoom 0</text>
+<rect x="64" y="104" width="660" height="60" fill="#fafafa" stroke="#f3f4f6"/>
+<text x="8" y="130" font-size="8.5" font-weight="700" fill="#3730a3">WHY</text>
+<text x="8" y="143" font-size="8" fill="#9ca3af">zoom 1</text>
+<rect x="64" y="180" width="660" height="60" fill="#ffffff" stroke="#f3f4f6"/>
+<text x="8" y="206" font-size="8.5" font-weight="700" fill="#3730a3">PRODUCTS</text>
+<text x="8" y="219" font-size="8" fill="#9ca3af">zoom 2</text>
+<rect x="64" y="256" width="660" height="60" fill="#fafafa" stroke="#f3f4f6"/>
+<text x="8" y="282" font-size="8.5" font-weight="700" fill="#3730a3">PLATFORM</text>
+<text x="8" y="295" font-size="8" fill="#9ca3af">zoom 3</text>
+<rect x="64" y="332" width="660" height="60" fill="#ffffff" stroke="#f3f4f6"/>
+<text x="8" y="358" font-size="8.5" font-weight="700" fill="#3730a3">ENGINEERING</text>
+<text x="8" y="371" font-size="8" fill="#9ca3af">zoom 4</text>
+<rect x="64" y="408" width="660" height="60" fill="#fafafa" stroke="#f3f4f6"/>
+<text x="8" y="434" font-size="8.5" font-weight="700" fill="#3730a3">RUNTIME</text>
+<text x="8" y="447" font-size="8" fill="#9ca3af">zoom 5</text>
+<path d="M390.0,80 L390.0,112" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="396.0" y="89" font-size="8.5" fill="#475569">maps + tracks</text>
+<path d="M390.0,156 L390.0,168 L255.0,168 L255.0,188" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="328.5" y="165" font-size="8.5" fill="#475569">claims N-01 N-02</text>
+<path d="M390.0,156 L390.0,168 L545.0,168 L545.0,188" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="473.5" y="165" font-size="8.5" fill="#475569">claims N-03 (v2)</text>
+<path d="M255.0,232 L255.0,244 L275.0,244 L275.0,264" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="271.0" y="241" font-size="8.5" fill="#475569">fulfilled by</text>
+<path d="M275.0,308 L275.0,340" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#cmah)" stroke-dasharray="5 4"/>
+<text x="281.0" y="317" font-size="8.5" fill="#475569">build contract - gated on LOCK</text>
+<path d="M275.0,384 L275.0,416" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#cmah)" stroke-dasharray="5 4"/>
+<text x="281.0" y="393" font-size="8.5" fill="#475569">cites (D54)</text>
+<rect x="290" y="36" width="200" height="44" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="390.0" y="55" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">HUB</text>
+<text x="390.0" y="69" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status</text>
+<rect x="290" y="112" width="200" height="44" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="390.0" y="131" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">NEEDS</text>
+<text x="390.0" y="145" text-anchor="middle" font-size="8.5" fill="#6b7280">why Native exists</text>
+<rect x="160" y="188" width="190" height="44" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/>
+<text x="255.0" y="207" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">PRODUCT: CoS</text>
+<text x="255.0" y="221" text-anchor="middle" font-size="8.5" fill="#6b7280">5 pillars</text>
+<rect x="430" y="188" width="230" height="44" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="545.0" y="207" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">PRODUCT: SENIOR EXPERT</text>
+<text x="545.0" y="221" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 seed</text>
+<rect x="160" y="264" width="230" height="44" rx="8" fill="#fffbeb" stroke="#92400e" stroke-width="3.5"/>
+<text x="275.0" y="283" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">PLATFORM: ORCHESTRATION</text>
+<text x="275.0" y="297" text-anchor="middle" font-size="8.5" fill="#6b7280">translate + find process</text>
+<text x="275.0" y="258" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE</text>
+<rect x="160" y="340" width="230" height="44" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="275.0" y="359" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">ENG: ORCHESTRATION HLD</text>
+<text x="275.0" y="373" text-anchor="middle" font-size="8.5" fill="#6b7280">how it gets built</text>
+<rect x="160" y="416" width="230" height="44" rx="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="275.0" y="435" text-anchor="middle" font-size="10.5" font-weight="700" fill="#111827">SUTRA CANON + CODE</text>
+<text x="275.0" y="449" text-anchor="middle" font-size="8.5" fill="#6b7280">linked, never copied</text>
+<path d="M760,396 L760,86" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="773" y="240" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 773 240)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M810,86 L810,396" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="826" y="240" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 826 240)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="64" y="478" font-size="9" fill="#6b7280">Legend:</text>
+<rect x="114" y="469" width="14" height="11" rx="3" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/>
+<text x="132" y="478" font-size="9" fill="#6b7280">LOCKED</text>
+<rect x="180.4" y="469" width="14" height="11" rx="3" fill="#fffbeb" stroke="#92400e" stroke-width="1.4"/>
+<text x="198.4" y="478" font-size="9" fill="#6b7280">VERIFIED</text>
+<rect x="257.6" y="469" width="14" height="11" rx="3" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.4"/>
+<text x="275.6" y="478" font-size="9" fill="#6b7280">DRAFT</text>
+<rect x="318.6" y="469" width="14" height="11" rx="3" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="336.6" y="478" font-size="9" fill="#6b7280">SEED / dashed = not started</text>
+<rect x="498.40000000000003" y="469" width="14" height="11" rx="3" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="516.4000000000001" y="478" font-size="9" fill="#6b7280">external repo</text>
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 COMPANY,7 Z" fill="#334155"/></marker></defs>
+</svg>
+<p class="figcap">Same map on every page. Up = more abstract (WHY) &#183; down = more concrete (HOW). Solid arrows = contracts flowing downstream; a child may only build on what its parent promises. Purple dashed border = the governance wrap &#8212; it gates every zoom level and has its own page (<a href="../governance/index.html">governance/</a>).</p>
+
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>level / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-orchestration</code></td><td>PLATFORM / <a href="../products/cos/index.html">product-cos</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Translates the operator request, finds the relevant process, hands it to System of Process. Promises a typed intent envelope downstream.</td><td colspan="3">All claims cite source anchors; contracts to SoP + Host declared; open gaps listed for founder.</td></tr>
+</table>
+
+<h2>This page's own diagram &#8212; the block, fully wired (dummy)</h2>
+<svg viewBox="0 0 780 240" role="img" aria-label="Orchestration internal parts">
+<defs><marker id="orah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 COMPANY,7 Z" fill="#334155"/></marker></defs>
+<rect x="10" y="14" width="760" height="212" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="7 5"/>
+<rect x="22" y="6" width="330" height="16" fill="#fff"/>
+<text x="28" y="18" font-size="10.5" font-weight="700" fill="#7c3aed">AUTHORITY + TENANCY &#183; gates every access</text>
+<path d="M148,120 L218,120" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#orah)"/>
+<text x="152" y="113" font-size="8.5" fill="#475569">operator request</text>
+<path d="M398,120 L468,120" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#orah)"/>
+<text x="402" y="113" font-size="8.5" fill="#475569">typed intent</text>
+<path d="M648,142 L648,176 L560,176" stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#orah)"/>
+<text x="575" y="190" font-size="8.5" fill="#475569">selected process + envelope</text>
+<rect x="30" y="96" width="118" height="48" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="89" y="116" text-anchor="middle" font-size="10" font-weight="700">HOST</text>
+<text x="89" y="130" text-anchor="middle" font-size="8" fill="#6b7280">neighbor (upstream)</text>
+<rect x="218" y="96" width="180" height="48" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="308" y="116" text-anchor="middle" font-size="10.5" font-weight="700">INTENT CLASSIFIER</text>
+<text x="308" y="130" text-anchor="middle" font-size="8.5" fill="#6b7280">utterance &#8594; one of 5 journeys (dummy)</text>
+<rect x="468" y="96" width="180" height="48" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="558" y="116" text-anchor="middle" font-size="10.5" font-weight="700">PROCESS FINDER</text>
+<text x="558" y="130" text-anchor="middle" font-size="8.5" fill="#6b7280">typed intent &#8594; registered workflow (dummy)</text>
+<rect x="400" y="152" width="160" height="48" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="480" y="172" text-anchor="middle" font-size="10" font-weight="700">SYSTEM OF PROCESS</text>
+<text x="480" y="186" text-anchor="middle" font-size="8" fill="#6b7280">neighbor (downstream)</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS block. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge. (The real version of this page already exists as the Orchestration draft in index.html &#167;1.0.1; migration moves it here.)</p>
+
+<h2>Same block, in text</h2>
+<table>
+<tr><th>Part</th><th>What</th><th>Source</th></tr>
+<tr><td class="dummy">Intent classifier</td><td class="dummy">utterance &#8594; one of 5 journeys</td><td class="dummy">cites &#167;2.F.B</td></tr>
+<tr><td class="dummy">Process finder</td><td class="dummy">typed intent &#8594; registered workflow</td><td class="dummy">cites &#167;4.0</td></tr>
+</table>
+<table>
+<tr><th>Neighbor</th><th>Direction</th><th>Payload</th></tr>
+<tr><td>Host</td><td>in (upstream)</td><td class="dummy">operator request</td></tr>
+<tr><td>System of Process</td><td>out (downstream)</td><td class="dummy">selected process + intent envelope</td></tr>
+</table>
+
+<h2>Open gaps &#8212; questions for the founder (dummy)</h2>
+<ul>
+<li class="dummy">Who issues the intent-parse LLM call &#8212; this block or System of Process?</li>
+<li class="dummy">Do cron triggers pass through translate, or skip straight to dispatch?</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul><li><a href="../engineering/orchestration-hld.html">engineering/orchestration-hld &#8212; HOW this block gets built</a></li></ul>
+
+<div class="note"><b>What an agent does with this page:</b> status is VERIFIED &#8594; an agent may NOT rewrite it; it may only propose. When you mark it LOCKED in the manifest, the ENGINEERING child below unblocks and agents start the HLD.</div>
+
+</div></body></html>

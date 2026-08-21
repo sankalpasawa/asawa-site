@@ -1,0 +1,372 @@
+<!doctype html>
+<!-- CROSS-CUTTING ENGINEERING VIEW — Governance (eng view). Native IA v1.
+     WHOLE-SYSTEM view: spans ALL platform parts. Answers "how is governance BUILT across the whole machine"
+     — a question no single per-part engineering page answers. CITES the per-part pages + master anchors;
+     NEVER duplicates their mechanism rows (one-home principle 7). Distinct from governance/index.html
+     (the GOVERNANCE WRAP = policy home / WHY): cross-linked, not duplicated. Canon (sutra repo) LINKED only (D54).
+     Sources: master/index.html (frozen, by anchor) + engineering/_compile-2026-06-12-archived.html + 13 per-part eng pages. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering &#183; Governance (cross-cutting) &#8212; Native</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}.PENDING{background:#fff7ed;color:#c2410c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+#map-engineering{stroke-width:3.5;stroke:#b45309}
+svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a class="sb-cur" href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native hub</a> &#8250; <a href="index.html">engineering</a> &#8250; governance (cross-cutting) &#160;&#183;&#160; policy home (WHY): <a href="../governance/index.html">governance/</a> &#183; A+T part mechanics: <a href="authority-tenancy.html">Eng: Authority + Tenancy</a> &#160;&#183;&#160; spine: <a href="interfaces.html">&#8592; Interfaces</a> &#160;&#183;&#160; <a href="deployment.html">Deployment &#8594;</a></div>
+<h1>Engineering &#183; Governance &#8212; how the gate is built across the whole machine <span class="lvl">ENGINEERING &#183; cross-cutting &#183; zoom 5</span></h1>
+
+<div class="note"><b>This is the cross-cutting ENGINEERING view of governance &#8212; the whole-system build.</b> It spans <b>all</b> platform parts and answers one question no single per-part page answers: <i>where, how, and in what order is the Authority + Tenancy gate physically built and fired across every block, and what records every decision?</i> The 13 per-part engineering pages each answer &ldquo;how does governance work inside THIS part&rdquo;; this page stitches them into one whole-system design and <b>cites</b> them &#8212; it never restates their mechanism rows (principle 7, one-home). Distinct from the <a href="../governance/index.html">GOVERNANCE WRAP page</a>, which is the <i>policy</i> home (WHY the gate exists, D-directions, charters, KRs G1-G6) &#8212; cross-linked here, never duplicated.</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<a href="../platform/index.html" xlink:href="../platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="../platform/observability.html" xlink:href="../platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="../platform/authority-tenancy.html" xlink:href="../platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="../platform/ui.html" xlink:href="../platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="../platform/host.html" xlink:href="../platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="../platform/runtime.html" xlink:href="../platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="../platform/orchestration.html" xlink:href="../platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="../platform/system-of-process.html" xlink:href="../platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="../platform/system-of-record.html" xlink:href="../platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="../platform/connector.html" xlink:href="../platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="../platform/external-world.html" xlink:href="../platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="../platform/compute.html" xlink:href="../platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<a href="index.html" xlink:href="index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="390" y="486" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Engineering: governance (cross-cutting)</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. This page highlights the ENGINEERING box because it is a whole-system <i>engineering</i> view &#8212; but its subject is the purple <b>governance wrap</b> that borders the entire map. Up = abstract (WHY) &#183; down = concrete (HOW). Purple dashed border = the governance wrap &#8212; its policy home is <a href="../governance/index.html">governance/</a>. Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>eng-view-governance</code></td><td>ENGINEERING / <a href="index.html">engineering</a> &#183; policy home (projection): <a href="../governance/index.html">governance/</a> &#183; A+T part: <a href="authority-tenancy.html">Eng: Authority + Tenancy</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Cross-cutting whole-system view (not per-part); compiled from <a href="../master/index.html#section-4-10-1-hardstops">master &#167;4.10.1 hardstops</a> + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old <code>tech-design/HLD/05-governance</code> skeleton superseded.</td><td colspan="3">Authority model (6 dimensions) + HS-1..HS-8 + tenant boundary + DecisionProvenance rendered as ONE whole-system design; every claim traces to a master anchor or a cited part page; zero copied mechanism rows; policy WHY left to <a href="../governance/index.html">governance/</a>.</td></tr>
+</table>
+
+<h2>This page's own diagram &#8212; the gate fired across the whole machine</h2>
+<svg viewBox="0 0 880 470" role="img" aria-label="Whole-system governance: where the Authority + Tenancy gate fires across all parts, and what records each decision">
+<defs><marker id="gvah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- governance wrap border -->
+<rect x="6" y="6" width="868" height="458" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="8 5"/>
+<text x="16" y="22" font-size="9.5" font-weight="700" fill="#7c3aed">AUTHORITY + TENANCY WRAP &#8212; one gate, fired at every external-effect crossing (&#167;1.0)</text>
+<!-- the request path across parts (solid spine) -->
+<rect x="30" y="60" width="96" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="78" y="80" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="78" y="94" text-anchor="middle" font-size="7.5" fill="#6b7280">approval moments</text>
+<rect x="150" y="60" width="96" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="198" y="80" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="198" y="94" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<rect x="270" y="60" width="110" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="325" y="80" text-anchor="middle" font-size="9" font-weight="700">ORCH</text>
+<text x="325" y="94" text-anchor="middle" font-size="7.5" fill="#6b7280">route intent</text>
+<rect x="404" y="60" width="120" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="464" y="80" text-anchor="middle" font-size="9" font-weight="700">SoP</text>
+<text x="464" y="94" text-anchor="middle" font-size="7.5" fill="#6b7280">workflow runtime &#183; PAUSED/ESCALATED</text>
+<rect x="548" y="60" width="110" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="603" y="80" text-anchor="middle" font-size="9" font-weight="700">CONNECTOR</text>
+<text x="603" y="94" text-anchor="middle" font-size="7.5" fill="#6b7280">send at boundary</text>
+<rect x="682" y="60" width="120" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="742" y="80" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="742" y="94" text-anchor="middle" font-size="7.5" fill="#6b7280">people &#183; services</text>
+<path d="M126,82 L150,82" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<path d="M246,82 L270,82" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<path d="M380,82 L404,82" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<path d="M524,82 L548,82" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<path d="M658,82 L682,82" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<!-- gate glyphs at the two firing edges named by master -->
+<path d="M460,118 L468,110 L476,118 L468,126 Z" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+<text x="468" y="142" text-anchor="middle" font-size="8" fill="#7c3aed">GATE: SoP exec</text>
+<path d="M599,118 L607,110 L615,118 L607,126 Z" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+<text x="607" y="142" text-anchor="middle" font-size="8" fill="#7c3aed">GATE: every send</text>
+<!-- the gate engine (center) -->
+<rect x="270" y="172" width="360" height="120" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="450" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="#6b21a8">THE GATE &#8212; one decision pipeline</text>
+<text x="450" y="208" text-anchor="middle" font-size="8" fill="#475569">1. Authority model D.6 &#183; 6 dimensions classify AUTO / GATE / ESCALATE</text>
+<text x="450" y="223" text-anchor="middle" font-size="8" fill="#475569">2. ask-vs-act cascade F.1/F.5 (irreversible &#8594; high-risk &#8594; new-auth &#8594; 1st-channel)</text>
+<text x="450" y="238" text-anchor="middle" font-size="8" fill="#475569">3. ASK &#8594; Approval primitive (ADR-009) &#183; reversibility tag F.2 surfaces in UI</text>
+<text x="450" y="253" text-anchor="middle" font-size="8" fill="#475569">4. tenancy half: Domain field check (ADR-006) &#183; HS-3 default-deny cross-tenant</text>
+<text x="450" y="268" text-anchor="middle" font-size="8" fill="#475569">5. operator verdict feeds trust ladder F.4 (rungs 1-4) &#8594; shifts future ask&#8594;auto</text>
+<text x="450" y="283" text-anchor="middle" font-size="8" fill="#475569">6. HS-1..HS-8 can drop runtime into PAUSED at any point (&#167;4.10)</text>
+<path d="M468,126 L450,172" stroke="#7c3aed" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<path d="M607,126 L560,172" stroke="#7c3aed" stroke-width="1.3" fill="none" marker-end="url(#gvah)"/>
+<!-- tenancy / SoR -->
+<rect x="30" y="200" width="200" height="64" rx="8" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="130" y="222" text-anchor="middle" font-size="9" font-weight="700">SYSTEM OF RECORD</text>
+<text x="130" y="238" text-anchor="middle" font-size="7.5" fill="#6b7280">tenant-scoped: Domain.tenant_id</text>
+<text x="130" y="252" text-anchor="middle" font-size="7.5" fill="#6b7280">every touch checked (ADR-006)</text>
+<path d="M270,250 L230,238" stroke="#7c3aed" stroke-width="1.3" fill="none" marker-end="url(#gvah)" stroke-dasharray="4 3"/>
+<text x="240" y="266" font-size="7.5" fill="#7c3aed">tenancy check</text>
+<!-- DecisionProvenance + guard tooling (bottom record band) -->
+<rect x="30" y="330" width="772" height="48" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+<text x="416" y="350" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1e3a8a">DECISIONPROVENANCE &#8212; append-only, 3-channel (gate-log + provenance + artifact) &#183; ADR-007 / ADR-013</text>
+<text x="416" y="366" text-anchor="middle" font-size="8" fill="#3b5bdb">100% of decisions write a row &#183; F.3 replay reads it back &#183; HS-4 STOPS runtime if unwritable across all 3 channels &#183; cross-tenant queries default-deny</text>
+<path d="M450,292 L450,330" stroke="#1d4ed8" stroke-width="1.4" fill="none" marker-end="url(#gvah)"/>
+<text x="458" y="312" font-size="8" fill="#1e3a8a">writes 1 row per decision</text>
+<!-- guard tooling enforcement band -->
+<rect x="30" y="396" width="772" height="46" rx="8" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<text x="416" y="414" text-anchor="middle" font-size="9" font-weight="700" fill="#475569">GUARD TOOLING &#167;1.5.1 &#8212; the SAME contract enforced at action-time as HARD / SOFT blocks (canon write-lock &#183; dispatcher hooks &#183; build-layer &#183; tenant firewall)</text>
+<text x="416" y="430" text-anchor="middle" font-size="8" fill="#6b7280">HARD = boxed BLOCKED + rule cited + override path (audit-logged) &#183; SOFT = advisory, proceeds &#183; observability &#167;7 ring watches every gate event</text>
+<text x="855" y="235" font-size="8" fill="#9ca3af" transform="rotate(90 855 235)" text-anchor="middle">observability &#167;7 ring &#8212; watches all</text>
+</svg>
+<p class="figcap">Solid spine = one operator turn crossing the parts (UI &#8594; Host &#8594; Orch &#8594; SoP &#8594; Connector &#8594; External World). Purple diamonds = the two edges master names as firing points (SoP execution + every connector send). Purple box = the single decision pipeline (one gate, fired many places). Blue band = the audit substrate every decision writes to. Each box links to the per-part engineering page that owns its mechanism rows. Source anchors: <a href="../master/index.html#section-1-0-runtime">&#167;1.0</a>, <a href="../master/index.html#section-2-f-6-trust-authority">&#167;2.F</a>, <a href="../master/index.html#section-4-10-1-hardstops">&#167;4.10.1</a>, <a href="../master/index.html#section-1-5-1-governance-machinery">&#167;1.5.1</a>.</p>
+
+<h2>1 &#183; The whole-system shape &#8212; one gate, many firing points</h2>
+<p>Governance in Native is not a block; it is a <b>cross-cutting wrap</b>. The <a href="../master/index.html#section-1-0-runtime">&#167;1.0 runtime schema</a> draws Authority + Tenancy as a dashed envelope around <i>every</i> block (&ldquo;gates every access&rdquo;) rather than an in-line stage on one edge. The engineering question this whole-system view answers &#8212; and that no single part page answers &#8212; is: <b>the gate is one decision pipeline, but it fires at several physical crossings, and each crossing is owned by a different part page.</b> This page maps the pipeline to its firing points and cites the part page that builds each one. It does not restate their mechanism rows.</p>
+
+<table>
+<tr><th>Crossing where the gate fires</th><th>What master says fires there</th><th>Owning part page (mechanism rows live there, cited not copied)</th><th>Master anchor</th></tr>
+<tr><td><b>System of Process execution</b></td><td>Authority gate classifies AUTO / GATE / ESCALATE (ADR-018 contract 1); Charter-Authority decision points drop the workflow into PAUSED; ESCALATE class drops it into ESCALATED until the operator decides.</td><td><a href="system-of-process.html">Eng: System of Process</a> &#183; failure-state machine: <a href="runtime.html">Eng: Daemon Runtime &#167;4</a></td><td><a href="../master/index.html#section-4-10-2-failure-states">&#167;4.10.2</a></td></tr>
+<tr><td><b>Every connector send</b> (from inside SoP)</td><td>Authority gate at every external-effect call; &#167;5 Connector &ldquo;depends on &#167;4 Authority gate at every send&rdquo;; D.6 by-tool + by-stakeholder decide auto-vs-ask; first message to a new channel gets preview-before-send.</td><td><a href="connector.html">Eng: Connector</a> &#183; <a href="external-world.html">Eng: External World</a></td><td><a href="../master/index.html#section-1-2-boundary">&#167;1.2</a></td></tr>
+<tr><td><b>Every System-of-Record touch</b></td><td>Tenancy half: Domain field on every primitive scopes reads/writes per tenant (ADR-006); cross-tenant access without an explicit <code>delegates_to</code> edge is DENIED (HS-3); cross-tenant default-deny is the stated cross-cut default (&#167;1.3).</td><td><a href="system-of-record.html">Eng: System of Record</a> &#183; A+T mechanics: <a href="authority-tenancy.html">Eng: Authority + Tenancy</a></td><td><a href="../master/index.html#section-4-10-1-hardstops">&#167;4.10.1</a></td></tr>
+<tr><td><b>Approval surfaced to operator</b></td><td>Any ASK outcome is realized by the Approval primitive (ADR-009, first-class &#8212; not a hook); the prompt surfaces up through UI carrying its F.2 reversibility tag.</td><td><a href="ui.html">Eng: UI</a> &#183; A+T: <a href="authority-tenancy.html">Eng: Authority + Tenancy</a></td><td><a href="../master/index.html#section-2-f-6-trust-authority">&#167;2.F</a></td></tr>
+<tr><td><b>Every decision &#8594; audit substrate</b></td><td>Every gated decision writes a DecisionProvenance row (ADR-007, 3-channel append-only); F.3 replay reads it back; guard overrides are audit-logged.</td><td><a href="system-of-record.html">Eng: System of Record</a> (B5.c) &#183; surfaced via <a href="observability.html">Eng: Observability &#167;7</a></td><td><a href="../master/index.html#section-1-5-tech-parts">&#167;1.5</a></td></tr>
+<tr><td><b>Action-time guard tooling</b></td><td>The same authority + audit + intervention contract is also enforced at tool-call time as HARD / SOFT blocks (canon write-lock, dispatcher hooks, build-layer check, tenant firewall).</td><td>Policy home: <a href="../governance/index.html#d6-authority">governance/ &#167;D.6</a> (&#167;1.5.1 guard-tooling primary home) &#183; runs on <a href="compute.html">Eng: Compute</a> / <a href="host.html">Eng: Host</a></td><td><a href="../master/index.html#section-1-5-1-governance-machinery">&#167;1.5.1</a></td></tr>
+</table>
+<div class="note"><b>Reading the table:</b> the <i>left</i> column is the whole-system question (where does the one gate physically fire); the <i>third</i> column links the part page whose engineering rows build that firing point. Open a part page for the mechanism rows; this page intentionally carries none of them (principle 7).</div>
+
+<h2>2 &#183; Authority model &#8212; the 6 dimensions (whole-system, verbatim-anchored)</h2>
+<p>The decision of <b>auto-execute vs ask-operator</b> is made by the D.6 Authority Model. Master states <b>six</b> dimensions; they apply cross-pillar, heaviest in the B3 action gate and B4 delegation. The dimensions themselves are a governance-policy fact (full WHY + KRs at <a href="../governance/index.html#d6-authority">governance/ &#167;D.6</a>); this engineering view records them only as the <i>inputs the gate engine reads at every firing point</i> above.</p>
+<table>
+<tr><th>#</th><th>Dimension</th><th>Auto when&#8230;</th><th>Ask when&#8230;</th></tr>
+<tr><td>1</td><td><b>by domain</b> (per-Charter company scope)</td><td>inside the Charter's granted domain</td><td>touches a domain outside scope (&#8594; tenancy half, HS-3)</td></tr>
+<tr><td>2</td><td><b>by tool</b></td><td>low-stakes tool (e.g. Slack)</td><td>high-stakes tool with no standing auth (e.g. bank-API)</td></tr>
+<tr><td>3</td><td><b>by stakeholder</b></td><td>internal team</td><td>board / regulator / external party &#8594; escalate</td></tr>
+<tr><td>4</td><td><b>by dollar threshold</b></td><td>&#8804; $X</td><td>&gt; $X</td></tr>
+<tr><td>5</td><td><b>by reversibility</b></td><td>reversible action</td><td>irreversible action (F.2 tag = &ldquo;not reversible&rdquo;)</td></tr>
+<tr><td>6</td><td><b>by confidence level</b></td><td>high confidence</td><td>low confidence</td></tr>
+</table>
+<p>The classification output (AUTO / GATE / ESCALATE) then runs the F.1/F.5 ask-vs-act cascade in order: <i>irreversible? &#8594; high-risk? &#8594; new authority? &#8594; first-time channel? &#8594; else ACT and report after.</i> ASK outcomes become an Approval primitive (ADR-009); operator verdicts climb the F.4 trust ladder (rung 1 day 0-14 ask-all &#8594; rung 4 day 90+ standing routines), which shifts future cascade outcomes from ask toward auto. Anchor: <a href="../master/index.html#section-2-f-6-trust-authority">master &#167;2.F</a>. Part-page detail for the A+T block itself: <a href="authority-tenancy.html">Eng: Authority + Tenancy</a>.</p>
+
+<h2>3 &#183; Hardstops HS-1..HS-8 &#8212; the whole-system catalog (operator-visible)</h2>
+<p>The hardstop catalog is the system's set of unbreakable rules. When one fires, the runtime drops into PAUSED and the operator sees a boxed BLOCKED with WHAT-happened + next-action + audit-row link (the UX contract). Full engine spec is canon-only (<code>sutra/os/native/hardstops/HS-*.md</code>, D54); the operator-visible behavior is master <a href="../master/index.html#section-4-10-1-hardstops">&#167;4.10.1</a>. A dedicated <code>engineering/catalog-hardstops.html</code> per-hardstop index is a planned SEED sibling (manifest <code>eng-catalog-hardstops</code>); until it is authored this whole-system view carries the catalog and links the master anchor + the owning part page per row.</p>
+<table>
+<tr><th>HS</th><th>Trigger (engineering)</th><th>Operator-visible behavior</th><th>Enforcement today</th><th>Owning part page</th></tr>
+<tr><td><b>HS-1</b> reflexive-check</td><td>Workflow tries to modify Sutra core primitives without <code>reflexive_check</code> cleared</td><td>REFUSES self-modify; &ldquo;this touches Sutra's own rules &#8212; ratify directly&rdquo;</td><td><span class="pill VERIFIED">partial (plugin hooks)</span></td><td><a href="system-of-process.html">Eng: SoP</a> &#183; <a href="authority-tenancy.html">A+T</a></td></tr>
+<tr><td><b>HS-2</b> governance-overhead</td><td>Per-turn governance overhead &gt; 25% of token budget</td><td>Aborts the current turn; next turn proceeds normally</td><td><span class="pill VERIFIED">partial (plugin hooks)</span></td><td><a href="host.html">Eng: Host</a> &#183; <a href="orchestration.html">Eng: Orchestration</a></td></tr>
+<tr><td><b>HS-3</b> tenant-boundary</td><td>Cross-tenant access without explicit <code>delegates_to</code> edge</td><td>Cross-company action DENIED; &ldquo;requires explicit delegates_to authorization&rdquo;</td><td><span class="pill VERIFIED">partial (plugin hooks)</span></td><td><a href="system-of-record.html">Eng: SoR</a> &#183; <a href="authority-tenancy.html">A+T</a></td></tr>
+<tr><td><b>HS-4</b> audit-unwritable</td><td>DecisionProvenance unwritable across all 3 fallback channels</td><td>STOPS &#8212; &ldquo;cannot record this decision; halting until audit recovers&rdquo; (no silent unaudited execution)</td><td><span class="pill PENDING">doctrine, mechanism pending</span></td><td><a href="system-of-record.html">Eng: SoR</a> &#183; <a href="observability.html">Eng: Observability</a></td></tr>
+<tr><td><b>HS-5</b> cutover-rollback-fails</td><td>Cutover rollback path itself fails to restore prior state</td><td>Cutover PAUSED; operator + Tenant owner into HITL; no automated retry</td><td><span class="pill PENDING">doctrine, mechanism pending</span></td><td><a href="runtime.html">Eng: Daemon Runtime</a></td></tr>
+<tr><td><b>HS-6</b> governance-hooks-fail</td><td>3+ distinct governance hooks fail within one turn</td><td>SESSION SUSPENDED; resume requires manual investigation of the failing hooks</td><td><span class="pill PENDING">doctrine, mechanism pending</span></td><td><a href="host.html">Eng: Host</a> &#183; <a href="compute.html">Eng: Compute</a></td></tr>
+<tr><td><b>HS-7</b> codex-queue-stale</td><td>Codex review queue &gt; 20 items OR any item &gt; 7 days stale</td><td>Shipment broadly BLOCKED until queue drains; &ldquo;review queue saturated&rdquo;</td><td><span class="pill PENDING">doctrine, mechanism pending</span></td><td><a href="runtime.html">Eng: Daemon Runtime</a></td></tr>
+<tr><td><b>HS-8</b> canary-regression</td><td>Production canary observes regression vs cutover <code>behavior_invariants</code></td><td>Auto-ROLLBACK to prior version; founder notified</td><td><span class="pill PENDING">doctrine, mechanism pending</span></td><td><a href="observability.html">Eng: Observability</a> &#183; <a href="runtime.html">Eng: Daemon Runtime</a></td></tr>
+</table>
+<div class="gap"><b>Enforcement reality (master &#167;4.10.1 callout, codex Lane A R12 P1):</b> only HS-1 &#183; HS-2 &#183; HS-3 have partial live enforcement via existing plugin hooks. <b>HS-4..HS-8 are doctrine, mechanism pending</b> &#8212; the detectors/executors do NOT yet exist in the shipped Native runtime. The failure-state table (PAUSED/ESCALATED/DEGRADED) assumes hardstops fire; for HS-4..HS-8 that assumption is not yet backed by code. Resolution path per &#167;10.10 P0 #1: ship the detectors OR keep the canon entries flagged.</div>
+
+<h2>4 &#183; Tenant boundary &#8212; how isolation is built across parts</h2>
+<p>Tenancy is the other half of the wrap. The boundary is a <b>typed schema field</b> (the <code>Domain.tenant_id</code> per ADR-006), not an after-the-fact firewall &#8212; it is checked both at primitive-mint and at execution. The mechanism rows that build this (the Tenant primitive, <code>assertCrossTenantAllowed</code>, the <code>tenant_boundary_violation</code> event #26) live on the <a href="authority-tenancy.html">Eng: Authority + Tenancy</a> part page and are cited here, not copied.</p>
+<table>
+<tr><th>Layer</th><th>What enforces tenancy here</th><th>Owning part page</th></tr>
+<tr><td>Schema / primitive</td><td>Every Domain owned by exactly one Tenant; <code>tenant_id</code> required (no nullable); checked at primitive-mint</td><td><a href="authority-tenancy.html">Eng: A+T</a></td></tr>
+<tr><td>Execution</td><td><code>Execution.tenant_context</code> carries <code>{tenant_id}</code>; <code>assertCrossTenantAllowed(src,dst,op)</code> called unconditionally when a step touches a different tenant; fail-closed without <code>delegates_to</code></td><td><a href="system-of-process.html">Eng: SoP</a> &#183; <a href="authority-tenancy.html">Eng: A+T</a></td></tr>
+<tr><td>Data access</td><td>Every SoR read/write scoped by Domain; cross-tenant audit queries also default-deny</td><td><a href="system-of-record.html">Eng: SoR</a></td></tr>
+<tr><td>Defense-in-depth</td><td>D33 <code>settings.json</code> client firewall stays as intent-level backstop (ADR-006 rejected relying on it alone &#8212; it is not capability-enforced)</td><td><a href="authority-tenancy.html">Eng: A+T</a> &#183; <a href="compute.html">Eng: Compute</a></td></tr>
+</table>
+<p>The boundary unit is the <b>operator's portfolio</b>, not the company &#8212; one operator running several companies is one tenancy decision surface. Anchor: master <a href="../master/index.html#section-4-10-1-hardstops">&#167;4.10.1</a> + the §2 B5 acceptance row. Hierarchical / nested tenancy is declared in schema but execution semantics are v1.x backlog (see gaps).</p>
+
+<h2>5 &#183; DecisionProvenance &#8212; the audit substrate every part writes to</h2>
+<p>Every decision that crosses the gate &#8212; anywhere in the machine &#8212; writes <b>one</b> DecisionProvenance row. This is the whole-system property that makes the gate auditable: the row schema (ADR-007) is fixed, the write is 3-channel (gate-log + provenance + artifact, ADR-013), and it is append-only (zero silent overwrites). HS-4 fires if the write fails across all three channels. The operator never reads raw JSONL &#8212; F.3 replay reads the trail back on the same chat surface (&ldquo;what was asked, what Native did, why&rdquo;).</p>
+<table>
+<tr><th>Property</th><th>Whole-system contract</th><th>Owning part page</th></tr>
+<tr><td>Row schema</td><td>factors &#183; authority verdict &#183; output &#183; audit chain (ADR-007); one row per decision/artifact-write</td><td><a href="system-of-record.html">Eng: SoR</a> (B5.c)</td></tr>
+<tr><td>Write channels</td><td>3-channel: DecisionProvenance JSONL + stderr beacon + tmp fallback (ADR-013)</td><td><a href="system-of-record.html">Eng: SoR</a> &#183; <a href="compute.html">Eng: Compute</a></td></tr>
+<tr><td>Coverage invariant</td><td>100% of decisions carry a row; replay any task end-to-end in &#8804;30s (single-day window)</td><td><a href="observability.html">Eng: Observability &#167;7</a></td></tr>
+<tr><td>Failure mode</td><td>HS-4: unwritable across all 3 channels &#8594; full STOP, no silent unaudited execution</td><td><a href="system-of-record.html">Eng: SoR</a></td></tr>
+<tr><td>Read-back</td><td>F.3 replay surface; operator never log-dives</td><td><a href="ui.html">Eng: UI</a> &#183; <a href="observability.html">Eng: Observability</a></td></tr>
+</table>
+<div class="note"><b>Open in master, carried here:</b> master leaves the <i>home block</i> of DecisionProvenance as an open question (&ldquo;inside System of Record or a separate store?&rdquo;). This whole-system view treats SoR/B5.c as its <i>de-facto</i> home per the §2 B5.c row, but flags the ambiguity in gaps rather than resolving it &#8212; resolution is a founder/canon decision (D54).</div>
+
+<h2>6 &#183; Failure states &#8212; what the runtime enters when the gate or a hardstop blocks</h2>
+<p>The happy-path workforce state machine (PROPOSED &#8594; ACTIVE &#8594; PERSISTED &#8594; RETIRED) extends with three failure states the gate can drive the whole machine into. These are whole-system states, not per-part &#8212; any part's firing can trigger them. Mechanism detail (retry budgets, compensation) lives on the named part pages.</p>
+<table>
+<tr><th>State</th><th>Entered when</th><th>Operator sees</th><th>Exit</th></tr>
+<tr><td><b>PAUSED</b></td><td>Hardstop fires OR Charter Authority requires explicit operator decision (D.6)</td><td>&ldquo;task paused at step X &#8212; decision needed&rdquo; + context + recommended next action</td><td>operator decides &#8594; ACTIVE (resume) OR RETIRED (cancel)</td></tr>
+<tr><td><b>ESCALATED</b></td><td>B3 retry budget exhausted OR Authority gate triggers ESCALATE class (ADR-018 contract 1)</td><td>&ldquo;auto-retry exhausted; your judgment needed&rdquo; + B3a THINK 3-angle brainstorm</td><td>operator confirms direction &#8594; ACTIVE OR RETIRED</td></tr>
+<tr><td><b>DEGRADED</b></td><td>Connector half-fails (send succeeded but audit write missed) OR partial side-effect</td><td>&ldquo;step partially completed &#8212; reconciliation needed&rdquo; + compensation options</td><td>idempotent retry OR manual log-write &#8594; ACTIVE OR PAUSED</td></tr>
+</table>
+<p>Anchor: master <a href="../master/index.html#section-4-10-2-failure-states">&#167;4.10.2</a>. The state machine itself is built on the daemon (<a href="runtime.html">Eng: Daemon Runtime &#167;4</a>); the SoP-side gating that drives PAUSED/ESCALATED lives on <a href="system-of-process.html">Eng: System of Process</a>; the DEGRADED reconciliation path is a <a href="connector.html">Eng: Connector</a> concern.</p>
+
+<h2>7 &#183; This view vs the GOVERNANCE WRAP page &#8212; the boundary</h2>
+<div class="note">Two governance pages exist on purpose. Do not conflate them.
+<table style="margin-top:8px">
+<tr><th>&nbsp;</th><th>This page &#8212; <code>engineering/governance.html</code></th><th>Wrap page &#8212; <a href="../governance/index.html"><code>governance/index.html</code></a></th></tr>
+<tr><td>Band</td><td>ENGINEERING (cross-cutting view)</td><td>GOVERNANCE (the wrap / border)</td></tr>
+<tr><td>Question</td><td><b>HOW</b> is the gate built + fired across all parts</td><td><b>WHY</b> the gate exists; the policy + doctrine + D-directions + KRs (G1-G6)</td></tr>
+<tr><td>Owns</td><td>the whole-system firing map + cross-part stitching (links part pages, copies none)</td><td>&#167;D.6 policy text, charter model &#167;D.10, &#167;1.5.1 guard-tooling primary home, parity render</td></tr>
+<tr><td>Relationship</td><td>cites the wrap for policy; never restates it</td><td>cited by every page; restated by none</td></tr>
+</table>
+</div>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap"><b>Per-edge firing completeness.</b> The &#167;1.0 SVG wraps ALL blocks (incl. Human&#8594;UI and Host&#8594;Daemon), but master only names enforcement at three edges (SoP execution, connector sends, SoR tenancy). Is UI&#8594;Host / Host&#8594;Daemon gated by the same mechanism, or are those crossings ungated today? (carried from master &#167;A+T gap 1)</li>
+<li class="gap"><b>Orchestration gating.</b> Is the process-<i>selection</i> step in Orchestration itself authority-gated, or does gating only begin once System of Process executes? (master &#167;A+T gap 2)</li>
+<li class="gap"><b>&ldquo;grant always&rdquo; storage.</b> F.1 &ldquo;grant always&rdquo; implies a persisted permission template &#8212; which block stores it (Charter? SoR?) and what schema? (master &#167;A+T gap 3)</li>
+<li class="gap"><b>Trust-ladder state owner.</b> Which block owns trust-ladder state (current rung / operator dial), and is it scoped per-operator, per-Charter, or per-tenant? (master &#167;A+T gap 4)</li>
+<li class="gap"><b>HS-4..HS-8 mechanism.</b> Five of eight hardstops are doctrine, mechanism-pending &#8212; no live detectors. The failure-state table assumes they fire. Ship the detectors or keep flagged? (master &#167;4.10.1 callout + &#167;10.10 P0 #1)</li>
+<li class="gap"><b>HS-3 live scope.</b> HS-3 is &ldquo;partial enforcement via existing plugin hooks&rdquo; &#8212; what exactly is enforced live today vs doctrine-only? (master &#167;A+T gap 5)</li>
+<li class="gap"><b>Compute-layer tenancy.</b> Per-tenant key/data isolation appears only in the deferred cloud-hosted channel gate (&#167;1.4.5), not for the v1 own-machine case &#8212; is there a Compute-boundary enforcement story for v1? (master &#167;A+T gap 6)</li>
+<li class="gap"><b>DecisionProvenance home block.</b> Master leaves the audit trail's home block as an open question (inside SoR or a separate store?). The ADR-007 row contract is named; its home block is not. (master &#167;A+T gap 7)</li>
+<li class="gap"><b>Nested tenancy execution.</b> Hierarchical/nested tenancy is declared in the Tenant schema but execution semantics are v1.x backlog (carried from the A+T part page).</li>
+</ul>
+
+<h2>Spans these parts &#8212; cross-link list</h2>
+<p>This whole-system view stitches the governance facts that live across these per-part engineering pages. Each owns its own mechanism rows; this page links them and never copies them (principle 7, one-home).</p>
+<ul>
+<li><a href="authority-tenancy.html">Eng: Authority + Tenancy</a> &#8212; the A+T block itself: Authority model dimensions, Approval ledger, trust ladder, Tenant primitive + cross-tenant assertion (the part mechanics this view spans first).</li>
+<li><a href="system-of-process.html">Eng: System of Process</a> &#8212; where the gate fires at execution; PAUSED/ESCALATED on Charter-Authority + ESCALATE class.</li>
+<li><a href="system-of-record.html">Eng: System of Record</a> &#8212; Domain-scoped tenancy checks; DecisionProvenance B5.c home; cross-tenant query default-deny.</li>
+<li><a href="connector.html">Eng: Connector</a> &#8212; Authority gate at every send; DEGRADED reconciliation when send succeeds but audit misses.</li>
+<li><a href="external-world.html">Eng: External World</a> &#8212; the counterparties a gated send reaches; preview-before-send on first-time channels.</li>
+<li><a href="orchestration.html">Eng: Orchestration</a> &#8212; intent routing upstream of the gate (open Q: is selection itself gated?).</li>
+<li><a href="runtime.html">Eng: Daemon Runtime &#167;4</a> &#8212; the failure-state machine; HS-5/HS-7/HS-8 lifecycle hooks.</li>
+<li><a href="observability.html">Eng: Observability &#167;7</a> &#8212; the ring that watches every gate event; replay surface; HS-8 canary.</li>
+<li><a href="ui.html">Eng: UI</a> &#8212; where approval moments + F.3 replay answers surface to the operator.</li>
+<li><a href="host.html">Eng: Host</a> &#8212; where HS-2 (governance overhead) + HS-6 (hooks-fail) per-turn budgets live.</li>
+<li><a href="compute.html">Eng: Compute</a> &#8212; base layer the 3-channel audit + guard tooling physically run on; v1 own-machine tenancy.</li>
+<li><a href="how.html">Eng: Method &#167;3</a> &#8212; method selection feeds the cascade's risk/complexity inputs.</li>
+<li><a href="matrix.html">Eng: Matrix</a> &#8212; how the platform gate is adapted to CoS pillar needs (B3 action gate, B4 delegation).</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No engineering children below this view &#8212; it is a cross-cutting leaf. Per-hardstop drilldown is the planned SEED sibling <code>engineering/catalog-hardstops.html</code> (manifest <code>eng-catalog-hardstops</code>); link it here once authored.</li>
+<li>Policy home (projection, WHY): <a href="../governance/index.html">governance/</a> &#183; &#167;D.6 Authority: <a href="../governance/index.html#d6-authority">governance/ &#167;D.6</a> &#183; Charter model &#167;D.10: <a href="../governance/index.html#d10-charter-model">governance/ &#167;D.10</a>.</li>
+<li>Parity render (which Sutra/Asawa governance concepts are CAPTURED in Native): <a href="../governance/parity.html">governance/parity.html</a>.</li>
+<li>Canon (code band, linked never copied, D54): <code>sutra/os/native/hardstops/HS-*.md</code> (8 files) &#183; <code>sutra/os/decisions/ADR-006-tenant-isolation-domain-field.md</code> &#183; <code>ADR-007-decision-provenance-schema.md</code> &#183; <code>ADR-009-approval-gate-primitive.md</code> &#183; <code>ADR-013-telemetry-sink-fsync-jsonl.md</code> &#183; <code>ADR-018-agentic-systems-pattern.md</code> &#183; <code>sutra/os/native/primitives/{tenant,approval,decision-provenance}.md</code>.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li>Frozen master (primary &#8212; anchors for the whole-system governance design): <a href="../master/index.html#section-4-10-1-hardstops">&#167;4.10.1 hardstop catalog</a> &#183; <a href="../master/index.html#section-4-10-2-failure-states">&#167;4.10.2 failure states</a> &#183; <a href="../master/index.html#section-2-f-6-trust-authority">&#167;2.F trust &amp; authority</a> &#183; <a href="../master/index.html#section-1-0-runtime">&#167;1.0 runtime wrap</a> &#183; <a href="../master/index.html#section-1-5-1-governance-machinery">&#167;1.5.1 guard tooling</a> &#183; <a href="../master/index.html#section-1-5-tech-parts">&#167;1.5 tech-parts</a> &#183; <a href="../master/index.html#d6-authority">&#167;D.6 Authority model</a>.</li>
+<li>Compile (190-mechanism whole-system reference; this view cites part sections, copies no rows): <a href="_compile-2026-06-12-archived.html">engineering/_compile-2026-06-12-archived.html</a>.</li>
+<li>Per-part engineering pages spanned (13 &#8212; mechanism rows owned there): linked in &ldquo;Spans these parts&rdquo; above; A+T part is the primary twin: <a href="authority-tenancy.html">engineering/authority-tenancy.html</a>.</li>
+<li>Governance WRAP (policy home / WHY; cited not duplicated): <a href="../governance/index.html">governance/index.html</a> &#183; parity: <a href="../governance/parity.html">governance/parity.html</a>.</li>
+<li>Old skeleton superseded by this view (its &ldquo;Planned sections&rdquo; were the spec): <a href="../tech-design/HLD/05-governance.html">tech-design/HLD/05-governance.html</a> + hardstop scaffold <a href="../tech-design/LLD/hardstops.html">tech-design/LLD/hardstops.html</a>.</li>
+<li>Canon (sutra repo) &#8212; linked by path, content never copied per D54: ADR-006 / ADR-007 / ADR-009 / ADR-013 / ADR-018 + <code>sutra/os/native/{hardstops,primitives}/</code>.</li>
+<li><b>Provenance:</b> Compiled 2026-06-13 from the cited per-part pages + master anchors; re-verify when a cited part page changes (deepseek P1 drift note).</li>
+</ul>
+<p class="figcap">Source cells keep the compile's anchor form: <code>sutra/&#8230;</code> paths are canon &#8212; linked by path, content never copied (D54); <code>holding/website/native/&#8230;</code> anchors resolve inside this site (frozen master + part pages); per-part mechanism rows live on their own pages and are cited, never duplicated here (principle 7, one-home).</p>
+
+</div></div></body></html>

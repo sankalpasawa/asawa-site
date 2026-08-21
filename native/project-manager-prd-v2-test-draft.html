@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Project Manager — Layer-B Product PRD (v2-test draft)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #1a1a1a; background: #ffffff; }
+  code, pre, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  .content { max-width: 880px; margin: 0 auto; padding: 36px 40px 80px; }
+  h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px; line-height: 1.25; }
+  h2 { font-size: 22px; font-weight: 700; margin: 40px 0 12px; line-height: 1.3; padding-bottom: 6px; border-bottom: 1px solid #e4e7eb; }
+  h3 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; line-height: 1.3; padding: 8px 0 8px 14px; border-left: 4px solid #334155; }
+  h3.pm1 { border-left-color: #1d4ed8; }
+  h3.pm2 { border-left-color: #047857; }
+  h3.pm3 { border-left-color: #6d28d9; }
+  h3.pm4 { border-left-color: #b45309; }
+  h3.pm5 { border-left-color: #be123c; }
+  h4 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; padding-left: 10px; border-left: 3px solid #d4d8dd; line-height: 1.3; }
+  p { margin: 8px 0 12px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 10px 0 16px; }
+  th, td { border: 1px solid #d4d8dd; padding: 6px 10px; vertical-align: top; text-align: left; }
+  th { background: #f4f5f7; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+  pre { background: #f7f8fa; border: 1px solid #e4e7eb; border-left: 3px solid #5b677a; padding: 12px 14px; font-size: 12px; line-height: 1.45; overflow-x: auto; margin: 12px 0; }
+  code { background: #f4f5f7; padding: 1px 5px; border-radius: 2px; font-size: 12.5px; }
+  .callout { border-left: 4px solid #5b677a; background: #f7f8fa; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+  .todo { background: #fff8e1; border-left-color: #f59e0b; }
+  .meta-strip { font-size: 12px; color: #5b677a; margin: 0 0 24px; padding-bottom: 12px; border-bottom: 1px solid #e4e7eb; }
+  ul, ol { margin: 6px 0 12px; padding-left: 22px; }
+  li { margin: 3px 0; }
+  table.pillar-6block td:first-child { width: 170px; font-weight: 600; background: #fcfdfe; }
+  tr.ring-band td { background: #f1f5f9; color: #475569; font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; }
+  .meta-todo { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 14px; margin: 18px 0; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="content">
+
+<h1>Project Manager — Layer-B Product on Native</h1>
+<p class="meta-strip"><strong>Status</strong>: DRAFT (v2-test, skill-validated authoring) · <strong>Authored</strong>: 2026-05-15 · <strong>Authority</strong>: Asawa/Sutra Forge (v1) · <strong>Template</strong>: ADR-020 12-section contract · <strong>Parent</strong>: Native PRD v1 (Layer A platform) · <strong>Siblings</strong>: CoS PRD (first Layer-B) · Senior Expert PRD baseline (second Layer-B draft) · <strong>Inherits</strong>: 14 pillars (P1-P14) · 10 primitives · 26 EngineEvents · 6 surfaces · 8 hardstops (HS-1..HS-8) · ADR-018 · ADR-019.</p>
+
+<div class="callout"><strong>One-sentence product</strong>: Project Manager is an autonomous project orchestrator that runs multi-week initiatives end-to-end under operator-set Charter — milestone management · dependency tracking · stakeholder comms · status synthesis.</div>
+
+<div class="callout"><strong>v2-test authoring notice</strong>: this PRD is authored WITH the <code>prd-discipline</code> skill loaded (per <code>~/.claude/plugins/cache/sutra/core/2.39.3/skills/prd-discipline/SKILL.md</code>). It applies the 5 v2-added rules: namespace-collision check, naming-with-alternatives, scale-undershoot surfacing, canon-typed-entity resolution, and TODO-not-an-alibi. Companion log: <code>.enforcement/skill-tests/2026-05-15-prd-discipline-v2-test.md</code>.</div>
+
+<div class="meta-todo"><strong>META-TODO (scale-undershoot surfacing per v2 rule §3)</strong>: the implicit Senior Expert baseline length was ~770 lines (undershot the 1500-2500 target without surfacing). This Project Manager draft does NOT aim at a line target — it aims at structural completion of all 12 ADR-020 sections with explicit gap markers where founder fill is required. Final line count surfaces in §Summary with explicit declaration of what was structurally complete vs gap-marked vs deferred to founder.</div>
+
+<h2 id="namespace-decisions">§0 Namespace decisions (pre-content discipline)</h2>
+<p>Per <code>prd-discipline</code> §1 STRUCTURED + §1 Naming-with-alternatives, all new identifiers introduced by this PRD are recorded here with collision check + alternatives considered.</p>
+
+<table>
+<tr><th>Identifier kind</th><th>Canonical reservations checked</th><th>Picked for this PRD</th><th>Alternatives considered</th><th>Decision rationale</th></tr>
+<tr><td>Product-local pillar prefix</td><td>P1-P14 reserved (Native canonical pillars per ADR-020 §SHARED). B1-B5 used by CoS PRD as product-local pillars. B1-B18 reserved as canonical blocks.</td><td><code>PM1-PM5</code></td><td>(a) <code>PR1-PR5</code> "project" — collides with PR review semantics in eng vocabulary; (b) <code>O1-O5</code> "orchestration" — too generic; (c) reuse <code>B1-B5</code> with namespace prefix "PM-B1" — verbose</td><td>PM prefix is short, product-distinct, no canon collision. Recorded as decision; founder may rename — see PMQ1.</td></tr>
+<tr><td>Product-local open question prefix</td><td>Q1-Q11 reserved (canonical Native open questions at <code>sutra/os/native/open-questions/</code>). CoS PRD uses FQ1-FQ3; Senior Expert baseline uses FSE1-FSE7; ADR-020 uses OQ-020-N.</td><td><code>PMQ1-PMQn</code></td><td>(a) <code>FPM1-FPMn</code> matching FQ/FSE pattern — F prefix conflates with deferred-capability tag; (b) <code>OQ-PM-N</code> matching ADR-020 — verbose</td><td>PMQ chosen for terseness + product-prefix consistency with pillar IDs. Open whether to align with Senior Expert FSE pattern — see PMQ1.</td></tr>
+<tr><td>Product-specific hardstop prefix</td><td>HS-1..HS-8 reserved as shared canon-level hardstops. Senior Expert baseline proposes HS-SE-N. ADR-020 §Resilience contract permits product-specific hardstops beyond the shared 8.</td><td><code>HS-PM-N</code></td><td>(a) <code>HS-9, HS-10, ...</code> extending canonical sequence — wrong, would collide with future canon-level hardstops; (b) <code>PM-HS-N</code> — inconsistent with Senior Expert's HS-SE-N pattern</td><td>HS-PM-N consistent with Senior Expert HS-SE-N. Whether product-specific hardstops are needed at all is open — see §Resilience contract + PMQ3.</td></tr>
+<tr><td>Per-product canon ADR</td><td>ADR-001..ADR-020 used. ADR-018 = shared agentic-systems-pattern. ADR-020 = Layer-B authoring template.</td><td><code>ADR-021-project-manager-pattern.md</code> (proposed canon path; not yet written)</td><td>(a) ADR-NNN placeholder until allocated — would need refactor at canon-add time; (b) Skip and reuse ADR-018 — violates ADR-020 §Pattern ADR layering</td><td>ADR-021 is next free canon number. Authoring deferred until PM v1 scope is founder-ratified — see §Canon additions + PMQ2.</td></tr>
+</table>
+
+<div class="callout todo"><strong>Founder gate at §0</strong>: namespace picks above are claude-drafted, not founder-ratified. PMQ1 (open question) names this as the first founder-fill item before downstream artifacts reference PM1-PM5 / PMQ1-PMQn / HS-PM-N.</div>
+
+<h2 id="section-a-idea">§1 §A Idea — Project Manager product (ADR-020 §1)</h2>
+
+<section id="a1-problem">
+<h3 class="pm1">A.1 Problem statement</h3>
+<p><em>Awaiting founder fill — primary statement.</em></p>
+<p><strong>Working frame (claude-drafted, LOW confidence — pending founder fill)</strong>: the portfolio CEO runs multi-week initiatives across N companies (fundraise · regulatory filing · product launch · hiring round · partnership negotiation) where success requires tracking milestones · stakeholders · dependencies · status across parallel threads. CoS handles turn-by-turn work; Senior Expert handles project-scoped deep-domain work; Project Manager handles multi-week initiative orchestration where the operator's primary cognitive cost is "what's the state of this initiative across all moving parts, and what needs my decision next."</p>
+<p>TODO(founder): replace working frame with founder's own articulation. The frame is claude-inferred from task spec wording ("autonomous project orchestrator that runs multi-week initiatives end-to-end") and may anchor incorrectly.</p>
+</section>
+
+<section id="a2-persona">
+<h3 class="pm1">A.2 Persona</h3>
+<p>Primary persona inherits from Native §A.2 (portfolio CEO). Project-Manager-specific persona shape:</p>
+<table>
+<tr><th>Attribute</th><th>Value</th></tr>
+<tr><td>Role</td><td>Portfolio CEO running 1-N companies (typical 2-7) — inherited from Native canonical persona</td></tr>
+<tr><td>Surface</td><td>Terminal-fluent for one-time setup; zero-terminal during initiative execution (per Native §A.2.2)</td></tr>
+<tr><td>Ask shape</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Decision cadence</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Time horizon</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Trust profile</td><td><em>Awaiting founder fill.</em></td></tr>
+</table>
+<p>TODO(founder): ratify or rewrite cells. Each empty cell is a deliberate non-fabrication slot — the Senior Expert baseline filled identical attributes with claude-drafted text (rationalization §4.3 fabrication-as-completion).</p>
+</section>
+
+<section id="a3-anti-persona">
+<h3 class="pm1">A.3 Anti-persona</h3>
+<p><em>Awaiting founder fill — primary list.</em></p>
+<p>Per <code>prd-discipline</code> §5 TODO-is-not-an-alibi, the table below is NOT pre-populated with plausible anti-personas. The temptation in the Senior Expert baseline was to invent 6 anti-personas tagged "TODO ratify" — but that anchors founder thinking. Here, slots stay empty until founder fills:</p>
+<table>
+<tr><th>#</th><th>Anti-persona</th><th>Why not v1</th></tr>
+<tr><td>AP1</td><td>TODO(founder): name an operator type that should NOT use Project Manager v1.</td><td>TODO(founder): explain why this is outside v1 scope.</td></tr>
+<tr><td>AP2</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+<tr><td>AP3+</td><td>TODO(founder): additional rows as needed. No fixed count.</td><td>TODO(founder).</td></tr>
+</table>
+</section>
+
+<section id="a4-vision">
+<h3 class="pm1">A.4 Vision</h3>
+<p><em>Awaiting founder fill — vision statement.</em></p>
+<p>TODO(founder): articulate vision-state for Project Manager in your own words. Anchoring temptation avoided here per <code>prd-discipline</code> §5 — claude could write a plausible "the portfolio CEO has CoS deployed continuously + Senior Expert per active project + Project Manager per active initiative" sentence, but that just re-frames Senior Expert's vision text. Vision needs founder voice, not claude inference.</p>
+</section>
+
+<section id="a5-differentiation">
+<h3 class="pm1">A.5 Differentiation — Project Manager vs CoS vs Senior Expert</h3>
+<p>This section is structurally MORE fillable than vision because the three-product distinction is observable from product semantics (turn-scope vs project-scope vs initiative-scope), not from founder voice alone.</p>
+<table>
+<tr><th>Axis</th><th>CoS</th><th>Senior Expert</th><th>Project Manager</th></tr>
+<tr><td>Time horizon</td><td>Turn-scoped (seconds to minutes)</td><td>Project-scoped (days to weeks)</td><td>Initiative-scoped (weeks to months)</td></tr>
+<tr><td>Cognitive primitive</td><td>"Help me with this thought"</td><td>"Own this domain-deep project"</td><td>"Orchestrate this multi-thread initiative"</td></tr>
+<tr><td>Operator interaction shape</td><td>Always-on conversational</td><td>Charter-then-handback</td><td><em>Awaiting founder fill</em></td></tr>
+<tr><td>Native tier dominance</td><td>T1 (multi-action turns)</td><td>T3 (Charter)</td><td><em>Awaiting founder fill</em> — likely T2 or T3, see PMQ4</td></tr>
+<tr><td>Number of parallel threads</td><td>One conversation at a time</td><td>One project at a time</td><td>N parallel workstreams within one initiative</td></tr>
+</table>
+<p class="callout"><strong>Claim under review</strong>: Project Manager differs from CoS not in depth (Senior Expert is the depth product) but in BREADTH-OF-CONCURRENT-STATE. Where CoS holds one conversation's state and Senior Expert holds one project's state, Project Manager holds N workstream states simultaneously and synthesizes them. Founder ratification needed — see PMQ5.</p>
+</section>
+
+<section id="a6-scope">
+<h3 class="pm1">A.6 Scope</h3>
+<table>
+<tr><th>In-scope (v1)</th><th>Out-of-scope (v2+ or deferred)</th></tr>
+<tr><td>TODO(founder): name the v1 in-scope dimensions.</td><td>TODO(founder): name the v1 out-of-scope dimensions.</td></tr>
+</table>
+<p>Senior Expert baseline used 9 rows of fabricated in/out-of-scope content (each row plausible-but-claude-derived). Per v2 §5 + §3, this table stays empty pending founder fill. Drafting plausible rows would anchor scope conversation around claude-guesses rather than founder-derived bounds.</p>
+</section>
+
+<section id="a7-task-taxonomy">
+<h3 class="pm1">A.7 Task Taxonomy — Project Manager × Native T0-T3 tiers</h3>
+<p>Native canonical tier taxonomy is T0 Atomic · T1 Multi-action · T2 Iterative · T3 Charter (per Native PRD §A.7). Per ADR-020 §Required sections, each Layer-B Product PRD specifies how its work maps to these tiers.</p>
+<table>
+<tr><th>Tier</th><th>Project Manager's relationship</th><th>Operator-visible?</th></tr>
+<tr><td>T0 Atomic</td><td><em>Awaiting founder fill.</em></td><td>TODO(founder).</td></tr>
+<tr><td>T1 Multi-action</td><td><em>Awaiting founder fill.</em></td><td>TODO(founder).</td></tr>
+<tr><td>T2 Iterative</td><td><em>Awaiting founder fill.</em></td><td>TODO(founder).</td></tr>
+<tr><td>T3 Charter</td><td><em>Awaiting founder fill.</em></td><td>TODO(founder).</td></tr>
+</table>
+<p>Senior Expert baseline filled every cell with claude-drafted text and tagged TODO. Here, cells are explicitly empty so founder ratifies which tier(s) dominate the operator surface. PMQ4 names this gate.</p>
+</section>
+
+<section id="a8-actors">
+<h3 class="pm1">A.8 Actor Taxonomy</h3>
+<table>
+<tr><th>#</th><th>Actor</th><th>Role on operator's stage</th><th>First appears in</th></tr>
+<tr><td>AC1</td><td><strong>Operator (the founder)</strong></td><td>Defines initiative Charter + ratifies decisions at synthesis gates + consumes status synthesis. Principal of initiative Charter.</td><td>All pillars</td></tr>
+<tr><td>AC2</td><td><strong>Project Manager instance</strong></td><td>Autonomous orchestrator for the initiative. Tracks milestones · dependencies · stakeholder state. Surfaces decisions at synthesis cadence + on dependency-blocking events.</td><td>All pillars</td></tr>
+<tr><td>AC3</td><td><strong>Stakeholders</strong> (internal + external)</td><td>TODO(founder): name stakeholder classes Project Manager v1 interacts with.</td><td>TODO(founder).</td></tr>
+<tr><td>AC4</td><td><strong>CoS (sibling Native-deployed)</strong></td><td>When operator runs CoS + Project Manager concurrently, CoS handles turn-by-turn work, Project Manager handles initiative orchestration. Inter-product handoff via DecisionProvenance trail (canon primitive — see <code>sutra/os/native/primitives/</code>).</td><td>Inter-product handoff</td></tr>
+<tr><td>AC5</td><td><strong>Senior Expert (sibling Native-deployed)</strong></td><td>When initiative requires domain-deep work as sub-task, Project Manager delegates to a Senior Expert instance scoped to that domain. Handback returns deliverable + DecisionProvenance to Project Manager's workstream state.</td><td>Inter-product handoff</td></tr>
+</table>
+<p class="callout"><strong>Not on this stage</strong> — Native platform internals (workflow runtime · charter materialization · audit substrate) are hidden, same as CoS PRD §A.8 + Senior Expert §A.8.</p>
+</section>
+
+<section id="a9-skill-modes">
+<h3 class="pm1">A.9 Customer Skill Modes</h3>
+<p>Native canonical skill-mode ladder is SM1 idea-only · SM2 idea+output · SM3 idea+output+how (per Native §A.9). Per ADR-020, each Layer-B Product specifies how its ladder works.</p>
+<table>
+<tr><th>Skill mode</th><th>Operator state at Charter intake</th><th>Project Manager working mode</th><th>Authority default</th></tr>
+<tr><td><strong>SM1 — Initiative-idea only</strong></td><td>TODO(founder).</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+<tr><td><strong>SM2 — Initiative-idea + output</strong></td><td>TODO(founder).</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+<tr><td><strong>SM3 — Initiative-idea + output + how</strong></td><td>TODO(founder).</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+</table>
+<p>Senior Expert baseline filled these cells and added a 4-row A.9.1 per-domain mapping with explicitly fabricated content tagged TODO. Here all 9 cells stay empty — claude could draft plausible text, but it would anchor identically to the baseline rationalization §4.3.</p>
+</section>
+
+<h2 id="section-b-pillars">§2 §B Pillars — Project Manager operator surface (5 pillars · PM1-PM5)</h2>
+<p>Five operator demands Project Manager addresses. Numbered <strong>PM1-PM5</strong> per §0 namespace decision (NOT P1-P5 which would collide with Native canonical pillars P1-P14; NOT B1-B5 which would collide with CoS product-local pillars). Each pillar inherits Native's primitive substrate — see §Layer-B claims.</p>
+
+<h3 id="pm-pillar-grouping">§2.B.0 Pillar grouping — initiative-orchestration cognitive cycle</h3>
+<p><em>Working hypothesis (claude-drafted, LOW confidence — founder ratification via PMQ6).</em></p>
+<pre>
+                       OPERATOR
+                           |
+                           | "I have an initiative — orchestrate it"
+                           v
+                   +-----------------+
+                   |  PM1 SHAPE      |  initiative Charter intake
+                   |  the initiative |  milestones · stakeholders · cadence
+                   +-------+---------+
+                           | ratified Charter
+                           v
+                   +-----------------+
+                   |  PM2 TRACK      |  workstream state maintenance
+                   |  the threads    |  dependency graph · milestone state
+                   +-------+---------+
+                           | live state
+                           v
+                   +-----------------+
+                   |  PM3 SYNTHESIZE |  cross-thread synthesis
+                   |  the status     |  what's blocked · at-risk · needs decision
+                   +-------+---------+
+                           | synthesis artifact
+                           v
+                   +-----------------+
+                   |  PM4 ESCALATE   |  surface decisions to operator
+                   |  the decisions  |  at synthesis cadence + on blocking events
+                   +-------+---------+
+                           | operator decision
+                           v
+                   +-----------------+
+                   |  PM5 COMMUNICATE|  stakeholder comms execution
+                   |  the outcomes   |  under Authority gate; audit-trailed
+                   +-----------------+
+</pre>
+<p>TODO(founder): ratify or rewrite pillar grouping. Pillar names (SHAPE / TRACK / SYNTHESIZE / ESCALATE / COMMUNICATE) are claude-drafted — alternatives in PMQ6.</p>
+
+<section id="pillar-pm1">
+<h3 class="pm1">PM1 — "Shape the initiative" — Charter intake</h3>
+<details>
+  <summary>Cross-cutting overlays applying to PM1</summary>
+  <p><strong>Authority Model (Native §D.6):</strong> Charter scope-binding gate.</p>
+  <p><strong>CX Bar (Native §D.7):</strong> intake must feel like briefing a chief-of-staff on a new initiative.</p>
+  <p><strong>Operator-First Lens (Native §D.8):</strong> shape parses for operator's initiative model, not canonical project-plan template.</p>
+</details>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>TODO(founder): operator-facing capability statement for PM1.</td></tr>
+<tr><td>Acceptance</td><td>TODO(founder): operator-observable acceptance for PM1.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>TODO(founder + claude): which Native blocks does PM1 compose with? (Likely B1 intent-layer for intake; founder ratifies.) Phase 2 design: <code>pm1-charter-intake-design.md</code> (NOT YET WRITTEN — canon-typed-entity gate).</td></tr>
+</table>
+</section>
+
+<section id="pillar-pm2">
+<h3 class="pm2">PM2 — "Track the threads" — workstream state maintenance</h3>
+<details>
+  <summary>Cross-cutting overlays applying to PM2</summary>
+  <p><strong>Audit (Native primitives):</strong> all workstream state transitions emit canonical EngineEvents (specific event names resolved against canon at <code>sutra/os/native/events/</code>).</p>
+</details>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>TODO(founder): operator-facing capability for PM2.</td></tr>
+<tr><td>Acceptance</td><td>TODO(founder).</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Canon-typed-entity resolution: workstream state transitions emit <code>step_started</code> / <code>step_completed</code> / <code>step_paused</code> / <code>step_compensated</code> events (each verified against canonical 26-event list at <code>sutra/os/native/events/</code> — see §Layer-B claims). Whether PM2 needs a NEW EngineEvent (e.g., dependency-block surfacing) is open — see PMQ7. Phase 2 design: <code>pm2-workstream-state-design.md</code>.</td></tr>
+</table>
+</section>
+
+<section id="pillar-pm3">
+<h3 class="pm3">PM3 — "Synthesize the status" — cross-thread synthesis</h3>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>TODO(founder): synthesis surface — what does the operator see when they ask "where is initiative X right now."</td></tr>
+<tr><td>Acceptance</td><td>TODO(founder).</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Reads from PM2 (workstream state). Feeds PM4 (escalation). TODO(founder + claude): which Native blocks does synthesis compose with — likely B9 closed-loop-artifact for delivered synthesis + B7 pre-post-validation. Phase 2 design: <code>pm3-synthesis-design.md</code>.</td></tr>
+</table>
+</section>
+
+<section id="pillar-pm4">
+<h3 class="pm4">PM4 — "Escalate the decisions" — operator-gate</h3>
+<details>
+  <summary>Cross-cutting overlays applying to PM4</summary>
+  <p><strong>Authority Model (Native §D.6):</strong> consequential-decision gate per ADR-018 operator-in-loop invariant.</p>
+</details>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>TODO(founder): escalation surface — when does Project Manager interrupt operator, when does it wait for synthesis cadence.</td></tr>
+<tr><td>Acceptance</td><td>TODO(founder).</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Uses canonical <code>approval_requested</code> / <code>approval_granted</code> / <code>approval_denied</code> / <code>approval_already_handled</code> EngineEvents (verified against canon at <code>sutra/os/native/events/</code>). What defines "consequential" per initiative class is open — see PMQ8. Phase 2 design: <code>pm4-escalation-design.md</code>.</td></tr>
+</table>
+</section>
+
+<section id="pillar-pm5">
+<h3 class="pm5">PM5 — "Communicate the outcomes" — stakeholder comms</h3>
+<details>
+  <summary>Cross-cutting overlays applying to PM5</summary>
+  <p><strong>Authority Model (Native §D.6):</strong> external-comms gate — every stakeholder-facing comm is operator-approved or under explicit Authority delegation.</p>
+  <p><strong>Audit:</strong> every comm sent emits <code>workflow_completed</code> + carries DecisionProvenance to operator decision that authorized it.</p>
+</details>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>TODO(founder): comms-execution surface — what comms does Project Manager send, under what gates.</td></tr>
+<tr><td>Acceptance</td><td>TODO(founder).</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Composes with Native B17 external-tools-connectors (per <code>sutra/os/native/blocks/B17-external-tools-connectors.md</code>) for outbound comms. HS-3 tenant-boundary applies — Project Manager cannot send comms outside Charter Tenant scope. Phase 2 design: <code>pm5-comms-design.md</code>.</td></tr>
+</table>
+</section>
+
+<h2 id="section-b-needs">§3 §B Needs cluster — Project Manager operator needs</h2>
+<p><em>Awaiting founder fill — needs roster.</em></p>
+<p>Senior Expert baseline authored 15 needs (vs CoS's 24) with rationale "smaller than CoS felt right" (baseline rationalization §4 decision 4 — arbitrary count picked). Per v2 §5 + §3, this section does NOT pre-populate a needs roster — needs derive from founder voice + each PM1-PM5 pillar's operator-surface ring (currently TODO). Founder fills pillar surfaces first, then needs cluster emerges.</p>
+<div class="callout todo"><strong>Sequencing</strong>: founder fills PM1-PM5 Ring 1 cells (15 cells = 5 pillars × 3 rows) → needs roster derives from those operator-voice utterances → THIS section becomes the synthesis. Authoring this section before pillar Ring 1 is filled = fabrication-as-completion (exact rationalization §4.3 the baseline flagged).</div>
+
+<h2 id="section-operator-surface">§4 §Operator surface contract — capability bullets per pillar</h2>
+<p>ADR-020 §Required sections row 4 says this section carries "capability bullets per pillar — what operator OBSERVES (per <code>feedback_prd_what_not_how.md</code> Cagan)."</p>
+
+<div class="callout todo"><strong>Structural decision — risk of duplication with §2 Pillars Ring 2 (Contract)</strong>: Senior Expert baseline §4.7 self-critique flagged that "§Operator surface contract" duplicates each pillar's Ring 2 Contract cell. To avoid the same duplication, this section is reserved for CAPABILITIES THAT SPAN MULTIPLE PILLARS (e.g., "operator can ask 'where is initiative X' and get a synthesis spanning PM2+PM3 in one turn"). Per-pillar capabilities stay in each pillar's Ring 2.</div>
+
+<p><em>Awaiting founder fill — cross-pillar operator capabilities.</em></p>
+<table>
+<tr><th>Cross-pillar capability</th><th>Pillars spanned</th><th>Operator-observable acceptance</th></tr>
+<tr><td>TODO(founder): name a capability that requires ≥2 pillars to deliver.</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+</table>
+
+<h2 id="section-acceptance">§5 §Acceptance criteria</h2>
+
+<h3>Per-pillar acceptance (summary)</h3>
+<table>
+<tr><th>Pillar</th><th>Acceptance</th></tr>
+<tr><td>PM1 Shape</td><td>TODO(founder).</td></tr>
+<tr><td>PM2 Track</td><td>TODO(founder).</td></tr>
+<tr><td>PM3 Synthesize</td><td>TODO(founder).</td></tr>
+<tr><td>PM4 Escalate</td><td>TODO(founder).</td></tr>
+<tr><td>PM5 Communicate</td><td>TODO(founder).</td></tr>
+</table>
+
+<h3>Product-level acceptance</h3>
+<p><em>Awaiting founder fill.</em></p>
+<ol>
+<li>TODO(founder): name product-level acceptance criterion.</li>
+<li>TODO(founder): additional product-level criteria.</li>
+</ol>
+
+<h3>Falsification tests</h3>
+<p><em>Awaiting founder fill.</em></p>
+<p>Senior Expert baseline authored 5 falsification tests (matching 5 pillars 1:1, per rationalization §1 decision 14). Per v2 §5, falsification tests stay empty here — they require founder voice on "what would prove Project Manager DOES NOT work." Claude-drafted falsification anchors the falsification frame around claude hypotheses.</p>
+<ol>
+<li>TODO(founder): name a falsifier — concrete observation that, if true, would prove Project Manager v1 is broken.</li>
+</ol>
+
+<h2 id="section-how-preferences">§6 §HOW preferences — Project Manager per-product defaults</h2>
+<p>ADR-020 example suggests "Project Manager may use longer cascading." Per v2 §5, this section does NOT pre-fill all 6 HOW dimensions (Senior Expert baseline §4 decision 6 noted the temptation to "fill all 6 rows because the example says 6"; §4.x self-critique noted maybe only some deserve specialization).</p>
+
+<table>
+<tr><th>HOW dimension</th><th>Project Manager v1 default</th><th>Why specialized (or NOT specialized)</th></tr>
+<tr><td>Cascading depth</td><td>TODO(founder): is Project Manager's cascading longer than CoS default? ADR-020 hint suggests yes.</td><td>TODO(founder).</td></tr>
+<tr><td>Other HOW dimensions</td><td>TODO(founder): name which HOW dimensions Project Manager specializes. NOT all 6 by default — only the ones with a real reason.</td><td>TODO(founder).</td></tr>
+</table>
+<div class="callout todo"><strong>Anti-fabrication note</strong>: canonical HOW dimensions list lives in Native canon. Claude could enumerate the 6 dimensions from CoS PRD §3 and fill all 6 rows with plausible specializations. v2-test discipline: list ONLY dimensions with real specialization reason; rest inherit CoS default. Founder ratifies.</div>
+
+<h2 id="section-layer-b-claims">§7 §Layer-B claims on Native — what Project Manager uses, does NOT use, requires NEW</h2>
+
+<h3>Native primitives Project Manager binds to (canon-resolved)</h3>
+<table>
+<tr><th>Primitive</th><th>Project Manager use</th><th>Canon path</th></tr>
+<tr><td>Charter</td><td>Each initiative = one Charter materialization (T3 tier per Native §A.7).</td><td><code>sutra/os/native/primitives/charter.md</code></td></tr>
+<tr><td>Workflow</td><td>Each workstream within an initiative = one Workflow; N parallel Workflows per Charter.</td><td><code>sutra/os/native/primitives/workflow.md</code></td></tr>
+<tr><td>Step</td><td>Each workstream action = one Step.</td><td><code>sutra/os/native/primitives/step.md</code></td></tr>
+<tr><td>Approval</td><td>PM4 escalation = Approval primitive instances; one Approval per consequential decision.</td><td><code>sutra/os/native/primitives/approval.md</code></td></tr>
+<tr><td>DecisionProvenance</td><td>Every PM4 escalation result + every PM5 comm carries DecisionProvenance trail.</td><td><code>sutra/os/native/primitives/decision-provenance.md</code></td></tr>
+<tr><td>EngineEvent</td><td>See canonical-event resolution below.</td><td><code>sutra/os/native/primitives/engine-event.md</code></td></tr>
+<tr><td>Tenant</td><td>Inherited isolation — initiative Charter scoped to operator Tenant; comms cannot cross Tenant boundary (HS-3 fires).</td><td><code>sutra/os/native/primitives/tenant.md</code></td></tr>
+<tr><td>Trigger / ExecutionResult / Domain</td><td>TODO(founder + claude): specific use shape pending pillar Ring 1 fill.</td><td><code>sutra/os/native/primitives/</code></td></tr>
+</table>
+
+<h3>Canonical EngineEvents Project Manager emits (canon-typed-entity resolution)</h3>
+<p>Per <code>prd-discipline</code> §4 CONNECTED + v2 canon-typed-entity rule, every EngineEvent named below is verified against the canonical 26-event list at <code>sutra/os/native/events/</code> (file roster checked at authoring time). NO invented event names.</p>
+<table>
+<tr><th>EngineEvent</th><th>Project Manager emitter</th><th>Canon file (verified)</th></tr>
+<tr><td><code>workflow_started</code></td><td>PM2 — at workstream start within initiative</td><td><code>events/workflow_started.md</code></td></tr>
+<tr><td><code>step_started</code> / <code>step_completed</code> / <code>step_paused</code> / <code>step_compensated</code></td><td>PM2 — at each workstream state transition</td><td><code>events/step_*.md</code></td></tr>
+<tr><td><code>approval_requested</code> / <code>approval_granted</code> / <code>approval_denied</code> / <code>approval_already_handled</code></td><td>PM4 — escalation gate</td><td><code>events/approval_*.md</code></td></tr>
+<tr><td><code>routing_decision</code></td><td>PM3 — when synthesis routes a sub-task to CoS or Senior Expert</td><td><code>events/routing_decision.md</code></td></tr>
+<tr><td><code>workflow_completed</code> / <code>workflow_failed</code> / <code>workflow_escalated</code></td><td>PM1-PM5 — at initiative + workstream lifecycle terminals</td><td><code>events/workflow_*.md</code></td></tr>
+<tr><td><code>postcondition_check</code> / <code>precondition_check</code></td><td>PM5 — before/after stakeholder comms (gating)</td><td><code>events/postcondition_check.md</code> + <code>events/precondition_check.md</code></td></tr>
+<tr><td><code>artifact_registered</code></td><td>PM3 — synthesis artifact registered to operator</td><td><code>events/artifact_registered.md</code></td></tr>
+<tr><td><code>tenant_boundary_violation</code></td><td>PM5 — fires when comm attempts cross-Tenant; HS-3 fires</td><td><code>events/tenant_boundary_violation.md</code></td></tr>
+<tr><td><code>commitment_broken</code></td><td>PM3 — when an upstream commitment fails (e.g., milestone slips a stakeholder commitment)</td><td><code>events/commitment_broken.md</code></td></tr>
+</table>
+<div class="callout"><strong>Canon-typed-entity discipline</strong>: Senior Expert baseline §4.6 self-critique flagged that it invented event names (<code>charter_intake</code>, <code>consequential_decision_surface</code>, <code>charter_close</code>) without canon resolution. This PRD lists only events from the canonical 26-event roster. Any need for NEW EngineEvent (dependency-block-surfacing, milestone-slip-detection) is surfaced as open question — see PMQ7.</div>
+
+<h3>Native surfaces Project Manager exposes through</h3>
+<table>
+<tr><th>Surface (canonical)</th><th>Project Manager use</th></tr>
+<tr><td>ROUTE</td><td>Operator intake routes to PM1 Shape; ongoing operator queries route to PM3 Synthesize.</td></tr>
+<tr><td>RUN</td><td>Workstreams execute under PM2 Track.</td></tr>
+<tr><td>GATE</td><td>PM4 Escalate gates consequential decisions.</td></tr>
+<tr><td>EMERGE</td><td>TODO(founder + claude): does Project Manager surface pattern-emergence? Pending PM2/PM3 Ring 1 fill.</td></tr>
+<tr><td>AUDIT</td><td>Every PM1-PM5 action audit-trailed via DecisionProvenance.</td></tr>
+<tr><td>TENANT</td><td>Initiative Charter scoped to operator Tenant; HS-3 enforces.</td></tr>
+</table>
+
+<h3>Native hardstops Project Manager specializes</h3>
+<table>
+<tr><th>Hardstop (canonical)</th><th>Project Manager trigger context</th></tr>
+<tr><td>HS-1 reflexive-check</td><td>If Project Manager Workflow has <code>modifies_sutra=true</code> (Charter modification mid-execution), reflexive_check Constraint fires per <code>sutra/os/native/blocks/7e-mid-exec-mutation.md</code>.</td></tr>
+<tr><td>HS-2..HS-8</td><td>TODO(claude + canon): walk each of HS-2..HS-8 against Project Manager pillar surfaces; specify trigger contexts. Senior Expert baseline walked the full table; here, walk is gated on PM1-PM5 Ring 1 fill so contexts are operator-derived not claude-inferred.</td></tr>
+</table>
+
+<h3>Project-Manager-specific hardstop candidate (HS-PM-N)</h3>
+<p><em>Awaiting founder fill — whether a new hardstop is needed at all.</em></p>
+<div class="callout todo"><strong>Senior Expert baseline pattern + critique</strong>: baseline proposed HS-SE-1 (domain-quality-gate-exhausted) tagged PROPOSED for codex review (rationalization §1 decision 5). Here, the analog candidate is held empty pending founder ratification of pillar surfaces. A plausible HS-PM-1 candidate would be "stakeholder-commitment-broken-cascade" — proposing it before founder ratifies PM3 anchors the resilience model around claude inference. See PMQ3.</div>
+
+<h3>NEW Native capabilities Project Manager requires (if any)</h3>
+<table>
+<tr><th>Capability</th><th>Native canon owner</th><th>v1 ship gate</th></tr>
+<tr><td>TODO(founder + claude): walk PM2 Track + PM3 Synthesize against existing Native canon. Does Project Manager need a NEW EngineEvent for dependency-block? A NEW block beyond B1-B18 for dependency-graph maintenance? A NEW primitive for cross-workstream synthesis state?</td><td>TODO.</td><td>TODO.</td></tr>
+</table>
+
+<h2 id="section-distribution">§8 §Distribution + onboarding — Project Manager specifics</h2>
+<p><em>Awaiting founder fill.</em></p>
+<p>Senior Expert baseline authored a 6-step onboarding journey table tagged "TODO: founder ratification on minimum-viable first project experience" (rationalization §1 decision 13 — fabricated). Per v2 §5 TODO-not-an-alibi, this section stays empty rather than pre-populating a claude-plausible journey.</p>
+
+<table>
+<tr><th>Tier (per Native §6.3.1)</th><th>Install responsibility</th><th>Onboard responsibility</th></tr>
+<tr><td>T1 Asawa Holding</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+<tr><td>T2 Owned portfolio (DayFlow · Billu · Paisa · PPR · Maze)</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+<tr><td>T3 Projects (Testlify · Dharmik)</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+<tr><td>T4 Sutra Users (external)</td><td>TODO(founder).</td><td>TODO(founder).</td></tr>
+</table>
+
+<h2 id="section-observability">§9 §Observability — Project Manager metrics</h2>
+<p><em>Awaiting founder fill — primary metrics.</em></p>
+
+<table>
+<tr><th>Pillar</th><th>Metric candidate (claude-drafted, LOW confidence)</th><th>Founder ratification</th></tr>
+<tr><td>PM1 Shape</td><td>Time-to-Charter-ratified after initiative intake</td><td>TODO(founder).</td></tr>
+<tr><td>PM2 Track</td><td>Workstream-state-staleness (latency between event and reflected state)</td><td>TODO(founder).</td></tr>
+<tr><td>PM3 Synthesize</td><td>Synthesis-cadence-adherence (synthesis delivered within declared cadence)</td><td>TODO(founder).</td></tr>
+<tr><td>PM4 Escalate</td><td>False-escalation rate (operator-surveyed)</td><td>TODO(founder).</td></tr>
+<tr><td>PM5 Communicate</td><td>Comm-Authority-violation rate (comms sent without operator authorization)</td><td>TODO(founder).</td></tr>
+</table>
+<p>Each metric is claude-drafted starter — confidence LOW. Founder either ratifies, replaces, or removes. Senior Expert baseline filled this with 11 per-pillar metric rows reading as claude-authoritative; here row count maps 1:1 to pillars (5 not 11) + each is explicitly low-confidence + ratification-gated.</p>
+
+<h3>Operator-satisfaction signals</h3>
+<p><em>Awaiting founder fill.</em></p>
+
+<h3>Fleet-level observability (Daily Pulse Module integration)</h3>
+<p>TODO(claude + canon): does Daily Pulse need a new chart-row type for Project-Manager-specific aggregates (e.g., "initiatives-in-flight per company")? Mirrors Senior Expert baseline §4 decision 9 — same gap, same surfacing.</p>
+
+<h2 id="section-open-questions">§10 §Open questions — Project Manager (PMQ1-PMQ9)</h2>
+<p>Open questions specific to Project Manager. Per <code>prd-discipline</code> §5 TODO-is-not-an-alibi, each question's answer field stays empty — NO plausible-answer placeholder.</p>
+<dl>
+<dt><strong>PMQ1 — Namespace ratification.</strong></dt>
+<dd>Question: do the namespace picks at §0 (PM1-PM5 pillar prefix · PMQ-N open-question prefix · HS-PM-N hardstop prefix · ADR-021 canon path) land correctly, or should one or more be renamed?<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ2 — ADR-021 authoring trigger.</strong></dt>
+<dd>Question: when does <code>ADR-021-project-manager-pattern.md</code> get authored? Before PM1-PM5 Ring 1 fill (top-down — ADR drives pillars), or after (bottom-up — pillars drive ADR)?<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ3 — Product-specific hardstop necessity.</strong></dt>
+<dd>Question: does Project Manager need a product-specific hardstop beyond HS-1..HS-8, or do the canonical 8 cover its failure modes? If yes, what's the trigger condition?<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ4 — Native tier dominance.</strong></dt>
+<dd>Question: Project Manager's primary tier — T2 Iterative (synthesis-cycle dominant) or T3 Charter (initiative dominant) or both equally? CoS=T1, Senior Expert=T3; where does Project Manager sit?<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ5 — BREADTH-OF-CONCURRENT-STATE claim.</strong></dt>
+<dd>Question: is "Project Manager differs from CoS/Senior Expert in BREADTH-OF-CONCURRENT-STATE not depth" the right framing? §A.5 differentiation hinges on this claim.<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ6 — Pillar names + sequencing.</strong></dt>
+<dd>Question: do the 5 pillar names (SHAPE · TRACK · SYNTHESIZE · ESCALATE · COMMUNICATE) hold? Alternatives considered: (a) SCOPE · MONITOR · REPORT · DECIDE · ACT; (b) INTAKE · STATE · SYNTHESIS · GATE · COMM; (c) CHARTER · WORKSTREAMS · STATUS · DECISIONS · OUTREACH. Sequencing: linear cycle (current diagram) or parallel cycles (PM2+PM3 continuous + PM4+PM5 on-demand)?<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ7 — NEW EngineEvent need.</strong></dt>
+<dd>Question: do Project Manager workflows need a NEW canonical EngineEvent beyond the 26 in <code>sutra/os/native/events/</code> — e.g., for dependency-block-surfacing or milestone-slip-detection? If yes, what schema?<br/>Answer: <em>(empty — awaiting founder + canon owner decision)</em></dd>
+
+<dt><strong>PMQ8 — Consequential-decision boundary per initiative class.</strong></dt>
+<dd>Question: PM4 escalates "consequential" decisions to operator. What defines consequential for Project Manager (analog of Senior Expert per-domain definition)? By initiative class (fundraise vs hire vs partnership)? By blast radius? By external-stakeholder involvement?<br/>Answer: <em>(empty — awaiting founder decision)</em></dd>
+
+<dt><strong>PMQ9 — Operator switching between three products.</strong></dt>
+<dd>Question (extends ADR-020 OQ-020-3): when operator has CoS + Senior Expert + Project Manager all deployed under the same Native instance — single conversational thread, or per-product threads, or initiative-context-switching surface?<br/>Answer: <em>(empty — awaiting founder + UX research)</em></dd>
+</dl>
+
+<h3>Cross-references to canon-level open questions (per ADR-020 OQ)</h3>
+<ul>
+<li>OQ-020-1 (cross-product Charter sharing) — directly relevant: Project Manager + Senior Expert may share Charter for compound initiatives.</li>
+<li>OQ-020-2 (HOW preference inheritance) — directly relevant; PMQ-equivalent at §HOW preferences.</li>
+<li>OQ-020-3 (operator switching between products) — extended to 3 products by PMQ9.</li>
+</ul>
+
+<h2 id="section-resilience">§11 §Resilience contract — operator-visible failure behavior</h2>
+
+<h3>Shared hardstop catalog (HS-1..HS-8) — Project Manager trigger contexts</h3>
+<table>
+<tr><th>Hardstop</th><th>Project Manager trigger context</th><th>Recovery + escalation</th></tr>
+<tr><td>HS-1 reflexive-check</td><td>If Project Manager Workflow has <code>modifies_sutra=true</code> (Charter modification mid-execution).</td><td>Per canon <code>sutra/os/native/blocks/7e-mid-exec-mutation.md</code> — gates change-class.</td></tr>
+<tr><td>HS-2 through HS-8</td><td>TODO(claude + founder): walk each of HS-2..HS-8 against Project Manager-specific trigger contexts after pillar Ring 1 fill.</td><td>TODO.</td></tr>
+</table>
+<p>Senior Expert baseline filled all 8 rows with claude-drafted trigger contexts. Here, only HS-1 is filled (concrete mid-execution-mutation tie-in in canon). HS-2..HS-8 wait for pillar Ring 1 fill — trigger contexts derive from operator-surface specifics, not claude inference about each hardstop.</p>
+
+<h3>Project-Manager-specific hardstop (HS-PM-1?)</h3>
+<p><em>Awaiting founder ratification — see PMQ3.</em></p>
+
+<h3>Per-pillar resilience recovery</h3>
+<p><em>Awaiting founder fill.</em></p>
+
+<h3>Escalation contract</h3>
+<p><em>Awaiting founder fill.</em></p>
+
+<h2 id="section-activation">§12 §Activation + versioning — Project Manager v1 / v1.5 / v2</h2>
+
+<h3>Version scope per phase</h3>
+<table>
+<tr><th>Phase</th><th>Scope (TODO founder fill)</th><th>Activation gate</th></tr>
+<tr><td>v1</td><td>TODO(founder): minimum-viable Project Manager — which pillars · which initiative class · which T-tier.</td><td>TODO(founder): observation gate for v1 ship.</td></tr>
+<tr><td>v1.5</td><td>TODO(founder): incremental capabilities.</td><td>TODO(founder).</td></tr>
+<tr><td>v2</td><td>TODO(founder): third-party Layer-B Product compatibility (per ADR-020 §v2+).</td><td>TODO(founder).</td></tr>
+</table>
+
+<h3>Per-feature deferred-capability activation gates (v2+ items)</h3>
+<p>Sections tagged future-version in this draft: NONE authored yet (pillar Ring 1 is empty so v2+ items have not emerged). When founder fills pillar surfaces and v2+ items emerge, each gets an activation gate per Native §1.4.5 pattern.</p>
+
+<h3>Cutover plan v1 → v1.5</h3>
+<p><em>Awaiting founder fill.</em></p>
+
+<h3>Cutover plan v1.5 → v2</h3>
+<p><em>Awaiting founder fill.</em></p>
+
+<h2 id="section-canon-additions">§Canon additions (per ADR-020 §Required canon additions)</h2>
+<p>Per ADR-020 §Required canon additions, Project Manager v1 requires the following canon files. Listed with current authoring status — NOT pre-authored at this PRD stage (founder ratification of namespace + pillar surfaces gates authoring).</p>
+
+<table>
+<tr><th>#</th><th>Canon path (proposed)</th><th>What lives there</th><th>Status</th></tr>
+<tr><td>1</td><td><code>sutra/os/decisions/ADR-021-project-manager-pattern.md</code></td><td>Per-product ADR-018 specialization for Project Manager: which decisions PM4 escalates vs auto-executes; product-specific deterministic guardrails (e.g., dependency-block detection invariants).</td><td>NOT YET AUTHORED — gated on PMQ2.</td></tr>
+<tr><td>2</td><td><code>sutra/os/native/blocks/PM-block-NNN.md</code> (file count TBD)</td><td>L8 Feature specs for Project-Manager-specific blocks (analog of B1-B18). Number of new blocks gated on §Layer-B claims "NEW capabilities" walk — currently TODO.</td><td>NOT YET AUTHORED — gated on §Layer-B claims completion.</td></tr>
+<tr><td>3</td><td><code>sutra/os/native/open-questions/PMQ-NNN.md</code> (up to 9 files if all promoted to canon)</td><td>Per-product open questions (PMQ1-PMQ9). Whether each PMQ rises to canon-level vs stays in this PRD is a founder + canon-owner call.</td><td>NOT YET AUTHORED — gated on founder fill.</td></tr>
+<tr><td>4</td><td><code>sutra/os/native/pillars/P-NNN.md</code> (optional)</td><td>NEW pillar files ONLY if Project Manager introduces canon-level doctrine beyond P1-P14. Likely NONE — Project Manager specializes existing primitives, doesn't introduce new pillar-level invariants.</td><td>LIKELY NONE — gated on §Layer-B claims walk.</td></tr>
+</table>
+
+<h2 id="section-summary">§Summary — Project Manager PRD shape + structural completion declaration</h2>
+
+<h3>What this draft delivered (structurally)</h3>
+<table>
+<tr><th>ADR-020 section</th><th>Structural status</th><th>Content status</th></tr>
+<tr><td>§1 §A Idea</td><td>All 9 sub-sections present (A.1-A.9) + framework intact</td><td>Mostly TODO(founder) — only A.5 differentiation table partially filled with cross-product semantics (CoS/SE/PM axes)</td></tr>
+<tr><td>§2 §B Pillars (PM1-PM5)</td><td>All 5 pillars + 6-block table shape + cross-cutting overlays + B.0 grouping diagram</td><td>Ring 1 (Surface — operator voice) = all "Awaiting founder fill" per CoS PRD pattern; Ring 2 = TODO; Ring 3 partially filled with canon-resolved EngineEvents + block cross-refs</td></tr>
+<tr><td>§3 §B Needs cluster</td><td>Section present with explicit sequencing note</td><td>Empty — gated on pillar Ring 1 fill (anti-fabrication discipline)</td></tr>
+<tr><td>§4 §Operator surface contract</td><td>Section present + duplication-avoidance note</td><td>Empty — gated on pillar Ring 2 fill</td></tr>
+<tr><td>§5 §Acceptance criteria</td><td>3 sub-sections present (per-pillar · product-level · falsification)</td><td>All TODO(founder) — falsification tests intentionally empty</td></tr>
+<tr><td>§6 §HOW preferences</td><td>Section present + anti-overfill note</td><td>1 dimension (cascading) flagged with hint; others "inherit CoS default" by default</td></tr>
+<tr><td>§7 §Layer-B claims</td><td>5 sub-sections (primitives · events · surfaces · hardstops · NEW caps)</td><td>Primitives + Events fully canon-resolved (no invented entities); Surfaces partially filled; Hardstops HS-1 only; NEW caps TODO</td></tr>
+<tr><td>§8 §Distribution + onboarding</td><td>Section + 4-tier table</td><td>All TODO(founder)</td></tr>
+<tr><td>§9 §Observability</td><td>Per-pillar metric table + fleet-level note</td><td>Metric candidates claude-drafted with explicit LOW confidence + ratification-gated; per-pillar count 1:1 to pillars (5 not 11)</td></tr>
+<tr><td>§10 §Open questions</td><td>9 questions (PMQ1-PMQ9) + cross-refs to OQ-020-N</td><td>All answer fields empty per v2 TODO-not-alibi rule</td></tr>
+<tr><td>§11 §Resilience contract</td><td>Section + HS-1..HS-8 table shape</td><td>HS-1 only filled (concrete canon tie-in); HS-2..HS-8 + HS-PM-N + per-pillar recovery + escalation contract all TODO</td></tr>
+<tr><td>§12 §Activation + versioning</td><td>v1/v1.5/v2 scope table + cutover plans</td><td>All TODO(founder)</td></tr>
+<tr><td>§Canon additions</td><td>4-row canon path table per ADR-020 contract</td><td>4 paths proposed; 0 files yet authored (gated on founder ratification)</td></tr>
+</table>
+
+<h3>v2 rule firings (artifact-level evidence)</h3>
+<table>
+<tr><th>v2 rule</th><th>Where it fired in this artifact</th></tr>
+<tr><td>§1 Namespace-collision check</td><td>§0 §Namespace decisions — table of 4 identifier kinds × canon reservations × picks × alternatives</td></tr>
+<tr><td>§1 Naming-with-alternatives</td><td>§0 + PMQ1 + PMQ6 (pillar names) — alternatives recorded inline</td></tr>
+<tr><td>§3 Scale-undershoot surfacing</td><td>Header META-TODO + §Summary structural completion declaration</td></tr>
+<tr><td>§4 Canon-typed-entity</td><td>§7 §Layer-B claims EngineEvent table — every event verified against <code>sutra/os/native/events/</code> file roster; NO invented names</td></tr>
+<tr><td>§5 TODO-is-not-an-alibi</td><td>§A.3 anti-personas · §A.6 scope · §A.9 skill modes · §B Needs cluster · §Acceptance falsification · §10 Open questions — answer fields empty rather than plausible-answer + ratify</td></tr>
+</table>
+
+<h3>Comparison to Senior Expert baseline</h3>
+<p>Senior Expert baseline draft = 770 lines, populated cells with claude-drafted text + TODO ratification tags throughout. This Project Manager v2-test draft = structurally complete (all 12 ADR-020 sections + §0 namespace + §Summary) with disciplined empty cells where founder voice is required. The trade-off is intentional: the Senior Expert baseline gives founders "review claude's draft" UX; this draft gives founders "fill the structural shape" UX. v2 rules push for the latter when content requires operator voice.</p>
+
+</div>
+</body>
+</html>

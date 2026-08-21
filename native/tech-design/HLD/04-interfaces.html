@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>04 — Interfaces — Native Tech Design</title><link rel="stylesheet" href="../shared.css"></head>
+<body>
+<div style="background:#7c2d12;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>SUPERSEDED 2026-06-13.</b> This scaffold stub is replaced by the engineering band's cross-cutting views + per-part pages. See <a href="../../engineering/index.html" style="color:#fed7aa">engineering/</a>. Archive retained for provenance.</div>
+<nav class="topnav"><a href="../index.html">← Tech Design Hub</a> · <a href="../../product-prd-native-v1.html">PRD</a> · Layer: <strong>HLD</strong> · Doc: <strong>04 — Interfaces</strong></nav>
+<header><h1>04 — Interfaces</h1><p class="subtitle">External + internal interfaces: Connector protocol (Slack · email · web · v2+ phone/browser/A2A), 26 EngineEvents, Native↔CoS interaction, peer-Native federation (v2+).</p></header>
+<div class="scaffold-banner"><span class="fill-me">SCAFFOLD</span> — fill-in pending.</div>
+<section><h2>Scope</h2><p>Every wire Native sends or receives — to operator, to external services, between internal surfaces.</p></section>
+<div class="canon-pointer"><strong>Canon authority</strong>:<ul><li><a href="../../../../../sutra/os/native/events/"><code>sutra/os/native/events/</code></a> (26 EngineEvents)</li><li><a href="../../product-prd-native-v1.html#section-4-connector">PRD §5 Connector</a></li><li><a href="../../../../../sutra/marketplace/plugin/connectors/"><code>sutra/marketplace/plugin/connectors/</code></a></li></ul></div>
+<section><h2>Planned sections</h2><div class="section-list"><ol><li>Connector inventory (Slack · email · web · v1.x browser · v2+ phone · v2+ A2A)</li><li>Connector protocol — inbound + outbound message schema</li><li>26 EngineEvents — event types + payload shapes</li><li>Event emission rules — which surface emits what</li><li>Native↔CoS interaction — internal API contract</li><li>v2+ Federation — peer-Native A2A protocol design</li><li>Connector authorization model (D.6 Authority gate per tool)</li></ol></div></section>
+<section><h2>Back-references</h2><p>PRD §5 · §2.B B4 · ADR-019</p></section>
+<footer>Scaffold 2026-05-20. <a href="../index.html">↑ Hub</a></footer>
+</body></html>

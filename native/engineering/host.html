@@ -1,0 +1,587 @@
+<!doctype html>
+<!-- ENGINEERING / HOST — Native IA v1 (eng fanout, 2026-06-13).
+     Built from the canonical page template. Anatomy: map -> work-order -> own diagram -> mechanism tables -> behavior contracts -> open gaps -> children -> sources.
+     Content rule: compile-only, anchor-per-claim, zero invention. Source of truth: engineering/_compile-2026-06-12-archived.html#eng-host (13 mechanism rows + 8 supplementary tables + 10 gaps carried verbatim). Canon linked, never copied (D54). PLATFORM-LOCK gate founder-waivered for this population (holding/TODO.md). -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering &#8212; Host: mechanisms + behavior contracts</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+h3{font-size:13px;margin:14px 0 4px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+.contract{background:#f0f9ff;border-left:3px solid #0369a1;padding:10px 14px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight */
+#map-engineering{stroke-width:3.5;stroke:#b45309}
+svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a class="sb-cur" href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">hub</a> &#8250; <a href="../platform/index.html">platform</a> &#8250; <a href="index.html">engineering</a> &#8250; <b>host</b> &#160;&#183;&#160; platform twin: <a href="../platform/host.html">platform/host</a> &#160;&#183;&#160; spine: <a href="ui.html">&#8592; Eng: UI</a> &#160;&#183;&#160; <a href="orchestration.html">Eng: Orchestration &#8594;</a></div>
+<h1>Engineering &#8212; Host: mechanisms + behavior contracts <span class="lvl">ENGINEERING &#183; zoom 5</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="../platform/index.html" xlink:href="../platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="../platform/observability.html" xlink:href="../platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="../platform/authority-tenancy.html" xlink:href="../platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="../platform/ui.html" xlink:href="../platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="../platform/host.html" xlink:href="../platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="../platform/runtime.html" xlink:href="../platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="../platform/orchestration.html" xlink:href="../platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="../platform/system-of-process.html" xlink:href="../platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="../platform/system-of-record.html" xlink:href="../platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="../platform/connector.html" xlink:href="../platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="../platform/external-world.html" xlink:href="../platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="../platform/compute.html" xlink:href="../platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="index.html" xlink:href="index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="390" y="486" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Engineering: Host</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>eng-host</code></td><td>ENGINEERING / <a href="index.html">engineering</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Engineering &#8212; Host: mechanisms + behavior contracts. Self-sufficient HOW for the Host block (Claude CLI &mdash; agent runtime + model in one), compiled anchor-per-claim from the engineering compile + shipped-production dossiers. Platform twin: <a href="../platform/host.html">platform/host</a> &#183; matrix: <a href="../products/cos/matrix.html">products/cos/matrix</a> &#183; how: <a href="../platform/how-methodology.html">platform/how-methodology</a> &#183; runtime: <a href="../platform/runtime.html">platform/runtime</a>.</td><td colspan="3">every mechanism from the compile's eng-host section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 420" role="img" aria-label="Host engineering — fused agent runtime + model, per-workflow host-LLM slot, lifecycle, with dashed UI/Daemon/SoP/Compute neighbors inside A+T wrap">
+<defs><marker id="hsah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- A+T wrap (cross-cut, dashed) -->
+<rect x="110" y="28" width="660" height="372" rx="10" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="120" y="44" font-size="8.5" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access (&#167;1.0 wrap; Host included)</text>
+<!-- Neighbor: UI (dashed) -->
+<rect x="14" y="120" width="84" height="92" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="56" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#374151">UI</text>
+<text x="56" y="176" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<!-- HOST container (solid) -->
+<rect x="128" y="58" width="300" height="246" rx="10" fill="#fff" stroke="#334155" stroke-width="2"/>
+<text x="142" y="78" font-size="10.5" font-weight="700">HOST BLOCK &#8212; Claude CLI; carries request down, runs the Daemon (&#167;1.0)</text>
+<!-- Fused agent runtime + model (single block, no internal edge) -->
+<rect x="144" y="92" width="268" height="80" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+<text x="278" y="112" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1e3a8a">AGENT RUNTIME + MODEL &#8212; FUSED</text>
+<text x="278" y="126" text-anchor="middle" font-size="7.4" fill="#475569">"agent runtime + model in one" (&#167;1.0)</text>
+<text x="278" y="138" text-anchor="middle" font-size="7.4" fill="#475569">single block &#8212; no internal edge to a separate LLM box</text>
+<text x="278" y="150" text-anchor="middle" font-size="7.4" fill="#475569">no further sub-decomposition cited</text>
+<text x="278" y="162" text-anchor="middle" font-size="7.4" fill="#475569">(tool loop / session / context window not in cited ranges &mdash; gap 6)</text>
+<!-- Per-workflow host-LLM slot -->
+<rect x="144" y="184" width="268" height="64" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/>
+<text x="278" y="202" text-anchor="middle" font-size="9.5" font-weight="700" fill="#475569">PER-WORKFLOW HOST-LLM SLOT</text>
+<text x="278" y="215" text-anchor="middle" font-size="7.4" fill="#6b7280">selectable per step (ADR-005): claude --bare | codex exec</text>
+<text x="278" y="227" text-anchor="middle" font-size="7.4" fill="#6b7280">entered from below (SoP invoke) as well as above</text>
+<text x="278" y="239" text-anchor="middle" font-size="7.4" fill="#6b7280">claude --bare recursion-safe / unauth &#183; codex read-only sandbox</text>
+<!-- Lifecycle strip -->
+<rect x="144" y="260" width="268" height="34" rx="6" fill="#fff" stroke="#334155" stroke-width="1.3"/>
+<text x="278" y="277" text-anchor="middle" font-size="8.5" font-weight="700">LIFECYCLE &mdash; runs the Daemon</text>
+<text x="278" y="289" text-anchor="middle" font-size="7.2" fill="#6b7280">START &#8594; RUNNING &#8594; STOP &#8594; RESTART (state from user-kit + provenance)</text>
+<!-- Neighbor: DAEMON (dashed, contains Orch + SoP) -->
+<rect x="470" y="92" width="284" height="160" rx="9" fill="#f8fafc" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="612" y="110" text-anchor="middle" font-size="9.5" font-weight="700" fill="#475569">DAEMON &#8212; always-on (&#167;4)</text>
+<rect x="486" y="124" width="120" height="56" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="546" y="148" text-anchor="middle" font-size="8.5" font-weight="700" fill="#374151">ORCH</text>
+<text x="546" y="161" text-anchor="middle" font-size="7" fill="#6b7280">translate &#183; find process</text>
+<rect x="618" y="124" width="120" height="56" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="678" y="148" text-anchor="middle" font-size="8.5" font-weight="700" fill="#374151">SoP</text>
+<text x="678" y="161" text-anchor="middle" font-size="7" fill="#6b7280">runs steps &#183; invoke_host_llm</text>
+<text x="612" y="206" text-anchor="middle" font-size="7.2" fill="#6b7280">internals live on platform/runtime + orch + sop pages</text>
+<!-- Neighbor: COMPUTE (base, dashed) -->
+<rect x="128" y="316" width="626" height="22" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text x="441" y="331" text-anchor="middle" font-size="8" font-weight="700" fill="#374151">COMPUTE &#8212; base layer (runs-on; Host + daemon run here)</text>
+<!-- Edges -->
+<path d="M98,150 L128,130" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#hsah)"/>
+<text x="60" y="116" font-size="7.4" fill="#475569">operator request (UI in, &#167;1.0)</text>
+<path d="M428,120 L470,120" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#hsah)"/>
+<text x="430" y="100" font-size="7.4" fill="#475569">"runs" &#8212; request-flow + run-relationship fused (gap 3)</text>
+<path d="M618,176 L412,208" stroke="#334155" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#hsah)"/>
+<text x="430" y="232" font-size="7.4" fill="#475569">SoP &#8594; Host: host-LLM invoke per workflow (ADR-005)</text>
+<path d="M278,294 L278,316" stroke="#334155" stroke-width="1.2" fill="none" marker-end="url(#hsah)"/>
+<text x="284" y="312" font-size="7.2" fill="#64748b">runs-on (no data payload)</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject (fused agent runtime + model; per-workflow host-LLM slot; lifecycle strip). Dashed boxes = neighbors (UI, Daemon {Orch + SoP}, Compute &mdash; their internals live on their own pages). Every box has &#8805;1 labeled edge. Behavior twin: <a href="../platform/host.html">platform/host</a>; pillar adaptation at <a href="../products/cos/matrix.html">products/cos/matrix</a>; method spine at <a href="../platform/how-methodology.html">platform/how-methodology</a>; daemon at <a href="../platform/runtime.html">platform/runtime</a>. Fully-wired second-order SVG pointers in the note under Children / downstream.</p>
+
+<h2>Mechanism table &#8212; 13 rows carried from compile &#167;eng-host (anchor-per-claim, zero invention)</h2>
+<table><tr><th>Mechanism</th><th>Kind</th><th>What exists (compiled &#8212; zero invention)</th><th>Sources</th></tr>
+<tr id="mech-host-01"><td><b>Host block identity &mdash; Claude CLI, agent runtime + model in one (fused)</b></td><td>master-spec</td><td>The &#167;1.0 locked schema: "the request runs on the Host (Claude CLI &mdash; agent runtime + model in one)"; the diagram's Host rect carries only the labels "Host" / "Claude CLI" with NO separate LLM box. The second-order draft draws agent runtime and model as one fused unit &mdash; "single block, no internal edge to a separate LLM box &mdash; the doc explicitly collapses them". The Host then carries the request downward into the Daemon on the edge labeled "runs", where Orchestration translates it and selects the process. A return edge comes back up from System of Process: when a process runs, it invokes a host LLM selected per workflow &mdash; "so the Host slot is entered from below as well as above". Everything sits inside the Authority + Tenancy gate wrap and stands on the Compute base layer.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#section-1-0-runtime</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_block-host.html#internal-flow</code></td></tr>
+<tr id="mech-host-02"><td><b>Internal parts &mdash; agent runtime &middot; model &middot; per-workflow host-LLM slot</b></td><td>second-order-draft</td><td>Agent runtime: "the agent-execution half of Claude CLI"; "the doc gives no further sub-decomposition (no tool loop, session, or context-window detail in the cited ranges)". Model: "the LLM, fused into the same block as the runtime &mdash; 'agent runtime + model in one'". Per-workflow host-LLM slot: "the Host position is a selectable slot, not hardwired to Claude" &mdash; ADR-005 host-llm-host-selection (ratified), with the draft quoting the master &#167;12.1 ADR-table label "Per-workflow host LLM selection (claude &middot; codex &middot; deepseek)" and &#167;4.0's canon-link citing ADR-005 as part of the shipped daemon runtime at sutra/marketplace/native/.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_block-host.html#internal-parts</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#so-host</code></td></tr>
+<tr id="mech-host-03"><td><b>Neighbor contracts &mdash; UI in, Daemon out (runs + lifecycle), SoP host-LLM return, A+T wrap, Compute base</b></td><td>second-order-draft</td><td>UI &#8594; Host (in): operator request &mdash; "The operator asks through the UI; the request runs on the Host" (unlabeled &#167;1.0 arrow). Host &#8594; Daemon (out): request handoff into the always-on Daemon where Orchestration "translates the request and finds the relevant process to run"; the draft NOTES the &#167;1.0 edge is labeled "runs" (Host runs the Daemon), not "forwards" &mdash; "the doc fuses request-flow and run-relationship on one edge". Host &#8594; Daemon (lifecycle): "Started by Sutra plugin at session boot OR by explicit sutra native start. Re-exec across plugin updates without state loss"; lifecycle START &#8594; RUNNING &#8594; STOP &#8594; RESTART (state restored from user-kit + decision-provenance log). System of Process &#8594; Host (in): host-LLM invocation per workflow (ADR-005) &mdash; "the running process calls back into a host LLM chosen per workflow". Authority + Tenancy gates every access (cross-cutting wrap, Host included); Compute carries the runs-on relationship &mdash; "base layer, no data payload".</td><td><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_block-host.html#contracts-neighbor-edges</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#section-4-0-daemon</code></td></tr>
+<tr id="mech-host-04"><td><b>ADR-005 &mdash; per-workflow host-LLM selection (claude --bare vs codex exec)</b></td><td>adr-decision</td><td>Decision: "Native engine MUST require WorkflowStep.host &#8712; {claude, codex} whenever action='invoke_host_llm'". host='claude' invokes claude --bare &mdash; recursion-safe (no plugin sync, no CLAUDE.md auto-load, no hooks; skips keychain reads so unauthenticated for connector calls); default for steps that must execute in the founder's session via the effector split (ADR-004). host='codex' invokes codex exec &mdash; read-only sandbox; default for analysis, review, planning steps producing JSON/text without state change. Per-step timeout_ms flows into host activity args; host-class default 60s for claude --bare, &#8805;300s for codex (per Wave 1 evidence on DayFlow). Context for the lock: recursive Claude without --bare "re-loads the same plugin governance pipeline that produced the Workflow, doubling token cost AND potentially recursing forever". Tradeoff locked to these two hosts in v1.x; the LLMSubstrate adapter for OpenAI/Gemini swap is deferred to backlog OS-21; OS-20 (per-invocation MCP context passing for claude --bare) also deferred. Consequence rows: "Workflow author chooses the trust profile per step explicitly (no hidden default)"; "Steps that need BOTH authenticated mutation AND sandboxed analysis must split into two steps".</td><td><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-005-host-llm-host-selection.md#decision</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-005-host-llm-host-selection.md#consequences</code></td></tr>
+<tr id="mech-host-05"><td><b>ADR-004 &mdash; registry-and-effector split: the Host session is the effector</b></td><td>adr-decision</td><td>Decision: "Native engine MUST be the registry + audit layer; the founder's interactive host-LLM session MUST be the effector that performs declared mutations". Native owns Workflow JSON, Trigger predicates, Execution rows, EngineEvent audit, DecisionProvenance, Tenant isolation; Claude (founder session) owns filesystem writes, git operations, network calls &mdash; "driven by Workflow steps but executed in the authenticated session". The split is recorded on every Execution via the agent_identity chain. Consequences: daemon stays unauthenticated and recursion-safe (no credential exfil surface); founder retains ASK-gate visibility on every mutation; audit records intent BEFORE the Claude effector runs (replayable); autonomous fire-and-forget workflows are blocked at v1.0 (deferred to v1.3 per OS-1/OS-2). RUN canon states the same boundary: "The host-LLM session is the effector boundary (&#167;5.1) &mdash; file/git/network mutations declared in the Workflow happen there, not in Native. Native persists EngineEvents; the host writes the actual side effects."</td><td><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-004-registry-and-effector-split.md#decision</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/native/surfaces/run.md#c4-context</code></td></tr>
+<tr id="mech-host-06"><td><b>ADR-021 &mdash; Sutra plugin is HOST-RESIDENT (Host gap #4 CLOSED)</b></td><td>adr-decision</td><td>Decision (Accepted 2026-06-12, founder-delegated, parity T5): "The Sutra plugin is HOST-RESIDENT. It is the governance layer the Host (Claude CLI) loads per-session" &mdash; hooks = Host lifecycle interceptors (PreToolUse/PostToolUse/Stop/SessionStart/UserPromptSubmit); skills = Host-invokable bundles (slash-command surface); per-turn blocks = Host-emitted discipline (header, routing, depth, blueprint, build-layer, trace); sutra-defaults.json = policy payload the Host-resident layer carries. Daemon-side analogs (workflow registry, EngineEvents, schedules) live in Orchestration / System of Process; upstream governance CONTENT the plugin transports is Authority+Tenancy material &mdash; "the plugin is its transport, not its home"; no new block is added and &#167;1.0 stays locked. Consequences: parity ledger rows for plugin-implemented concepts anchor to Host (+ projection to their content's altitude); future plugin capabilities declare Host-residency by default; "the 17 shipped-but-unwired hooks (parity T1 finding) are Host-resident dormant mechanisms; wire-or-retire review is an ops follow-up, not a placement question". Master &#167;4.12.4 records the same: status ACCEPTED 2026-06-12, Host block open gap #4 CLOSED; dual-lane &mdash; deepseek reviewed this run, codex retro queued (auth).</td><td><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md#decision</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#section-4-12-parity (&#167;4.12.4)</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_block-host.html (gap #4 DECIDED entry)</code></td></tr>
+<tr id="mech-host-07"><td><b>Daemon lifecycle via the Host-resident plugin (&#167;4.0)</b></td><td>master-spec</td><td>Native runs as a per-operator local daemon the operator doesn't see; home directory ~/.sutra-native/ contains user-kit (charters, domains, triggers, workflows), decision-provenance.jsonl, native.log. Process model: "Single background daemon process per operator. Started by Sutra plugin at session boot OR by explicit sutra native start. Re-exec across plugin updates without state loss" &mdash; operator-visible: "No (managed by plugin)". Lifecycle: START (plugin launch / cron / cold boot) &#8594; RUNNING (workflow dispatches + hook firings + cadence ticks + audit writes) &#8594; STOP (plugin shutdown / explicit stop) &#8594; RESTART (state restored from user-kit + decision-provenance log). Canon link: full daemon runtime ships at sutra/marketplace/native/bin/sutra-native + sutra/marketplace/native/src/, with ADR-005 host-LLM selection, ADR-013 telemetry-sink-fsync-jsonl, ADR-017 cron-daemon-cadence-tick. The Host draft cautions: "the lifecycle edge is drawn from the Host only on the partial support of &#167;1.0's 'runs' label", with the plugin now placed Host-resident per ADR-021.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#section-4-0-daemon</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_block-host.html#internal-flow</code></td></tr>
+<tr id="mech-host-08"><td><b>WorkflowStep.host canon contract (step.md + run.md + B11 prompt composition)</b></td><td>native-canon</td><td>Canon WorkflowStep: host: 'claude' | 'codex' | null &mdash; "required IFF action === 'invoke_host_llm' (ADR-005)"; host=null for non-host-llm actions, rejected otherwise; prompt_template likewise required IFF invoke_host_llm; timeout_ms is a per-step override that "flows into host activity args". Step dispatch: "invoke_host_llm spawns host subprocess"; step_started events carry payload {step_index, host, timeout_ms}. RUN surface invariants: RUN-I4 &mdash; "WorkflowStep.action='invoke_host_llm' requires host &#8712; {claude, codex} AND prompt_template non-null"; RUN-I7 &mdash; per-step timeout_ms defaults to host-class default when null: 60s for claude --bare, &#8805;300s expected for complex codex tasks per &#167;6.7. The RUN C4 diagram shows the dispatch chain: LiteExecutor.executeWorkflow &#8594; step action invoke_host_llm &#8594; host-LLM dispatch (claude --bare | codex exec) &#8594; on_host_llm_result &#8594; GATE/step_completed &#8594; AUDIT JSONL. Canon gap stated in run.md: &#167;3.1 declares NativeEngine.on_host_llm_result(execId, stepIdx, r) as the resumption callback after the host-LLM returns, "but the exact wire is open per &#167;8 OS-1". Upstream of the dispatch, canon B11 PromptBuilder fires when "Workflow step S where action='invoke_host_llm' is about to fire" and "composes prompt from all 5 sources (Domain, Charter, Artifacts, Inputs, Intent specifics)".</td><td><code>/Users/asawa/Claude/asawa-holding/sutra/os/native/primitives/step.md#invariants-must-hold</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/native/surfaces/run.md#invariants-must-always-hold</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/native/blocks/B11-promptbuilder.md</code></td></tr>
+<tr id="mech-host-09"><td><b>ADR-015 &mdash; vendored H-Sutra producer; UserPromptSubmit intake on the Host</b></td><td>adr-decision</td><td>Decision: "Native engine MUST vendor its own H-Sutra producer (per-turn-h-sutra.sh + classify.sh) inside the native@sutra plugin; MUST NOT depend on core@sutra at runtime" &mdash; required because a T4 user installing Native without the core plugin would otherwise hit a runtime missing-dependency error (founder direction D49). Both producers must emit the identical 9-cell + 3-tag row shape per the shared charter; when core@sutra is also installed, each plugin writes its own log path and CLAUDE.md routes which is canonical per session. Append is fail-CLOSED at row level; missing rows never block downstream Edit/Write/Bash. Open consequence: "OS-7 deferred: Native owns its own UserPromptSubmit intake (currently still arrives via core hook on Asawa)" &mdash; UserPromptSubmit being one of the Host lifecycle interception points ADR-021 enumerates for the Host-resident plugin.</td><td><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-015-standalone-h-sutra-in-native.md#decision</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md#decision</code></td></tr>
+<tr id="mech-host-10"><td><b>Host model-work across the five pillars (matrix column)</b></td><td>second-order-draft</td><td>The Host column is SUPPORTING for all five pillars. B1: "Intent parse is model work on the Host &mdash; schema shown before the LLM call, post-LLM output validated and rejected if non-conforming". B2: "Context is assembled 'for each LLM call' &mdash; the Host's model consumes B2's context envelope". B3: "Decide/execute reasoning is model work; method-routing gives problem classes different solving strategies (N16)". B4: "Audience-calibrated drafting (board / founder / team / client / vendor get different tone) is model work on the Host". B5: "Remember/explain/standing-pref asks run on the Host like any operator request (&#167;1.0 entry path)". The B1 traversal SVG labels the Host&#8594;Orchestration edge "intent parse &mdash; model work on Host (schema pre-declared before the LLM call)" and gives the Host its own runs-on edge to Compute.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_matrix.html#the-grid (Host column)</code><br><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_matrix.html (B1 traversal SVG)</code></td></tr>
+<tr id="mech-host-11"><td><b>Shipped production &mdash; multi-LLM host lanes (dir/D36)</b></td><td>shipped-production</td><td>Production's runtime host set is locked: "ADR-005 locks WorkflowStep.host &#8712; {claude, codex} for v1.x and explicitly defers the LLMSubstrate adapter for OpenAI/Gemini swap to backlog item OS-21" &mdash; "the LLM-agnostic-runtime half did NOT ship". What DID ship are multi-LLM consult/review lanes: core:codex-sutra (OpenAI Codex), core:deepseek (DeepSeek via Anthropic-compatible API, 4 modes), and bin/deepseek-claude (separate Claude session on DeepSeek v4-pro backend). Behavior contract: "runtime host LLMs are guaranteed only {claude, codex} per ADR-005, with second-opinion LLM lanes (codex, deepseek) available as governed skills; broader LLM-agnosticism is doctrine pending founder-approved phasing, not a runtime promise". Redo recipe: "Keep the ADR-005 two-host lock for v1.x and implement OS-21 (LLMSubstrate adapter) only on real trigger"; port the deepseek/codex skill wrappers "as the template for adding any new LLM lane (transport + downgrade defense + auditable SKIPPED logging)". Folded full below as <a href="#contract-dir-d36">contract-dir-d36</a>.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D36</code></td></tr>
+<tr id="mech-host-12"><td><b>Shipped production &mdash; Host-resident hook dispatch: hot-reload registry + knob file (dir/D32 + proto/023)</b></td><td>shipped-production</td><td>Per ADR-021, hooks are Host lifecycle interceptors; production's dispatch architecture for them is dir/D32: settings.json registers ONE dispatcher per event (no per-hook rows); on EVERY invocation the dispatcher re-reads the registry os/hooks/posttool-registry.jsonl AND the enabled_hooks block in os/SUTRA-CONFIG.md; "a hook fires only when its registry row exists AND enabled_hooks[name]: true". Default for every declared hook is OFF; clients cannot flip switches (Sutra-managed config); "a newly declared hook reaches LIVE sessions on the next tool call with no settings.json change and no restart"; fail-open with '|| true'. The redo recipe maps this onto Native as "the Trigger registry plus per-tenant enablement read at fire time rather than load time". The knob surface is proto/023: one shell-sourceable file per instance at $HOME/.sutra/config.env holds every kill-switch, threshold, and opt-in; "hooks SHOULD source $HOME/.sutra/config.env at startup"; config is ADDITIVE (env-var overrides keep working); the redo recipe names "one sourceable/parseable file the daemon AND host-side hooks both read" and flags the production weakness: adoption is thin &mdash; 1 of ~75 hooks sources it. Folded full below as <a href="#contract-dir-d32">contract-dir-d32</a> + <a href="#contract-proto-023">contract-proto-023</a>.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D32</code><br><code>/Users/asawa/Claude/asawa-holding/holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#proto/023</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md#decision</code></td></tr>
+<tr id="mech-host-13"><td><b>Shipped production &mdash; per-turn and session-start discipline emitters on Host lifecycle events (cap/108 + cap/110 + proto/014)</b></td><td>shipped-production</td><td>Per ADR-021, per-turn blocks are Host-emitted discipline; production's emitters hang on the Host lifecycle events ADR-021 enumerates. cap/108 (UserPromptSubmit): per-turn-discipline-prompt.sh jq-reads sutra-defaults.json .right_effort at runtime ("schema-as-single-source &mdash; emitter jq-reads policy at runtime, never hardcodes text") and emits the stderr nudge before any Edit/Write, with dual kill-switch (env + file). cap/110 (PreToolUse on Task): subagent-dispatch-brief.sh emits the dispatch-contract reminder &mdash; exact prefix line '&#167;Sutra discipline (mandatory)', 5 governance blocks, 4-line TRIAGE/ESTIMATE/ACTUAL/OS-TRACE footer; the second enforcement layer is empirical: "plugin PreToolUse/PostToolUse hooks fire deterministically inside subagent context (verified 2026-04-24)". proto/014 (SessionStart): update-banner.sh compares installed plugin version to ~/.sutra/last-seen-version and prints a one-time '&lt;old&gt; &#8594; &lt;new&gt;' banner with changelog link; the update action is /core:update "invoked only on user consent"; governing invariant D22 pull-not-push &mdash; "client stays pinned until it chooses to move". The proto/014 redo recipe canonizes the consent CONTRACT, not the rendering: "the banner UX was excluded from Native as plumbing &mdash; the consent CONTRACT is the part to canonize". Folded full below as <a href="#contract-cap-108">contract-cap-108</a> + <a href="#contract-cap-110">contract-cap-110</a> + <a href="#contract-proto-014">contract-proto-014</a>.</td><td><code>/Users/asawa/Claude/asawa-holding/holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/108</code><br><code>/Users/asawa/Claude/asawa-holding/holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/110</code><br><code>/Users/asawa/Claude/asawa-holding/holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#proto/014</code><br><code>/Users/asawa/Claude/asawa-holding/sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md#decision</code></td></tr>
+</table>
+
+<h3>Contracts &mdash; neighbor edges (verbatim-derived from _block-host.html)</h3>
+<table>
+<tr><th>Neighbor</th><th>Direction</th><th>Payload</th></tr>
+<tr><td>UI</td><td>in</td><td>Operator request. &#167;1.0: "The operator asks through the UI; the request runs on the Host" (unlabeled diagram arrow)</td></tr>
+<tr><td>Daemon (Orchestration)</td><td>out</td><td>Request handoff into the always-on Daemon, where Orchestration "translates the request and finds the relevant process to run". NOTE: the &#167;1.0 edge Host &#8594; Daemon is labeled "runs", not "forwards" &mdash; request-flow and run-relationship fused on one edge</td></tr>
+<tr><td>Daemon (lifecycle)</td><td>out</td><td>"Started by Sutra plugin at session boot OR by explicit sutra native start. Re-exec across plugin updates without state loss." Lifecycle START &#8594; RUNNING &#8594; STOP &#8594; RESTART (state restored from user-kit + decision-provenance log)</td></tr>
+<tr><td>System of Process</td><td>in</td><td>Host-LLM invocation per workflow (ADR-005); &#167;4.0 canon link cites ADR-005 as part of the shipped daemon runtime at sutra/marketplace/native/</td></tr>
+<tr><td>Authority + Tenancy</td><td>gates</td><td>"Authority + Tenancy gates every access" &mdash; cross-cutting wrap around the entire runtime diagram, Host included</td></tr>
+<tr><td>Compute</td><td>out</td><td>Runs-on: "Host + daemon run on the Compute (host machine)"; base layer, no data payload</td></tr>
+</table>
+
+<h3>Internal parts</h3>
+<table>
+<tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+<tr><td>Agent runtime</td><td>Agent-execution half of Claude CLI; no further sub-decomposition cited (no tool loop, session, or context-window detail in cited ranges)</td><td>master#section-1-0-runtime</td></tr>
+<tr><td>Model</td><td>The LLM, fused into the same block &mdash; "agent runtime + model in one"; no separate LLM box in &#167;1.0</td><td>master#section-1-0-runtime</td></tr>
+<tr><td>Per-workflow host-LLM slot</td><td>Host position is a selectable slot, not hardwired to Claude (ADR-005, ratified); entered from below (SoP invocation) as well as above</td><td>master#section-12-1-adr-table</td></tr>
+</table>
+
+<h3>WorkflowStep host fields (canon primitives/step.md)</h3>
+<table>
+<tr><th>Field</th><th>Contract</th></tr>
+<tr><td>host</td><td>'claude' | 'codex' | null &mdash; required IFF action === 'invoke_host_llm' (ADR-005); null for non-host-llm actions, rejected otherwise</td></tr>
+<tr><td>prompt_template</td><td>required IFF action === 'invoke_host_llm'; null otherwise</td></tr>
+<tr><td>timeout_ms</td><td>per-step override; flows into host activity args</td></tr>
+<tr><td>action</td><td>skill_ref XOR action (I-3, mint-time HARD reject); 'invoke_host_llm' spawns host subprocess</td></tr>
+<tr><td>(event payload)</td><td>step_started carries {step_index, host, timeout_ms}</td></tr>
+</table>
+
+<h3>RUN-surface invariants touching the Host (canon surfaces/run.md)</h3>
+<table>
+<tr><th>#</th><th>Invariant</th></tr>
+<tr><td>RUN-I4</td><td>WorkflowStep.action='invoke_host_llm' requires host &#8712; {claude, codex} AND prompt_template non-null</td></tr>
+<tr><td>RUN-I7</td><td>Per-step timeout_ms defaults to host-class default when null: 60s for claude --bare; &#8805;300s expected for complex codex tasks per &#167;6.7</td></tr>
+<tr><td>(gap)</td><td>NativeEngine.on_host_llm_result(execId, stepIdx, r) is the declared resumption callback, but "the exact wire is open per &#167;8 OS-1"</td></tr>
+</table>
+
+<h3>Decisions shaping the Host block</h3>
+<table>
+<tr><th>ADR</th><th>Status</th><th>Decision (one line, verbatim-derived)</th></tr>
+<tr><td>ADR-004 registry-and-effector split</td><td>Accepted 2026-05-07</td><td>Native = registry + audit; the founder's interactive host-LLM session = the effector performing filesystem/git/network mutations</td></tr>
+<tr><td>ADR-005 host-LLM host selection</td><td>Accepted 2026-05-07</td><td>WorkflowStep.host &#8712; {claude, codex} whenever action='invoke_host_llm'; claude --bare recursion-safe, codex exec read-only sandbox; OS-21/OS-20 deferred</td></tr>
+<tr><td>ADR-015 standalone H-Sutra</td><td>Accepted 2026-05-07</td><td>Native vendors its own H-Sutra producer; no runtime core@sutra dependency; OS-7 UserPromptSubmit intake deferred</td></tr>
+<tr><td>ADR-021 plugin host residency</td><td>Accepted 2026-06-12</td><td>Sutra plugin is HOST-RESIDENT: hooks = Host lifecycle interceptors &middot; skills = Host-invokable bundles &middot; per-turn blocks = Host-emitted discipline; daemon analogs in Orchestration/SoP; &#167;1.0 stays locked</td></tr>
+</table>
+
+<h3>Host column &mdash; pillar &times; block matrix (<a href="../products/cos/matrix.html">products/cos/matrix</a>)</h3>
+<table>
+<tr><th>Pillar</th><th>Cell</th><th>Content</th></tr>
+<tr><td>B1</td><td>SUPPORTING</td><td>Intent parse is model work on the Host &mdash; schema shown before the LLM call, post-LLM output validated and rejected if non-conforming</td></tr>
+<tr><td>B2</td><td>SUPPORTING</td><td>Context assembled "for each LLM call" &mdash; the Host's model consumes B2's context envelope</td></tr>
+<tr><td>B3</td><td>SUPPORTING</td><td>Decide/execute reasoning is model work; method-routing gives problem classes different solving strategies (N16)</td></tr>
+<tr><td>B4</td><td>SUPPORTING</td><td>Audience-calibrated drafting (board/founder/team/client/vendor different tone) is model work on the Host</td></tr>
+<tr><td>B5</td><td>SUPPORTING</td><td>Remember/explain/standing-pref asks run on the Host like any operator request (&#167;1.0 entry path)</td></tr>
+</table>
+
+<h3>Daemon lifecycle rows attributed to the plugin (master &#167;4.0)</h3>
+<table>
+<tr><th>Aspect</th><th>What</th><th>Operator-visible?</th></tr>
+<tr><td>Process model</td><td>Single background daemon per operator; started by Sutra plugin at session boot OR explicit <code>sutra native start</code>; re-exec across plugin updates without state loss</td><td>No (managed by plugin)</td></tr>
+<tr><td>Lifecycle</td><td>START (plugin launch / cron / cold boot) &#8594; RUNNING &#8594; STOP (plugin shutdown / explicit stop) &#8594; RESTART (state restored from user-kit + decision-provenance log)</td><td>Only via Daily Pulse health row (&#167;7)</td></tr>
+</table>
+
+<h3>Production dossiers anchoring to Host (per ADR-021: "parity ledger rows for plugin-implemented concepts anchor to Host")</h3>
+<table>
+<tr><th>Dossier</th><th>Shipped mechanism</th><th>Host lifecycle event / surface</th></tr>
+<tr><td><a href="#contract-dir-d36">dir/D36</a></td><td>ADR-005 two-host lock + codex/deepseek consult lanes + bin/deepseek-claude</td><td>host-LLM slot</td></tr>
+<tr><td><a href="#contract-dir-d32">dir/D32</a></td><td>One-dispatcher-per-event hot-reload (registry JSONL + enabled_hooks re-read per call; default-off; no-restart pickup)</td><td>PostToolUse (lane pattern generalizes per event)</td></tr>
+<tr><td><a href="#contract-cap-108">cap/108</a></td><td>per-turn-discipline-prompt.sh right-effort nudge, jq-reads sutra-defaults.json</td><td>UserPromptSubmit</td></tr>
+<tr><td><a href="#contract-cap-110">cap/110</a></td><td>subagent-dispatch-brief.sh '&#167;Sutra discipline (mandatory)' contract; hooks fire deterministically inside subagent context</td><td>PreToolUse (Task)</td></tr>
+<tr><td><a href="#contract-proto-014">proto/014</a></td><td>update-banner.sh one-time version banner; consent-gated /core:update; D22 pull-not-push</td><td>SessionStart</td></tr>
+<tr><td><a href="#contract-proto-023">proto/023</a></td><td>$HOME/.sutra/config.env kill-switch/threshold knob file; "daemon AND host-side hooks both read"; adoption 1 of ~75 hooks</td><td>hook startup (source)</td></tr>
+</table>
+
+<h2>Behavior contracts &mdash; shipped-production dossiers folded on this part</h2>
+<div class="note">Shipped-production dossiers carry their testable behavior into this page, folded as <code>id="contract-&lt;dossier&gt;"</code> subsections &mdash; Shipped today (distillation) + testable Behavior contract (verbatim-derived) + Redo recipe (gist) + Artifacts (repo paths) &mdash; tracing to <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md</code>. They anchor to Host per ADR-021 ("parity ledger rows for plugin-implemented concepts anchor to Host"); canon is linked, never copied (D54). Two groups: (A) the original six cited by the compile's Host section (rows <a href="#mech-host-11">11</a>&ndash;<a href="#mech-host-13">13</a>) &mdash; <code>dir/D36</code> &middot; <code>dir/D32</code> &middot; <code>cap/108</code> &middot; <code>cap/110</code> &middot; <code>proto/014</code> &middot; <code>proto/023</code>; (B) fifteen Host-resident discipline/lifecycle dossiers assigned in the eng-contract-anchors fanout (2026-06-13) so needs rows deep-link the HOW in-page &mdash; four caps (<code>112/115/116/118</code>), two hooks (<code>check-graduation</code> &middot; <code>output-behavior-lint</code>), seven founder directions (<code>D10/D12/D18/D29/D56/D57/D58</code>), two protocols (<code>proto/005</code> &middot; <code>proto/013</code>). All anchor to Host because each is a Host-resident plugin mechanism (hook/skill/per-turn block/policy node the Host loads per session) per ADR-021.</div>
+
+<div class="contract" id="contract-dir-d36">
+<b>dir/D36 &mdash; multi-LLM host lanes (runtime two-host lock + consult/review lanes)</b>
+<ul>
+<li><b>Shipped today:</b> Runtime host set is locked to {claude, codex} per ADR-005 (LLM-agnostic runtime did NOT ship); what shipped are governed second-opinion LLM lanes &mdash; core:codex-sutra, core:deepseek (4 modes), bin/deepseek-claude.</li>
+<li><b>Behavior contract (verbatim-derived):</b> "runtime host LLMs are guaranteed only {claude, codex} per ADR-005, with second-opinion LLM lanes (codex, deepseek) available as governed skills; broader LLM-agnosticism is doctrine pending founder-approved phasing, not a runtime promise".</li>
+<li><b>Redo recipe:</b> "Keep the ADR-005 two-host lock for v1.x and implement OS-21 (LLMSubstrate adapter) only on real trigger"; port the deepseek/codex skill wrappers "as the template for adding any new LLM lane (transport + downgrade defense + auditable SKIPPED logging)".</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/skills/codex-sutra/</code> &middot; <code>sutra/marketplace/plugin/skills/deepseek/</code> &middot; <code>sutra/marketplace/plugin/bin/deepseek-claude</code> &middot; <code>sutra/os/decisions/ADR-005-host-llm-host-selection.md</code></li>
+<li><b>Gap vs Native:</b> OS-21 (LLMSubstrate adapter for OpenAI/Gemini host swap) deferred &mdash; v1.x locked to {claude, codex}.</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D36</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d32">
+<b>dir/D32 &mdash; one-dispatcher-per-event hot-reload hook dispatch (Host lifecycle interceptors)</b>
+<ul>
+<li><b>Shipped today:</b> settings.json registers ONE dispatcher per Host lifecycle event (no per-hook rows); the dispatcher re-reads the registry + enabled_hooks block on EVERY invocation, so a newly declared hook reaches live sessions with no settings.json change and no restart.</li>
+<li><b>Behavior contract (verbatim-derived):</b> "a hook fires only when its registry row exists AND enabled_hooks[name]: true"; default for every declared hook is OFF; clients cannot flip switches (Sutra-managed config); "a newly declared hook reaches LIVE sessions on the next tool call with no settings.json change and no restart"; fail-open with '|| true'.</li>
+<li><b>Redo recipe:</b> map onto Native as "the Trigger registry plus per-tenant enablement read at fire time rather than load time".</li>
+<li><b>Artifacts:</b> <code>sutra/os/hooks/posttool-registry.jsonl</code> &middot; <code>sutra/os/SUTRA-CONFIG.md</code> (enabled_hooks block) &middot; the per-event dispatcher in <code>sutra/marketplace/plugin/hooks/</code></li>
+<li><b>Gap vs Native:</b> the registry-read-at-fire-time pattern is the part to canonize on the Trigger primitive; placement is Host per ADR-021.</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D32</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-cap-108">
+<b>cap/108 &mdash; per-turn discipline emitter on UserPromptSubmit</b>
+<ul>
+<li><b>Shipped today:</b> per-turn-discipline-prompt.sh fires on UserPromptSubmit, jq-reads sutra-defaults.json .right_effort at runtime, emits the stderr nudge before any Edit/Write.</li>
+<li><b>Behavior contract (verbatim-derived):</b> "schema-as-single-source &mdash; emitter jq-reads policy at runtime, never hardcodes text"; dual kill-switch (env + file).</li>
+<li><b>Redo recipe:</b> attach the runtime-jq-read emitter to the Native Host's UserPromptSubmit lifecycle event; policy stays in one schema file, never hardcoded in the emitter.</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/hooks/per-turn-discipline-prompt.sh</code> &middot; <code>sutra/marketplace/plugin/sutra-defaults.json</code> (.right_effort)</li>
+<li><b>Gap vs Native:</b> OS-7 (Native owns its own UserPromptSubmit intake) deferred &mdash; currently arrives via core hook on Asawa (ADR-015).</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/108</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-cap-110">
+<b>cap/110 &mdash; subagent-dispatch brief on PreToolUse (Task)</b>
+<ul>
+<li><b>Shipped today:</b> subagent-dispatch-brief.sh fires on PreToolUse for the Task tool, emits the dispatch-contract reminder; plugin hooks fire deterministically inside subagent context (verified 2026-04-24).</li>
+<li><b>Behavior contract (verbatim-derived):</b> exact prefix line '&#167;Sutra discipline (mandatory)', 5 governance blocks, 4-line TRIAGE/ESTIMATE/ACTUAL/OS-TRACE footer; "plugin PreToolUse/PostToolUse hooks fire deterministically inside subagent context (verified 2026-04-24)".</li>
+<li><b>Redo recipe:</b> attach the dispatch-brief emitter to the Native Host's PreToolUse(Task) lifecycle event; require the subagent to emit the same 5 blocks + footer.</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/hooks/subagent-dispatch-brief.sh</code></li>
+<li><b>Gap vs Native:</b> enforcement of subagent emission is convention; the deterministic hook firing is the enforcement substrate.</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/110</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-proto-014">
+<b>proto/014 &mdash; session-start version banner; consent-gated update (SessionStart)</b>
+<ul>
+<li><b>Shipped today:</b> update-banner.sh fires on SessionStart, compares installed plugin version to ~/.sutra/last-seen-version, prints a one-time '&lt;old&gt; &#8594; &lt;new&gt;' banner with changelog link; /core:update runs only on user consent.</li>
+<li><b>Behavior contract (verbatim-derived):</b> governing invariant D22 pull-not-push &mdash; "client stays pinned until it chooses to move"; the redo recipe canonizes the consent CONTRACT, not the rendering: "the banner UX was excluded from Native as plumbing &mdash; the consent CONTRACT is the part to canonize".</li>
+<li><b>Redo recipe:</b> canonize the consent contract (D22 pull-not-push) on the Native Host SessionStart lifecycle event; exclude the banner rendering as plumbing.</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/hooks/update-banner.sh</code> &middot; <code>~/.sutra/last-seen-version</code> (per-instance)</li>
+<li><b>Gap vs Native:</b> only the consent contract is in scope; rendering excluded as plumbing.</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#proto/014</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-proto-023">
+<b>proto/023 &mdash; one sourceable knob file the daemon AND host-side hooks both read</b>
+<ul>
+<li><b>Shipped today:</b> one shell-sourceable file per instance at $HOME/.sutra/config.env holds every kill-switch, threshold, and opt-in.</li>
+<li><b>Behavior contract (verbatim-derived):</b> "hooks SHOULD source $HOME/.sutra/config.env at startup"; config is ADDITIVE (env-var overrides keep working); "one sourceable/parseable file the daemon AND host-side hooks both read".</li>
+<li><b>Redo recipe:</b> give Native one sourceable/parseable config file both the daemon and host-side hooks read; keep env-var override compatibility.</li>
+<li><b>Artifacts:</b> <code>$HOME/.sutra/config.env</code> (per-instance knob file)</li>
+<li><b>Gap vs Native:</b> production weakness flagged &mdash; adoption is thin: 1 of ~75 hooks sources it.</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#proto/023</code></li>
+</ul>
+</div>
+
+<h3>Group B &mdash; Host-resident discipline / lifecycle dossiers (eng-contract-anchors fanout, 2026-06-13)</h3>
+<div class="note">Each subsection below carries a stable <code>id</code> so the CoS needs rows can deep-link the in-page HOW. Contract text is verbatim-derived from the dossier's <b>Behavior contract</b> line; canon is linked, never pasted (D54).</div>
+
+<div class="contract" id="contract-cap-112">
+<b>cap/112 &mdash; Customer-Focus-First (P0) top-precedence policy node</b>
+<ul>
+<li><b>Shipped today:</b> Founding-Doctrine Principle 0 shipped in three surfaces &mdash; FOUNDING-DOCTRINE.md P0 operative text, CLAUDE.md Core Behaviors mirror (listed first), and fleet schema <code>sutra-defaults.json .customer_focus_first</code> (v2.26.0) with rule + precedence + source_doctrine + kill-switch. CSM status 'shipping (policy-visible)' = TERMINAL for governance-doctrine caps (schema IS the final form, no hook planned).</li>
+<li><b>Behavior contract (verbatim):</b> "P0 supersedes every other principle for all responses: when any other rule (tone register, brevity default, governance format) conflicts with the reader's ability to understand customer-facing output, the conflict resolves to P0; enforcement is convention-only (policy-visible terminal status) with an explicit kill-switch, and downstream policies (Anti-Glaze, caveman) must declare their P0 scope boundary."</li>
+<li><b>Redo recipe (gist):</b> write the P0 sentence verbatim into Native canon as a top-precedence policy node with explicit precedence ordering over all other policy nodes &mdash; precedence is the load-bearing part, not just the rule text; keep enforcement convention_only (terminal after dual-AI review).</li>
+<li><b>Artifacts:</b> <code>/Users/asawa/Claude/root-os/FOUNDING-DOCTRINE.md</code> (P0 L5-8) &middot; <code>CLAUDE.md</code> (L280 mirror; L287 Anti-Glaze P0 scope) &middot; <code>sutra/marketplace/plugin/sutra-defaults.json</code> (.customer_focus_first) &middot; <code>holding/CAPABILITY-MAP.md</code> (L235 cap-112)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/112</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-cap-115">
+<b>cap/115 &mdash; Table-Shape contract (Impact+Effort on every task list)</b>
+<ul>
+<li><b>Shipped today:</b> fleet policy node <code>sutra-defaults.json .output_discipline.table_shape</code> (v2.26.0) &mdash; rule + minimum_header + applies_to (3+ rows) + applies_to_relayed (subagent/codex output reshaped before presenting). Convention_only; CSM cap-115 'shipping (policy-visible)' terminal. Output-time surfaces: readability-gate skill + per-turn-discipline-prompt readability nudge.</li>
+<li><b>Behavior contract (verbatim):</b> "Any task list of 3+ rows presented to the operator &mdash; whether authored directly or relayed from subagent/codex output &mdash; carries Impact and Effort columns at minimum the declared header shape, with relayed output reshaped before presenting; ranking columns (Severity/Priority/Score) alone never satisfy the contract."</li>
+<li><b>Redo recipe (gist):</b> port rule text + minimum_header string verbatim as a Native output-policy node on the render/presentation stage; explicitly include the applies_to_relayed clause (the differentiating half with no Native trace); keep it bundled under one output-discipline family (no thin dedicated hooks).</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/sutra-defaults.json</code> (.output_discipline.table_shape) &middot; <code>CLAUDE.md</code> (&#167;Table Shape mirror) &middot; <code>sutra/marketplace/plugin/skills/readability-gate/SKILL.md</code> &middot; <code>sutra/marketplace/plugin/hooks/per-turn-discipline-prompt.sh</code> (L86)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/115</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-cap-116">
+<b>cap/116 &mdash; PROTO-006 process-discipline pre-action contract</b>
+<ul>
+<li><b>Shipped today:</b> constitutional protocol PROTOCOLS.md PROTO-006 (merged PROTO-006 + PROTO-007) + fleet schema <code>sutra-defaults.json .process_discipline_proto006</code> (v2.26.0). Registry row ACTIVE/SOFT; operational reality memory/convention per CLAUDE.md &#167;Process Discipline. CSM cap-116 'shipping (policy-visible)' terminal. Note: HARD in body block vs SOFT in registry row &mdash; resolve on port.</li>
+<li><b>Behavior contract (verbatim):</b> "When an agent receives a task or cannot complete a required process step: follow the process if it exists; if it cannot be followed, resolve without skipping; if still blocked, STOP and ask the human &mdash; never write 'TBD'; doubt about whether to ship routes through dispatcher classification (TYPE/ROUTE) + Depth + BLUEPRINT before acting, with no silent skips; only the named founder override phrases ('skip the process' / 'just do it' / 'skip depth assessment') suspend it."</li>
+<li><b>Redo recipe (gist):</b> encode as a Native pre-action policy/hardstop node &mdash; trigger conditions + 3-step resolution ladder (follow &#8594; resolve-without-skipping &#8594; STOP-and-ask) + banned token 'TBD' + named override phrases; port the PROTOCOLS.md check text verbatim; wire into the workflow engine's pre-action decision points rather than leaving it memory-only.</li>
+<li><b>Artifacts:</b> <code>sutra/layer2-operating-system/PROTOCOLS.md</code> (L170-178 PROTO-006; L22 registry) &middot; <code>sutra/marketplace/plugin/sutra-defaults.json</code> (.process_discipline_proto006) &middot; <code>CLAUDE.md</code> (&#167;Process Discipline) &middot; <code>holding/CAPABILITY-MAP.md</code> (L239)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/116</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-cap-118">
+<b>cap/118 &mdash; no-invented-human-ops lint (Stop event, live + wired)</b>
+<ul>
+<li><b>Shipped today:</b> schema <code>sutra-defaults.json .no_invented_human_ops_mechanisms</code> (v2.28.0) + live Stop-event lint csm-cap118-lint.sh wired in hooks.json (L380, timeout 3). Lint reads transcript_path, scans last assistant text (tail -200) against 8 regexes with allowlist heuristics, fires only on composite &#8805;2 distinct pattern hits, logs to <code>.enforcement/cap118-lint.jsonl</code>, always exits 0. CSM cap-118 policy-visible with behavior-verified upgrade deadline 2026-06-15.</li>
+<li><b>Behavior contract (verbatim):</b> "A response that proposes 2 or more distinct human-ops mechanism patterns (from the 8-pattern list) outside allowlisted contexts (quotes, descriptions of existing infrastructure, critique) produces a JSONL lint hit in .enforcement/cap118-lint.jsonl; single hits and allowlisted matches pass silently; the turn is never blocked and the hook always exits 0."</li>
+<li><b>Redo recipe (gist):</b> port the schema verbatim (rule + 8 lint patterns + good/bad examples + allowlist contexts &mdash; codex-specified IP); rebuild the lint as a Native session-stop rule evaluator keeping composite &#8805;2-distinct signal (anti-noise), context allowlisting, and log-not-block with verbose opt-in; carry the policy-visible &#8594; behavior-verified upgrade path (100-turn audit, &lt;5% FP).</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/sutra-defaults.json</code> (.no_invented_human_ops_mechanisms) &middot; <code>sutra/marketplace/plugin/hooks/csm-cap118-lint.sh</code> (L52-58 patterns; L70-93 allowlist; L96-101 composite) &middot; <code>sutra/marketplace/plugin/hooks/hooks.json</code> (L378-382 Stop) &middot; <code>holding/CAPABILITY-MAP.md</code> (L242)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#cap/118</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-hook-check-graduation">
+<b>hook/check-graduation &mdash; SOFT&#8594;HARD promotion evidence framework</b>
+<ul>
+<li><b>Shipped today:</b> 3-script graduation framework in the plugin hooks dir &mdash; compliance-tracker.sh (library: appends {ts,hook,status} to .claude/logs/compliance.jsonl), check-graduation.sh (on-demand report, report-only, 0 hooks.json refs), resilience.sh (consecutive-fail escalation). No compliance.jsonl data in this repo yet; the one real 2026-05-10 SOFT&#8594;HARD flip was founder-manual, not threshold-driven.</li>
+<li><b>Behavior contract (verbatim):</b> "Any SOFT hook that calls compliance-tracker.sh &lt;hook&gt; &lt;pass|warn&gt; accumulates per-hook events in .claude/logs/compliance.jsonl; running check-graduation.sh emits a GRADUATE-to-HARD verdict iff a hook has &#8805;20 events with &lt;80% pass rate (KEEP SOFT at &#8805;80%, WAITING under 20 events); independently, 3 consecutive warns on one hook auto-write a founder-visible escalation file at os/feedback-to-sutra/."</li>
+<li><b>Redo recipe (gist):</b> port the constants verbatim (20-event window, 80% threshold, 2-persist/3-escalate); redesign plumbing as Native primitives (pass/warn EngineEvent stream, graduation evaluator workflow, event-threshold escalation rule); keep promotion founder-gated &mdash; the framework's role is evidence-for-decision, not auto-promotion.</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/hooks/check-graduation.sh</code> (L16-29 verdict loop) &middot; <code>sutra/marketplace/plugin/hooks/compliance-tracker.sh</code> (L6-15) &middot; <code>sutra/marketplace/plugin/hooks/resilience.sh</code> (L42-66) &middot; <code>sutra/marketplace/plugin/hooks/hooks.json</code> (L355)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#hook/check-graduation</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-hook-output-behavior-lint">
+<b>hook/output-behavior-lint &mdash; Stop-event transcript lint (two behavioral rules)</b>
+<ul>
+<li><b>Shipped today:</b> Stop-event transcript lint, wired fleet-wide in plugin hooks.json (Stop, timeout 8). Reads transcript_path, scans last N=3 assistant turns (python3 helper) for two rules &mdash; (1) never-ask-to-run regex, (2) no-html-unless-asked (flagged only when preceding user message lacks 'html'). Appends JSON envelopes to <code>.enforcement/routing-misses.log</code>; advisory, always exits 0. Holding-side dispatcher path FAILs (target file absent on disk); plugin registration is the only live path.</li>
+<li><b>Behavior contract (verbatim):</b> "At session Stop, if any of the last 3 assistant turns contains ask-to-run phrasing or HTML document scaffolding outside code fences when the preceding user message did not request HTML, a JSON finding row lands in .enforcement/routing-misses.log; the turn is never blocked and the hook always exits 0."</li>
+<li><b>Redo recipe (gist):</b> model as data-driven behavioral rules {id, regex, context_precondition, scan_window} consumed by a session-stop lint stage; port the two regexes + fence-stripping + last-user-message HTML precondition + 3-turn window verbatim; redesign storage as EngineEvents so a behavior-verification eval lane can consume findings; carry escalation thresholds (&gt;3/week &#8594; promote to gate; &gt;20% FP &#8594; refine).</li>
+<li><b>Artifacts:</b> <code>sutra/marketplace/plugin/hooks/output-behavior-lint.sh</code> (L120-127 rule regexes; L102 html check; L162-178 envelope; L182-205 ops policy) &middot; <code>sutra/marketplace/plugin/hooks/hooks.json</code> (L373-377 Stop) &middot; <code>holding/hooks/dispatcher-stop.sh</code> (L837-856 missing-file FAIL fallback)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#hook/output-behavior-lint</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d10">
+<b>dir/D10 &mdash; test-in-production: no protocol ships without real-feature validation</b>
+<ul>
+<li><b>Shipped today:</b> three layers &mdash; doctrine FOUNDER-DIRECTIONS.md D10, governing ledger holding/TEST-IN-PRODUCTION.md (ENFORCEMENT HARD: every protocol carries a PROOF field; no proof = EXPERIMENTAL, cannot graduate to TESTED), and sensor test-in-production-check.sh (Stop event, diffs newly added holding/**.md or sutra/**.md and warns). Internal hook label drift ('D1') noted; behavior matches D10.</li>
+<li><b>Behavior contract (verbatim):</b> "Creating a new .md under holding/ or sutra/ in a session without a corresponding proof entry produces a Stop-event warning enumerating each untested artifact. A protocol with no PROOF row (company + real feature + what it caught + date) stays EXPERIMENTAL and may not graduate to TESTED."</li>
+<li><b>Redo recipe (gist):</b> state the invariant as Native doctrine (no protocol/primitive ships without real-production validation); port the PROOF schema verbatim as a required field on every shipped part; implement a Stop/session-end sensor diffing new spec/canon files against the proof ledger; gate the EXPERIMENTAL&#8594;TESTED transition on a ledger row, aligned with Native's dogfood-gated promotion.</li>
+<li><b>Artifacts:</b> <code>holding/FOUNDER-DIRECTIONS.md</code> (L124-126; L20 index) &middot; <code>holding/TEST-IN-PRODUCTION.md</code> (L1-31 rule + PROOF schema + graduation) &middot; <code>holding/DIRECTION-ENFORCEMENT.md</code> (L104-110) &middot; <code>sutra/marketplace/plugin/hooks/test-in-production-check.sh</code> (L7-21) &middot; <code>holding/hooks/dispatcher-stop.sh</code> (L139-152)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D10</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d12">
+<b>dir/D12 &mdash; survey-the-architecture-map before any CREATE</b>
+<ul>
+<li><b>Shipped today:</b> doctrine FOUNDER-DIRECTIONS.md D12 (before creating anything, read SYSTEM-MAP.md + HIERARCHY.md) + two PreToolUse checks in dispatcher-pretool.sh &mdash; Check 3 'Architecture Awareness' (fires on Write to a non-existent path, SOFT) and Check 4 'New Path Detector' (flags new files in dirs not in SYSTEM-MAP.md). PROTO-001 RETIRED; substance survives in these checks, later generalized fleet-wide by D55 Restructure-on-Add Survey.</li>
+<li><b>Behavior contract (verbatim):</b> "Any Write that creates a file at a non-existent, non-whitelisted path triggers a PreToolUse warning to consult SYSTEM-MAP.md (never blocks); a new file in a directory unknown to SYSTEM-MAP.md is additionally flagged as a new-path event."</li>
+<li><b>Redo recipe (gist):</b> declare the invariant as a canon rule (survey the architecture registry before any CREATE-class action); port the two-check shape verbatim (new-file consultation reminder + unknown-directory detector); wire both against Native's registry/ontology as the map source; keep SOFT (warn, never block).</li>
+<li><b>Artifacts:</b> <code>holding/FOUNDER-DIRECTIONS.md</code> (L132-134; L22 index) &middot; <code>holding/DIRECTION-ENFORCEMENT.md</code> (L120-126) &middot; <code>holding/hooks/architecture-awareness.sh</code> (L17-31; L2-11 L2 build-layer header) &middot; <code>holding/hooks/dispatcher-pretool.sh</code> (L137-165) &middot; <code>holding/SYSTEM-MAP.md</code> &middot; <code>holding/HIERARCHY.md</code></li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D12</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d18">
+<b>dir/D18 &mdash; packaging IS the product; install precedes launch</b>
+<ul>
+<li><b>Shipped today:</b> doctrine FOUNDER-DIRECTIONS.md D18 (packaging is the real priority); the npx framing was retired (archive/package-v1.2.1-retired/) &mdash; what shipped as the packaging-is-product realization is the marketplace plugin channel: 2-command install (EXTERNAL-CLIENT-INSTALL.md), go.sh one-shot onboard, start.sh/onboard.sh activation, install UX hardened (jq replacing python3 for EDR-killed hosts). Packaging dogfooded (CM9, DayFlow) before public launch per the D29 cascade.</li>
+<li><b>Behavior contract (verbatim):</b> "A new external client reaches a governed working session in two commands plus one activation step; packaging/install UX work is scheduled BEFORE launch activities because install friction gates all adoption."</li>
+<li><b>Redo recipe (gist):</b> state the principle in Native's Distribution section (packaging IS the product, precedes launch on every roadmap); port the install contract (2-command ceiling, one-shot activation, first-run banner) + host-quirk hardening (no python3 dep, fail-open); carry the stale-registry lesson (rewrite the enforcement-registry row when the channel changes, never leave FUTURE).</li>
+<li><b>Artifacts:</b> <code>holding/FOUNDER-DIRECTIONS.md</code> (L156-158; L28 index) &middot; <code>holding/DIRECTION-ENFORCEMENT.md</code> (L168-174 stale npx framing) &middot; <code>sutra/marketplace/plugin/EXTERNAL-CLIENT-INSTALL.md</code> (L1-15) &middot; <code>sutra/marketplace/plugin/scripts/go.sh</code> (L1-15) &middot; <code>sutra/marketplace/plugin/scripts/start.sh</code> &middot; <code>sutra/marketplace/plugin/scripts/onboard.sh</code></li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D18</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d29">
+<b>dir/D29 &mdash; identity-concealment: no parent-brand strings in the shipped plugin</b>
+<ul>
+<li><b>Shipped today:</b> plugin ships as bare 'sutra' &mdash; no holding-brand strings in manifest, marketplace repo name, author-visible metadata, skills, commit messages, or first-run UX. plugin.json name 'core' (installs as core@sutra), author 'Sutra', homepage sutra.os; grep returns zero brand hits. Enforcement: scripts/leak-audit.sh greps the whole tree for the forbidden brand string (constructed at runtime via printf so the literal never appears) and exits 1 on any hit. Maps to requirement N35.</li>
+<li><b>Behavior contract (verbatim):</b> "No file in the shipped plugin tree contains the holding-company brand string &mdash; leak-audit.sh exit 0 is the publish gate; all marketplace-visible metadata, skills, and first-run UX present 'Sutra' only."</li>
+<li><b>Redo recipe (gist):</b> add the identity-concealment invariant to Native's Distribution section as stated doctrine (parent brand never appears in any client-visible artifact; marketplace/distribution is a first-class department of the product); port leak-audit.sh verbatim (runtime-constructed pattern + release-gating exit code) and wire it into Native's plugin CI/SBOM publish step.</li>
+<li><b>Artifacts:</b> <code>holding/FOUNDER-DIRECTIONS.md</code> (L211-238; L39 index) &middot; <code>sutra/marketplace/plugin/.claude-plugin/plugin.json</code> (L1-12, zero brand strings) &middot; <code>sutra/marketplace/plugin/scripts/leak-audit.sh</code> (L1-28 runtime pattern + exit 1)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D29</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d56">
+<b>dir/D56 &mdash; three-layer feedback-channel defense (hold under LLM rationalization)</b>
+<ul>
+<li><b>Shipped today:</b> all three layers live in the plugin. Layer 1 textual: feedback-routing-rule.sh (UserPromptSubmit, injects 7 numbered rules incl. the no-graduation-to-manual-workaround clause). Layer 2 programmatic: feedback-channel-guard.sh (PreToolUse:Bash, exit 2 blocks gh issue/pr create/comment/review + mutating gh api against sankalpasawa/sutra*, incl. git-remote inference). Layer 3 root cause: scripts/feedback.sh binary fixed (dropped --label flag that triggered the original bypass). Maps to requirement N39.</li>
+<li><b>Behavior contract (verbatim):</b> "An AI-driven gh issue/pr create|comment|review (or mutating gh api) against any sankalpasawa/sutra* repo &mdash; explicit or inferred from git remote &mdash; is blocked with exit 2 and stderr naming the sanctioned channel; feedback-intent prompts receive the routing rule injected before any tool call; on binary failure the only permitted path is local capture at ~/.sutra/feedback/pending/ &mdash; never direct gh."</li>
+<li><b>Redo recipe (gist):</b> port all three files near-verbatim &mdash; each covers a distinct failure mode and the incident proved single-layer rules collapse under LLM error-recovery rationalization; register the guard FIRST in the Bash PreToolUse chain; preserve the documented threat-model honesty (advisory vs adversarial) and the hold-under-LLM-rationalization rationale as canon text, not just comments.</li>
+<li><b>Artifacts:</b> <code>holding/FOUNDER-DIRECTIONS.md</code> (L455-488) &middot; <code>sutra/marketplace/plugin/hooks/feedback-routing-rule.sh</code> (L30-46 patterns; L50-62 injected rule) &middot; <code>sutra/marketplace/plugin/hooks/feedback-channel-guard.sh</code> (L87-110 target detection; L158-186 block+exit2) &middot; <code>sutra/marketplace/plugin/scripts/feedback.sh</code></li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D56</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d57">
+<b>dir/D57 &mdash; assistant layer PAUSED; default-off-by-non-registration contract</b>
+<ul>
+<li><b>Shipped today:</b> the assistant/interaction layer is PAUSED &mdash; observer + kill-switch shim entirely absent from the active plugin (zero 'assistant' entries in hooks.json, no assistant-*.sh on disk), so default-off is enforced structurally by non-registration (zero tokens). Opt-in machinery survives in bin/sutra (sutra enable refuses while emergency-kill files exist, then touches ~/.sutra-assistant-enabled). Re-enable gated on clearing open bugs B1/B5/B6/B8 via re-architecture. Adversarial kill-switch test harness (T1-T5) survives. (Confidence: moderate &mdash; layer appears fully stripped, a cleanup the direction text does not record.)</li>
+<li><b>Behavior contract (verbatim):</b> "A fresh session emits zero assistant events and spends zero tokens on the layer unless ~/.sutra-assistant-enabled exists; emergency kill files always win over enable; re-enabling requires the open B1/B5/B6/B8 bugs cleared via re-architecture, not a patch."</li>
+<li><b>Redo recipe (gist):</b> ship any observer-class feature behind a positive opt-in flag (default-off polarity, B3 lesson), exactly ONE registration path through a kill-switch shim (no direct event registration, B2 lesson), dependencies (jq) declared at start-time not fire-time (B1), tenant identity never defaulting to the parent org (B6); port the T1-T5 kill-switch test incl. the off-path latency budget; document the default-off contract in canon.</li>
+<li><b>Artifacts:</b> <code>holding/FOUNDER-DIRECTIONS.md</code> (L492-532) &middot; <code>sutra/marketplace/plugin/bin/sutra</code> (L180-208 enable/disable + emergency-kill precedence) &middot; <code>holding/research/2026-04-24-assistant-layer-design.md</code> (L14-30 B1-B8 list) &middot; <code>holding/hooks/tests/test-assistant-kill-switch.sh</code> (L1-30 T1-T5) &middot; <code>sutra/marketplace/plugin/hooks/hooks.json</code> (zero assistant registrations)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D57</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-dir-d58">
+<b>dir/D58 &mdash; Anti-Glaze tone (founder-facing register; P0 carve-out)</b>
+<ul>
+<li><b>Shipped today:</b> two layers &mdash; governance text CLAUDE.md Core Behaviors L287 (8 active rules: verify own work / precise-not-strident composing with D51 caveman / lead with strongest counterargument / banned glaze phrases / say-wrong-immediately + no capitulation without new evidence / no anchoring on founder numbers / explicit confidence levels / never apologize for disagreeing + scope carve-out + 5 rejected clauses + revoke phrases), and fleet skill skills/anti-glaze-tone/SKILL.md (same content distributable, mirrored into sutra/CLAUDE.md). 16-ADD &#8594; 8 consolidated rules; 5-DROP = rejected-clauses table. Maps to requirement N40.</li>
+<li><b>Behavior contract (verbatim):</b> "Founder-facing responses never use banned glaze phrases or praise questions, never capitulate under pushback absent new evidence, carry explicit confidence levels on factual claims, generate independent estimates before comparing to founder-provided numbers, and never apologize for disagreeing; customer-facing artifacts are exempt and route through Customer Focus First."</li>
+<li><b>Redo recipe (gist):</b> port skills/anti-glaze-tone/SKILL.md verbatim as a Native doctrine part + registry row; preserve exactly (a) the scope carve-out (founder register vs P0 customer register) and (b) the rejected-clauses table &mdash; they prevent the aggressive register bleeding into regulated client output; the 8 rules without the carve-outs would be worse than none.</li>
+<li><b>Artifacts:</b> <code>CLAUDE.md</code> (L287 full Anti-Glaze entry) &middot; <code>sutra/marketplace/plugin/skills/anti-glaze-tone/SKILL.md</code> (L1-45 scope carve-out + 8-rule table + rejected-clauses table) &middot; <code>sutra/CLAUDE.md</code> (Anti-Glaze section, Asawa-inherited)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#dir/D58</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-proto-005">
+<b>proto/005 &mdash; self-assess-before-foundational (advisory; subsumed-by-depth)</b>
+<ul>
+<li><b>Shipped today:</b> PROTO-005 RETIRED as a protocol (subsumed by the depth system D2/D26 &mdash; Depth 5 already requires self-assessment). Lesson survives as plugin hook self-assess-before-foundational.sh, PreToolUse on Write|Edit|MultiEdit (hooks.json L148-152), ADVISORY only. Logic: fires only when DEPTH is 4/5 AND the target path is foundational (sutra/, holding/, charters, FOUNDER-DIRECTIONS, SYSTEM-MAP, CLAUDE.md, PROTOCOLS.md, system.yaml, PROJECT.md); requires per-task marker .claude/self-assessed-&lt;slug&gt;; on absence prints a reminder + appends a proto005-warn row to .enforcement/routing-misses.log.</li>
+<li><b>Behavior contract (verbatim):</b> "Any Depth-4/5 Write/Edit to a foundational path (sutra/, holding/, charters, FOUNDER-DIRECTIONS, SYSTEM-MAP, CLAUDE.md, PROTOCOLS.md, system.yaml, PROJECT.md) without a per-task .claude/self-assessed-&lt;slug&gt; marker produces a visible reminder plus an audit row; the edit always proceeds (advisory, exit 0)."</li>
+<li><b>Redo recipe (gist):</b> port the trigger taxonomy verbatim (foundational-path list + session-plumbing whitelist) and the per-task-slug marker pattern (ties assessment to a specific task, an improvement over the retired &lt;1hr research-done marker); model as a SOFT pre-write check on Executions targeting canon/architecture classes; keep advisory and capture the subsumed-by-depth retirement rationale in the canon part so Native doesn't re-harden it blindly.</li>
+<li><b>Artifacts:</b> <code>sutra/layer2-operating-system/PROTOCOLS.md</code> (L161-168 retired entry; L31 index) &middot; <code>sutra/marketplace/plugin/hooks/self-assess-before-foundational.sh</code> (L31-40 depth gate; L43-48 path match; L56-67 marker check + warn) &middot; <code>sutra/marketplace/plugin/hooks/hooks.json</code> (L148-152)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#proto/005</code></li>
+</ul>
+</div>
+
+<div class="contract" id="contract-proto-013">
+<b>proto/013 &mdash; binary deploy: full-content expected-state verify (not file existence)</b>
+<ul>
+<li><b>Shipped today:</b> ACTIVE/SOFT. 150-line procedural doctrine (PROTOCOLS.md L238-386): deployment is BINARY ('you don't install 60% of an operating system'); 4-step process &mdash; (1) GENERATE EXPECTED STATE (full per-client state, itemized checklist), (2) COMPARE CONTENT not existence (MATCH/OUTDATED/MISSING/EXTRA per file), (3) DEPLOY every mismatch mutating only Sutra-managed sections, (4) RE-VERIFY to 100% MATCH + live smoke test. Executed by the LLM following doctrine. Hard mechanism: dispatcher-pretool.sh Check 11 blocks (exit 2) edits under sutra/ or company os/ paths unless the per-turn .claude/sutra-deploy-depth5 marker exists, logging to .enforcement/sutra-deploys.log. Maps to requirement N29.</li>
+<li><b>Behavior contract (verbatim):</b> "A Sutra&#8594;client deploy is complete only when every file in the generated expected state is a CONTENT match (version strings, terminology, sections) &mdash; any remaining OUTDATED means the deploy failed and must be fixed and re-verified; company-managed content is never overwritten; every deploy-path edit is depth-5-gated and logged to .enforcement/sutra-deploys.log."</li>
+<li><b>Redo recipe (gist):</b> reimplement as a Native workflow with a machine-checkable manifest &mdash; generator renders expected per-client state, differ compares content hashes per file-section (MATCH/OUTDATED/MISSING/EXTRA), converger rewrites only Sutra-managed sections, verifier hard-fails on any non-MATCH (binary DEPLOYED/NOT-DEPLOYED); port verbatim the managed-vs-company section split + the L1-existence vs L2-content distinction + the origin incident; wire sbom.sh's hash-manifest as the differ and deploy-with-verify.sh's grep-the-live-artifact as the post-deploy smoke check.</li>
+<li><b>Artifacts:</b> <code>sutra/layer2-operating-system/PROTOCOLS.md</code> (L238-386: expected-state L255-286, diff report L300-305, managed-vs-company split L313-331, binary verify L334-346) &middot; <code>holding/hooks/dispatcher-pretool.sh</code> (L490-523 Check 11 depth-5 gate + sutra-deploys.log) &middot; <code>sutra/marketplace/plugin/scripts/sbom.sh</code> (L31-55 hash manifest) &middot; <code>holding/scripts/deploy-with-verify.sh</code> (L56-86 deploy&#8594;curl&#8594;grep&#8594;fail-loud)</li>
+<li><b>Full dossier:</b> <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md#proto/013</code></li>
+</ul>
+</div>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<div class="gap">Only-SoP-calls-Host exclusivity is a working assumption carried from a founder session (echoed in _matrix.html / _block-orchestration.html, not source of truth) &mdash; "this exclusivity appears nowhere in index.html &mdash; &#167;1.0 states no such rule, and ADR-005 only says host-LLM selection is per-workflow. Confirm and write it down (&#167;1.0 or an ADR), or drop it." (_block-host.html gap 1)</div>
+<div class="gap">ADR-005 allows codex/deepseek as host-LLMs (per the master &#167;12.1 label), yet &#167;1.0 labels the Host box "Claude CLI" singular &mdash; is Claude CLI the fixed operator-facing host while per-workflow LLM calls may route to a different host, or can the top-of-stack Host itself be swapped? Cited ranges do not reconcile this. (_block-host.html gap 2; note ADR-005's own enum is {claude, codex})</div>
+<div class="gap">&#167;1.0's Host &#8594; Daemon edge label "runs" conflates lifecycle (Host runs the Daemon) with request flow (request reaches Orchestration) &mdash; which transport carries the request (CLI invocation, IPC, file)? Not specified in cited ranges. (_block-host.html gap 3)</div>
+<div class="gap">Host is per-session while Daemon is "always-on" &mdash; what happens to an in-flight operator request if the Host (Claude CLI session) exits while the Daemon is still RUNNING? Cited ranges cover daemon restart but not Host-absence semantics. (_block-host.html gap 5; manifest acceptance: "Host-absence semantics gap preserved")</div>
+<div class="gap">No internal decomposition of the Host beyond "agent runtime + model in one" exists anywhere in the cited ranges &mdash; is second-order detail for the Host block (session state, tool loop, context window) intentionally deferred to the UI/_consumer-product detailing pass? (_block-host.html gap 6)</div>
+<div class="gap">Which block issues B1's intent-parse LLM call? &#167;4.1 puts LLM calls inside Workflow Steps (SoP runtime) and ADR-005 selects the host-LLM per workflow, yet B1's parse contract sits in Orchestration's translate step. (_matrix.html gap 2)</div>
+<div class="gap">Canon gap OS-1: NativeEngine.on_host_llm_result is declared as the resumption callback after the host-LLM returns, but the exact wire is open per NATIVE-ENGINE.md &#167;8 OS-1 &mdash; RUN's contract for awaiting that callback is implementation-shaped, not canon-shaped. (sutra/os/native/surfaces/run.md)</div>
+<div class="gap">OS-21 deferred: LLMSubstrate adapter for OpenAI/Gemini host swap &mdash; v1.x locked to {claude, codex}. OS-20 deferred: per-invocation MCP context passing for claude --bare. (ADR-005)</div>
+<div class="gap">OS-7 deferred: Native owns its own UserPromptSubmit intake &mdash; currently still arrives via the core hook on Asawa. (ADR-015 consequences)</div>
+<div class="gap">17 shipped-but-unwired hooks are Host-resident dormant mechanisms; wire-or-retire review is an ops follow-up. (ADR-021 consequences)</div>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No child pages yet &mdash; per-subsystem child expansion stays gated on PLATFORM locks (engineering index acceptance, codex MODIFY-7 as amended 2026-06-12); PLATFORM-LOCK founder-waivered for this population (holding/TODO.md).</li>
+<li>Behavior twin one band up: <a href="../platform/host.html">platform/host</a> (WHAT the block promises; this page holds the HOW mechanisms).</li>
+<li>Daemon the Host runs (Orchestration + System of Process internals): <a href="../platform/runtime.html">platform/runtime</a>.</li>
+</ul>
+<div class="note">Existing diagrams for this subsystem (pointers &mdash; none redrawn here):<ul><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_block-host.html &mdash; SVG (viewBox 780&times;690): Host second-order block diagram, fully wired (A+T wrap, UI/Daemon/SoP/Compute neighbor stubs, fused runtime+model, host-LLM slot)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#so-host &mdash; same SVG embedded in frozen master &#167;1.0.1 (incl. 'plugin = Host-resident layer &mdash; ADR-021; gap #4 closed' edge label)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#section-1-0-runtime &mdash; first-layer runtime SVG (Host box 'Claude CLI', 'runs' edge to Daemon, Compute base)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_matrix.html &mdash; B1 traversal SVG (Host box 'Claude CLI &middot; model work'; 'intent parse &mdash; model work on Host' edge; Host runs-on-Compute edge)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#hld-00-l1-context &mdash; ASCII L1 System Context (HOST-LLM claude/codex box as external actor)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#hld-00-l2-connectmap &mdash; ASCII L2 connect-map (registry + effector split ADR-004 banner)</code></li><li><code>/Users/asawa/Claude/asawa-holding/sutra/os/native/surfaces/run.md#c4-context &mdash; ASCII C4: host-LLM dispatch chain (claude --bare | codex exec &#8594; on_host_llm_result)</code></li></ul></div>
+
+<h2>Sources</h2>
+<ul>
+<li>Compile section of record: <a href="_compile-2026-06-12-archived.html#eng-host">engineering/_compile-2026-06-12-archived.html#eng-host</a> (13 mechanism rows + 8 supplementary tables + 10 gaps, carried in full)</li>
+<li>Shipped-production dossiers: <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md</code> (dir/D36, dir/D32, cap/108, cap/110, proto/014, proto/023 &mdash; folded as contract-* subsections above)</li>
+<li>Canon (linked, never copied &mdash; D54): <code>sutra/os/native/primitives/step.md</code> &middot; <code>sutra/os/native/surfaces/run.md</code> &middot; <code>sutra/os/native/blocks/B11-promptbuilder.md</code> &middot; <code>sutra/os/decisions/ADR-004-registry-and-effector-split.md</code> &middot; <code>ADR-005-host-llm-host-selection.md</code> &middot; <code>ADR-015-standalone-h-sutra-in-native.md</code> &middot; <code>ADR-021-sutra-plugin-host-residency.md</code></li>
+<li>Master spec anchors: <a href="../master/index.html#section-1-0-runtime">master#section-1-0-runtime</a> &middot; <a href="../master/index.html#so-host">master#so-host</a> &middot; <a href="../master/index.html#section-4-0-daemon">master#section-4-0-daemon</a> &middot; master&#167;4.12.4 parity &middot; master&#167;12.1 ADR table</li>
+<li>Second-order working draft: <code>holding/website/native/_block-host.html</code> (internal-flow, internal-parts, contracts-neighbor-edges, gap #4 DECIDED entry)</li>
+<li>Pillar &times; block grid: <code>holding/website/native/_matrix.html</code> (Host column; B1 traversal SVG) &mdash; live page at <a href="../products/cos/matrix.html">products/cos/matrix</a></li>
+</ul>
+
+</div></div></body></html>

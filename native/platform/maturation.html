@@ -1,0 +1,382 @@
+<!doctype html>
+<!-- PAGE: platform-maturation (v2, DRAFT) — Native IA. Child of platform-runtime (daemon).
+     Subject status: PLANNED / v2 / NOT BUILT. Page lifecycle DRAFT (authored) is orthogonal to that.
+     Highlights the SAME daemon box (map-platform-runtime) per the depth rule (one zoom deeper, names itself).
+     Anatomy order MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     RESTRUCTURED 2026-06-16: re-framed as ONE VIEW of the loop (the-system-simply.html). This page is the
+     SCALE axis of the GROW stage — it READS recurring pains (named detectors) from the RECORD and WRITES BACK
+     the SHAPES available. Names the record->evidence boundary; cross-links overview + siblings (esp. resource.html,
+     since S2/S3 ARE the shared-resource/contention edges). No content dropped; reorganized only. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; Maturation: how the daemon grows a System (units &#8594; identity)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — maturation is one zoom deeper than the daemon; highlights the same box */
+#map-platform-runtime{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native hub</a> &#8250; <a href="index.html">platform</a> &#8250; <a href="runtime.html">runtime</a> &#8250; maturation &#160;&#183;&#160; loop: <a href="../the-system-simply.html">the system, simply</a> &#160;&#183;&#160; spine: <a href="../engineering/matrix.html">&#8592; Eng: Matrix</a> &#160;&#183;&#160; <a href="../engineering/data-model.html">Data Model &#8594;</a></div>
+<h1>Maturation &#8212; how the daemon grows a System <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<div class="key"><strong>This page is ONE VIEW of the <a href="../the-system-simply.html">one loop</a> &#8212; the <strong>SCALE</strong> axis of the <strong>GROW</strong> stage.</strong> The loop is <code>INTENT &#8594; SHAPE &#8594; RUN &#8594; RECORD &#8594; EVIDENCE &#8594; GROW &#8594; write-back &#8594; LOOP</code>, wrapped by <strong>GOVERN</strong>. GROW is where the system reads its own record to do better next time. SCALE is the one GROW axis that grows the <em>shape of the operation</em>: it <strong>READS recurring pains from the RECORD</strong> and <strong>WRITES BACK the SHAPES available</strong> &#8212; the same write-back the overview names (<em>"a pile of workflows grows coordination &#8594; a System"</em>). Everything below details that one read &#8594; write.</div>
+
+<div class="key"><strong>RULED vocabulary exists for this page's nouns.</strong> The 2026-08-05/06 sitting ruled the model this page is built on: <strong>System = engines + glue engines</strong> (glue functions &#8212; coordination, priority, audit, adaptation, identity &#8212; ARE engine types, WHAT-WE-DECIDED.md #3) and <strong>only systems exist</strong> (frame collapse, #15). Definitions live at <a href="the-model.html">The Model (ruled)</a> &#183; <a href="model/assembly-system.html">Assembly + System</a> &#183; <a href="model/workflow-engine.html">Workflow + Engine</a>.</div>
+
+<div class="planned"><strong>STATUS: split (refreshed 2026-08-18).</strong> (1) The <strong>System vocabulary is RULED</strong> &#8212; WHAT-WE-DECIDED.md #3 (engines + glue engines) and #15 (frame collapse); the <code>System</code> noun is canon, not pending. (2) The <strong>detector / EMERGE machinery below is design-forward &#183; v2 &#183; NOT BUILT</strong> &#8212; today Native runs <code>design &#8594; execute &#8594; record</code> and auto-grows only S1 units (see <a href="#today">&#167;What runs today</a>). The mechanism extends <a href="../master/index.html#section-4-native-platform">ADR-022's miner</a>; ADR-023 (the detector machinery) still needs a founder ruling before it is built. Page lifecycle = DRAFT (authored); detector subject = not created.</div>
+
+<h2>Where SCALE sits in the loop &#8212; the read-write this page owns</h2>
+<svg viewBox="0 0 880 250" role="img" aria-label="Maturation is the SCALE axis of GROW — reads recurring pains from the record, writes back the shapes available">
+<defs><marker id="lp" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="24" y="14" width="832" height="222" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="8 5"/>
+<text x="42" y="34" font-size="9.5" font-weight="800" fill="#7c3aed">GOVERN &#8212; authority: auto | ask | deny (wraps every step; here = the human gate before any shape changes)</text>
+<rect x="44" y="52" width="120" height="40" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="104" y="70" text-anchor="middle" font-size="9" font-weight="700">INTENT</text><text x="104" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">a new thing</text>
+<rect x="184" y="52" width="120" height="40" rx="7" fill="#fff7ed" stroke="#b45309" stroke-width="1.4"/><text x="244" y="70" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">SHAPE</text><text x="244" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">read input &#8594; plan</text>
+<rect x="324" y="52" width="120" height="40" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="384" y="70" text-anchor="middle" font-size="9" font-weight="700">RUN</text><text x="384" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">S1 units execute</text>
+<rect x="464" y="52" width="150" height="40" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/><text x="539" y="70" text-anchor="middle" font-size="9" font-weight="700" fill="#475569">RECORD</text><text x="539" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">every atom + debit written</text>
+<rect x="634" y="44" width="206" height="120" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="2"/><text x="737" y="63" text-anchor="middle" font-size="10" font-weight="800" fill="#047857">GROW</text><text x="737" y="78" text-anchor="middle" font-size="8" fill="#475569">read the record &#8594; improve</text>
+<rect x="648" y="90" width="178" height="60" rx="7" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="737" y="109" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">SCALE (this page)</text><text x="737" y="124" text-anchor="middle" font-size="7.7" fill="#374151">S1 &#8594; S5 self-governing (VSM)</text><text x="737" y="138" text-anchor="middle" font-size="7.7" fill="#6b7280">writes back: the SHAPES available</text>
+<path d="M164,72 L184,72" stroke="#334155" stroke-width="1.3" marker-end="url(#lp)"/>
+<path d="M304,72 L324,72" stroke="#334155" stroke-width="1.3" marker-end="url(#lp)"/>
+<path d="M444,72 L464,72" stroke="#334155" stroke-width="1.3" marker-end="url(#lp)"/>
+<path d="M614,72 L634,90" stroke="#334155" stroke-width="1.3" marker-end="url(#lp)"/><text x="624" y="64" font-size="7.5" fill="#475569">reads</text>
+<text x="539" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#64748b">RECORD &#8594; EVIDENCE</text><text x="539" y="134" text-anchor="middle" font-size="7.3" fill="#9ca3af">the record becomes evidence the</text><text x="539" y="146" text-anchor="middle" font-size="7.3" fill="#9ca3af">moment SCALE reads it across runs</text>
+<path d="M737,164 L737,200 L244,200 L244,92" stroke="#9ca3af" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#lp)"/>
+<text x="450" y="214" text-anchor="middle" font-size="8.5" fill="#6b7280">WRITE-BACK: a crystallized shape (a new block / a filled System slot) reshapes the NEXT run &#8212; loop</text>
+</svg>
+<p class="figcap">The <strong>record&#8594;evidence boundary</strong>: SCALE does not read the live run &#8212; it reads the <em>accumulated</em> record across runs, the moment of which turns the record into <em>evidence</em> (the read-model form before GROW). The <strong>write-back</strong> this page participates in is to <em>the shapes available</em> &#8212; it grows what SHAPE can reach for next time, never the live atom. Sibling GROW axes write back elsewhere: <a href="crystallization.html">SUBSTANCE</a> &#8594; the atom's dispatch; CROSS-UNIT &#8594; who-may-call-whom; CODIFY &#8594; the FOLLOW catalog.</p>
+
+<div class="note"><strong>Different axis, same stage.</strong> This page is the <em>scale</em> axis (a system growing S1&#8594;S5). For the <em>soft&#8594;hard</em> axis &#8212; how a unit of work hardens LLM &#8594; Skill &#8594; Code &#8212; see <a href="crystallization.html">Crystallization</a>. Both live in GROW; they are orthogonal and compose. The full axis map is on <a href="../axes.html">Axes + families</a>; the open-set rule that lets new axes be minted is <a href="../open-axis.html">the open-axis rule</a>.</div>
+
+<div class="note"><strong>New to this?</strong> Read the <a href="maturation-walkthrough.html">plain-English walkthrough</a> first &#8212; one digital-lending example (<code>W-disburse-loan</code> / <code>W-kyc-verify</code> / <code>W-emi-reconcile</code>) through all five phases, each with a before&#8594;after block diagram showing the trouble and how the new part helps. This page is the technical spec; that page is the story; the <a href="../the-system-simply.html">overview</a> is the whole loop in one read.</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- maturation is one zoom deeper than the daemon; highlights map-platform-runtime and names itself. -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="314" y="307" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Maturation (v2)</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Maturation is one zoom deeper than the <a href="runtime.html">daemon</a> &#8212; it is what the daemon does <em>over time</em> (the GROW stage of the <a href="../the-system-simply.html">loop</a>). Up = abstract (WHY) &#183; down = concrete (HOW). Purple dashed border = the governance wrap (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-maturation</code></td><td>PLATFORM / <a href="runtime.html">runtime (daemon)</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v2</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Document <em>how a system gets built out</em> &#8212; the SCALE axis of GROW: the daemon, <strong>reading recurring pains from the record over time</strong>, proposes the missing pieces that turn a pile of workflows into a viable <strong>System</strong>, and <strong>writes back the shapes available</strong> &#8212; up the recursion ladder from units (S1) to identity (S5). Scaffold present day-one; only S1 auto-grows; the rest crystallize on sustained, human-approved demand. Extends <a href="../master/index.html#section-4-native-platform">ADR-022 miner</a>; no runtime change until ADR-023 lands.</td><td colspan="3">page reads as one view of the loop (names the record&#8594;evidence read + the shapes-available write-back + cross-links overview/siblings); ladder + System scaffold + EMERGE detector REGISTRY of NAMED PAINS (slots; only S1 active, S2-S5 dormant pending signatures) + flow diagram + reversibility (proposed, not yet a rollback model) + day-one-vs-later phasing present; every claim cites ADR-022 / ADR-010 / workflow.md / emerge.md / the unit-science research; subject clearly marked PLANNED (not shipped); zero canon written.</td></tr>
+</table>
+
+<h2>This page's own diagram &#8212; the maturation loop (read pains &#8594; write shapes)</h2>
+<svg viewBox="0 0 880 430" role="img" aria-label="The maturation loop — daemon reads named pains from the record, human approves, rungs crystallize into the shapes available">
+<defs><marker id="mtah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- top row: run -> record -->
+<rect x="20" y="16" width="150" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="95" y="35" text-anchor="middle" font-size="10" font-weight="700">SYSTEM OF PROCESS</text>
+<text x="95" y="49" text-anchor="middle" font-size="8.5" fill="#6b7280">S1 units RUN (today)</text>
+<rect x="210" y="16" width="150" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.7"/>
+<text x="285" y="35" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">SYSTEM OF RECORD</text>
+<text x="285" y="49" text-anchor="middle" font-size="8.5" fill="#6b7280">the record (events)</text>
+<!-- EMERGE detector (solid, mine) -->
+<rect x="20" y="100" width="340" height="120" rx="10" fill="#fff" stroke="#b45309" stroke-width="2"/>
+<text x="34" y="120" font-size="11" font-weight="800" fill="#b45309">EMERGE &#8212; reads the record (6 NAMED-PAIN detectors)</text>
+<text x="34" y="139" font-size="8.7" fill="#374151">&#8226; unmatched utterance &#215;4 &#8594; propose Workflow (S1) &#8212; TODAY</text>
+<text x="34" y="155" font-size="8.7" fill="#374151">&#8226; units thrash &#8594; propose S2 coordination</text>
+<text x="34" y="171" font-size="8.7" fill="#374151">&#8226; units starve for compute &#8594; propose S3 resource</text>
+<text x="34" y="187" font-size="8.7" fill="#374151">&#8226; runs nothing reads &#8594; propose S3* audit</text>
+<text x="34" y="203" font-size="8.7" fill="#374151">&#8226; conformance drifts &#8594; propose S4 adapt &#183; purpose blurs &#8594; S5 identity</text>
+<!-- approval gate (solid) -->
+<rect x="20" y="260" width="150" height="50" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="95" y="280" text-anchor="middle" font-size="10" font-weight="700">GATE + APPROVAL</text>
+<text x="95" y="294" text-anchor="middle" font-size="8.5" fill="#6b7280">GOVERN &#8212; the human decides</text>
+<!-- crystallize targets (dashed neighbors — their internals live on their pages) -->
+<rect x="420" y="92" width="200" height="40" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="520" y="109" text-anchor="middle" font-size="9.5" font-weight="700">ORCHESTRATION</text>
+<text x="520" y="123" text-anchor="middle" font-size="8" fill="#6b7280">S2 coordination &#183; S3 resource</text>
+<rect x="420" y="142" width="200" height="40" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="520" y="159" text-anchor="middle" font-size="9.5" font-weight="700">SoR + OBSERVABILITY</text>
+<text x="520" y="173" text-anchor="middle" font-size="8" fill="#6b7280">S3* audit rule</text>
+<rect x="420" y="192" width="200" height="40" rx="8" fill="#fff" stroke="#b45309" stroke-width="1.6" stroke-dasharray="4 3"/>
+<text x="520" y="209" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">NEW 2nd-ORDER LOOP</text>
+<text x="520" y="223" text-anchor="middle" font-size="8" fill="#6b7280">S4 adaptation &#8212; the gap</text>
+<rect x="420" y="242" width="200" height="40" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="520" y="259" text-anchor="middle" font-size="9.5" font-weight="700">CHARTER / DOMAIN</text>
+<text x="520" y="273" text-anchor="middle" font-size="8" fill="#6b7280">S5 identity</text>
+<!-- the System object (solid) -->
+<rect x="670" y="142" width="190" height="90" rx="10" fill="#fff" stroke="#334155" stroke-width="2"/>
+<text x="765" y="163" text-anchor="middle" font-size="10" font-weight="800">SYSTEM (recursive)</text>
+<text x="765" y="180" text-anchor="middle" font-size="8.3" fill="#374151">slots S1..S5 &#183; S1 filled</text>
+<text x="765" y="194" text-anchor="middle" font-size="8.3" fill="#374151">S2-S5 typed-but-empty</text>
+<text x="765" y="212" text-anchor="middle" font-size="8.3" fill="#6b7280">matures one rung / loop</text>
+<!-- edges -->
+<path d="M170,38 L210,38" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#mtah)"/>
+<text x="172" y="32" font-size="8" fill="#475569">emit events</text>
+<path d="M285,60 L190,100" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#mtah)"/>
+<text x="222" y="84" font-size="8" fill="#475569">READS pains (record&#8594;evidence)</text>
+<path d="M95,220 L95,260" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#mtah)"/>
+<text x="101" y="244" font-size="8" fill="#475569">propose rung</text>
+<path d="M170,285 L300,285 L300,250" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#mtah)"/>
+<text x="176" y="280" font-size="8" fill="#475569">approved &#8594; WRITE BACK a shape</text>
+<path d="M360,200 L420,165" stroke="#334155" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#mtah)"/>
+<path d="M620,187 L670,187" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#mtah)"/>
+<text x="624" y="181" font-size="8" fill="#475569">fills a slot</text>
+<path d="M765,142 L765,70 L360,70 L360,100" stroke="#334155" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#mtah)"/>
+<text x="470" y="64" font-size="8" fill="#475569">matured System changes what the record shows next &#8212; loop</text>
+</svg>
+<p class="figcap">The two halves of SCALE: the <strong>READ</strong> (EMERGE reads <em>named pains</em> from the record &#8212; the record&#8594;evidence boundary) and the <strong>WRITE-BACK</strong> (an approved rung crystallizes into a block / fills a System slot &#8212; growing the shapes the next run can reach for). Solid boxes = parts of THIS page's subject (EMERGE detectors, the gate, the System object, the new S4 loop). Dashed boxes = neighbor blocks where each rung crystallizes (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2 id="read">The READ side &#8212; detectors are NAMED PAINS in the record</h2>
+<p>SCALE does not invent shapes; it <strong>names a pain, watches for it in the record, and only proposes a shape when that pain is sustained</strong>. A detector <em>is</em> a named pain plus the signal that betrays it &#8212; nothing more. This is the record&#8594;evidence read of the GROW stage made concrete: each detector reads the <em>accumulated</em> record across runs (never the live atom) and, on sustained pain, emits a proposal.</p>
+<table>
+<tr><th>Detector (the named pain)</th><th>Signal read from the record</th><th>Signal clarity</th></tr>
+<tr><td>utterance (S1) &#8212; <em>"a recurring ask has no home"</em></td><td>unmatched utterance pattern repeats &#8805;4 (today)</td><td>shipped</td></tr>
+<tr><td>S2 coordination &#8212; <em>"units thrash against each other"</em></td><td>concurrent executions contend on the same authoritative DataRef &#8594; retries/rollbacks over threshold</td><td>concrete (high)</td></tr>
+<tr><td>S3 resource &#8212; <em>"units starve for compute"</em></td><td>executions queue/starve at the daemon concurrency cap (Little's Law WIP signal)</td><td>concrete (high)</td></tr>
+<tr><td>S3* audit &#8212; <em>"runs that nothing reads"</em></td><td>a class of executions completes with no audit rule reading them (postcondition-coverage gap)</td><td>softer (moderate)</td></tr>
+<tr><td>S4 adaptation &#8212; <em>"the system drifts from its spec"</em></td><td>system-wide spec-vs-actual conformance degrading over time (the system-level version of the miner's per-workflow drift)</td><td>softer (moderate)</td></tr>
+<tr><td>S5 identity &#8212; <em>"work bound to no purpose"</em></td><td>workflows proposed/approved that bind to no Charter/Domain purpose, or charters in conflict</td><td>softest &#8212; needs definition (low)</td></tr>
+</table>
+<div class="key"><strong>S2 (coordination) and S3 (resource) ARE the shared-resource / contention edges &#8212; seen as named pains over time.</strong> The overview puts it plainly: <em>"shared-resource <strong>edges</strong> and scheduling <strong>contention</strong> are the same thing seen two ways &#8212; and they are the S2 (coordination) / S3 (resource) rungs of the maturation ladder."</em> An <a href="../edges.html">edge</a> is the wired-at-SHAPE view of two atoms competing for one finite thing; the same fact, accumulated in the record, is the S2/S3 <em>pain</em> SCALE reads here. The finite stock itself &#8212; tokens, $, the daemon's concurrency, the human &#8212; and its allocation rule live on <a href="../resource.html">Resource</a>. So: read <a href="../resource.html">Resource</a> for the stock, <a href="../edges.html">Edges</a> for the per-run link, and this page for the over-time maturation that crystallizes a coordination/resource rule into <a href="orchestration.html">Orchestration</a>.</div>
+<div class="note">Honest boundary: EMERGE's own canon (<code>sutra/os/native/surfaces/emerge.md</code>) already lists "pattern signature" as an unspecified gap. The S3*/S4/S5 signatures inherit that &#8212; each likely needs its own signature-definition sub-ADR, exactly as ADR-022 deferred mechanisms #3/#5. S2/S3 are defensible today; S3*/S4/S5 are research-open.</div>
+
+<h2 id="write">The WRITE-BACK side &#8212; the shapes available grow one rung</h2>
+<p>An approved proposal does not edit a running atom &#8212; it <strong>crystallizes a new shape into the operation</strong> and fills a slot on the recursive <code>System</code>. That is the write-back this page participates in: SCALE writes back <em>the shapes available</em>, so the next <a href="../the-system-simply.html">SHAPE</a> stage has a richer set to plan against. (Compare the sibling GROW write-backs: <a href="crystallization.html">SUBSTANCE</a> writes back the atom's dispatch; CODIFY writes back the FOLLOW catalog &#8212; see <a href="../axes.html">Axes + families</a>.)</p>
+
+<h2 id="thesis">The thesis &#8212; aggregation is not a system</h2>
+<p>Native today can mint many <a href="../master/index.html#section-4-native-platform">Workflows</a>. But a pile of workflows is not a system &#8212; that is a theorem, not a preference. Beer's <strong>Recursive System Theorem</strong> (1979): units become the operational layer (S1) of the next level, and viability requires <em>metasystem</em> functions that exist in <em>no individual unit</em>. So a system never appears by piling units up; it appears when the metasystem (coordination, regulation, identity) crystallizes on top. Maturation is the process of growing that metasystem &#8212; organically, as the operation produces the pain that demands each piece. This is why SCALE reads <em>pains</em>, not preferences: the metasystem is <em>earned</em> from the record, never declared up front.</p>
+<div class="note"><strong>Naming, to avoid collision (L-number ban):</strong> <code>S1&#8211;S5</code> here are Beer's <em>Viable System Model</em> recursion levels (cybernetics). They are NOT the PRD's <code>&#167;</code>-section numbers (&#167;4 runtime, &#167;7 observability), NOT the <code>L0&#8211;L5</code> change-cascade in <code>holding/HIERARCHY.md</code>, and NOT the <code>L0&#8211;L2</code> D38 build layers. Three numbering namespaces already exist; this VSM ladder is a fourth, kept in words wherever possible.</div>
+<div class="note"><strong>Native is NOT short of composition.</strong> Canonical owner: <a href="../the-system-simply.html#corrections">the system, simply &#8212; corrections</a> (the 5 composition laws + 10 typed primitives roster) &#8212; this page depends on it for that roster; SCALE is one growth mechanism among them, not Native's only structure.</div>
+
+<h2 id="ladder">The maturation ladder &#8212; S1 to identity</h2>
+<table>
+<tr><th>Rung (VSM)</th><th>In words</th><th>The pain that triggers it</th><th>Crystallizes into (the shape written back)</th><th>Day-one</th></tr>
+<tr><td><strong>S1 Operations</strong></td><td>the units that do the work (lived: <strong>Engines</strong>; a Workflow is their stateless written template &#8212; ruled #1/#2)</td><td>&#8212; (the base layer)</td><td><a href="system-of-process.html">System of Process</a></td><td><strong>ACTIVE</strong> &#8212; auto-grows today (EMERGE k&#8805;4)</td></tr>
+<tr><td><strong>S2 Coordination</strong></td><td>stop units thrashing against each other</td><td>concurrent units contend on the same record/timing (the <a href="../edges.html">shared-resource edge</a>, over time)</td><td><a href="orchestration.html">Orchestration</a></td><td>scaffold, dormant</td></tr>
+<tr><td><strong>S3 Resource control</strong></td><td>who gets compute / priority</td><td>units starve / queue at the daemon concurrency cap (a <a href="../resource.html">finite stock</a> running dry)</td><td><a href="orchestration.html">Orchestration</a></td><td>scaffold, dormant</td></tr>
+<tr><td><strong>S3* Audit</strong></td><td>is the whole healthy?</td><td>a class of runs that no rule reads</td><td><a href="system-of-record.html">SoR</a> + <a href="observability.html">Observability &#167;7</a></td><td>scaffold, dormant</td></tr>
+<tr><td><strong>S4 Adaptation</strong></td><td>adapt as reality moves</td><td>system-wide spec-vs-actual conformance drifting</td><td><em>new 2nd-order loop</em> (the one genuinely missing home)</td><td>scaffold, dormant</td></tr>
+<tr><td><strong>S5 Identity</strong></td><td>what this System is FOR</td><td>workflows that bind to no charter/domain purpose</td><td><a href="authority-tenancy.html">Charter / Domain</a> + Authority wrap</td><td>scaffold, dormant</td></tr>
+</table>
+<div class="key"><strong>RULED-vocab bridge (WHAT-WE-DECIDED.md #1/#2/#3):</strong> the S1 lived running units are <strong>Engines</strong> &#8212; a <strong>Workflow</strong> is their stateless written template. And the metasystem functions S2&#8211;S5 crystallize into are, under ruling #3, <strong>glue engines owned by the System</strong> (coordination, priority, audit, adaptation, identity ARE engine types and hold the composition state) &#8212; not rules homed in platform blocks. The "Crystallizes into" column above predates that ruling and is queued for the S5-pass redraw the decision sheet already schedules; until then, read its block links as the blocks that HOST each glue engine, not as owners of its state. Definitions: <a href="the-model.html">The Model</a> &#183; <a href="model/workflow-engine.html">Workflow + Engine</a>.</div>
+<p class="note">The ladder is <strong>recursive</strong>: a company is a System whose S1 units are department-Systems, whose S1 units are Workflows. The same five slots exist at every level &#8212; "highest level of abstraction" = the top System's S5 identity. (Beer's fractal / Recursive System Theorem.) See <a href="company-decomposed.html">Company decomposed</a> for the same recursion applied to a whole company.</p>
+
+<h2 id="scaffold">The scaffold &#8212; present day-one, mostly empty</h2>
+<p>The founder constraint: the rungs up to identity must exist in the schema <em>on day one</em>, so the ladder is reachable without re-architecting &#8212; but they need not be built out. Two pieces deliver that:</p>
+<p><strong>1. A recursive <code>System</code> object</strong> (would sit beside <a href="../master/index.html#section-4-native-platform">Workflow</a> in canon): it holds the domain it serves, its S1 units (each itself a Workflow or a System &#8212; recursive), one slot each for s2-coordination / s3-resource / s3*-audit / s4-adaptation (the "missing 2nd-order loop") / s5-identity (a Charter, always set &#8212; even a bare System has identity), and a <code>maturity</code> readout per slot (filled vs empty) so a System is never overclaimed. <em>(Productization note: the field-level schema is the implementation layer &#8212; deferred; this page states what the object must carry, not its types.)</em></p>
+<p><strong>2. A dormant-but-present detector REGISTRY in EMERGE.</strong> The six detector <em>slots</em> are declared day-one &#8212; but a slot is not a working detector. Only the utterance detector (S1) is active; S2-S5 are <strong>dormant placeholders pending signature-definition</strong> (their event schema, thresholds, and false-positive handling are undefined &#8212; see gaps). "Ships day-one" means the slots exist so the ladder is reachable without re-architecting, NOT that the detectors work. (Peer review 2026-06-14 corrected the earlier "all six ship day-one" overstatement; the miner also needs a rollback model + verification/impact-analysis safety envelope before any rung crystallizes or retires &#8212; currently undefined.)</p>
+
+<h2 id="flow">How it flows &#8212; one turn of the SCALE read &#8594; write</h2>
+<ol>
+<li>Human <strong>INTENT</strong> &#8594; the daemon <strong>RUN</strong>s <strong>S1</strong> units in the <a href="system-of-process.html">System of Process</a>; events land in the <a href="system-of-record.html">System of Record</a> (<strong>RECORD</strong>).</li>
+<li>EMERGE <strong>reads the record</strong> (the record&#8594;evidence boundary). A <em>named-pain</em> detector crosses its sustained-pain threshold.</li>
+<li>EMERGE proposes the matching rung (a new event, mirroring today's <code>pattern_proposed</code>).</li>
+<li><strong>The human decides</strong> at <a href="authority-tenancy.html">Gate + Approval</a> &#8212; <strong>GOVERN</strong> over the transition; nothing auto-builds.</li>
+<li>Approved &#8594; the rung <strong>crystallizes into its block</strong> (S2/S3&#8594;Orchestration, S3*&#8594;SoR/Observability, S4&#8594;new loop, S5&#8594;Charter) and fills the <code>System</code>'s slot &#8212; the <strong>write-back to the shapes available</strong>.</li>
+<li>The matured System changes what the record shows next &#8594; <strong>LOOP</strong>, climbing toward S5.</li>
+</ol>
+
+<h2 id="safety">Safety &#8212; why this is not premature over-engineering</h2>
+<table>
+<tr><th>Guard</th><th>What it prevents</th></tr>
+<tr><td><strong>Sustained-pain threshold</strong></td><td>A rung is proposed only on repeated, windowed pain (reuse the production graduation constants from canon). No crystallizing a one-off.</td></tr>
+<tr><td><strong>Reversibility (re-warm)</strong></td><td>If a crystallized rung is not reducing its pain, the same detector proposes its <em>retirement</em>. The thermostat runs both ways &#8212; this is what stops brittle ossification (<a href="../axes.html">Cynefin</a>: only Clear/Complicated work earns hardening; Complex/Chaotic stays declarative).</td></tr>
+<tr><td><strong>No-overclaim</strong></td><td>The <code>maturity</code> readout means a System with empty S2&#8211;S5 is reported as an S1 aggregate, honestly labeled &#8212; never as "viable."</td></tr>
+<tr><td><strong>Reflexive</strong></td><td>A System editing its own metasystem trips the self-modify reflexive hardstop (HS-1) &#8212; existing hardstop, no new mechanism.</td></tr>
+</table>
+
+<h2 id="phasing">How it gets built out (phasing)</h2>
+<table>
+<tr><th>Phase</th><th>Ships</th><th>Auto-grows</th></tr>
+<tr><td><strong>Day-one (scaffold)</strong></td><td><code>System</code> object (5 slots) + EMERGE 6-detector registry + this page's overlay + the S4 slot reserved</td><td>S1 only</td></tr>
+<tr><td>Phase 2</td><td>activate S2/S3 detectors (concrete signals)</td><td>+ coordination / resource</td></tr>
+<tr><td>Phase 3</td><td>S3*/S4/S5 detectors after signature-definition sub-ADRs</td><td>full ladder to identity</td></tr>
+</table>
+
+<h2 id="today">What runs today (no overclaim)</h2>
+<p>Per ADR-022 and the unit-science research, Native today runs <code>design &#8594; execute &#8594; record</code>. The record fails both litmus tests &#8212; nothing replays it, nothing reads it in-loop &#8212; so the SoR is telemetry, not yet a system of record (the record&#8594;evidence read this page depends on is not yet closed). EMERGE grows only S1 units (utterance &#8805;4 &#8594; propose a Workflow template; the lived unit it becomes is an Engine &#8212; ruled #1/#2). The entire S2&#8211;S5 ladder on this page is <strong>design-forward and unbuilt</strong>. The role the daemon would play (the miner) is the role the founder plays today by hand: noticing recurring operational pain and hardening a response &#8212; i.e. the SCALE read&#8594;write-back, run manually.</p>
+
+<div class="note"><strong>Proposed resolutions (design-forward, not built):</strong> the miner's missing safety envelope &#8594; <em>impact analysis (where-used, ADR-022 #2) &#8594; shadow/dry-run &#8594; human-approve (ADR-010) &#8594; activate with a rollback compensator</em> (self-modify trips HS-1). Halting/bounds &#8594; <em>per-top-task budget (max depth/fan-out/cost) + WIP admission cap (ADR-022 #4)</em>. Determinism &#8594; <em>ADR-022 #1 (persist LLM output as an event; content-addressed replay)</em>. Full table: <a href="work-atom.html#resolutions">work-atom &#167;resolutions</a>.</div>
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap"><strong>TODO (miner safety):</strong> spec the safety envelope &#8212; impact-analysis (where-used, ADR-022 #2) &#8594; shadow/dry-run &#8594; human-approve (ADR-010) &#8594; activate with a rollback compensator; self-modify trips HS-1.</li>
+<li class="gap">S3*/S4/S5 detector <strong>signatures</strong> are not defined &#8212; each needs its own sub-ADR (inherits the EMERGE "pattern signature" canon gap).</li>
+<li class="gap"><strong>Build decision &#8212; split status (refreshed 2026-08-18):</strong> the <code>System</code> VOCABULARY is RULED (WHAT-WE-DECIDED.md #3 engines + glue engines, #15 frame collapse) &#8212; no ruling pending on the noun. What still needs a founder ruling is the DETECTOR machinery: ADR-023 + the S2&#8211;S5 signature sub-ADRs (D54 route: archive-completeness audit &#8594; draft &#8594; dual-lane review).</li>
+<li class="gap">The <strong>S4 home</strong> (the 2nd-order adaptive loop) does not exist as a block yet &#8212; the only genuinely-new architecture this introduces.</li></ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>None yet (DRAFT v2). When built, each rung's mechanics would link to its host block page (Orchestration, SoR, Observability, Charter) and to ADR-023.</li>
+</ul>
+
+<h2>In the loop &#8212; sibling views</h2>
+<ul>
+<li><a href="../the-system-simply.html">The system, simply</a> &#8212; the whole loop in one read; this page is its SCALE axis (GROW stage).</li>
+<li><a href="crystallization.html">Crystallization</a> &#8212; the other GROW axis (SUBSTANCE: soft&#8594;hard, LLM&#8594;Skill&#8594;Code); orthogonal to SCALE, composes with it.</li>
+<li><a href="evolution.html">Evolution</a> &#8212; the parent view that holds both maturation + crystallization.</li>
+<li><a href="../resource.html">Resource</a> &#8212; the finite stock S3 reads (tokens / $ / attention / the record / an account) + its allocation rule.</li>
+<li><a href="../edges.html">Edges</a> &#8212; the per-run shared-resource / must-cohere / handoff links; S2/S3 are these edges seen over time.</li>
+<li><a href="../axes.html">Axes + families</a> &#183; <a href="../open-axis.html">open-axis rule</a> &#183; <a href="../axis-productization.html">axis-productization</a> &#183; <a href="../time.html">Time</a> &#8212; the rest of the axis machine.</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<p>The persisted artifact of one SCALE turn is the <strong>rung proposal event</strong> EMERGE writes to the record (mirroring today's <code>pattern_proposed</code>), and &#8212; on approval &#8212; the <code>System</code> object's slot readout that the write-back fills.</p>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The detector machinery (ADR-023) is unruled; field names below are derived from this page's detector + phasing tables, not from canon.
+<pre style="background:#f3f4f6;padding:10px;border-radius:6px;font-size:12px;overflow-x:auto;white-space:pre">{"event":"rung_proposed","detector":"s2-coordination","pain":"units thrash against each other",
+ "signal":"W-kyc-verify + W-emi-reconcile contended on DataRef ledger/emi-postings 11x in 14d; retries over threshold",
+ "proposed_shape":"coordination glue engine (hosted in Orchestration)",
+ "threshold":"sustained-pain window = &lt;decision_pending&gt;","gate":"human approval required (ADR-010)",
+ "ts":"2026-08-17T09:14:02Z"}</pre>
+<pre style="background:#f3f4f6;padding:10px;border-radius:6px;font-size:12px;overflow-x:auto;white-space:pre">{"system":"SYS-collections","s1_units":["ENG-disburse-loan","ENG-kyc-verify","ENG-emi-reconcile"],
+ "slots":{"s2_coordination":"filled 2026-08-17","s3_resource":"empty","s3star_audit":"empty",
+          "s4_adaptation":"empty","s5_identity":"charter: collections (always set)"},
+ "maturity":"2 of 6 filled"}</pre>
+Operator surface: proposals land in the daemon's approval queue in the <a href="ui.html">UI</a>; the decision itself happens at the GOVERN gate (<a href="authority-tenancy.html">Authority</a>) &#8212; nothing auto-builds.</div>
+
+<h2>Sources</h2>
+<ul>
+<li><code>sutra/os/decisions/ADR-022-full-loop-six-mechanisms.md</code> &#8212; the miner (#5) this extends; design&#8594;execute&#8594;record today</li>
+<li><code>sutra/os/decisions/ADR-010-organic-emergence-propose-approve.md</code> &#8212; propose/approve at k&#8805;4 (the human gate)</li>
+<li><code>sutra/os/native/primitives/workflow.md</code> &#8212; reuse_tag / return_contract / interfaces_with / extension_ref (the unit-composition hooks)</li>
+<li><code>sutra/os/native/surfaces/emerge.md</code> &#8212; the surface extended from 1 detector to 6</li>
+<li><code>holding/research/2026-06-12-unit-work-record-science.md</code> &#8212; Beer Recursive System Theorem; aggregation&#8800;system; the 12-pitfall register</li>
+<li><a href="../the-system-simply.html">the system, simply</a> &#8212; the loop overview this page is a view of (SCALE row of the GROW table; S2/S3 = shared-resource note)</li>
+<li><a href="../master/index.html#section-4-native-platform">master &#167;4 Native Platform</a> &#183; <a href="../master/index.html#section-7-observability">master &#167;7 Observability</a> &#8212; the daemon + the watching ring</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+</div></div></body></html>

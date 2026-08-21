@@ -1,0 +1,247 @@
+<!doctype html>
+<!-- PAGE: platform-comprehension (v2, DRAFT). Cross-cutting PLATFORM capability (like Observability/Authority).
+     The comprehension layer: INTENT (inbound — system understands you) <-> UNDERSTANDING (outbound — system helps you understand).
+     Lives in the PLATFORM so every child product (CoS, Senior Expert, future) INHERITS it by adapting the platform.
+     Subject status: PLANNED / v2 / NOT BUILT. Highlights the UI box (the human surface). Does NOT edit the LOCKED §1.0 schema. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; Comprehension layer: Intent &#8646; Understanding (every product inherits it)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+#map-ui{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native hub</a> &#8250; <a href="index.html">platform</a> &#8250; comprehension &#160;&#183;&#160; cross-cutting (pairs with <a href="../engineering/pillar-b1.html">intent (B1)</a> · sibling of <a href="observability.html">observability</a>)</div>
+<h1>Comprehension layer &#8212; Intent &#8646; Understanding <span class="lvl">PLATFORM &#183; cross-cutting</span></h1>
+
+<div class="planned"><strong>STATUS: PLANNED &#183; v2 &#183; NOT BUILT.</strong> A cross-cutting <strong>platform</strong> capability (like <a href="observability.html">Observability</a> the ring, or <a href="authority-tenancy.html">Authority+Tenancy</a> the wrap). It lives in the platform <em>on purpose</em>: every consumer product (<a href="../products/cos/index.html">CoS</a>, <a href="../products/senior-expert/index.html">Senior Expert</a>, future) <strong>composes against its capability interface</strong> &#8212; re-homing + new build (deepen affordance, outbound mode, comprehension-memory), not free inheritance (see the review note below). Does not modify the LOCKED &#167;1.0 schema; it annotates the Human&#8596;System boundary.</div>
+<div class="note"><strong>Dual-lane peer review 2026-06-14 (codex + deepseek): CHANGES-REQUIRED, corrections noted.</strong> "Inherit" here means <em>composition via a capability interface</em>, not OO inheritance &#8212; it needs a concrete interface contract + versioning, and the pieces are partly NEW (deepen affordance, outbound mode, comprehension-memory), so this is re-homing + new build, not free inheritance. Open before build: comprehension-memory needs <em>privacy / tenant-isolation / consent + a correction path</em>; the explanation must be <em>transactionally linked to the execution trace</em> (else it is post-hoc rationalization that can diverge from what the system did); B1 intent currently lives in CoS, not the platform &#8212; the intent&#8646;understanding home is an open founder decision.</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<svg viewBox="0 0 880 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — highlight: UI (the human surface)">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing</text>
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">&#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS</text>
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="344" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="344" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="350" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="350" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="344" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="344" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="344" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<path d="M390,460 L390,492" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="119" y="386" text-anchor="middle" font-size="8" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Comprehension (surfaces at UI)</text>
+</svg>
+<p class="figcap">Highlighted: <a href="ui.html">UI</a> &#8212; where comprehension surfaces. But it is <em>cross-cutting</em>: it hinges in the interaction layer (pairs with intent) and is powered by <a href="how-methodology.html">HOW &#167;3</a>. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-comprehension</code></td><td>PLATFORM / <a href="index.html">platform</a> (cross-cutting)</td><td><span class="pill DRAFT">DRAFT</span></td><td>v2</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Establish comprehension as a cross-cutting PLATFORM capability: the Human&#8596;System boundary carries INTENT inbound (system understands you, B1) and UNDERSTANDING outbound (system helps you understand). Placed in the platform so every product inherits it. Powered by HOW &#167;3, calibrated by SoR, surfaced in the UI.</td><td colspan="3">semantic diagram of intent&#8646;understanding present; the &quot;how it comes&quot; thread + the platform-inheritance diagram (all products) present; canon-mapping (new vs existing); v2/PLANNED; &#167;1.0 schema untouched.</td></tr>
+</table>
+
+<h2>The semantic diagram &#8212; intent &#8646; understanding</h2>
+<svg viewBox="0 0 880 360" role="img" aria-label="Semantic diagram: intent inbound and understanding outbound across the Human-System boundary, powered by HOW3 and calibrated by SoR">
+<defs><marker id="se" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker><marker id="seg" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#047857"/></marker></defs>
+<rect x="350" y="12" width="180" height="34" rx="8" fill="#fff" stroke="#334155" stroke-width="1.8"/><text x="440" y="33" text-anchor="middle" font-size="11" font-weight="800">HUMAN</text>
+<rect x="80" y="58" width="720" height="26" rx="5" fill="#eef2ff" stroke="#3730a3" stroke-width="1.3"/><text x="440" y="75" text-anchor="middle" font-size="9" font-weight="700" fill="#3730a3">UI / Consumer Product &#8212; the surface (you type here · answers + &quot;deepen&quot; affordance render here)</text>
+<rect x="80" y="98" width="720" height="80" rx="9" fill="#fff" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 4"/><text x="92" y="113" font-size="9" font-weight="800" fill="#475569">INTERACTION LAYER (H-Sutra) &#8212; the Human&#8596;System hinge: both directions live here</text>
+<rect x="100" y="122" width="320" height="44" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="260" y="140" text-anchor="middle" font-size="9.5" font-weight="700">INTENT (in) &#183; B1</text><text x="260" y="155" text-anchor="middle" font-size="7.5" fill="#6b7280">system understands what you want</text>
+<rect x="460" y="122" width="320" height="44" rx="7" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/><text x="620" y="140" text-anchor="middle" font-size="9.5" font-weight="700" fill="#047857">UNDERSTANDING (out)</text><text x="620" y="155" text-anchor="middle" font-size="7.5" fill="#475569">system helps you understand</text>
+<rect x="460" y="200" width="320" height="52" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/><text x="620" y="220" text-anchor="middle" font-size="9.5" font-weight="700">HOW &#167;3 ENGINE</text><text x="620" y="234" text-anchor="middle" font-size="7.3" fill="#6b7280">lens climb: specific &#8594; principle &#8594; industry</text><text x="620" y="245" text-anchor="middle" font-size="7.3" fill="#6b7280">&#8594; science &#8594; analogy (+ B6 research)</text>
+<rect x="460" y="270" width="320" height="40" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="620" y="287" text-anchor="middle" font-size="9" font-weight="700">SYSTEM OF RECORD</text><text x="620" y="300" text-anchor="middle" font-size="7.3" fill="#6b7280">your level + what you now grasp (compounds)</text>
+<rect x="100" y="210" width="320" height="52" rx="8" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="260" y="230" text-anchor="middle" font-size="9" font-weight="700">progressive disclosure</text><text x="260" y="244" text-anchor="middle" font-size="7.3" fill="#6b7280">crux first &#183; expand layers only if wanted</text>
+<!-- edges -->
+<path d="M420,46 L300,98" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#se)"/><text x="300" y="92" font-size="7.5" fill="#475569">you express (in)</text>
+<path d="M620,98 L500,46" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#seg)"/><text x="556" y="74" font-size="7.5" fill="#047857">explains back (out)</text>
+<path d="M620,200 L620,166" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#se)"/><text x="626" y="186" font-size="7.5" fill="#c2410c">powers</text>
+<path d="M540,270 L600,166" stroke="#334155" stroke-width="1.2" fill="none" stroke-dasharray="4 3" marker-end="url(#se)"/><text x="500" y="232" font-size="7.5" fill="#475569">calibrates</text>
+<path d="M460,150 L420,150" stroke="#6b7280" stroke-width="1.2" fill="none" stroke-dasharray="3 2"/><text x="404" y="146" font-size="7.5" fill="#6b7280">twins</text>
+<path d="M540,166 L300,210" stroke="#047857" stroke-width="1.2" fill="none" stroke-dasharray="4 3" marker-end="url(#seg)"/><text x="330" y="196" font-size="7.5" fill="#047857">rendered as</text>
+</svg>
+<p class="figcap">INTENT flows <em>down</em> (you express &#8594; system acts); UNDERSTANDING flows <em>up</em> (system explains &#8594; you grasp). Same pipe, opposite directions &#8212; <strong>twins</strong> on the Human&#8596;System hinge (the inbound twin is detailed at <a href="../engineering/pillar-b1.html">B1 Intent</a>). Understanding is <em>powered by</em> HOW &#167;3's lens climb, <em>calibrated by</em> the record, and <em>rendered as</em> progressive disclosure in the UI.</p>
+
+<h2>Why it lives in the platform &#8212; so every product inherits it</h2>
+<svg viewBox="0 0 880 190" role="img" aria-label="Platform comprehension capability inherited by all consumer products">
+<defs><marker id="ih" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="300" y="16" width="280" height="48" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/><text x="440" y="36" text-anchor="middle" font-size="10.5" font-weight="800" fill="#047857">PLATFORM &#8212; comprehension layer</text><text x="440" y="51" text-anchor="middle" font-size="8" fill="#475569">built ONCE here (intent &#8646; understanding)</text>
+<rect x="60" y="124" width="220" height="48" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="170" y="144" text-anchor="middle" font-size="10" font-weight="700">PRODUCT: CoS</text><text x="170" y="158" text-anchor="middle" font-size="7.5" fill="#6b7280">adapts the platform interface</text>
+<rect x="330" y="124" width="220" height="48" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4"/><text x="440" y="144" text-anchor="middle" font-size="10" font-weight="700">PRODUCT: Senior Expert</text><text x="440" y="158" text-anchor="middle" font-size="7.5" fill="#6b7280">reuses the platform interface</text>
+<rect x="600" y="124" width="220" height="48" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="6 4"/><text x="710" y="144" text-anchor="middle" font-size="10" font-weight="700">FUTURE PRODUCTS</text><text x="710" y="158" text-anchor="middle" font-size="7.5" fill="#6b7280">inherit by construction</text>
+<path d="M380,64 L170,124" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#ih)"/>
+<path d="M440,64 L440,124" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#ih)"/>
+<path d="M500,64 L710,124" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#ih)"/>
+<text x="250" y="100" font-size="8" fill="#475569">inherited by &#8212; composition, not copy</text>
+</svg>
+<p class="figcap">This is the whole reason it's a <strong>platform</strong> capability and not a CoS feature: build comprehension once in the platform behind an interface, and every product that adapts that interface gets it &#8212; though the interface + the new pieces (deepen-UI, outbound mode, comprehension-memory) must still be built once. Composition via an interface, not free inheritance.</p>
+
+<h2>How it comes &#8212; the flow up the stack</h2>
+<table>
+<tr><th>Layer (§1.0)</th><th>Comprehension's job</th><th>New / existing</th></tr>
+<tr><td><a href="ui.html">UI</a> (face)</td><td>the &quot;deepen / why / how-does-the-world&quot; affordance on every output + progressive-disclosure render</td><td>NEW (affordance)</td></tr>
+<tr><td>Interaction layer (H-Sutra) (home)</td><td>recognize an understand-need; route it as outbound comprehension (twin of intent)</td><td>partly NEW (outbound mode)</td></tr>
+<tr><td><a href="how-methodology.html">HOW &#167;3</a> (engine)</td><td>the multi-lens climb (specific&#8594;principle&#8594;industry&#8594;science&#8594;analogy) + B6 research</td><td>EXISTS</td></tr>
+<tr><td><a href="system-of-record.html">SoR</a> (memory)</td><td>your level + what you now grasp &#8212; so it never re-explains the basics; understanding compounds</td><td>partly EXISTS (B5.d &#8212; see <code>sutra/os/native/blocks/B5-explanation-surface.md</code> / personalization)</td></tr>
+</table>
+<ol>
+<li>You're looking at any output in the UI.</li>
+<li>Trigger (3 doors): explicit &quot;explain X&quot; &#183; the &quot;deepen/why&quot; control on that output &#183; auto-orientation before a task fires.</li>
+<li>Interaction layer tags it outbound-comprehension + how wide to go.</li>
+<li>HOW &#167;3 climbs the lenses (calibrated to your level by SoR); B6 pulls industry/world; B11 assembles.</li>
+<li>UI renders it as expandable layers &#8212; crux first; you pull more if you want.</li>
+<li>SoR records what you now understand &#8594; next time it builds forward, never repeats.</li>
+</ol>
+
+<h2>The proof &#8212; mostly canon, two new pieces</h2>
+<table>
+<tr><th>Concept</th><th>Existing canon / NEW</th></tr>
+<tr><td>Intent inbound</td><td>B1 intent-layer (exists)</td></tr>
+<tr><td>Multi-lens engine</td><td>HOW &#167;3 Lens/axes &#8212; this is literally what it is for (exists)</td></tr>
+<tr><td>Pull industry/world context</td><td>B6 research-on-fly (exists)</td></tr>
+<tr><td>Calibration to person</td><td>SoR B5.d (see <code>blocks/B5-explanation-surface.md</code>) + &#167;2.F personalization (<a href="../products/cos/product-design.html">CoS Design &#167;2.F</a>) &#8212; mostly exists</td></tr>
+<tr><td>UNDERSTANDING as a first-class outbound capability</td><td><strong>NEW</strong> &#8212; the outbound twin of intent</td></tr>
+<tr><td>The universal &quot;deepen&quot; UI affordance</td><td><strong>NEW</strong> &#8212; a UI-block control on every output</td></tr>
+<tr><td>Comprehension-memory (what you grasp)</td><td><strong>NEW-ish</strong> &#8212; inverse of intent-memory</td></tr>
+</table>
+
+<div class="note"><strong>Proposed resolutions (design-forward, not built):</strong> comprehension-memory &#8594; <em>tenant-scoped (custody_owner + HS-3 default-deny) + consent flag</em>; the explanation must be generated <em>from the DecisionProvenance trace</em> (not a separate LLM call) so it is transactionally linked and cannot post-hoc rationalize. Full table: <a href="work-atom.html#resolutions">work-atom &#167;resolutions</a>.</div>
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap"><strong>TODO (comprehension):</strong> spec comprehension-memory &#8212; tenant-scoped (custody_owner + HS-3 default-deny) + consent flag + explain-from-trace (from DecisionProvenance, not a separate LLM call).</li>
+<li class="gap">Primary-home formalization: this sits in the interaction layer (H-Sutra), which has no standalone §1.0 block &#8212; a future founder LOCK decision on whether to annotate §1.0 with the comprehension overlay.</li>
+<li class="gap">Intent (B1) is currently a CoS <em>product</em> block; if comprehension is platform-level, the intent&#8646;understanding pair arguably belongs together at platform level &#8212; founder call (don't re-home B1 unilaterally).</li>
+<li class="gap">Nothing built &#8212; v2 design-forward; canon route (ADR + UI-affordance + outbound-mode + comprehension-memory) founder-gated.</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>Engine: <a href="how-methodology.html">HOW &#167;3</a> (the lens climb). Inbound twin: B1 intent (in <a href="../products/cos/index.html">CoS</a>). Surface: <a href="ui.html">UI</a>. Inherited by: <a href="../products/cos/index.html">CoS</a> + <a href="../products/senior-expert/index.html">Senior Expert</a> + future.</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<p>Two outputs: the rendered <strong>deepen affordance</strong> (the operator-facing surface this page asks the founder to fund) and the <strong>comprehension-memory record</strong> it persists (NEW-ish &#8212; the inverse of intent-memory).</p>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. Both shapes are design-forward; fields derive from this page's layer table + proposed resolutions, not from canon.
+<p style="margin:8px 0 2px"><strong>The deepen card (UI mock)</strong> &#8212; renders under any output; crux first, layers only on pull:</p>
+<pre style="background:#f3f4f6;padding:10px;border-radius:6px;font-size:12px;overflow-x:auto;white-space:pre">+-- WHY THIS? ---------------------------------------------------+
+| Crux: W-disburse-loan run #4127 was BLOCKED - W-kyc-verify     |
+| returned verify=FAIL (bureau mismatch on the borrower's PAN).  |
+|   [+ deepen: principle] no disbursal without a KYC pass (gate) |
+|   [+ deepen: industry ] lender KYC norms + bureau turnaround   |
+|   [+ deepen: science  ] why the gate is asymmetric (cost of a  |
+|                         false approve &gt;&gt; cost of a re-check)   |
+| cited from trace: DecisionProvenance dp_8842                   |
+| (execution-linked - not a fresh LLM call)                      |
++----------------------------------------------------------------+</pre>
+<p style="margin:8px 0 2px"><strong>The persisted record</strong> (comprehension-memory):</p>
+<pre style="background:#f3f4f6;padding:10px;border-radius:6px;font-size:12px;overflow-x:auto;white-space:pre">{"record":"comprehension-memory","tenant":"&lt;custody_owner &#183; HS-3 default-deny&gt;","consent":"&lt;decision_pending&gt;",
+ "grasped":"why KYC gates disbursal","depth_reached":"principle","source_trace":"dp_8842",
+ "correction_path":"&lt;decision_pending&gt;","ts":"2026-08-17T20:12:30Z"}</pre>
+Nothing here is built; privacy / consent / correction-path are open founder decisions (see Open gaps above).</div>
+
+<h2>Sources</h2>
+<ul>
+<li><code>sutra/os/native/blocks/B1-intent-layer.md</code> (the inbound twin) · <code>B6-research-on-fly.md</code> · <code>B11-promptbuilder.md</code></li>
+<li>HOW &#167;3 (<a href="how-methodology.html">Method per task</a> &#8212; Lens/axes, the multi-lens engine) · <code>blocks/B5-explanation-surface.md</code> (SoR horizons)</li>
+<li>H-Sutra interaction layer (9-cell grid) &#8212; <code>sutra/os/charters/HUMAN-SUTRA-LAYER.md</code> · ADR-001</li>
+<li>Design history (composition + interfaces, why platform-level inheritance): see <a href="work-atom.html">work-atom</a> + this session's inheritance-vs-composition thread</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+</div></body></html>

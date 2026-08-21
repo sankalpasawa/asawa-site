@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§9 — Meta (goals · framework · authoring · decisions) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="08-roadmap.html">prev: 08 roadmap</a> · <strong>§9 — Meta (goals · framework · authoring · decisions)</strong> · <a href="10-research-foundations.html">next: 10 research foundations</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§9 — Meta (goals · framework · authoring · decisions)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/decisions.html">ADR Catalog</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="meta">
+<h2>§9 Meta <a href="../product-prd-native-v1.html#meta" class="anchor">#</a></h2>
+
+<section id="d1-goals">
+<h3>D.1 Goals G1-G7 <a href="../product-prd-native-v1.html#d1-goals" class="anchor">#</a></h3>
+<table>
+<tr><th>ID</th><th>Goal</th><th>Metric</th><th>Threshold</th><th>Owner</th></tr>
+<tr><td>G1</td><td>Operator saves measurable hours per week</td><td>OHS/wk</td><td>≥3 within 14d; ≥20 mature</td><td>Founder + Native</td></tr>
+<tr><td>G2</td><td>Operator review fatigue reduces as trust builds</td><td>Gates/cycle ratio</td><td>≥30% drop wk1 → wk6</td><td>Native (Adaptive + Approval)</td></tr>
+<tr><td>G3</td><td>Pattern emergence proposes high-value automations</td><td>Proposal approve rate</td><td>≥50% rolling 30d</td><td>Native (Pattern detection)</td></tr>
+<tr><td>G4</td><td>Workflows shift to auto-execution</td><td>Auto-run share</td><td>≥70% by day 90</td><td>Native (Workflow runtime)</td></tr>
+<tr><td>G5</td><td>Every decision is replayable</td><td>% with DecisionProvenance</td><td>100% (zero gaps)</td><td>Native (audit surface)</td></tr>
+<tr><td>G6</td><td>Audit log never silently fails</td><td>Silent fail-open events</td><td>0 in rolling 30d</td><td>Native (HS-4)</td></tr>
+<tr><td>G7</td><td>Cross-tenant boundary respected</td><td>Cross-tenant deny rate</td><td>100% (zero leakage)</td><td>Native (PolicyDispatcher)</td></tr>
+</table>
+</section>
+
+<section id="d2-traceability">
+<h3>D.2 Traceability matrix <a href="../product-prd-native-v1.html#d2-traceability" class="anchor">#</a></h3>
+<p>Need → Goal → Pillar chain. <em>Detail matrix expanded as pillars fill in. v1 skeleton:</em></p>
+<table>
+<tr><th>Need cluster</th><th>Goal(s)</th><th>Pillar(s)</th></tr>
+<tr><td>N01 · N09 (input)</td><td>G1</td><td>B1</td></tr>
+<tr><td>N02 · N15 · N20 (context)</td><td>G1 · G3</td><td>B2</td></tr>
+<tr><td>N03 · N04 · N10-N13 · N16 (action)</td><td>G1 · G2 · G3 · G4</td><td>B3</td></tr>
+<tr><td>N14 (external comms)</td><td>G1</td><td>B4</td></tr>
+<tr><td>N05 · N06 · N08 · N22 · N24 (governance + state)</td><td>G5 · G6 · G7</td><td>B5</td></tr>
+</table>
+</section>
+
+<section id="d3-methodology">
+<h3>D.3 Review methodology <a href="../product-prd-native-v1.html#d3-methodology" class="anchor">#</a></h3>
+<p>IEEE 29148 + Cagan + Lenny. 12-item checklist applied per codex + deepseek peer review on every canon change.</p>
+<table>
+<tr><th>#</th><th>Check</th><th>Where in this PRD</th></tr>
+<tr><td>1</td><td>Problem stated clearly</td><td>A.1</td></tr>
+<tr><td>2</td><td>Target user named + characterized</td><td>A.2 + A.3</td></tr>
+<tr><td>3</td><td>Goals measurable</td><td>D.1</td></tr>
+<tr><td>4</td><td>Scope bounded</td><td>A.6</td></tr>
+<tr><td>5</td><td>JTBD format</td><td>per pillar Problem / Need</td></tr>
+<tr><td>6</td><td>Acceptance criteria</td><td>per pillar 6-block Acceptance</td></tr>
+<tr><td>7</td><td>NFR present</td><td>per pillar Acceptance + canon</td></tr>
+<tr><td>8</td><td>Risks + mitigations</td><td>C.4</td></tr>
+<tr><td>9</td><td>Timeline + phases</td><td>C.1 + C.2</td></tr>
+<tr><td>10</td><td>Open questions visible</td><td>C.3</td></tr>
+<tr><td>11</td><td>Traceability</td><td>D.2 + per-pillar Connectedness</td></tr>
+<tr><td>12</td><td>Change control</td><td>D.4 + D54 canon-only</td></tr>
+</table>
+</section>
+
+<section id="d4-change-control">
+<h3>D.4 Change control <a href="../product-prd-native-v1.html#d4-change-control" class="anchor">#</a></h3>
+<ul>
+  <li>New ADRs → land in <code>sutra/os/decisions/ADR-NNN.md</code> first, referenced here</li>
+  <li>New features → land in <code>sutra/os/native/blocks/B*.md</code>, card added here</li>
+  <li>New research → land in <code>holding/research/YYYY-MM-DD-*.md</code>, linked here</li>
+  <li>Engine changes → reflected in <code>sutra/os/engines/</code> within the same change</li>
+  <li>This file is canonical; archived state at <code>product-prd-2026-05-09-v2-archived-r18-PASS.html</code></li>
+  <li>Every canon-touching change passes codex + deepseek peer review (PROTO-019)</li>
+</ul>
+</section>
+
+<section id="d5-references">
+<h3>D.5 References <a href="../product-prd-native-v1.html#d5-references" class="anchor">#</a></h3>
+<table>
+<tr><th>Artifact</th><th>Path</th></tr>
+<tr><td>Native canon index</td><td><code>sutra/os/engines/NATIVE-ENGINE.md</code></td></tr>
+<tr><td>Decisions (ADRs)</td><td><code>sutra/os/decisions/ADR-NNN-*.md</code></td></tr>
+<tr><td>Feature specs</td><td><code>sutra/os/native/blocks/B*.md</code></td></tr>
+<tr><td>Open questions</td><td><code>sutra/os/native/open-questions/Q*.md</code></td></tr>
+<tr><td>Migration plan</td><td><code>sutra/os/native/MIGRATION-PLAN.md</code></td></tr>
+<tr><td>Phase 2 design doc</td><td><code>design-v2-deep-doc.html</code> (forthcoming)</td></tr>
+<tr><td>Codex review history</td><td><code>.enforcement/codex-reviews/</code></td></tr>
+<tr><td>v2 archived</td><td><code>product-prd-2026-05-09-v2-archived-r18-PASS.html</code></td></tr>
+</table>
+</section>
+
+<section id="d6-authority">
+<h3>D.6 Authority Model (cross-cutting) <a href="../product-prd-native-v1.html#d6-authority" class="anchor">#</a></h3>
+<p>Six dimensions gate Native's auto-execute vs ask-operator decisions. Applies cross-pillar — most heavily in B3 (action gate) and B4 (delegation through Native to humans).</p>
+<table>
+<tr><th>Dimension</th><th>What it gates</th></tr>
+<tr><td>by domain</td><td>Native acts in one company's domain but not another (per Charter)</td></tr>
+<tr><td>by tool</td><td>Native can call Slack but not bank-API without auth</td></tr>
+<tr><td>by stakeholder</td><td>Native emails team but escalates board/regulator</td></tr>
+<tr><td>by dollar threshold</td><td>≤$X auto; &gt;$X ask</td></tr>
+<tr><td>by reversibility</td><td>reversible auto; irreversible ask</td></tr>
+<tr><td>by confidence level</td><td>high-confidence auto; low-confidence ask</td></tr>
+</table>
+</section>
+
+<section id="d7-cxbar">
+<h3>D.7 CX Bar (cross-cutting) <a href="../product-prd-native-v1.html#d7-cxbar" class="anchor">#</a></h3>
+<p>Quality bar Native's experience must clear — applies to every pillar.</p>
+<ul>
+  <li>Feels like a good Chief of Staff, not a robot</li>
+  <li>Scannable output; operator decides in &lt;30s of reading</li>
+  <li>Low friction; routine work doesn't interrupt</li>
+  <li>Brainstorm partnership feels collaborative, not deferential</li>
+  <li>Errors surface clearly with retry, never silently</li>
+</ul>
+</section>
+
+<section id="d8-operator-lens">
+<h3>D.8 Operator-First Lens (cross-cutting) <a href="../product-prd-native-v1.html#d8-operator-lens" class="anchor">#</a></h3>
+<p>Native's loyalty is to the operator personally; org is the mission frame, not the master. Shapes context ranking, escalation, memory formation in every pillar.</p>
+<ul>
+  <li>B2 ranks context by what serves the operator's decision</li>
+  <li>B3 escalation defaults favor operator's pace, not org SLAs</li>
+  <li>B5 memory is per-operator + per-Charter; org-Tenant artifacts visible by ACL</li>
+  <li>Conflict between operator preference and org policy: surface to operator, never auto-resolve to org</li>
+</ul>
+</section>
+
+<section id="d9-scope-anti">
+<h3>D.9 Scope anti-pattern (cross-cutting) <a href="../product-prd-native-v1.html#d9-scope-anti" class="anchor">#</a></h3>
+<p>Native v1 is NOT — explicit scope guardrails.</p>
+<ul>
+  <li>NOT a day manager (no calendar / todos)</li>
+  <li>NOT a chatbot (workflow-shaped, not conversational)</li>
+  <li>NOT a memory product (governance + multi-tenant + emergence are the value)</li>
+  <li>NOT a full-autonomy agent (operator-in-loop is core)</li>
+  <li>NOT a calendar / inbox / task-list (substantive cognitive work only)</li>
+</ul>
+</section>
+
+<section id="d10-charter-model">
+<h3>D.10 Charter Model (Native platform primitive · cross-cutting) <a href="../product-prd-native-v1.html#d10-charter-model" class="anchor">#</a></h3>
+<p><strong>Charter</strong> is a Native platform primitive — an operator-set behavioral contract that scopes a deployed workforce instance (e.g., the CoS product) over time. Each Charter is either <strong>fixed</strong> (rules locked) or <strong>flexible</strong> (rules adapt with operator approval).</p>
+<table>
+<tr><th>Charter mode</th><th>What it means</th><th>Example</th></tr>
+<tr><td>Fixed</td><td>Scope + decisions + authority + tools all locked at Charter creation; Native cannot expand without operator re-charter</td><td>"Run weekly P&L close — only these tools, only this audience, escalate on deltas &gt;$X"</td></tr>
+<tr><td>Flexible</td><td>Scope + tools may extend within declared bounds; Native proposes, operator ratifies; learned patterns become standing rules</td><td>"Run BillU GTM brainstorm — adapt method based on what works, propose new tools as needed, escalate before external comms"</td></tr>
+</table>
+<p class="callout">Charter mode interacts with <a href="../product-prd-native-v1.html#d6-authority">D.6 Authority Model</a>: fixed Charters set conservative authority defaults; flexible Charters allow authority to widen with operator approvals. Anchored to T3 Charter tier in <a href="../product-prd-native-v1.html#a7-task-taxonomy">A.7</a>.</p>
+</section>
+
+<section id="d11-method-selection">
+<h3>D.11 Method Selection (Native platform primitive · cross-cutting) <a href="../product-prd-native-v1.html#d11-method-selection" class="anchor">#</a></h3>
+<p><strong>Method Selection</strong> is a Native platform primitive. Different work classes need different intelligence — Native routes per task tier (<a href="../product-prd-native-v1.html#a7-task-taxonomy">A.7</a>) to the right model, tool set, and decision pattern. CoS (the deployed product) consumes this routing without re-implementing it.</p>
+<table>
+<tr><th>Task tier</th><th>Optimization target</th><th>Method profile</th></tr>
+<tr><td>T0 Atomic</td><td>Speed; minimize tokens</td><td>Fast model · single LLM call · narrow tool set · no escalation</td></tr>
+<tr><td>T1 Multi-action</td><td>Reliability across N steps</td><td>Standard model · per-step verify · tool-routing · gate on external comms</td></tr>
+<tr><td>T2 Iterative</td><td>Responsiveness; low-latency refinement</td><td>Fast model · short context window · 1-min iteration loop · zero gate on minor edits</td></tr>
+<tr><td>T3 Charter</td><td>Long-horizon quality + judgment</td><td>Best-available model · max context · multi-method ensemble · gates at goal-transition points</td></tr>
+</table>
+<p class="callout">Method selection is Ring 2 contract material (what Native commits to per task tier). Method routing engine internals live in Phase 2 design — see <code>action-engine-design.md</code>.</p>
+</section>
+
+<section id="d12-artifact-governance">
+<h3>D.12 Artifact Governance (cross-cutting) <a href="../product-prd-native-v1.html#d12-artifact-governance" class="anchor">#</a></h3>
+<p>Combined Artifact Discipline (form) + Artifact Integrity (lifecycle). Every artifact Native produces must satisfy both surfaces. Per codex+deepseek R5 convergence: separating these two invites duplicate rules + drift.</p>
+
+<h4>D.12.1 Form discipline — transform text prose → technical-specific documents</h4>
+<table>
+<tr><th>Rule</th><th>What it means</th></tr>
+<tr><td>Right artifact shape per task</td><td>Plans → checklist · designs → ASCII diagram + table · decisions → ADR · code outputs → versioned source files · data → typed schema. Default text only when nothing else fits.</td></tr>
+<tr><td>Visual + structured + whole</td><td>For ≥3 items: table > prose · for decisions: ASCII-boxed callout · for scores: progress bar · for flows: ASCII diagram. Double presentation (visual + text) acceptable.</td></tr>
+<tr><td>LLM-future-readable</td><td>ASCII diagrams over images (machine-readable). Mermaid-style text diagrams acceptable. Avoid screenshots unless source-of-truth.</td></tr>
+<tr><td>Scientific appropriateness</td><td>Use the format that the discipline uses (Gantt for time-plans, swim-lane for processes, dependency-graph for systems, ER for data, sequence for protocols).</td></tr>
+</table>
+
+<h4>D.12.2 Lifecycle integrity — append-not-overwrite</h4>
+<table>
+<tr><th>Rule</th><th>What it means</th></tr>
+<tr><td>Append, don't overwrite</td><td>Every change adds a version (semver or date-stamped); the prior version stays accessible. No silent rewrites.</td></tr>
+<tr><td>Notify-on-change</td><td>When an artifact shared with audience X changes, audience X is notified by §5 Connector (Slack / email per Charter).</td></tr>
+<tr><td>Reference-with-version</td><td>Every cross-reference embeds the version it points to (e.g., <code>paisa-Q3-onepager@v3</code> not <code>paisa-Q3-onepager</code>). Resolves to that exact version even after newer versions ship.</td></tr>
+<tr><td>Pristine boundaries</td><td>Artifact identity stays stable. Metadata (owner, version, source-of-truth status) travels with the artifact, not in a sidecar that can desync.</td></tr>
+<tr><td>Audit-traceable</td><td>Every artifact write produces a DecisionProvenance row (§4 Native audit substrate) linking creator-Charter + reason + diff-from-prior.</td></tr>
+</table>
+
+<h4>D.12.3 Acceptance criteria (Artifact Governance v1)</h4>
+<ul>
+  <li>100% of Native-produced artifacts carry version + owner + Charter-ref metadata.</li>
+  <li>Zero silent overwrites (HS-4 fires on any write that replaces without version-bump).</li>
+  <li>Notify-on-change reaches audience within 60s of change for Slack/email channels.</li>
+  <li>Cross-references resolve to versioned target; broken references surface to operator (don't silently 404).</li>
+</ul>
+</section>
+
+<section id="d13-founder-directions-framework">
+<h3>D.13 Founder Directions framework (cross-cutting) <a href="../product-prd-native-v1.html#d13-founder-directions-framework" class="anchor">#</a></h3>
+<p>Append-only log of governance directions (D1-D55+) that shape Native's behavior. Every direction has a TRIGGER (when it fires) + CHECK (how compliance is verified) + ENFORCEMENT (hook or convention). Direction-driven governance is itself a Native product feature, not Asawa-internal-only.</p>
+
+<h4>D.13.1 Anatomy of a Founder Direction</h4>
+<table>
+<tr><th>Field</th><th>Content</th></tr>
+<tr><td>ID</td><td><code>D{N}</code> — append-only integer; never re-used</td></tr>
+<tr><td>Trigger</td><td>When this direction activates (utterance pattern · file pattern · session-start · etc.)</td></tr>
+<tr><td>Check</td><td>How compliance is verified (hook · skill · convention)</td></tr>
+<tr><td>Enforcement</td><td>SOFT (advisory) · HARD (blocks tool call) · CONVENTION (relies on Claude discipline)</td></tr>
+<tr><td>Revoke phrase</td><td>How operator can disable mid-session (e.g., "stop caveman", "ask before push")</td></tr>
+<tr><td>Owner</td><td>Direction-DRI (Direction Responsible Individual) — usually CEO of Asawa for D-family</td></tr>
+</table>
+
+<h4>D.13.2 Direction-driven product behavior — example slice</h4>
+<table>
+<tr><th>Direction</th><th>What CoS does differently</th><th>Enforcement</th></tr>
+<tr><td>D34 Asawa Client Taxonomy</td><td>Onboarding flow + Authority defaults vary per tier (see <a href="../product-prd-native-v1.html#section-5-distribution">§6.0</a>)</td><td>CONVENTION</td></tr>
+<tr><td>D38 Plugin-first build-layer</td><td>Asawa-T2 work defaults to plugin L0 (per <a href="../product-prd-native-v1.html#section-3-native-platform">§4.8 CSM</a>)</td><td>HARD via build-layer-check.sh</td></tr>
+<tr><td>D48 BLUEPRINT Output + Verified-by fields</td><td>Foundational edits require Output + Verified-by per <a href="../product-prd-native-v1.html#section-3-native-platform">§4.5 Test-before-conclude</a></td><td>HARD via blueprint-check.sh</td></tr>
+<tr><td>D51 Caveman default</td><td>Prose terse for Asawa/Sutra work; code/governance blocks stay normal</td><td>CONVENTION via skill</td></tr>
+<tr><td>D52 Autonomous git push</td><td>Routine push without per-push gate; destructive ops still gated</td><td>CONVENTION via session policy</td></tr>
+<tr><td>D53 Context7 default</td><td>Library/SDK/framework Q always routes through Context7 MCP</td><td>CONVENTION via skill</td></tr>
+<tr><td>D54 Native canon-only routing</td><td>Native sole source = NATIVE-ENGINE.md + ADR-004..017</td><td>HARD via native-canon hook</td></tr>
+<tr><td>D55 Structure-First</td><td>Adding new thing fires Survey→Reorg→Simplify→Surface</td><td>SOFT via structure-first-reminder.sh</td></tr>
+</table>
+
+<h4>D.13.3 Why directions ARE a Native product feature</h4>
+<ul>
+  <li><strong>Operators see direction impact</strong> in every CoS turn (Caveman prose · autonomous push · skill-explain card · Authority gate posture).</li>
+  <li><strong>Directions evolve the system</strong> without code changes — D-family is the operator's leverage on platform behavior.</li>
+  <li><strong>Direction history is auditable</strong> — append-only log at <code>holding/FOUNDER-DIRECTIONS.md</code>; every D{N} dated + sourced.</li>
+  <li><strong>Direction registry is operator-readable</strong> — Daily Pulse references active directions; CSM (<a href="../product-prd-native-v1.html#section-3-native-platform">§4.8</a>) tracks which directions affect which capabilities.</li>
+</ul>
+
+<h4>D.13.4 Acceptance criteria (Founder Directions v1)</h4>
+<ul>
+  <li>Every direction has TRIGGER/CHECK/ENFORCEMENT/OWNER fields filled.</li>
+  <li>Directions are append-only; never re-numbered or silently revised (per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12 Artifact Governance</a>).</li>
+  <li>Operator can revoke any session-level direction via documented phrase (e.g., "stop caveman").</li>
+  <li>HARD-enforced directions ship with hook + override path (<code>{D_TAG}_ACK=1 {D_TAG}_ACK_REASON='...'</code>).</li>
+</ul>
+<p class="callout"><strong>Sources</strong>: <code>holding/FOUNDER-DIRECTIONS.md</code> (D1-D55+ append-only log) · <code>holding/DIRECTION-ENFORCEMENT.md</code> (hook coverage table) · <code>holding/DIRECTIONS-AUDIT-2026-04-22.md</code> (compliance audit).</p>
+</section>
+
+<section id="d14-prd-authoring">
+<h3>D.14 PRD Authoring Contract (how to write this PRD) <a href="../product-prd-native-v1.html#d14-prd-authoring" class="anchor">#</a></h3>
+<p>Eight rules. Apply when adding to or editing this PRD, and when authoring future Layer-B Product PRDs per <a href="../product-prd-native-v1.html#"><code>ADR-020</code></a>. Each rule traces to a recorded source (commit · directive · ADR · memory).</p>
+<table>
+<tr><th>#</th><th>Rule</th><th>Source</th></tr>
+<tr><td>1</td><td><strong>Cagan</strong> — PRD body = WHAT the operator observes. Engine HOW lives in <code>sutra/os/native/**</code> + ADRs, not in this PRD.</td><td>memory <code>feedback_prd_what_not_how.md</code></td></tr>
+<tr><td>2</td><td><strong>Operator voice</strong> — Ring 1 (Problem · Need · Solution direction) written first-person in the founder's voice. Match the <a href="../product-prd-native-v1.html#section-0-press-release">§0 Tuesday narratives</a> register. Not Cagan-formatted (that's Ring 2's job).</td><td>directive <code>1778586433</code> §R4 #5</td></tr>
+<tr><td>3</td><td><strong>STOP-AT-3-RING</strong> — Surface · Contract · Mechanism. Ring 4 (plan + code) lives in auto-generated companion docs, not inline. <code>&lt;details&gt;</code> is not a structural fix.</td><td>directive <code>1778588038</code> R3 verdict (codex + deepseek convergent)</td></tr>
+<tr><td>4</td><td><strong>4 inline-marker types</strong> — <span class="marker marker-pending-design">pending-design</span> <span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span> <span class="marker marker-deeper-founder-impact">deeper-founder-impact</span> <span class="marker marker-founder-input-required">founder-input-required</span>. Applied inline at the gap. Each indexed in <a href="../product-prd-native-v1.html#c7-backlog">§C.7 Backlog</a>.</td><td>2026-05-20 founder direction</td></tr>
+<tr><td>5</td><td><strong>ADR-020 section set</strong> — every Layer-B Product PRD must include §A Idea · §B Pillars · §B Needs · §Operator-surface contract · §Acceptance · §HOW prefs · §Native claims · §Distribution · §Observability · §Open Qs · §Resilience · §Activation.</td><td><code>sutra/os/decisions/ADR-020-layer-b-product-authoring-template.md</code></td></tr>
+<tr><td>6</td><td><strong>Multi-page render</strong> — one logical PRD, multiple physical pages. Hub (this file) carries TOC + §ES + §0; §1-§10 each render to <code>prd/NN-name.html</code> via Vercel auto-routes.</td><td>2026-05-20 founder direction</td></tr>
+<tr><td>7</td><td><strong>Don't lose existing content</strong> — additive-only edits; preserve visual rhythm; section bulk ≤250 words / 1.5 screen-heights max.</td><td>directive <code>1778586433</code> §R2 + §R4 #6</td></tr>
+<tr><td>8</td><td><strong>Ratification path</strong> — every canon-touching change passes codex + deepseek peer review (PROTO-019). Convergence required before merge. Per-directive verdict log at <code>.enforcement/{codex,deepseek}-reviews/</code>.</td><td><a href="../product-prd-native-v1.html#d4-change-control">D.4 Change control</a> + PROTO-019</td></tr>
+</table>
+<p class="callout"><strong>Practical use</strong>: before every PRD edit, scan rules 1-3 (voice + scope discipline). Before every multi-line addition, scan rules 4-7 (markers + sections + render + preservation). Before every merge, scan rule 8 (ratification). Authoring drift is caught at <a href="../product-prd-native-v1.html#d3-methodology">D.3 Review methodology</a> 12-item checklist.</p>
+</section>
+
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/decisions.html">ADR Catalog</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

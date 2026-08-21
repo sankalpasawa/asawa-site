@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - Second-Order: Authority + Tenancy</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:880px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:10px}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#7c3aed}
+  .draft{background:#fffbeb;border:1.5px solid #f59e0b;border-radius:8px;padding:8px 14px;font-size:13px;color:#92400e;margin:0 0 18px}
+  .draft b{letter-spacing:.04em}
+  a{color:#1d4ed8;text-decoration:none}
+  a:hover{text-decoration:underline}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 9px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  ul.gaps{margin:0;padding-left:20px;font-size:13.5px;color:#1f2937}
+  ul.gaps li{margin:7px 0}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:26px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="platform/authority-tenancy.html" style="color:#bfdbfe">platform/authority-tenancy.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native &mdash; Second-Order: Authority + Tenancy</h1>
+  <div class="sub">The &sect;1.0 <b>Authority + Tenancy</b> wrap, fully wired &middot; every part connected to the parts it actually touches</div>
+  <div class="draft"><b>WORKING DRAFT</b> &middot; date undefined &middot; Not locked - founder review pending</div>
+  <div class="crumb">First layer: Human &rarr; UI &rarr; Host &rarr; Daemon{Orchestration &rarr; System of Process} &rarr; SoR / External World &mdash; <b>Authority + Tenancy (here)</b> is the wrap that gates every access between them &middot; back to <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+
+  <svg viewBox="0 0 1040 990" role="img" aria-label="Authority and Tenancy second-order block diagram, fully wired">
+    <defs>
+      <marker id="gah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- ===== the wrap itself (this IS the block: a border, not a pipeline box) ===== -->
+    <rect x="240" y="140" width="560" height="820" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="7 5"/>
+    <text x="282" y="168" fill="#7c3aed" font-weight="700" font-size="11.5">AUTHORITY + TENANCY &#183; gates every access (&#167;1.0 wrap)</text>
+
+    <!-- ===== EDGES (under boxes) ===== -->
+    <!-- SoP stub -> Authority Model : every access in -->
+    <path d="M184,370 L300,370" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="192" y="358" font-size="9" fill="#475569">every access</text>
+    <!-- Authority Model -> Cascade : 6-dim verdict -->
+    <path d="M500,385 L550,470" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="430" y="430" text-anchor="middle" font-size="9" fill="#475569">6-dim verdict</text>
+    <!-- Trust ladder -> Cascade : shifts ask->auto -->
+    <path d="M498,262 L575,460" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="518" y="300" font-size="9" fill="#475569">shifts ask &#8594; auto</text>
+    <!-- UI -> Trust ladder : grant always / dial -->
+    <path d="M480,50 L270,50 L270,215 L300,215" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="290" y="42" font-size="9" fill="#475569">grant always &#183; dial up / down</text>
+    <!-- Approval gate -> UI : prompt up -->
+    <path d="M630,190 L630,76" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="622" y="125" text-anchor="end" font-size="9" fill="#475569">approval prompt + F.2 tag</text>
+    <!-- UI -> Approval gate : decision down -->
+    <path d="M670,76 L670,190" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="678" y="125" font-size="9" fill="#475569">grant / deny / confirm</text>
+    <!-- Reversibility -> Approval gate : tag -->
+    <path d="M620,320 L620,262" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="628" y="295" font-size="9" fill="#475569">tag on every prompt</text>
+    <!-- Cascade -> Approval gate : ASK outcome (right channel) -->
+    <path d="M750,490 L770,490 L770,235 L750,235" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="783" y="360" font-size="9" fill="#475569" transform="rotate(-90 783 360)">ASK outcome &#8594; approval prompt</text>
+    <!-- Cascade -> Failure states : GATE/ESCALATE hold -->
+    <path d="M550,498 L500,498" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="525" y="480" text-anchor="middle" font-size="8" fill="#475569">GATE /</text>
+    <text x="525" y="491" text-anchor="middle" font-size="8" fill="#475569">ESCALATE</text>
+    <!-- Failure states -> SoP stub : operator decides -->
+    <path d="M300,490 L160,426" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="196" y="470" font-size="9" fill="#475569">ACTIVE / RETIRED</text>
+    <!-- SoR stub -> Domain field : read/write -->
+    <path d="M184,638 L300,638" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="190" y="626" font-size="9" fill="#475569">every read / write</text>
+    <!-- Domain field -> HS-3 : cross-tenant attempt -->
+    <path d="M490,638 L560,638" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="525" y="620" text-anchor="middle" font-size="8.5" fill="#475569">cross-</text>
+    <text x="525" y="631" text-anchor="middle" font-size="8.5" fill="#475569">tenant</text>
+    <!-- HS-3 -> Hardstop UX : DENIED -->
+    <path d="M580,676 L490,730" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="582" y="706" font-size="9" fill="#475569">DENIED &#8594; boxed message</text>
+    <!-- Hardstop UX -> Replay : audit row link -->
+    <path d="M500,768 L550,768" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="525" y="750" text-anchor="middle" font-size="8.5" fill="#475569">audit</text>
+    <text x="525" y="761" text-anchor="middle" font-size="8.5" fill="#475569">row link</text>
+    <!-- Cascade -> Provenance stub : row out -->
+    <path d="M750,520 L880,520 L880,560" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="756" y="508" font-size="9" fill="#475569">provenance row &#183; ADR-007</text>
+    <!-- Provenance stub -> Replay : reads trail -->
+    <path d="M880,650 L880,768 L750,768" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="760" y="756" font-size="9" fill="#475569">F.3 replay reads trail</text>
+    <!-- Guard tooling -> Provenance stub : overrides logged -->
+    <path d="M500,895 L910,895 L910,650" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="548" y="884" font-size="9" fill="#475569">HARD/SOFT verdicts &#183; overrides audit-logged</text>
+    <!-- Cascade -> External World stub : ACT path, gate at every send -->
+    <path d="M750,470 L794,470 L794,100 L850,100 L850,76" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#gah)"/>
+    <text x="806" y="300" font-size="9" fill="#475569" transform="rotate(-90 806 300)">ACT &#183; authority gate at every send</text>
+
+    <!-- ===== gate glyphs at wrap crossings ===== -->
+    <path d="M233,370 L240,363 L247,370 L240,377 Z" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+    <path d="M233,638 L240,631 L247,638 L240,645 Z" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+    <path d="M787,140 L794,133 L801,140 L794,147 Z" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+
+    <!-- ===== INTERNAL PARTS (solid boxes) ===== -->
+    <!-- D Trust ladder -->
+    <rect x="300" y="190" width="200" height="72" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="212" text-anchor="middle" font-size="12" font-weight="700">TRUST LADDER &#183; F.4</text>
+    <text x="400" y="228" text-anchor="middle" font-size="9" fill="#6b7280">rungs 1-4 &#183; day 0-14 ask-all &#8594; 90+ standing</text>
+    <text x="400" y="241" text-anchor="middle" font-size="9" fill="#6b7280">operator can dial up / down at any rung</text>
+    <!-- E Approval gate -->
+    <rect x="550" y="190" width="200" height="72" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="650" y="212" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">APPROVAL GATE &#183; ADR-009</text>
+    <text x="650" y="228" text-anchor="middle" font-size="9" fill="#3b5bdb">first-class primitive, not a hook</text>
+    <text x="650" y="241" text-anchor="middle" font-size="9" fill="#3b5bdb">confirm &#183; type-go &#183; grant &#183; preview</text>
+    <!-- A Authority model -->
+    <rect x="300" y="320" width="200" height="80" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="345" text-anchor="middle" font-size="12" font-weight="700">AUTHORITY MODEL &#183; D.6</text>
+    <text x="400" y="362" text-anchor="middle" font-size="9" fill="#6b7280">6 dimensions: domain &#183; tool &#183; stakeholder</text>
+    <text x="400" y="375" text-anchor="middle" font-size="9" fill="#6b7280">&#183; dollar &#183; reversibility &#183; confidence</text>
+    <text x="400" y="389" text-anchor="middle" font-size="9" fill="#6b7280">heaviest in B3 action gate + B4 delegation</text>
+    <!-- C Reversibility tags -->
+    <rect x="550" y="320" width="200" height="80" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="650" y="345" text-anchor="middle" font-size="12" font-weight="700">REVERSIBILITY TAGS &#183; F.2</text>
+    <text x="650" y="362" text-anchor="middle" font-size="9" fill="#6b7280">reversible &#183; reversible-with-effort &#183;</text>
+    <text x="650" y="375" text-anchor="middle" font-size="9" fill="#6b7280">not reversible (confirming locks it in)</text>
+    <text x="650" y="389" text-anchor="middle" font-size="9" fill="#6b7280">visible on every action</text>
+    <!-- I Failure states -->
+    <rect x="300" y="460" width="200" height="76" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="484" text-anchor="middle" font-size="12" font-weight="700">FAILURE STATES</text>
+    <text x="400" y="501" text-anchor="middle" font-size="9" fill="#6b7280">PAUSED &#183; hardstop or Charter-Authority</text>
+    <text x="400" y="514" text-anchor="middle" font-size="9" fill="#6b7280">ESCALATED &#183; retries out or ESCALATE class</text>
+    <!-- B Cascade -->
+    <rect x="550" y="460" width="200" height="76" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="650" y="481" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a8a">ASK-VS-ACT CASCADE &#183; F.1+F.5</text>
+    <text x="650" y="498" text-anchor="middle" font-size="9" fill="#3b5bdb">irreversible? &#8594; high-risk? &#8594; new authority?</text>
+    <text x="650" y="511" text-anchor="middle" font-size="9" fill="#3b5bdb">&#8594; first-time channel? &#8594; else ACT, report after</text>
+    <!-- F Domain field -->
+    <rect x="300" y="600" width="190" height="76" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="395" y="624" text-anchor="middle" font-size="12" font-weight="700">TENANT ISOLATION &#183; ADR-006</text>
+    <text x="395" y="641" text-anchor="middle" font-size="9" fill="#6b7280">Domain field on every primitive</text>
+    <text x="395" y="654" text-anchor="middle" font-size="9" fill="#6b7280">cross-tenant default-deny (&#167;1.3)</text>
+    <!-- G HS-3 -->
+    <rect x="560" y="600" width="190" height="76" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="655" y="624" text-anchor="middle" font-size="12" font-weight="700">HS-3 TENANT HARDSTOP</text>
+    <text x="655" y="641" text-anchor="middle" font-size="9" fill="#6b7280">cross-tenant w/o delegates_to &#8594; DENIED</text>
+    <text x="655" y="654" text-anchor="middle" font-size="9" fill="#6b7280">partial enforcement today (plugin hooks)</text>
+    <!-- H Hardstop UX -->
+    <rect x="300" y="730" width="200" height="76" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="754" text-anchor="middle" font-size="12" font-weight="700">HARDSTOP UX CONTRACT</text>
+    <text x="400" y="771" text-anchor="middle" font-size="9" fill="#6b7280">WHAT happened &#183; next action &#183; audit link</text>
+    <text x="400" y="784" text-anchor="middle" font-size="9" fill="#6b7280">HS-1: no self-modification of core rules</text>
+    <!-- J Replay -->
+    <rect x="550" y="730" width="200" height="76" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="650" y="754" text-anchor="middle" font-size="12" font-weight="700">AUDIT REPLAY &#183; F.3</text>
+    <text x="650" y="771" text-anchor="middle" font-size="9" fill="#6b7280">what was asked &#183; what Native did &#183; why</text>
+    <text x="650" y="784" text-anchor="middle" font-size="9" fill="#6b7280">same chat surface &#183; no log-diving</text>
+    <!-- K Guard tooling -->
+    <rect x="300" y="860" width="200" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="883" text-anchor="middle" font-size="12" font-weight="700">GUARD TOOLING &#183; &#167;1.5.1</text>
+    <text x="400" y="900" text-anchor="middle" font-size="9" fill="#6b7280">HARD = boxed BLOCK + override path</text>
+    <text x="400" y="913" text-anchor="middle" font-size="9" fill="#6b7280">SOFT = advisory &#183; fires at tool-call time</text>
+
+    <!-- legend -->
+    <text x="520" y="948" text-anchor="middle" font-size="9" fill="#9ca3af" font-style="italic">&#9670; = gate point where Authority + Tenancy decides auto / ask / deny &#183; authority half (top) &#183; tenancy half (middle) &#183; audit + enforcement (bottom)</text>
+
+    <!-- ===== NEIGHBOR STUBS (muted, dashed) ===== -->
+    <rect x="480" y="24" width="240" height="52" rx="9" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="600" y="46" text-anchor="middle" font-size="12" font-weight="600" fill="#374151">UI (&#8594; Human)</text>
+    <text x="600" y="61" text-anchor="middle" font-size="9" fill="#6b7280">approval moments &#183; replay answers</text>
+
+    <rect x="790" y="24" width="180" height="52" rx="9" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="880" y="46" text-anchor="middle" font-size="12" font-weight="600" fill="#374151">EXTERNAL WORLD</text>
+    <text x="880" y="61" text-anchor="middle" font-size="9" fill="#6b7280">sends &#183; people &#183; services</text>
+
+    <rect x="24" y="350" width="160" height="76" rx="9" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="104" y="382" text-anchor="middle" font-size="11.5" font-weight="600" fill="#374151">SYSTEM OF</text>
+    <text x="104" y="397" text-anchor="middle" font-size="11.5" font-weight="600" fill="#374151">PROCESS</text>
+    <text x="104" y="412" text-anchor="middle" font-size="9" fill="#6b7280">workflow runtime</text>
+
+    <rect x="24" y="600" width="160" height="76" rx="9" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="104" y="632" text-anchor="middle" font-size="11.5" font-weight="600" fill="#374151">SYSTEM OF</text>
+    <text x="104" y="647" text-anchor="middle" font-size="11.5" font-weight="600" fill="#374151">RECORD</text>
+    <text x="104" y="662" text-anchor="middle" font-size="9" fill="#6b7280">tenant-scoped data</text>
+
+    <rect x="850" y="560" width="160" height="90" rx="9" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="930" y="588" text-anchor="middle" font-size="10.5" font-weight="600" fill="#374151">DECISION-</text>
+    <text x="930" y="602" text-anchor="middle" font-size="10.5" font-weight="600" fill="#374151">PROVENANCE</text>
+    <text x="930" y="618" text-anchor="middle" font-size="9" fill="#6b7280">append-only audit trail</text>
+    <text x="930" y="631" text-anchor="middle" font-size="9" fill="#6b7280">home block: open question</text>
+  </svg>
+
+  <h2>Contracts &mdash; what crosses this block's boundary</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>ALL block pairs</b> (Human &middot; UI &middot; Host &middot; Daemon &middot; System of Record &middot; External World &middot; Compute)</td>
+      <td>gates</td>
+      <td>Every access. &sect;1.0 draws Authority + Tenancy as a dashed wrap around the entire runtime ("AUTHORITY + TENANCY &middot; gates every access") &mdash; a cross-cutting envelope, not an in-line stage on any single edge.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>UI</b> (and through it, Human)</td>
+      <td>bidirectional</td>
+      <td>Up: approval moments per trigger class &mdash; "confirm &mdash; send / edit / cancel" (high-risk), "type go" two-step (irreversible), "grant once / grant always / not now" (new authority), "preview before I send?" (first-time channel) &mdash; plus reversibility tag on every action and audit-replay answers (F.3). Down: operator grant/deny/confirm decisions and explicit trust-ladder dial up/down.</td>
+      <td><a href="index.html#section-2-f-6-trust-authority">section-2-f-6-trust-authority</a></td>
+    </tr>
+    <tr>
+      <td><b>System of Process</b></td>
+      <td>gates</td>
+      <td>Execution gating: Authority gate classifies AUTO/GATE/ESCALATE (ADR-018 contract 1); Charter-Authority decision points drop the running workflow into PAUSED, ESCALATE class drops it into ESCALATED &mdash; workflow holds until operator decides (&rarr; ACTIVE resume or RETIRED cancel). HS-1 refuses workflow self-modification of Sutra core primitives without direct ratification.</td>
+      <td><a href="index.html#section-4-10-2-failure-states">section-4-10-2-failure-states</a></td>
+    </tr>
+    <tr>
+      <td><b>System of Record</b></td>
+      <td>gates</td>
+      <td>Tenant boundary on data access: Domain field on every primitive (ADR-006) scopes reads/writes per tenant; cross-tenant access without an explicit delegates_to edge is DENIED (HS-3); cross-tenant default-deny is the stated cross-cut default (&sect;1.3).</td>
+      <td><a href="index.html#section-4-10-1-hardstops">section-4-10-1-hardstops</a></td>
+    </tr>
+    <tr>
+      <td><b>External World</b> (connector sends from inside System of Process)</td>
+      <td>gates</td>
+      <td>Authority gate at every send &mdash; &sect;1.2 boundary table: &sect;5 Connector "Depends on &sect;4 Authority gate at every send". D.6 by-tool and by-stakeholder dimensions decide which external calls auto-execute vs ask; first message to a new person/channel gets preview-before-send.</td>
+      <td><a href="index.html#section-1-2-boundary">section-1-2-boundary</a></td>
+    </tr>
+    <tr>
+      <td><b>DecisionProvenance audit trail</b></td>
+      <td>out</td>
+      <td>Every gated decision carries a provenance row (ADR-007 3-channel append-only row, per &sect;1.5 Governance Machinery); every hardstop emits a link to its audit row; guard overrides are audit-logged. F.3 replay reads this trail back to the operator.</td>
+      <td><a href="index.html#section-1-5-tech-parts">section-1-5-tech-parts</a></td>
+    </tr>
+  </table>
+
+  <h2>Internal parts &mdash; what lives inside the wrap</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>Authority Model &mdash; 6 gate dimensions (D.6)</b></td>
+      <td>Six dimensions decide auto-execute vs ask-operator: by domain (per-Charter company scope), by tool (Slack yes, bank-API no without auth), by stakeholder (team auto, board/regulator escalate), by dollar threshold (&le;$X auto, &gt;$X ask), by reversibility (reversible auto, irreversible ask), by confidence level (high auto, low ask). Applies cross-pillar, heaviest in B3 action gate + B4 delegation.</td>
+      <td><a href="index.html#d6-authority">d6-authority</a></td>
+    </tr>
+    <tr>
+      <td><b>Ask-vs-act decision cascade (F.1 + F.5)</b></td>
+      <td>Ordered 4-question cascade per action: irreversible? &rarr; ASK multi-step confirm ("type go"); high-risk (spend/send/share/commit touching people or money)? &rarr; ASK one-tap confirm; new authority (no prior permission template)? &rarr; ASK grant once / grant always / not now; first time on channel/contact? &rarr; ASK preview-before-send. All no &rarr; ACT, report after.</td>
+      <td><a href="index.html#section-2-f-6-trust-authority">section-2-f-6-trust-authority</a></td>
+    </tr>
+    <tr>
+      <td><b>Reversibility tags (F.2)</b></td>
+      <td>Every action carries a visible reversibility tag: Reversible (undo window, "say undo anytime"), Reversible with effort (retract/re-issue/re-pay &mdash; doable, not free), Not reversible (confirming locks it in).</td>
+      <td><a href="index.html#section-2-f-6-trust-authority">section-2-f-6-trust-authority</a></td>
+    </tr>
+    <tr>
+      <td><b>Trust ladder (F.4)</b></td>
+      <td>Autonomy earned over time, 4 rungs: Rung 1 (day 0-14) ask before every external action; Rung 2 (15-45) auto-act on repeated patterns, ask on novel; Rung 3 (46-90) auto-act on routines, ask only high-risk/irreversible; Rung 4 (90+) runs standing routines, surfaces what it did. Operator can dial up/down explicitly at any rung.</td>
+      <td><a href="index.html#section-2-f-6-trust-authority">section-2-f-6-trust-authority</a></td>
+    </tr>
+    <tr>
+      <td><b>Approval-gate primitive (ADR-009)</b></td>
+      <td>Approval is a first-class primitive in the platform, not a hook (ADR-009, ratified). Approval plumbing lives in canon blocks/ + primitives/ per the &sect;1.5 Governance Machinery row.</td>
+      <td><a href="index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+    <tr>
+      <td><b>Tenant isolation via Domain field (ADR-006)</b></td>
+      <td>Tenant isolation enforced via a Domain field on every primitive (ADR-006, ratified). &sect;1.3 names Identity/Tenancy as a cross-cut: implicit in D.6 by-domain, explicit cross-tenant default-deny in &sect;2 B5.</td>
+      <td><a href="index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+    <tr>
+      <td><b>HS-3 tenant-boundary hardstop</b></td>
+      <td>Execution attempting cross-tenant access without an explicit delegates_to edge is DENIED; operator gets "this action would touch &lt;other-company&gt;; explicit delegates_to authorization required" prompt. Per the MECHANISM-PENDING callout, HS-3 has only partial enforcement via existing plugin hooks today.</td>
+      <td><a href="index.html#section-4-10-1-hardstops">section-4-10-1-hardstops</a></td>
+    </tr>
+    <tr>
+      <td><b>Hardstop UX contract</b></td>
+      <td>Every hardstop produces (a) 1-2 sentence operator-facing WHAT-happened message, (b) recommended NEXT ACTION (decide / authorize / wait / investigate), (c) link to the audit row. Operator never reads engineer-level stack traces. HS-1 reflexive-check additionally refuses self-modification of Sutra core rules until operator ratifies directly.</td>
+      <td><a href="index.html#section-4-10-1-hardstops">section-4-10-1-hardstops</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority-driven failure states (PAUSED / ESCALATED)</b></td>
+      <td>PAUSED entered when a hardstop fires OR Charter Authority requires explicit operator decision (per D.6); exit = operator decides &rarr; ACTIVE or RETIRED. ESCALATED entered when retry budget exhausts OR Authority gate triggers ESCALATE class (ADR-018 contract 1: AUTO/GATE/ESCALATE classification); exit = operator confirms direction.</td>
+      <td><a href="index.html#section-4-10-2-failure-states">section-4-10-2-failure-states</a></td>
+    </tr>
+    <tr>
+      <td><b>Audit visibility / replay surface (F.3)</b></td>
+      <td>Operator can ask Native to replay any past action at any moment: what was asked, what Native did, why it chose that path, what it would do differently. No log-diving or IT tickets &mdash; same chat surface.</td>
+      <td><a href="index.html#section-2-f-6-trust-authority">section-2-f-6-trust-authority</a></td>
+    </tr>
+    <tr>
+      <td><b>Governance machinery guard tooling</b></td>
+      <td>Live action-time guards enforcing the authority + audit + intervention contract as HARD/SOFT blocks (canon write-lock, dispatcher hooks, build-layer check, tenant firewall, etc.). HARD fire = boxed BLOCKED message with rule cited + override path (env-var ACK, honor-system, audit-logged); SOFT = advisory, tool call proceeds. The &sect;1.5 row states every decision carries a provenance row and cross-tenant is default-deny.</td>
+      <td><a href="index.html#section-1-5-1-governance-machinery">section-1-5-1-governance-machinery</a></td>
+    </tr>
+  </table>
+
+  <h2>How it flows internally</h2>
+  <p style="font-size:13.5px;color:#1f2937">Every access entering the wrap is classified by the D.6 six-dimension Authority Model (domain &middot; tool &middot; stakeholder &middot; dollar &middot; reversibility &middot; confidence), then run through the F.5 ask-vs-act cascade (irreversible &rarr; high-risk &rarr; new-authority &rarr; first-time-channel &rarr; else ACT-and-report); any ASK outcome is realized by the approval-gate primitive (ADR-009), which surfaces the prompt up through UI carrying its F.2 reversibility tag, while the gated workflow inside System of Process holds in PAUSED or ESCALATED until the operator's decision flows back down. In parallel, the tenancy half checks every System-of-Record touch against the ADR-006 Domain field, with HS-3 default-denying cross-tenant access lacking an explicit delegates_to edge; denials surface via the hardstop UX contract (WHAT + next action + audit-row link). Operator responses ("grant always", dial up/down) feed the F.4 trust ladder, which shifts future cascade outcomes from ask toward auto over rungs 1-4; every decision through the gate writes a DecisionProvenance row, which the F.3 replay surface reads back on demand, and the &sect;1.5.1 guard tooling enforces the same contract at action-time as HARD/SOFT blocks.</p>
+
+  <h2>Open / gaps &mdash; questions for the founder</h2>
+  <ul class="gaps">
+    <li>Where does the gate physically execute per edge &mdash; the &sect;1.0 SVG wraps all blocks (incl. Human&rarr;UI and Host), but the cited ranges only name enforcement at System of Process execution, connector sends, and SoR tenancy; is UI&rarr;Host / Host&rarr;Daemon gated by the same mechanism?</li>
+    <li>Is Orchestration's process-selection step itself authority-gated, or does gating only begin once System of Process executes?</li>
+    <li>F.1 "grant always" implies a persisted permission template &mdash; where is it stored (Charter? System of Record?) and what schema?</li>
+    <li>Which block owns trust-ladder state (current rung / operator dial), and is it scoped per-operator, per-Charter, or per-tenant?</li>
+    <li>HS-3 tenant-boundary is flagged MECHANISM-PENDING-adjacent ("partial enforcement via existing plugin hooks") &mdash; what exactly is enforced live today vs doctrine-only?</li>
+    <li>Does Authority + Tenancy say anything about the Compute layer boundary? Per-tenant key/data isolation appears only in the deferred cloud-hosted channel activation gate (&sect;1.4.5), not for the v1 own-machine case.</li>
+    <li>Where does the DecisionProvenance audit trail live in the first-layer schema &mdash; inside System of Record or a separate store? The cited ranges name the row contract (ADR-007) but not its home block.</li>
+  </ul>
+
+  <div class="foot">Fully-wired second-order of the Authority + Tenancy wrap &middot; gating drawn as border + gate glyphs, never an in-line pipeline box &middot; content sourced from the locked first-layer schema extraction only. Back to <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a>.</div>
+</div>
+</body>
+</html>

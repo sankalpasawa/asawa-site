@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>B1 — Intent Layer — Native Tech Design</title><link rel="stylesheet" href="../../shared.css"></head>
+<body>
+<div style="background:#7c2d12;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>SUPERSEDED 2026-06-13.</b> This scaffold stub is replaced by the engineering band's cross-cutting views + per-part pages. See <a href="../../../engineering/index.html" style="color:#fed7aa">engineering/</a>. Archive retained for provenance.</div>
+<nav class="topnav"><a href="../../index.html">← Tech Design Hub</a> · <a href="../../../product-prd-native-v1.html">PRD</a> · Layer: <strong>LLD</strong> · Doc: <strong>B1 — Intent Layer</strong></nav>
+<header><h1>B1 — Intent Layer</h1><p class="subtitle">Mechanism deep design for Pillar B1 ("Let me ask in my own words"). How freeform operator utterance compiles into typed intent + sub-intents. Show-by-example + trusted-names shortcut. Matches §C.7 backlog row T-G3-01.</p></header>
+<div class="scaffold-banner"><span class="fill-me">SCAFFOLD</span> — fill-in pending. Tracks PRD §2.B B1 Ring 3 Connectedness (Phase 2 design).</div>
+<section><h2>Scope</h2><p>How an operator's freeform sentence becomes a typed intent the rest of the system can execute against. Includes refinement (operator narrows mid-task) and trusted-names disambiguation.</p></section>
+<div class="canon-pointer"><strong>Canon authority</strong>:<ul><li><a href="../../../../../../sutra/os/native/blocks/"><code>sutra/os/native/blocks/</code></a> (B1 feature spec)</li><li><a href="../../../../../../sutra/os/native/pillars/"><code>sutra/os/native/pillars/</code></a></li><li><a href="../../../product-prd-native-v1.html#pillar-b1">PRD §2.B B1</a></li></ul></div>
+<section><h2>Planned sections</h2><div class="section-list"><ol><li>Input — operator utterance shape + supported variations</li><li>Parser — freeform → typed intent (intent_type · sub-intents · pre-declared schema)</li><li>Show-by-example mechanism — operator demonstrates once, Native re-runs</li><li>Trusted-names shortcut — disambiguation via operator-set aliases</li><li>Refinement loop — operator narrows; not a fresh ASK</li><li>Output — intake artifact written to B5.a (active session)</li><li>Acceptance criteria (per PRD §2.B B1 Ring 2)</li><li>Failure modes — ambiguous intent · schema rejection · LLM hallucination guard</li><li>Test strategy — unit + property + end-to-end</li></ol></div></section>
+<section><h2>Back-references</h2><p>PRD §2.B B1 · ADR-012 pnc-typed-parser-over-prose · T-G3-01 backlog</p></section>
+<footer>Scaffold 2026-05-20. <a href="../../index.html">↑ Hub</a></footer>
+</body></html>

@@ -1,0 +1,2437 @@
+{
+ "site": "native",
+ "current_version": "v1",
+ "generated": "2026-06-12 (v5 final hierarchy — founder-finalized; sidebar index everywhere) | +7 connective pages 2026-06-16",
+ "frozen_archive": {
+  "path": "master/index.html",
+  "note": "Frozen v1 monolith (founder-approved freeze, IA plan 2026-06-11). NOT a managed page (codex MODIFY-1: violates page budget by design). Linked from hub; anchors stable for citations; never edited."
+ },
+ "status_flow": [
+  "SEED",
+  "DRAFT",
+  "VERIFIED",
+  "LOCKED",
+  "SHIPPED"
+ ],
+ "bands": [
+  "FRONT DOOR",
+  "L1 THEORY",
+  "L2 THE VOCABULARY",
+  "L3 THE PLATFORM",
+  "L4 ENGINEERING",
+  "L5 PRODUCTS",
+  "L6 GOVERNANCE",
+  "ARCHIVE"
+ ],
+ "comment": "One row per page. v5 FINAL (founder 2026-06-12 PM): one flow business->products->platform->engineering->code. Needs/Design/Matrix live INSIDE the CoS product (needs = documentation, not a blog; matrix = how platform is adapted to CoS). Platform = its own horizontal product; daemon IS runtime (contains orch+sop); HOW = method per task inside SoP; observability = the ring around the machine; A+T = inner wrap. Design principles (BUILD-PROTOCOL): 1 one-flow 2 ownership-decides-placement 3 peers-level-children-below 4 box-in-box=zoom 5 no-shiny-rows 6 earn-the-box 7 one-home-cite-rest 8 status-is-bookkeeping. spine = prev/next reading order; governance+parity = wrap (spine null). LOCKED is founder-only. L-numbers banned for bands. Parity vocabulary orthogonal to page status.",
+ "pages": [
+  {
+   "id": "hub",
+   "path": "index.html",
+   "band": "FRONT DOOR",
+   "parent": null,
+   "title": "Native — Company Hub",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "doc-lane session",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-m-meta-map",
+    "master/index.html#section-es-executive-summary",
+    "master/index.html#section-0-press-release"
+   ],
+   "acceptance": "map (status-colored, hub-only) + status board current vs this manifest; under 400 lines; every page reachable in 2 clicks; selective links to §13 related docs, not a wholesale copy; links frozen master",
+   "spine": 0,
+   "layer": 0
+  },
+  {
+   "id": "roadmap",
+   "path": "roadmap/index.html",
+   "band": "FRONT DOOR",
+   "parent": "hub",
+   "title": "Roadmap — where organizations on Sutra are going (vision, five chapters)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#roadmap"
+   ],
+   "acceptance": "c1-c7 carried over complete incl. §C.6 forward OQs (FQ1/2/3 PROPOSED) + §C.7 backlog group counts with links into master for full row tables; statuses match master at freeze; gaps section lists founder-pending ratifications",
+   "spine": 1,
+   "layer": 0
+  },
+  {
+   "id": "distribution",
+   "path": "distribution.html",
+   "band": "FRONT DOOR",
+   "parent": "hub",
+   "title": "Distribution — how companies change, and how this spreads",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "product-cos",
+    "platform-runtime"
+   ],
+   "sources": [
+    "master/index.html#section-6-distribution"
+   ],
+   "acceptance": "§6.0-§6.7 carried over incl. N33 PULL-default resolution + §6.2 pricing placeholder flagged as founder gap; module-distribution + CSM touchpoints drawn as projections",
+   "spine": 2,
+   "layer": 0
+  },
+  {
+   "id": "governance",
+   "path": "governance/index.html",
+   "band": "L6 GOVERNANCE",
+   "parent": "hub",
+   "title": "Governance — the wrap: doctrine · directions · charters · machinery · meta-rules",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "founder+claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-5-1-governance-machinery",
+    "master/index.html#meta"
+   ],
+   "acceptance": "PRIMARY home of §1.5.1 machinery + §9 Meta D.1-D.14 (codex MODIFY-2); every invariant traces to source; pages cite gates, never restate them",
+   "spine": null,
+   "layer": 6
+  },
+  {
+   "id": "governance-parity",
+   "path": "governance/parity.html",
+   "band": "L6 GOVERNANCE",
+   "parent": "governance",
+   "title": "Sutra→Native Parity — coverage scoreboard + ledger pointer",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform",
+    "needs",
+    "roadmap"
+   ],
+   "sources": [
+    "master/index.html#section-4-12-parity"
+   ],
+   "acceptance": "§4.12 carried over closed-state (147 rows: 82/44/2/19 post N33/N38 PARTIAL→CAPTURED flips); links holding/SUTRA-NATIVE-PARITY.md + SHIPPED-SOLUTIONS.md; two-vocabulary rule stated; parity is audit vocabulary, not page lifecycle (codex MODIFY-6)",
+   "spine": null,
+   "layer": 6
+  },
+  {
+   "id": "product-cos",
+   "path": "products/cos/index.html",
+   "band": "L5 PRODUCTS",
+   "parent": "hub",
+   "title": "Product — Chief of Staff (CoS): idea · persona · pillars B1-B5 · views · journey",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-2-cos",
+    "master/index.html#pillars",
+    "master/index.html#views",
+    "master/index.html#section-2-e-journey"
+   ],
+   "acceptance": "5 pillars defined, each citing needs rows; Ring 1 awaiting-founder-fill cells preserved as gaps; journeys complete; needs table cited at needs/, not duplicated",
+   "spine": 3,
+   "layer": 5
+  },
+  {
+   "id": "needs",
+   "path": "products/cos/needs.html",
+   "band": "L5 PRODUCTS",
+   "parent": "product-cos",
+   "title": "Needs — why CoS exists (N1-N41, documentation)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "founder+claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#needs",
+    "master/index.html#a1-problem"
+   ],
+   "acceptance": "all 41 need rows carried over verbatim incl. parity annotations + shipped-solution pointers; §A.1 problem framing present; §0 cited as evidence only, primary home = hub (codex MODIFY-2); founder-voice cells preserved as gaps",
+   "spine": 4,
+   "layer": 5
+  },
+  {
+   "id": "needs-research",
+   "path": "products/cos/needs-research.html",
+   "band": "L5 PRODUCTS",
+   "parent": "needs",
+   "title": "Research foundations — findings grounding the WHY",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-10-research-foundations"
+   ],
+   "acceptance": "§10 findings carried over with source links intact; impl-vs-docs audit (§10.10) gaps preserved",
+   "spine": 5,
+   "layer": 5
+  },
+  {
+   "id": "product-cos-design",
+   "path": "products/cos/product-design.html",
+   "band": "L5 PRODUCTS",
+   "parent": "product-cos",
+   "title": "CoS Product Design — overview + §2.F.A foundations + §2.F.B input/intent",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-2-f-1-foundations",
+    "master/index.html#section-2-f-2-input-intent"
+   ],
+   "acceptance": "overview of all 9 subsections A-I with children links (codex MODIFY-3 split); A+B carried over; open design gaps preserved",
+   "spine": 6,
+   "layer": 5
+  },
+  {
+   "id": "product-cos-design-journeys",
+   "path": "products/cos/design-journeys.html",
+   "band": "L5 PRODUCTS",
+   "parent": "product-cos-design",
+   "title": "CoS Design — §2.F.C journeys (task · query · directive · feedback · new-idea)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-2-f-3-journeys"
+   ],
+   "acceptance": "all 5 journeys carried over complete; cross-refs repointed; gaps preserved",
+   "spine": 7,
+   "layer": 5
+  },
+  {
+   "id": "product-cos-design-surfaces",
+   "path": "products/cos/design-surfaces.html",
+   "band": "L5 PRODUCTS",
+   "parent": "product-cos-design",
+   "title": "CoS Design — §2.F.D-I (outputs · memory · trust · errors · pulse · lifecycle)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-2-f-4-outputs",
+    "master/index.html#section-2-f-5-personalization-memory",
+    "master/index.html#section-2-f-6-trust-authority",
+    "master/index.html#section-2-f-7-errors-recovery",
+    "master/index.html#section-2-f-8-capability-pulse",
+    "master/index.html#section-2-f-9-lifecycle"
+   ],
+   "acceptance": "subsections D-I carried over; anti-glaze/trust contract (§2.F.F) intact incl. D58 trace; gaps preserved",
+   "spine": 8,
+   "layer": 5
+  },
+  {
+   "id": "platform-matrix",
+   "path": "products/cos/matrix.html",
+   "band": "L5 PRODUCTS",
+   "parent": "product-cos",
+   "title": "Matrix — how the platform is adapted to deliver CoS (B1-B5 × parts)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform"
+   ],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_matrix.html"
+   ],
+   "acceptance": "full grid carried over; every cell's anchor resolves; B1 traversal narrative intact",
+   "spine": 9,
+   "layer": 5
+  },
+  {
+   "id": "product-senior-expert",
+   "path": "products/senior-expert/index.html",
+   "band": "L5 PRODUCTS",
+   "parent": "hub",
+   "title": "Product — Senior Expert (v2 seed)",
+   "status": "SEED",
+   "version": "v2",
+   "owner": "unassigned",
+   "projects_to": [],
+   "sources": [],
+   "acceptance": "authored per ADR-020 Layer-B template once ADR-020 closes (codex r19 CHANGES-REQUIRED open); reuses platform pages, adds none",
+   "spine": 10,
+   "layer": 5
+  },
+  {
+   "id": "platform",
+   "path": "platform/index.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "hub",
+   "title": "Platform — the horizontal product (§1.0 machine): layers · boundary · crosscuts · hierarchy · tech parts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-runtime",
+    "master/index.html#section-1-1-layers"
+   ],
+   "acceptance": "§1.0 schema rendered with all 8 blocks linked to their pages; §1.1-§1.6 carried over EXCEPT §1.5.1 which is cited at governance/ (codex MODIFY-2); LOCKED schema facts unchanged",
+   "spine": 11,
+   "layer": 3
+  },
+  {
+   "id": "platform-ui",
+   "path": "platform/ui.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Block — UI / Consumer Product",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "product-cos"
+   ],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_consumer-product.html"
+   ],
+   "acceptance": "re-cut draft carried over (MECE parts, states, render-only annotations, spine cross-cuts); gaps preserved; consumer-product = UI block identity stated",
+   "spine": 12,
+   "layer": 3
+  },
+  {
+   "id": "consumer-ui",
+   "path": "consumer-ui.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform/ui.html",
+   "title": "Consumer UI — Sutra Desktop design documentation",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "asawa design session 2026-08-04/05",
+   "projects_to": [],
+   "sources": [
+    "holding/research/2026-08-04-desktop-consumer-ui-framework.md",
+    "holding/departments/experience/desktop-app/IA.md",
+    "sutra/marketplace/plugin/sutra-ui/"
+   ],
+   "acceptance": "every decision cites its source; IA/involvement/day/session/data-plane each carry a diagram; open gaps carry the live A-ledger",
+   "layer": 2,
+   "band_sub": "IN USE"
+  },
+  {
+   "id": "design-system",
+   "path": "design-system.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "consumer-ui.html",
+   "title": "Design System — one skin for app · homepage · departments",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "asawa design session 2026-08-04/05",
+   "projects_to": [],
+   "sources": [
+    "consumer-ui.html",
+    "holding/departments/experience/desktop-app/mocks/2026-08-05-cockpit-final-v1.1.html",
+    "sutra/website/domains/"
+   ],
+   "acceptance": "token tables complete; 13 components w/ states; departments-merge spec; 50-task table w/ Impact+Effort+Wave",
+   "layer": 3
+  },
+  {
+   "id": "platform-host",
+   "path": "platform/host.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Block — Host (Claude CLI: agent runtime + model)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-host.html"
+   ],
+   "acceptance": "draft carried over incl. ADR-021 host-residency DECIDED state; Host-absence semantics gap preserved",
+   "spine": 13,
+   "layer": 3
+  },
+  {
+   "id": "platform-runtime",
+   "path": "platform/runtime.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Daemon — Runtime §4 (contains Orchestration + System of Process)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-4-native-platform"
+   ],
+   "acceptance": "§4.0-§4.11 carried over (§4.12 lives on governance/parity.html); HS-1..HS-8 + failure states + risk owners intact; canon cited never copied (D54)",
+   "spine": 14,
+   "layer": 3
+  },
+  {
+   "id": "platform-orchestration",
+   "path": "platform/orchestration.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform-runtime",
+   "title": "Block — Orchestration (translate request → find process)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-orchestration.html"
+   ],
+   "acceptance": "draft carried over; intent-parse LLM-call ownership gap preserved; contracts to SoP + Host declared",
+   "spine": 15,
+   "layer": 3
+  },
+  {
+   "id": "platform-system-of-process",
+   "path": "platform/system-of-process.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform-runtime",
+   "title": "Block — System of Process (the runtime)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-system-of-process.html"
+   ],
+   "acceptance": "draft carried over; only-SoP-calls-Host locked-schema rule stated; gaps preserved",
+   "spine": 16,
+   "layer": 3
+  },
+  {
+   "id": "platform-how",
+   "path": "platform/how-methodology.html",
+   "band": "ARCHIVE",
+   "parent": "platform-flow",
+   "title": "Method per task — §3 (HOW methodology, inside System of Process)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-3-how-methodology"
+   ],
+   "acceptance": "§3.1-§3.9 carried over; FQ1 PROPOSED status flagged as founder gap; zero-runtime-enforcement audit finding preserved",
+   "spine": 44,
+   "layer": 9
+  },
+  {
+   "id": "platform-system-of-record",
+   "path": "platform/system-of-record.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Block — System of Record (memory · provenance · audit)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-system-of-record.html"
+   ],
+   "acceptance": "draft carried over; Orchestration↔SoR write-routing gap preserved; Ring 1 voice cells flagged",
+   "spine": 51,
+   "layer": 3
+  },
+  {
+   "id": "platform-connector",
+   "path": "platform/connector.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Connector — §5 transport (inventory · flow · acceptance)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-5-connector"
+   ],
+   "acceptance": "§5.1-§5.3 carried over as the transport edge-contract page (codex MODIFY-4); edge to External World + SoP declared",
+   "spine": 52,
+   "layer": 3
+  },
+  {
+   "id": "platform-external-world",
+   "path": "platform/external-world.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Block — External World (counterparties)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-external-world.html"
+   ],
+   "acceptance": "block draft carried over; states 'Connector lanes live in SoP; External World owns counterparties' (codex MODIFY-4); cites platform/connector.html for transport",
+   "spine": 53,
+   "layer": 3
+  },
+  {
+   "id": "platform-compute",
+   "path": "platform/compute.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Block — Compute (base layer)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-compute.html"
+   ],
+   "acceptance": "thinnest-block state honest: no fabricated HW reqs; all 6 compute gaps preserved verbatim",
+   "spine": 54,
+   "layer": 3
+  },
+  {
+   "id": "platform-authority-tenancy",
+   "path": "platform/authority-tenancy.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Block — Authority + Tenancy (cross-cutting gate)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "governance"
+   ],
+   "sources": [
+    "master/index.html#section-1-0-1-second-order",
+    "_block-authority-tenancy.html"
+   ],
+   "acceptance": "draft carried over; wrap relationship to governance band drawn as projection, content not duplicated; 7 gaps preserved",
+   "spine": 55,
+   "layer": 3
+  },
+  {
+   "id": "platform-observability",
+   "path": "platform/observability.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Observability — §7, the ring that watches the whole machine",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "master/index.html#section-7-observability"
+   ],
+   "acceptance": "§7 carried over; pulse module + RTK rows intact; links to live telemetry scripts cited not copied",
+   "spine": 56,
+   "layer": 3
+  },
+  {
+   "id": "platform-maturation",
+   "path": "platform/maturation.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform-evolution",
+   "title": "Maturation — how the daemon grows a System (units → identity, S1-S5)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "roadmap",
+    "platform-orchestration",
+    "platform-system-of-record",
+    "platform-observability"
+   ],
+   "sources": [
+    "sutra/os/decisions/ADR-022-full-loop-six-mechanisms.md",
+    "sutra/os/decisions/ADR-010-organic-emergence-propose-approve.md",
+    "sutra/os/native/primitives/workflow.md",
+    "sutra/os/native/surfaces/emerge.md",
+    "holding/research/2026-06-12-unit-work-record-science.md",
+    "master/index.html#section-4-native-platform"
+   ],
+   "acceptance": "PLANNED/v2/not-built clearly marked; ladder S1-S5 + recursive System scaffold + 6 EMERGE detectors + flow diagram + reversibility safety + day-one-vs-later phasing present; VSM-vs-§-section disambiguation stated (L-number ban); every claim cites ADR-022/ADR-010/workflow.md/emerge.md/unit-science research; zero canon written; subject pending founder ruling for ADR-023",
+   "spine": 48,
+   "layer": 3
+  },
+  {
+   "id": "platform-maturation-walkthrough",
+   "path": "platform/maturation-walkthrough.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform-evolution",
+   "title": "Maturation walkthrough — a coffee shop grows its own system (plain-English, 5 before/after diagrams)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-orchestration",
+    "platform-system-of-record",
+    "platform-observability",
+    "platform-authority-tenancy"
+   ],
+   "sources": [
+    "holding/website/native/platform/maturation.html",
+    "sutra/os/decisions/ADR-022-full-loop-six-mechanisms.md",
+    "sutra/os/decisions/ADR-010-organic-emergence-propose-approve.md",
+    "holding/research/2026-06-12-unit-work-record-science.md"
+   ],
+   "acceptance": "non-technical reader can follow how the system grows + why each part helps; agent can build from per-phase 'To build it' footers; one coffee-shop example through all 5 phases; 5 before/after block diagrams; PLANNED/v2 honesty kept; companion to platform-maturation (adds no new claims)",
+   "spine": 49,
+   "layer": 3
+  },
+  {
+   "id": "platform-work-atom",
+   "path": "platform/work-atom.html",
+   "band": "ARCHIVE",
+   "parent": "platform-flow",
+   "title": "The Work-Atom — the generative unit + adaptive workflow (5 blocks · router · Cynefin shapes · lifecycle · recursion)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-how",
+    "platform-runtime",
+    "platform-maturation"
+   ],
+   "sources": [
+    "sutra/os/native/primitives/step.md",
+    "sutra/os/native/primitives/workflow.md",
+    "sutra/os/native/blocks/B11-promptbuilder.md",
+    "sutra/os/native/blocks/B1-intent-layer.md",
+    "sutra/os/native/blocks/B7-pre-post-validation.md",
+    "sutra/os/native/blocks/B8-task-framework-factors.md",
+    "holding/research/2026-06-12-unit-work-record-science.md"
+   ],
+   "acceptance": "smallest unit = constructed WorkflowStep (not the Workflow); 5 blocks mapped to canon; adaptive router (tier/certainty/lens → 5 dials) + Cynefin method-shapes + workflow patterns + 8-phase lifecycle + state machine + composition/recursion + control + boundaries each drawn as SVG; full canon-mapping table proves no new invention; v2/PLANNED honesty kept",
+   "spine": 43,
+   "layer": 9
+  },
+  {
+   "id": "platform-comprehension",
+   "path": "platform/comprehension.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Comprehension layer — Intent ⇄ Understanding (cross-cutting; every product inherits it)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-ui",
+    "platform-how",
+    "platform-system-of-record",
+    "product-cos",
+    "product-senior-expert"
+   ],
+   "sources": [
+    "sutra/os/native/blocks/B1-intent-layer.md",
+    "sutra/os/native/blocks/B6-research-on-fly.md",
+    "sutra/os/native/blocks/B11-promptbuilder.md",
+    "sutra/os/charters/HUMAN-SUTRA-LAYER.md",
+    "master/index.html#section-1-0-runtime"
+   ],
+   "acceptance": "comprehension established as a cross-cutting PLATFORM capability (all products inherit it); semantic diagram of intent⇄understanding (inbound/outbound twins on the Human↔System hinge) + platform-inheritance diagram + how-it-comes flow + canon-mapping (HOW §3 engine · B1 intent twin · B6 research · SoR calibration; NEW = outbound UNDERSTANDING + UI deepen-affordance + comprehension-memory); §1.0 schema untouched; v2/PLANNED",
+   "spine": 57,
+   "layer": 3
+  },
+  {
+   "id": "platform-work-structure",
+   "path": "platform/work-structure.html",
+   "band": "ARCHIVE",
+   "parent": "platform-flow",
+   "title": "How work composes — atom → workflow → system → recursive (plain, diagram-first)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-runtime",
+    "platform-maturation"
+   ],
+   "sources": [
+    "holding/website/native/platform/work-atom.html",
+    "holding/website/native/platform/maturation.html",
+    "sutra/os/native/primitives/workflow.md",
+    "sutra/os/decisions/ADR-011-on-failure-policy-five-set.md"
+   ],
+   "acceptance": "plain diagram-first explainer: atom→workflow→system→recursive build-up + workflow↔system connection (containment, not inheritance) + closed-taxonomy (fixed-menu) explainer; ≥5 SVG diagrams; coffee/kitchen/nesting analogies; v2/PLANNED; companion to work-atom + maturation",
+   "spine": 45,
+   "layer": 9
+  },
+  {
+   "id": "platform-company-decomposed",
+   "path": "platform/company-decomposed.html",
+   "band": "ARCHIVE",
+   "parent": "platform-flow",
+   "title": "A whole company, decomposed — the Domain+Charter frame around System → Workflow → Step (plain, diagram-first worked example)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-work-structure",
+    "platform-work-atom",
+    "platform-maturation",
+    "platform-runtime"
+   ],
+   "sources": [
+    "holding/website/native/platform/work-structure.html",
+    "holding/website/native/platform/work-atom.html",
+    "holding/website/native/platform/maturation.html",
+    "sutra/os/native/primitives/domain.md",
+    "sutra/os/native/primitives/charter.md",
+    "sutra/os/native/primitives/workflow.md",
+    "sutra/os/native/primitives/step.md",
+    "sutra/os/native/primitives/tenant.md",
+    "sutra/os/decisions/ADR-009-approval-gate.md"
+   ],
+   "acceptance": "plain diagram-first worked example: one fictional 40-branch chain decomposed in primitives; Domain/Charter drawn as the FRAME (per work-structure §6), not rungs; L1 (whole company) + L2 (one flagship function) + L3 (sub-domain → System → Workflow → Steps) + recursion (same shape at company + branch, concrete instances) + trace (one nightly close, annotated Domain+Charter framing); decomposition + Charter-stringency tables; banner PLANNED/v2/NOT BUILT + System PROPOSED; extension_ref kept on Workflow not System; ties to work-atom + work-structure + maturation; no new canon",
+   "spine": 46,
+   "layer": 9
+  },
+  {
+   "id": "platform-flow",
+   "path": "platform/flow.html",
+   "band": "ARCHIVE",
+   "parent": "platform-system-of-process",
+   "title": "The Flow — intent → method → workflow → atom → record (threads the spine end-to-end)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-work-atom",
+    "platform-how",
+    "platform-runtime"
+   ],
+   "sources": [
+    "holding/website/native/platform/work-atom.html",
+    "holding/website/native/platform/how-methodology.html",
+    "sutra/os/native/primitives/workflow.md",
+    "sutra/os/native/primitives/step.md"
+   ],
+   "acceptance": "threads operator-intent → method → chosen workflow → atom-goal → lifecycle/record into one visible end-to-end flow; companion to work-atom + method §3; §0 spine + task-path + canon-mapping; v2/PLANNED; no new canon",
+   "spine": 42,
+   "layer": 9
+  },
+  {
+   "id": "platform-crystallization",
+   "path": "platform/crystallization.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform-evolution",
+   "title": "Crystallization — how work hardens (LLM → Skill → Code); the soft→hard axis orthogonal to maturation",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-maturation",
+    "platform-work-atom",
+    "platform-system-of-record",
+    "platform-company-decomposed"
+   ],
+   "sources": [
+    "holding/website/native/platform/maturation.html",
+    "holding/website/native/platform/work-atom.html",
+    "sutra/os/native/primitives/workflow.md",
+    "sutra/os/native/primitives/step.md",
+    "sutra/os/decisions/ADR-008-markdown-vs-code.md",
+    "sutra/os/decisions/ADR-009-approval-gate.md"
+   ],
+   "acceptance": "crystallization as the soft→hard axis (LLM→Skill→Code), orthogonal to maturation's scale axis (two-axis diagram); C0→C2 ladder; decide-at-authoring + earn-at-runtime loop (tiered-JIT analogy) with reversible de-opt; three inputs (determinism=gate, frequency=trigger, stringency=care); reuse_tag→Skill (canon) vs auto-promote/de-opt (genuinely-new) flagged; v2/PLANNED; no new canon",
+   "spine": 50,
+   "layer": 3
+  },
+  {
+   "id": "engineering",
+   "path": "engineering/index.html",
+   "band": "L4 ENGINEERING",
+   "parent": "platform",
+   "title": "Engineering — compiled detail per platform subsystem (190 mechanisms)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "doc-lane session",
+   "projects_to": [],
+   "sources": [
+    "_engineering-packs-2026-06-12.json",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md",
+    "sutra/os/native/ (canon)",
+    "sutra/os/decisions/ (ADRs)",
+    "master/index.html#section-11-tech-design"
+   ],
+   "acceptance": "AMENDED 2026-06-12 (founder direction 'add whatever you find into the engineering subsections' waives the original SEED-hold for initial population; original clause preserved: stays-SEED-until-§11.0-axis+LOCKED-parent, codex MODIFY-7). AXIS RATIFIED 2026-06-12 (founder): per-platform-block — 1:1 with the PLATFORM band; per-surface overlay may be ADDED later as pointer-only page, never a re-cut. Content rule honored: compile-only, anchor-per-claim, zero invention; per-subsystem child expansion still gated on PLATFORM locks.",
+   "spine": 58,
+   "layer": 4
+  },
+  {
+   "id": "eng-ui",
+   "path": "engineering/ui.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — UI: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 59,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-ui",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-ui section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-host",
+   "path": "engineering/host.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Host: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 60,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-host",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-host section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-orchestration",
+   "path": "engineering/orchestration.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Orchestration: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 61,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-orchestration",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-orchestration section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-system-of-process",
+   "path": "engineering/system-of-process.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — System of Process: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 62,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-system-of-process",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-system-of-process section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-how",
+   "path": "engineering/how.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering — Method §3: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 63,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-how",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-how section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 4
+  },
+  {
+   "id": "eng-system-of-record",
+   "path": "engineering/system-of-record.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — System of Record: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 64,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-system-of-record",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-system-of-record section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-authority-tenancy",
+   "path": "engineering/authority-tenancy.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Authority + Tenancy: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 65,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-authority-tenancy",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-authority-tenancy section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-connector",
+   "path": "engineering/connector.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Connector: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 66,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-connector",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-connector section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-external-world",
+   "path": "engineering/external-world.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — External World: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 67,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-external-world",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-external-world section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-compute",
+   "path": "engineering/compute.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Compute: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 68,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-compute",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-compute section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-runtime",
+   "path": "engineering/runtime.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Daemon — Runtime §4: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 69,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-runtime",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-runtime section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-observability",
+   "path": "engineering/observability.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "engineering",
+   "title": "Engineering — Observability §7: mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 70,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-observability",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-observability section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 3
+  },
+  {
+   "id": "eng-matrix",
+   "path": "engineering/matrix.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering — Matrix (CoS adaptation): mechanisms + behavior contracts",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 71,
+   "sources": [
+    "engineering/_compile-2026-06-12-archived.html#eng-matrix",
+    "holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md"
+   ],
+   "acceptance": "every mechanism from the compile's eng-matrix section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim",
+   "layer": 4
+  },
+  {
+   "id": "eng-view-data-model",
+   "path": "engineering/data-model.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Data Model — the 10 primitives + relationships + lifecycle (cross-cutting HLD)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 72,
+   "sources": [
+    "master/index.html#section-4-1-primitives",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/HLD/02-data-model.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-1-primitives + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/HLD/02 skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-view-control-flow",
+   "path": "engineering/control-flow.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Control Flow — one operator turn: sequence + state machine across all parts (cross-cutting HLD)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 73,
+   "sources": [
+    "master/index.html#section-4-2-state-machine",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/HLD/03-control-flow.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-2-state-machine + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/HLD/03 skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-view-interfaces",
+   "path": "engineering/interfaces.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Interfaces — Connector inventory + EngineEvents + Native↔CoS API (cross-cutting HLD)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 74,
+   "sources": [
+    "master/index.html#section-5-connector",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/HLD/04-interfaces.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-5-connector + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/HLD/04 skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-view-governance",
+   "path": "engineering/governance.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Governance — authority model + HS-1..HS-8 + tenant + DecisionProvenance (cross-cutting HLD)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 75,
+   "sources": [
+    "master/index.html#section-4-10-1-hardstops",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/HLD/05-governance.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-10-1-hardstops + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/HLD/05 skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-view-deployment",
+   "path": "engineering/deployment.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Deployment — daemon + 3-artifact + tier-staged onboarding (cross-cutting HLD)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 76,
+   "sources": [
+    "master/index.html#section-4-9-module-deployment",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/HLD/06-deployment.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-9-module-deployment + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/HLD/06 skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-view-non-functional",
+   "path": "engineering/non-functional.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Non-Functional — perf · security · observability · accuracy · reliability · cost · resilience (cross-cutting HLD)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 77,
+   "sources": [
+    "master/index.html#section-4-10-resilience",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/HLD/07-non-functional.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-10-resilience + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/HLD/07 skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-catalog-primitives",
+   "path": "engineering/catalog-primitives.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Catalog — primitives index (10 canon primitives, one row each)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 78,
+   "sources": [
+    "master/index.html#section-4-1-primitives",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/LLD/primitives.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-1-primitives + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/LLD/primitives skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-catalog-hardstops",
+   "path": "engineering/catalog-hardstops.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Catalog — hardstops index (HS-1..HS-8 + override paths)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 79,
+   "sources": [
+    "master/index.html#section-4-10-1-hardstops",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/LLD/hardstops.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-10-1-hardstops + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/LLD/hardstops skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-catalog-surfaces",
+   "path": "engineering/catalog-surfaces.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Catalog — surfaces index (ROUTE · RUN · GATE · EMERGE · AUDIT · TENANT)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 80,
+   "sources": [
+    "master/index.html#section-4-native-platform",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/LLD/surfaces.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-4-native-platform + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/LLD/surfaces skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-catalog-interfaces",
+   "path": "engineering/catalog-interfaces.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Catalog — interfaces index (per-connector + EngineEvents wire-level)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "spine": 81,
+   "sources": [
+    "master/index.html#section-5-1-inventory",
+    "engineering/_compile-2026-06-12-archived.html",
+    "tech-design/LLD/interfaces.html"
+   ],
+   "acceptance": "cross-cutting whole-system view (not per-part); compiled from master section-5-1-inventory + the per-part engineering pages it spans; cites those part pages, never duplicates their mechanism rows; canon linked never copied (D54); old tech-design/LLD/interfaces skeleton superseded",
+   "layer": 4
+  },
+  {
+   "id": "eng-pillar-b1",
+   "path": "engineering/pillar-b1.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Pillar LLD — B1 Intent: cross-part design (invariants, end-to-end flow)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-matrix"
+   ],
+   "spine": 82,
+   "sources": [
+    "master/index.html#section-2-cos",
+    "products/cos/matrix.html",
+    "tech-design/LLD/pillars/B1-intent-layer.html"
+   ],
+   "acceptance": "the pillar's WHOLE design across parts (deepseek P2 hole): cross-part invariants + end-to-end flow + non-local properties (e.g. state round-trip, latency budget, security zoning) that the matrix (traceability) + per-part pages (local) don't capture; cites the matrix + the parts it spans, never duplicates them; canon linked (D54)",
+   "layer": 4
+  },
+  {
+   "id": "eng-pillar-b2",
+   "path": "engineering/pillar-b2.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Pillar LLD — B2 Context: cross-part design (invariants, end-to-end flow)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-matrix"
+   ],
+   "spine": 83,
+   "sources": [
+    "master/index.html#section-2-f-5-personalization-memory",
+    "products/cos/matrix.html",
+    "tech-design/LLD/pillars/B2-context-retrieval.html"
+   ],
+   "acceptance": "the pillar's WHOLE design across parts (deepseek P2 hole): cross-part invariants + end-to-end flow + non-local properties (e.g. state round-trip, latency budget, security zoning) that the matrix (traceability) + per-part pages (local) don't capture; cites the matrix + the parts it spans, never duplicates them; canon linked (D54)",
+   "layer": 4
+  },
+  {
+   "id": "eng-pillar-b3",
+   "path": "engineering/pillar-b3.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Pillar LLD — B3 Action: cross-part design (invariants, end-to-end flow)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-matrix"
+   ],
+   "spine": 84,
+   "sources": [
+    "master/index.html#section-4-6-how-bridge",
+    "products/cos/matrix.html",
+    "tech-design/LLD/pillars/B3-action-engine.html"
+   ],
+   "acceptance": "the pillar's WHOLE design across parts (deepseek P2 hole): cross-part invariants + end-to-end flow + non-local properties (e.g. state round-trip, latency budget, security zoning) that the matrix (traceability) + per-part pages (local) don't capture; cites the matrix + the parts it spans, never duplicates them; canon linked (D54)",
+   "layer": 4
+  },
+  {
+   "id": "eng-pillar-b4",
+   "path": "engineering/pillar-b4.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Pillar LLD — B4 Connector-comms: cross-part design (invariants, end-to-end flow)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-matrix"
+   ],
+   "spine": 85,
+   "sources": [
+    "master/index.html#section-5-connector",
+    "products/cos/matrix.html",
+    "tech-design/LLD/pillars/B4-connector-comms.html"
+   ],
+   "acceptance": "the pillar's WHOLE design across parts (deepseek P2 hole): cross-part invariants + end-to-end flow + non-local properties (e.g. state round-trip, latency budget, security zoning) that the matrix (traceability) + per-part pages (local) don't capture; cites the matrix + the parts it spans, never duplicates them; canon linked (D54)",
+   "layer": 4
+  },
+  {
+   "id": "eng-pillar-b5",
+   "path": "engineering/pillar-b5.html",
+   "band": "L4 ENGINEERING",
+   "parent": "engineering",
+   "title": "Engineering · Pillar LLD — B5 Governance-substrate: cross-part design (invariants, end-to-end flow)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-matrix"
+   ],
+   "spine": 86,
+   "sources": [
+    "master/index.html#section-4-10-resilience",
+    "products/cos/matrix.html",
+    "tech-design/LLD/pillars/B5-governance-substrate.html"
+   ],
+   "acceptance": "the pillar's WHOLE design across parts (deepseek P2 hole): cross-part invariants + end-to-end flow + non-local properties (e.g. state round-trip, latency budget, security zoning) that the matrix (traceability) + per-part pages (local) don't capture; cites the matrix + the parts it spans, never duplicates them; canon linked (D54)",
+   "layer": 4
+  },
+  {
+   "id": "platform-evolution",
+   "path": "platform/evolution.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform-system-of-process",
+   "title": "Evolution — how work grows + hardens over time (scale × substance axes)",
+   "status": "DRAFT",
+   "version": "v2",
+   "owner": "claude",
+   "projects_to": [
+    "platform-maturation",
+    "platform-crystallization",
+    "platform-runtime"
+   ],
+   "sources": [
+    "holding/website/native/platform/maturation.html",
+    "holding/website/native/platform/crystallization.html",
+    "holding/website/native/platform/flow.html",
+    "holding/research/2026-06-12-unit-work-record-science.md"
+   ],
+   "acceptance": "concise Evolution hub: two orthogonal growth axes (Maturation=scale S1-S5, Crystallization=substance C0-C3) + composition mechanism + 2 hidden axes named + anti-canonization callout (ws8dp6s5r); frames+links 3 children, no restatement; absorbs flow.html §I; v2/PLANNED",
+   "spine": 47,
+   "layer": 3
+  },
+  {
+   "id": "platform-placement",
+   "path": "platform/placement.html",
+   "band": "L3 THE PLATFORM",
+   "parent": "platform",
+   "title": "Placement — every unit of work gets an address (Domain + Charter)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform/system-of-record.html",
+    "platform/authority-tenancy.html"
+   ],
+   "sources": [
+    "sutra/os/decisions/ADR-028-mandatory-work-placement.md",
+    "sutra/os/native/primitives/placement.md",
+    "sutra/os/native/blocks/B19-work-placement.md",
+    "sutra/os/native/impl-phases/phase-F-placement-implementation.md"
+   ],
+   "acceptance": "35-step process complete end to end; each step names input→output, failure mode, and the canon invariant it satisfies; no step depends on operator ratification",
+   "spine": 87,
+   "layer": 3
+  },
+  {
+   "id": "the-system-simply",
+   "path": "the-system-simply.html",
+   "band": "L1 THEORY",
+   "parent": "hub",
+   "title": "The system, simply (overview)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "problem-types",
+   "path": "problem-types.html",
+   "band": "L1 THEORY",
+   "parent": "hub",
+   "title": "Problem types — what is missing (T1–T4)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "sutra/os/decisions/ADR-030-four-problem-types.md"
+   ],
+   "acceptance": "four types named by missing artefact; gloss travels with every name; T3 scope limited to ADR-010's detector; decay stated as interpretive rule; T4 not claimed solved; codex ADVISORY 2026-08-03",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "bootstrap",
+   "path": "bootstrap.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "The bootstrap (the general method)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "FOUNDER-DIRECTIONS.md (D62)",
+    "the-system-simply.md",
+    "axis-materialization.html"
+   ],
+   "acceptance": "general method (core->any target via placement) + the six-spec instance; instantiates D62; emergent altitudes",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "spec-shape",
+   "path": "spec-shape.html",
+   "band": "L1 THEORY",
+   "parent": "bootstrap",
+   "title": "SHAPE functional spec (Lens (decomposition))",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "bootstrap.html",
+    "axis-materialization.html",
+    "FOUNDER-DIRECTIONS.md (D62)"
+   ],
+   "acceptance": "9-section functional spec at product altitude; produced by the A->B path (write->critique->fix); no impl-leak",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "spec-grow",
+   "path": "spec-grow.html",
+   "band": "L1 THEORY",
+   "parent": "bootstrap",
+   "title": "GROW functional spec (Codify)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "bootstrap.html",
+    "axis-materialization.html",
+    "FOUNDER-DIRECTIONS.md (D62)"
+   ],
+   "acceptance": "9-section functional spec at product altitude; produced by the A->B path (write->critique->fix); no impl-leak",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "spec-govern",
+   "path": "spec-govern.html",
+   "band": "L1 THEORY",
+   "parent": "bootstrap",
+   "title": "GOVERN functional spec (Compliance-rule)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "bootstrap.html",
+    "axis-materialization.html",
+    "FOUNDER-DIRECTIONS.md (D62)"
+   ],
+   "acceptance": "9-section functional spec at product altitude; produced by the A->B path (write->critique->fix); no impl-leak",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "spec-edge",
+   "path": "spec-edge.html",
+   "band": "L1 THEORY",
+   "parent": "bootstrap",
+   "title": "EDGE functional spec (handoff (cross-boundary handoff variant))",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "bootstrap.html",
+    "axis-materialization.html",
+    "FOUNDER-DIRECTIONS.md (D62)"
+   ],
+   "acceptance": "9-section functional spec at product altitude; produced by the A->B path (write->critique->fix); no impl-leak",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "spec-resource",
+   "path": "spec-resource.html",
+   "band": "L1 THEORY",
+   "parent": "bootstrap",
+   "title": "RESOURCE functional spec (Token-budget)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "bootstrap.html",
+    "axis-materialization.html",
+    "FOUNDER-DIRECTIONS.md (D62)"
+   ],
+   "acceptance": "9-section functional spec at product altitude; produced by the A->B path (write->critique->fix); no impl-leak",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "spec-time",
+   "path": "spec-time.html",
+   "band": "L1 THEORY",
+   "parent": "bootstrap",
+   "title": "TIME functional spec (Cadence)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "bootstrap.html",
+    "axis-materialization.html",
+    "FOUNDER-DIRECTIONS.md (D62)"
+   ],
+   "acceptance": "9-section functional spec at product altitude; produced by the A->B path (write->critique->fix); no impl-leak",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "axis-productization",
+   "path": "axis-productization.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "Axis-productization (the methodology)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "axis-materialization",
+   "path": "axis-materialization.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "Axis-materialization (the six family workflows)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md",
+    "axis-productization.html"
+   ],
+   "acceptance": "P1-P5 run concretely for all six families + system diagram tying materialized axes to the loop; each step carries a runnable check; L2 (workflows) not L3 (code)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "axes",
+   "path": "axes.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "Axes + families",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "open-axis",
+   "path": "open-axis.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "The open-axis rule (mint / rework)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "edges",
+   "path": "edges.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "Edges (typed links between atoms)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "resource",
+   "path": "resource.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "Resource (the finite stock)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "time",
+   "path": "time.html",
+   "band": "L1 THEORY",
+   "parent": "the-system-simply",
+   "title": "Time (schedule + dynamics)",
+   "status": "DRAFT",
+   "version": "working-draft",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "the-system-simply.md"
+   ],
+   "acceptance": "product-altitude view of the one loop; cross-linked to overview + neighbors; codex-reviewed (1781545975)",
+   "spine": 0,
+   "layer": 1
+  },
+  {
+   "id": "platform-the-model",
+   "path": "platform/the-model.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-system-of-process",
+   "title": "The Model — ruled vocabulary, bottom-up (particles → work-atom → workflow/engine → assembly/system → internal system → shadow systems)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-flow",
+    "platform-work-atom",
+    "platform-work-structure",
+    "platform-evolution"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/WHAT-WE-DECIDED.md"
+   ],
+   "acceptance": "bottom-up ruled vocabulary home: particles (HOW carries attempt log) / work-atom / workflow-engine / assembly-system + charter-as-property / internal system (5 glue engines) / shadow systems; SVG per level, written+grown both sides; v1 DRAFT honesty kept",
+   "spine": 17,
+   "children": [],
+   "layer": 2
+  },
+  {
+   "id": "platform-model-engine-formation",
+   "path": "platform/model/engine-formation.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Engine Formation + Declared Read Surface (A21) — stub",
+   "status": "SEED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/WHAT-WE-DECIDED.md",
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md"
+   ],
+   "acceptance": "stub per B18-6: placement + pointer to sitting record; full authoring queued behind S7 canon ADR wave"
+  },
+  {
+   "id": "platform-model-particles",
+   "path": "platform/model/particles.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Particles — goal, constraints, context, HOW (attempt log on HOW)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 18,
+   "children": null,
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-work-atom",
+   "path": "platform/model/work-atom.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Work-Atom — the smallest unit (one goal, one verify)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 19,
+   "children": null,
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-workflow-engine",
+   "path": "platform/model/workflow-engine.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Workflow + Engine — written blueprint and its grown form",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 20,
+   "children": null,
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-assembly-system",
+   "path": "platform/model/assembly-system.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Assembly + System — written composition and the grown organism",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 21,
+   "children": null,
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-internal-system",
+   "path": "platform/model/internal-system.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Internal System — the five glue engines in every system",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 22,
+   "children": null,
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-shadow-systems",
+   "path": "platform/model/shadow-systems.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Shadow Systems — structured overlays for cross-system work",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 23,
+   "children": null,
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-properties",
+   "path": "platform/model/properties.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "System Properties — Charter, Domain, Tenancy",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7 (purpose/how/product use cases/operational scenarios/contract/implementation today/open questions); facts trace to sheet+grounding; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 24,
+   "children": null,
+   "layer": 2,
+   "band_sub": "CONSTRUCTION"
+  },
+  {
+   "id": "platform-model-user-journeys",
+   "path": "platform/model/user-journeys.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "User Journeys — how Systems, Workflows, Engines, and Shadow Systems get created (lending company end-to-end)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "persona + entry points; J1-J5 each w/ entry condition/tier/authority/success/failure + step table (created|stored) + one SVG; storage map; open questions; lending example throughout",
+   "spine": 25,
+   "children": null,
+   "layer": 2,
+   "band_sub": "IN USE"
+  },
+  {
+   "id": "platform-model-implementation",
+   "path": "platform/model/implementation.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Implementation — the model built AS the model: BuildAtoms, implementation workflows, the right questions",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "holding/plans/native-sop-program/GROUNDING-MAP.md"
+   ],
+   "acceptance": "BuildAtom namespace guard (not runtime Work-Atoms); scaffolding from grounding fidelity; ~12 BuildAtoms w/ goal/verify/blocked_by; implementation workflows; storage map; use-case traceability; right questions in 5 categories",
+   "spine": 26,
+   "children": null,
+   "layer": 2,
+   "band_sub": "CONSTRUCTION"
+  },
+  {
+   "id": "platform-model-industry-imports",
+   "path": "platform/model/industry-imports.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Industry Imports — candidate platform features (index)",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-work-systems.md",
+    "holding/research/2026-08-07-industry-reuse/"
+   ],
+   "acceptance": "120 REUSE/ADAPT imports listed with stable F-ids, status ladder TODO->SHIPPED, one subpage per part; candidates-not-doctrine banner present",
+   "spine": 27,
+   "children": [
+    "platform-model-industry-imports-particles",
+    "platform-model-industry-imports-work-atom",
+    "platform-model-industry-imports-workflow",
+    "platform-model-industry-imports-engine",
+    "platform-model-industry-imports-assembly-system",
+    "platform-model-industry-imports-internal-system",
+    "platform-model-industry-imports-shadow-systems",
+    "platform-model-industry-imports-properties-charter"
+   ],
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-particles",
+   "path": "platform/model/industry-imports/particles.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Particles cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/particles.md"
+   ],
+   "acceptance": "15 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 28,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-work-atom",
+   "path": "platform/model/industry-imports/work-atom.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Work-Atom cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/work-atom.md"
+   ],
+   "acceptance": "15 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 29,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-workflow",
+   "path": "platform/model/industry-imports/workflow.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Workflow cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/workflow.md"
+   ],
+   "acceptance": "15 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 30,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-engine",
+   "path": "platform/model/industry-imports/engine.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Engine cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/engine.md"
+   ],
+   "acceptance": "15 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 31,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-assembly-system",
+   "path": "platform/model/industry-imports/assembly-system.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Assembly + System cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/assembly-system.md"
+   ],
+   "acceptance": "15 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 32,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-internal-system",
+   "path": "platform/model/industry-imports/internal-system.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Internal System cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/internal-system.md"
+   ],
+   "acceptance": "15 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 33,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-shadow-systems",
+   "path": "platform/model/industry-imports/shadow-systems.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Shadow Systems cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/shadow-systems.md"
+   ],
+   "acceptance": "14 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 34,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-industry-imports-properties-charter",
+   "path": "platform/model/industry-imports/properties-charter.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-model-industry-imports",
+   "title": "Industry Imports — Properties + Charter cards",
+   "status": "CANDIDATES",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-industry-imports"
+   ],
+   "sources": [
+    "holding/research/2026-08-07-industry-reuse/properties-charter.md"
+   ],
+   "acceptance": "16 cards, each: source URL + what + fits-Native + build sketch + depends-on + decision-needed + review-notes slot; anchors stable F-ids",
+   "spine": 35,
+   "children": null,
+   "layer": 2,
+   "band_sub": "INDUSTRY IMPORTS"
+  },
+  {
+   "id": "platform-model-type-system",
+   "path": "platform/model/type-system.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "The Type System — Standard/Local Templates, Interfaces, evolution protocol",
+   "status": "PROPOSED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md"
+   ],
+   "acceptance": "four layers visual; kernel+families; interface pin table; census map w/ real paths; evolution loop w/ gates; A17/A18 sub-decisions listed; PROPOSED banner present",
+   "spine": 36,
+   "children": null,
+   "layer": 2,
+   "band_sub": "CONSTRUCTION"
+  },
+  {
+   "id": "platform-model-prd",
+   "path": "platform/model/prd.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Native — Product Requirements (top-level, founder gates pending)",
+   "status": "DRAFT",
+   "version": "v0.1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md",
+    "session extraction wf_e451eb1f-94a + canonicalization"
+   ],
+   "acceptance": "customer definition; L0-L4 layer map linking pages; 8 areas; 58 PF features name-level w/ status; 5 founder gates; deep sections stubbed until gates",
+   "spine": 37,
+   "children": null,
+   "layer": 2,
+   "band_sub": "RELEASE STATE"
+  },
+  {
+   "id": "platform-model-department-life",
+   "path": "platform/model/department-life.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "A Department's Life — one case, four diagrams (conversion, formation, edit, decisions-as-settings)",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md"
+   ],
+   "acceptance": "one Collections story; 4 conservative SVGs w/ recurring gateway anchor; warm plain captions; two-minute read; dual-AI design fixes applied",
+   "spine": 38,
+   "children": null,
+   "layer": 2,
+   "band_sub": "IN USE"
+  },
+  {
+   "id": "platform-model-product-journey",
+   "path": "platform/model/product-journey.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "The Product Journey — one feature, four systems, three eras",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md"
+   ],
+   "acceptance": "one feature (top-up loans) through 4 standing systems in 3 eras; consistent visual grammar (columns/band/tokens/padlocks); humans as never-frozen seats; dual-AI design fixes applied",
+   "spine": 39,
+   "children": null,
+   "layer": 2,
+   "band_sub": "IN USE"
+  },
+  {
+   "id": "platform-model-product-vertical",
+   "path": "platform/model/product-vertical.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Inside the Product Vertical",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md (A16/A17/A18/A19)",
+    "platform/model/product-journey.html (Era 4)",
+    "dual-AI consult 2026-08-10"
+   ],
+   "acceptance": "2 engine cards (E-price-loan, E-comply-check) w/ read surfaces + interface verifies + quadrant boards; cascade + roll-up sections; A21 candidates surfaced",
+   "spine": 40,
+   "children": [],
+   "layer": 2,
+   "band_sub": "IN USE"
+  },
+  {
+   "id": "platform-model-edge-system",
+   "path": "platform/model/edge-system.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "The Edge System",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md (A22 + A22-MECH)",
+    "2026-08-11 index incident",
+    "parked prototype holding/bin/sutra-edge",
+    "dual-AI doc-completeness pass 2026-08-11"
+   ],
+   "acceptance": "core + incident rule + glossary + schemas-before-mechanisms + failure semantics + lifecycles + human board + authority + dependency-ordered build-out w/ acceptance criteria; prototype marked PARKED",
+   "spine": 41,
+   "children": [],
+   "layer": 2,
+   "band_sub": "OBJECTS"
+  },
+  {
+   "id": "platform-model-evals",
+   "path": "platform/model/evals.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Evals — the Eval Engine",
+   "status": "DRAFT",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "sutra/os/decisions/ADR-031-eval-engine.md",
+    "holding/plans/eval-program/ARCHITECTURE.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7; facts trace to ADR-031 + eval-program artifacts; gaps bare TODO(founder); v1 DRAFT honesty kept",
+   "spine": 88,
+   "children": null,
+   "layer": 2,
+   "band_sub": "CONSTRUCTION"
+  },
+  {
+   "id": "platform-model-builders",
+   "path": "platform/model/builders.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Builders — the workflow types that grow the OS",
+   "status": "PROPOSED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/BUILDERS.md",
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md"
+   ],
+   "acceptance": "uniform PRD skeleton s1-s7; everything PROPOSED-labeled (A13 unruled); lifecycle SVG carries the gated PROPOSE->APPROVE mint; facts trace to BUILDERS.md + sheet; gaps register honest (7 rows)",
+   "spine": 89,
+   "children": null,
+   "layer": 2,
+   "band_sub": "CONSTRUCTION"
+  },
+  {
+   "id": "platform-model-versions",
+   "path": "platform/model/versions.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Versions — the v1–v5 ladder: self-sustaining capability versions + M1-M10 module stack",
+   "status": "DIRECTED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "holding/plans/native-sop-program/VERSIONS.md",
+    "holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md"
+   ],
+   "acceptance": "decision surface over VERSIONS.md (md is the contract, page never adds content); ladder SVG w/ evidence gates; per-version cards (ships/enter/exit/boundary/rollback); feature->version map; M1-M10 record-flow map; v1 leak guards; DIRECTED not RULED marked",
+   "spine": 90,
+   "children": null,
+   "layer": 2,
+   "band_sub": "RELEASE STATE"
+  },
+  {
+   "id": "consumer-ui-prd",
+   "path": "consumer-ui-prd.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "consumer-ui",
+   "title": "Desktop UI PRD — spec of record for screen design + Version UX ladder",
+   "status": "PROPOSED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "consumer-ui"
+   ],
+   "sources": [
+    "holding/website/native/design-system.html",
+    "holding/website/native/consumer-ui.html",
+    "holding/website/native/preview/app.html",
+    "holding/plans/native-sop-program/VERSIONS.md"
+   ],
+   "acceptance": "P1 nouns; P4 card<->record table w/ truth-class; P5 state-matrix rule; P6 interaction contracts; P8 acceptance; vux-v1..v5 chat mockups in real tokens; open-gates table; dual-lane folded",
+   "spine": 91,
+   "children": null,
+   "layer": 2,
+   "band_sub": "RELEASE STATE"
+  },
+  {
+   "id": "daemon-prd",
+   "path": "daemon-prd.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "The Daemon — PRD (loop contract, effectuation boundary, gates G1-G4)",
+   "status": "PROPOSED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-model-versions"
+   ],
+   "sources": [
+    "founder utterance 2026-08-19 (session bcb3d1c4)",
+    "sutra/os/native (Runtime s4, ADR-004/005)",
+    "holding/plans/native-sop-program/WHAT-WE-DECIDED.md"
+   ],
+   "acceptance": "PRD What-not-How; blocked on founder gates G1-G4; no build starts before G1"
+  },
+  {
+   "id": "platform-model-desktop-app",
+   "path": "platform/model/desktop-app.html",
+   "band": "L2 THE VOCABULARY",
+   "parent": "platform-the-model",
+   "title": "Desktop App — standing reverse-engineering home: UI states, governance modes, DS import delta",
+   "status": "PROPOSED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "platform-the-model"
+   ],
+   "sources": [
+    "sutra/marketplace/plugin/sutra-ui/static/term.html",
+    "sutra/marketplace/plugin/sutra-ui/static/panel.css",
+    "sutra/marketplace/plugin/sutra-ui/static/js/05-chat.js",
+    "holding/website/native/design-system.html"
+   ],
+   "acceptance": "terminal vs panel state comparison w/ file:line; two-axis governance model (behavior/visibility) replacing ON-OFF per codex; 4 mode mockups; DS import delta (4/63 token overlap, all conflicting); 12-row standing feature ledger; founder queue",
+   "spine": 92,
+   "children": null,
+   "layer": 2,
+   "band_sub": "RELEASE STATE"
+  },
+  {
+   "id": "roadmap-build",
+   "path": "roadmap/build.html",
+   "band": "L4 ENGINEERING",
+   "layer": 4,
+   "parent": "engineering-index",
+   "title": "Engineering Build Ledger — preserved build tracker (version scheme superseded by the ruled ladder)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "roadmap"
+   ],
+   "sources": [
+    "holding/website/native/roadmap/index.html (pre-2026-08-18)"
+   ],
+   "acceptance": "full carry of the prior roadmap page; banner + local staleness note on the version table; versions.html normative",
+   "spine": 93,
+   "children": null
+  },
+  {
+   "id": "distribution-ops",
+   "path": "distribution-ops.html",
+   "band": "L5 PRODUCTS",
+   "layer": 5,
+   "parent": "distribution",
+   "title": "Distribution Ops — tiers, channels, pricing scaffold, onboarding, module distribution (machinery)",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [
+    "distribution"
+   ],
+   "sources": [
+    "holding/website/native/distribution.html (pre-2026-08-18)"
+   ],
+   "acceptance": "full carry of the prior distribution page with operational banner; reader story lives at distribution.html",
+   "spine": 94,
+   "children": null
+  },
+  {
+   "id": "what-is-native",
+   "path": "what-is-native.html",
+   "band": "FRONT DOOR",
+   "layer": 0,
+   "parent": null,
+   "title": "What is Native — the plain-language explanation from a customer viewpoint",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "holding/research/2026-08-18-sutra-story-spine.md",
+    "sutra-ui app as built",
+    "holding/website/native/the-system-simply.html"
+   ],
+   "acceptance": "concrete-first (see before is); day-by-day scenes; provision table; privacy as limits; Native/Sutra naming resolved in one sentence",
+   "spine": 95,
+   "children": null
+  },
+  {
+   "id": "where-this-fits",
+   "path": "where-this-fits.html",
+   "band": "FRONT DOOR",
+   "layer": 0,
+   "parent": null,
+   "title": "Where this fits — industry position and how the future looks",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "holding/research/2026-08-10-sutra-world-model.md",
+    "holding/plans/native-sop-program/VERSIONS.md"
+   ],
+   "acceptance": "categories over competitor names (named vendors only in sourced signals section); one concrete example carries the distinction; honest counter with counter-counter; future via the five chapters, linked not restated",
+   "spine": 96,
+   "children": null
+  },
+  {
+   "id": "company-map",
+   "path": "company-map.html",
+   "band": "FRONT DOOR",
+   "layer": 0,
+   "parent": null,
+   "title": "The Company Map — the whole stack in one clickable block diagram",
+   "status": "VERIFIED",
+   "version": "v1",
+   "owner": "claude",
+   "projects_to": [],
+   "sources": [
+    "holding/website/native/_sidebar.html (dependency stack)"
+   ],
+   "acceptance": "single causal chain; 7 primary blocks; <=4 child links each; every block clickable; mirrors the sidebar order exactly",
+   "spine": 97,
+   "children": null
+  }
+ ]
+}

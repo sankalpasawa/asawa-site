@@ -1,0 +1,260 @@
+<!doctype html>
+<!-- PAGE: platform-model-desktop-app (v1, PROPOSED). THE STANDING REVERSE-ENGINEERING HOME for the desktop app.
+     Every fact in section 1 is read off the LIVE sutra-ui app (term.html / panel.html / panel.css / js/*.js) with
+     file:line, by 4 agents (wf_f49ae5c4). Section 2 (governance modes) is PROPOSED design, corrected by a codex
+     consult that rejected the single ON/OFF framing (10 P1s). Section 3 is the design-system import delta.
+     Section 4 is the standing ledger: features get reverse-engineered here, one row at a time. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Desktop App (reverse-engineering home)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.warn{background:#fef2f2;border-left:3px solid #b91c1c;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+ol{margin:6px 0;padding-left:26px}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+.pill.LIVE{background:#ecfdf5;color:#047857}
+/* --- terminal mockup: matches term.html (xterm, dark) --- */
+.term{background:#0C0B09;color:#d6d3cf;border-radius:10px;padding:0;margin:12px 0;overflow:hidden;border:1px solid #2A2622}
+.term .bar{background:#161412;border-bottom:1px solid #2A2622;padding:7px 12px;font-size:11px;color:#a8a29e;display:flex;gap:12px;align-items:center}
+.term .bar .lg{color:#C4956A;font-weight:700}
+.term .bar .live{color:#3fb950}
+.term .body{padding:14px 16px;font:12.5px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}
+.term .gov{color:#6E6860}
+.term .u{color:#C4956A}
+.term .ok{color:#3fb950}
+/* --- panel mockup: matches panel.css (dark default) --- */
+.panel{background:#0C0B09;border:1px solid #2A2622;border-radius:10px;margin:12px 0;overflow:hidden;color:#F5F0E8;font:13.5px/1.55 system-ui,-apple-system,sans-serif}
+.panel .head{background:#161412;border-bottom:1px solid #2A2622;padding:8px 13px;font-size:11px;color:#6E6860;letter-spacing:.06em}
+.panel .body{padding:14px 16px}
+.panel .bub{background:#1C1A17;border:1px solid #2A2622;border-radius:10px;padding:11px 13px;margin:8px 0}
+.panel .me{background:rgba(196,149,106,.10);border-color:#3a332b;margin-left:22%}
+.gvchip{display:inline-flex;align-items:center;gap:7px;border:1px solid #2A2622;background:#161412;border-radius:99px;padding:3px 11px;font-size:11px;color:#a8a29e;margin-bottom:8px;cursor:pointer}
+.gvdot{width:7px;height:7px;border-radius:50%;background:#3fb950;display:inline-block}
+.gvdot.amber{background:#C4956A}
+.gvpanel{border:1px solid #2A2622;background:#161412;border-radius:8px;padding:10px 12px;margin:6px 0 10px;font:11.5px/1.6 ui-monospace,Menlo,monospace;color:#a8a29e}
+.quiet{font-size:11px;color:#6E6860;margin-top:8px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; desktop app</div>
+<h1>Desktop App — the standing reverse-engineering home <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-desktop-app</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill PROPOSED">PROPOSED</span></td><td>v1</td><td>claude</td></tr></table>
+
+<div class="note"><b>What this page is for.</b> The desktop app is <em>already built and running</em> — it is ahead of the model documentation in several places and behind it in others. This page is the standing place where we read the shipping app feature by feature, write down what it actually does (with file:line), say what the Native model calls that thing, and record the gap. Section 4 is the ledger; it grows one feature at a time and is never "finished". Facts in &#167;1 are read off the live app; &#167;2 is proposed design; &#167;3 is an import list.</div>
+
+<h2 id="s1">1 · The two UI states, as they actually exist today</h2>
+<p class="lead">The app already ships both states you asked for — and they are not two skins of one thing. They are architecturally different products that happen to sit behind the same brand.</p>
+
+<table>
+<tr><th></th><th>TERMINAL state <span class="pill LIVE">LIVE</span></th><th>PANEL state <span class="pill LIVE">LIVE</span></th></tr>
+<tr><th>File</th><td><code>sutra-ui/static/term.html</code> (~30KB, standalone page)</td><td><code>panel.html</code> fragment + <code>panel.css</code> (97KB) + <code>js/01..10</code> (~460KB)</td></tr>
+<tr><th>What it really is</th><td>a web wrapper around a <b>real Claude Code TUI</b> running in a server-side PTY, streamed over WebSocket into xterm.js</td><td>a DOM application: its own state store, screens, renderers, loaders</td></tr>
+<tr><th>Message model</th><td><b>none</b> — there is no DOM message list. Every "message" is ANSI bytes painted into a canvas by the TUI itself</td><td>full turn objects; assistant prose is parsed, chips and panels are derived and rendered</td></tr>
+<tr><th>Layout</th><td>locked CSS grid: 48px header / 240px sidebar / terminal. <code>#term</code> is marked FROZEN in the source ("do not add max-width / center / lineHeight")</td><td>~404 CSS classes across ~25 families (conn-, gv-, ag-, r-, md-, term-, rb-, run-, p-, onb-, &#8230;)</td></tr>
+<tr><th>Theme</th><td>dark</td><td><b>dark by default</b>, light delivered as an override</td></tr>
+<tr><th>Governance visible as</th><td>raw text in the stream — the blocks scroll past like any other output</td><td>one derived <b>chip</b> + drop-open panel; the governance text is <em>stripped out</em> of the prose first</td></tr>
+<tr><th>Governance control today</th><td>a "caveman mode" checkbox, applied on reconnect (the only live governance control in the DOM)</td><td>none</td></tr>
+<tr><th>Audience it implies</th><td>the operator who wants the machine's raw voice</td><td>the operator who wants the machine's conclusions</td></tr>
+</table>
+
+<div class="key"><b>The finding that matters most:</b> in the panel, <b>every</b> per-turn governance element is produced by a single function — <code>gvChipHtml()</code> at <code>js/05-chat.js:775</code> — and a sibling (<code>gvBody</code>/<code>parseGov</code>, <code>05-chat.js:749-763</code>) removes the governance text from the prose before it is displayed. There is exactly one governance renderer in 460KB of app code. That is why a governance mode is cheap to build here — and why getting its semantics right matters more than the implementation.</div>
+
+<h2 id="s2">2 · Governance modes — and why "ON / OFF" is the wrong switch</h2>
+
+<div class="warn"><b>Correction before design</b> (codex consult, 10 P1 objections, 2026-08-18). A single governance ON/OFF switch would be dishonest, because three independent things hide behind the word "governance", and they live at three different places in the code:
+<table style="margin-top:8px">
+<tr><th>Hook</th><th>Where</th><th>What turning it off actually does</th></tr>
+<tr><td><b>A · the chip</b></td><td><code>05-chat.js:775</code></td><td>the derived chip and panel stop rendering. <em>Display only.</em></td></tr>
+<tr><td><b>B · the strip</b></td><td><code>05-chat.js:749-763</code></td><td>governance text stops being removed from the prose — it appears inline, as the model wrote it</td></tr>
+<tr><td><b>C · the injection</b></td><td><code>02-helpers.js:28</code></td><td>the PLACEMENT grounding preamble is no longer prepended to your message. <b>The model behaves differently.</b> This is not a display setting.</td></tr>
+</table>
+Turning off A alone is the worst possible state: the prose is still stripped and the chip is gone, so the operator sees <em>neither</em> the model's original words <em>nor</em> the derived summary. Evidence disappears silently.</div>
+
+<p class="lead">The honest design is two axes, not one switch: <b>governance behavior</b> (is the system steering the model?) and <b>governance visibility</b> (how much of that do I see?).</p>
+
+<table>
+<tr><th>Axis</th><th>Values</th><th>Persistence</th><th>Rule</th></tr>
+<tr><td><b>Behavior</b></td><td>ON (grounding injected, gates enforced) &#183; OFF (no injection — plain assistant)</td><td><b>server-side</b> — it changes what the model receives, so it must be consistent across machines and auditable</td><td>Only this axis may use the word OFF. Switching it is a consequential action and gets a confirm.</td></tr>
+<tr><td><b>Visibility</b></td><td>FULL (chip + expandable panel) &#183; QUIET (one small always-on indicator) &#183; RAW (inline, unstripped)</td><td>per-browser (localStorage) — it is a display preference</td><td>Never silently drops evidence: QUIET still shows that governance is active and stays one click from the detail.</td></tr>
+</table>
+
+<div class="key"><b>The labelling law that falls out of this:</b> while behavior is ON, no surface may say "governance off". The permitted words are <b>"details hidden"</b> / <b>"quiet"</b>. The system is still steering the model, and a user who read "off" would have been deceived. That single rule is the substance of this whole section.</div>
+
+<h3 id="mode-panel-full">Mode 1 · PANEL &#183; visibility FULL — the default today</h3>
+<div class="panel">
+<div class="head">SUTRA &#183; PANEL &#183; GOVERNANCE VISIBILITY: FULL</div>
+<div class="body">
+<div class="bub me">Reconcile yesterday&#8217;s EMI batch</div>
+<div class="bub">
+<div class="gvchip"><span class="gvdot"></span> governance &#183; INBOUND&#183;DIRECT &#183; D3 &#183; placed 0.72 <span style="color:#6E6860">&#9662;</span></div>
+<div class="gvpanel">INPUT: reconcile yesterday&#8217;s EMI batch<br>PLACEMENT: D0 Asawa &#8250; Credit-Ops | "Collections Charter" (0.72)<br>DEPTH: 3/5 &#183; FLOW: FOLLOW W-emi-reconcile &#183; steps 9<br>ATOM: a-4471 open &#183; verify: reconciliation balances to source</div>
+Reconciled 1,204 EMIs against the bank file. Two mismatches, both flagged for you in the receipt.
+<div class="quiet">&#10003; verify passed &#183; 9/9 steps &#183; 6 min</div>
+</div>
+</div>
+</div>
+<p class="figcap">What ships today (chip + drop-open panel, <code>gvChipHtml</code>). The prose has been stripped of its governance blocks — this is the only reason the reply above reads cleanly.</p>
+
+<h3 id="mode-panel-quiet">Mode 2 · PANEL &#183; visibility QUIET — the mode you asked for, made honest</h3>
+<div class="panel">
+<div class="head">SUTRA &#183; PANEL &#183; GOVERNANCE VISIBILITY: QUIET</div>
+<div class="body">
+<div class="bub me">Reconcile yesterday&#8217;s EMI batch</div>
+<div class="bub">
+<div class="gvchip" style="padding:2px 8px"><span class="gvdot"></span> <span style="font-size:10.5px">governed &#183; details hidden</span></div>
+Reconciled 1,204 EMIs against the bank file. Two mismatches, both flagged for you in the receipt.
+<div class="quiet">&#10003; verify passed &#183; 9/9 steps &#183; 6 min</div>
+</div>
+<div class="bub" style="border-style:dashed;background:none">
+<span style="color:#6E6860;font-size:12px">Amber dot instead of green when something was held, escalated, or placed below the confidence floor (0.45) &#8212; the one case QUIET must never swallow.</span>
+<div class="gvchip" style="padding:2px 8px;margin-top:6px"><span class="gvdot amber"></span> <span style="font-size:10.5px">governed &#183; 1 gate held &#183; open</span></div>
+</div>
+</div>
+</div>
+<p class="figcap">One dot, two words, always present, one click from the full panel. Nothing is deleted — it is folded. This is what "governance off" should actually ship as.</p>
+
+<h3 id="mode-term-full">Mode 3 · TERMINAL &#183; the raw stream (visibility does not apply)</h3>
+<div class="term">
+<div class="bar"><span class="lg">&#10022; Sutra</span> <span>credit-ops</span> <span style="flex:1"></span> <span class="live">&#9679; live</span> <span>? FAQ</span></div>
+<div class="body"><span class="gov">[INBOUND&#183;DIRECT &#183; TIMING:now &#183; CHANNEL:in-band &#183; REV:reversible &#183; RISK:low]
+
+INPUT: reconcile yesterday&#8217;s EMI batch
+TYPE: task
+ROUTE: FOLLOW W-emi-reconcile
+DEPTH: 3/5
+PLACEMENT: D0 Asawa &#8250; Credit-Ops | "Collections Charter"
+</span>
+Reconciled 1,204 EMIs against the bank file. Two mismatches,
+both flagged for you in the receipt.
+
+<span class="ok">&#10003;</span> verify passed &#183; 9/9 steps &#183; 6 min
+<span class="u">&#9646;</span></div>
+</div>
+<p class="figcap">The governance blocks are just text in the stream — the app cannot fold them, because it does not own them. The app&#8217;s own FAQ currently tells users the header is "cosmetic; ignore it".</p>
+
+<h3 id="mode-term-quiet">Mode 4 · TERMINAL &#183; quiet — requires a real decision, not a CSS rule</h3>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Terminal quiet cannot be built the way panel quiet is. Three candidate answers, in ascending honesty and cost:
+<table style="margin-top:8px">
+<tr><th>Option</th><th>How</th><th>Cost / risk</th></tr>
+<tr><td>T1 &#183; scope the setting</td><td>the visibility switch is labelled <b>Panel only</b>; terminal always shows raw</td><td>free; but the same setting means different things in two places unless the label says so</td></tr>
+<tr><td>T2 &#183; upstream quiet</td><td>the session runs with a governance-terse profile (the existing caveman checkbox is the precedent — it is applied on reconnect via a WebSocket param)</td><td>changes what the model emits, not what the UI shows — it is a <b>behavior</b> change wearing a visibility label</td></tr>
+<tr><td>T3 &#183; filter the PTY stream</td><td>the server strips governance blocks from the byte stream before they reach xterm</td><td>real work, and it puts a regex between the operator and the machine&#8217;s actual voice &#8212; the thing a terminal exists to avoid</td></tr>
+</table>
+<b>Recommendation: T1 for v1</b>, with the switch honestly labelled. A terminal that hides things is no longer a terminal.</div>
+
+<div class="warn"><b>Two more consult findings that constrain any implementation:</b> (1) the chip is built by <b>parsing the model&#8217;s own text</b> — it never reads <code>h-sutra.jsonl</code> or <code>atom-ledger.jsonl</code>. So it is a rendering, not an audit: false positives can strip normal prose, format drift can leak blocks, and a forged block in pasted content could render as real governance. Anything compliance-grade must come from the server records, never from the chip. (2) Whatever the visibility setting says, governance-OFF must never remove audit logging, approval gates, escalation paths, permission checks, or dangerous-action confirmations &#8212; and if those stay on, the UI must say so plainly.</div>
+
+<h2 id="s3">3 · Design system — the import delta</h2>
+<p class="lead">You asked to import the documented design system into the Native pages. Before that can happen, an uncomfortable fact has to be recorded: <b>the documented design system and the shipping app are two different systems that share four token names — and disagree on all four.</b></p>
+<table>
+<tr><th>Measure</th><th>Documented (<code>design-system.html</code> + <code>tokens.css</code>)</th><th>Live (<code>panel.css</code>)</th></tr>
+<tr><td>Tokens</td><td>36</td><td>31</td></tr>
+<tr><td>Names in common</td><td colspan="2"><b>4</b> — <code>--bg</code>, <code>--ink</code>, <code>--line</code>, <code>--faint</code> — and each carries a different value in each system</td></tr>
+<tr><td>Theme</td><td>light only, no dark values at all</td><td>dark is the default; <code>--ink</code> is <em>inverted</em> (light text on dark)</td></tr>
+<tr><td>Semantic colors</td><td>documented as <code>--clay/--steel/--forest/--rose</code></td><td>implemented as <code>--decide/--review/--done/--alert</code> — same hexes, different names</td></tr>
+<tr><td>Scales</td><td>7-step spacing, 7-token type scale, 4 radii, 2 shadows (rest/hover)</td><td>no spacing scale, no type scale, one radius (<code>--r:10px</code>), one combined shadow</td></tr>
+<tr><td>Components</td><td>13, each with a state row; class names <code>.ds-*</code> declared "STABLE for sutra-ui import"</td><td><b>zero</b> <code>.ds-*</code> classes present — the import never happened; ~404 app classes in ~25 families instead</td></tr>
+<tr><td>Typography</td><td>Playfair Display + Inter (webfonts)</td><td>system serif/sans stacks, no webfont load</td></tr>
+</table>
+
+<div class="key"><b>Import recommendation.</b> The documented stack is the only internally consistent system, so it stays the base for Native pages — but the import cannot be a copy-paste. Five decisions must be made first:
+<ol>
+<li><b>Semantic names:</b> rename the doc to <code>decide/review/done/alert</code> (match the implementation) or rename the implementation to <code>clay/steel/forest/rose</code> (match the doc). Values already agree. <em>Rec: match the implementation — code is the thing that runs.</em></li>
+<li><b>Dark:</b> the documented palette has no dark half. Native pages that render in a viewer&#8217;s theme need one authored, or an explicit light-only commitment.</li>
+<li><b>Type:</b> keep Playfair+Inter (self-hosted) or adopt the live system stacks. <em>Rec: keep the brand for editorial pages, system stacks in-app.</em></li>
+<li><b>Status tier:</b> the live app has 9 tokens the doc has never heard of (<code>ok/warn/block</code> &#215; base/bg/line). Pass/warn/block outcomes are a different idea from involvement states — <em>rec: document as a fifth semantic family</em>.</li>
+<li><b>T15:</b> is the <code>.ds-*</code> import still live? Zero adoption today. If it is dead, the component table describes a prototype, and the doc should say so.</li>
+</ol>
+Two smaller repairs found on the way: <code>--gold-glow</code> is implemented and load-bearing but missing from the doc&#8217;s token table, and the doc&#8217;s own figure claims "buttons" and "empty/offline states" are shared components while the 13-row table lists neither (the live app ships 7 button families and 8 distinct empty states).</div>
+
+<h2 id="s4">4 · The standing ledger — features, one at a time</h2>
+<p>The working list. A feature is "read" when its row names the live implementation with file:line, the Native model concept it corresponds to, and the honest gap. Rows are added as features are reverse-engineered; nothing here is invented ahead of the code.</p>
+<table>
+<tr><th>#</th><th>Desktop feature</th><th>Live implementation</th><th>Native model reading</th><th>Gap / status</th></tr>
+<tr><td>1</td><td>Terminal state</td><td><code>term.html</code> + PTY + xterm</td><td>the Host speaking directly; UI is a pipe, not a renderer</td><td><b>READ</b> — governance cannot be folded here (&#167;2 mode 4)</td></tr>
+<tr><td>2</td><td>Panel state</td><td><code>panel.html</code> + <code>panel.css</code> + 10 JS modules</td><td>the UI block&#8217;s Receive part; render-only projections (ADR-023)</td><td><b>READ</b> — ~25 undocumented component families</td></tr>
+<tr><td>3</td><td>Governance chip</td><td><code>05-chat.js:775-814</code></td><td>a projection of the per-turn record &#8212; except it parses prose, not the record</td><td><b>READ</b> — not audit-grade; see &#167;2 warning</td></tr>
+<tr><td>4</td><td>Placement rendering</td><td>chip confidence + <code>CONFIDENCE_FLOOR 0.45</code> (<code>01-state.js:176</code>, mirrors <code>placement_engine.py:67</code>)</td><td>ADR-028 placement</td><td><b>READ</b> — floor mirrored in two languages; drift risk unowned</td></tr>
+<tr><td>5</td><td>Caveman toggle</td><td><code>term.html</code> checkbox &#8594; WebSocket param on reconnect</td><td>D51 caveman default</td><td><b>READ</b> — the only existing precedent for a session-level mode</td></tr>
+<tr><td>6</td><td>Permission pills</td><td><code>p-acc / p-block / p-mut / p-ok / p-warn</code> (panel.css)</td><td>authority exercised at gates</td><td>partially read — semantics not yet mapped to the authority model</td></tr>
+<tr><td>7</td><td>Settings surface</td><td><code>org_api.py:878</code> <code>SettingsRequest</code> (strict: unknown keys rejected/400)</td><td>charter-held operator preferences</td><td>read enough to place the behavior switch (&#167;2)</td></tr>
+<tr><td>8</td><td>Org / registry screens</td><td><code>03-org.js</code>, <code>/api/org/placements</code></td><td>domain tree + charter browser (C2)</td><td>NOT READ &#8212; next candidate</td></tr>
+<tr><td>9</td><td>Agents / step tree</td><td><code>ag*</code> family (~20 classes)</td><td>execution + step progress (C3 what&#8217;s-running)</td><td>NOT READ</td></tr>
+<tr><td>10</td><td>Connectors browser</td><td><code>conn-*</code> family (~20 classes)</td><td>External World block</td><td>NOT READ</td></tr>
+<tr><td>11</td><td>Usage meter</td><td><code>u*/upop/uring/upct</code></td><td>Compute block</td><td>NOT READ</td></tr>
+<tr><td>12</td><td>Onboarding</td><td><code>onb-*</code> (9 classes)</td><td>install-day / root builder (v5)</td><td>NOT READ &#8212; interesting: v5 machinery already has UI</td></tr>
+</table>
+
+<h2 id="s-output">Output looks like</h2>
+<p>This page produces no persisted artifact of its own — it is a reading of one. Its output is the ledger above: each row is a claim about the shipping app that can be checked by opening the cited file at the cited line. The test of this page is that a reader can falsify any row in under a minute.</p>
+
+<h2>Founder queue</h2>
+<table>
+<tr><th>#</th><th>Question</th><th>Why it is yours</th></tr>
+<tr><td>1</td><td>Two axes (behavior / visibility) instead of one ON-OFF switch — accept?</td><td>it is a product-honesty ruling, not an implementation detail</td></tr>
+<tr><td>2</td><td>Terminal quiet: T1 (scope the setting to the panel), T2 (terse session profile), or T3 (filter the stream)?</td><td>T3 changes what a terminal <em>is</em></td></tr>
+<tr><td>3</td><td>Semantic token names: rename the doc, or rename the code?</td><td>every downstream import inherits the choice</td></tr>
+<tr><td>4</td><td>Do the Native pages need a dark palette authored?</td><td>the documented system has none</td></tr>
+<tr><td>5</td><td>Is T15 (<code>.ds-*</code> import into sutra-ui) still live, or dead?</td><td>zero adoption today; the doc claims stability</td></tr>
+<tr><td>6</td><td>Does the live status tier (ok/warn/block) become the fifth semantic family?</td><td>it is a genuinely different idea from the involvement four</td></tr>
+</table>
+
+<h2>Provenance</h2>
+<p style="font-size:12px;color:#6b7280">author: claude (session bcb3d1c4) &#183; date: 2026-08-18 &#183; inputs: 4 reverse-engineering agents over the live sutra-ui app (wf_f49ae5c4 &#8212; term.html, panel.html + panel.css, js/01..10, tokens delta), all facts file:line-cited &#183; codex consult on the mode design (10 P1 objections; the two-axis correction and the labelling law come from it) &#183; <a href="../../consumer-ui-prd.html">Desktop UI PRD</a> &#183; <a href="versions.html">Versions</a> &#183; ADR-023 &#183; review: codex &#183; status: &#167;1 + &#167;3 are readings of shipping code; &#167;2 is PROPOSED design awaiting the founder queue above.</p>
+
+</div></div></body></html>

@@ -1,0 +1,285 @@
+<!doctype html>
+<!-- PAGE: platform-model-versions (v1, DIRECTED). Decision surface over holding/plans/native-sop-program/VERSIONS.md —
+     the md file is the normative contract; this page renders it and never adds contract content (dual-lane consult
+     2026-08-17, codex #20-22 + deepseek #17-19). Status DIRECTED (founder 2026-08-17), not RULED: the sitting
+     (A2/A11/A13/A4) is still the v1 build gate. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Versions (v1–v5)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+ol{margin:6px 0;padding-left:26px}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DIRECTED{background:#fffbeb;color:#b45309}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+.vbadge{display:inline-block;font-size:11px;font-weight:800;border-radius:4px;padding:2px 8px;margin-right:6px}
+.v1{background:#ecfdf5;color:#047857}.v2{background:#eff6ff;color:#1d4ed8}.v3{background:#eef2ff;color:#4338ca}.v4{background:#fdf4ff;color:#a21caf}.v5{background:#fff7ed;color:#c2410c}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; versions</div>
+<h1>Versions — the v1&#8211;v5 ladder <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-versions</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill DIRECTED">DIRECTED</span></td><td>v1</td><td>claude</td></tr></table>
+<div class="note"><b>Contract note.</b> This page is the navigable decision surface over <code>holding/plans/native-sop-program/VERSIONS.md</code> — the md file is the normative contract (definitions, acceptance tests, exact gates, record contracts). This page renders it and never adds contract content. Status is DIRECTED (founder, 2026-08-17), not RULED: the sitting rulings A2 + A11 + A13-compressed + A4-log-only are the v1 build gate.</div>
+
+<h2 id="s1">The ladder at a glance</h2>
+<p class="lead">Five capability versions. Each ships the smallest loop that closes; each next version is gated on evidence the previous one <em>recorded</em> — the platform versions itself the way it says companies should grow. Versions are operating modes, not release numbers: a version is done when its success number is hit.</p>
+
+<svg viewBox="0 0 880 300" role="img" aria-label="Version ladder with evidence gates">
+<defs><marker id="varr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker></defs>
+<text x="440" y="290" text-anchor="middle" font-size="11" fill="#d1d5db">DIRECTED 2026-08-17 &#183; not RULED &#183; sitting = v1 gate</text>
+<!-- rungs -->
+<g font-size="12">
+<rect x="20" y="210" width="150" height="52" rx="6" fill="#ecfdf5" stroke="#047857"/>
+<text x="95" y="231" text-anchor="middle" font-weight="800" fill="#047857">v1 FOLLOW</text>
+<text x="95" y="248" text-anchor="middle" font-size="10.5" fill="#065f46">written work runs honestly</text>
+<rect x="192" y="160" width="150" height="52" rx="6" fill="#eff6ff" stroke="#1d4ed8"/>
+<text x="267" y="181" text-anchor="middle" font-weight="800" fill="#1d4ed8">v2 REMEMBER</text>
+<text x="267" y="198" text-anchor="middle" font-size="10.5" fill="#1e40af">gets better at same work</text>
+<rect x="364" y="110" width="150" height="52" rx="6" fill="#eef2ff" stroke="#4338ca"/>
+<text x="439" y="131" text-anchor="middle" font-weight="800" fill="#4338ca">v3 COORDINATE</text>
+<text x="439" y="148" text-anchor="middle" font-size="10.5" fill="#3730a3">systems exchange work</text>
+<rect x="536" y="60" width="150" height="52" rx="6" fill="#fdf4ff" stroke="#a21caf"/>
+<text x="611" y="81" text-anchor="middle" font-weight="800" fill="#a21caf">v4 ORGANIZE</text>
+<text x="611" y="98" text-anchor="middle" font-size="10.5" fill="#86198f">org-level effort, reconstructable</text>
+<rect x="708" y="10" width="150" height="52" rx="6" fill="#fff7ed" stroke="#c2410c"/>
+<text x="783" y="31" text-anchor="middle" font-weight="800" fill="#c2410c">v5 DISTRIBUTE</text>
+<text x="783" y="48" text-anchor="middle" font-size="10.5" fill="#9a3412">installs anywhere, grows</text>
+</g>
+<!-- evidence gates between rungs -->
+<g font-size="9.5" fill="#6b7280">
+<line x1="170" y1="228" x2="192" y2="192" stroke="#6b7280" stroke-width="1.4" marker-end="url(#varr)"/>
+<text x="150" y="196">20 honest runs</text>
+<line x1="342" y1="178" x2="364" y2="142" stroke="#6b7280" stroke-width="1.4" marker-end="url(#varr)"/>
+<text x="316" y="146">evidence model works</text>
+<line x1="514" y1="128" x2="536" y2="92" stroke="#6b7280" stroke-width="1.4" marker-end="url(#varr)"/>
+<text x="494" y="96">cross-system traffic</text>
+<line x1="686" y1="78" x2="708" y2="42" stroke="#6b7280" stroke-width="1.4" marker-end="url(#varr)"/>
+<text x="662" y="46">reconstructable effort</text>
+</g>
+</svg>
+<p class="figcap">Each arrow is an evidence gate: the next rung opens only when the previous rung's ledger proves its number. Gate details in the per-version cards below.</p>
+
+<table>
+<tr><th>Version</th><th>Promise</th><th>Success number (version is done when&#8230;)</th></tr>
+<tr><td><span class="vbadge v1">v1 FOLLOW</span></td><td>A recurring piece of work runs through a written workflow with honest checks, every time.</td><td>same workflow FOLLOWED 20&#215;, verify pass rate visible, zero improvised repeats</td></tr>
+<tr><td><span class="vbadge v2">v2 REMEMBER</span></td><td>The platform gets measurably better at the workflows it already runs.</td><td>interrupts halved on the same work; honest ETAs from record-derived estimates</td></tr>
+<tr><td><span class="vbadge v3">v3 COORDINATE</span></td><td>Two departments exchange work without a human carrying it.</td><td>one exchange brokered by nobody — one thread id end to end, with evidence</td></tr>
+<tr><td><span class="vbadge v4">v4 ORGANIZE</span></td><td>A cross-company effort runs through the platform, fully reconstructable afterward.</td><td>one real launch end-to-end; founder interrupts beat the sim benchmark (19)</td></tr>
+<tr><td><span class="vbadge v5">v5 DISTRIBUTE</span></td><td>The root builder installs the platform on a stranger&#8217;s computer and grows it there.</td><td>one install on a computer Asawa never touched, growing on its own record</td></tr>
+</table>
+
+<h2 id="s2">Self-sustaining — what it means, testably</h2>
+<div class="key"><b>A version is self-sustaining iff it can run a complete cycle with only its own modules, records, and documented human procedures.</b> Two acceptance tests, applied per version:
+<ol>
+<li><b>Deletion test</b> — remove all later-version modules and docs; an operator can still complete this version&#8217;s promised workflow AND recover from errors using only recorded evidence.</li>
+<li><b>Fresh-operator test</b> — a person who did not build it can run it from the runbook and records alone; no author interpretation required.</li>
+</ol>
+Plus: no circular gates (a version&#8217;s exit evidence is producible by THAT version alone) and a downgrade story (rolling back leaves enough records to keep operating — each card names its rollback floor).</div>
+
+<h2 id="s3">Per-version cards</h2>
+<p>Each card: what ships &#183; the gate to enter &#183; the evidence that exits &#183; the hard boundary (can / cannot / must-not-assume) &#183; the rollback floor. Incremental by construction: v2 builds on v1&#8217;s ledger, v3 on v2&#8217;s evidence model, v4 on v3&#8217;s traffic, v5 on v4&#8217;s proof.</p>
+
+<h3><span class="vbadge v1">v1 FOLLOW</span> the deployable MVP</h3><p style="font-size:12px;color:#6b7280;margin:2px 0 0">What it looks like in the app: <a href="../../consumer-ui-prd.html#vux-v1">v1 UX &#8250;</a></p>
+<table>
+<tr><th>Ships</th><td>workflow registry (<code>workflows/</code> + schema) &#183; ONE builder <code>W-build-workflow</code> with its propose&#8594;approve gate &#183; FOLLOW/CONSTRUCT resolution against the real registry &#183; routing log row (log-only) &#183; atoms with registry verifies (live today) &#183; <b>durable on-disk outbox</b> (RULED B18-5): append-only JSONL, atomic writes, idempotent replay by <code>outbox_id</code>, visible pending/failed state. Fence: the outbox is <b>NOT a scheduler</b> &#8212; no cross-device ordering, no background execution, no retry policy, no exactly-once; it guarantees exactly &#8220;queued work is safe on this Mac&#8221;</td></tr>
+<tr><th>Enter</th><td>four sitting rulings: A2 + A11 (registry) &#183; A13-compressed (one builder) &#183; A4-log-only</td></tr>
+<tr><th>Exit evidence</th><td>20 honest FOLLOWs of the same workflow, pass rate visible, zero improvised repeats — all read from v1&#8217;s own run ledger</td></tr>
+<tr><th>Boundary</th><td>CAN register through a gate, follow, log every run. CANNOT learn, estimate, cross systems. MUST NOT ASSUME engines, contracts, styles, horizontals, shadows, or any later module (leak guards below).</td></tr>
+<tr><th>Rollback floor</th><td>registry entries + run-ledger rows survive; following continues manually from the registry</td></tr>
+<tr><th>First workflow</th><td>REC: <code>W-md-authoring</code> on Asawa (zero client risk, real volume, standard written); alternates <code>W-kyc-verify</code> / <code>W-emi-reconcile</code> (Paisa)</td></tr>
+</table>
+
+<h3><span class="vbadge v2">v2 REMEMBER</span> the engine becomes real</h3><p style="font-size:12px;color:#6b7280;margin:2px 0 0">What it looks like in the app: <a href="../../consumer-ui-prd.html#vux-v2">v2 UX &#8250;</a></p>
+<table>
+<tr><th>Ships</th><td>record slice keyed by workflow id (engine birth, X2) &#183; evidence read-model (A3) &#183; estimates &#8594; backward scheduling from due-dates &#183; per-style autonomy earning (ask&#8594;auto, safe categories) &#183; W-countersigned-verify &#183; W-reuse-diff &#183; engine retirement (G4) + ledger triggers (G5)</td></tr>
+<tr><th>Enter</th><td>v1&#8217;s ledger shows &#8805;20 clean runs (named record: run-ledger rows with verify outcomes)</td></tr>
+<tr><th>Exit evidence</th><td>interrupts halved on the same work; honest ETAs — both read from v2&#8217;s slice</td></tr>
+<tr><th>Boundary</th><td>CAN learn per-workflow, estimate, earn autonomy per style. CANNOT exchange work between systems, mint systems. MUST NOT ASSUME typed contracts, shelves, org layer.</td></tr>
+<tr><th>Rollback floor</th><td>the workflow-keyed slice survives as plain ledger data; v1 continues without estimates</td></tr>
+</table>
+
+<h3><span class="vbadge v3">v3 COORDINATE</span> two systems, one contract</h3><p style="font-size:12px;color:#6b7280;margin:2px 0 0">What it looks like in the app: <a href="../../consumer-ui-prd.html#vux-v3">v3 UX &#8250;</a></p>
+<table>
+<tr><th>Ships</th><td>system mint (Assembly stubs + pre-provisioned slots + always-derive child builders) &#183; <code>W-build-atom</code> + <code>W-build-assembly</code> &#183; shelves (intent queue + live board as ledger views) &#183; ONE typed contract between two systems (request/result, due-by, auto/ask) &#183; style-matching router (A12) &#183; deadline-at-risk escalation</td></tr>
+<tr><th>Enter</th><td>v2&#8217;s evidence model works — you cannot route on styles you cannot measure</td></tr>
+<tr><th>Exit evidence</th><td>one exchange brokered by nobody: request lands, ordered by the receiver&#8217;s own queue, returns with evidence, one thread id end to end</td></tr>
+<tr><th>Boundary</th><td>CAN exchange typed work; visible queues. CANNOT own recurring classes across systems, run min-wins authority. MUST NOT ASSUME horizontals, crystallization, tenancy.</td></tr>
+<tr><th>Rollback floor</th><td>contract rows + thread ids survive; systems keep running independently on v2</td></tr>
+</table>
+
+<h3><span class="vbadge v4">v4 ORGANIZE</span> the org layer</h3><p style="font-size:12px;color:#6b7280;margin:2px 0 0">What it looks like in the app: <a href="../../consumer-ui-prd.html#vux-v4">v4 UX &#8250;</a></p>
+<table>
+<tr><th>Ships</th><td>first horizontal (recurring-class owner) &#183; shadow demotion + <code>W-mint-shadow</code> (sponsor, end-date, starter kit, handoff) &#183; min-wins authority live at gates &#183; <code>W-attribute</code> + thread-id joins &#183; <code>W-tier-gates</code> &#183; first crystallization (LLM rule &#8594; code via parallel-run) &#183; G7 shadow-charter precedence</td></tr>
+<tr><th>Enter</th><td>v3&#8217;s cross-system traffic exists for a horizontal to own (named record: contract thread ledger)</td></tr>
+<tr><th>Exit evidence</th><td>one real launch end-to-end; founder interrupts beat the org-sim benchmark (A=45 vs B=19 &#8594; beat 19); minted objects + reconstructability measured</td></tr>
+<tr><th>Boundary</th><td>CAN own org-level classes, arbitrate authority, freeze one rule. CANNOT install off Asawa-operated machines. MUST NOT ASSUME marketplace, multi-tenant isolation.</td></tr>
+<tr><th>Rollback floor</th><td>horizontal&#8217;s ledger + the crystallized rule (reversible via parallel-run evidence) survive; v3 exchanges continue</td></tr>
+</table>
+
+<h3><span class="vbadge v5">v5 DISTRIBUTE</span> the game, fully</h3><p style="font-size:12px;color:#6b7280;margin:2px 0 0">What it looks like in the app: <a href="../../consumer-ui-prd.html#vux-v5">v5 UX &#8250;</a></p>
+<table>
+<tr><th>Ships</th><td>root builder full auto-install (interview &#8594; skeleton &#8594; grow) &#183; A7 delegation lifecycle ruled in full &#183; tenancy design (un-deferred) &#183; marketplace template distribution (templates ship, instances never leave) &#183; cross-company benchmarks</td></tr>
+<tr><th>Enter</th><td>v4 proof: one org-level effort reconstructable from the record</td></tr>
+<tr><th>Status</th><td>named now, deliberately not designed now</td></tr>
+</table>
+
+<div class="planned"><b>Honesty marker.</b> v3/v4 contents are provisional by design — they get re-cut when v1&#8217;s log starts talking. That is the evidence-gating working on the roadmap itself.</div>
+
+<h2 id="s4">Feature &#8594; version map</h2>
+<p>Every feature staged in the 2026-08 design sprint has exactly one <em>completion</em> rung (sliced features complete late even if they appear early):</p>
+<table>
+<tr><th>Version</th><th>Features completing there</th></tr>
+<tr><td><span class="vbadge v1">v1</span></td><td>registry (A2/A11) &#183; W-build-workflow + gate (A13-compressed) &#183; FOLLOW/CONSTRUCT vs real registry &#183; routing log row (A4 log-only) &#183; registry-template verifies (G1) &#183; first registered workflow</td></tr>
+<tr><td><span class="vbadge v2">v2</span></td><td>engine birth (workflow-keyed slice) &#183; evidence read-model (A3) &#183; estimation + backward scheduling &#183; W-earn-autonomy &#183; A4 threshold pinned from N=100 log &#183; W-countersigned-verify &#183; W-reuse-diff &#183; G4 retirement &#183; G5 triggers</td></tr>
+<tr><td><span class="vbadge v3">v3</span></td><td>system mint (stubs/slots/child builders) &#183; W-build-atom + W-build-assembly &#183; shelves (card 6) &#183; first typed contract (pre-A7 edge) &#183; style router (A12) &#183; deadline-at-risk escalation</td></tr>
+<tr><td><span class="vbadge v4">v4</span></td><td>first horizontal &#183; shadow demotion + W-mint-shadow &#183; min-wins authority (card 4 full) &#183; W-attribute + thread joins &#183; W-tier-gates &#183; first crystallization &#183; G7 precedence</td></tr>
+<tr><td><span class="vbadge v5">v5</span></td><td>root builder auto-install &#183; A7 full delegation lifecycle &#183; tenancy &#183; marketplace distribution &#183; cross-company benchmarks</td></tr>
+</table>
+<ul>
+<li><b>Sliced features</b> complete late: authority = exercised now &#8594; earned v2 &#8594; min-wins v4; styles = declared v3 &#8594; catalog deepens v4&#8211;v5.</li>
+<li><b>The enforcement floor</b> (hooks, gates, atoms, dispatch) is the ground, not a rung — exists now, tightens continuously.</li>
+<li><b>Rulings are gates, not features</b> — sitting cards unlock rungs; four unlock v1.</li>
+<li><b>Router rule</b>: future features are assigned by <em>what evidence does it eat, what loop does it close?</em> Eats run history &#8594; &#8805;v2; eats cross-system traffic &#8594; &#8805;v3.</li>
+</ul>
+
+<h2 id="s5">The module stack — the record is the API</h2>
+<p class="lead">Modules never call each other. Each reads and writes plain files (registries, JSONL ledgers); the next module consumes those <em>files</em>. Every module is independently usable — eight of ten are standalone micro-products.</p>
+
+<svg viewBox="0 0 880 250" role="img" aria-label="Module record-flow map">
+<defs><marker id="marr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+<text x="440" y="242" text-anchor="middle" font-size="11" fill="#d1d5db">DIRECTED &#183; edges mean &#8220;writes records that the target reads&#8221; — never &#8220;calls&#8221;</text>
+<g font-size="11.5">
+<rect x="16" y="20" width="112" height="34" rx="5" fill="#ecfdf5" stroke="#047857"/><text x="72" y="41" text-anchor="middle" font-weight="700" fill="#065f46">M1 registry</text>
+<rect x="16" y="70" width="112" height="34" rx="5" fill="#ecfdf5" stroke="#047857"/><text x="72" y="91" text-anchor="middle" font-weight="700" fill="#065f46">M2 verifies</text>
+<rect x="168" y="45" width="112" height="34" rx="5" fill="#ecfdf5" stroke="#047857"/><text x="224" y="66" text-anchor="middle" font-weight="700" fill="#065f46">M5 builder</text>
+<rect x="168" y="130" width="112" height="34" rx="5" fill="#ecfdf5" stroke="#047857"/><text x="224" y="151" text-anchor="middle" font-weight="700" fill="#065f46">M3 runner</text>
+<rect x="16" y="180" width="112" height="34" rx="5" fill="#ecfdf5" stroke="#047857"/><text x="72" y="201" text-anchor="middle" font-weight="700" fill="#065f46">M4 router</text>
+<rect x="330" y="130" width="112" height="34" rx="5" fill="#eff6ff" stroke="#1d4ed8"/><text x="386" y="151" text-anchor="middle" font-weight="700" fill="#1e40af">M6 engine</text>
+<rect x="330" y="180" width="112" height="34" rx="5" fill="#eef2ff" stroke="#4338ca"/><text x="386" y="201" text-anchor="middle" font-weight="700" fill="#3730a3">M7 shelves</text>
+<rect x="492" y="155" width="112" height="34" rx="5" fill="#eef2ff" stroke="#4338ca"/><text x="548" y="176" text-anchor="middle" font-weight="700" fill="#3730a3">M8 contracts</text>
+<rect x="654" y="155" width="100" height="34" rx="5" fill="#fdf4ff" stroke="#a21caf"/><text x="704" y="176" text-anchor="middle" font-weight="700" fill="#86198f">M9 org</text>
+<rect x="784" y="155" width="86" height="34" rx="5" fill="#fff7ed" stroke="#c2410c"/><text x="827" y="176" text-anchor="middle" font-weight="700" fill="#9a3412">M10 install</text>
+</g>
+<g stroke="#94a3b8" stroke-width="1.3" fill="none">
+<path d="M128,37 L168,55" marker-end="url(#marr)"/>
+<path d="M128,87 L168,70" marker-end="url(#marr)"/>
+<path d="M224,79 L224,130" marker-end="url(#marr)"/>
+<path d="M128,42 C150,42 150,138 168,140" marker-end="url(#marr)"/>
+<path d="M280,147 L330,147" marker-end="url(#marr)"/>
+<path d="M280,158 C300,170 310,190 330,195" marker-end="url(#marr)"/>
+<path d="M128,197 L330,197" marker-end="url(#marr)"/>
+<path d="M442,147 C465,147 470,165 492,168" marker-end="url(#marr)"/>
+<path d="M442,197 C465,197 470,180 492,176" marker-end="url(#marr)"/>
+<path d="M604,172 L654,172" marker-end="url(#marr)"/>
+<path d="M754,172 L784,172" marker-end="url(#marr)"/>
+</g>
+<g font-size="9" fill="#94a3b8">
+<text x="230" y="105" text-anchor="middle">entries &#8594; FOLLOW source</text>
+<text x="300" y="140">ledger</text>
+<text x="296" y="188">ledger</text>
+<text x="240" y="209">log &#8594; queue</text>
+<text x="466" y="152">estimates</text>
+<text x="466" y="207">queue</text>
+<text x="629" y="164">threads</text>
+<text x="769" y="164">shape</text>
+</g>
+<text x="224" y="36" text-anchor="middle" font-size="9" fill="#94a3b8">writes into M1 through the propose&#8594;approve gate</text>
+</svg>
+<p class="figcap">Color = the version where the module completes (green v1, blue v2, indigo v3, purple v4, orange v5). Full edge list + record contracts in <code>VERSIONS.md</code> &#167;5.</p>
+
+<table>
+<tr><th>#</th><th>Module</th><th>Standalone use (sellable alone)</th><th>Exists today</th><th>Completes in</th></tr>
+<tr><td>M1</td><td>Registry — workflow definitions as validated JSON + index</td><td>searchable runbook library w/ schema checking</td><td>dir missing; schema exists</td><td><span class="vbadge v1">v1</span></td></tr>
+<tr><td>M2</td><td>Verify library — templates + instantiation + countersign</td><td>&#8220;definition of done&#8221; checker for anything</td><td>~60% (3 templates live)</td><td><span class="vbadge v1">v1</span></td></tr>
+<tr><td>M3</td><td>Atom runner — goal + verify + HOW loop, ledger row</td><td>honest task runner refusing &#8220;done&#8221; without proof</td><td>~80% (202 ledger rows)</td><td><span class="vbadge v1">v1</span></td></tr>
+<tr><td>M4</td><td>Router — classify + resolve + one log row</td><td>intake classifier for any inbox</td><td>~70% (log row missing)</td><td><span class="vbadge v1">v1</span></td></tr>
+<tr><td>M5</td><td>Builder — validate&#8594;construct&#8594;judge&#8594;verify&#8594;propose&#8594;approve</td><td>guided SOP author: linter + scaffolder</td><td>0% as code; spec exists</td><td><span class="vbadge v1">v1</span></td></tr>
+<tr><td>M6</td><td>Engine layer — workflow-keyed slices + evidence + estimates</td><td>run analytics: real cost/duration of work</td><td>~20% (no workflow keying)</td><td><span class="vbadge v2">v2</span></td></tr>
+<tr><td>M7</td><td>Shelves — intent queue + live board as ledger views</td><td>work-state dashboard over existing logs</td><td>0% as views; ledgers exist</td><td><span class="vbadge v3">v3</span></td></tr>
+<tr><td>M8</td><td>Contracts — typed edges: request/result, due-by, auto/ask</td><td>inter-team request tracker with SLAs</td><td>0%</td><td><span class="vbadge v3">v3</span></td></tr>
+<tr><td>M9</td><td>Org layer — system mint, child builders, horizontals, authority</td><td>the operating model proper</td><td>0%</td><td><span class="vbadge v3">v3</span>&#8211;<span class="vbadge v4">v4</span></td></tr>
+<tr><td>M10</td><td>Root builder — interview &#8594; skeleton &#8594; grow</td><td>the product: install anywhere</td><td>~30% (manual playbook)</td><td><span class="vbadge v5">v5</span></td></tr>
+</table>
+<div class="key"><b>One plan, two views.</b> v1 = M1+M2+M5 finishing what M3 started &#183; v2 = M6 &#183; v3 = M7+M8+M9&#8217;s system-mint half &#183; v4 = M9&#8217;s org half &#183; v5 = M10. Sharpest statement: <b>v1 is &#8220;give M3 the M1 it deserves, through M5&#8217;s gate.&#8221;</b></div>
+
+<h2 id="s6">v1 dependency-leak guards</h2>
+<p>What keeps v1 genuinely self-sustaining (each guard blocks a silent dependency on a later module):</p>
+<table>
+<tr><th>Component</th><th>Guard</th></tr>
+<tr><td>Registry (M1)</td><td>plain append/update record + manual validation — no schema-sync, installer behavior, or ownership policy from later modules</td></tr>
+<tr><td>Builder (M5, one only)</td><td>one explicit input record &#8594; one explicit output artifact; no template libraries, provenance chains, or publishing paths from later modules</td></tr>
+<tr><td>Routing log (M4 slice)</td><td>records observed handoffs only — no queue/assignment/escalation semantics (those are v3+)</td></tr>
+<tr><td>Filesystem</td><td>v1 defines its minimal directory convention itself, independent of M10&#8217;s installer layout</td></tr>
+</table>
+
+<h2 id="s7">Status, gaps, next</h2>
+<table>
+<tr><th>Item</th><th>State</th></tr>
+<tr><td>This ladder + module stack</td><td><span class="pill DIRECTED">DIRECTED</span> 2026-08-17 — founder-directed documentation of the session plan; not a sitting ruling</td></tr>
+<tr><td>v1 build gate</td><td>OPEN — sitting rulings A2 + A11 + A13-compressed + A4-log-only (&#8220;start v1&#8221; after the sitting mints the registry)</td></tr>
+<tr><td>Normative contract</td><td><code>holding/plans/native-sop-program/VERSIONS.md</code> — acceptance tests, named evidence gates, record-contract invariants, rollback floors</td></tr>
+<tr><td>Output-example rule</td><td>every &#8220;Output looks like&#8221; artifact answers: <em>what decision does this enable? what evidence does it preserve?</em> Persisted artifact first, UI second; illustrative samples say so</td></tr>
+<tr><td>UX per version</td><td>how each version renders in the desktop app: <a href="../../consumer-ui-prd.html">Desktop UI PRD &#8212; Version UX ladder</a> (vux-v1..v5, chat mockups in the locked tokens)</td></tr>
+<tr><td>Re-cut point</td><td>v3/v4 contents re-cut when v1&#8217;s log has data (evidence-gated roadmap)</td></tr>
+</table>
+
+<h2>Provenance</h2>
+<p style="font-size:12px;color:#6b7280">author: claude (session bcb3d1c4) &#183; date: 2026-08-17 &#183; inputs: session ladder/feature-map/module-stack messages + codex consult (30 risks) + deepseek consult (20 risks) + DESIGN-DECISION-SHEET.md &#183; review: dual-lane &#183; supersedes: none (first roadmap page) &#183; confidence: high on ordering, moderate on v3+ contents (provisional by design) &#183; gaps: sitting rulings pending; page mirrors VERSIONS.md and never adds contract content.</p>
+
+</div></div></body></html>

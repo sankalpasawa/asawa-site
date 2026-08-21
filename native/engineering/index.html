@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering &#8212; compiled detail per platform subsystem (190 mechanisms)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-engineering{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a class="sb-cur" href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb">hub &#8250; product: CoS &#8250; <a href="../platform/index.html">platform</a> &#8250; <b>engineering</b> &#160;&#183;&#160; spine: <a href="../platform/observability.html">&#8592; Observability</a> &#160;&#183;&#160; <a href="ui.html">Eng: UI &#8594;</a></div>
+<h1>Engineering &#8212; compiled detail per platform subsystem (190 mechanisms) <span class="lvl">ENGINEERING &#183; zoom 4</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="../platform/index.html" xlink:href="../platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="../platform/observability.html" xlink:href="../platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="../platform/authority-tenancy.html" xlink:href="../platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="../platform/ui.html" xlink:href="../platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="../platform/host.html" xlink:href="../platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="../platform/runtime.html" xlink:href="../platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="../platform/orchestration.html" xlink:href="../platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="../platform/system-of-process.html" xlink:href="../platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="../platform/system-of-record.html" xlink:href="../platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="../platform/connector.html" xlink:href="../platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="../platform/external-world.html" xlink:href="../platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="../platform/compute.html" xlink:href="../platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="index.html" xlink:href="index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="390" y="486" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Engineering</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>engineering</code></td><td>ENGINEERING / <a href="../platform/index.html">platform</a> <span style="color:#b91c1c">(parent not LOCKED &#8212; SEED-hold WAIVED by founder direction 2026-06-12 + axis ratified; per-subsystem children POPULATED under founder waiver 2026-06-13 ("the doc must be self-sufficient on HOW &#8212; add whatever you find into the engineering subsections"; PLATFORM-LOCK gate founder-waivered for this population, recorded in <code>holding/TODO.md</code>); page VERIFIED; PLATFORM LOCKs still pending per BUILD-PROTOCOL cascade + codex MODIFY-7. The 2026-06-12 founder-waivered 190-mechanism compile is un-archived 2026-06-13: per-part pages below carry the full compile; archive retained for provenance at <a href="_compile-2026-06-12-archived.html">_compile-2026-06-12-archived.html</a>)</span></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>doc-lane session</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Render the engineering band as the three-group model that supersedes the old &#167;11 HLD/LLD scaffold (2026-06-13): <b>Group 1</b> &#8212; 13 per-part pages (one per PLATFORM block, "how THIS part works"); <b>Group 2</b> &#8212; 6 cross-cutting HLD views spanning all parts (data-model &#183; control-flow &#183; interfaces &#183; governance &#183; deployment &#183; non-functional); <b>Group 3</b> &#8212; 4 reference catalogs (primitives &#183; hardstops &#183; surfaces &#183; interfaces); plus the B1-B5 <b>pillar LLDs</b> (whole-pillar cross-part design, citing the <a href="../products/cos/matrix.html">matrix</a> + per-part pages). Group 2/3/pillar pages CITE the per-part pages + master anchors, never duplicate them (one-home, BUILD-PROTOCOL p7). Plus the &#167;12 ADR catalog (every row links its canon file under <code>sutra/os/decisions/</code> &#8212; D54: linked, never copied). Old &#167;11 skeletons retired in place under <a href="../tech-design/index.html">tech-design/</a> (read-only); master &#167;11 anchors stay citable on the frozen master. Per-subsystem engineering detail expands into per-part child pages under the PLATFORM parent.</td><td colspan="3">Manifest acceptance (verbatim): AMENDED 2026-06-12 (founder direction 'add whatever you find into the engineering subsections' waives the original SEED-hold for initial population; original clause preserved: stays-SEED-until-&#167;11.0-axis+LOCKED-parent, codex MODIFY-7). AXIS RATIFIED 2026-06-12 (founder): per-platform-block &#8212; 1:1 with the PLATFORM band; per-surface overlay may be ADDED later as pointer-only page, never a re-cut. Content rule honored: compile-only, anchor-per-claim, zero invention; per-subsystem child expansion still gated on PLATFORM locks. &#8212; The 190-mechanism compile produced under that waiver is archived (link in parent cell). 2026-06-13: this hub now indexes the three-group model (per-part &#183; cross-cutting views &#183; catalogs) + pillar LLDs that supersede the old &#167;11 HLD/LLD scaffold (codex MODIFY-3); &#167;12 ADR catalog renders inline below.</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 380" role="img" aria-label="Engineering page block diagram: three-group engineering model (per-part, cross-cutting views, catalogs) + pillar LLDs + ADR catalog">
+<defs><marker id="engah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- upstream neighbor (abstract, up) -->
+<rect x="340" y="14" width="220" height="44" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="450" y="33" text-anchor="middle" font-size="10.5" font-weight="700">PLATFORM &#8212; parent</text>
+<text x="450" y="47" text-anchor="middle" font-size="8.5" fill="#6b7280">&#167;1.0 schema + 8 blocks &#183; not LOCKED</text>
+<!-- internal: the engineering hub renders the three-group model + ADR catalog -->
+<rect x="100" y="122" width="300" height="50" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="250" y="143" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING HUB</text>
+<text x="250" y="158" text-anchor="middle" font-size="8.5" fill="#6b7280">three-group HOW index &#183; supersedes &#167;11 scaffold</text>
+<rect x="520" y="122" width="300" height="50" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="670" y="143" text-anchor="middle" font-size="10.5" font-weight="700">&#167;12 ADR CATALOG</text>
+<text x="670" y="158" text-anchor="middle" font-size="8.5" fill="#6b7280">ADR-001..020 frozen &#183; +021/022 post-freeze</text>
+<!-- internal: the three groups + pillar LLDs -->
+<rect x="20" y="232" width="190" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="115" y="251" text-anchor="middle" font-size="10" font-weight="700">GROUP 1 &#8212; PER-PART</text>
+<text x="115" y="265" text-anchor="middle" font-size="8" fill="#6b7280">13 pages &#183; how THIS part works</text>
+<rect x="225" y="232" width="190" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="320" y="251" text-anchor="middle" font-size="10" font-weight="700">GROUP 2 &#8212; HLD VIEWS</text>
+<text x="320" y="265" text-anchor="middle" font-size="8" fill="#6b7280">6 cross-cutting whole-system views</text>
+<rect x="430" y="232" width="190" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="525" y="251" text-anchor="middle" font-size="10" font-weight="700">GROUP 3 &#8212; CATALOGS</text>
+<text x="525" y="265" text-anchor="middle" font-size="8" fill="#6b7280">4 LLD indexes (flat reference)</text>
+<rect x="635" y="232" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="735" y="251" text-anchor="middle" font-size="10" font-weight="700">PILLAR LLDs &#8212; B1-B5</text>
+<text x="735" y="265" text-anchor="middle" font-size="8" fill="#6b7280">whole-pillar cross-part design</text>
+<!-- downstream neighbors (concrete, down) -->
+<rect x="40" y="322" width="320" height="44" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="200" y="341" text-anchor="middle" font-size="10.5" font-weight="700">PER-PART + MATRIX (one-home)</text>
+<text x="200" y="355" text-anchor="middle" font-size="8.5" fill="#6b7280">mechanism rows + pillar&#215;part grid &#183; cited, not copied</text>
+<rect x="560" y="322" width="300" height="44" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="710" y="341" text-anchor="middle" font-size="10.5" font-weight="700">SUTRA CANON</text>
+<text x="710" y="355" text-anchor="middle" font-size="8.5" fill="#6b7280">sutra/os/native &#183; sutra/os/decisions &#8212; D54</text>
+<!-- edges (every box >=1 labeled edge) -->
+<path d="M450,58 L450,92 L250,92 L250,122" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#engah)"/>
+<text x="258" y="112" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK (codex MODIFY-7)</text>
+<path d="M160,172 L160,200 L115,200 L115,232" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#engah)"/>
+<text x="166" y="197" font-size="8.5" fill="#475569">indexes</text>
+<path d="M230,172 L230,200 L320,200 L320,232" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#engah)"/>
+<text x="240" y="197" font-size="8.5" fill="#475569">indexes</text>
+<path d="M300,172 L300,212 L525,212 L525,232" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#engah)"/>
+<text x="400" y="209" font-size="8.5" fill="#475569">indexes</text>
+<path d="M360,172 L360,218 L735,218 L735,232" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#engah)"/>
+<text x="600" y="215" font-size="8.5" fill="#475569">indexes</text>
+<path d="M320,276 L320,300 L200,300 L200,322" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#engah)"/>
+<text x="206" y="305" font-size="8.5" fill="#475569">cite per-part + matrix (one-home, D54)</text>
+<path d="M790,172 L790,322" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#engah)"/>
+<text x="784" y="250" text-anchor="end" font-size="8.5" fill="#475569">rows link full text (D54)</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject (the three groups + pillar LLDs). Dashed boxes = neighbors (their internals live on their own pages). Group 2/3 + pillar LLDs CITE the per-part pages + matrix (one-home, D54) &#8212; they never duplicate mechanism rows. Every box has &#8805;1 labeled edge.</p>
+
+<section id="sec-hub-intro">
+<h2>How to read engineering &#8212; three groups</h2>
+<p>The engineering band answers HOW Native is built. It splits three ways. <b>Group 1 &#8212; Per-part</b>: 13 pages, one per PLATFORM block, "how THIS part works" (mechanisms + behavior contracts). <b>Group 2 &#8212; Cross-cutting HLD views</b>: 6 whole-system views that span ALL parts and answer a question no single part page answers (data model, control flow, interfaces, governance, deployment, non-functional). <b>Group 3 &#8212; Reference catalogs</b>: 4 flat LLD indexes (primitives &#183; hardstops &#183; surfaces &#183; interfaces). One-home principle (BUILD-PROTOCOL p7): Group 2 + Group 3 pages CITE the per-part pages and master anchors, they never duplicate mechanism rows. Canon (<code>sutra/</code> repo) is linked, never copied (D54). Source: <a href="../master/index.html#section-11-tech-design">master &#167;11</a>.</p>
+<div class="note"><b>&#167;11 HLD/LLD scaffold is SUPERSEDED</b> (2026-06-13). The old master &#167;11.1 HLD/01-07 + &#167;11.2 LLD/pillars+catalogs link list pointed at ~2KB skeletons in <code>tech-design/</code>. Those are retired in place: its <b>7 HLD views live in Group 2</b> (HLD/01 System-Overview is folded into this hub's three-group intro; 02&#8594;Data Model, 03&#8594;Control Flow, 04&#8594;Interfaces, 05&#8594;Governance, 06&#8594;Deployment, 07&#8594;Non-Functional), its <b>4 catalogs live in Group 3</b>, and its <b>content lives in the per-part pages</b> (Group 1). <b>B1-B5 pillar LLDs are covered by the Matrix</b> (<a href="../products/cos/matrix.html">products/cos/matrix.html</a> &#8212; pillar&#215;block grid) + the per-part pages. Old skeletons archived under <a href="../tech-design/index.html">tech-design/</a> (read-only; manifest-exempt). Master &#167;11 anchors stay citable on the frozen <a href="../master/index.html#section-11-tech-design">master</a>.</div>
+</section>
+
+<section id="sec-group2">
+<h2>Group 2 &#8212; Cross-cutting HLD views (how the WHOLE system works)</h2>
+<p>Each view spans multiple PLATFORM parts to answer one whole-system question. It cites the per-part pages it touches (Group 1) + master anchors; it never re-states their mechanism rows (one-home, D54). Supersedes the old &#167;11.1 HLD/01-07 scaffold.</p>
+<table>
+<tr><th>HLD view</th><th>Question it answers (one line)</th><th>Spans these parts</th><th>Was (superseded)</th></tr>
+<tr><td><a href="data-model.html">Data Model</a></td><td>The 10 canon primitives, their relationships, and lifecycle &#8212; one schema view across the system</td><td>Host &#183; Orchestration &#183; SoP &#183; SoR &#183; Authority+Tenancy &#183; Runtime &#183; Observability &#183; Matrix</td><td>HLD/02</td></tr>
+<tr><td><a href="control-flow.html">Control Flow</a></td><td>One operator turn end-to-end &#8212; sequence + state machine across every part (Trigger &#8594; ExecutionResult)</td><td>all 13 parts (UI &#8594; Host &#8594; daemon &#8594; SoR &#8594; Connector &#8594; External World)</td><td>HLD/03</td></tr>
+<tr><td><a href="interfaces.html">Interfaces</a></td><td>The system-boundary surface &#8212; Connector inventory + 26 EngineEvents + Native&#8596;CoS API + error/retry</td><td>UI &#183; Host &#183; Connector &#183; External World &#183; SoP &#183; SoR &#183; Authority+Tenancy &#183; Observability &#183; +5</td><td>HLD/04</td></tr>
+<tr><td><a href="governance.html">Governance</a></td><td>Authority model (6 dimensions) + HS-1..HS-8 hardstops + tenant boundaries + DecisionProvenance audit, as one enforcement view</td><td>Authority+Tenancy &#183; SoP &#183; SoR &#183; Runtime &#183; Observability &#183; Host &#183; +7</td><td>HLD/05</td></tr>
+<tr><td><a href="deployment.html">Deployment</a></td><td>Runtime daemon (~/.sutra-native/) + 3-artifact contract (SPEC &#183; BINDING &#183; RUNTIME STATE) + tier-staged onboarding T1&#8594;T4</td><td>Host &#183; Runtime</td><td>HLD/06</td></tr>
+<tr><td><a href="non-functional.html">Non-Functional</a></td><td>Perf &#183; security &#183; observability &#183; accuracy &#183; reliability &#183; cost &#183; resilience &#8212; the quality budgets spanning the machine</td><td>all 13 parts (cross-cutting quality envelope)</td><td>HLD/07</td></tr>
+</table>
+</section>
+
+<section id="sec-group3">
+<h2>Group 3 &#8212; Reference catalogs (LLD indexes)</h2>
+<p>Flat one-row-each indexes into canon types. Each row points to the per-part page + canon file that owns it (D54); the catalog is a lookup table, not a second home. Supersedes the old &#167;11.2 LLD/catalogs scaffold.</p>
+<table>
+<tr><th>Catalog</th><th>Indexes (one line)</th><th>Master anchor</th><th>Was (superseded)</th></tr>
+<tr><td><a href="catalog-primitives.html">Primitives</a></td><td>10 canon types &#8212; Domain &#183; Charter &#183; Workflow &#183; Step &#183; Trigger &#183; ExecutionResult &#183; EngineEvent &#183; Tenant &#183; Approval &#183; DecisionProvenance</td><td><a href="../master/index.html#section-4-1-primitives">#section-4-1-primitives</a></td><td>LLD/primitives</td></tr>
+<tr><td><a href="catalog-hardstops.html">Hardstops</a></td><td>HS-1..HS-8 hard limits as runtime guards + override paths; operator-visible failure baseline (HS-5..HS-8 names TBD)</td><td><a href="../master/index.html#section-4-10-1-hardstops">#section-4-10-1-hardstops</a></td><td>LLD/hardstops</td></tr>
+<tr><td><a href="catalog-surfaces.html">Surfaces</a></td><td>6 runtime surfaces &#8212; ROUTE &#183; RUN &#183; GATE &#183; EMERGE &#183; AUDIT &#183; TENANT; each a contract, not a UI</td><td><a href="../master/index.html#section-4-native-platform">#section-4-native-platform</a></td><td>LLD/surfaces</td></tr>
+<tr><td><a href="catalog-interfaces.html">Interfaces</a></td><td>Wire-level reference &#8212; per-connector spec + 26 EngineEvents payload shapes + Native&#8596;CoS API + error envelope/retry</td><td><a href="../master/index.html#section-5-1-inventory">#section-5-1-inventory</a></td><td>LLD/interfaces</td></tr>
+</table>
+<p>&#167;11.3 canon source-of-truth (D54 &#8212; linked, never copied): <code>sutra/os/native/</code> (primitives &#183; blocks &#183; pillars &#183; hardstops &#183; events &#183; surfaces &#183; doc-layers) &#183; <code>sutra/os/decisions/</code> (ADRs, full text) &#183; <code>sutra/os/engines/</code> (NATIVE-ENGINE &#183; BLUEPRINT-ENGINE &#183; ESTIMATION-ENGINE &#183; ADAPTIVE-PROTOCOL &#183; HUMAN-SUTRA-ENGINE &#183; COVERAGE-ENGINE) &#183; <code>sutra/os/charters/</code> (11 governance charters). Source: <a href="../master/index.html#section-11-3-canon">master &#167;11.3</a>.</p>
+</section>
+
+<section id="sec-12-adr">
+<h2>&#167;12 ADR catalog &#8212; decisions (WHY)</h2>
+<p>Carried from frozen <a href="../master/index.html#section-12-adr-catalog">master &#167;12</a>. Status at freeze: <b>19 ADRs ratified (001-019); ADR-020 PROPOSED 2026-05-13</b> &#8212; codex r19 verdict CHANGES-REQUIRED with 5 findings (1 P1 + 4 P2); findings at <code>.enforcement/codex-reviews/2026-05-20-adr-020-r19-codex.log</code>. ADR-018 carries the SHARED invariant across all Layer-B products; per-product specialization in <code>ADR-NNN-&lt;product&gt;-pattern.md</code> per ADR-020. Full text lives in canon (D54: paths below, never copied). Rendered catalog page: <a href="../tech-design/decisions.html">tech-design/decisions.html</a>.</p>
+<table>
+<tr><th>ADR</th><th>Title</th><th>Status</th><th>One-line summary</th><th>Canon file (D54)</th></tr>
+<tr><td>001</td><td>h-sutra-9cell-grid</td><td>ratified</td><td>9-cell &#215; 3-tag classification schema for every founder input</td><td><code>sutra/os/decisions/ADR-001-h-sutra-9cell-grid.md</code></td></tr>
+<tr><td>002</td><td>out-direct-3check</td><td>ratified</td><td>Output trace + direct execution + 3-check governance pattern</td><td><code>sutra/os/decisions/ADR-002-out-direct-3check.md</code></td></tr>
+<tr><td>003</td><td>permissions-mcp-and-first-time-edit</td><td>ratified</td><td>Permission model for MCP servers + first-time edit gate</td><td><code>sutra/os/decisions/ADR-003-permissions-mcp-and-first-time-edit.md</code></td></tr>
+<tr><td>004</td><td>registry-and-effector-split</td><td>ratified</td><td>Registry (audit) vs effector (mutator) separation in Native</td><td><code>sutra/os/decisions/ADR-004-registry-and-effector-split.md</code></td></tr>
+<tr><td>005</td><td>host-llm-host-selection</td><td>ratified</td><td>Per-workflow host LLM selection (claude &#183; codex &#183; deepseek)</td><td><code>sutra/os/decisions/ADR-005-host-llm-host-selection.md</code></td></tr>
+<tr><td>006</td><td>tenant-isolation-domain-field</td><td>ratified</td><td>Tenant isolation enforced via Domain field on every primitive</td><td><code>sutra/os/decisions/ADR-006-tenant-isolation-domain-field.md</code></td></tr>
+<tr><td>007</td><td>decision-provenance-schema</td><td>ratified</td><td>3-channel append-only audit row per decision</td><td><code>sutra/os/decisions/ADR-007-decision-provenance-schema.md</code></td></tr>
+<tr><td>008</td><td>markdown-vs-code-authoritative-state</td><td>ratified</td><td>Markdown is doctrine; code is runtime; which wins when they disagree</td><td><code>sutra/os/decisions/ADR-008-markdown-vs-code-authoritative-state.md</code></td></tr>
+<tr><td>009</td><td>approval-gate-primitive</td><td>ratified</td><td>Approval as a first-class primitive (not a hook)</td><td><code>sutra/os/decisions/ADR-009-approval-gate-primitive.md</code></td></tr>
+<tr><td>010</td><td>organic-emergence-propose-approve</td><td>ratified</td><td>Pattern detection proposes; operator approves; never silent automation</td><td><code>sutra/os/decisions/ADR-010-organic-emergence-propose-approve.md</code></td></tr>
+<tr><td>011</td><td>on-failure-policy-five-set</td><td>ratified</td><td>5-set failure policy enumeration (retry &#183; escalate &#183; skip &#183; ask &#183; halt)</td><td><code>sutra/os/decisions/ADR-011-on-failure-policy-five-set.md</code></td></tr>
+<tr><td>012</td><td>pnc-typed-parser-over-prose</td><td>ratified</td><td>Pre-call schema + post-call validation over prose-only LLM contract</td><td><code>sutra/os/decisions/ADR-012-pnc-typed-parser-over-prose.md</code></td></tr>
+<tr><td>013</td><td>telemetry-sink-fsync-jsonl</td><td>ratified</td><td>JSONL + fsync as telemetry sink (no silent loss)</td><td><code>sutra/os/decisions/ADR-013-telemetry-sink-fsync-jsonl.md</code></td></tr>
+<tr><td>014</td><td>depth-router-via-workflow</td><td>ratified</td><td>Depth (token budget) routed via workflow primitive</td><td><code>sutra/os/decisions/ADR-014-depth-router-via-workflow.md</code></td></tr>
+<tr><td>015</td><td>standalone-h-sutra-in-native</td><td>ratified</td><td>H-Sutra layer as standalone primitive within Native</td><td><code>sutra/os/decisions/ADR-015-standalone-h-sutra-in-native.md</code></td></tr>
+<tr><td>016</td><td>replica-as-isolated-user-kit</td><td>ratified</td><td>Asawa replica isolated under user-kit for dogfood</td><td><code>sutra/os/decisions/ADR-016-replica-as-isolated-user-kit.md</code></td></tr>
+<tr><td>017</td><td>cron-daemon-cadence-tick</td><td>ratified</td><td>Cron-style daemon cadence for periodic surfaces</td><td><code>sutra/os/decisions/ADR-017-cron-daemon-cadence-tick.md</code></td></tr>
+<tr><td>018</td><td><b>agentic-systems-pattern</b></td><td>ratified</td><td>Operator-in-loop on consequential decisions; deterministic guardrails around stochastic core (SHARED across all Layer-B products)</td><td><code>sutra/os/decisions/ADR-018-agentic-systems-pattern.md</code></td></tr>
+<tr><td>019</td><td>design-product-tech-bridge</td><td>ratified</td><td>Bridge contract &#8212; design &#8596; product &#8596; tech traceability table</td><td><code>sutra/os/decisions/ADR-019-design-product-tech-bridge.md</code></td></tr>
+<tr><td>020</td><td><b>layer-b-product-authoring-template</b></td><td><b>PROPOSED 2026-05-13</b></td><td>Section set + canon additions every new Layer-B Product PRD must include (codex r19 CHANGES-REQUIRED)</td><td><code>sutra/os/decisions/ADR-020-layer-b-product-authoring-template.md</code></td></tr>
+<tr><td>021</td><td>sutra-plugin-host-residency</td><td>Accepted 2026-06-12 (post-dates frozen master catalog)</td><td>Sutra plugin = Host-resident layer; closes Host block open gap #4 ("where does the Sutra plugin live in the block diagram")</td><td><code>sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md</code></td></tr>
+<tr><td>022</td><td>full-loop-six-mechanisms</td><td>Accepted 2026-06-12 (post-dates frozen master catalog)</td><td>Full-Loop Six Mechanisms &#8212; system-of-work science adoption (founder direction 2026-06-12: "fold the gap map into canon")</td><td><code>sutra/os/decisions/ADR-022-full-loop-six-mechanisms.md</code></td></tr>
+</table>
+<p class="figcap">Rows 001-020 carried verbatim from master &#167;12.1 (frozen). Rows 021-022 are disk-verified canon files post-dating the freeze; statuses quoted from their own Status headers.</p>
+</section>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<div class="note">Population status (2026-06-13): the 13 per-part ENGINEERING pages (Group 1) are POPULATED under founder waiver ("the doc must be self-sufficient on HOW &#8212; behavior contracts + mechanisms live in the doc; only canon stays linked, D54"). The 6 cross-cutting HLD views (Group 2) + 4 reference catalogs (Group 3) exist as pages and supersede the old &#167;11 scaffold; they carry their own SEED&#8594;DRAFT lifecycle per the manifest. The PLATFORM-LOCK gate was founder-waivered for the Group-1 population (recorded in <code>holding/TODO.md</code>). The founder-queue gaps below remain OPEN &#8212; the waiver populated the pages; it did not LOCK the PLATFORM parents. PLATFORM LOCKs are still pending per the BUILD-PROTOCOL cascade (codex MODIFY-7).</div>
+<ul class="gaps">
+<li>&#167;11.0 subsystem-axis decision pending (surfaces-primary vs pillars-primary vs both; ASCII vs SVG/Mermaid) &#8212; master &#167;11.0 verbatim: "Decision pending &#8212; confirm subsystem axis (surfaces-primary vs pillars-primary vs both) + ASCII vs SVG/Mermaid, then these generate in one pass" (<a href="../master/index.html#section-11-0-subsystems">#section-11-0-subsystems</a>).</li>
+<li>ENGINEERING gated until platform parent LOCKED (codex MODIFY-7) &#8212; original manifest clause preserved; initial population waived by founder direction 2026-06-12 (manifest acceptance row).</li>
+<li>ADR-020 PROPOSED 2026-05-13 &#8212; codex r19 verdict CHANGES-REQUIRED with 5 findings (1 P1 + 4 P2); findings at <code>.enforcement/codex-reviews/2026-05-20-adr-020-r19-codex.log</code> (master &#167;12).</li>
+<li>HS-5..HS-8 (TBD &#8212; names pending) &#8212; now owned by the <a href="governance.html">Governance</a> cross-cutting view (Group 2) + <a href="catalog-hardstops.html">Hardstops catalog</a> (Group 3); was the superseded HLD/05 + LLD/Hardstops scaffolds (master &#167;4.10.1).</li>
+<li>Non-Functional accuracy contract &#8212; "test-before-conclude (&#167;4.5) + KPIs per tier T0-T3 (FQ2 pending)" &#8212; now owned by the <a href="non-functional.html">Non-Functional</a> cross-cutting view (Group 2); was the superseded HLD/07 scaffold (master &#167;4.10/&#167;7).</li>
+<li>137 source-stated per-subsystem gap items render inside the archived compile at <a href="_compile-2026-06-12-archived.html">_compile-2026-06-12-archived.html</a> (moved with the over-budget compile body 2026-06-12 &#8212; gap-conservation: moved, not dropped).</li>
+<li>Group 1 per-part ENGINEERING pages: POPULATED 2026-06-13 from the compile sections under founder waiver (13 pages). PLATFORM parents are still NOT founder-LOCKED &#8212; the waiver populated the pages but did not lift the BUILD-PROTOCOL cascade LOCK requirement (codex MODIFY-7); each child carries a DRAFT pill and its own PLATFORM-LOCK-pending note.</li>
+<li>Group 2 cross-cutting HLD views (6) + Group 3 catalogs (4) supersede the old &#167;11 scaffold and exist on disk; manifest carries them at SEED&#8594;DRAFT &#8212; verifier pass (grounding + link-integrity) and per-page status flips are the open follow-up.</li>
+</ul>
+
+<h2>Group 1 &#8212; Per-part engineering pages (how each part works) (13)</h2>
+<p>Each row is a per-platform-block engineering page (axis ratified 2026-06-12 &#8212; 1:1 with the PLATFORM band). These are the "how THIS part works" pages; the Group 2 cross-cutting views above cite them, never duplicate them. Mechanism count = the compiled mechanisms carried onto that page from its <code>eng-&lt;part&gt;</code> compile section (anchor-per-claim, zero invention); 190 total. Behavior contracts + redo recipes fold in the assigned dossiers from <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md</code>. Platform twin = the same block's PLATFORM-band page (the WHAT/contract view; this page is the HOW/mechanism view). All children DRAFT under the 2026-06-13 founder waiver; PLATFORM LOCKs still pending.</p>
+<table>
+<tr><th>Platform block</th><th>Engineering page (HOW)</th><th>Mechanisms</th><th>Platform twin (WHAT)</th><th>Status</th></tr>
+<tr><td>UI</td><td><a href="ui.html">engineering/ui.html</a></td><td>12</td><td><a href="../platform/ui.html">platform/ui.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Host</td><td><a href="host.html">engineering/host.html</a></td><td>13</td><td><a href="../platform/host.html">platform/host.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Orchestration</td><td><a href="orchestration.html">engineering/orchestration.html</a></td><td>11</td><td><a href="../platform/orchestration.html">platform/orchestration.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>System of Process</td><td><a href="system-of-process.html">engineering/system-of-process.html</a></td><td>25</td><td><a href="../platform/system-of-process.html">platform/system-of-process.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>System of Record</td><td><a href="system-of-record.html">engineering/system-of-record.html</a></td><td>13</td><td><a href="../platform/system-of-record.html">platform/system-of-record.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Authority + Tenancy</td><td><a href="authority-tenancy.html">engineering/authority-tenancy.html</a></td><td>17</td><td><a href="../platform/authority-tenancy.html">platform/authority-tenancy.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>External World</td><td><a href="external-world.html">engineering/external-world.html</a></td><td>8</td><td><a href="../platform/external-world.html">platform/external-world.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Connector</td><td><a href="connector.html">engineering/connector.html</a></td><td>13</td><td><a href="../platform/connector.html">platform/connector.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Compute</td><td><a href="compute.html">engineering/compute.html</a></td><td>11</td><td><a href="../platform/compute.html">platform/compute.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Daemon &#8212; Runtime &#167;4</td><td><a href="runtime.html">engineering/runtime.html</a></td><td>28</td><td><a href="../platform/runtime.html">platform/runtime.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Method &#167;3 (how)</td><td><a href="how.html">engineering/how.html</a></td><td>14</td><td><a href="../platform/how-methodology.html">platform/how-methodology.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Observability &#167;7</td><td><a href="observability.html">engineering/observability.html</a></td><td>16</td><td><a href="../platform/observability.html">platform/observability.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+<tr><td>Matrix (pillar &#215; block)</td><td><a href="matrix.html">engineering/matrix.html</a></td><td>9</td><td><a href="../products/cos/matrix.html">products/cos/matrix.html</a></td><td><span class="pill DRAFT">DRAFT</span></td></tr>
+</table>
+<p class="figcap">Counts are the per-section mechanism-row tallies in <a href="_compile-2026-06-12-archived.html">_compile-2026-06-12-archived.html</a> (12+13+11+25+13+17+8+13+11+28+14+16+9 = 190). Matrix twin is a CoS product page, not a PLATFORM block (no <code>platform/matrix.html</code> exists) &#8212; the pillar&#215;block grid is a product view.</p>
+<h2>Sources</h2>
+<ul><li><code>holding/website/native/_engineering-packs-2026-06-12.json</code> &#8212; compiled packs (wf_d98385d3-555, anchor-per-claim)</li><li><code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md</code> &#8212; 46 production dossiers</li><li><code>sutra/os/native/</code> canon + <code>sutra/os/decisions/</code> ADRs</li><li><code>master/index.html</code> &#167;4 &#183; &#167;11 &#183; &#167;12 &#183; &#167;1.0.1 (frozen)</li><li><code>holding/website/native/tech-design/</code> &#8212; &#167;11 scaffold standalone files (linked in the hub inventory above, not duplicated)</li><li><code>engineering/_compile-2026-06-12-archived.html</code> &#8212; archived 2026-06-12 founder-waivered 190-mechanism compile (137 source-stated gap items render there)</li></ul>
+</div></div></body></html>

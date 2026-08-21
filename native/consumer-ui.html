@@ -1,0 +1,329 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map. Box rects are wrapped in <a href> (principle 4: every box clicks one level deeper) — keep the wrapping, fix only the relative hrefs for your page depth.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consumer UI — Sutra Desktop design documentation</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-ui{stroke-width:3.5;stroke:#b45309}
+svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="edges.html">Edges</a></div><div style="padding-left:28px"><a href="resource.html">Resource</a></div><div style="padding-left:28px"><a href="time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a class="sb-cur" href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="index.html">Hub</a> &rsaquo; <a href="platform/index.html">Platform</a> &rsaquo; <a href="platform/ui.html">UI</a> &rsaquo; Consumer UI (desktop)</div>
+<h1>Consumer UI &#8212; the Sutra Desktop cockpit <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+<div style="background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0"><b>Spec of record for screen design:</b> <a href="consumer-ui-prd.html">Desktop UI PRD</a> &#8212; product nouns, card&#8596;record table, state-matrix rule, interaction contracts, and the v1&#8211;v5 Version UX ladder (PROPOSED).</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="governance/index.html" xlink:href="governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="index.html" xlink:href="index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="roadmap/index.html" xlink:href="roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="distribution.html" xlink:href="distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="products/cos/index.html" xlink:href="products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="products/senior-expert/index.html" xlink:href="products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="products/cos/needs.html" xlink:href="products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="products/cos/product-design.html" xlink:href="products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="products/cos/matrix.html" xlink:href="products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="platform/index.html" xlink:href="platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="platform/observability.html" xlink:href="platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="platform/authority-tenancy.html" xlink:href="platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="platform/ui.html" xlink:href="platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="platform/host.html" xlink:href="platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="platform/runtime.html" xlink:href="platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="platform/orchestration.html" xlink:href="platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="platform/system-of-process.html" xlink:href="platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="platform/system-of-record.html" xlink:href="platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="platform/connector.html" xlink:href="platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="platform/external-world.html" xlink:href="platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="platform/compute.html" xlink:href="platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="engineering/index.html" xlink:href="engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="119" y="316" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; CONSUMER UI (desktop)</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>consumer-ui</code></td><td>PLATFORM / <a href="platform/ui.html">platform/ui.html</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>asawa design session 2026-08-04/05</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Documents the consumer-facing desktop app (Founder Cockpit): information architecture, locked design decisions, day model (P0), session model, and substrate map. Design work fills slots defined here; a pixel with no slot does not ship.</td><td colspan="3">Every decision cites its source utterance/consult; IA, involvement matrix, day rhythm, session anatomy and data plane each carry a diagram; open gaps carry the live A-ledger.</td></tr>
+</table>
+
+<h2>This page's own diagram &#8212; the app IA</h2>
+<svg viewBox="0 0 896 330" role="img" aria-label="Sutra Desktop IA — shell, four pages, substrates">
+<defs><marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="10" y="10" width="740" height="230" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/>
+<text x="24" y="30" font-size="10.5" font-weight="700">SHELL &#8212; Electron window &#183; labeled nav &#183; identity footer (exists: sutra-ui)</text>
+<rect x="30" y="48" width="160" height="64" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="110" y="70" text-anchor="middle" font-size="10" font-weight="700">RIGHT NOW</text>
+<text x="110" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">what matters + what needs me</text>
+<text x="110" y="96" text-anchor="middle" font-size="7.5" fill="#6b7280">transient only &#183; deep-links out</text>
+<rect x="220" y="48" width="160" height="64" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="300" y="70" text-anchor="middle" font-size="10" font-weight="700">CHATS</text>
+<text x="300" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">what is Sutra doing</text>
+<text x="300" y="96" text-anchor="middle" font-size="7.5" fill="#6b7280">context left &#183; chat right (FIXED)</text>
+<rect x="410" y="48" width="160" height="64" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="490" y="70" text-anchor="middle" font-size="10" font-weight="700">DEPARTMENTS</text>
+<text x="490" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">where did work land</text>
+<text x="490" y="96" text-anchor="middle" font-size="7.5" fill="#6b7280">published site, embedded</text>
+<rect x="600" y="48" width="130" height="64" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="665" y="70" text-anchor="middle" font-size="10" font-weight="700">SETTINGS</text>
+<text x="665" y="84" text-anchor="middle" font-size="7.5" fill="#6b7280">trust &#183; rhythm &#183; tone</text>
+<text x="665" y="96" text-anchor="middle" font-size="7.5" fill="#6b7280">kill-switch board</text>
+<rect x="30" y="140" width="350" height="76" rx="7" fill="#fff" stroke="#334155" stroke-width="1.3"/>
+<text x="205" y="158" text-anchor="middle" font-size="9" font-weight="700">RIGHT NOW regions</text>
+<text x="205" y="173" text-anchor="middle" font-size="7.5" fill="#6b7280">day header &#183; calendar (WorkBlock cards + NOW line)</text>
+<text x="205" y="186" text-anchor="middle" font-size="7.5" fill="#6b7280">now panel: mode card &#8594; decisions &#8594; review &#8594; inbox &#8594; radar</text>
+<text x="205" y="200" text-anchor="middle" font-size="7.5" fill="#6b7280">involvement bands: DECIDE / REVIEW / FYI (+ DONE outcome)</text>
+<rect x="410" y="140" width="320" height="76" rx="7" fill="#fff" stroke="#334155" stroke-width="1.3"/>
+<text x="570" y="158" text-anchor="middle" font-size="9" font-weight="700">CHATS regions</text>
+<text x="570" y="173" text-anchor="middle" font-size="7.5" fill="#6b7280">session strip &#183; context pane (charter &#8594; decisions &#8594; proof)</text>
+<text x="570" y="186" text-anchor="middle" font-size="7.5" fill="#6b7280">stream (atom pinned, &#8804;3 chips, cards) &#183; composer</text>
+<text x="570" y="200" text-anchor="middle" font-size="7.5" fill="#6b7280">transport: /ws/chat + /api/sessions (exist)</text>
+<path d="M110,112 L110,140" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#ah2)"/>
+<text x="118" y="130" font-size="7.5" fill="#475569">contains</text>
+<path d="M300,112 L300,124 L570,124 L570,140" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#ah2)"/>
+<text x="386" y="122" font-size="7.5" fill="#475569">contains</text>
+<path d="M190,80 L220,80" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#ah2)"/>
+<text x="193" y="74" font-size="7" fill="#475569">card=session</text>
+<rect x="10" y="258" width="740" height="52" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="380" y="279" text-anchor="middle" font-size="9" font-weight="700" fill="#4b5563">SUBSTRATE (neighbor) &#8212; sutra-ui: Electron shell &#183; FastAPI :8330 &#183; /api/sessions &#183; /ws/chat &#183; org_api</text>
+<text x="380" y="295" text-anchor="middle" font-size="7.5" fill="#6b7280">NEW pieces only: /api/day &#183; ReviewItem store &#183; GTD clarify pipeline</text>
+<path d="M380,240 L380,258" stroke="#6b7280" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#ah2)"/>
+<text x="388" y="254" font-size="7.5" fill="#475569">renders from (render, don't build)</text>
+<rect x="760" y="48" width="126" height="168" rx="8" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="823" y="66" text-anchor="middle" font-size="8" font-weight="700" fill="#7c3aed">GOVERNANCE</text>
+<text x="823" y="80" text-anchor="middle" font-size="7" fill="#7c3aed">chip contract</text>
+<text x="823" y="92" text-anchor="middle" font-size="7" fill="#7c3aed">P0 time rule</text>
+<text x="823" y="104" text-anchor="middle" font-size="7" fill="#7c3aed">interrupt rule</text>
+<path d="M760,130 L730,130" stroke="#7c3aed" stroke-width="1.2" fill="none" stroke-dasharray="5 4" marker-end="url(#ah2)"/>
+<text x="746" y="124" font-size="7" fill="#7c3aed">wraps</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>The two axes &#8212; navigation zones x founder involvement</h2>
+<svg viewBox="0 0 896 210" role="img" aria-label="Involvement axis by zone">
+<text x="18" y="24" font-size="10.5" font-weight="700">Every item carries exactly one involvement state; zones say where it lives</text>
+<rect x="18" y="40" width="200" height="40" rx="7" fill="#fef3c7" stroke="#b45309" stroke-width="1.6"/>
+<text x="118" y="57" text-anchor="middle" font-size="9.5" font-weight="700" fill="#92400e">DECIDE &#8212; blocking</text>
+<text x="118" y="71" text-anchor="middle" font-size="7.5" fill="#92400e">served in windows; irreversible+urgent interrupts</text>
+<rect x="238" y="40" width="200" height="40" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+<text x="338" y="57" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">REVIEW &#8212; non-blocking</text>
+<text x="338" y="71" text-anchor="middle" font-size="7.5" fill="#1d4ed8">explicit question + silence-clock (48h) mandatory</text>
+<rect x="458" y="40" width="200" height="40" rx="7" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6"/>
+<text x="558" y="57" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4b5563">FYI &#8212; no action</text>
+<text x="558" y="71" text-anchor="middle" font-size="7.5" fill="#4b5563">auto-executed under standing rules; shown for trust</text>
+<rect x="678" y="40" width="200" height="40" rx="7" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="778" y="57" text-anchor="middle" font-size="9.5" font-weight="700" fill="#047857">DONE &#8212; outcome (not involvement)</text>
+<text x="778" y="71" text-anchor="middle" font-size="7.5" fill="#047857">every row carries PROOF</text>
+<text x="18" y="112" font-size="9.5" font-weight="700" fill="#6b7280">ZONES (the founder's four questions + anticipation):</text>
+<text x="18" y="132" font-size="8.5">RIGHT NOW = what matters now &#183; CHATS = what is Sutra doing &#183; DEPARTMENTS = where work landed &#183; SETTINGS = trust</text>
+<text x="18" y="150" font-size="8.5">RADAR (inside Right Now) = anticipation: emergence proposals, upcoming routines, suggestions &#8212; never blocks, decays after 2 declines</text>
+<text x="18" y="180" font-size="8.5" fill="#b45309" font-weight="700">P0 (founder, 2026-08-04): the system manages the founder's time, attention and energy; he operates from the final point of view only.</text>
+<text x="18" y="196" font-size="8.5" fill="#6b7280">Backing: Drucker (consolidate time) &#183; Bezos (few high-quality decisions; 1-way vs 2-way doors = REV tags) &#183; Rocket Fuel (Sutra = Integrator) &#183; Newport (deep blocks) &#183; GTD (Sutra runs capture/clarify/organize; founder sees residue).</text>
+</svg>
+
+<h2>The day model &#8212; P0 rendered</h2>
+<svg viewBox="0 0 896 130" role="img" aria-label="Maker-day rhythm">
+<rect x="18" y="30" width="240" height="34" rx="6" fill="#eef2ff" stroke="#3730a3" stroke-width="1.5"/><text x="138" y="51" text-anchor="middle" font-size="9.5" font-weight="700" fill="#3730a3">DEEP 09:15-11:30</text>
+<rect x="262" y="30" width="56" height="34" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/><text x="290" y="47" text-anchor="middle" font-size="7.5" font-weight="700" fill="#92400e">DECIDE</text><text x="290" y="58" text-anchor="middle" font-size="6.5" fill="#92400e">11:30</text>
+<rect x="322" y="30" width="44" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/><text x="344" y="51" text-anchor="middle" font-size="7" font-weight="700" fill="#1d4ed8">INBOX</text>
+<rect x="370" y="30" width="150" height="34" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="1.3"/><text x="445" y="51" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">FREE / RELATIONSHIPS</text>
+<rect x="524" y="30" width="130" height="34" rx="6" fill="#eef2ff" stroke="#3730a3" stroke-width="1.5"/><text x="589" y="51" text-anchor="middle" font-size="8.5" font-weight="700" fill="#3730a3">DEEP 14:30-16:00</text>
+<rect x="658" y="30" width="56" height="34" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/><text x="686" y="47" text-anchor="middle" font-size="7.5" font-weight="700" fill="#92400e">DECIDE</text><text x="686" y="58" text-anchor="middle" font-size="6.5" fill="#92400e">16:00</text>
+<rect x="718" y="30" width="44" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.3"/><text x="740" y="51" text-anchor="middle" font-size="7" font-weight="700" fill="#1d4ed8">INBOX</text>
+<rect x="766" y="30" width="70" height="34" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.3"/><text x="801" y="47" text-anchor="middle" font-size="7.5" font-weight="700" fill="#4b5563">CLOSE</text><text x="801" y="58" text-anchor="middle" font-size="6.5" fill="#4b5563">Your Day</text>
+<text x="18" y="90" font-size="8.5" fill="#6b7280">Calendar cards ARE sessions (click opens the chat). Decisions are HELD for windows, never ambient. Inbox arrives PRE-REVIEWED (GTD; drafts attached), always AFTER decision windows (codex: protects attention peaks). "Break the plan" is first-class; copy frames the app as protecting the founder's chosen rhythm, never dictating.</text>
+<text x="18" y="112" font-size="8.5" fill="#6b7280">Day shapes: maker (windows enforced, default) / operator (ambient DECIDE for interrupt-driven client days) &#8212; one toggle.</text>
+</svg>
+
+<h2>Decisions ledger &#8212; what is locked (each cites its source)</h2>
+<table>
+<tr><th>#</th><th>Decision</th><th>Source</th></tr>
+<tr><td>L1</td><td>Nav locked: Right Now / Chats / Departments / Settings &#8212; labeled, everything hyperlinked cross-tab; notifications feed pages, never a destination</td><td>founder 2026-08-04 (2 iterations) + codex fold riders</td></tr>
+<tr><td>L2</td><td>P0: system manages founder's time/attention/energy; day-rhythm-first home; decisions held for windows w/ visible escalation rule</td><td>founder "let's just start in that way" + promoter-literature synthesis</td></tr>
+<tr><td>L3</td><td>Involvement axis DECIDE/REVIEW/FYI + DONE-as-outcome-with-proof; REVIEW needs explicit question + silence window</td><td>founder home-screen list + codex riders</td></tr>
+<tr><td>L4</td><td>Card = session; session view FIXED: context left (charter &#8594; decisions &#8594; proof), chat right</td><td>founder "this is fixed" 2026-08-04</td></tr>
+<tr><td>L5</td><td>Chip contract: governance chip = signed control; collapsed keeps headline+severity+decision-required; &#8804;3 inline; routine enforcement &#8594; activity</td><td>codex risks 1-3, adopted</td></tr>
+<tr><td>L6</td><td>Universal drill-down: every click opens one level deeper; no dead ends; everything deep-linkable</td><td>founder "whenever I click, it opens a chart"</td></tr>
+<tr><td>L7</td><td>Departments tab = the published site embedded (iframe V1, open-in-browser fallback) &#8212; reuse, never rebuild</td><td>founder + codex verdict</td></tr>
+<tr><td>L8</td><td>Substrate = existing sutra-ui app (Electron + FastAPI :8330); Asawa-light skin becomes the shared theme; only 3 NEW pieces: /api/day, ReviewItem store, GTD pipeline</td><td>substrate investigation 2026-08-04 + founder "go with the recommendation"</td></tr>
+<tr><td>L9</td><td>GTD: Sutra runs capture/clarify/organize; founder sees pre-reviewed residue; inbox blocks AFTER decision windows</td><td>founder + codex placement verdict</td></tr>
+<tr><td>L10</td><td>Structure-first: designs fill IA slots only (IA.md is the slot registry); mocks v0-v1.0-rc are references, not authority</td><td>founder reset 2026-08-05</td></tr>
+</table>
+
+<h2>Data plane &#8212; exists vs new</h2>
+<svg viewBox="0 0 896 150" role="img" aria-label="Data plane">
+<rect x="18" y="20" width="530" height="110" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/>
+<text x="30" y="40" font-size="9.5" font-weight="700" fill="#047857">EXISTS &#8212; sutra-ui + ledgers (render, don't build)</text>
+<text x="30" y="60" font-size="8.5" fill="#065f46">/api/sessions &#183; /api/state &#183; /api/logs &#183; SSE &#183; /ws/chat &#183; /ws/term</text>
+<text x="30" y="78" font-size="8.5" fill="#065f46">atom ledger &#183; dispatch records &#183; gate logs &#183; org_api.py</text>
+<text x="30" y="96" font-size="8.5" fill="#065f46">published departments site &#183; connectors + verify script</text>
+<text x="30" y="114" font-size="8.5" fill="#065f46">Electron shell (Sutra.app packaged, Max-plan guard, loopback :8330)</text>
+<rect x="570" y="20" width="308" height="110" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+<text x="582" y="40" font-size="9.5" font-weight="700" fill="#92400e">NEW &#8212; the only build unknowns</text>
+<text x="582" y="62" font-size="8.5" fill="#92400e">/api/day &#8212; DayTemplate, WorkBlocks, mode (single source)</text>
+<text x="582" y="80" font-size="8.5" fill="#92400e">ReviewItem store &#8212; question + silence clock (thin)</text>
+<text x="582" y="98" font-size="8.5" fill="#92400e">GTD clarify pipeline &#8212; inbox &#8594; needs-you/drafted/filed</text>
+</svg>
+
+<h2>Approvals &#8212; live A-ledger</h2>
+<table>
+<tr><th>id</th><th>approval</th><th>status</th></tr>
+<tr><td>A1</td><td>Ratify Founder Cockpit charter + V1 cut</td><td><span class="pill DRAFT">PENDING</span></td></tr>
+<tr><td>A2</td><td>Build substrate</td><td><span class="pill LOCKED">RESOLVED &#8212; existing sutra-ui app</span></td></tr>
+<tr><td>A3</td><td>Single-user V1 vs collaborator-aware</td><td><span class="pill DRAFT">PENDING</span></td></tr>
+<tr><td>A4</td><td>Unpause "Why?" assistant layer (D36)</td><td><span class="pill DRAFT">PENDING</span></td></tr>
+<tr><td>A5</td><td>Visual north star</td><td><span class="pill VERIFIED">LEANING &#8212; Asawa-light (v1.0-rc register)</span></td></tr>
+<tr><td>A6</td><td>Commit the Experience department (+ charter, IA, mocks)</td><td><span class="pill DRAFT">PENDING &#8212; oldest held decision</span></td></tr>
+</table>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap">A6 uncommitted: department #14 Experience + desktop-app sub-department + charter + IA.md + 12 mocks exist only in the working tree.</li>
+<li class="gap">A1 unratified: goals G1-G4 and the V1 cut are DRAFT.</li>
+<li class="gap">DayFlow-skin question superseded in practice by A5 leaning Asawa-light &#8212; founder to confirm or revive (D33 firewall blocks reading DayFlow tokens from Asawa sessions).</li>
+<li class="gap">Native workflow registry empty on this machine (laptop-migration gap) &#8212; W-add-department audit fires SKIPPED.</li>
+<li class="gap">IA ratification pending ("IA approved") &#8212; slots not yet frozen.</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>Build W1 (on "code it"): <code>static/rightnow.html</code> + <code>/api/day</code> + chat two-pane in <code>sutra-ui</code> &#8212; engineering page to be authored under <a href="engineering/ui.html">engineering/ui.html</a> when W1 starts.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><code>holding/research/2026-08-04-desktop-consumer-ui-framework.md</code> &#8212; 177-feature mine &#8594; 64 canonical, personas, surfaces, V1-V3 cut</li>
+<li><code>holding/departments/experience/desktop-app/IA.md</code> &#8212; the slot registry (information objects, L0-L4, invariants)</li>
+<li><code>holding/departments/experience/desktop-app/CHARTER.md</code> &#8212; Founder Cockpit charter (DRAFT)</li>
+<li><code>holding/departments/experience/desktop-app/mocks/</code> &#8212; v0 &#8594; v1.0-rc + integration mock (visual references)</li>
+<li><code>sutra/marketplace/plugin/sutra-ui/</code> &#8212; the substrate (D54: code linked, never copied)</li>
+</ul>
+
+</div></div></body></html>

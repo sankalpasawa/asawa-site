@@ -1,0 +1,403 @@
+<!doctype html>
+<!-- PAGE: consumer-ui-prd (v1, PROPOSED). The Desktop UI PRD — reverse-engineered from the LOCKED design surfaces
+     (design-system.html skin authority + consumer-ui.html cockpit doc + preview/app.html DS UI v2.0 build + tokens.css)
+     so the founder can design individual screens from it. Includes the Version UX ladder (v1-v5 output + experience).
+     Grounding: 3 extraction agents (wf_f08cb24d) + dual consult (codex 12 pts; deepseek convergent: field map, state
+     matrix, visual-is-a-sample). PRD discipline: WHAT not HOW. Everything here is PROPOSED except facts cited from
+     locked/ruled sources. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Desktop UI PRD</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+ol{margin:6px 0;padding-left:26px}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+.vbadge{display:inline-block;font-size:11px;font-weight:800;border-radius:4px;padding:2px 8px;margin-right:6px}
+.v1{background:#ecfdf5;color:#047857}.v2{background:#eff6ff;color:#1d4ed8}.v3{background:#eef2ff;color:#4338ca}.v4{background:#fdf4ff;color:#a21caf}.v5{background:#fff7ed;color:#c2410c}
+/* ---- chat mockup styles: values are the REAL tokens from preview/tokens.css ---- */
+.mock{background:#FAFAF7;border:1px solid #E8E3DB;border-radius:12px;padding:18px 16px;margin:12px 0;font:13.5px/1.55 Inter,-apple-system,sans-serif;color:#1A1714}
+.mock .mlabel{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#B8B2A6;margin:0 0 10px}
+.mock .atom{position:relative;border:1.5px solid #2D5A3E;background:#f6faf7;border-radius:10px;padding:7px 12px;font-size:11px;color:#2D5A3E;margin-bottom:12px}
+.mock .mu{background:#F5F0E8;border-radius:12px;padding:10px 14px;max-width:72%;margin:10px 0 10px auto;color:#1A1714}
+.mock .ma{background:#FFFFFF;border:1px solid #E8E3DB;border-radius:12px;padding:12px 14px;max-width:86%;margin:10px auto 10px 0;box-shadow:0 1px 3px rgba(12,10,8,.04)}
+.mock .chips{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.mock .chip{border:1px solid #E8E3DB;background:#fbfaf7;border-radius:99px;padding:2px 9px;font-size:9.5px;font-weight:600;color:#6B6560}
+.mock .chip.decide{color:#8B6B4A;border-color:#8B6B4A}
+.mock .chip.done{color:#2D5A3E;border-color:#2D5A3E}
+.mock .chip.alert{color:#8B4A6B;border-color:#8B4A6B}
+.mock .chip.review{color:#4A6B8B;border-color:#4A6B8B}
+.mock .card{border:1px solid #E8E3DB;background:#FFFFFF;border-radius:12px;padding:12px 16px;margin:8px 0;box-shadow:0 1px 3px rgba(12,10,8,.04)}
+.mock .card .t{font-weight:600;font-size:14px;margin-bottom:2px}
+.mock .card .m{font-size:12px;color:#6B6560}
+.mock .act{color:#8B6B4A;font-weight:700;font-size:13.5px;margin-right:14px;cursor:pointer}
+.mock .act.q{color:#6B6560;font-weight:400}
+.mock .steps{font-size:12px;margin:6px 0 0;color:#1A1714}
+.mock .steps div{padding:2px 0;border-bottom:1px dashed #E8E3DB}
+.mock .ok{color:#2D5A3E;font-weight:700}
+.mock .retry{color:#8B6B4A;font-weight:700}
+.mock .esc{color:#8B4A6B;font-weight:700}
+.mock .work{font-size:11px;color:#2D5A3E;margin-top:8px}
+.mock .meta{font-size:11px;color:#B8B2A6;margin-top:6px}
+.mock .composer{border:1px solid #ded9cf;background:#FFFFFF;border-radius:15px;padding:13px 16px;color:#B8B2A6;font-size:14px;margin-top:12px;box-shadow:0 1px 3px rgba(12,10,8,.04)}
+.mock .proj{font-size:10px;color:#4A6B8B;margin-top:4px;font-style:italic}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="edges.html">Edges</a></div><div style="padding-left:28px"><a href="resource.html">Resource</a></div><div style="padding-left:28px"><a href="time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a class="sb-cur" href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="index.html">Native hub</a> &#8250; <a href="consumer-ui.html">Consumer UI (desktop)</a> &#8250; UI PRD</div>
+<h1>Desktop UI PRD — spec of record for screen design <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>consumer-ui-prd</code></td><td>PLATFORM / <a href="consumer-ui.html">consumer-ui</a></td><td><span class="pill PROPOSED">PROPOSED</span></td><td>v1</td><td>claude (founder to reverse-engineer screens)</td></tr></table>
+
+<div class="note"><b>How to use this PRD.</b> It is reverse-engineered FROM the locked design surfaces — <a href="design-system.html">design-system.html</a> (skin authority), <a href="consumer-ui.html">consumer-ui.html</a> (cockpit doc), <a href="preview/app.html">preview/app.html</a> (DS UI v2.0 built prototype), <code>preview/tokens.css</code> (token core). Two disciplines guard against reverse-engineering traps (dual-consult folds): <b>(1)</b> the locked visual is a <em>sample</em>, not the requirement set — every section separates LOCKED VISUAL LANGUAGE (aesthetic constraint) from REQUIRED PRODUCT BEHAVIOR (semantic requirement); <b>(2)</b> nothing here may exist only in the UI — every card maps to a persisted record (&#167;P4), and consequential actions always cause a persisted state transition, never a UI-only one.</div>
+
+<div class="note"><b>Reverse-engineering the shipping app:</b> <a href="platform/model/desktop-app.html">Desktop App</a> &#8212; the live terminal vs panel states read off the code, the governance behavior/visibility mode design, and the design-system import delta.</div>
+<h2 id="s-p1">P1 · Product nouns — the vocabulary every screen speaks</h2>
+<table>
+<tr><th>Noun</th><th>Definition (one line, canon-consistent)</th></tr>
+<tr><td>Workflow</td><td>a written, registered way of doing a recurring piece of work (lives in the registry)</td></tr>
+<tr><td>Run</td><td>one execution of a workflow; produces a run ledger row</td></tr>
+<tr><td>Work-Atom</td><td>the smallest honest unit: one goal + one verify + constraints + context + HOW</td></tr>
+<tr><td>Verify</td><td>the pinned pass/fail check a run cannot skip; outcome enum: pass / fail-retry / fail-escalate / blocked</td></tr>
+<tr><td>Registry</td><td>the library of registered workflows (v1's first store)</td></tr>
+<tr><td>Builder</td><td>the gated workflow that constructs model objects (validate&#8594;construct&#8594;judge&#8594;verify&#8594;PROPOSE&#8594;APPROVE&#8594;register)</td></tr>
+<tr><td>Gate / Escalation</td><td>a moment where the system stops and the operator decides; surfaces as a decision card</td></tr>
+<tr><td>Receipt</td><td>the closing card of a run — the human rendering of its ledger row</td></tr>
+<tr><td>Ledger row</td><td>the persisted record of what actually happened (JSONL); the chat renders it, never replaces it</td></tr>
+<tr><td>Session</td><td>one thread of conversation bound to its context (charter, decisions, proof)</td></tr>
+<tr><td>Decision card</td><td>anything awaiting the operator: approve/reject with scope, reversibility, time estimate</td></tr>
+</table>
+
+<h2 id="s-p2">P2 · Users + jobs</h2>
+<p>Primary user: the operator-founder (single-user v1 — RULED B18-4; collaborator-awareness arrives v2+). Jobs, in priority order: <b>decide</b> what only they can decide (approvals) &#183; <b>direct</b> new work in plain words &#183; <b>watch</b> that promised work ran honestly &#183; <b>trust-check</b> ("show me what you did and why") &#183; <b>tune</b> autonomy over time. The desktop app's promise, carried from the cockpit doc: <em>"decisions are waiting on you; everything else is handled."</em></p>
+
+<h2 id="s-p3">P3 · Information architecture (as built)</h2>
+<table>
+<tr><th>Surface (rail tab)</th><th>Purpose</th><th>Built in preview?</th></tr>
+<tr><td>Right Now</td><td>home: greeting + decision stack (the asks) + quiet tokens (review/fyi/done/radar) + global composer (&#8984;K)</td><td>YES (decision stack; day-calendar WorkBlocks + NOW line are described-only)</td></tr>
+<tr><td>Chats</td><td>every card is a session; two-pane FIXED — context aside (charter / key decisions / done-proof) left 295px, chat stream right</td><td>YES</td></tr>
+<tr><td>Billu</td><td>company-thread messenger (offline-queue aware, @company routing)</td><td>YES (mock)</td></tr>
+<tr><td>Evals</td><td>the honesty scoreboard (nightly score, watchdog, regressions)</td><td>YES (static snapshot)</td></tr>
+<tr><td>Balance</td><td>chat-native coach; takeaways-first</td><td>YES (sample mode)</td></tr>
+<tr><td>Departments</td><td>published domains site in an iframe</td><td>YES</td></tr>
+<tr><td>Settings</td><td>connections, day rhythm, tone &amp; trust, kill-switches</td><td>YES</td></tr>
+</table>
+<div class="planned"><span class="pill PROPOSED">GATES UPDATED &#8212; BALLOT 2026-08-18</span> RULED (B18-4): the 7-tab rail is blessed as the new L1 &#183; A3 = single-user v1 &#183; A4 Why-layer and the day-calendar are parked to v2+. STILL OPEN: A1 (charter+V1 cut), A6 (Experience dept), IA ratification, and the composer contract &#8212; to be spec&#8217;d from the preview&#8217;s &#8984;K command-palette affordances (Right Now + Chats composers remain placeholders until then).</div>
+
+<h2 id="governance-two-switch">Governance contract &#8212; two switches (RULED B18-2)</h2>
+<p>Governance is <b>two independent switches</b>, never one:</p>
+<table><tr><th>Switch</th><th>Values</th><th>Where it lives</th><th>Rule</th></tr>
+<tr><td><b>Behavior</b></td><td>ON / OFF</td><td>server-persisted (per instance)</td><td>consequential actions confirm before executing while ON; flipping is itself a consequential action</td></tr>
+<tr><td><b>Visibility</b></td><td>FULL / QUIET / RAW</td><td>per-browser (local)</td><td>changes what the operator sees, never what the system does</td></tr></table>
+<p class="figcap">Hard label rule: while behavior is ON, the word &#8220;off&#8221; is forbidden on every UI surface &#8212; quiet visibility is labeled QUIET, honestly scoped (terminal quiet = T1, panel-only). Mixing the switches into one control is a design defect, not a simplification.</p>
+
+<h2 id="s-p4">P4 · Object model — every card is a projection of a record</h2>
+<p class="lead">The load-bearing rule (ADR-023, ruled): <b>components render, never execute.</b> An approve click submits an utterance through the Ask path — it is never a direct mutation. Every card type below names its persisted entity, its key fields, its lifecycle, its allowed actions, and its truth-class (Operator Read Model: SoR = authoritative/durable &#183; Orchestration = eventually-consistent &#183; SoP-runtime = ephemeral, flagged "live, not yet durable").</p>
+<table>
+<tr><th>Card type</th><th>Persisted entity (source of truth)</th><th>Key fields (type &#183; req)</th><th>Lifecycle</th><th>Allowed actions</th><th>Truth-class</th></tr>
+<tr><td>Decision card</td><td>pending approval (E-&lt;id&gt;)</td><td>title:str&#183;req · scope:str&#183;req · reversibility:enum&#183;req · time_est:str · risk:enum</td><td>pending &#8594; approved | rejected | expired</td><td>approve (once | as-rule) · reject · later · open diff</td><td>eventually-consistent</td></tr>
+<tr><td>Workflow match card</td><td>registry entry</td><td>workflow_id:str&#183;req · version:int&#183;req · steps:int · runs:int · pass_rate:%</td><td>registered &#8594; superseded | retired</td><td>start · view definition · decline (&#8594; CONSTRUCT)</td><td>authoritative</td></tr>
+<tr><td>Atom pinned row</td><td>atom ledger row</td><td>goal:str&#183;req · verify:str&#183;req · status:enum&#183;req</td><td>open &#8594; closed | abandoned</td><td>none (projection only)</td><td>authoritative</td></tr>
+<tr><td>Step progress card</td><td>execution state (run in flight)</td><td>step:int/int&#183;req · per-step verify:enum&#183;req</td><td>running &#8594; done | escalated</td><td>stop</td><td>ephemeral (flagged live)</td></tr>
+<tr><td>Verify chip</td><td>run-outcome on execution row</td><td>outcome: pass | fail-retry | fail-escalate | blocked &#183;req</td><td>per attempt</td><td>expand evidence</td><td>ephemeral &#8594; durable at close</td></tr>
+<tr><td>Escalation ask card</td><td>escalation record + pending approval</td><td>what_failed:str&#183;req · evidence_ref:str&#183;req · risk:enum&#183;req · reversibility:enum&#183;req</td><td>raised &#8594; resolved</td><td>approve override · fix input · stop (safe default)</td><td>eventually-consistent</td></tr>
+<tr><td>Run receipt</td><td>run ledger row</td><td>goal:str&#183;req · outcome:enum&#183;req · verifies:n/n&#183;req · duration:str · thread_id:str</td><td>immutable once written</td><td>replay ("show what you did and why") · open artifacts</td><td>authoritative</td></tr>
+<tr><td>Propose&#8594;approve gate card</td><td>builder proposal record</td><td>proposed_change:str&#183;req · source_record:ref&#183;req · actor:str&#183;req · scope:str&#183;req · consequences:str&#183;req · expiry:date · rollback:str&#183;req</td><td>proposed &#8594; approved+registered | rejected</td><td>approve &amp; register · edit · reject</td><td>eventually-consistent</td></tr>
+<tr><td>Quiet-line token</td><td>counts over queues (review/fyi/done/radar)</td><td>kind:enum&#183;req · count:int&#183;req</td><td>live</td><td>deep-link to tab</td><td>ephemeral</td></tr>
+<tr><td>Plan chip (collapsible)</td><td>blueprint block in session transcript</td><td>steps:int&#183;req · verify n/n</td><td>per turn</td><td>expand/collapse</td><td>authoritative (transcript)</td></tr>
+</table>
+<div class="key"><b>Field-map rule (deepseek fold):</b> when a screen adds a field to any card, the field must name its source column in the persisted record, its type, whether it is required, and whether it is read-only or derived. A field with no source column is forbidden — that is UI inventing state.</div>
+
+<h2 id="s-p5">P5 · Component inventory + state matrix</h2>
+<p>13 locked components (skin authority; class names <code>ds-*</code> are STABLE for import): decision card, chip, quiet line, composer, WorkBlock, atom card, work line, tray, held, clock, dot, banner, table, rail. LOCKED VISUAL LANGUAGE: warm-light single theme (bg <code>#FAFAF7</code>, ink <code>#1A1714</code>, gold accent <code>#B8945F</code>); 4 semantic colors carry meaning ONLY — clay=<b>decide</b>, steel=<b>review</b>, forest=<b>done</b>, rose=<b>alert</b>; Playfair display max 19px in-app (30px greeting), Inter body 14px, mono for blueprints/commands; spacing steps 4/8/12/16/24/32/64 only; shadows on cards only; max 3 chips per row.</p>
+<div class="key"><b>State-matrix rule (dual-consult convergent):</b> no component ships without ALL of: default · hover · active · empty · loading/skeleton · error · blocked/permission-denied · retry · offline-queued · audit (post-action receipt). The preview covers happy states; <b>no true zero-states exist anywhere yet</b> — first-run, no-sessions, no-decisions screens are unspecified and are the first screens the founder should design.</div>
+
+<h2 id="s-p6">P6 · Interaction contracts (required behavior)</h2>
+<table>
+<tr><th>Moment</th><th>Contract (ruled/locked source in parentheses)</th></tr>
+<tr><td>Ask-side gating</td><td>confirm-back below confidence threshold (B.4 ladder); ask-before-acting: irreversible &#8594; multi-step confirm, high-risk &#8594; one-tap confirm, new authority &#8594; grant once/always/no, first-time channel &#8594; preview before send (F.1/F.5)</td></tr>
+<tr><td>Receive-side trust</td><td>M5 approval card · F.2 reversibility tag on every result (reversible / with-effort / not-reversible) · F.3 on-demand replay</td></tr>
+<tr><td>Errors</td><td>plain operator words, exactly 3 recovery options, no stack traces (G.2); one focused clarifying question max (G.1); stop/undo/different-approach always honored (G.3); 2 consecutive misses &#8594; walkthrough (G.4); corrections visibly acknowledged (G.5)</td></tr>
+<tr><td>Escalation asks</td><td>grouped when related · always show WHY approval is needed + risk level · default = safest non-destructive path · distinguish <b>approve once</b> from <b>approve as rule</b> (the rule-grant is how autonomy is earned later — but the UI affordance exists from v1)</td></tr>
+<tr><td>Noise</td><td>P6 default-quiet, operator-tunable verbosity, no surface inversion; proactive offers never block and decay after 2 declines (H.2)</td></tr>
+<tr><td>Provenance</td><td>audit-grade truth surfaces only via SoR projections (replay viewer, provenance browser); live state must be truth-class-flagged</td></tr>
+</table>
+
+<h2 id="s-p7">P7 · Pattern extrapolation — what generalizes, what must not be inferred</h2>
+<ul>
+<li><b>Generalizes:</b> the card grammar (dot + title + meta + primary/quiet actions) to any new decision type; the chip grammar to any new status; the two-pane session shape to any new record-bound conversation; the quiet-line to any new queue.</li>
+<li><b>Must NOT be inferred:</b> new semantic colors (4 is the set); dark mode (single warm-light theme is a commitment); new rail tabs without a founder gate (L1 open); any card without a persisted entity (P4 rule); density beyond max-3-chips; shadows beyond cards.</li>
+</ul>
+
+<h2 id="s-p8">P8 · Acceptance criteria (screen-design definition of done)</h2>
+<ol>
+<li>Every screen names its cards, and every card names its P4 record + truth-class tag.</li>
+<li>Every component instance has the full P5 state matrix designed (incl. zero-states).</li>
+<li>Every consequential action traces to a persisted state transition (no UI-only state).</li>
+<li>Semantic colors used for meaning only; tokens from <code>tokens.css</code> exclusively.</li>
+<li>Escalation/approval cards carry: why, risk, reversibility, safe default, once-vs-rule.</li>
+<li>Version gating respected: a screen may not render capabilities its version has not earned (chapter below).</li>
+</ol>
+
+<!-- ================= VERSION UX LADDER ================= -->
+<div class="note"><b>Authority note.</b> This ladder is the <em>rendering</em> layer: what each version looks and feels like. The <em>capability contract</em> &#8212; what ships, the entry and exit evidence gates, the success numbers &#8212; lives once in <a href="platform/model/versions.html">Versions (v1&#8211;v5)</a> and is normative there. If the two ever disagree, versions.html wins. Nothing on this page restates a gate or a success number; it only shows the surface.</div>
+<h2 id="vux">The Version UX ladder — how each version's output looks and feels</h2>
+<p class="lead">One UX capability class per version (consult fold #10). The chat renders the record: what changes between versions is <em>which records exist</em> — so the chat honestly gains card types, never speculative intelligence. Each block below: what the customer sees &#183; a chat mockup in the real tokens &#183; what this version must NOT show.</p>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. All mockups use the locked visual language (real token values) but their content shapes follow the PROPOSED record schemas of VERSIONS.md — fields marked there as <code>&lt;decision_pending&gt;</code> stay pending here too.</div>
+
+<h3 id="vux-v1"><span class="vbadge v1">v1 FOLLOW</span> the chat of a system that follows honestly</h3>
+<p><b>Feel:</b> deliberately procedural — the app frames everything as <em>following a registered workflow</em>, never as reasoning. New card types earned: workflow match, step progress + verify chips, escalation ask, run receipt, propose&#8594;approve gate, registry browse.</p>
+<div class="mock">
+<p class="mlabel">CHATS &#183; SESSION: KYC BATCH &#183; MOCKUP</p>
+<div class="atom">ATOM OPEN &#183; Goal: today's borrower batch KYC-verified &#183; Done when: verify passes on all 34 applicants</div>
+<div class="mu">Run KYC checks on today's borrower batch</div>
+<div class="ma">
+<div class="chips"><span class="chip">INBOUND&#183;DIRECT</span><span class="chip done">FOLLOW</span><span class="chip">RISK: low</span></div>
+<div class="card"><div class="t">W-kyc-verify &#183; v3</div><div class="m">12 steps &#183; followed 47 times &#183; verify pass 94% &#183; last run yesterday</div>
+<div style="margin-top:8px"><span class="act">Start</span><span class="act q">view definition</span><span class="act q">not this one</span></div></div>
+<div class="proj">projects: registry entry wf-kyc-verify@3 (authoritative)</div>
+This matches a registered workflow — following it, not improvising.
+</div>
+<div class="ma">
+<div class="chips"><span class="chip done">RUNNING</span><span class="chip">step 7/12</span></div>
+<div class="steps">
+<div><span class="ok">&#10003;</span> 1-6 &#183; documents pulled, formats verified</div>
+<div><span class="retry">&#8635;</span> 7 &#183; bureau reference re-pull — <b>fail-retry</b> (attempt 2/2, timeout)</div>
+<div>8-12 &#183; waiting</div>
+</div>
+<div class="proj">projects: execution state (live, not yet durable)</div>
+</div>
+<div class="ma">
+<div class="chips"><span class="chip alert">FAIL-ESCALATE</span><span class="chip">reversible</span></div>
+<div class="card"><div class="t">Step 7 needs you: bureau re-pull failed twice</div>
+<div class="m">Why you're being asked: the workflow's verify cannot pass without a live bureau reference &#183; risk: low &#183; evidence: attempts logged 14:02, 14:06</div>
+<div style="margin-top:8px"><span class="act">Fix input</span><span class="act q">Approve override (this run only)</span><span class="act q">Stop — safest</span></div></div>
+<div class="proj">projects: escalation record + pending approval E-1142 (eventually-consistent)</div>
+</div>
+<div class="ma">
+<div class="chips"><span class="chip done">RUN COMPLETE</span></div>
+<div class="card"><div class="t">Receipt — KYC batch, 34 applicants</div>
+<div class="m">outcome: pass &#183; verifies 12/12 &#183; 41 min &#183; thread t-0817-kyc</div>
+<div style="margin-top:8px"><span class="act q">show me what you did and why</span><span class="act q">open artifacts</span></div></div>
+<div class="work">&#10003; recorded — run ledger row appended (this card is that row, rendered)</div>
+</div>
+<div class="composer">Continue this session&#8230;</div>
+</div>
+<p class="figcap">Not shown but in v1's card set: the CONSTRUCT fallback ("no registered workflow matches — improvising honestly; propose it as a workflow after?") and the builder's propose&#8594;approve gate card (proposed change &#183; source record &#183; actor &#183; scope &#183; consequences &#183; expiry &#183; rollback — approve &amp; register / edit / reject), and registry browse ("what workflows do we have?" &#8594; list with per-row run stats).</p>
+<div class="note"><b>v1 must NOT show:</b> estimates or ETAs, "I remember", predictions, auto-routing, cross-system anything, org recommendations, agentic planning language. No engines exist yet — a v1 chat that sounds smart is lying. The decision stack on Right Now holds only: escalations, builder proposals, and connection issues.</div>
+
+<h3 id="vux-v1-construct">v1 &#183; when nothing matches — the CONSTRUCT fallback</h3>
+<p>The honest branch. v1 has a registry with holes in it; the app must say so out loud rather than pretending a match. This is also the only path by which the registry grows. Note the framing: v1 improvisation is <em>operator-guided work with everything recorded</em> — no engine is planning anything.</p>
+<div class="mock">
+<p class="mlabel">CHATS &#183; NO MATCH &#183; MOCKUP</p>
+<div class="mu">The RBI wants a fresh sampling report for last quarter&#8217;s rejected applications</div>
+<div class="ma">
+<div class="chips"><span class="chip">INBOUND&#183;DIRECT</span><span class="chip decide">CONSTRUCT</span><span class="chip">RISK: med</span></div>
+<div class="card"><div class="t">No registered workflow matches this</div>
+<div class="m">Closest: W-kyc-verify (shares the applicant store, but not the sampling or the report) &#183; searched 14 registered workflows</div>
+<div style="margin-top:8px"><span class="act">Work it out with me</span><span class="act q">show closest match anyway</span></div></div>
+<div class="proj">projects: routing log row &#183; resolution=CONSTRUCT (authoritative)</div>
+We&#8217;ll work this one out together and I&#8217;ll write down every step as we go — so if it happens again, it can be followed instead of invented.
+</div>
+<div class="ma">
+<div class="chips"><span class="chip done">DONE</span></div>
+<div class="card"><div class="t">Receipt — RBI sampling report (improvised)</div>
+<div class="m">outcome: pass &#183; 6 steps recorded &#183; 52 min &#183; no pinned verify existed, so totals were checked against the source twice and both checks logged</div></div>
+</div>
+<div class="ma">
+<div class="chips"><span class="chip decide">PROPOSAL PENDING</span><span class="chip">registry unchanged</span></div>
+<div class="card"><div class="t">Proposed: W-rbi-sampling v1 &#183; awaiting your approval</div>
+<div class="m">6 steps captured from what actually happened. <b>Nothing has been registered.</b> The registry still holds 14 entries and will keep improvising this ask until you approve.</div>
+<div style="margin-top:8px"><span class="act">Review the proposal</span><span class="act q">not yet</span></div></div>
+<div class="work">&#10003; recorded — run ledger row + CONSTRUCT flag &#183; proposal row is a builder input, not a registry entry</div>
+</div>
+</div>
+<div class="note"><b>Design rule this encodes</b> (codex fold): the pending state is drawn explicitly, because a receipt followed by a proposal offer reads as "it's done" unless the UI says the registry did <em>not</em> change. The second time the same ask arrives, the match card appears instead — that difference is the whole v1 promise made visible.</div>
+
+<h3 id="vux-v1-builder">v1 &#183; the propose&#8594;approve gate — the only door into the registry</h3>
+<p>The highest-consequence card in v1: it is how the system&#8217;s written memory changes. It must carry seven things — proposed change, source record, proposer, scope, consequences, expiry, rollback — without the operator asking.</p>
+<div class="mock">
+<p class="mlabel">RIGHT NOW &#183; DECISION STACK &#183; MOCKUP</p>
+<div class="card">
+<div class="t">Register W-rbi-sampling v1 &#183; 6 steps</div>
+<div class="m" style="margin-top:6px">
+<b>What changes:</b> a new workflow enters the registry; future matching asks will FOLLOW it instead of improvising.<br>
+<b>From:</b> run t-0817-rbi (improvised 2026-08-17, passed) &#183; <b>Proposed by:</b> W-build-workflow (builder)<br>
+<b>Recorded approver:</b> you &#183; <b>Scope:</b> Credit-Ops only &#183; <b>Consequences:</b> 3 pending asks would match it<br>
+<b>Expiry:</b> proposal lapses in 7 days &#183; <b>Rollback:</b> supersede or retire the entry; past runs stay in the ledger either way &#183; <b>Reversibility:</b> reversible
+</div>
+<div style="margin-top:10px"><span class="act">Approve &amp; register</span><span class="act q">Edit the steps first</span><span class="act q">Reject</span></div>
+<div class="meta">approving registers the definition; it does not start anything running</div>
+</div>
+<div style="margin-top:10px;padding:8px 12px;border:1px dashed #E8E3DB;border-radius:8px;color:#B8B2A6;font-size:12px">
+Approve as rule &#8212; unavailable in v1: requires earned run history (v2)
+</div>
+<div class="proj">projects: builder proposal record (eventually-consistent) &#8594; on approve: registry entry (authoritative)</div>
+</div>
+<div class="note"><b>Two codex folds are visible here:</b> "recorded approver" replaces "actor on approve" (which read as an automation promise v1 cannot keep), and the disabled rule-grant states its own precondition rather than sitting mutely greyed. Approval registers a definition — it never implies the system will now run it unattended.</div>
+
+<h3 id="vux-v1-registry">v1 &#183; registry browse — "what do we actually have written down?"</h3>
+<p>v1&#8217;s only real library view. It answers the founder question the ladder cares about: is the registry growing, and is what&#8217;s in it being followed honestly? Every column below is an aggregate over records v1 genuinely writes — follow counts from run ledger rows, pass rates from the pinned per-run verify outcomes.</p>
+<div class="mock">
+<p class="mlabel">CHATS &#183; REGISTRY &#183; MOCKUP</p>
+<div class="mu">What workflows do we have?</div>
+<div class="ma">
+<div class="chips"><span class="chip review">REGISTRY</span><span class="chip">14 entries</span></div>
+<div class="card"><div class="t">W-kyc-verify &#183; v3</div><div class="m">12 steps &#183; followed 47&#215; &#183; verify passed on 44 of 47 runs &#183; 2 escalations this month</div></div>
+<div class="card"><div class="t">W-emi-reconcile &#183; v5</div><div class="m">9 steps &#183; followed 31&#215; &#183; verify passed on 31 of 31 runs &#183; last run today</div></div>
+<div class="card"><div class="t">W-rbi-sampling &#183; v1</div><div class="m">6 steps &#183; followed 0&#215; &#183; registered yesterday from an improvised run</div></div>
+<div class="meta">11 more &#183; sort: most followed &#183; filter: never followed (3)</div>
+<div class="proj">projects: registry entries + counted run-ledger verify outcomes (authoritative)</div>
+</div>
+</div>
+<div class="note"><b>Deliberately absent:</b> recommendations, "you should register X", health scores. Counts stated as "44 of 47 runs" rather than a percentage, so the reader can see the record being counted rather than a score being computed.</div>
+
+<h3 id="vux-v1-home">v1 &#183; Right Now, honestly scoped</h3>
+<p>The home screen in v1 holds exactly three kinds of card — escalations, builder proposals, and platform-connectivity problems (registry/daemon reachability only, never external-system monitoring, which is v3+). Everything else on the locked design (day calendar, WorkBlocks, NOW line, radar) is either described-only or belongs to a later version.</p>
+<div class="mock">
+<p class="mlabel">RIGHT NOW &#183; v1 SCOPE &#183; MOCKUP</p>
+<div style="font-family:Georgia,serif;font-size:26px;margin-bottom:2px">Good morning, Sankalp.</div>
+<div style="color:#6B6560;font-size:13.5px;margin-bottom:14px">2 decisions are waiting on you. Two workflows ran overnight and passed.</div>
+<div class="card"><div class="t">Step 7 needs you &#183; W-kyc-verify</div><div class="m">bureau re-pull failed twice &#183; reversible &#183; ~2 min</div>
+<div style="margin-top:8px"><span class="act">Open</span><span class="act q">later</span></div></div>
+<div class="card"><div class="t">Register W-rbi-sampling v1</div><div class="m">from yesterday&#8217;s improvised run &#183; reversible &#183; ~5 min</div>
+<div style="margin-top:8px"><span class="act">Review</span><span class="act q">later</span></div></div>
+<div style="font-size:13px;color:#B8B2A6;margin-top:14px">
+<span style="color:#4A6B8B;font-weight:700">&#9679; review 0</span> &#160;&#160; fyi 1 &#160;&#160; <span style="color:#2D5A3E">done 2 &#10003;</span> &#160;&#160; <span style="color:#8B4A6B">registry unreachable &#8212; cannot follow</span>
+</div>
+<div class="composer">Ask or command Sutra&#8230; &#160; <span style="font-size:11px">&#8984;K</span></div>
+<div class="proj">projects: pending approvals + builder proposals + registry/daemon reachability (mixed truth-class; live rows flagged)</div>
+</div>
+<div class="note"><b>Greeting + quiet tokens are presentational counts only</b> (codex fold) — time-of-day and queue sizes. They must never imply memory or personalization: v1 has no record that would justify "you usually do this now".</div>
+
+<h3 id="vux-v1-zero">v1 &#183; zero-states — the first ten minutes, and the bad days</h3>
+<p>The gap the audit found: no zero-state exists anywhere in the locked design. These four are the ones v1 cannot ship without. Each carries the product&#8217;s honesty rule — an empty or broken system says what is true and offers exactly one next step.</p>
+<div class="mock">
+<p class="mlabel">ZERO-STATE 1 &#183; FIRST RUN (EMPTY REGISTRY) &#183; MOCKUP</p>
+<div style="font-family:Georgia,serif;font-size:26px;margin-bottom:2px">Nothing is written down yet.</div>
+<div style="color:#6B6560;font-size:13.5px;margin-bottom:12px">The registry is empty, so everything today gets worked out together — and recorded while it is.</div>
+<div class="card"><div class="t">Start with work that repeats</div>
+<div class="m">Tell me one thing you do again and again. We&#8217;ll do it once together, write down what actually happened, and I&#8217;ll offer it back as a workflow you approve.</div>
+<div style="margin-top:8px"><span class="act">Name the work</span><span class="act q">show me an example first</span></div></div>
+<div class="meta">no decisions &#183; no runs &#183; nothing hidden</div>
+</div>
+<div class="mock">
+<p class="mlabel">ZERO-STATE 2 &#183; NOTHING AWAITS YOU &#183; MOCKUP</p>
+<div style="font-family:Georgia,serif;font-size:26px;margin-bottom:2px">Nothing needs you right now.</div>
+<div style="color:#6B6560;font-size:13.5px">3 workflows ran and passed since yesterday. The receipts are in Chats if you want them.</div>
+<div style="font-size:13px;color:#B8B2A6;margin-top:14px">review 0 &#160;&#160; fyi 0 &#160;&#160; <span style="color:#2D5A3E">done 3 &#10003;</span></div>
+<div class="composer">Ask or command Sutra&#8230; &#160; <span style="font-size:11px">&#8984;K</span></div>
+<div class="meta">P6 default-quiet: an empty decision stack is a success state, drawn as one &#8212; never a blank panel</div>
+</div>
+<div class="mock">
+<p class="mlabel">ZERO-STATE 3 &#183; DEGRADED (REGISTRY UNREACHABLE) &#183; MOCKUP</p>
+<div class="ma">
+<div class="chips"><span class="chip alert">CANNOT FOLLOW</span></div>
+<div class="card"><div class="t">The registry is unreachable, so I can&#8217;t follow anything right now</div>
+<div class="m">What still works: this conversation, and reading receipts already written. What doesn&#8217;t: matching, starting runs, registering. Your last two asks are <b>&lt;decision_pending&gt;</b> — v1 has not ruled a durable queue, so this screen must not promise they are held safely until it does.</div>
+<div style="margin-top:8px"><span class="act">Retry now</span><span class="act q">Show me what&#8217;s written already</span><span class="act q">Tell me when it&#8217;s back</span></div></div>
+<div class="meta">G.2 contract: plain words, exactly three recovery options, no codes, no stack traces</div>
+</div>
+</div>
+<div class="mock">
+<p class="mlabel">ZERO-STATE 4 &#183; BUILDER UNAVAILABLE &#183; MOCKUP</p>
+<div class="ma">
+<div class="chips"><span class="chip alert">CANNOT REGISTER</span><span class="chip done">following still works</span></div>
+<div class="card"><div class="t">I can follow and record, but I can&#8217;t register anything right now</div>
+<div class="m">The builder is the single gated door into the registry, and it isn&#8217;t available. Your proposal from yesterday is still listed as pending — it hasn&#8217;t been lost, and it hasn&#8217;t been registered.</div>
+<div style="margin-top:8px"><span class="act">Retry the builder</span><span class="act q">Show pending proposals</span><span class="act q">Continue without registering</span></div></div>
+<div class="meta">codex fold: with exactly one gated builder in v1, "why can I browse and follow but not build?" needs its own answered state</div>
+</div>
+</div>
+<div class="key"><b>Zero-state doctrine for every future screen:</b> an empty surface states what is empty, what that means, and offers exactly one primary next step. A degraded surface additionally states what still works, what does not, and — only where a record actually guarantees it — where in-flight work is safe. With the v1 durable outbox (RULED B18-5), the degraded screen may now promise exactly this much: <em>&#8220;queued work is safe on this Mac&#8221;</em> — and no more (the outbox is not a scheduler). Never a spinner without a sentence; never a blank panel; never a safety claim without the record to back it.</div>
+
+<h3 id="vux-v2"><span class="vbadge v2">v2 REMEMBER</span> the same chat, now with honest memory</h3>
+<p><b>New card types earned</b> (because the workflow-keyed record slice now exists): ETA chip on match cards ("&#8776; Tuesday — from 21 runs"), estimate-vs-actual line on receipts, autonomy offer card ("step 3 has passed 30/30 times — approve as rule?" — the ask&#8594;auto ladder made visible), interrupt-savings line in the weekly quiet token ("asked you 4 times this month, was 12").</p>
+<div class="mock"><p class="mlabel">V2 DELTA &#183; MOCKUP</p>
+<div class="ma"><div class="chips"><span class="chip done">FOLLOW</span><span class="chip review">&#8776; done Tuesday &#183; from 21 runs</span></div>
+<div class="card"><div class="t">W-emi-reconcile &#183; v5</div><div class="m">est 38 min (actual last 5: 35-44) &#183; backward-scheduled: starts 09:10 to meet your 11:00 review</div></div>
+<div class="proj">projects: evidence read-model row (authoritative) — the ETA cites its run count</div></div>
+</div>
+<div class="note"><b>v2 must NOT show:</b> cross-system queues, contracts, styles routing. Every number must cite its record ("from 21 runs") — an ETA without a citation is banned.</div>
+
+<h3 id="vux-v3"><span class="vbadge v3">v3 COORDINATE</span> two systems in one window</h3>
+<p><b>New surfaces earned</b> (contract + queue records now exist): the What's-Running board (C3, ADR-023) goes live on Right Now's quiet line; contract request cards ("Collections asks Product: fix the reminder copy &#183; due Thu &#183; auto-accepted per contract type"); receiver-queue position ("3rd in their queue, ordered by their charter"); one thread id traceable end-to-end across both systems.</p>
+<div class="note"><b>v3 must NOT show:</b> org-wide views, authority arbitration verdicts, crystallization. Cross-tenant reads stay default-deny (ADR-023 scope rule).</div>
+
+<h3 id="vux-v4"><span class="vbadge v4">v4 ORGANIZE</span> the org becomes visible</h3>
+<p><b>New surfaces earned:</b> attribution thread view (one launch reconstructed end-to-end), min-wins authority verdict chips on contested gates, shadow-system banner with sunset date ("shadow-rbi-sweep &#183; ends Sep 30 &#183; handoff to Credit-Ops"), crystallization proposal card carrying its parallel-run evidence ("LLM rule vs frozen rule agreed 212/212 — freeze?").</p>
+
+<h3 id="vux-v5"><span class="vbadge v5">v5 DISTRIBUTE</span> the installer conversation</h3>
+<p><b>New surface earned:</b> install-day is a chat — the root builder interviews ("what recurring work hurts most?"), previews the skeleton it will mint (Assembly stubs, slots), and grows from the new company's own record. Marketplace cards offer workflow templates (templates ship, instances never leave — the ruled distribution rule rendered as UI).</p>
+
+<h2 id="s-output">Output looks like</h2>
+<p>This page's own artifact IS the spec above: the P4 card&#8596;record table + the P5 state matrix + the P6 contracts are what the founder hands to screen design. No separate persisted artifact; downstream proof = designed screens that pass P8.</p>
+
+<h2>Open gates inherited (founder queue)</h2>
+<table>
+<tr><th>#</th><th>Gate</th><th>Blocks</th></tr>
+<tr><td>1</td><td>L1: 4-tab rail vs built 7-tab (Billu/Evals/Balance)</td><td>IA freeze</td></tr>
+<tr><td>2</td><td>A1 charter+V1 cut &#183; A3 single-user &#183; A4 Why layer &#183; A6 Experience dept (all PENDING)</td><td>PRD status &#8594; LOCKED</td></tr>
+<tr><td>3</td><td>Composer contract (input/send/&#8984;K palette) unspecified</td><td>Right Now + Chats screens</td></tr>
+<tr><td>4</td><td>Zero-states designed nowhere</td><td>first-run experience</td></tr>
+<tr><td>5</td><td>ADR-022 #1 SoR truth upgrade — until it lands, Approval Inbox + What's-Running ship degraded-fidelity w/ "live, not yet durable" flags</td><td>C1/C3 fidelity tier</td></tr>
+<tr><td>6</td><td>Day-calendar (WorkBlocks + NOW line): still v1 scope, or superseded by the decision-stack home the preview shipped?</td><td>Right Now screen</td></tr>
+</table>
+
+<h2>Provenance</h2>
+<p style="font-size:12px;color:#6b7280">author: claude (session bcb3d1c4) &#183; date: 2026-08-18 &#183; inputs: design-system.html + consumer-ui.html + preview/app.html + tokens.css (3 extraction agents, wf_f08cb24d, file:line-cited) &#183; platform/ui.html + ADR-023 (governance rules) &#183; VERSIONS.md (version contracts) &#183; review: dual-lane (codex 12 risks folded; deepseek convergent folds: field map, state matrix, visual-is-a-sample) &#183; status: PROPOSED — inherits the open gates table &#183; supersedes: none (first UI PRD).</p>
+
+</div></div></body></html>

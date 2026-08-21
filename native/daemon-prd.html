@@ -1,0 +1,574 @@
+<!doctype html>
+<!-- PAGE: daemon-prd (v1, PROPOSED). PRD (What not How) for the Native daemon — the clerk that runs the six-verb
+     loop in the background. Source: founder mental model (2026-08-19 session bcb3d1c4, quoted in s0) validated
+     against ruled canon (A4, B1, B2, ADR-004/005, B18-5/7); dual-lane consult folded (codex: Effectuation
+     Boundary section; deepseek: failure paths first-class, crash consistency, idempotency, observability). -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Daemon PRD</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+pre{background:#f8fafc;border:1px solid #e5e7eb;border-radius:6px;padding:12px;font-size:12px;line-height:1.5;overflow-x:auto}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="edges.html">Edges</a></div><div style="padding-left:28px"><a href="resource.html">Resource</a></div><div style="padding-left:28px"><a href="time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a class="sb-cur" href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="index.html">Hub</a> &#8250; <a href="platform/model/versions.html">Release state</a> &#8250; Daemon PRD</div>
+<h1>The Daemon <span class="lvl">PRD &#183; PROPOSED</span></h1>
+<p class="lead">The clerk that never sleeps: one background process per operator that runs the six-verb loop the v1 tools already implement by hand. It adds no new powers &#8212; it adds <em>continuity</em>.</p>
+
+<h2 id="s0">s0 &#183; The founder's model, and where it already lives</h2>
+<p>Founder (2026-08-19): one input gate &#183; hard-constrained step spine &#8212; inside the daemon it is always deterministic where things go &#183; each step, when reached, decides its own way of doing it &#183; the last unit is a workflow, programmatic or LLM-driven &#183; systems inside systems.</p>
+<table><tr><th>Founder phrase</th><th>Ruled home</th></tr>
+<tr><td>"definitely one input gate"</td><td>INTENT &#8594; CLASSIFY (Stage 0), the A4 router procedure &#8212; one front door for all three input kinds</td></tr>
+<tr><td>"inside the demon it is always deterministic"</td><td>the six-verb spine is CODE, never an LLM; deterministic <em>procedure</em> (its outputs include "ask the human")</td></tr>
+<tr><td>"each step can decide its own way"</td><td>WorkflowStep interior: <code>skill_ref</code> XOR <code>action</code>; the LLM lives only inside a step (B1: only-SoP-calls-Host)</td></tr>
+<tr><td>"programmatic workflow, or an LLM which is driving it"</td><td>step kinds: programmatic action vs <code>invoke_host_llm</code>, host &#8712; {claude, codex} (ADR-005)</td></tr>
+<tr><td>"a system, inside that system... subsystems"</td><td>X3 engines-all-the-way-down; daemon substrate = Runtime &#167;4, SoP + Orchestration are peer occupants (B2)</td></tr></table>
+<div class="key">The model is a restatement of ruled canon &#8212; nothing here invents architecture. This PRD only binds the daemon to it and names the decisions the daemon newly forces.</div>
+
+<h2 id="s1">s1 &#183; Promise</h2>
+<p>"Decisions are waiting on you; everything else is handled." Work advances while no chat window is open: schedules fire, events route, asks queue &#8212; and every outcome lands in the same auditable records the tools write today. The daemon is invisible when healthy; its only operator-visible surfaces are the app's stores and one health row.</p>
+
+<h2 id="s1b">s1b &#183; v0 already runs: the chat harness (founder recognition, 2026-08-19)</h2>
+<div class="key"><b>The simplest daemon is not a thing to build &#8212; it is the thing you type into.</b> Every message to Sutra already flows through a deterministic per-turn pipeline that understands the input, resolves it to the right architecture, and forces declared work before any mutation. Honest name (dual-lane fold): <b>v0 is a daemon-shaped harness with a human clock &#8212; not yet a daemon.</b> The loop exists; only the clock and the machine-readable rows are missing.</div>
+<table><tr><th>Founder's phrase</th><th>What fires today, every turn (Sutra plugin)</th><th>Loop verb</th></tr>
+<tr><td>"the interface understands the input"</td><td>H-Sutra classify + Input Routing (TYPE / ROUTE / FIT CHECK)</td><td>LISTEN</td></tr>
+<tr><td>"goes into the right architecture, right departments, right charters"</td><td>placement engine (ADR-028): utterance &#8594; domain_ref + charter grounding injected before the model answers</td><td>ROUTE</td></tr>
+<tr><td>"sets the right kind of work"</td><td>dispatch envelope bind + work atom with pre-declared verify &#8212; no mutation without a declared goal + check</td><td>OPEN</td></tr>
+<tr><td>"every kind of cascading"</td><td>D13 cascade gates, TODO propagation, structural hooks</td><td>WORK's rails</td></tr>
+<tr><td>"the right kind of context"</td><td>charter grounding + memory recall + skills resolution</td><td>step interior</td></tr>
+<tr><td>(the receipt)</td><td>atom ledger + route log rows, verify receipts on close</td><td>CHECK / CLOSE</td></tr></table>
+<p class="figcap">Live proof: the very utterance that created this section was resolved by the placement engine to <code>dref-a19b505fe0d92ce3</code> (charter "OS Company Processes", confidence 0.46) before any response was written.</p>
+<p><b>The ladder, reframed:</b> v0 chat harness with Claude as loop driver (EXISTS, months in production) &#8594; v0.5 the harness lands its records in the ratified v1 rows (the bridge, small) &#8594; v1 daemon adds the self-driven clock (gate G1). Confidence comes from v0 being real: the build is "give the harness time and rows," not "build a new system."</p>
+
+<h2 id="s2">s2 &#183; The loop contract (deterministic spine, free interiors)</h2>
+<pre>
+        +--> 1. LISTEN   utterance | schedule tick | event
+        |    2. ROUTE    registered way? FOLLOW : (low confidence -> ASK)
+        |    3. OPEN     record goal + pinned check BEFORE any work
+        |    4. WORK     steps run; interiors free; permission -> outbox, WAIT
+        |    5. CHECK    run the pre-declared check; measured, never claimed
+        +--- 6. CLOSE    one ledger row: outcome, attempts, duration
+</pre>
+<p><b>Failure is part of the spine, not an exception</b> (deepseek fold): reject, timeout, cancel, fail-retry, fail-escalate are first-class CLOSE outcomes with their own deterministic next hops. A tick firing mid-WORK on restart must find the OPEN record and resume or close it honestly (crash consistency); OPEN and WORK are idempotent on retry &#8212; same input never yields two ledger rows (join keys: <code>run_id</code>, <code>outbox_id</code>).</p>
+
+<h2 id="s3">s3 &#183; Inputs &#8212; the one gate</h2>
+<table><tr><th>Input kind</th><th>Example</th><th>Status</th></tr>
+<tr><td>Operator utterance</td><td>"reconcile this month's EMIs"</td><td>works today (session-routed)</td></tr>
+<tr><td>Schedule tick</td><td>"every Monday 9am, run W-emi-reconcile"</td><td><b>FOUNDER GATE G1</b> &#8212; crossing the B18-5 not-a-scheduler fence is the daemon's defining new power; requires its own ruling PLUS a per-workflow <code>schedulable</code> enablement flag (never ambient)</td></tr>
+<tr><td>Event</td><td>connector webhook, file change</td><td>v-next after G1; same gate discipline</td></tr></table>
+
+<h2 id="s4">s4 &#183; Effectuation boundary (what the daemon may and may not do)</h2>
+<div class="note">Codex fold: without this section, "daemon schedules work" quietly becomes ambient authority.</div>
+<ul>
+<li>The daemon <b>only ever emits proposed workflow invocations</b> &#8212; it never mutates target state itself (ADR-004: registry + audit layer).</li>
+<li>Every mutation executes in an <b>identified host session</b> (claude | codex), and the record row carries the chain: input id &#8594; workflow id &#8594; host session id &#8594; operator decision &#8594; output ref. That chain IS the observability answer: one causal trace across daemon, host, and mutation.</li>
+<li>Approve/reject from any surface (app, terminal) is <b>UI over the same process-layer gate</b> &#8212; not an app-specific write path. The app never writes the record (B18-7 twin rule).</li>
+<li>Approve is never automatic. No flag, retry policy, or schedule can synthesize one (F8 stands).</li>
+<li>Slow or wedged LLM work must not block the gate: the queue is visible, bounded, and shed-able &#8212; "3 waiting, 1 stuck 40min" is a rendered state, not a hidden one.</li></ul>
+
+<h2 id="s5">s5 &#183; Nothing new to invent: the verbs already ship</h2>
+<table><tr><th>Loop verb</th><th>Shipping tool (v1, tested)</th><th>Daemon's job</th></tr>
+<tr><td>ROUTE</td><td><code>sutra-resolve</code></td><td>call it on every input</td></tr>
+<tr><td>OPEN / CLOSE</td><td><code>sutra-run-log</code></td><td>call around every unit; enforce verify-before-close (G9)</td></tr>
+<tr><td>WORK's permission wait</td><td><code>sutra-outbox</code></td><td>park asks; replay on approval; idempotent by key</td></tr>
+<tr><td>CHECK</td><td><code>sutra-verify</code> (pinned templates)</td><td>run the pre-declared check, attach receipt</td></tr>
+<tr><td>audit trail</td><td><code>sutra-route-log</code>, <code>sutra-registry</code></td><td>row per decision; registry is the only source of "registered ways"</td></tr>
+<tr><td>economics</td><td><code>sutra-run-cost</code></td><td>the meter the daemon feeds (B18-8)</td></tr></table>
+<p class="figcap">The daemon is a sequencer of existing verbs plus a lifecycle (start/run/restart from disk). Correction after code audit (2026-08-19): the <code>on_host_llm_result</code> callback exists as an injectable seam with a no-op default (<code>lite-executor.ts:99,234</code>) — the seam is built; the <em>wiring</em> is the work.</p>
+
+<h2 id="s5b">s5b &#183; Reuse: the daemon already exists (code audit, 2026-08-19)</h2>
+<p>A shipped runtime at <code>sutra/marketplace/native/src/</code> (~10,700 lines TS, tested) already implements most of this PRD &#8212; and its own docs show the background loop was omitted <em>by ruling</em> (D-NS-34: "NO REAL DAEMON at v1.0"), anticipating exactly this moment. Verdict: <b>~80% reuse.</b></p>
+<table class="reuse-map"><tr><th>PRD element</th><th>Existing component (file-cited)</th><th>Verdict</th></tr>
+<tr><td>LISTEN &#8212; utterances</td><td><code>h-sutra-connector.ts</code> (events from the Core JSONL log)</td><td>REUSE</td></tr>
+<tr><td>LISTEN &#8212; schedule ticks</td><td><code>cadence-scheduler.ts</code> &#8212; deterministic <code>tick()</code>, cadence kinds built, NO background timer by design</td><td>REUSE machinery; the tick <em>driver</em> awaits gate G1</td></tr>
+<tr><td>ROUTE</td><td><code>router.ts</code> &#8212; TriggerSpec first-match-wins + claude-bare LLM fallback (temp 0), audit row per decision</td><td>REUSE</td></tr>
+<tr><td>WORK &#8212; step walk, pause, resume</td><td><code>lite-executor.ts</code> &#8212; step_graph walk; pause on <code>requires_approval</code>; <code>resumeApproved</code>; result-callback seam</td><td>REUSE; wire the seam</td></tr>
+<tr><td>WORK &#8212; host calls</td><td><code>host-llm-activity.ts</code> (claude --bare / codex)</td><td>REUSE</td></tr>
+<tr><td>Durability</td><td>approval / proposal / escalation / pause ledgers + <code>atomic-write.ts</code> (same temp+rename pattern as the v1 CLIs)</td><td>REUSE</td></tr>
+<tr><td>Lifecycle</td><td><code>lifecycle.ts</code> &#8212; PID lock + stale-lock reaping; foreground only, <code>daemonize()</code> planned-not-built</td><td>ADAPT (add the driver)</td></tr>
+<tr><td>OPEN / CHECK / CLOSE on the ratified record</td><td>&#8212; (the runtime predates this week's five schemas; it writes EngineEvents/Executions, not run-ledger rows)</td><td><b>NEW: the bridge</b> &#8212; an append-only projection of EngineEvents into ratified rows; the bridge carries NO routing, approval, retry, or resume logic (never a second executor)</td></tr>
+<tr><td>One ask surface</td><td>execution-approval-ledger (existing) vs outbox (new) &#8212; two stores could both claim "pending human decision"</td><td><b>NEW: gate G5</b> &#8212; canonical ask lifecycle: approval-ledger = execution-local control state; outbox = the single ask/delivery surface; correlate by id, strict one-way writes</td></tr></table>
+<div class="key"><b>Build order (dual-lane ruling fold):</b> 1) canonical ask lifecycle (G5) &#8594; 2) EngineEvent&#8594;run-ledger bridge &#8594; 3) wire the result seam &#8594; 4) tick driver / daemonize LAST. Ledger correctness is architectural; daemonize is operational polish.</div>
+
+<h2 id="s6">s6 &#183; Desktop app fit &#8212; the app is a window, never a writer</h2>
+<table><tr><th>App surface</th><th>Reads (daemon's stores)</th><th>Writes</th></tr>
+<tr><td>Right Now &#183; decision stack</td><td>outbox pending rows</td><td>approve/reject via the gate only</td></tr>
+<tr><td>What's Running</td><td>open run records</td><td>none</td></tr>
+<tr><td>Evals tab</td><td>eval receipts</td><td>none</td></tr>
+<tr><td>History / trust-check</td><td>run ledger + provenance rows</td><td>none</td></tr>
+<tr><td>Governance (two-switch)</td><td>behavior switch = daemon-persisted (the "server" of B18-2); visibility stays per-browser</td><td>flipping behavior = a consequential action through the gate</td></tr>
+<tr><td>Degraded screen</td><td>daemon down &#8594; app reads the same files directly</td><td>promise exactly: "queued work is safe on this Mac"</td></tr></table>
+
+<h2 id="s7">s7 &#183; Non-goals (v-first daemon)</h2>
+<ul><li>No cross-device ordering, no cloud, no multi-operator &#8212; one daemon per operator per machine (A3 single-user stands).</li>
+<li>No new authority: every gate that binds a session binds the daemon.</li>
+<li>No retry <em>policy</em> beyond the ruled outcome enum &#8212; retry budgets arrive with A8, not here.</li>
+<li>Not a general job runner: it runs registered workflows only; unregistered asks become CONSTRUCT proposals for a human.</li></ul>
+
+<h2 id="s8">s8 &#183; Open gates (founder decides; nothing below proceeds silently)</h2>
+<table><tr><th>#</th><th>Gate</th><th>Why it cannot be defaulted</th></tr>
+<tr><td>G1</td><td>Scheduler ruling: daemon may act on schedule ticks (crosses B18-5) + per-workflow <code>schedulable</code> flag</td><td>the fence was ruled 24h ago; only a ruling un-rules it</td></tr>
+<tr><td>G2</td><td>Start policy: plugin-boot autostart vs explicit <code>sutra native start</code></td><td>autostart = software running without an operator action</td></tr>
+<tr><td>G3</td><td>Resource ceilings: max concurrent host sessions, queue depth, spend guard</td><td>economics; feeds the B18-8 meter</td></tr>
+<tr><td>G4</td><td>Gate permissioning: who may approve (single-user today; the A3 v2+ question returns here)</td><td>authority design, founder-only</td></tr>
+<tr><td>G5</td><td>Canonical ask lifecycle: outbox = the single ask surface; execution-approval-ledger = execution-local control state; correlate by id, one-way writes (added by reuse audit 2026-08-19)</td><td>two stores claiming "pending human decision" is split-brain; only a ruling picks the owner</td></tr></table>
+
+<h2 id="s9">s9 &#183; How it works &#8212; the pictures (high-level)</h2>
+<p class="figcap">Picture 1 &#8212; the system: who talks to whom, and who is allowed to write what.</p>
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daemon system context">
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="10" y="20" width="180" height="120" rx="8" fill="#eff6ff" stroke="#1d4ed8"/>
+<text x="100" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#1d4ed8">OPERATOR</text>
+<text x="100" y="62" text-anchor="middle" font-size="10" fill="#475569">utterances &#183; approvals</text>
+<rect x="25" y="76" width="150" height="50" rx="6" fill="#fff" stroke="#93c5fd"/>
+<text x="100" y="96" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1e3a8a">DESKTOP APP</text>
+<text x="100" y="112" text-anchor="middle" font-size="9" fill="#64748b">a window, never a writer</text>
+<rect x="270" y="20" width="330" height="290" rx="8" fill="#fafaf7" stroke="#b45309" stroke-width="1.5"/>
+<text x="435" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#b45309">THE DAEMON  (deterministic code, no LLM)</text>
+<rect x="290" y="56" width="290" height="40" rx="6" fill="#fff" stroke="#d6d3d1"/>
+<text x="435" y="80" text-anchor="middle" font-size="10.5" fill="#374151">ONE INPUT GATE &#8212; utterance | tick (G1) | event</text>
+<rect x="290" y="108" width="290" height="40" rx="6" fill="#fff" stroke="#d6d3d1"/>
+<text x="435" y="132" text-anchor="middle" font-size="10.5" fill="#374151">ROUTER &#8212; registered way? FOLLOW : ASK</text>
+<rect x="290" y="160" width="290" height="40" rx="6" fill="#fff" stroke="#d6d3d1"/>
+<text x="435" y="184" text-anchor="middle" font-size="10.5" fill="#374151">EXECUTOR &#8212; walk steps, pause on approval</text>
+<rect x="290" y="212" width="290" height="40" rx="6" fill="#fff" stroke="#d6d3d1"/>
+<text x="435" y="236" text-anchor="middle" font-size="10.5" fill="#374151">RECORD BRIDGE &#8212; append-only projection</text>
+<text x="435" y="292" text-anchor="middle" font-size="9.5" fill="#92400e">proposes work; never mutates the world itself</text>
+<rect x="680" y="20" width="210" height="120" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="785" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#047857">HOST SESSIONS</text>
+<text x="785" y="62" text-anchor="middle" font-size="10" fill="#475569">claude | codex &#8212; the effectors</text>
+<text x="785" y="80" text-anchor="middle" font-size="9.5" fill="#475569">every real mutation happens here,</text>
+<text x="785" y="94" text-anchor="middle" font-size="9.5" fill="#475569">under an identified session id</text>
+<rect x="680" y="190" width="210" height="120" rx="8" fill="#f8fafc" stroke="#64748b"/>
+<text x="785" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#334155">THE STORES (on disk)</text>
+<text x="785" y="232" text-anchor="middle" font-size="10" fill="#475569">registry &#183; run ledger &#183; outbox</text>
+<text x="785" y="248" text-anchor="middle" font-size="9.5" fill="#475569">the record is the API &#8212;</text>
+<text x="785" y="262" text-anchor="middle" font-size="9.5" fill="#475569">everything integrates by reading here</text>
+<line x1="190" y1="60" x2="270" y2="76" stroke="#334155" stroke-width="1.3" marker-end="url(#ah)"/>
+<text x="222" y="56" font-size="9" fill="#64748b">inputs</text>
+<line x1="600" y1="76" x2="680" y2="66" stroke="#334155" stroke-width="1.3" marker-end="url(#ah)"/>
+<text x="612" y="60" font-size="9" fill="#64748b">proposed invocations</text>
+<line x1="785" y1="140" x2="785" y2="190" stroke="#047857" stroke-width="1.3" marker-end="url(#ah)"/>
+<text x="800" y="168" font-size="9" fill="#047857">writes via process layer</text>
+<line x1="600" y1="232" x2="680" y2="240" stroke="#334155" stroke-width="1.3" marker-end="url(#ah)"/>
+<text x="612" y="226" font-size="9" fill="#64748b">ledger rows</text>
+<line x1="680" y1="270" x2="100" y2="270" stroke="#64748b" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+<text x="380" y="262" font-size="9" fill="#64748b">app READS stores (decision stack, running, history)</text>
+<line x1="100" y1="126" x2="100" y2="264" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 3"/>
+</svg>
+
+<p class="figcap">Picture 2 &#8212; the loop as a state machine: failure paths are spine, not exceptions.</p>
+<svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daemon loop state machine">
+<defs><marker id="ah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<g font-size="11" font-weight="700">
+<rect x="20"  y="40" width="110" height="36" rx="18" fill="#eff6ff" stroke="#1d4ed8"/><text x="75"  y="62" text-anchor="middle" fill="#1d4ed8">LISTEN</text>
+<rect x="170" y="40" width="110" height="36" rx="18" fill="#fff" stroke="#334155"/><text x="225" y="62" text-anchor="middle" fill="#334155">ROUTE</text>
+<rect x="320" y="40" width="110" height="36" rx="18" fill="#fff" stroke="#334155"/><text x="375" y="62" text-anchor="middle" fill="#334155">OPEN</text>
+<rect x="470" y="40" width="110" height="36" rx="18" fill="#fff" stroke="#334155"/><text x="525" y="62" text-anchor="middle" fill="#334155">WORK</text>
+<rect x="620" y="40" width="110" height="36" rx="18" fill="#fff" stroke="#334155"/><text x="675" y="62" text-anchor="middle" fill="#334155">CHECK</text>
+<rect x="770" y="40" width="110" height="36" rx="18" fill="#ecfdf5" stroke="#047857"/><text x="825" y="62" text-anchor="middle" fill="#047857">CLOSE</text>
+</g>
+<g stroke="#334155" stroke-width="1.3">
+<line x1="130" y1="58" x2="170" y2="58" marker-end="url(#ah2)"/>
+<line x1="280" y1="58" x2="320" y2="58" marker-end="url(#ah2)"/>
+<line x1="430" y1="58" x2="470" y2="58" marker-end="url(#ah2)"/>
+<line x1="580" y1="58" x2="620" y2="58" marker-end="url(#ah2)"/>
+<line x1="730" y1="58" x2="770" y2="58" marker-end="url(#ah2)"/>
+</g>
+<path d="M 825 76 L 825 220 L 75 220 L 75 76" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ah2)"/>
+<text x="450" y="236" text-anchor="middle" font-size="9.5" fill="#64748b">back to LISTEN &#8212; forever; restart-safe because every state above is a file on disk</text>
+<rect x="150" y="110" width="150" height="30" rx="6" fill="#fffbeb" stroke="#b45309"/><text x="225" y="129" text-anchor="middle" font-size="9.5" fill="#92400e">no match &#8594; ASK operator</text>
+<line x1="225" y1="76" x2="225" y2="110" stroke="#b45309" stroke-width="1.2" marker-end="url(#ah2)"/>
+<rect x="450" y="110" width="150" height="30" rx="6" fill="#fffbeb" stroke="#b45309"/><text x="525" y="129" text-anchor="middle" font-size="9.5" fill="#92400e">needs approval &#8594; outbox, WAIT</text>
+<line x1="525" y1="76" x2="525" y2="110" stroke="#b45309" stroke-width="1.2" marker-end="url(#ah2)"/>
+<line x1="600" y1="125" x2="620" y2="70" stroke="#047857" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ah2)"/>
+<text x="640" y="112" font-size="8.5" fill="#047857">approved &#8594; resume</text>
+<rect x="600" y="150" width="290" height="30" rx="6" fill="#fef2f2" stroke="#b91c1c"/>
+<text x="745" y="169" text-anchor="middle" font-size="9.5" fill="#b91c1c">CHECK fail &#8594; fail-retry | fail-escalate | reject | timeout | cancel</text>
+<line x1="675" y1="76" x2="700" y2="150" stroke="#b91c1c" stroke-width="1.2" marker-end="url(#ah2)"/>
+<line x1="820" y1="150" x2="825" y2="80" stroke="#b91c1c" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ah2)"/>
+<text x="862" y="120" font-size="8.5" fill="#b91c1c">all land in CLOSE</text>
+</svg>
+
+<p class="figcap">Picture 3 &#8212; reuse map: green ships today, amber adapts, blue is the only new build.</p>
+<svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daemon reuse map">
+<rect x="10" y="20" width="280" height="195" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="150" y="44" text-anchor="middle" font-size="12" font-weight="800" fill="#047857">REUSE AS-IS (~80%)</text>
+<text x="150" y="68" text-anchor="middle" font-size="10" fill="#065f46">engine + emit pipeline</text>
+<text x="150" y="86" text-anchor="middle" font-size="10" fill="#065f46">utterance connector &#183; router</text>
+<text x="150" y="104" text-anchor="middle" font-size="10" fill="#065f46">step executor + pause/resume</text>
+<text x="150" y="122" text-anchor="middle" font-size="10" fill="#065f46">host activities (claude | codex)</text>
+<text x="150" y="140" text-anchor="middle" font-size="10" fill="#065f46">durable ledgers + atomic writes</text>
+<text x="150" y="158" text-anchor="middle" font-size="10" fill="#065f46">cadence machinery (tickable)</text>
+<text x="150" y="176" text-anchor="middle" font-size="10" fill="#065f46">v1 record CLIs (this week)</text>
+<rect x="310" y="20" width="280" height="195" rx="8" fill="#fffbeb" stroke="#b45309"/>
+<text x="450" y="44" text-anchor="middle" font-size="12" font-weight="800" fill="#b45309">ADAPT</text>
+<text x="450" y="68" text-anchor="middle" font-size="10" fill="#92400e">wire the result seam</text>
+<text x="450" y="86" text-anchor="middle" font-size="10" fill="#92400e">(exists, no-op default)</text>
+<text x="450" y="110" text-anchor="middle" font-size="10" fill="#92400e">lifecycle: add daemonize()</text>
+<text x="450" y="128" text-anchor="middle" font-size="10" fill="#92400e">+ the tick driver (after G1)</text>
+<text x="450" y="152" text-anchor="middle" font-size="10" fill="#92400e">approval ledger scoped to</text>
+<text x="450" y="170" text-anchor="middle" font-size="10" fill="#92400e">execution-local state (G5)</text>
+<rect x="610" y="20" width="280" height="195" rx="8" fill="#eff6ff" stroke="#1d4ed8"/>
+<text x="750" y="44" text-anchor="middle" font-size="12" font-weight="800" fill="#1d4ed8">NEW (the only build)</text>
+<text x="750" y="68" text-anchor="middle" font-size="10" fill="#1e3a8a">the record bridge:</text>
+<text x="750" y="86" text-anchor="middle" font-size="10" fill="#1e3a8a">EngineEvents &#8594; ratified rows</text>
+<text x="750" y="104" text-anchor="middle" font-size="10" fill="#1e3a8a">append-only projection,</text>
+<text x="750" y="122" text-anchor="middle" font-size="10" fill="#1e3a8a">no routing / approval / retry</text>
+<text x="750" y="146" text-anchor="middle" font-size="10" fill="#1e3a8a">canonical ask lifecycle (G5)</text>
+<text x="750" y="164" text-anchor="middle" font-size="10" fill="#1e3a8a">policy config for G1-G4</text>
+<text x="750" y="196" text-anchor="middle" font-size="9" fill="#64748b">build order: G5 &#8594; bridge &#8594; seam &#8594; tick driver</text>
+</svg>
+
+<h2 id="s11">s11 &#183; Build phases &#8212; P1 SHIPPED 2026-08-20 (founder contract)</h2>
+<div class="key"><b>P1 exists as code:</b> <code>sutra-daemon</code> (plugin bin, 26-check suite green) &#8212; gate (inbox file) + router (routes file, approved-only) + executor (host session + pinned check + ledger row). Founder's P1 contract, stricter than this PRD's full loop: <b>reactive only</b> (no ticks &#8212; G1 stays unruled), <b>throw-back-always</b> (any unexpected condition becomes a durable ask; the daemon never retries, never self-heals), <b>fallback = ask</b> (no approved route &#8594; "you decide"), <b>builder gate</b> (routes are the features; every route is human-approved and content-hashed; the daemon ships with zero approved routes).</div>
+<table><tr><th>Phase</th><th>Adds</th><th>Gate</th></tr>
+<tr><td>P1 (shipped)</td><td>reactive standalone daemon, one feature at a time via the builder; patterns 1/3 live, 5 collapsed to throw-back</td><td>route approvals (founder, per route)</td></tr>
+<tr><td>P2</td><td>schedule ticks (pattern 4) via the cadence machinery already built</td><td><b>G1</b> + per-workflow schedulable flag</td></tr>
+<tr><td>P3</td><td>durable approval-wait mid-workflow (pattern 2) + retry ladder (pattern 5 full) + cancel/supersede (pattern 7)</td><td>G5 ask lifecycle</td></tr>
+<tr><td>P4</td><td>reuse merge: record bridge to the 10.7k-line runtime (s5b build order)</td><td>after P2+P3 prove the loop</td></tr></table>
+<p class="figcap">Operating guide: holding/plans/native-sop-program/daemon/DAEMON-RUNBOOK.md &#8212; three commands: start, ask, approve-a-route.</p>
+
+<h2 id="s10">s10 &#183; Interaction patterns &#8212; how v1 behaves, drawn out</h2>
+
+<p>Seven flows, same five lanes every time. These are product-level interaction contracts, not implementation sequences: each shows the trigger, the ownership handoffs, what the human sees, where state persists, and the terminal outcome. Together they exercise every ruled close outcome: pass &#183; fail-retry &#183; fail-escalate &#183; reject &#183; timeout &#183; cancel.</p>
+
+<p class="figcap">Reading key: solid = action &#183; dashed amber = durable wait &#183; red = failure (still spine) &#183; green = recovery. The DAEMON lane is deterministic code; the HOST lane is where the LLM lives.</p>
+
+<p class="figcap"><b>Pattern 1 — Happy path: speak once, see the result</b></p>
+<svg viewBox="0 0 900 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 1 — Happy path: speak once, see the result">
+<defs><marker id="asw1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="352" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="352" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="352" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="352" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="352" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90" y1="52" x2="450" y2="52" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="270" y="48" text-anchor="middle" font-size="9" fill="#334155">utterance arrives at the one gate</text>
+<line x1="450" y1="82" x2="810" y2="82" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="630" y="78" text-anchor="middle" font-size="9" fill="#334155">ROUTE: registry match -&gt; route-log row</text>
+<line x1="450" y1="112" x2="810" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="630" y="108" text-anchor="middle" font-size="9" fill="#334155">OPEN: goal + pinned check, before any work</text>
+<line x1="450" y1="142" x2="630" y2="142" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="540" y="138" text-anchor="middle" font-size="9" fill="#334155">propose invocation (input id -&gt; workflow id)</text>
+<line x1="630" y1="172" x2="810" y2="172" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="720" y="168" text-anchor="middle" font-size="9" fill="#334155">host mutates the world; writes output ref + session id</text>
+<line x1="450" y1="202" x2="810" y2="202" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="630" y="198" text-anchor="middle" font-size="9" fill="#334155">CHECK: daemon runs pinned verify vs output ref</text>
+<line x1="450" y1="232" x2="810" y2="232" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="630" y="228" text-anchor="middle" font-size="9" fill="#334155">CLOSE: one ledger row, outcome = pass</text>
+<line x1="270" y1="262" x2="810" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="540" y="258" text-anchor="middle" font-size="9" fill="#334155">app reads ledger (read-only)</text>
+<line x1="270" y1="292" x2="90" y2="292" stroke="#334155" stroke-width="1.3" marker-end="url(#asw1)"/>
+<text x="180" y="288" text-anchor="middle" font-size="9" fill="#334155">result card shown</text>
+<text x="450" y="346" text-anchor="middle" font-size="9" fill="#64748b">Human needed once: to speak. Everything else runs to a recorded close.</text>
+</svg>
+
+<p class="figcap"><b>Pattern 2 — Approval wait: the durable pause</b></p>
+<svg viewBox="0 0 900 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 2 — Approval wait: the durable pause">
+<defs><marker id="asw2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="442" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="442" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="442" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="442" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="442" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90" y1="52" x2="450" y2="52" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="270" y="48" text-anchor="middle" font-size="9" fill="#334155">&quot;disburse loan for applicant #4821&quot;</text>
+<line x1="450" y1="82" x2="810" y2="82" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="630" y="78" text-anchor="middle" font-size="9" fill="#334155">ROUTE -&gt; W-disburse-loan; OPEN goal + pinned check</text>
+<line x1="450" y1="112" x2="630" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="540" y="108" text-anchor="middle" font-size="9" fill="#334155">step 1 (KYC re-verify) runs in host session</text>
+<line x1="630" y1="142" x2="810" y2="142" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="720" y="138" text-anchor="middle" font-size="9" fill="#334155">step 1 output written; step 2 needs approval</text>
+<line x1="450" y1="172" x2="810" y2="172" stroke="#b45309" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#asw2)"/>
+<text x="630" y="168" text-anchor="middle" font-size="9" fill="#b45309">outbox row written (ask, pending)</text>
+<path d="M 450 196 C 496 196 496 212 450 212" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="502" y="207" font-size="9" fill="#b45309">WAIT — hours ok; survives sleep + restart</text>
+<line x1="270" y1="232" x2="90" y2="232" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="180" y="228" text-anchor="middle" font-size="9" fill="#334155">decision stack shows the pending ask</text>
+<line x1="90" y1="262" x2="270" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="180" y="258" text-anchor="middle" font-size="9" fill="#334155">approve</text>
+<line x1="270" y1="292" x2="450" y2="292" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="360" y="288" text-anchor="middle" font-size="9" fill="#334155">approve flows through the gate (app never writes stores)</text>
+<line x1="450" y1="322" x2="810" y2="322" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="630" y="318" text-anchor="middle" font-size="9" fill="#334155">operator decision recorded on the outbox row</text>
+<line x1="450" y1="352" x2="630" y2="352" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="540" y="348" text-anchor="middle" font-size="9" fill="#334155">resume step 2 (disbursement)</text>
+<line x1="450" y1="382" x2="810" y2="382" stroke="#334155" stroke-width="1.3" marker-end="url(#asw2)"/>
+<text x="630" y="378" text-anchor="middle" font-size="9" fill="#334155">CHECK vs output ref; CLOSE outcome = pass</text>
+<text x="450" y="436" text-anchor="middle" font-size="9" fill="#64748b">If the ask ages past its window with no decision: CLOSE outcome = timeout — recorded, never silent.</text>
+</svg>
+
+<p class="figcap"><b>Pattern 3 — No registered way: the honest ask</b></p>
+<svg viewBox="0 0 900 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 3 — No registered way: the honest ask">
+<defs><marker id="asw3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90" y1="52" x2="450" y2="52" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="270" y="48" text-anchor="middle" font-size="9" fill="#334155">utterance with no registered workflow</text>
+<line x1="450" y1="82" x2="810" y2="82" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="630" y="78" text-anchor="middle" font-size="9" fill="#b91c1c">ROUTE: no match / low confidence -&gt; route-log row</text>
+<line x1="450" y1="112" x2="270" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="360" y="108" text-anchor="middle" font-size="9" fill="#334155">honest CONSTRUCT ask: register a way, or one-off?</text>
+<line x1="270" y1="142" x2="90" y2="142" stroke="#b45309" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#asw3)"/>
+<text x="180" y="138" text-anchor="middle" font-size="9" fill="#b45309">builder gate: Register / One-off / Reject</text>
+<line x1="90" y1="172" x2="270" y2="172" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="180" y="168" text-anchor="middle" font-size="9" fill="#334155">chooses Register (say)</text>
+<line x1="270" y1="202" x2="450" y2="202" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="360" y="198" text-anchor="middle" font-size="9" fill="#334155">choice flows through the gate</text>
+<line x1="450" y1="232" x2="810" y2="232" stroke="#047857" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="630" y="228" text-anchor="middle" font-size="9" fill="#047857">workflow written to registry; OPEN goal + check</text>
+<line x1="450" y1="262" x2="630" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="540" y="258" text-anchor="middle" font-size="9" fill="#334155">propose the newly registered invocation</text>
+<line x1="630" y1="292" x2="810" y2="292" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="720" y="288" text-anchor="middle" font-size="9" fill="#334155">work done; output ref written</text>
+<line x1="450" y1="322" x2="810" y2="322" stroke="#334155" stroke-width="1.3" marker-end="url(#asw3)"/>
+<text x="630" y="318" text-anchor="middle" font-size="9" fill="#334155">CHECK; CLOSE pass — next time this is Pattern 1</text>
+<text x="450" y="376" text-anchor="middle" font-size="9" fill="#64748b">Human needed once, at the builder gate. Reject lands as CLOSE outcome = reject — a row, not a shrug.</text>
+</svg>
+
+<p class="figcap"><b>Pattern 4 — Schedule tick: work while you sleep (gate G1)</b></p>
+<svg viewBox="0 0 900 336" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 4 — Schedule tick: work while you sleep (gate G1)">
+<defs><marker id="asw4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<path d="M 450 46 C 496 46 496 62 450 62" fill="none" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="502" y="57" font-size="9" fill="#334155">tick fires (G1 ruled + workflow flagged schedulable)</text>
+<line x1="450" y1="82" x2="810" y2="82" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="630" y="78" text-anchor="middle" font-size="9" fill="#334155">ROUTE: registered way -&gt; FOLLOW; route-log row</text>
+<line x1="450" y1="112" x2="810" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="630" y="108" text-anchor="middle" font-size="9" fill="#334155">OPEN: goal + pinned check</text>
+<line x1="450" y1="142" x2="630" y2="142" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="540" y="138" text-anchor="middle" font-size="9" fill="#334155">propose invocation</text>
+<line x1="630" y1="172" x2="810" y2="172" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="720" y="168" text-anchor="middle" font-size="9" fill="#334155">work runs under identified session; output ref</text>
+<line x1="450" y1="202" x2="810" y2="202" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="630" y="198" text-anchor="middle" font-size="9" fill="#334155">CHECK measured; CLOSE outcome = pass</text>
+<line x1="270" y1="232" x2="810" y2="232" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="540" y="228" text-anchor="middle" font-size="9" fill="#334155">app reads ledger</text>
+<line x1="270" y1="262" x2="90" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw4)"/>
+<text x="180" y="258" text-anchor="middle" font-size="9" fill="#334155">returning human finds the finished result — nothing to approve</text>
+<text x="450" y="316" text-anchor="middle" font-size="9" fill="#64748b">Zero human touches during the run. Only asks may interrupt a human&#x27;s absence.</text>
+</svg>
+
+<p class="figcap"><b>Pattern 5 — Failure escalation: evidence, then a decision</b></p>
+<svg viewBox="0 0 900 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 5 — Failure escalation: evidence, then a decision">
+<defs><marker id="asw5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="412" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="412" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="412" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="412" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="412" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="450" y1="52" x2="630" y2="52" stroke="#334155" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="540" y="48" text-anchor="middle" font-size="9" fill="#334155">run dispatched (goal + pinned check recorded)</text>
+<line x1="630" y1="82" x2="810" y2="82" stroke="#334155" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="720" y="78" text-anchor="middle" font-size="9" fill="#334155">work output written (output ref)</text>
+<line x1="450" y1="112" x2="810" y2="112" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="630" y="108" text-anchor="middle" font-size="9" fill="#b91c1c">CHECK fails — measured against pinned check</text>
+<line x1="450" y1="142" x2="810" y2="142" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="630" y="138" text-anchor="middle" font-size="9" fill="#b91c1c">CLOSE outcome = fail-retry (attempt 1)</text>
+<line x1="450" y1="172" x2="630" y2="172" stroke="#047857" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="540" y="168" text-anchor="middle" font-size="9" fill="#047857">retry: same goal, same check, new run id</text>
+<line x1="450" y1="202" x2="810" y2="202" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="630" y="198" text-anchor="middle" font-size="9" fill="#b91c1c">CHECK fails again; CLOSE fail-escalate + evidence</text>
+<line x1="450" y1="232" x2="810" y2="232" stroke="#b45309" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#asw5)"/>
+<text x="630" y="228" text-anchor="middle" font-size="9" fill="#b45309">outbox ask created carrying the evidence trail</text>
+<line x1="270" y1="262" x2="90" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="180" y="258" text-anchor="middle" font-size="9" fill="#334155">both failed runs + checks shown side by side</text>
+<line x1="90" y1="292" x2="270" y2="292" stroke="#334155" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="180" y="288" text-anchor="middle" font-size="9" fill="#334155">decides: fix and rerun, or cancel</text>
+<line x1="270" y1="322" x2="450" y2="322" stroke="#334155" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="360" y="318" text-anchor="middle" font-size="9" fill="#334155">decision through the gate</text>
+<line x1="450" y1="352" x2="810" y2="352" stroke="#047857" stroke-width="1.3" marker-end="url(#asw5)"/>
+<text x="630" y="348" text-anchor="middle" font-size="9" fill="#047857">fix -&gt; new run opened; cancel -&gt; CLOSE outcome = cancel</text>
+<text x="450" y="406" text-anchor="middle" font-size="9" fill="#64748b">Failures are spine: every failed attempt is a ledger row, never a silent retry.</text>
+</svg>
+
+<p class="figcap"><b>Pattern 6 — Crash recovery: the files are the state</b></p>
+<svg viewBox="0 0 900 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 6 — Crash recovery: the files are the state">
+<defs><marker id="asw6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="382" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="450" y1="52" x2="810" y2="52" stroke="#334155" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="630" y="48" text-anchor="middle" font-size="9" fill="#334155">OPEN record + step progress on disk</text>
+<path d="M 450 76 C 496 76 496 92 450 92" fill="none" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="502" y="87" font-size="9" fill="#b91c1c">power loss mid-WORK — daemon dies</text>
+<line x1="270" y1="112" x2="810" y2="112" stroke="#047857" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="540" y="108" text-anchor="middle" font-size="9" fill="#047857">app reads files directly (daemon unreachable)</text>
+<line x1="270" y1="142" x2="90" y2="142" stroke="#047857" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="180" y="138" text-anchor="middle" font-size="9" fill="#047857">degraded screen: &quot;queued work is safe on this Mac&quot;</text>
+<line x1="450" y1="172" x2="810" y2="172" stroke="#047857" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="630" y="168" text-anchor="middle" font-size="9" fill="#047857">restart: scan for OPEN records + surviving outbox rows</text>
+<line x1="450" y1="202" x2="810" y2="202" stroke="#047857" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="630" y="198" text-anchor="middle" font-size="9" fill="#047857">dedupe by run id / outbox id — done steps never re-run</text>
+<line x1="450" y1="232" x2="630" y2="232" stroke="#047857" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="540" y="228" text-anchor="middle" font-size="9" fill="#047857">re-propose only the unfinished step (idempotent)</text>
+<line x1="630" y1="262" x2="810" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="720" y="258" text-anchor="middle" font-size="9" fill="#334155">step finishes; output ref written</text>
+<line x1="450" y1="292" x2="810" y2="292" stroke="#334155" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="630" y="288" text-anchor="middle" font-size="9" fill="#334155">CHECK; CLOSE one honest ledger row</text>
+<line x1="270" y1="322" x2="90" y2="322" stroke="#334155" stroke-width="1.3" marker-end="url(#asw6)"/>
+<text x="180" y="318" text-anchor="middle" font-size="9" fill="#334155">run shown closed: resumed after crash, no duplicates</text>
+<text x="450" y="376" text-anchor="middle" font-size="9" fill="#64748b">Restart-safe because every state above is a file — the same reason the app can promise safety while the daemon is down.</text>
+</svg>
+
+<p class="figcap"><b>Pattern 7 — Change of mind: cancel and supersede</b></p>
+<svg viewBox="0 0 900 336" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pattern 7 — Change of mind: cancel and supersede">
+<defs><marker id="asw7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="90" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HUMAN</text>
+<line x1="90" y1="30" x2="90" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="200" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="270" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">APP</text>
+<line x1="270" y1="30" x2="270" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="380" y="6" width="140" height="24" rx="12" fill="#fafaf7" stroke="#b45309"/>
+<text x="450" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">DAEMON</text>
+<line x1="450" y1="30" x2="450" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="560" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="630" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">HOST</text>
+<line x1="630" y1="30" x2="630" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="740" y="6" width="140" height="24" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="810" y="22" text-anchor="middle" font-size="10.5" font-weight="800" fill="#334155">STORES</text>
+<line x1="810" y1="30" x2="810" y2="322" stroke="#e5e7eb" stroke-width="1"/>
+<path d="M 450 46 C 496 46 496 62 450 62" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="502" y="57" font-size="9" fill="#b45309">run in progress (or waiting on an ask)</text>
+<line x1="90" y1="82" x2="270" y2="82" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="180" y="78" text-anchor="middle" font-size="9" fill="#334155">&quot;stop that&quot; / &quot;actually, do it this other way&quot;</text>
+<line x1="270" y1="112" x2="450" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="360" y="108" text-anchor="middle" font-size="9" fill="#334155">cancel flows through the gate</text>
+<line x1="450" y1="142" x2="630" y2="142" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="540" y="138" text-anchor="middle" font-size="9" fill="#334155">stop honored at the next step boundary (no mid-step kill in v1)</text>
+<line x1="450" y1="172" x2="810" y2="172" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="630" y="168" text-anchor="middle" font-size="9" fill="#334155">CLOSE outcome = cancel — the row stays, audit intact</text>
+<line x1="90" y1="202" x2="450" y2="202" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="270" y="198" text-anchor="middle" font-size="9" fill="#334155">new utterance supersedes: fresh run opened</text>
+<line x1="450" y1="232" x2="810" y2="232" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="630" y="228" text-anchor="middle" font-size="9" fill="#334155">new OPEN links back to the cancelled run (supersession trail)</text>
+<line x1="270" y1="262" x2="90" y2="262" stroke="#334155" stroke-width="1.3" marker-end="url(#asw7)"/>
+<text x="180" y="258" text-anchor="middle" font-size="9" fill="#334155">history shows both: cancelled + successor</text>
+<text x="450" y="316" text-anchor="middle" font-size="9" fill="#64748b">Changing direction is a first-class flow: cancel is a recorded outcome, never a deletion.</text>
+</svg>
+
+<p style="font-size:12px;color:#6b7280">author: claude (session bcb3d1c4) &#183; date: 2026-08-19 &#183; inputs: founder utterance (s0, this session) &#183; Runtime &#167;4 + B2 &#183; ADR-004/ADR-005 &#183; A4/B1 sitting rulings &#183; B18-2/5/7/8 &#183; v1 BUILD-LOG &#183; review: dual-lane (codex: effectuation boundary, record chain, per-workflow enablement, reject/timeout/cancel first-class; deepseek: split-brain + audit integrity, crash consistency, idempotency, queue exhaustion, observability chain) &#183; status: PROPOSED &#8212; blocked on gates G1-G4 &#183; supersedes: none (first daemon PRD).</p>
+</div></div></body></html>

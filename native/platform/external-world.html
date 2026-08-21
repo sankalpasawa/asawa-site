@@ -1,0 +1,376 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Block &#8212; External World (counterparties)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-ext{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">native hub</a> &#8594; <a href="index.html">platform</a> &#8594; external-world &#160;&#183;&#160; spine: <a href="connector.html">&#8592; Connector</a> &#160;&#183;&#160; <a href="compute.html">Compute &#8594;</a></div>
+<h1>Block &#8212; External World (counterparties) <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="602" y="316" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; External World</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-external-world</code></td><td>PLATFORM / <a href="index.html">platform</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Block &#8212; External World (counterparties). Single home of the &#167;1.0 External World block's second-order detail: internal parts (people &#183; external services &#183; peer Sutras &#183; deferred channels), neighbor contracts, internal flow, and the SoP / External-World boundary rule. Sibling blocks live on their own pages under <a href="index.html">platform</a>.</td><td colspan="3">block draft carried over; states "Connector lanes live in SoP; External World owns counterparties" (codex MODIFY-4); cites <code>platform/connector.html</code> for transport</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<p style="font-size:12px;color:#9ca3af;margin:0 0 10px">First layer: <a href="../master/index.html#section-1-0-runtime">first-layer schema (&#167;1.0)</a> &#183; Human &#8594; UI &#8594; Host &#8594; Daemon{Orchestration &#8594; System of Process} &#8594; SoR / <b>External World (here)</b></p>
+<svg viewBox="0 0 800 650" role="img" aria-label="External World second-order block diagram, fully wired">
+  <defs>
+    <marker id="ext-ah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    <marker id="ext-mah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#94a3b8"/></marker>
+    <marker id="ext-mahs" markerWidth="9" markerHeight="9" refX="0" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M7,0 L0,3.5 L7,7 Z" fill="#94a3b8"/></marker>
+  </defs>
+
+  <!-- External World frame (block under examination) -->
+  <rect x="292" y="26" width="492" height="600" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="306" y="17" width="356" height="18" fill="#fff"/>
+  <text x="314" y="30" fill="#0f766e" font-weight="700" font-size="12">EXTERNAL WORLD &#183; second-order &#183; fully wired</text>
+
+  <!-- Authority + Tenancy wrap: gate band on the block boundary (never an in-line box) -->
+  <rect x="238" y="36" width="34" height="576" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text transform="rotate(-90 249 154)" x="249" y="154" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7c3aed">AUTHORITY + TENANCY</text>
+  <text transform="rotate(-90 263 154)" x="263" y="154" text-anchor="middle" font-size="8.5" fill="#7c3aed">gates every crossing</text>
+
+  <!-- EDGES (under boxes) -->
+  <!-- section-1-0 collapsed edge: whole block <-> System of Process -->
+  <path d="M119,210 L119,48 L292,48" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-start="url(#ext-mahs)" marker-end="url(#ext-mah)"/>
+  <text x="30" y="40" font-size="9" fill="#64748b">context + effects &#8212; &sect;1.0 collapsed edge</text>
+  <path d="M255,41 L262,48 L255,55 L248,48 Z" fill="#7c3aed"/>
+
+  <!-- outbound lane: SoP -> services / people -->
+  <path d="M214,260 L360,260 L360,126 L508,126" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#ext-ah)"/>
+  <path d="M360,260 L508,260" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#ext-ah)"/>
+  <text x="220" y="246" font-size="9" fill="#475569">outbound (B3&rarr;B4) &#183; A+T-gated &#183; default-deny</text>
+  <text x="220" y="280" font-size="9" fill="#475569">typed envelope &#183; retry &#183; DecisionProvenance / send</text>
+  <text x="368" y="194" font-size="9" fill="#475569">to service endpoints &#8593;</text>
+  <text x="368" y="240" font-size="9" fill="#475569">audience-calibrated send</text>
+  <text x="368" y="252" font-size="9" fill="#475569">via Slack / email</text>
+  <path d="M255,253 L262,260 L255,267 L248,260 Z" fill="#7c3aed"/>
+
+  <!-- inbound lane: people -> SoP -->
+  <path d="M584,296 L584,315 L214,315" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#ext-ah)"/>
+  <text x="220" y="307" font-size="9" fill="#475569">inbound (B4&rarr;B3) &#183; typed envelope &rarr; B3</text>
+  <path d="M255,308 L262,315 L255,322 L248,315 Z" fill="#7c3aed"/>
+  <text x="264" y="333" font-size="8.5" fill="#7c3aed">identity verify</text>
+  <text x="220" y="348" font-size="9" fill="#475569">unverified: log + drop &#8212; never enters B3</text>
+
+  <!-- peer sutras: log-only stub -->
+  <path d="M508,406 L150,406 L150,350" stroke="#64748b" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+  <text x="250" y="398" font-size="9" fill="#64748b">v1: log-only A2A stub &#183; no real transport</text>
+  <text x="250" y="422" font-size="9" fill="#9ca3af">(full peer A2A is v2+, gated per &sect;1.4.5)</text>
+
+  <!-- deferred channels: planned only -->
+  <path d="M508,534 L110,534 L110,350" stroke="#9ca3af" stroke-width="1.4" fill="none" stroke-dasharray="2 4"/>
+  <text x="250" y="514" font-size="9" fill="#9ca3af">no live transport in v1</text>
+  <text x="250" y="526" font-size="9" fill="#9ca3af">browser v1.x (TODO-005) &#183; phone v2+ (&sect;1.4.5)</text>
+
+  <!-- NEIGHBOR STUB: System of Process -->
+  <rect x="24" y="210" width="190" height="140" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="119" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#4b5563">System of Process</text>
+  <text x="119" y="258" text-anchor="middle" font-size="9" fill="#6b7280">(neighbor &#8212; first layer)</text>
+  <text x="119" y="276" text-anchor="middle" font-size="9" fill="#6b7280">B3 decide/act &#183; B4 comms</text>
+  <text x="119" y="294" text-anchor="middle" font-size="9" fill="#6b7280">Connector lanes live here (&sect;5.2)</text>
+
+  <!-- INTERNAL PARTS (solid boxes) -->
+  <rect x="508" y="80" width="248" height="92" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+  <text x="632" y="102" text-anchor="middle" font-size="12.5" font-weight="700">EXTERNAL SERVICES</text>
+  <text x="632" y="119" text-anchor="middle" font-size="9" fill="#6b7280">Slack (in + out, Live) &#183; Email/Resend (out, Live)</text>
+  <text x="632" y="132" text-anchor="middle" font-size="9" fill="#6b7280">Web fetch/search (out, Live &#8212; feeds B2.b)</text>
+  <text x="632" y="145" text-anchor="middle" font-size="9" fill="#6b7280">3rd-pty via Composio &#183; per-tool Charter scope</text>
+
+  <rect x="508" y="224" width="248" height="72" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="632" y="246" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">PEOPLE &#8212; operator's stakeholders</text>
+  <text x="632" y="262" text-anchor="middle" font-size="9" fill="#3b5bdb">board &#183; founder &#183; team &#183; client &#183; vendor</text>
+  <text x="632" y="276" text-anchor="middle" font-size="9" fill="#3b5bdb">e.g. board chair: calibrated Slack DM + reply</text>
+
+  <rect x="508" y="372" width="248" height="68" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+  <text x="632" y="394" text-anchor="middle" font-size="12.5" font-weight="700">PEER SUTRAS</text>
+  <text x="632" y="410" text-anchor="middle" font-size="9" fill="#6b7280">other operators' Native instances</text>
+  <text x="632" y="424" text-anchor="middle" font-size="9" fill="#6b7280">v1 status: log-only A2A stub</text>
+
+  <rect x="508" y="496" width="248" height="76" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+  <text x="632" y="518" text-anchor="middle" font-size="12.5" font-weight="700">DEFERRED CHANNELS</text>
+  <text x="632" y="534" text-anchor="middle" font-size="9" fill="#6b7280">browser co-work session (v1.x, spec pending)</text>
+  <text x="632" y="548" text-anchor="middle" font-size="9" fill="#6b7280">phone voice + SMS humans (v2+)</text>
+
+  <!-- frame caption -->
+  <text x="538" y="592" text-anchor="middle" font-size="9.5" fill="#0f766e">parts are parallel counterparties &#8212; no part-to-part edges;</text>
+  <text x="538" y="606" text-anchor="middle" font-size="9.5" fill="#0f766e">people + services only "meet" inside System of Process</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<p class="note"><b>Boundary rule (codex MODIFY-4):</b> <b>Connector lanes live in SoP; External World owns counterparties.</b> Transport mechanics &#8212; the two one-way lanes, typed envelopes, retry, identity-verify, default-deny gating (&sect;5.2/&sect;5.3) &#8212; are documented on the Connector page at <a href="connector.html"><code>platform/connector.html</code></a> (manifest row <code>platform-connector</code>). This page documents WHO Native reaches (the counterparties), not HOW the traffic moves.</p>
+
+<h2>Contracts &#8212; neighbor edges</h2>
+<table>
+  <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+  <tr>
+    <td><b>System of Process</b></td>
+    <td>bidirectional</td>
+    <td>"context + effects" (&sect;1.0 edge label): System of Process gathers context FROM the External World and pushes effects INTO it; this is one of the two external edges of the runtime (the other being System of Record, which gets "context + output").</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>System of Process</b></td>
+    <td>in</td>
+    <td>Outbound sends via the Connector outbound lane (B3 &rarr; B4): audience-calibrated draft converted to a typed envelope, Authority-gated at every send, retry logic on transient fail, DecisionProvenance row per send; permanent failures surface to operator &mdash; no silent loss.</td>
+    <td><a href="../master/index.html#section-5-2-flow">section-5-2-flow</a></td>
+  </tr>
+  <tr>
+    <td><b>System of Process</b></td>
+    <td>out</td>
+    <td>Inbound receives via the Connector inbound lane (B4 &rarr; B3): identity-verified, payload converted to a typed envelope, routed to B3 as next action; inbound from unverified identity logs + drops and never enters B3. Inbound responses re-enter the loop via B3 and prior comms become B2 future context.</td>
+    <td><a href="../master/index.html#section-5-2-flow">section-5-2-flow</a></td>
+  </tr>
+  <tr>
+    <td><b>Authority + Tenancy</b></td>
+    <td>gates</td>
+    <td>Every outbound call passes the Authority gate with default-deny on missing scope; per-tool Charter scoping enforced (e.g. "Slack:#paisa-team only", not "Slack:*"); B4 adds per-stakeholder + tool + $-threshold gating on who Native may talk to.</td>
+    <td><a href="../master/index.html#section-5-3-acceptance">section-5-3-acceptance</a></td>
+  </tr>
+  <tr>
+    <td><b>Runtime &sect;4 (daemon)</b></td>
+    <td>behavior</td>
+    <td>This part's runtime behavior is specified in <a href="runtime.html">Runtime &sect;4 (daemon)</a> &mdash; the daemon contains System of Process, this block's only first-layer neighbor; the &sect;4.3 state envelope records each crossing into this block (<code>outbound[].inbound_responses</code>).</td>
+    <td><a href="runtime.html">platform/runtime.html</a></td>
+  </tr>
+  <tr>
+    <td><b>Observability &sect;7</b></td>
+    <td>observed by</td>
+    <td><a href="observability.html">The &sect;7 ring</a> watches the whole machine; traffic crossing this boundary surfaces in the per-turn OUTBOUND LOG artifact (audience + channel + draft + sent + replies, &sect;7.2).</td>
+    <td><a href="observability.html">platform/observability.html</a></td>
+  </tr>
+</table>
+
+<h2>Internal parts</h2>
+<table>
+  <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+  <tr>
+    <td><b>People (operator's stakeholders)</b></td>
+    <td>Humans Native talks to on the operator's behalf &mdash; board / founder / team / client / vendor, each with audience-calibrated voice per the CX Bar overlay. Doc's worked example: board chair receives an audience-calibrated Slack DM and replies inbound ("got it; let's discuss Friday").</td>
+    <td><a href="../master/index.html#pillar-b4">pillar-b4</a></td>
+  </tr>
+  <tr>
+    <td><b>External services</b></td>
+    <td>Service endpoints reached via Connector transport: Slack (in + out, Live), Email via Resend (out, Live &mdash; daily pulse + notifications), Web fetch/search (out, Live &mdash; feeds B2.b world's-best context), 3rd-party tools (out, pluggable via Composio with per-tool Charter scoping). &sect;5.2 names them collectively "THE WORLD (Slack &middot; email &middot; web &middot; 3rd-pty)".</td>
+    <td><a href="../master/index.html#section-5-1-inventory">section-5-1-inventory</a></td>
+  </tr>
+  <tr>
+    <td><b>Peer Sutras (peer-Native instances)</b></td>
+    <td>Other operators' Native instances. v1 status: log-only A2A stub, no real transport. Full peer-Native A2A is v2+, gated per &sect;1.4.5 activation map (B2.c Peer Sutras live first, A2A canon ADR, cross-Native identity/auth, audit extension).</td>
+    <td><a href="../master/index.html#section-5-1-inventory">section-5-1-inventory</a></td>
+  </tr>
+  <tr>
+    <td><b>Deferred-channel counterparts (browser &middot; phone)</b></td>
+    <td>Endpoints listed in the v1 inventory but not reachable yet: Browser co-work session (in + out, Charter TODO-005, deferred to v1.x, spec pending) and Phone voice + SMS humans (not planned v1, v2+ per &sect;1.4.5 phone-connector activation gate).</td>
+    <td><a href="../master/index.html#section-5-1-inventory">section-5-1-inventory</a></td>
+  </tr>
+</table>
+
+<h2>Internal flow</h2>
+<p>The parts of the External World do not connect to each other &mdash; they are parallel counterparties, each reached over its own Connector channel. Traffic flows in two one-way lanes through the Connector transport (&sect;5.2): on the outbound lane, System of Process output (B3's decision, B4's draft) passes the Authority gate, becomes a typed envelope with retry logic, and lands on a service endpoint (Slack, email, web, 3rd-party tool) or, through Slack/email, on a human stakeholder; on the inbound lane, a human's reply (e.g. the board chair's Slack response) is identity-verified, wrapped into a typed envelope, and routed back to B3 as the next action &mdash; so people and services only "meet" inside System of Process, never inside the External World block. Peer Sutras have only a log-only A2A stub edge in v1 (no real transport), and browser/phone counterparts have no live edge at all. At the &sect;1.0 altitude the whole block collapses to a single bidirectional "context + effects" edge with System of Process, with Authority + Tenancy wrapping every crossing.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li><s>&sect;5's body text still cites pre-renumber section numbers ("between Native (&sect;3)", "Depends on &sect;3 Authority gate; &sect;6 Observability", and "&sect;4 CONNECTOR" inside the &sect;5.2 diagram) &mdash; should these in-body references be updated to the new &sect;4 Native Platform / &sect;5 Connector / &sect;7 Observability numbering?</s><br><strong>RESOLVED 2026-06-12</strong> &mdash; yes. "Depends on" row was already fixed in <code>4db4c76</code> (now D.6 Authority gate + &sect;7 Observability). Remaining three fixed in this commit: Purpose row Native (&sect;3)&rarr;(&sect;4) &middot; Charter scope (&sect;3)&rarr;(&sect;4) &middot; &sect;5.2 diagram &sect;4 CONNECTOR&rarr;&sect;5 CONNECTOR (&times;2).</li>
+<li>Web connector is marked direction "out" in &sect;5.1 yet supplies inbound context for B2.b &mdash; what do the Direction-column semantics mean for request/response connectors (is the response implicitly allowed back without the "in" designation)?</li>
+<li>Email (Resend) carries daily pulse + notifications, which go to the operator &mdash; is the operator themself a counterparty inside External World, or strictly third parties (with the operator otherwise reaching Native only through the UI at the top of &sect;1.0)?</li>
+<li>&sect;1.0's System of Record box says "own | external" &mdash; where does the doc draw the boundary between an external System of Record and an External World service?</li>
+<li>Inbound gating in &sect;5.2/&sect;5.3 names only Identity verify &mdash; does the Tenancy half of the Authority+Tenancy wrap apply to inbound external messages, and via what mechanism?</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No child pages in the manifest &#8212; this is a leaf of the PLATFORM band.</li>
+<li>Sibling block pages (same band, contract neighbors): System of Process (the only first-layer neighbor; Connector lanes live there) at <a href="system-of-process.html"><code>platform/system-of-process.html</code></a> &#183; Connector (transport for every counterparty channel) at <a href="connector.html"><code>platform/connector.html</code></a> &#183; Authority + Tenancy (the wrap gating every crossing) at <a href="authority-tenancy.html"><code>platform/authority-tenancy.html</code></a>. Linked by manifest path; all three on disk in this migration wave.</li>
+<li>Downstream: the ENGINEERING band (tech design &#167;11 + ADR catalog &#167;12) builds under the PLATFORM parent once it is LOCKED; runtime canon stays in the sutra repo, linked never copied (D54).</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<p>This page does not define a persisted artifact of its own &#8212; it defines the counterparties (people &#183; external services &#183; peer Sutras); its effect shows up in the &#167;4.3 state envelope (<code>outbound[].inbound_responses</code>) and the per-turn OUTBOUND LOG artifact (audience + channel + draft + sent + replies, &#167;7.2) at <a href="observability.html">platform/observability.html</a>.</p>
+<div class="planned">
+<p><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. One OUTBOUND LOG line for a W-kyc-verify document request sent to a client stakeholder:</p>
+<pre><code>audience=client &#183; channel=Slack &#183; draft="KYC documents needed to proceed" &#183; sent=yes &#183; replies=1 ("uploading today")</code></pre>
+<p>Only the five column names come from &#167;7.2; the row format is <decision_pending>unruled</decision_pending>.</p>
+</div>
+<p>Operator surface: the OUTBOUND LOG renders in <a href="observability.html">the &#167;7 ring</a>'s audit + replay surfaces.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="../master/index.html#so-external-world">master &#167;1.0.1 &#8212; External World block draft</a> &#8212; primary source slice (frozen archive)</li>
+<li><a href="../master/index.html#section-1-0-1-second-order">master &#167;1.0.1 &#8212; second-order block detail index</a></li>
+<li><a href="../_block-external-world.html">_block-external-world.html</a> &#8212; standalone working draft (cross-check source per manifest; gaps + tables identical to the master slice as of 2026-06-12)</li>
+<li><a href="../master/index.html#section-1-0-runtime">master &#167;1.0 &#8212; locked first-layer schema ("context + effects" edge)</a></li>
+<li><a href="../master/index.html#section-5-1-inventory">master &#167;5.1 &#8212; Connector inventory (v1)</a></li>
+<li><a href="../master/index.html#section-5-2-flow">master &#167;5.2 &#8212; inbound / outbound flow (lanes live in SoP)</a></li>
+<li><a href="../master/index.html#section-5-3-acceptance">master &#167;5.3 &#8212; Connector acceptance criteria (Authority gating)</a></li>
+<li><a href="../master/index.html#pillar-b4">master &#167;2 pillar B4 &#8212; comms (audience-calibrated voice, stakeholder gating)</a></li>
+<li><a href="../master/index.html#section-1-4-5-activation">master &#167;1.4.5 &#8212; deferred capability activation paths (peer A2A, phone gates)</a></li>
+<li>Transport detail home: <a href="connector.html"><code>platform/connector.html</code></a> (manifest row <code>platform-connector</code>) &#8212; cross-page ref by manifest path</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting &#183; review: audit workflow wf_5c81f205.</p>
+
+</div></div></body></html>

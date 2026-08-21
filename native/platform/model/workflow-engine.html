@@ -1,0 +1,478 @@
+<!doctype html>
+<!-- PAGE: platform-model-workflow-engine (v1, DRAFT). PRD subpage of platform-the-model (ruled vocabulary cluster, founder sittings 2026-08-05/06).
+     Uniform skeleton s1-s7: purpose / how it works / product use cases / operational scenarios / contract / implementation today / open questions.
+     Facts trace to DESIGN-DECISION-SHEET.md + GROUNDING-MAP.md + the-model.html only; gaps are bare TODO(founder) markers. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Workflow and Engine</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; workflow + engine</div>
+<h1>Workflow and Engine — written and grown <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-workflow-engine</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr></table>
+
+<h2 id="s1">Purpose</h2>
+<p>Workflow and Engine are one rung of the ruled ladder seen from its two columns. A <strong>Workflow</strong> is the WRITTEN blueprint — an authored, stateless artifact composing 1..n Work-Atoms with a pattern and a failure policy. An <strong>Engine</strong> is the GROWN form of that same workflow — the workflow plus everything it has accumulated by living: state envelope, record slice, learned patterns, and charter binding. The distinction exists because of two axioms ruled by the founder (2026-08-05/06): <strong>X1 no naked work</strong> — whatever is worked on always has a workflow, a single atom being a workflow of one — and <strong>X2 no stateless execution</strong> — every run executes inside an engine, born at its workflow's first run with an empty record slice. You author the written half; only the grown half runs. See <a href="../the-model.html#workflow-engine">the hub diagram</a> for this rung in the full ladder.</p>
+
+<h2 id="s2">How it works</h2>
+<p>One object, two columns — never conflate them:</p>
+<table>
+<tr><th>Half</th><th>Column</th><th>Definition (RULED, A1 family)</th><th>State</th><th>Storage</th></tr>
+<tr><td>Workflow</td><td>WRITTEN</td><td>Stateless blueprint: 1..n atoms composed; steps, pattern, failure policy</td><td>none</td><td><code>Workflow</code> primitive — unchanged</td></tr>
+<tr><td>Engine</td><td>GROWN</td><td>Workflow + statefulness: the workflow plus its accumulated cross-run state</td><td>live, across runs</td><td>A NAME over 4 existing stores — no new storage</td></tr>
+</table>
+
+<h3>The written half: authoring and FOLLOW</h3>
+<ul>
+<li>A workflow composes 1..n <a href="../the-model.html#work-atom">Work-Atoms</a>. Canonical owner of the atomicity rule (one goal, ONE verify): <a href="work-atom.html">Work-Atom</a> — this page depends on it for the split test.</li>
+<li>Workflows are reached through the loop's resolution edge: a matching workflow type is FOLLOWed; none found means CONSTRUCT builds the skeleton. Resolution is child-custody-wins (ADR-026).</li>
+<li>A workflow becomes FOLLOW-able through the <code>reuse_tag</code> C0→C1 promotion — the only crystallization step that is canon today. Paths earn the workflow-type noun by repetition.</li>
+<li>Per X1 the FOLLOW/CONSTRUCT spine is total: nothing dispatches outside a workflow.</li>
+</ul>
+
+<h3>The grown half: engine birth and the four state stores</h3>
+<p>An engine is <strong>born at its workflow's first run</strong>, with an empty record slice (X2). From run 1, every run writes to some engine's record slice. The engine's statefulness is exactly four stores — a name over things that already exist, never new storage:</p>
+<table>
+<tr><th>Store</th><th>Scope</th><th>Holds</th></tr>
+<tr><td>State envelope</td><td>within-run</td><td>the live run's working state</td></tr>
+<tr><td>Record slice</td><td>durable, cross-run</td><td>this workflow's slice of the record — history of runs, artifacts, corrections</td></tr>
+<tr><td>Learned patterns</td><td>behavioral (B5.d)</td><td>lessons that change how future runs behave</td></tr>
+<tr><td>Charter binding</td><td>policy</td><td>which charter's constraints and authority bind this engine's runs</td></tr>
+</table>
+<div class="key"><strong>Engine-Library rule (RULED, A1):</strong> an engine's statefulness must be EXPLICIT inputs from the record — never hidden internal state — or crystallization to C2 code breaks. State you cannot point at in the record is not engine state.</div>
+
+<h3>Run 50 differs from run 1</h3>
+<p>The real proof is <code>W-md-authoring</code> (decision sheet §8c). On 2026-08-05 the founder ruled that diagrams in md files use mermaid, not ASCII art. That correction landed once — in the Md-Authoring Engine's learned patterns — and changed every future doc. The engine is the workflow (outline → author → audit) plus its record slice (docs + founder corrections) plus learned patterns (mermaid-not-ASCII, tables-over-prose, hub-and-spoke) plus its charter binding. Run 50 ≠ run 1, provably — and the written workflow file never changed.</p>
+<p>Attempts are not objects at this level — canonical owner: <a href="work-atom.html#s5">Work-Atom s5</a> (attempt log = data field on the HOW particle); the retry budget reads that field.</p>
+
+<h2 id="s2b">How a workflow gets created — the resolution spine</h2>
+<p class="lead">Migrated from the v2 Flow page (its permanent home is now here). A workflow comes into play by exactly one of two doors, and an <strong>inner engine</strong> shapes every step regardless of the door.</p>
+<table>
+<tr><th>Stage</th><th>What happens</th><th>Lending example</th></tr>
+<tr><td>1 INTENT</td><td>an utterance, cadence tick, or event arrives (B1)</td><td>"run KYC for this applicant"</td></tr>
+<tr><td>2 CLASSIFY</td><td>Stage 0 types the input (task / question / direction / feedback / concept); below confidence &#8594; ask the operator (A4 RULED, 2026-08-17 sitting: 0.80 threshold day one; warm-start + N&gt;=100 retune advisories)</td><td>task</td></tr>
+<tr><td>3 RESOLVE</td><td>look for a reusable workflow type (<code>reuse_tag</code>): company-minted types first, platform types second — child custody wins (ADR-026)</td><td><code>W-kyc-verify</code> found &#8594; FOLLOW</td></tr>
+<tr><td>4a FOLLOW</td><td>the found type prescribes the mandatory outer skeleton</td><td>fetch-docs &#8594; bureau-check &#8594; verdict</td></tr>
+<tr><td>4b CONSTRUCT</td><td>no type matches &#8594; the inner engine builds the skeleton from scratch; if it repeats, it gets minted as a new type (how platform types are born)</td><td>first-ever "restructure a defaulted loan" request</td></tr>
+<tr><td>5 INNER ENGINE</td><td>ALWAYS runs, inside every step, both doors: factors auto-derive from the intent + a lens cuts the problem + certainty (Cynefin) picks the posture; the dials packaging is RULED to get its own ADR (B3, 2026-08-17 sitting)</td><td>Complicated &#8594; fixed sequence with LLM judgment per step</td></tr>
+<tr><td>6 RUN</td><td>the step_graph of atoms executes (see <a href="#s2">how it works</a>); the record fills; the engine grows</td><td>nightly the EMI engine learns variance</td></tr>
+</table>
+<div class="key"><strong>Founder correction preserved (2026-06-14):</strong> a matched workflow type adds a mandatory outer skeleton — it never switches the inner engine off. Guidance-first, inner-engine-always.</div>
+<svg viewBox="0 0 880 200" role="img" aria-label="Four Cynefin shapes plus workflow patterns">
+<defs><marker id="cy" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<text x="110" y="18" text-anchor="middle" font-size="9" font-weight="800">CLEAR &#8212; fixed sequence</text><text x="110" y="30" text-anchor="middle" font-size="7" fill="#6b7280">sense-categorize-respond (codeable)</text>
+<rect x="40" y="40" width="38" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="59" y="57" text-anchor="middle" font-size="8">A</text>
+<rect x="92" y="40" width="38" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="111" y="57" text-anchor="middle" font-size="8">B</text>
+<rect x="144" y="40" width="38" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="163" y="57" text-anchor="middle" font-size="8">C</text>
+<path d="M78,53 L92,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/><path d="M130,53 L144,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/>
+<text x="330" y="18" text-anchor="middle" font-size="9" font-weight="800">COMPLICATED &#8212; sequence + expertise</text><text x="330" y="30" text-anchor="middle" font-size="7" fill="#6b7280">sense-analyze-respond (LLM judgment/step)</text>
+<rect x="250" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="275" y="57" text-anchor="middle" font-size="8">A?</text>
+<rect x="320" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="345" y="57" text-anchor="middle" font-size="8">B?</text>
+<rect x="390" y="40" width="40" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="410" y="57" text-anchor="middle" font-size="8">C</text>
+<path d="M300,53 L320,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/><path d="M370,53 L390,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/>
+<text x="560" y="18" text-anchor="middle" font-size="9" font-weight="800">COMPLEX &#8212; declarative</text><text x="560" y="30" text-anchor="middle" font-size="7" fill="#6b7280">probe-sense-respond (LLM-led, gated)</text>
+<rect x="500" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="525" y="57" text-anchor="middle" font-size="8">probe</text>
+<rect x="580" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="605" y="57" text-anchor="middle" font-size="8">sense</text>
+<path d="M550,49 L580,49" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M580,59 L550,59" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+<text x="790" y="18" text-anchor="middle" font-size="9" font-weight="800">CHAOTIC &#8212; act first</text><text x="790" y="30" text-anchor="middle" font-size="7" fill="#6b7280">act-sense-respond (escalate)</text>
+<rect x="720" y="40" width="50" height="26" rx="4" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.3"/><text x="745" y="57" text-anchor="middle" font-size="8">act</text>
+<rect x="800" y="40" width="58" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="829" y="57" text-anchor="middle" font-size="7.5">stabilize</text>
+<path d="M770,53 L800,53" stroke="#b91c1c" stroke-width="1.2" marker-end="url(#cy)"/>
+<text x="20" y="104" font-size="9" font-weight="800" fill="#334155">WORKFLOW PATTERNS (the step_graph shapes):</text>
+<text x="40" y="128" font-size="8.5" font-weight="700">parallel split + sync</text>
+<rect x="40" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="57" y="151" text-anchor="middle" font-size="7.5">A</text>
+<rect x="110" y="120" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="127" y="135" text-anchor="middle" font-size="7.5">B</text>
+<rect x="110" y="152" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="127" y="167" text-anchor="middle" font-size="7.5">C</text>
+<rect x="180" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="197" y="151" text-anchor="middle" font-size="7.5">D</text>
+<path d="M74,143 L110,131" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M74,151 L110,163" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+<path d="M144,131 L180,145" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M144,163 L180,151" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+<text x="320" y="128" font-size="8.5" font-weight="700">exclusive choice</text>
+<rect x="300" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="317" y="151" text-anchor="middle" font-size="7.5">A</text>
+<rect x="380" y="120" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="397" y="135" text-anchor="middle" font-size="7.5">B</text>
+<rect x="380" y="152" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="397" y="167" text-anchor="middle" font-size="7.5">C</text>
+<text x="350" y="151" font-size="9" fill="#b45309">?</text>
+<path d="M334,143 L380,131" stroke="#334155" stroke-width="1.1" stroke-dasharray="3 2" marker-end="url(#cy)"/><path d="M334,147 L380,163" stroke="#334155" stroke-width="1.1" stroke-dasharray="3 2" marker-end="url(#cy)"/>
+<text x="560" y="128" font-size="8.5" font-weight="700">multi-instance</text>
+<rect x="540" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="557" y="151" text-anchor="middle" font-size="7.5">A</text>
+<rect x="610" y="130" width="50" height="34" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1" stroke-dasharray="3 2"/><text x="635" y="150" text-anchor="middle" font-size="7">atom &#215;N</text>
+<rect x="690" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="707" y="151" text-anchor="middle" font-size="7.5">D</text>
+<path d="M574,147 L610,147" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M660,147 L690,147" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+</svg>
+<p class="figcap">The inner engine&#39;s certainty posture — four Cynefin shapes and the workflow patterns they pick.</p>
+
+<svg viewBox="0 0 880 470" role="img" aria-label="Master flow from operator intent down to artifacts and back">
+<defs><marker id="fl" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker><marker id="flg" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#047857"/></marker></defs>
+<rect x="300" y="14" width="280" height="42" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/><text x="440" y="32" text-anchor="middle" font-size="11" font-weight="800">OPERATOR INTENT &#8212; the WHOLE</text><text x="440" y="47" text-anchor="middle" font-size="8.5" fill="#6b7280">B1 goal &#183; "ship the onboarding redesign"</text>
+<rect x="280" y="86" width="320" height="48" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="440" y="105" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">METHOD &#8212; the verb on intent (HOW &#167;3)</text><text x="440" y="121" text-anchor="middle" font-size="8.5" fill="#6b7280">FRAME: pick the lens (history / product / technical) &#183; ADR-025</text>
+<rect x="270" y="164" width="340" height="50" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/><text x="440" y="184" text-anchor="middle" font-size="10.5" font-weight="800" fill="#047857">CHOSEN WORKFLOW &#8212; the SHAPE</text><text x="440" y="200" text-anchor="middle" font-size="8" fill="#475569">step_graph topology set by the 5 dials (&#167;D) &#183; B2 decompose along the frame</text>
+<rect x="80" y="248" width="200" height="46" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="180" y="266" text-anchor="middle" font-size="9.5" font-weight="700">ATOM &#183; goal = slice 1</text><text x="180" y="280" text-anchor="middle" font-size="7.5" fill="#6b7280">"audit current flow"</text>
+<rect x="340" y="248" width="200" height="46" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="440" y="266" text-anchor="middle" font-size="9.5" font-weight="700">ATOM &#183; goal = slice 2</text><text x="440" y="280" text-anchor="middle" font-size="7.5" fill="#6b7280">"draft new screens"</text>
+<rect x="600" y="248" width="200" height="46" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="700" y="266" text-anchor="middle" font-size="9.5" font-weight="700">ATOM &#183; goal = slice n</text><text x="700" y="280" text-anchor="middle" font-size="7.5" fill="#6b7280">"wire + verify" &#8594; may call sub-WF</text>
+<rect x="80" y="324" width="720" height="50" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/><text x="94" y="342" font-size="9" font-weight="700" fill="#475569">each atom runs (one constrained LLM call, bracketed):</text><text x="440" y="344" text-anchor="middle" font-size="9" font-weight="700">construct (B11) &#8594; pre-check (B7) &#8594; DISPATCH LLM (host, ADR-005) &#8594; post-check (B7) &#8594; persist</text><text x="440" y="362" text-anchor="middle" font-size="8" fill="#6b7280">deterministic surface around a stochastic core (P12)</text>
+<rect x="300" y="404" width="280" height="42" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.7"/><text x="440" y="422" text-anchor="middle" font-size="10.5" font-weight="800" fill="#c2410c">ARTIFACTS &#8212; the RECORD (B9)</text><text x="440" y="437" text-anchor="middle" font-size="8.5" fill="#6b7280">typed; feed next atom + become EVIDENCE &#8594; GROW (next intent)</text>
+<path d="M440,56 L440,86" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#fl)"/>
+<path d="M440,134 L440,164" stroke="#b45309" stroke-width="1.5" fill="none" marker-end="url(#fl)"/>
+<path d="M440,214 L440,228 L180,228 L180,248" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#flg)"/><text x="300" y="226" font-size="8" fill="#475569">step_graph[] &#8212; each goal a slice of intent</text>
+<path d="M440,228 L440,248" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#flg)"/>
+<path d="M440,228 L700,228 L700,248" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#flg)"/>
+<path d="M180,294 L180,324" stroke="#334155" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#fl)"/><path d="M440,294 L440,324" stroke="#334155" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#fl)"/><path d="M700,294 L700,324" stroke="#334155" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#fl)"/>
+<path d="M440,374 L440,404" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#fl)"/>
+<path d="M580,425 L840,425 L840,35 L580,35" stroke="#9ca3af" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#fl)"/><text x="846" y="232" font-size="8" fill="#6b7280" transform="rotate(90 846 232)">LEARN &#8594; next OBJECTIVE (P8 loop)</text>
+</svg>
+<p class="figcap">The master flow, intent down to artifacts and back — labels updated to the ruled vocabulary (HOW).</p>
+
+<svg viewBox="0 0 880 500" role="img" aria-label="Complete spine: classify, resolve workflow type, follow-or-construct the steps, inner engine always runs within each step, run, close">
+<defs><marker id="sp" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="350" y="12" width="180" height="34" rx="7" fill="#fff" stroke="#334155" stroke-width="1.6"/><text x="440" y="33" text-anchor="middle" font-size="10" font-weight="800">INPUT &#8212; operator says anything</text>
+<rect x="285" y="62" width="310" height="48" rx="8" fill="#eef2ff" stroke="#3730a3" stroke-width="1.7"/><text x="440" y="80" text-anchor="middle" font-size="10" font-weight="800" fill="#3730a3">STAGE 0 &#183; CLASSIFY</text><text x="440" y="94" text-anchor="middle" font-size="7.5" fill="#475569">Input Routing TYPE + H-Sutra 9-cell</text><text x="440" y="105" text-anchor="middle" font-size="7.5" fill="#6b7280">query | direction | task | feedback | concept</text>
+<rect x="270" y="138" width="340" height="58" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="440" y="158" text-anchor="middle" font-size="10" font-weight="800" fill="#b45309">WORKFLOW TYPE for this work?</text><text x="440" y="173" text-anchor="middle" font-size="7.5" fill="#475569">a reusable Workflow (reuse_tag) &#183; check CHILD custody=tenant (L2)</text><text x="440" y="186" text-anchor="middle" font-size="7.5" fill="#475569">&#8594; then PLATFORM custody=null (L0)</text>
+<rect x="60" y="226" width="300" height="54" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.9"/><text x="210" y="248" text-anchor="middle" font-size="10" font-weight="800" fill="#047857">FOLLOW its steps</text><text x="210" y="264" text-anchor="middle" font-size="7.5" fill="#475569">the workflow type prescribes</text><text x="210" y="275" text-anchor="middle" font-size="7.5" fill="#6b7280">the mandatory skeleton (e.g. task &#8594; 8-phase)</text>
+<rect x="520" y="226" width="320" height="54" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.9"/><text x="680" y="248" text-anchor="middle" font-size="10" font-weight="800" fill="#c2410c">CONSTRUCT the steps</text><text x="680" y="264" text-anchor="middle" font-size="7.5" fill="#475569">no workflow type matches</text><text x="680" y="275" text-anchor="middle" font-size="7.5" fill="#6b7280">build the skeleton from the inner engine</text>
+<rect x="80" y="312" width="720" height="58" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/><text x="440" y="332" text-anchor="middle" font-size="10" font-weight="800" fill="#7c3aed">INNER ENGINE &#8212; ALWAYS, within every step</text><text x="440" y="348" text-anchor="middle" font-size="8" fill="#475569">factors (B8) + lens (Method, HOW &#167;3) + Cynefin + dials [B3: own ADR]</text><text x="440" y="362" text-anchor="middle" font-size="7.5" fill="#6b7280">runs whether the steps were FOLLOWED or CONSTRUCTED &#8212; guidance never replaces it</text>
+<rect x="285" y="400" width="310" height="42" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/><text x="440" y="418" text-anchor="middle" font-size="10" font-weight="800">RUN &#8212; step_graph of Work-Atoms</text><text x="440" y="432" text-anchor="middle" font-size="7.5" fill="#6b7280">construct &#8594; dispatch &#8594; verify &#8594; artifact (the RECORD)</text>
+<rect x="300" y="460" width="280" height="36" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/><text x="440" y="477" text-anchor="middle" font-size="9.5" font-weight="800" fill="#c2410c">CLOSE &#8212; MEASURE &#8594; OPERATIONALIZE &#8594; LEARN</text><text x="440" y="489" text-anchor="middle" font-size="7" fill="#6b7280">record &#8594; EVIDENCE &#8594; GROW (Evolution) &#8594; next input (P8)</text>
+<path d="M440,46 L440,62" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#sp)"/>
+<path d="M440,110 L440,138" stroke="#3730a3" stroke-width="1.5" fill="none" marker-end="url(#sp)"/>
+<path d="M320,196 L210,226" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#sp)"/><text x="216" y="216" font-size="8" font-weight="700" fill="#047857">type found</text>
+<path d="M560,196 L680,226" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#sp)"/><text x="606" y="216" font-size="8" font-weight="700" fill="#c2410c">none</text>
+<path d="M210,280 L210,312" stroke="#7c3aed" stroke-width="1.4" fill="none" marker-end="url(#sp)"/>
+<path d="M680,280 L680,312" stroke="#7c3aed" stroke-width="1.4" fill="none" marker-end="url(#sp)"/>
+<path d="M440,370 L440,400" stroke="#7c3aed" stroke-width="1.5" fill="none" marker-end="url(#sp)"/>
+<path d="M440,442 L440,460" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#sp)"/>
+<path d="M580,478 L860,478 L860,29 L530,29" stroke="#9ca3af" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#sp)"/><text x="866" y="250" font-size="8" fill="#6b7280" transform="rotate(90 866 250)">LEARN &#8594; next input</text>
+</svg>
+<p class="figcap">The complete resolution spine — migrated from the v2 Flow page.</p>
+
+<h3>Recursion — when a step is itself a smaller problem</h3>
+<svg viewBox="0 0 880 330" role="img" aria-label="The Reflection meta-ladder M0 to M6 with reflexivity halt and climb-once amortization">
+<defs><marker id="ml" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="60" y="276" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="295" text-anchor="middle" font-size="8.5" font-weight="700">M0 &#183; instance &#8212; "do X"</text>
+<rect x="60" y="238" width="210" height="30" rx="5" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/><text x="165" y="257" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">M1 &#183; axis &#8212; the how</text>
+<rect x="60" y="200" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="219" text-anchor="middle" font-size="8.5" font-weight="700">M2 &#183; meta-axis</text>
+<rect x="60" y="162" width="210" height="30" rx="5" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/><text x="165" y="181" text-anchor="middle" font-size="8.5" font-weight="700" fill="#c2410c">M3 &#183; method &#8212; how-of-how</text>
+<rect x="60" y="124" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="143" text-anchor="middle" font-size="8.5" font-weight="700">M4 &#183; framework</text>
+<rect x="60" y="86" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="105" text-anchor="middle" font-size="8.5" font-weight="700">M5 &#183; paradigm</text>
+<rect x="60" y="48" width="210" height="30" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/><text x="165" y="67" text-anchor="middle" font-size="8.5" font-weight="700" fill="#374151">M6 &#183; grammar (reflexive)</text>
+<text x="284" y="257" font-size="7.5" fill="#047857">&#9664; most work stops here (&#8594; atom)</text>
+<text x="284" y="181" font-size="7.5" fill="#c2410c">&#9664; how-of-how: mint a method</text>
+<text x="284" y="63" font-size="7.5" font-weight="700" fill="#6b7280">&#9664; describes itself &#8594; HALT</text>
+<path d="M40,300 L40,60" stroke="#9ca3af" stroke-width="1.3" fill="none" marker-end="url(#ml)"/><text x="34" y="185" font-size="7.5" fill="#6b7280" transform="rotate(90 34 185)">climb only as novelty forces</text>
+<rect x="560" y="150" width="290" height="64" rx="9" fill="#eef2ff" stroke="#3730a3" stroke-width="1.7"/><text x="705" y="170" text-anchor="middle" font-size="9" font-weight="800" fill="#3730a3">CLIMB ONCE &#8594; AMORTIZE</text><text x="705" y="186" text-anchor="middle" font-size="7.5" fill="#475569">mint method &#8594; reuse_tag &#8594; WORKFLOW TYPE</text><text x="705" y="200" text-anchor="middle" font-size="7.5" fill="#475569">future instances FOLLOW (ADR-026) &#8212; no re-climb</text>
+<path d="M270,177 L560,182" stroke="#3730a3" stroke-width="1.4" fill="none" marker-end="url(#ml)"/>
+</svg>
+<p class="figcap">The meta-ladder behind Mode 3 (design-forward, deferred with FQ1).</p>
+
+<svg viewBox="0 0 880 250" role="img" aria-label="A step resolves three ways: atom, sub-workflow, or how-of-how; inner engine runs at every block">
+<defs><marker id="rg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="330" y="10" width="220" height="38" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="440" y="28" text-anchor="middle" font-size="10" font-weight="800" fill="#b45309">reach a STEP &#8212; "how do I do this?"</text><text x="440" y="42" text-anchor="middle" font-size="7.5" fill="#6b7280">run the same spine on it (fractal)</text>
+<rect x="30" y="86" width="260" height="78" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6"/><text x="160" y="106" text-anchor="middle" font-size="9.5" font-weight="800">MODE 1 &#183; ATOM</text><text x="160" y="121" text-anchor="middle" font-size="7.5" fill="#475569">one-shot works</text><text x="160" y="134" text-anchor="middle" font-size="7.5" fill="#6b7280">GOAL/CONST/CTX &#8594; LLM | skill &#8594; verify</text><text x="160" y="150" text-anchor="middle" font-size="7.5" font-weight="700" fill="#047857">base case &#8212; terminal</text>
+<rect x="310" y="86" width="260" height="78" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/><text x="440" y="106" text-anchor="middle" font-size="9.5" font-weight="800" fill="#047857">MODE 2 &#183; SUB-WORKFLOW</text><text x="440" y="121" text-anchor="middle" font-size="7.5" fill="#475569">know the how, too big for one-shot</text><text x="440" y="134" text-anchor="middle" font-size="7.5" fill="#6b7280">decompose &#8594; step_graph; each sub-step recurses</text><text x="440" y="150" text-anchor="middle" font-size="7.5" fill="#6b7280">canon: recursion edge (skill_ref &#8594; sub-WF)</text>
+<rect x="590" y="86" width="260" height="78" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.7"/><text x="720" y="106" text-anchor="middle" font-size="9.5" font-weight="800" fill="#c2410c">MODE 3 &#183; HOW-OF-HOW</text><text x="720" y="121" text-anchor="middle" font-size="7.5" fill="#475569">don't know the how</text><text x="720" y="134" text-anchor="middle" font-size="7.5" fill="#6b7280">run a workflow that DESIGNS the workflow</text><text x="720" y="150" text-anchor="middle" font-size="7.5" fill="#6b7280">output = a workflow &#8594; run it (NEW, design-forward)</text>
+<path d="M380,48 L160,86" stroke="#334155" stroke-width="1.3" marker-end="url(#rg)"/>
+<path d="M440,48 L440,86" stroke="#047857" stroke-width="1.3" marker-end="url(#rg)"/>
+<path d="M500,48 L720,86" stroke="#c2410c" stroke-width="1.3" marker-end="url(#rg)"/>
+<rect x="30" y="194" width="820" height="42" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/><text x="440" y="212" text-anchor="middle" font-size="9.5" font-weight="800" fill="#7c3aed">INNER ENGINE &#8212; factors + lens + Cynefin + dials &#8212; runs at EVERY block, EVERY level</text><text x="440" y="227" text-anchor="middle" font-size="7.5" fill="#6b7280">the recursion carries the inner engine down with it</text>
+<path d="M160,164 L160,194" stroke="#7c3aed" stroke-width="1.2" marker-end="url(#rg)"/><path d="M440,164 L440,194" stroke="#7c3aed" stroke-width="1.2" marker-end="url(#rg)"/><path d="M720,164 L720,194" stroke="#7c3aed" stroke-width="1.2" marker-end="url(#rg)"/>
+</svg>
+<p class="figcap">A step resolves three ways — migrated from the v2 Flow page.</p>
+
+<table>
+<tr><th>Mode</th><th>When</th><th>What happens</th><th>Status</th></tr>
+<tr><td>1 ATOM</td><td>one-shot works</td><td>the step runs as a single atom — base case</td><td>RULED</td></tr>
+<tr><td>2 SUB-WORKFLOW</td><td>the how is known but too big for one shot</td><td>the step's HOW references a sub-workflow (the recursion edge); the spine runs again one level down</td><td>RULED (canon skill_ref)</td></tr>
+<tr><td>3 HOW-OF-HOW</td><td>the how itself is unknown</td><td>run a workflow that DESIGNS the workflow, then run its output</td><td>design-forward — deferred with FQ1; bounded by per-task budgets (A10)</td></tr>
+</table>
+<h3>The two clocks — migrated from the v2 pages, unchanged</h3>
+<svg viewBox="0 0 880 170" role="img" aria-label="factors auto-derived from intent, inserted between SHAPE and PLAN, unweighted in v1">
+<defs><marker id="fc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="30" y="62" width="86" height="40" rx="6" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="73" y="86" text-anchor="middle" font-size="9" font-weight="700">SHAPE</text>
+<rect x="300" y="34" width="280" height="104" rx="9" fill="#fff" stroke="#b45309" stroke-width="1.8"/><text x="440" y="52" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">factors[] &#8212; AUTO-DERIVED before PLAN</text>
+<text x="318" y="74" font-size="8" fill="#374151">&#8226; value-of-speed &#8212; <tspan fill="#6b7280">ship beats polish here</tspan></text>
+<text x="318" y="92" font-size="8" fill="#374151">&#8226; reversibility &#8212; <tspan fill="#6b7280">cheap to undo</tspan></text>
+<text x="318" y="110" font-size="8" fill="#374151">&#8226; blast-radius &#8212; <tspan fill="#6b7280">one surface only</tspan></text>
+<text x="440" y="130" text-anchor="middle" font-size="6.5" fill="#6b7280">each = {name, rationale} &#183; no weight (v1) &#183; derived from intent (B6/B2)</text>
+<rect x="760" y="62" width="90" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="805" y="86" text-anchor="middle" font-size="9" font-weight="700">PLAN</text>
+<path d="M116,82 L300,82" stroke="#334155" stroke-width="1.4" marker-end="url(#fc)"/><text x="150" y="76" font-size="7" fill="#475569">auto-derive from intent</text>
+<path d="M580,82 L760,82" stroke="#334155" stroke-width="1.4" marker-end="url(#fc)"/><text x="600" y="76" font-size="7" fill="#475569">B11 embeds &#183; B9 persists</text>
+</svg>
+<p class="figcap">Factors auto-derive between SHAPE and PLAN (unweighted in v1, per ruling).</p>
+
+<svg viewBox="0 0 880 170" role="img" aria-label="Workflow object states with the 8-phase task lifecycle nested inside ACTIVE">
+<defs><marker id="ck" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<text x="20" y="16" font-size="9.5" font-weight="800" fill="#6b7280">WORKFLOW STATE MACHINE (governance ledger, &#167;4.2) &#8212; the OBJECT's approval state</text>
+<rect x="20" y="60" width="86" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="63" y="79" text-anchor="middle" font-size="8" font-weight="700">PROPOSED</text>
+<rect x="700" y="60" width="80" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="740" y="79" text-anchor="middle" font-size="7.5" font-weight="700">PERSISTED</text>
+<rect x="700" y="104" width="80" height="26" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.2"/><text x="740" y="121" text-anchor="middle" font-size="7.5" fill="#6b7280">RETIRED</text>
+<rect x="130" y="30" width="540" height="116" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/><text x="142" y="46" font-size="9" font-weight="800" fill="#047857">ACTIVE &#8212; the 8-phase task clock turns in here (D30a / 7d)</text>
+<rect x="142" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="173" y="74" text-anchor="middle" font-size="6.5" font-weight="700">OBJECTIVE</text>
+<rect x="208" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="239" y="74" text-anchor="middle" font-size="6.5" font-weight="700">OBSERVE</text>
+<rect x="274" y="58" width="62" height="26" rx="4" fill="#fff7ed" stroke="#c2410c" stroke-width="1.1"/><text x="305" y="74" text-anchor="middle" font-size="6.5" font-weight="700">SHAPE</text>
+<rect x="340" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="371" y="74" text-anchor="middle" font-size="6.5" font-weight="700">PLAN</text>
+<rect x="406" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="437" y="74" text-anchor="middle" font-size="6.5" font-weight="700">EXECUTE</text>
+<rect x="472" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="503" y="74" text-anchor="middle" font-size="6.5" font-weight="700">MEASURE</text>
+<rect x="538" y="58" width="62" height="26" rx="4" fill="#ecfdf5" stroke="#047857" stroke-width="1.1"/><text x="569" y="71" text-anchor="middle" font-size="5.6" font-weight="700" fill="#047857">OPERATION-</text><text x="569" y="79" text-anchor="middle" font-size="5.6" font-weight="700" fill="#047857">ALIZE</text>
+<rect x="604" y="58" width="58" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="633" y="74" text-anchor="middle" font-size="6.5" font-weight="700">LEARN</text>
+<text x="305" y="100" text-anchor="middle" font-size="6.3" fill="#c2410c">factors[] (B8, auto-derived) inserted SHAPE &#8594; PLAN</text>
+<path d="M173,120 L173,132 L633,132 L633,84" stroke="#9ca3af" stroke-width="1" fill="none" stroke-dasharray="3 2" marker-end="url(#ck)"/><text x="400" y="129" text-anchor="middle" font-size="6.3" fill="#6b7280">LEARN &#8594; next OBJECTIVE (loop, P8)</text>
+<path d="M106,75 L130,75" stroke="#334155" stroke-width="1.2" marker-end="url(#ck)"/><text x="108" y="56" font-size="6.5" fill="#475569">approve</text>
+<path d="M670,75 L700,75" stroke="#334155" stroke-width="1.2" marker-end="url(#ck)"/>
+<path d="M740,90 L740,104" stroke="#6b7280" stroke-width="1.1" marker-end="url(#ck)"/><text x="746" y="100" font-size="6.5" fill="#475569">revoke</text>
+</svg>
+<p class="figcap">The two clocks drawn: the 8-phase task clock nested inside the workflow object&#39;s ACTIVE state. NOTE (audit-fix 2026-08-18): the object-ledger states drawn here predate the &#167;9c G4/G5 ruling (PERSISTED = 4th state with instance-level dormancy; explicit revoke + fence-at-supersession) — redraw pending.</p>
+
+<p>Every run turns an 8-phase task clock (OBJECTIVE &#8594; OBSERVE &#8594; SHAPE &#8594; PLAN &#8594; EXECUTE &#8594; MEASURE &#8594; OPERATIONALIZE &#8594; LEARN) INSIDE the workflow object's governance ledger (PROPOSED &#8594; ACTIVE &#8594; PERSISTED &#8594; RETIRED). The clock is the run; the ledger is the object. A workflow's whole running life happens inside its ACTIVE state.</p>
+
+<h2 id="s3">Product use cases</h2>
+<table>
+<tr><th>Actor</th><th>Wants</th><th>How Workflow/Engine serves it</th></tr>
+<tr><td>Lending ops manager (the digital lending company, sheet §8)</td><td>disbursal, KYC, and EMI reconcile to run the same way every time</td><td>FOLLOWs written workflows — <code>W-disburse-loan</code> (gate pattern), <code>W-kyc-verify</code> (sequence), <code>W-emi-reconcile</code> (cadence trigger); every run lands in that workflow's engine record slice</td></tr>
+<tr><td>Docs author (founder, sheet §8c)</td><td>docs that improve without re-teaching each session</td><td><code>W-md-authoring</code>: 3-atom sequence; its engine carries learned patterns, so a correction lands once and applies to all future docs</td></tr>
+<tr><td>Governance operator (sheet §8b R9)</td><td>silent failures surfaced within a day, not after 3 weeks</td><td>the daily governance audit is a real, running glue engine — findings on cadence, triage acts on them; the first existence proof for X3</td></tr>
+<tr><td>Any operator issuing an intent</td><td>reuse over reconstruction</td><td>RESOLVE finds a workflow type → FOLLOW; none found → CONSTRUCT; either way the run is engine-backed from run 1 (X1 + X2)</td></tr>
+</table>
+
+<h2 id="s4">Operational scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Path through the concept</th><th>Outcome</th></tr>
+<tr><td>Happy path — "Create a doc explaining the vocabulary ladder" (sheet §8c, executed 2026-08-06)</td><td>CLASSIFY task → FOLLOW <code>W-md-authoring</code> → 3 atoms in sequence → runs write the record → §6 checklist verify passes</td><td>PASS with 3 gaps (A8, A3, A4 bit during the walk); the layers composed with zero forcing</td></tr>
+<tr><td>Failure path — verify fails 3x (sheet §8 planted edge case)</td><td>loop canonical on <a href="work-atom.html#s5">Work-Atom s5 Lifecycle</a>; decision_trail persisted</td><td>a human rules; budget A8 RULED as REC (charter field <code>retry_budget</code>, default 3 — 2026-08-17 sitting)</td></tr>
+<tr><td>Growth path — mermaid ruling changes the doc medium (2026-08-05, sheet §8c layer 10)</td><td>founder correction → Md-Authoring Engine's learned patterns</td><td>run 50 differs from run 1: every later doc uses mermaid with no re-teaching</td></tr>
+<tr><td>Growth path — hot deterministic step (repayment-ledger-read, sheet §8)</td><td>C0→C1 <code>reuse_tag</code> promotion proposed, gated — never auto</td><td>the step crystallizes toward code; promotions are earned by run evidence (A9)</td></tr>
+</table>
+
+<div class="planned"><strong>Proposed scenario — decide-now under time pressure</strong> <span class="planned" style="padding:0 6px">PROPOSED</span> Source: sheet A19-DECIDE-NOW subdecision (2026-08-11) — not a shipped path; shown separately from the operational scenarios above by design.<br>
+2:00pm, the partner bank calls: "confirm the co-lending exposure split by 5pm or the deal moves." Q2 reads complex — but backward scheduling says probe time is gone (latest-start reached). W-decide would branch on Q4, the door: a <em>tranche-only</em> split (renegotiable next tranche) is a two-way door — <strong>ACT-AS-PROBE</strong>: take the split most like the last accepted deal (nearest pattern from the engine's learned patterns / connection-graph defaults), cap this tranche's volume (the pre-declared stop-loss), instrument the tranche — the run's record becomes the sense data that probe time never allowed. A <em>master-agreement</em> split binding all future tranches is a one-way door — <strong>ESCALATE-WITH-BRIEF</strong>: the escalation contract fires at 2:10, not 4:55, carrying the minimum context bundle plus a least-regret options framing; the human decides at 70% information while deciding is still possible. Door unclear would be treated as one-way. Both branches would write the decision's provenance row (decided-under-pressure, what was unknown, branch, stop-loss) — available for later gated pattern proposal, never auto-mined.</div>
+
+<h2 id="s5">Contract</h2>
+<h3>Data model</h3>
+<table>
+<tr><th>Field</th><th>Type-ish</th><th>Meaning</th><th>Source of truth</th></tr>
+<tr><td><code>workflow.step_graph</code></td><td>graph of steps/atoms</td><td>the 1..n atoms composed; RUN walks it</td><td>sheet §1 RUN block; canon type in <code>primitives/workflow.md</code> (15 fields per grounding §1)</td></tr>
+<tr><td><code>workflow.pattern</code></td><td>shape</td><td>composition shape — sequence, gate, cadence-triggered (sheet §8 examples)</td><td>sheet A1 ("steps, pattern, failure policy")</td></tr>
+<tr><td><code>workflow.failure_policy</code></td><td>policy</td><td>what happens when a step fails</td><td>sheet A1</td></tr>
+<tr><td><code>workflow.reuse_tag</code></td><td>tag</td><td>C0→C1 promotion marker; makes the workflow FOLLOW-able</td><td>sheet §3 (only reuse_tag C0→C1 is canon); A2</td></tr>
+<tr><td><code>workflow.skill_ref</code></td><td>ref</td><td>sub-workflow recursion (Modes 1/2)</td><td>sheet §1 block inventory</td></tr>
+<tr><td><code>workflow.extension_ref</code></td><td>ref</td><td>composition seam toward Assembly; mandated null v1.0</td><td>grounding §1 (Assembly row)</td></tr>
+<tr><td><code>workflow_id</code></td><td>stable id</td><td>would key engine state per workflow — no stable id exists anywhere today</td><td>grounding §5 move 3; TODO(founder):</td></tr>
+<tr><td><code>engine.envelope</code> · <code>record_slice</code> · <code>learned_patterns</code> · <code>charter_binding</code></td><td>the 4 stores</td><td>the engine's entire statefulness (see <a href="#s2">s2</a>); no new storage</td><td>sheet A1 (RULED)</td></tr>
+<tr><td><code>how.attempt_log</code></td><td>count + history (data field)</td><td>attempts on the atom's HOW particle — never an object; canonical owner: <a href="work-atom.html#s5">Work-Atom s5</a></td><td>sheet A1-FINAL-3 (RULED)</td></tr>
+<tr><td><code>charter.retry_budget</code></td><td>int (default 3)</td><td>max retries before ESCALATED</td><td>sheet A8 — RULED as REC, 2026-08-17 sitting (Quick eight; budgets = labeled v1 dials)</td></tr>
+</table>
+
+<p>Base/child split (A17, RULED — 2026-08-17 sitting): Workflow is the first object to get the base/child type split — see <a href="type-system.html">Type System</a>.</p>
+<h3>Invariants</h3>
+<ul>
+<li><strong>X1 no naked work</strong> — nothing dispatches outside a workflow; a single atom is a workflow of one.</li>
+<li><strong>X2 no stateless execution</strong> — every run executes inside an engine; the engine is born at the workflow's first run with an empty record slice; every run writes to some engine's record slice from run 1.</li>
+<li><strong>Engine-Library rule</strong> — engine state = explicit inputs from the record, never hidden internal state; violation breaks C2 crystallization.</li>
+<li><strong>No new storage</strong> — Engine is a name over the four existing stores.</li>
+<li><strong>The written half never mutates at run time</strong> — all accumulation lands on the engine; the workflow file stays a stateless template (A1-ext grid).</li>
+<li><strong>Distribution ships templates only</strong> — instances and state never leave the tenant (A1-ext consequence; D33 in one sentence).</li>
+<li><strong>One goal, ONE verify per atom</strong> — canonical owner: <a href="work-atom.html">Work-Atom</a> (A1-ext).</li>
+</ul>
+
+<h3>Lifecycle</h3>
+<table>
+<tr><th>Transition</th><th>Trigger</th><th>Source</th></tr>
+<tr><td>path → workflow type</td><td>repetition; C0→C1 <code>reuse_tag</code> promotion, proposed + gated</td><td>sheet A1-FINAL ("things earn their nouns"), §3</td></tr>
+<tr><td>workflow → engine</td><td>first run — engine born with empty record slice</td><td>X2 (RULED)</td></tr>
+<tr><td>run: verify-fail loop — canonical on <a href="work-atom.html#s5">Work-Atom s5 Lifecycle</a></td><td>verify failure against <code>retry_budget</code> (A8 RULED as REC, default 3)</td><td>sheet §2 VERIFY-loop edge; §8</td></tr>
+<tr><td>learned pattern → re-verification</td><td>environment change contradicting a learned pattern fires re-verify proposals on dependent engines</td><td>sheet §8b R4</td></tr>
+<tr><td>engine decay (T1→T4)</td><td>happens by default when unexamined; re-verification is the counter; audit glue flags green-never-consulted instruments</td><td>sheet §8b preamble + R10</td></tr>
+</table>
+
+<h3>Ownership</h3>
+<ul>
+<li>Engine state is owned by the record (SoR, ADR-013) and read as explicit inputs — the engine object itself is a name, canonized in a new ADR at S7 (number at mint, per C2).</li>
+<li>C-state lives on the atom's HOW particle; Workflow/Engine state is a derived aggregate, mixed states allowed; promotions earned by run evidence (A9, ruled by consequence).</li>
+<li>Charter holds rules, never work-state (A1-FINAL-2 + the open work-state-shelves proposal).</li>
+<li>Followable workflow templates: the FOLLOW catalog — home is the user-kit workflow files with <code>reuse_tag</code> plus one index spec (A2, RULED as REC — 2026-08-17 sitting, Quick eight).</li>
+</ul>
+
+<h3>Failure modes</h3>
+<table>
+<tr><th>Mode</th><th>Behavior</th><th>Source</th></tr>
+<tr><td>Verify fail</td><td>loop canonical on <a href="work-atom.html#s5">Work-Atom s5</a>; N = <code>retry_budget</code> (A8 RULED as REC, default 3)</td><td>sheet §2, §8</td></tr>
+<tr><td>Wrong FOLLOW match</td><td>routing per A4 (RULED 2026-08-17): 0.80 threshold day one, T1-T4 logged, registry-only verifies</td><td>sheet §2</td></tr>
+<tr><td>Audit/record channel unwritable</td><td>HS-4 → DEGRADED</td><td>sheet §2 (ATOM→RECORD edge)</td></tr>
+<tr><td>Environment change invalidates a learned pattern</td><td>re-verification proposals on engines whose constraints assumed the old behavior</td><td>sheet §8b R4</td></tr>
+</table>
+
+<h3>Observability + audit</h3>
+<ul>
+<li>Every run appends to the record — append-only (ATOM→RECORD edge, sheet §2).</li>
+<li>The VERIFY loop persists a <code>decision_trail</code>; escalation passes through Approval (sheet §2).</li>
+<li>Evidence — reads across runs (e.g. "which sections draw corrections", §8c layer 11) — schema RULED as REC, spec-only (A3, 2026-08-17 sitting, Quick eight); today nothing reads the record in-loop.</li>
+</ul>
+
+<h2 id="s6">Implementation today</h2>
+<table>
+<tr><th>What exists</th><th>File evidence</th><th>Fidelity</th><th>Gap</th></tr>
+<tr><td>Workflow canon type — rich, 15 fields, step_graph</td><td><code>primitives/workflow.md</code></td><td>type only</td><td><strong>zero runtime instances</strong></td></tr>
+<tr><td>Workflow runtime registry</td><td><code>~/.sutra-native/user-kit/</code> has NO <code>workflows/</code> dir</td><td>MISSING (runtime)</td><td>the 2 real W-files are loose plans; <code>W-md-authoring</code> steps have no verify, no atoms</td></tr>
+<tr><td>Engine</td><td><code>sutra/os/engines/*.md</code> + <code>placement_engine.py</code></td><td>MISSING</td><td>"engine" today = 7 mechanism docs + a library; no state keyed by workflow id (naming debt C10)</td></tr>
+<tr><td>X2 (runs write a ledger)</td><td><code>sutra-atom:361-388</code></td><td>PARTIAL</td><td>rows keyed by session+atom, never by workflow — <strong>no engine is ever born</strong></td></tr>
+<tr><td>Closest engine-slice store</td><td><code>.sutra/flow-ledger.jsonl</code> (21K / 21 rows)</td><td>closest — has unit/steps/atoms/close</td><td>lacks a stable workflow id; grounding §5 move 3 adds <code>workflow_id</code> (one field, one writer, ~1h) — the operational content of X2</td></tr>
+<tr><td>Learned patterns store</td><td>none — zero grep hits for any implementation</td><td>MISSING</td><td>the sheet's "all 4 stores exist" does not hold for this store on disk</td></tr>
+</table>
+<div class="note"><strong>Grounding fact (ruling landed):</strong> user-kit has 56 domains, 163 charters, 239 placements — and <strong>zero workflows</strong>. The ladder builds Engine, Assembly, and System on the one object with no runtime instances. RULED at the 2026-08-17 sitting: the registry build is FUNDED as the first v1 act, P1 at v1 start (Shelves/A11 + Host-rule/B1 rows); zero runtime workflows remains a build-status fact until it ships.</div>
+
+<h2 id="s7">Open questions</h2>
+<table>
+<tr><th>Question</th><th>State</th><th>Where it bit</th></tr>
+<tr><td>A8 — retry budget: charter field <code>retry_budget</code>, default 3 (a labeled v1 dial)</td><td>RULED as REC (2026-08-17 sitting, Quick eight)</td><td>sheet §8c layer 9 — bit on the first real walk</td></tr>
+<tr><td>A3 — evidence read-model schema</td><td>RULED as REC, spec-only (2026-08-17 sitting, Quick eight)</td><td>sheet §8c layer 11</td></tr>
+<tr><td>A4 — classifier + workflow-type matching procedure</td><td>RULED (2026-08-17 sitting): 0.80 threshold day one, warm-start + N&gt;=100 retune advisories, T1-T4 logged, registry-only verifies</td><td>sheet §8c layers 2-3; §2 edges</td></tr>
+<tr><td>A2 — FOLLOW catalog home (reuse_tag files ARE the catalog + one index spec)</td><td>RULED as REC (2026-08-17 sitting, Quick eight)</td><td>sheet §5</td></tr>
+<tr><td>Engine-state-as-typed-slice (consequence of A1; canonized at S7)</td><td>QUEUED for S7</td><td>sheet §8c gaps</td></tr>
+<tr><td>Workflow-registry timing</td><td>RULED — registry build FUNDED as the first v1 act, P1 at v1 start (2026-08-17 sitting)</td><td>sheet A1-FINAL-3 edge-case registry; grounding §6</td></tr>
+<tr><td>CONSTRAINT-PROPAGATION — how constraints flow system → engine → workflow → atom</td><td>DEFERRED (named)</td><td>sheet A1-FINAL</td></tr>
+<tr><td>Crystallization beyond C0→C1 (thresholds, de-opt, promotion policy)</td><td>DEFERRED — needs run data</td><td>sheet §9</td></tr>
+<tr><td>C10 — "engine" naming debt: doc titles + lens-engine predate Engine-as-ruled-word; disambiguation notes pending</td><td>OPEN (S4 elimination)</td><td>sheet §7 C10; grounding §5 move 3</td></tr>
+<tr><td>TODO(founder): <code>retry_budget</code> value and home</td><td>—</td><td>—</td></tr>
+<tr><td>TODO(founder): stable <code>workflow_id</code> scheme</td><td>—</td><td>—</td></tr>
+</table>
+
+<h3>Proposed features — 2026-08-07 sitting queue</h3>
+<p>Status refreshed against the 2026-08-17 sitting: A4, G4, G5 below were RULED; man pages + run-outcome enum are founder-DIRECTED (A14); the rest stay PROPOSED. The decision sheet remains the authority.</p>
+<table>
+<tr><th>Feature</th><th>What it requires</th><th>Status</th><th>Source</th></tr>
+<tr><td>A4 router procedure (card 1)</td><td><code>type_confidence</code> emitted + logged at CLASSIFY; 0.80 threshold day one with warm-start + N&gt;=100 retune advisories; T1-T4 logged; registry-only verifies; provisional genesis routing rows</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>A4 (2026-08-17 sitting)</td></tr>
+<tr><td>FOLLOW catalog gains <code>solves_style</code></td><td>each catalog entry would name the problem style it solves</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet card A12 (styles concept RULED 2026-08-17) · PROBLEM-STYLES.md (<code>holding/plans/native-sop-program/</code>; no on-site page)</td></tr>
+<tr><td>To-author workflow types homed on this rung</td><td><code>W-route-and-log</code>, <code>W-countersigned-verify</code>, <code>W-earn-autonomy</code>, <code>W-reuse-diff</code> would be authored here (others homed on their own pages: <code>W-crystallize</code> → particles; <code>W-tier-gates</code> + <code>W-attribute</code> → internal-system; <code>W-mint-shadow</code> → shadow-systems)</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet cards A4/G4/G5</td></tr>
+<tr><td>GROWN side: G4 engine retirement (card 5)</td><td>retirement is a derivative of the workflow ledger, gated, with the X2 seed carve-out; the record slice persists append-closed</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>&#167;9c G4 (2026-08-17 sitting)</td></tr>
+<tr><td>GROWN side: G5 ledger transition triggers (card 5)</td><td>PERSISTED is a 4th state with instance-level dormancy; explicit revoke + fence-at-supersession; the state-machine drawing in <a href="#s2b">s2b</a> predates the ruling — redraw pending</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>&#167;9c G5 (2026-08-17 sitting)</td></tr>
+<tr><td>MAN PAGES for registered workflows</td><td>every registered workflow carries a builder-generated man page (purpose / inputs / outputs / verify / example)</td><td><span class="pill" style="background:#eef2ff;color:#3730a3">DIRECTED</span></td><td>sheet A14 (founder-directed 2026-08-08; indexed DIRECTED)</td></tr>
+<tr><td>RUN-OUTCOME ENUM</td><td>every run stamps <code>pass</code> / <code>fail-retry</code> / <code>fail-escalate</code> / <code>blocked</code> uniformly (maps to ExecutionResult + failure states; does NOT rename the object state machine)</td><td><span class="pill" style="background:#eef2ff;color:#3730a3">DIRECTED</span></td><td>sheet A14 (founder-directed 2026-08-08; indexed DIRECTED)</td></tr>
+<tr><td>GROWN side: connection-graph feeds</td><td>a workflow's stored output would feed downstream workflows along typed edges (<code>observed</code>/<code>suggested</code>/<code>default</code>/<code>hardwired</code>) held in the coordination engine's slice</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet A15 (founder-minted 2026-08-08)</td></tr>
+<tr><td>decide-now branch in W-decide</td><td>when Q2=complex and probe time is gone (latest-start reached), Q4 would route: two-way door &#8594; act-as-probe (nearest pattern + pre-declared stop-loss, run record = sense data); one-way door &#8594; escalate-with-brief at latest-start (least-regret options on the pinned escalation contract); unclear = one-way; zero new objects</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet A19-DECIDE-NOW (2026-08-11)</td></tr>
+</table>
+
+<h3>Proposed — the goal cascade</h3>
+<p><span class="planned" style="padding:0 6px">PROPOSED</span> Source: founder direction 2026-08-07 (in-session) &#183; sheet cards &#183; zero new objects — composes existing primitives only.</p>
+<svg viewBox="0 0 720 250" role="img" aria-label="Proposed goal cascade: a charter goal either resolves to one workflow or is cut into sub-goals that recurse">
+  <rect x="600" y="8" width="112" height="20" rx="4" fill="#fffbeb" stroke="#b45309"/>
+  <text x="656" y="22" text-anchor="middle" font-size="10" fill="#b45309">PROPOSED &#183; awaiting ruling</text>
+  <defs><marker id="gcarr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#475569"/></marker></defs>
+  <rect x="20" y="90" width="150" height="44" rx="6" fill="#f8fafc" stroke="#475569"/>
+  <text x="95" y="108" text-anchor="middle" font-size="12" fill="#0f172a">charter goal</text>
+  <text x="95" y="124" text-anchor="middle" font-size="10" fill="#475569">target + verify</text>
+  <rect x="220" y="86" width="170" height="52" rx="26" fill="#fffbeb" stroke="#b45309"/>
+  <text x="305" y="108" text-anchor="middle" font-size="11" fill="#0f172a">one workflow</text>
+  <text x="305" y="122" text-anchor="middle" font-size="11" fill="#0f172a">reaches it?</text>
+  <line x1="170" y1="112" x2="216" y2="112" stroke="#475569" marker-end="url(#gcarr)"/>
+  <rect x="470" y="46" width="150" height="40" rx="6" fill="#f0fdf4" stroke="#166534"/>
+  <text x="545" y="63" text-anchor="middle" font-size="11" fill="#0f172a">FOLLOW / CONSTRUCT</text>
+  <text x="545" y="78" text-anchor="middle" font-size="10" fill="#475569">workflow &#8594; atoms</text>
+  <line x1="390" y1="98" x2="466" y2="72" stroke="#166534" marker-end="url(#gcarr)"/>
+  <text x="425" y="76" font-size="10" fill="#166534">yes</text>
+  <rect x="470" y="150" width="150" height="40" rx="6" fill="#fef2f2" stroke="#991b1b"/>
+  <text x="545" y="167" text-anchor="middle" font-size="11" fill="#0f172a">cut into sub-goals</text>
+  <text x="545" y="182" text-anchor="middle" font-size="10" fill="#475569">each: goal + verify</text>
+  <line x1="390" y1="126" x2="466" y2="158" stroke="#991b1b" marker-end="url(#gcarr)"/>
+  <text x="420" y="152" font-size="10" fill="#991b1b">no</text>
+  <path d="M545,190 L545,220 L305,220 L305,142" fill="none" stroke="#475569" stroke-dasharray="4 3" marker-end="url(#gcarr)"/>
+  <text x="425" y="214" text-anchor="middle" font-size="10" fill="#475569">recurse per sub-goal</text>
+  <text x="95" y="160" font-size="10" fill="#475569">parent verify tests the</text>
+  <text x="95" y="173" font-size="10" fill="#475569">COMPOSITION, not just</text>
+  <text x="95" y="186" font-size="10" fill="#475569">children passing</text>
+</svg>
+<p>X1 guard: sub-goals would be planned goal+verify cuts that become atom goals or child-workflow goals — they dispatch ONLY through FOLLOW/CONSTRUCT; there are no naked sub-goals. Proposed cut condition: a sub-goal is cut only when no single workflow reaches the goal — the cascade halts where a workflow exists, so a richer FOLLOW catalog would mean shallower cascades.</p>
+<div class="note"><strong>Example (lending):</strong> the goal "top-up delinquency back to forecast" would cut into 3 sub-goals — tighten the eligibility rule &#183; collections outreach wave &#183; credit-policy memo — each closed by one workflow, with the parent verify checking the delinquency curve itself.</div>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned"><span class="pill" style="background:#fffbeb;color:#b45309">PROPOSED</span> Status: illustrative, not binding. No workflow serialization schema is ruled and zero runtime instances exist (s6); the shape below composes only this page's s5 data-model fields; the man page follows the DIRECTED A14 skeleton. <code>&lt;decision_pending&gt;</code> marks unruled fields.
+<p>A registered written workflow — <code>W-kyc-verify</code>:</p>
+<pre style="background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">{
+  "workflow_id": "&lt;decision_pending — stable id scheme, s7&gt;",
+  "step_graph": [
+    {"step": "fetch-docs",   "atom_goal": "KYC docs fetched for applicant LN-2214"},
+    {"step": "bureau-check", "atom_goal": "bureau report fetched + score recorded"},
+    {"step": "verdict",      "atom_goal": "KYC verdict recorded with evidence refs"}
+  ],
+  "pattern": "sequence",
+  "failure_policy": "escalate",
+  "reuse_tag": true,
+  "skill_ref": null,
+  "extension_ref": null
+}</pre>
+<p>Its builder-generated man page (DIRECTED skeleton, A14):</p>
+<pre style="background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">W-kyc-verify(1)
+PURPOSE   verify a loan applicant's KYC end to end
+INPUTS    applicant id, KYC document refs
+OUTPUTS   verdict record + bureau report ref (append-only, engine record slice)
+VERIFY    one verify per atom; the workflow closes when the verdict atom's verify passes
+EXAMPLE   "run KYC for LN-2214" -&gt; FOLLOW W-kyc-verify -&gt; 3 atoms -&gt; verdict row</pre>
+</div>
+<p>The grown half persists no file of its own — an Engine is a NAME over 4 existing stores (<a href="#s2">s2</a>); its visible output is the record-slice rows its runs append. See <a href="work-atom.html#s-output">the atom ledger row on Work-Atom</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Rulings of record: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> (A1 family)</li>
+<li>Build grounding: <code>holding/plans/native-sop-program/GROUNDING-MAP.md</code></li>
+<li>Hub: <a href="../the-model.html">The Model</a> &#183; siblings: <a href="particles.html">Particles</a> &#183; <a href="work-atom.html">Work-Atom</a> &#183; <a href="assembly-system.html">Assembly + System</a> &#183; <a href="internal-system.html">Internal System</a> &#183; <a href="shadow-systems.html">Shadow Systems</a> &#183; <a href="properties.html">Properties (Charter · Domain · Tenancy)</a></li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+
+</div></div></body></html>

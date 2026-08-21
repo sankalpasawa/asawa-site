@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§7 — Observability (how we know it works) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="06-distribution.html">prev: 06 distribution</a> · <strong>§7 — Observability (how we know it works)</strong> · <a href="08-roadmap.html">next: 08 roadmap</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§7 — Observability (how we know it works)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/HLD/07-non-functional.html">HLD/07 Non-Functional</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-6-observability">
+<h2>§7 Observability — how we know it works <a href="../product-prd-native-v1.html#section-6-observability" class="anchor">#</a></h2>
+<table class="pillar-6block">
+<tr><td><strong>Purpose</strong></td><td>Instrument every layer so operator + Asawa team can see whether CoS is doing what it promises, and where it's drifting.</td></tr>
+<tr><td><strong>Owns</strong></td><td>Per-pillar quality metrics · drift signals · operator satisfaction signals · audit + replay surfaces.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>All layers (instruments cross-cuttingly).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Decision execution; transport; pricing.</td></tr>
+</table>
+
+<h3 id="section-7-1-metrics">§7.1 Per-pillar metrics</h3>
+<table>
+<tr><th>Pillar</th><th>Primary metric</th><th>Drift signal</th></tr>
+<tr><td>B1 Ask my way</td><td>Intent parse accuracy (intent_type + sub-intents match operator's correction frequency)</td><td>Correction rate &gt;15% per week → drift</td></tr>
+<tr><td>B2 World's best + mine</td><td>Context relevance (operator drops &lt;10% of retrieved context)</td><td>Drop rate &gt;25% → drift</td></tr>
+<tr><td>B3 Think + Do + Present</td><td>Auto-vs-ask ratio; outcome quality (operator accepts &gt;80% of B3b outputs)</td><td>Accept rate falls &gt;15pp WoW</td></tr>
+<tr><td>B4 Talk for me</td><td>Outbound success rate; audience-calibration accuracy</td><td>Operator overrides voice &gt;20% of sends</td></tr>
+<tr><td>B5 Remember</td><td>Replay latency (≤30s/day-window v1); cross-tenant default-deny verified</td><td>Replay latency &gt;60s OR any cross-tenant leak</td></tr>
+</table>
+
+<h4 id="section-7-1-a-accuracy">§7.1.A Accuracy KPI (integration with <a href="../product-prd-native-v1.html#section-4-5-test-before-conclude">§4.5 Test-before-conclude</a>)</h4>
+<table>
+<tr><th>Metric</th><th>Definition</th><th>Target v1</th><th>Drift signal</th></tr>
+<tr><td>First-time-test pass rate</td><td>% of CoS outputs that pass the pre-declared §4.5 test on first try (no retry needed)</td><td>≥85% T0, ≥75% T1, ≥65% T2, ≥55% T3 Charter milestones</td><td>Drop &gt;10pp WoW per task tier</td></tr>
+<tr><td>Retry-to-conclude ratio</td><td>Avg retries per concluded task (test-fail → B3 retry loop iterations)</td><td>≤1.3 T0, ≤2.0 T1, ≤3.0 T2/T3</td><td>Ratio rises &gt;0.5 WoW</td></tr>
+<tr><td>Escalation rate (test-fail-exhausted)</td><td>% of tasks where retry budget exhausted → operator escalation</td><td>≤5% across all tiers</td><td>&gt;10% any tier → workflow review</td></tr>
+<tr><td>Post-conclude operator-correction rate</td><td>% of CoS-concluded outputs operator subsequently corrects (test missed the failure)</td><td>≤8% T0/T1, ≤15% T2/T3</td><td>Rate rises → test criteria need tightening</td></tr>
+</table>
+<p class="callout">Accuracy is a per-workflow KPI, not a single number. Each task tier (T0-T3) + each pillar carries its own accuracy band. <a href="../product-prd-native-v1.html#section-3-native-platform">§4.5 Test-before-conclude</a> is where the test runs; §7.1.A is where the aggregated results live.</p>
+
+<h3 id="section-7-2-audit">§7.2 Audit + replay surfaces</h3>
+<p>The audit promise of B5.c made visible. Every Native turn produces 5 artifacts; observability surfaces all 5 to operator on demand.</p>
+<pre>
+   PER TURN AUDIT TRAIL (operator can replay any of these)
+
+   ┌─────────────────────────────────────────────────┐
+   │  1. INTENT RECORD       (B1)                     │
+   │     parsed intent + sub-intents + schema preview │
+   └────────────────────────┬────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────┐
+   │  2. CONTEXT MANIFEST    (B2)                     │
+   │     ranked artifact list used; what was dropped  │
+   └────────────────────────┬────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────┐
+   │  3. DECISION PROVENANCE (B3)                     │
+   │     phases + factors + authority verdict + output│
+   └────────────────────────┬────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────┐
+   │  4. OUTBOUND LOG        (B4, if comms triggered) │
+   │     audience + channel + draft + sent + replies  │
+   └────────────────────────┬────────────────────────┘
+                            ▼
+   ┌─────────────────────────────────────────────────┐
+   │  5. SUBSTRATE WRITE     (B5)                     │
+   │     active-session ref + learned-pattern updates │
+   └─────────────────────────────────────────────────┘
+
+   Operator command: "replay last Paisa turn" → all 5 artifacts shown chronologically.
+   Operator command: "show me what changed in B5.d this week" → diff of learned patterns.
+</pre>
+
+<h3 id="section-7-3-satisfaction">§7.3 Operator satisfaction signals</h3>
+<ul>
+  <li>Time-to-decision (operator decides on CoS output in &lt;30s — CX bar gate)</li>
+  <li>Refusal-to-execute rate (operator says "don't do this, ask me first")</li>
+  <li>Autonomy-dial direction (does operator dial autonomy up or down per domain over time?)</li>
+  <li>Surface-switching frequency (operator should NOT switch surfaces mid-task per CX bar)</li>
+</ul>
+
+<h3 id="section-7-4-acceptance">§7.4 Acceptance criteria (Observability v1)</h3>
+<ul>
+  <li>5-artifact audit trail emitted per turn (HS-4 fires on any missing channel).</li>
+  <li>Operator can request replay for any past turn within ≤30s for a single-day window.</li>
+  <li>Drift signals tracked weekly; breach surfaces to founder via Daily Pulse.</li>
+</ul>
+
+<h3 id="section-7-5-daily-pulse">§7.5 Daily Pulse — operator's daily aggregate dashboard <em>(Module per §1.4)</em></h3>
+<p>Daily Pulse is the visible artifact of §2.E S5 whole-system state. Auto-generated by <code>holding/hooks/observability-synthesis.sh</code> from session-end data. Operator reads once/day to see what CoS did + drift signals across the portfolio.</p>
+<p class="callout"><strong>Hierarchy tag</strong>: Daily Pulse is a <strong>Module</strong> per <a href="../product-prd-native-v1.html#section-1-architecture">§1.4 Product Hierarchy</a> — composes cap-Telemetry + cap-Audit + cap-CrossPortfolio-Priority. Independent lifecycle. Per-Deployment BINDING (operator config: pulse cadence, channel, signal thresholds). Own RUNTIME STATE (daily-pulse archive per tenant). Reusable across future products on Native (designed for, not guaranteed v1).</p>
+
+<h4>§7.5.1 What Daily Pulse contains</h4>
+<table>
+<tr><th>Section</th><th>Content</th></tr>
+<tr><td>Per-Charter status</td><td>Each company's Charter — active tasks · completed today · pending operator decisions · drift signals</td></tr>
+<tr><td>Cross-portfolio priority</td><td>What matters now across all N companies — top 3-5 priorities surfaced via §3 HOW + §6 importance ranking</td></tr>
+<tr><td>Accuracy snapshot</td><td>First-time-test pass rate across task tiers (per <a href="../product-prd-native-v1.html#section-6-observability">§7.1.A</a>); week-over-week trend</td></tr>
+<tr><td>Workforce health</td><td>Charter status (active · drifting · stale); agent materializations + outcomes</td></tr>
+<tr><td>Feedback summary</td><td>New operator feedback artifacts since last pulse; product team triage status</td></tr>
+<tr><td>Token / RTK efficiency</td><td>Token usage trend; RTK gain measurement; cost-per-task aggregate</td></tr>
+<tr><td>Outstanding gates</td><td>Authority-gated actions pending operator approval (per <a href="../product-prd-native-v1.html#d6-authority">D.6</a>)</td></tr>
+</table>
+
+<h4>§7.5.2 Operator commands</h4>
+<ul>
+  <li><code>/asawa</code> — CEO dashboard for portfolio overview</li>
+  <li><code>/status</code> — current session status + drift signals</li>
+  <li>Daily Pulse delivered via <code>holding/OBSERVABILITY-PULSE.md</code> + optional email/Slack push per Charter</li>
+</ul>
+
+<h4>§7.5.3 Acceptance criteria (Daily Pulse v1)</h4>
+<ul>
+  <li>Pulse auto-generates within 60s of session-end (no manual trigger needed).</li>
+  <li>Operator scans pulse + decides next actions in ≤2 minutes (CX bar gate per <a href="../product-prd-native-v1.html#d7-cxbar">D.7</a>).</li>
+  <li>Drift breach surfaced visually (boxed callout) — impossible to miss.</li>
+  <li>Cross-portfolio priorities ranked by Charter weight + recency + risk per <a href="../product-prd-native-v1.html#section-3-how-methodology">§3 HOW</a> decomposition.</li>
+</ul>
+<p class="callout"><strong>Sources</strong>: <code>holding/OBSERVABILITY-PULSE.md</code> · <code>holding/ANALYTICS-PULSE.md</code> · <code>holding/hooks/observability-synthesis.sh</code> · <code>holding/scripts/daily-review.sh</code> (departments/observability) · founder direction "cadence is hours not days".</p>
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/HLD/07-non-functional.html">HLD/07 Non-Functional</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

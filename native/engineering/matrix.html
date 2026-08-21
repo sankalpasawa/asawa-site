@@ -1,0 +1,331 @@
+<!doctype html>
+<!-- ENGINEERING / MATRIX — Native IA v1 (eng fanout, 2026-06-13).
+     Built from the canonical page template. Anatomy: map -> work-order -> own diagram -> mechanism tables -> behavior contracts -> open gaps -> children -> sources.
+     Content rule: compile-only, anchor-per-claim, zero invention. Source of truth: engineering/_compile-2026-06-12-archived.html#eng-matrix (8 mechanism rows + 6 supplementary verbatim tables + 6 gaps carried verbatim). Canon linked, never copied (D54). No dossiers assigned to this part (0 behavior contracts folded). -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering &#8212; Matrix (CoS adaptation): mechanisms + behavior contracts</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+.tagP{font-weight:700;color:#1d4ed8}.tagS{color:#6b7280}.tagE{color:#9ca3af}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+h3{font-size:13px;margin:14px 0 4px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+.contract{background:#f8fafc;border:1px solid #e5e7eb;border-left:3px solid #1d4ed8;padding:10px 14px;margin:14px 0;border-radius:0 6px 6px 0}
+.contract h4{margin:2px 0 6px;font-size:14px}
+.contract .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#6b7280;font-weight:700;margin-top:8px}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight */
+#map-engineering{stroke-width:3.5;stroke:#b45309}
+svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a class="sb-cur" href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">hub</a> &#8250; <a href="../platform/index.html">platform</a> &#8250; <a href="index.html">engineering</a> &#8250; <b>matrix</b> &#160;&#183;&#160; CoS twin: <a href="../products/cos/matrix.html">products/cos/matrix</a> &#160;&#183;&#160; spine: <a href="observability.html">&#8592; Eng: Observability</a> &#160;&#183;&#160; <a href="../platform/maturation.html">Maturation &#8594;</a></div>
+<h1>Engineering &#8212; Matrix (CoS adaptation): mechanisms + behavior contracts <span class="lvl">ENGINEERING &#183; zoom 5</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="../platform/index.html" xlink:href="../platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="../platform/observability.html" xlink:href="../platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="../platform/authority-tenancy.html" xlink:href="../platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="../platform/ui.html" xlink:href="../platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="../platform/host.html" xlink:href="../platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="../platform/runtime.html" xlink:href="../platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="../platform/orchestration.html" xlink:href="../platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="../platform/system-of-process.html" xlink:href="../platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="../platform/system-of-record.html" xlink:href="../platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="../platform/connector.html" xlink:href="../platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="../platform/external-world.html" xlink:href="../platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="../platform/compute.html" xlink:href="../platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="index.html" xlink:href="index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="390" y="486" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Engineering: matrix</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>eng-matrix</code></td><td>ENGINEERING / <a href="index.html">engineering</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Engineering &#8212; Matrix (CoS adaptation): mechanisms + behavior contracts. Self-sufficient HOW for the pillar&#215;block matrix &#8212; the single grid mapping the five operator demands (B1&#8211;B5) onto the eight first-layer platform blocks, compiled anchor-per-claim from the engineering compile (no dossier assigned to this part). The matrix is not itself a runtime block: it is the cross-cut that shows which blocks each demand traverses. CoS twin (WHAT it promises, the consumer-facing matrix): <a href="../products/cos/matrix.html">products/cos/matrix</a> &#183; method spine the action rows ride on: <a href="../platform/how-methodology.html">platform/how-methodology</a> &#183; the daemon the traversal runs inside: <a href="../platform/runtime.html">platform/runtime</a> &#183; the eight column blocks each detail on their own platform pages (<a href="../platform/index.html">platform/</a>).</td><td colspan="3">every mechanism from the compile's eng-matrix section carried with its anchors; assigned dossier behavior contracts folded (testable contract + redo recipe); canon linked never copied (D54); compile gap items preserved verbatim</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 470" role="img" aria-label="Matrix engineering — the single grid of 5 operator demands B1-B5 (rows) by 8 first-layer platform blocks (columns) showing PRIMARY home cells, with the B1 intent traversal as the worked vertical slice and dashed neighbor platform/how/runtime pages">
+<defs><marker id="mxah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- Authority + Tenancy wrap (the matrix renders it as a gate on edges, not a pipeline box — mech 5) -->
+<rect x="120" y="24" width="640" height="300" rx="10" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-dasharray="8 5"/>
+<text x="130" y="40" font-size="8.5" font-weight="700" fill="#7c3aed">AUTHORITY + TENANCY &#8212; gate on edges, never a pipeline box (mech 5; scope diverges from &#167;1.0 wrap intentionally)</text>
+<!-- The single grid (rows = demands, cols = blocks) -->
+<rect x="140" y="50" width="600" height="250" rx="10" fill="#fff" stroke="#334155" stroke-width="2"/>
+<text x="154" y="68" font-size="10.5" font-weight="700">THE SINGLE GRID &#8212; rows = B1&#8211;B5 demands &#215; cols = 8 blocks in pipeline order (&#167;1.0)</text>
+<!-- column header strip -->
+<text x="270" y="86" text-anchor="middle" font-size="7" fill="#6b7280">UI &#183; Host &#183; Orch &#183; SoP &#183; SoR &#183; A+T &#183; Compute &#183; ExtWorld &#8594;</text>
+<!-- 5 demand rows, each a thin band; PRIMARY home block named -->
+<rect x="154" y="92" width="572" height="34" rx="5" fill="#eff6ff" stroke="#334155" stroke-width="1.3"/>
+<text x="162" y="106" font-size="8.5" font-weight="700">B1 &#183; Ask in my own words</text>
+<text x="162" y="119" font-size="7" fill="#6b7280">input axis &#8212; intent capture &#183; PRIMARY: UI + Orchestration</text>
+<rect x="154" y="130" width="572" height="34" rx="5" fill="#eff6ff" stroke="#334155" stroke-width="1.3"/>
+<text x="162" y="144" font-size="8.5" font-weight="700">B2 &#183; World's best thinking, plus my own</text>
+<text x="162" y="157" font-size="7" fill="#6b7280">context read path &#183; PRIMARY: System of Process</text>
+<rect x="154" y="168" width="572" height="34" rx="5" fill="#eff6ff" stroke="#334155" stroke-width="1.3"/>
+<text x="162" y="182" font-size="8.5" font-weight="700">B3 &#183; Think with me; do the rest</text>
+<text x="162" y="195" font-size="7" fill="#6b7280">action axis &#8212; decide+execute+present &#183; PRIMARY: System of Process</text>
+<rect x="154" y="206" width="572" height="34" rx="5" fill="#eff6ff" stroke="#334155" stroke-width="1.3"/>
+<text x="162" y="220" font-size="8.5" font-weight="700">B4 &#183; Talk to my people</text>
+<text x="162" y="233" font-size="7" fill="#6b7280">external communication &#183; PRIMARY: External World</text>
+<rect x="154" y="244" width="572" height="34" rx="5" fill="#eff6ff" stroke="#334155" stroke-width="1.3"/>
+<text x="162" y="258" font-size="8.5" font-weight="700">B5 &#183; Remember, keep it mine</text>
+<text x="162" y="271" font-size="7" fill="#6b7280">governance write path &#183; PRIMARY: System of Record + Authority + Tenancy</text>
+<text x="154" y="294" font-size="7" fill="#9ca3af">census (foot): 36 non-empty cells &#8212; 7 PRIMARY, 29 SUPPORTING, 4 empty</text>
+<!-- worked example: B1 vertical slice (the only traversal the compile wires) -->
+<rect x="140" y="338" width="600" height="118" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/>
+<text x="154" y="356" font-size="9" font-weight="700" fill="#475569">WORKED SLICE &#8212; B1 traversal (one pillar = one vertical slice through the horizontal blocks)</text>
+<rect x="154" y="364" width="86" height="34" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="197" y="378" text-anchor="middle" font-size="7.5" font-weight="700" fill="#374151">EXT WORLD</text>
+<text x="197" y="389" text-anchor="middle" font-size="6.5" fill="#6b7280">N07 Slack/email</text>
+<rect x="262" y="364" width="70" height="34" rx="5" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.6"/>
+<text x="297" y="378" text-anchor="middle" font-size="8" font-weight="700">UI</text>
+<text x="297" y="389" text-anchor="middle" font-size="6.5" fill="#374151">B1 strip (PRIMARY)</text>
+<rect x="354" y="364" width="70" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/>
+<text x="389" y="378" text-anchor="middle" font-size="8" font-weight="700">HOST</text>
+<text x="389" y="389" text-anchor="middle" font-size="6.5" fill="#6b7280">parse, schema pre-decl</text>
+<rect x="446" y="364" width="74" height="34" rx="5" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.6"/>
+<text x="483" y="378" text-anchor="middle" font-size="8" font-weight="700">ORCH</text>
+<text x="483" y="389" text-anchor="middle" font-size="6.5" fill="#374151">typed intent (PRIMARY)</text>
+<rect x="542" y="364" width="74" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/>
+<text x="579" y="378" text-anchor="middle" font-size="8" font-weight="700">SoP</text>
+<text x="579" y="389" text-anchor="middle" font-size="6.5" fill="#6b7280">task = process</text>
+<rect x="638" y="364" width="86" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/>
+<text x="681" y="378" text-anchor="middle" font-size="8" font-weight="700">SoR</text>
+<text x="681" y="389" text-anchor="middle" font-size="6.5" fill="#6b7280">B5.a active session</text>
+<path d="M240,381 L262,381" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#mxah)"/>
+<text x="251" y="376" text-anchor="middle" font-size="6" fill="#7c3aed">gate</text>
+<path d="M332,381 L354,381" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#mxah)"/>
+<path d="M424,381 L446,381" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#mxah)"/>
+<path d="M520,381 L542,381" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#mxah)"/>
+<path d="M616,381 L638,381" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#mxah)"/>
+<text x="389" y="424" text-anchor="middle" font-size="7" fill="#6b7280">edges verbatim from traversal SVG &#8212; full 9-edge contract in the table below</text>
+<text x="389" y="438" text-anchor="middle" font-size="7" fill="#6b7280">dashed = neighbor block (internals on its own platform page); blue = PRIMARY home cell for B1</text>
+<text x="389" y="450" text-anchor="middle" font-size="6.5" fill="#9ca3af">Daemon = Orch + SoP (dashed group in source); both Daemon and Host carry a runs-on edge to Compute (base layer, not drawn here)</text>
+</svg>
+<p class="figcap">Solid boxes = the grid's own rows/cells. Dashed boxes = neighbor blocks whose internals live on their own platform pages (<a href="../platform/ui.html">UI</a> &#183; <a href="../platform/host.html">Host</a> &#183; <a href="../platform/orchestration.html">Orchestration</a> &#183; <a href="../platform/system-of-process.html">SoP</a> &#183; <a href="../platform/system-of-record.html">SoR</a> &#183; <a href="../platform/external-world.html">External World</a>). Every box has &#8805;1 labeled edge. Only the B1 vertical slice is wired in the compile; B2&#8211;B5 traversals are not yet drawn (see gaps). Method spine the rows ride: <a href="../platform/how-methodology.html">how-methodology</a> &#183; runtime they execute in: <a href="../platform/runtime.html">runtime</a>.</p>
+
+<h2>Mechanisms &#8212; the matrix, compiled (8 rows; anchor-per-claim, zero invention)</h2>
+<p class="figcap">Carried verbatim from <code>engineering/_compile-2026-06-12-archived.html#eng-matrix</code>. Kind: second-order-draft = §1.0.1 working draft pending founder lock; master-spec = frozen §-spec text; adr-decision = ratified ADR (canon, D54-linked).</p>
+<table>
+<tr><th>Mechanism</th><th>Kind</th><th>What exists (compiled &#8212; zero invention)</th><th>Sources</th></tr>
+<tr><td><b>Grid construction &#8212; B1-B5 operator demands &#215; 8 first-layer platform blocks</b></td><td>second-order-draft</td><td>The matrix is "the single grid: rows = the five operator demands (B1&#8211;B5) &#183; columns = the eight first-layer platform blocks" (dated 2026-06-11). Columns run in pipeline order per sec.1.0: UI, Host, Orchestration, System of Process, System of Record, Authority + Tenancy, Compute, External World. Each row head carries the pillar name, its demand quote, and its axis: B1 "Input axis &#8212; intent capture", B2 "Context &#8212; read path", B3 "Action &#8212; decide + execute + present", B4 "External communication", B5 "Governance &#8212; write path / system-of-record". The grid shows "which blocks each demand traverses". The footer records the census &#8212; "36 non-empty cells: 7 PRIMARY, 29 SUPPORTING, 4 empty" &#8212; and the construction constraint: "content sourced solely from index.html extraction (no invention)".</td><td><code>holding/website/native/_matrix.html (title, sub, grid table, foot &#8212; lines 48-127, 268)</code><br><code>holding/website/native/master/index.html#so-matrix (lines 1140-1219)</code></td></tr>
+<tr><td><b>Cell tag semantics &#8212; PRIMARY / SUPPORTING / empty</b></td><td>second-order-draft</td><td>The legend fixes three cell states: PRIMARY &#8212; "the pillar's home block(s)"; SUPPORTING &#8212; "the pillar traverses or depends on this block"; empty &#8212; "no stated involvement in the doc". Every non-empty cell carries its tag plus a one-line mechanism statement (e.g. B1&#215;UI: "Freeform utterance enters here; parsed intent + schema preview echo back on the same surface within one turn (B1 interaction strip)"). The four empty cells are B2&#215;Orchestration, B4&#215;UI, B4&#215;Orchestration, and B5&#215;External World. The census is 7 PRIMARY, 29 SUPPORTING, 4 empty across 40 cells.</td><td><code>holding/website/native/_matrix.html (legend lines 129-133; grid cells lines 68-126; foot line 268)</code><br><code>holding/website/native/master/index.html#so-matrix (legend lines 1221-1225)</code></td></tr>
+<tr><td><b>Per-pillar primary-block assignments with grounding anchors</b></td><td>second-order-draft</td><td>Each pillar row resolves to declared primary block(s): B1 Ask in my own words &#8594; UI &#183; Orchestration; B2 World's best thinking, plus my own &#8594; System of Process; B3 Think with me; do the rest &#8594; System of Process; B4 Talk to my people &#8594; External World; B5 Remember, keep it mine &#8594; System of Record &#183; Authority + Tenancy. The "Per-pillar sources" table records where each row is grounded: B1 cites pillar-b1, section-1-0-runtime, b5a-active, need-n09, need-n07; B2 cites pillar-b2, section-1-0-runtime, b2a-my-own, b2b-worlds-best; B3 cites pillar-b3, b3b-do, section-1-0-runtime, section-1-2-boundary; B4 cites pillar-b4 and section-1-0-runtime; B5 cites pillar-b5 and section-1-0-runtime.</td><td><code>holding/website/native/_matrix.html (per-pillar sources table, lines 223-256)</code><br><code>holding/website/native/master/index.html#so-matrix (lines 1315-1348)</code></td></tr>
+<tr><td><b>B1 traversal &#8212; one pillar as one vertical slice through the horizontal blocks</b></td><td>second-order-draft</td><td>"One pillar = one vertical slice through the horizontal blocks." The wired B1 traversal: intent can arrive from External World "via Slack / email / web (N07)", crossing the Authority + Tenancy gate at the boundary edge; the UI receives the "freeform utterance" and the Host echoes "parsed intent + schema preview" back to the UI; intent parse flows Host&#8594;Orchestration as "model work on Host (schema pre-declared before the LLM call)"; Orchestration hands "typed intent + sub-intents" / "task = process" to System of Process; SoP "writes intake artifacts to B5.a (active session)" and "reads B5 for shorthand interpretation" from System of Record. A dashed gray container groups Orchestration + System of Process as the DAEMON, and "both the Daemon container and the Host carry their own runs-on edge to Compute". B1's PRIMARY blocks draw strong blue (UI labeled "B1 interaction strip", Orchestration labeled "translate &#183; find the process"); External World and Compute draw dashed as neighbor and substrate, with the Compute strip noting "no B1-specific compute fact stated in the doc".</td><td><code>holding/website/native/_matrix.html (traversal SVG + svgnote, lines 135-221)</code><br><code>holding/website/native/master/index.html#so-matrix (lines 1227-1313)</code></td></tr>
+<tr><td><b>Authority + Tenancy wrap rendering rule &#8212; gate on edges, intentional scope divergence from &#167;1.0</b></td><td>second-order-draft</td><td>"The dashed purple wrap is the Authority + Tenancy boundary &#8212; rendered as a gate on edges, never as a pipeline box." The wrap header in the traversal reads "AUTHORITY + TENANCY &#183; gates intake like every access &#183; N09 trusted-names shortcut skips the gate". The svgnote declares the scope divergence explicitly: "Wrap scope here intentionally differs from the &#167;1.0 drawing: &#167;1.0 encloses the entire pipeline including External World and Compute inside the wrap; this traversal view draws External World and Compute outside it and marks the gate at the boundary-crossing edge instead."</td><td><code>holding/website/native/_matrix.html (svgnote line 221; wrap rect + header lines 141-150)</code><br><code>holding/website/native/master/index.html#so-matrix (lines 1233-1242, 1313)</code><br><code>holding/website/native/master/index.html#section-1-0-runtime (wrap rect lines 826-828)</code></td></tr>
+<tr><td><b>&#167;1.0 locked first-layer schema &#8212; the matrix's column source and edge vocabulary</b></td><td>master-spec</td><td>&#167;1.0 System architecture is the runtime at a glance: "The operator asks through the UI; the request runs on the Host (Claude CLI &#8212; agent runtime + model in one); inside the always-on Daemon, Orchestration translates the request and finds the relevant process to run; the System of Process runs it (this is the runtime), gathering context from the System of Record + the External World and writing output back to the System of Record. Authority + Tenancy gates every access; Host + daemon run on the Compute (host machine). Second-level detail (context-build &#183; verify &#183; connectors) lives inside System of Process &#8212; see &#167;4." The matrix's crumb restates this first layer ("Human &#8594; UI &#8594; Host &#8594; Daemon{Orchestration &#8594; System of Process} &#8594; SoR / External World") and its foot fixes "columns in pipeline order per sec.1.0". The matrix's B2/B3/B4 PRIMARY-cell statements lean on &#167;1.0 placements: "Context-build lives inside SoP (&#167;1.0)", "Connectors live inside SoP (&#167;1.0)", and the "SoP&#8596;External World arrow carries 'context + effects'".</td><td><code>holding/website/native/master/index.html#section-1-0-runtime (lines 819-865)</code><br><code>holding/website/native/_matrix.html (crumb line 50; foot line 268; cells lines 85, 101, 109)</code></td></tr>
+<tr><td><b>&#167;4.1 Step primitive &#8212; the doc's only LLM-call site (cross-referenced by matrix gap #2)</b></td><td>master-spec</td><td>&#167;4.1 defines Step as the "Atomic unit of a Workflow &#8212; pre-declared expected output + LLM call OR deterministic action + post-call check (per P2 pre/post-LLM-validation). Step is where work happens", doc-homed at primitives/step.md with ADR-012 PNC typed parser. The matrix's own gap quotes this definition: "Sec.4.1 puts LLM calls inside Workflow Steps (Step = 'LLM call OR deterministic action... where work happens' &#8212; SoP runtime)... yet B1's parse contract ('pre-declared output schema shown before LLM call') sits in Orchestration's translate step". The System of Process second-order draft states the same tension: "The Step primitive (sec.4.1) is the doc's only LLM-call site, which implies System of Process is the Host caller; an explicit only-SoP-calls-Host rule is not yet stated anywhere in the doc."</td><td><code>holding/website/native/master/index.html#section-4-1-primitives (Step row)</code><br><code>holding/website/native/_matrix.html (gap bullet, line 261)</code><br><code>holding/website/native/master/index.html#so-system-of-process (line 1758 Host contract row; line 1782 open question)</code></td></tr>
+<tr><td><b>ADR-005 host-LLM host selection &#8212; the per-workflow host decision named by matrix gap #2</b></td><td>adr-decision</td><td>ADR-005 (Accepted 2026-05-07) decides: "Native engine MUST require WorkflowStep.host &#8712; {claude, codex} whenever action='invoke_host_llm'." host='claude' invokes claude --bare &#8212; recursion-safe, default for steps that must execute in the founder's session via the effector split (ADR-004); host='codex' invokes codex exec &#8212; read-only sandbox, default for analysis, review, planning steps that produce JSON/text output without state change. Per-step timeout_ms flows into host activity args; host-class default is 60s for claude --bare, &#8805;300s for codex. The tradeoff is locked to these two hosts in v1.x; the LLMSubstrate adapter for OpenAI/Gemini swap is deferred to the v1.x backlog. The matrix's gap #2 names this ADR &#8212; "ADR-005 selects the host-LLM per workflow" &#8212; when asking "which block issues B1's intent-parse LLM call?"</td><td><code>sutra/os/decisions/ADR-005-host-llm-host-selection.md#decision</code><br><code>sutra/os/decisions/ADR-005-host-llm-host-selection.md#context</code><br><code>holding/website/native/_matrix.html (gap bullet, line 261)</code></td></tr>
+<tr><td><b>Draft status + promotion-in-place mechanics (&#167;1.0.1 governing callout)</b></td><td>master-spec</td><td>The matrix carries its own banner: "WORKING DRAFT &#183; 2026-06-11 &#183; Not locked &#8212; founder review pending." Its parent &#167;1.0.1 callout governs all second-order drafts: "WORKING DRAFTS &#8212; founder review pending. Each &#167;1.0 block detailed one level down: internal parts, fully-wired contracts to neighbors, doc-home anchors, open gaps (questions for the founder). Content grounded ONLY in cited anchors of this document; adversarially verified 2026-06-11. On lock, each draft is promoted in place. Standalone sources: _block-*.html &#183; _matrix.html &#183; _consumer-product.html." The matrix is listed in the &#167;1.0.1 jump row as "Pillar &#215; Block matrix" at anchor #so-matrix.</td><td><code>holding/website/native/master/index.html#section-1-0-1-second-order (callout + jump row, lines 869-873)</code><br><code>holding/website/native/_matrix.html (banner line 52)</code><br><code>holding/website/native/master/index.html#so-matrix (callout line 1144)</code></td></tr>
+</table>
+
+<h2>The grid, expanded &#8212; verbatim supplementary tables (carried from the compile)</h2>
+
+<h3>Pillar &#215; Block assignment grid (tags verbatim from cell markers; &#8212; = empty cell)</h3>
+<table>
+<tr><th>Pillar / demand (axis)</th><th>UI</th><th>Host</th><th>Orchestration</th><th>System of Process</th><th>System of Record</th><th>Authority + Tenancy</th><th>Compute</th><th>External World</th></tr>
+<tr><td>B1 &#183; Ask in my own words (Input axis &#8212; intent capture)</td><td class="tagP">PRIMARY</td><td class="tagS">SUPPORTING</td><td class="tagP">PRIMARY</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td></tr>
+<tr><td>B2 &#183; World's best thinking, plus my own (Context &#8212; read path)</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagE">&#8212;</td><td class="tagP">PRIMARY</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td></tr>
+<tr><td>B3 &#183; Think with me; do the rest (Action &#8212; decide + execute + present)</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagP">PRIMARY</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td></tr>
+<tr><td>B4 &#183; Talk to my people (External communication)</td><td class="tagE">&#8212;</td><td class="tagS">SUPPORTING</td><td class="tagE">&#8212;</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagP">PRIMARY</td></tr>
+<tr><td>B5 &#183; Remember, keep it mine (Governance &#8212; write path / system-of-record)</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagS">SUPPORTING</td><td class="tagP">PRIMARY</td><td class="tagP">PRIMARY</td><td class="tagS">SUPPORTING</td><td class="tagE">&#8212;</td></tr>
+</table>
+<p style='font-size:13px'>Census (verbatim from foot): "36 non-empty cells: 7 PRIMARY, 29 SUPPORTING, 4 empty &#183; grid rows B1&#8211;B5, columns in pipeline order per sec.1.0."</p>
+
+<h3>PRIMARY cell statements (verbatim)</h3>
+<table>
+<tr><th>Cell</th><th>Statement</th></tr>
+<tr><td>B1 &#215; UI</td><td>Freeform utterance enters here; parsed intent + schema preview echo back on the same surface within one turn (B1 interaction strip).</td></tr>
+<tr><td>B1 &#215; Orchestration</td><td>Translates the freeform request into typed intent + sub-intents and finds the relevant process &#8212; the intent_type handoff.</td></tr>
+<tr><td>B2 &#215; System of Process</td><td>Context-build lives inside SoP (&#167;1.0): gathers + ranks the three concentric sources (my own / world's best / peer Sutras v2+) within declared budget.</td></tr>
+<tr><td>B3 &#215; System of Process</td><td>THE runtime for the action axis: THINK / DO / PRESENT end-to-end, self-checks before presenting (N03), idea-to-standing-pattern.</td></tr>
+<tr><td>B4 &#215; External World</td><td>Messages land with the operator's people + the world via Slack / email / web; replies re-enter via B3; peer-Native A2A v2+ (v1 log-only stub).</td></tr>
+<tr><td>B5 &#215; System of Record</td><td>B5 IS the system-of-record: every pillar B1&#8211;B4 writes here; DecisionProvenance, &#8804;30s replay, multi-task state, learned patterns (B5.a&#8211;B5.d).</td></tr>
+<tr><td>B5 &#215; Authority + Tenancy</td><td>Governance axis: whose data lives where + who reads across tenant boundaries; cross-tenant queries default-deny; N06 "my data stays mine".</td></tr>
+</table>
+
+<h3>Per-pillar grounding (verbatim from "Per-pillar sources" table)</h3>
+<table>
+<tr><th>Pillar</th><th>Demand</th><th>Primary block(s)</th><th>Sources cited by this row's cells</th></tr>
+<tr><td>B1 &#183; Ask in my own words (Input axis &#8212; intent capture)</td><td>"Let me ask in my own words"</td><td>UI &#183; Orchestration</td><td>pillar-b1 &#183; section-1-0-runtime &#183; b5a-active &#183; need-n09 &#183; need-n07</td></tr>
+<tr><td>B2 &#183; World's best thinking, plus my own (Context &#8212; read path)</td><td>"Bring me the world's best thinking, plus my own"</td><td>System of Process</td><td>pillar-b2 &#183; section-1-0-runtime &#183; b2a-my-own &#183; b2b-worlds-best</td></tr>
+<tr><td>B3 &#183; Think with me; do the rest (Action &#8212; decide + execute + present)</td><td>"Think with me where I must; do the rest yourself, end-to-end"</td><td>System of Process</td><td>pillar-b3 &#183; b3b-do &#183; section-1-0-runtime &#183; section-1-2-boundary</td></tr>
+<tr><td>B4 &#183; Talk to my people (External communication)</td><td>"Talk to my people and the world for me"</td><td>External World</td><td>pillar-b4 &#183; section-1-0-runtime</td></tr>
+<tr><td>B5 &#183; Remember, keep it mine (Governance &#8212; write path / system-of-record)</td><td>"Remember, explain, and keep it mine"</td><td>System of Record &#183; Authority + Tenancy</td><td>pillar-b5 &#183; section-1-0-runtime</td></tr>
+</table>
+
+<h3>B1 traversal edge contract (labels verbatim from traversal SVG)</h3>
+<table>
+<tr><th>#</th><th>From &#8594; To</th><th>Edge label</th></tr>
+<tr><td>1</td><td>External World &#8594; UI</td><td>gate (Authority + Tenancy boundary crossing) &#183; "intent via Slack / email / web (N07)"</td></tr>
+<tr><td>2</td><td>UI &#8594; Host</td><td>"freeform utterance"</td></tr>
+<tr><td>3</td><td>Host &#8594; UI</td><td>"parsed intent + schema preview"</td></tr>
+<tr><td>4</td><td>Host &#8594; Orchestration</td><td>"intent parse &#8212; model work on Host (schema pre-declared before the LLM call)"</td></tr>
+<tr><td>5</td><td>Orchestration &#8594; System of Process</td><td>"typed intent + sub-intents" &#183; "task = process"</td></tr>
+<tr><td>6</td><td>System of Process &#8594; System of Record</td><td>"writes intake artifacts to B5.a (active session)"</td></tr>
+<tr><td>7</td><td>System of Record &#8594; System of Process</td><td>"reads B5 for shorthand interpretation"</td></tr>
+<tr><td>8</td><td>Daemon container (Orchestration + SoP) &#8594; Compute</td><td>"Host + Daemon run on Compute"</td></tr>
+<tr><td>9</td><td>Host &#8594; Compute</td><td>"Host runs on Compute"</td></tr>
+</table>
+
+<h3>Legend (verbatim)</h3>
+<table>
+<tr><th>Tag</th><th>Meaning</th></tr>
+<tr><td>PRIMARY</td><td>the pillar's home block(s)</td></tr>
+<tr><td>SUPPORTING</td><td>the pillar traverses or depends on this block</td></tr>
+<tr><td>empty</td><td>no stated involvement in the doc</td></tr>
+</table>
+
+<h2>Behavior contracts (dossiers folded)</h2>
+<p class="note">No production dossier in <code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md</code> is assigned to the matrix part &#8212; the matrix is a cross-cut view over the eight blocks, not a runtime block with its own shipped mechanism. 0 behavior contracts folded here. The per-block behavior contracts that the cells reference live on the engineering pages of the home blocks: <a href="ui.html">UI</a> (B1 strip), <a href="orchestration.html">Orchestration</a> (intent translate), <a href="system-of-process.html">System of Process</a> (B2/B3 runtime), <a href="external-world.html">External World</a> (B4 comms), <a href="system-of-record.html">System of Record</a> (B5 write path).</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap">All 5 pillars' Ring 1 Surface rows (Problem space / Need-outcome / Solution direction) are 'Awaiting founder fill' (T-G1-02..T-G1-16) &#8212; could founder voice shift any PRIMARY assignment once filled?</li>
+<li class="gap">Sec.4.1 puts LLM calls inside Workflow Steps (Step = 'LLM call OR deterministic action... where work happens' &#8212; SoP runtime) and ADR-005 selects the host-LLM per workflow, yet B1's parse contract ('pre-declared output schema shown before LLM call') sits in Orchestration's translate step &#8212; which block issues B1's intent-parse LLM call?</li>
+<li class="gap">Section 1.0 gives Compute no pillar-differentiated role &#8212; does B5 'keep it mine' imply local-compute data residency on the host machine, or is Compute a uniform substrate for all pillars?</li>
+<li class="gap">B3b DO external effects: the section-1-0-runtime diagram labels the SoP-to-External-World edge 'context + effects', but B3's Connectedness routes external touches only via B4 &#8212; do non-comms tool effects bypass B4 or traverse it?</li>
+<li class="gap">Inbound B4 responses 're-enter via B3 (next action)' &#8212; does re-entry traverse Orchestration as a fresh translate, or go straight into the running System of Process? Doc is silent.</li>
+<li class="gap">B5 says 'operator can write standing prefs directly' &#8212; the write path (UI direct to System of Record vs routed through System of Process) is unspecified in the cited ranges.</li>
+</ul>
+
+<div class="note">Existing diagrams for this subsystem (pointers &#8212; none redrawn here; the own-diagram above is a fresh grid summary, not a copy of these):<ul><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/_matrix.html &#8212; B1 traversal SVG (viewBox 0 0 780 545, lines 136-220) + svgnote (line 221)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#so-matrix &#8212; same B1 traversal SVG embedded in frozen master (lines 1228-1312, marker id mx-mah) + svgnote (line 1313)</code></li><li><code>/Users/asawa/Claude/asawa-holding/holding/website/native/master/index.html#section-1-0-runtime &#8212; &#167;1.0 system architecture SVG (viewBox 0 0 720 620, lines 821-865), the locked first-layer drawing the matrix cites for column order and wrap-scope comparison</code></li></ul></div>
+
+<h2>Children / downstream</h2>
+<ul><li>None yet &#8212; the matrix is a cross-cut, not a block; its downstream detail is the eight per-block engineering pages (<a href="ui.html">UI</a> &#183; <a href="host.html">Host</a> &#183; <a href="orchestration.html">Orchestration</a> &#183; <a href="system-of-process.html">System of Process</a> &#183; <a href="system-of-record.html">System of Record</a> &#183; <a href="connector.html">Connector</a> &#183; <a href="external-world.html">External World</a>) plus the CoS-facing consumer matrix <a href="../products/cos/matrix.html">products/cos/matrix</a>. B2&#8211;B5 traversal slices expand once PLATFORM parents are founder-LOCKED (BUILD-PROTOCOL cascade).</li></ul>
+
+<h2>Sources</h2>
+<ul>
+<li><code>engineering/_compile-2026-06-12-archived.html#eng-matrix</code> &#8212; this page's source-of-truth section (8 mechanism rows + 6 supplementary verbatim tables + 6 gaps), anchor-per-claim</li>
+<li><code>holding/website/native/_matrix.html</code> &#8212; standalone pillar&#215;block matrix the compile section extracts from (grid, legend, traversal SVG, per-pillar sources)</li>
+<li><code>holding/website/native/master/index.html#so-matrix</code> + <code>#section-1-0-runtime</code> + <code>#section-1-0-1-second-order</code> &#8212; frozen master, the matrix's column source and governing draft callout</li>
+<li><code>holding/plans/sutra-native-parity-v1.0/SHIPPED-SOLUTIONS.md</code> &#8212; 46 production dossiers (none assigned to matrix)</li>
+<li>Canon (D54: linked, never copied): <code>sutra/os/decisions/ADR-005-host-llm-host-selection.md</code> &#183; <code>sutra/os/decisions/ADR-004-registry-and-effector-split.md</code> &#183; <code>sutra/os/decisions/ADR-012-pnc-typed-parser-over-prose.md</code> &#183; <code>sutra/os/native/</code></li>
+</ul>
+
+</div></div></body></html>

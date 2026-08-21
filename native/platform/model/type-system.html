@@ -1,0 +1,198 @@
+<!doctype html>
+<!-- PAGE: platform-model-type-system (v1, PROPOSED). A17 type system + A18 evolution protocol, census-grounded (wf_375a5112-f5c), dual-AI reviewed. Founder sitting pending. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; The Type System</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+.pill.RULED{background:#ecfdf5;color:#047857}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../the-model.html">The Model</a> &#8250; The Type System</div>
+<h1>The Type System <span class="pill RULED">RULED &#183; A17+A18</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-type-system</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill RULED">RULED</span> (A17+A18, sitting concluded 2026-08-17)</td><td>v1</td><td>claude</td></tr></table>
+
+<p class="lead">The founder rule: <strong>for any content there has to be structure.</strong> Every piece of content in Native — a rule, a need, a verify check, a workflow, a charter — has a template; every template has a shipped default; every nesting boundary has a contract. Four layers, applied to every primitive.</p>
+
+<div class="key"><strong>Epistemic status: RULED at the 2026-08-17 sitting (sheet &#167;11, Type system + Evolution rows).</strong> A17 ruled with refinements: the 4 layer names stand; the kernel is a <strong>closed CORE</strong> plus namespaced extension slots; <strong>Workflow</strong> takes the first base/child split (superseding the Charter-first recommendation, <a href="#s7">s7</a>). A18 ruled: the 10-point protocol; the marketplace owns the repository. Census-grounded (59 sites read, 11 already carry the full pattern), dual-AI reviewed (codex + deepseek). Canon ADRs at S7 (one ADR per decision, D67).</div>
+
+<h2 id="s1">s1 &#183; The four layers</h2>
+<svg viewBox="0 0 860 300" role="img" aria-label="Type system layers">
+<rect x="20" y="20" width="820" height="56" rx="8" fill="#eef2ff" stroke="#6366f1"/>
+<text x="40" y="44" font-size="15" font-weight="700" fill="#3730a3">STANDARD TEMPLATE</text>
+<text x="40" y="64" font-size="12" fill="#4b5563">ships with Native (L0) &#8212; the OS default for this content type</text>
+<text x="600" y="52" font-size="12" fill="#6b7280">e.g. the base KYC-verify workflow</text>
+<rect x="20" y="90" width="820" height="56" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="40" y="114" font-size="15" font-weight="700" fill="#166534">LOCAL TEMPLATE</text>
+<text x="40" y="134" font-size="12" fill="#4b5563">the org&#8217;s tweak (L2) &#8212; same shape, tuned defaults; child-custody wins</text>
+<text x="600" y="122" font-size="12" fill="#6b7280">e.g. lender adds Aadhaar-first order</text>
+<rect x="20" y="160" width="820" height="56" rx="8" fill="#fffbeb" stroke="#d97706"/>
+<text x="40" y="184" font-size="15" font-weight="700" fill="#92400e">INTERFACE</text>
+<text x="40" y="204" font-size="12" fill="#4b5563">the compatibility contract at every nesting boundary &#8212; the shape of trust, not the behavior</text>
+<text x="600" y="192" font-size="12" fill="#6b7280">pins verify contract + authority bounds</text>
+<rect x="20" y="230" width="820" height="56" rx="8" fill="#fdf2f8" stroke="#db2777"/>
+<text x="40" y="254" font-size="15" font-weight="700" fill="#9d174d">INSTANCE</text>
+<text x="40" y="274" font-size="12" fill="#4b5563">live work &#8212; Template + its record slice (already ruled)</text>
+<text x="600" y="262" font-size="12" fill="#6b7280">this loan, this applicant, this run</text>
+</svg>
+<p class="figcap">The product sentence: Native ships Standard Templates; each org tunes Local Templates; Interfaces keep nested systems compatible; live work runs as Instances.</p>
+
+<h2 id="s2">s2 &#183; What each layer is</h2>
+<table>
+<tr><th>Layer</th><th>Who writes it</th><th>Where it lives</th><th>Changes how often</th></tr>
+<tr><td>Standard Template</td><td>The core OS (fleet repository)</td><td>L0 &#8212; plugin-shipped</td><td>Versioned releases (semver)</td></tr>
+<tr><td>Local Template</td><td>The org (or its <a href="builders.html">builder engine</a>)</td><td>L2 &#8212; org-local custody</td><td>Freely, within the Interface</td></tr>
+<tr><td>Interface</td><td>The core OS, conservatively</td><td>With the Standard Template</td><td>Rarely; breaking = migration protocol</td></tr>
+<tr><td>Instance</td><td>The runtime</td><td>The record (append-only)</td><td>Every run</td></tr>
+</table>
+
+<h2 id="s3">s3 &#183; One kernel, many families</h2>
+<p>Both AI reviewers converged <strong>against</strong> one universal schema for all primitives ("key-value soup that cannot enforce real invariants"). Instead:</p>
+<table>
+<tr><th>Part</th><th>Content</th></tr>
+<tr><td><strong>Kernel envelope</strong> (every primitive carries it)</td><td>RULED shape (sheet &#167;11, Type system): a <strong>closed CORE</strong> plus namespaced extension slots — nothing loose outside a slot. The 8 fields proposed as the census input (identity &#183; semver &#183; ownership &#183; lifecycle &#183; dependencies &#183; contract refs &#183; record-slice refs &#183; provenance) fed the ruling; the exact closed CORE list is fixed on the sheet (A17-2), not here</td></tr>
+<tr><td><strong>Type families</strong> (one per primitive)</td><td>Work-Atom family (goal + ONE verify) &#183; Workflow family &#183; Charter family &#183; needs[] family (<a href="../../products/cos/needs.html">the six need types</a> &#8212; first NEW family to build) &#183; Event family &#183; Engine + System (no primitive spec yet &#8212; T6 finding G12)</td></tr>
+</table>
+
+<h2 id="s4">s4 &#183; The Interface contract</h2>
+<table>
+<tr><th>MUST pin</th><th>Must NOT pin</th></tr>
+<tr><td>stable id + semver &#183; primitive kind &#183; required inputs/outputs &#183; event names + payload shape &#183; lifecycle states &#183; verify contract (what is proven, by whom, evidence type) &#183; authority bounds &#183; declared needs[] &#183; failure/retry behavior &#183; record-slice obligations &#183; conformance tests</td><td>implementation &#183; prompt/UI wording &#183; local default values &#183; internal steps &#183; stricter-but-compatible child constraints &#183; optimization strategy</td></tr>
+</table>
+<div class="key">Codex: "The contract defines the <strong>shape of trust</strong>, not the whole behavior." DeepSeek&#8217;s runtime warning: grown Engines deviate from declared Interfaces BY DESIGN &#8212; so conformance is a <strong>continuous runtime verify</strong> on the engine&#8217;s record slice, not a deploy-time stamp.</div>
+
+<h2 id="s5">s5 &#183; Where the pattern already lives (census, 59 sites)</h2>
+<table>
+<tr><th>Reference implementation</th><th>Where</th><th>What it proves</th></tr>
+<tr><td>The primitives bucket</td><td><code>sutra/os/native/primitives/</code> (11 files, uniform L9-primitive-spec + TS signatures)</td><td>Templates-for-content already canonical</td></tr>
+<tr><td>Custody cascade</td><td>ADR-026: platform workflow type (custody_owner=null) vs child type; child wins</td><td>The Standard/Local split &#8212; <strong>SPEC-LIVE only</strong> (T6 finding G9: zero minted workflow types on disk; first Standard + child mint queued)</td></tr>
+<tr><td>Stable-ref pattern</td><td><code>domain.md</code>: ref=identity vs id=position; refs survive restructure</td><td>An interface layer that keeps nested references valid</td></tr>
+<tr><td>Return contract</td><td>F-13: every reusable Workflow declares <code>return_contract: JSONSchema</code></td><td>Consumer-facing interface precedent</td></tr>
+<tr><td>The plugin itself</td><td>sutra-defaults.json + skills + hooks; D38 L0/L1/L2</td><td>The whole evolution channel, running in prototype</td></tr>
+</table>
+<div class="note"><strong>Census gaps (the build list):</strong> 10 of 11 primitives have no Standard/Local split &#183; two disjoint charter worlds — canonical owner: <a href="properties.html#s6">Properties s6</a>, which this page depends on for the prose-vs-stub charter census &#183; schemas live in markdown, not a runtime-validated registry &#183; needs[] not yet a type family. Only 11 of 59 sites carry the full pattern today.</div>
+
+<h2 id="s6">s6 &#183; The evolution protocol (A18)</h2>
+<svg viewBox="0 0 860 210" role="img" aria-label="Evolution loop">
+<rect x="20" y="80" width="180" height="50" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="42" y="102" font-size="13" font-weight="700" fill="#166534">Org improves a</text>
+<text x="42" y="119" font-size="13" font-weight="700" fill="#166534">Local Template (L2)</text>
+<rect x="250" y="80" width="150" height="50" rx="8" fill="#fffbeb" stroke="#d97706"/>
+<text x="270" y="102" font-size="13" font-weight="700" fill="#92400e">Staged (L1)</text>
+<text x="270" y="119" font-size="12" fill="#4b5563">owner + deadline</text>
+<rect x="450" y="80" width="170" height="50" rx="8" fill="#eef2ff" stroke="#6366f1"/>
+<text x="470" y="102" font-size="13" font-weight="700" fill="#3730a3">Core repository</text>
+<text x="470" y="119" font-size="12" fill="#4b5563">new Standard (L0)</text>
+<rect x="670" y="80" width="170" height="50" rx="8" fill="#fdf2f8" stroke="#db2777"/>
+<text x="690" y="102" font-size="13" font-weight="700" fill="#9d174d">Fleet update</text>
+<text x="690" y="119" font-size="12" fill="#4b5563">w/ migration status</text>
+<line x1="200" y1="105" x2="250" y2="105" stroke="#6b7280" stroke-width="2"/>
+<line x1="400" y1="105" x2="450" y2="105" stroke="#6b7280" stroke-width="2"/>
+<line x1="620" y1="105" x2="670" y2="105" stroke="#6b7280" stroke-width="2"/>
+<text x="205" y="95" font-size="11" fill="#6b7280">&#8594;</text>
+<text x="405" y="95" font-size="11" fill="#6b7280">&#8594;</text>
+<text x="625" y="95" font-size="11" fill="#6b7280">&#8594;</text>
+<text x="250" y="40" font-size="12" fill="#b91c1c" font-weight="700">GATES: conformance tests &#183; child-diff classification &#183; migration plan BEFORE promotion &#183; canary orgs</text>
+<text x="250" y="170" font-size="12" fill="#4b5563">Every affected Local Template classified: clean-inherit / compatible-override / migration-needed / forked</text>
+</svg>
+<p>The D38 promotion ladder is the channel; A18 adds what makes it safe at 100 orgs: semver + change classes, conformance tests shipped with every version, automatic child-diffing, migration plans generated before promotion (hard rule: <strong>no base change lands without a child migration story</strong>), deprecation windows, canary rollout, and a migration assistant &#8212; without which divergent orgs become permanent forks.</p>
+
+<h2 id="s7">s7 &#183; Sitting decisions — ruled 2026-08-17</h2>
+<table>
+<tr><th>#</th><th>Decision</th><th>Recommendation (pre-sitting)</th><th>Ruling (sheet &#167;11)</th></tr>
+<tr><td>A17-1</td><td>The four layer names</td><td>Standard Template / Local Template / Interface / Instance</td><td><span class="pill RULED">RULED</span> — the 4 layer names stand</td></tr>
+<tr><td>A17-2</td><td>Kernel envelope field list</td><td>8 fields as listed in s3</td><td><span class="pill RULED">RULED</span> — kernel CORE <strong>closed</strong> + namespaced extension slots; supersedes the open 8-field list</td></tr>
+<tr><td>A17-3</td><td>First primitive to get the Standard/Local split</td><td>Charter &#8212; unblocks needs[] and closes the prose-charter gap</td><td><span class="pill RULED">RULED</span> — <strong>Workflow first</strong>; the Charter recommendation is superseded, not silently replaced</td></tr>
+<tr><td>A17-4</td><td>Runtime schema registry</td><td>Yes, staged from markdown</td><td><span class="pill RULED">RULED</span> with A17 as a whole; the &#167;11 index row does not restate this sub-outcome — the sheet A17 record is the authority</td></tr>
+<tr><td>A18-1..4</td><td>10-point protocol adoption &#183; repository owner &#183; migration-assistant timing &#183; runtime conformance owner</td><td>Adopt as D38 extension &#183; marketplace &#183; before 10th org &#183; audit glue engine</td><td><span class="pill RULED">RULED</span> — 10-point protocol; marketplace owns; identity detects / audit records conformance; HARD migration gate + no-op class + emergency fast-track (sheet &#167;11 Evolution)</td></tr>
+</table>
+<div class="note">T6 dual review DONE (2026-08-08): 20 findings; register of record = sheet <code>A17/A18-VERIFIED-GAPS</code> (G1-G12: 6 sitting decisions, 5 build items with first steps, mechanical fixes applied). G1-G6 RULED at the sitting (sheet &#167;11 T6 gaps): Interface-pinned waiver budgets &#183; operator-only charter writes &#183; single needs[] home &#183; Interface-over-custody &#183; activation-triggered asks. The remaining G7-G12 stay build items on the sheet register.</div>
+
+<h2 id="s-output">Output looks like</h2>
+<p>The persisted artifact this page's subject produces is a <strong>typed template record</strong> — a Standard Template's kernel envelope plus its family block, held in the schema registry (A17-4) and versioned per the evolution protocol (<a href="#s6">s6</a>).</p>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The kernel is ruled closed-CORE + namespaced extension slots; the exact closed field list and the registry serialization are fixed on the sheet (A17-2 / A17-4), not here.
+<pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;font-size:12px;line-height:1.5;overflow-x:auto">{
+  "core": {
+    "id": "wft-kyc-verify-base",
+    "semver": "1.0.0",
+    "kind": "workflow",
+    "ownership": "core-os (L0)",
+    "lifecycle": "active",
+    "interface_ref": "if-kyc-verify@1",
+    "provenance": "shipped with Native"
+  },
+  "ext": { "lendco.in": &lt;decision_pending&gt; },
+  "family": { "steps": ["pan-check", "aadhaar-check", "liveness"], "return_contract": "JSONSchema ref" }
+}</pre>
+The first base/child split mints on <strong>Workflow</strong> (ruled): this base entry plus a lender's Local Template child (e.g. Aadhaar-first order) classified clean-inherit / compatible-override / migration-needed / forked at every base change (<a href="#s6">s6</a>).</div>
+
+<h2>Sources</h2>
+<ul>
+<li>Rulings of record: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> A17 + A18 (+ A16 ratified)</li>
+<li>Census: session run wf_375a5112-f5c (5 surfaces, 59 sites); dual-AI: gate-logs 2026-08-08</li>
+<li>Canon exemplars: <code>sutra/os/native/primitives/</code> &#183; ADR-026 &#183; <code>domain.md</code> stable-ref &#183; F-13</li>
+<li>Hub: <a href="../the-model.html">The Model</a> &#183; feeders: <a href="industry-imports.html">Industry Imports</a> (BPMN interchange + conformance-suite cards)</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) · refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) · review: audit workflow wf_5c81f205 · earlier content: original page authors.</p>
+
+</div></div></body></html>

@@ -1,0 +1,526 @@
+<!doctype html>
+<!-- Native IA v1 page — authored from _template.html (migration P2, 2026-06-12).
+     Source slice: master/index.html#so-system-of-record (frozen) cross-checked against _block-system-of-record.html.
+     Anatomy order: map -> work-order -> own diagram -> tables -> prose/gaps. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Block &#8212; System of Record (memory &#183; provenance &#183; audit)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-sor{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native hub</a> &#8250; <a href="index.html">platform</a> &#8250; system-of-record &#160;&#183;&#160; spine: <a href="how-methodology.html">&#8592; Method §3</a> &#160;&#183;&#160; <a href="connector.html">Connector &#8594;</a></div>
+<h1>Block &#8212; System of Record (memory &#183; provenance &#183; audit) <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="439" y="316" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; System of Record</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-system-of-record</code></td><td>PLATFORM / <a href="index.html">platform</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">The &#167;1.0 <b>System of Record</b> block, second order &#8212; fully wired: every part connected to the parts it actually touches. Writes enter from System of Process as the per-turn 5-artifact trail; the four stores B5.a&#8211;d are parallel time horizons (not a graduation pipeline); B2 reads at intake and B1 reads for shorthand on future turns; every read + write gated by Authority + Tenancy, cross-tenant default-deny (sec.1.0).</td><td colspan="3">draft carried over; Orchestration&#8596;SoR write-routing gap preserved; Ring 1 voice cells flagged</td></tr>
+</table>
+
+<div class="note"><strong>WORKING DRAFT 2026-06-11</strong> &#8212; not locked; founder review pending. Standalone source: <a href="../_block-system-of-record.html"><code>_block-system-of-record.html</code></a> (cross-checked content-identical to the frozen master slice).</div>
+
+<h2>This page's own diagram</h2>
+<p class="figcap">First layer: Human &#8594; UI &#8594; Host &#8594; Daemon{Orchestration &#8594; System of Process} &#8594; <b>SoR (here)</b> / External World &#183; locked schema: <a href="../master/index.html#section-1-0-runtime">master &#167;1.0</a> &#183; parent page: <a href="index.html">platform</a></p>
+  <svg viewBox="0 0 860 1030" role="img" aria-label="System of Record second-order, fully wired">
+    <defs>
+      <marker id="sor-sah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- ===== NEIGHBOR STUB: System of Process (top, outside the wrap) ===== -->
+    <rect x="320" y="16" width="230" height="50" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="435" y="36" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4b5563">SYSTEM OF PROCESS</text>
+    <text x="435" y="52" text-anchor="middle" font-size="9" fill="#9ca3af">pillars B1&#8211;B4 &#183; neighbor (&#167;1.0)</text>
+
+    <!-- ===== AUTHORITY + TENANCY wrap ===== -->
+    <rect x="18" y="108" width="824" height="764" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="32" y="99" width="370" height="18" fill="#fff"/>
+    <text x="40" y="112" fill="#7c3aed" font-weight="700" font-size="11">AUTHORITY + TENANCY &#183; gates every read + write &#183; default-deny</text>
+
+    <!-- ===== SYSTEM OF RECORD frame ===== -->
+    <rect x="34" y="142" width="792" height="694" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+    <rect x="48" y="133" width="316" height="18" fill="#fff"/>
+    <text x="56" y="146" fill="#0f766e" font-weight="700" font-size="11.5">SYSTEM OF RECORD &#183; second-order &#183; fully wired</text>
+
+    <!-- ===== EDGES (drawn under the boxes) ===== -->
+    <!-- E2: SoP -> trail (writes) -->
+    <path d="M435,66 L435,172" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="443" y="97" font-size="9" fill="#475569">writes &#8595; per-turn 5-artifact trail</text>
+    <!-- E3: B5.d -> SoP (context reads up) -->
+    <path d="M780,320 L780,44 L556,44" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="772" y="150" text-anchor="end" font-size="9" fill="#475569">context reads &#8593;</text>
+    <text x="772" y="163" text-anchor="end" font-size="9" fill="#475569">B2 ranked retrieval</text>
+    <text x="772" y="176" text-anchor="end" font-size="9" fill="#475569">B1 shorthand at intake</text>
+    <!-- E1: trail -> telemetry sink -->
+    <path d="M210,206 L167,206" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="185" y="199" text-anchor="middle" font-size="9" fill="#475569">events</text>
+    <!-- E4: trail -> B5.d (learned-pattern updates) -->
+    <path d="M660,206 L740,206 L740,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="664" y="198" font-size="9" fill="#475569">learned-pattern updates</text>
+    <!-- E5: trail -> B5.a (substrate write) -->
+    <path d="M240,244 L126,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="118" y="288" text-anchor="end" font-size="9" fill="#475569">substrate write &#183;</text>
+    <text x="118" y="301" text-anchor="end" font-size="9" fill="#475569">session ref</text>
+    <!-- E6: trail -> B5.c (provenance rows) -->
+    <path d="M325,244 L325,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="317" y="282" text-anchor="end" font-size="9" fill="#475569">DecisionProvenance</text>
+    <text x="317" y="295" text-anchor="end" font-size="9" fill="#475569">rows &#183; append-only</text>
+    <!-- E7: trail -> D.12 (versioned artifacts) -->
+    <path d="M560,244 L560,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="568" y="282" font-size="9" fill="#475569">versioned output</text>
+    <text x="568" y="295" font-size="9" fill="#475569">artifacts &#8595;</text>
+    <!-- E8: trail -> B5.b (substrate write; B5.a-d are parallel horizons, not a pipeline) -->
+    <path d="M232,244 L232,460 L126,460 L126,480" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="226" y="436" text-anchor="end" font-size="9" fill="#475569">multi-task state &#183;</text>
+    <text x="226" y="449" text-anchor="end" font-size="9" fill="#475569">survives restart (N24)</text>
+    <!-- E9: ADR-007 schema -> B5.c -->
+    <path d="M325,480 L325,404" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="333" y="436" font-size="9" fill="#475569">3-channel rows (ADR-007)</text>
+    <text x="333" y="449" font-size="9" fill="#475569">HS-4 on write failure</text>
+    <!-- E10: D.12 -> B5.c (provenance row per artifact write) -->
+    <path d="M470,390 L416,390" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="440" y="346" text-anchor="middle" font-size="8.5" fill="#475569">provenance</text>
+    <text x="440" y="358" text-anchor="middle" font-size="8.5" fill="#475569">row per</text>
+    <text x="440" y="370" text-anchor="middle" font-size="8.5" fill="#475569">artifact write</text>
+    <!-- E11: B5.c -> Observability -->
+    <path d="M240,378 L226,378 L226,924" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="234" y="600" font-size="9" fill="#475569">replay 5 artifacts &#8804;30s</text>
+    <text x="234" y="613" font-size="9" fill="#475569">+ drift signals</text>
+    <!-- E12: D.12 -> Connector -->
+    <path d="M560,404 L560,924" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="568" y="600" font-size="9" fill="#475569">notify-on-change</text>
+    <text x="568" y="613" font-size="9" fill="#475569">&#8804;60s &#183; Slack/email</text>
+    <!-- E13: Operator -> E.2 (charter entries + standing prefs) -->
+    <path d="M698,924 L698,900 L660,900 L660,522 L686,522" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="652" y="660" text-anchor="end" font-size="9" fill="#475569">charter entries &#183;</text>
+    <text x="652" y="673" text-anchor="end" font-size="9" fill="#475569">standing prefs &#8593;</text>
+    <!-- E14: Operator -> E.3 (forget / correct / pin) -->
+    <path d="M712,924 L712,770" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="704" y="808" text-anchor="end" font-size="8.5" fill="#475569">forget /</text>
+    <text x="704" y="821" text-anchor="end" font-size="8.5" fill="#475569">correct /</text>
+    <text x="704" y="834" text-anchor="end" font-size="8.5" fill="#475569">pin &#8593;</text>
+    <!-- E15: E.3 -> Operator (curation surface) -->
+    <path d="M790,770 L790,924" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sor-sah)"/>
+    <text x="782" y="808" text-anchor="end" font-size="8.5" fill="#475569">curation:</text>
+    <text x="782" y="821" text-anchor="end" font-size="8.5" fill="#475569">'what do you</text>
+    <text x="782" y="834" text-anchor="end" font-size="8.5" fill="#475569">remember X?' &#8595;</text>
+
+    <!-- ===== AUTHORITY+TENANCY GATE GLYPHS (every boundary crossing) ===== -->
+    <path d="M435,102 L441,108 L435,114 L429,108 Z" fill="#7c3aed"/>
+    <path d="M780,102 L786,108 L780,114 L774,108 Z" fill="#7c3aed"/>
+    <path d="M226,866 L232,872 L226,878 L220,872 Z" fill="#7c3aed"/>
+    <path d="M560,866 L566,872 L560,878 L554,872 Z" fill="#7c3aed"/>
+    <path d="M660,866 L666,872 L660,878 L654,872 Z" fill="#7c3aed"/>
+    <path d="M712,866 L718,872 L712,878 L706,872 Z" fill="#7c3aed"/>
+    <path d="M790,866 L796,872 L790,878 L784,872 Z" fill="#7c3aed"/>
+
+    <!-- ===== INTERNAL PARTS (solid boxes) ===== -->
+    <!-- Telemetry sink -->
+    <rect x="40" y="172" width="120" height="68" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="100" y="194" text-anchor="middle" font-size="10" font-weight="700">TELEMETRY SINK</text>
+    <text x="100" y="210" text-anchor="middle" font-size="8.5" fill="#6b7280">ADR-013 &#183; JSONL + fsync</text>
+    <text x="100" y="222" text-anchor="middle" font-size="8.5" fill="#6b7280">no silent loss</text>
+
+    <!-- Per-turn 5-artifact trail -->
+    <rect x="210" y="172" width="450" height="72" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="435" y="194" text-anchor="middle" font-size="12.5" font-weight="700">PER-TURN 5-ARTIFACT TRAIL (&#167;7.2)</text>
+    <text x="435" y="212" text-anchor="middle" font-size="9" fill="#6b7280">1 intent &#183; 2 context manifest &#183; 3 decision provenance</text>
+    <text x="435" y="227" text-anchor="middle" font-size="9" fill="#6b7280">4 outbound log &#183; 5 substrate write</text>
+
+    <!-- B5.a -->
+    <rect x="40" y="320" width="172" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="126" y="344" text-anchor="middle" font-size="10" font-weight="700">B5.a ACTIVE SESSION</text>
+    <text x="126" y="362" text-anchor="middle" font-size="8.5" fill="#6b7280">minutes&#8211;hours &#183; in-flight now</text>
+    <text x="126" y="375" text-anchor="middle" font-size="8.5" fill="#6b7280">session continuity (N22)</text>
+
+    <!-- B5.c (accent: the audit heart) -->
+    <rect x="240" y="320" width="170" height="84" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="325" y="344" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">B5.c AUDIT + REPLAY</text>
+    <text x="325" y="362" text-anchor="middle" font-size="8.5" fill="#3b5bdb">days&#8211;forever &#183; provenance</text>
+    <text x="325" y="375" text-anchor="middle" font-size="8.5" fill="#3b5bdb">+ AUDIT surface (N#8)</text>
+
+    <!-- D.12 versioned artifact store -->
+    <rect x="470" y="320" width="180" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="560" y="340" text-anchor="middle" font-size="10" font-weight="700">D.12 VERSIONED</text>
+    <text x="560" y="353" text-anchor="middle" font-size="10" font-weight="700">ARTIFACT STORE</text>
+    <text x="560" y="369" text-anchor="middle" font-size="8.5" fill="#6b7280">append-not-overwrite &#183;</text>
+    <text x="560" y="381" text-anchor="middle" font-size="8.5" fill="#6b7280">artifact@v3 resolves exactly &#183;</text>
+    <text x="560" y="393" text-anchor="middle" font-size="8.5" fill="#6b7280">zero silent overwrites</text>
+
+    <!-- B5.d -->
+    <rect x="660" y="320" width="160" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="740" y="344" text-anchor="middle" font-size="10" font-weight="700">B5.d LEARNED PATTERNS</text>
+    <text x="740" y="362" text-anchor="middle" font-size="8.5" fill="#6b7280">months&#8211;forever &#183; k=4 &#183;</text>
+    <text x="740" y="375" text-anchor="middle" font-size="8.5" fill="#6b7280">standing prefs (N#5)</text>
+
+    <!-- B5.b -->
+    <rect x="40" y="480" width="172" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="126" y="504" text-anchor="middle" font-size="10" font-weight="700">B5.b PORTFOLIO IN-FLIGHT</text>
+    <text x="126" y="522" text-anchor="middle" font-size="8.5" fill="#6b7280">hours&#8211;days &#183; 5 tasks &#215;</text>
+    <text x="126" y="535" text-anchor="middle" font-size="8.5" fill="#6b7280">N companies &#183; backs N24</text>
+
+    <!-- ADR-007 schema -->
+    <rect x="240" y="480" width="170" height="64" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="325" y="502" text-anchor="middle" font-size="9.5" font-weight="700">DECISIONPROVENANCE</text>
+    <text x="325" y="515" text-anchor="middle" font-size="9.5" font-weight="700">ROW SCHEMA (ADR-007)</text>
+    <text x="325" y="531" text-anchor="middle" font-size="8.5" fill="#6b7280">3-channel &#183; ratified</text>
+
+    <!-- E.1 skill mode + E.2 charter & declared preferences -->
+    <rect x="680" y="480" width="140" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="750" y="500" text-anchor="middle" font-size="9" font-weight="700">SKILL MODE (E.1) +</text>
+    <text x="750" y="513" text-anchor="middle" font-size="9" font-weight="700">CHARTER PREFS (E.2)</text>
+    <text x="750" y="529" text-anchor="middle" font-size="8" fill="#6b7280">E.2: cadence &#183; hands-off &#183;</text>
+    <text x="750" y="541" text-anchor="middle" font-size="8" fill="#6b7280">style &#183; channels &#183; people &#183;</text>
+    <text x="750" y="553" text-anchor="middle" font-size="8" fill="#6b7280">E.1: SM1/SM2/SM3 map</text>
+
+    <!-- E.3 memory layers + E.4 forget rules -->
+    <rect x="680" y="620" width="140" height="150" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="750" y="640" text-anchor="middle" font-size="9" font-weight="700">MEMORY LAYERS (E.3)</text>
+    <text x="750" y="653" text-anchor="middle" font-size="9" font-weight="700">+ FORGET RULES (E.4)</text>
+    <text x="750" y="669" text-anchor="middle" font-size="8" fill="#6b7280">working memory &#183; session</text>
+    <text x="750" y="681" text-anchor="middle" font-size="8" fill="#6b7280">named entities &#183; 90-day</text>
+    <text x="750" y="693" text-anchor="middle" font-size="8" fill="#6b7280">trusted names &#183; durable</text>
+    <text x="750" y="705" text-anchor="middle" font-size="8" fill="#6b7280">prior intents &#183; rolling</text>
+    <text x="750" y="717" text-anchor="middle" font-size="8" fill="#6b7280">ratified directives</text>
+    <text x="750" y="733" text-anchor="middle" font-size="8" fill="#6b7280">forgets: sensitive &#183; expired &#183;</text>
+    <text x="750" y="745" text-anchor="middle" font-size="8" fill="#6b7280">on operator ask (immediate)</text>
+
+    <!-- ===== NEIGHBOR STUBS (bottom, outside the wrap) ===== -->
+    <rect x="116" y="924" width="220" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="226" y="946" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">OBSERVABILITY (&#167;7)</text>
+    <text x="226" y="962" text-anchor="middle" font-size="9" fill="#9ca3af">replay &#183; drift &#183; pattern diffs</text>
+
+    <rect x="450" y="924" width="220" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="560" y="946" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">CONNECTOR (&#167;5)</text>
+    <text x="560" y="962" text-anchor="middle" font-size="9" fill="#9ca3af">notifies audience per Charter</text>
+
+    <rect x="690" y="924" width="160" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="770" y="944" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">OPERATOR</text>
+    <text x="770" y="958" text-anchor="middle" font-size="8.5" fill="#9ca3af">via UI &#8594; Host &#8594;</text>
+    <text x="770" y="970" text-anchor="middle" font-size="8.5" fill="#9ca3af">Daemon (runtime path)</text>
+
+    <!-- legend -->
+    <text x="430" y="1010" text-anchor="middle" font-size="9.5" fill="#6b7280">&#9670; = Authority + Tenancy gate &#8212; every crossing checked &#183; cross-tenant default-deny (ADR-006) &#183; dashed boxes = neighbor blocks</text>
+  </svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>Contracts &#8212; neighbors</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>System of Process</b></td>
+      <td>bidirectional</td>
+      <td>IN (context reads): B2 reads at intake (ranked context retrieval); B1 reads for shorthand interpretation; learned patterns + standing prefs shape future iterations. OUT-bound from SoP (writes): every pillar B1&#8211;B4 writes here &#8212; per-turn 5-artifact audit trail, versioned output artifacts, DecisionProvenance row per decision/artifact-write, substrate write (active-session ref + learned-pattern updates). Diagram edge label: "context + output".</td>
+      <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority + Tenancy</b></td>
+      <td>gates</td>
+      <td>Gates every access (cross-cutting wrap). Tenant-scoped: cross-tenant queries default-deny (B5 acceptance + &#167;7.1 verified metric); B5 crosscut: whose data lives where + who can read across tenant boundaries; operator's portfolio is the boundary unit, not the company. Tenant isolation via Domain field on every primitive (ADR-006).</td>
+      <td><a href="../master/index.html#pillar-b5">pillar-b5</a></td>
+    </tr>
+    <tr>
+      <td><b>Observability (&#167;7)</b></td>
+      <td>out</td>
+      <td>Audit + replay surfaces: all 5 per-turn artifacts replayed to operator on demand ("replay last Paisa turn" &#8594; 5 artifacts chronologically); replay &#8804;30s for a single-day window; learned-pattern diffs ("what changed in B5.d this week"); B5 drift signals (replay latency &gt;60s OR any cross-tenant leak). This block is observed by <a href="observability.html#s7-2">the &#167;7 ring &#8212; &#167;7.2 audit + replay surfaces</a> (site page).</td>
+      <td><a href="../master/index.html#section-7-2-audit">section-7-2-audit</a></td>
+    </tr>
+    <tr>
+      <td><b>Connector (&#167;5)</b></td>
+      <td>out</td>
+      <td>Notify-on-change: when an artifact shared with audience X changes, &#167;5 Connector notifies audience X (Slack/email per Charter) within 60s of change.</td>
+      <td><a href="../master/index.html#d12-artifact-governance">d12-artifact-governance</a></td>
+    </tr>
+    <tr>
+      <td><b>Operator (via UI&#8594;Host&#8594;Daemon runtime path)</b></td>
+      <td>bidirectional</td>
+      <td>IN: operator writes standing prefs directly (B5 Ring 3); charter entries (E.2); forget / correct / pin-as-durable commands (E.5, honored immediately + visibly confirmed). OUT: curation surface &#8212; "what do you remember about X?" returns structured view of entities, prior intents, standing directives, charter entries touching X.</td>
+      <td><a href="../master/index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b><a href="runtime.html">Runtime &#167;4 (daemon)</a></b></td>
+      <td>behavior</td>
+      <td>This block's runtime behavior is specified on the daemon page &#8212; Runtime &#167;4: the state envelope carries b5_writes (active_session_ref &#183; provenance_row_ref &#183; learned_pattern_updates) into this block on every pillar handoff (&#167;4.3); the workforce state machine's PERSISTED state writes artifact + audit row here (&#167;4.2); triple-channel audit (DecisionProvenance, HS-4 + ADR-013) lands here (&#167;4.4).</td>
+      <td><a href="../master/index.html#section-4-3-state-envelope">section-4-3-state-envelope</a></td>
+    </tr>
+  </table>
+
+<h2>Internal parts</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>B5.a Active session store</b></td>
+      <td>Minutes/hours horizon. What's right-now in flight. Backs N22 session-continuity.</td>
+      <td><a href="../master/index.html#b5a-active">b5a-active</a></td>
+    </tr>
+    <tr>
+      <td><b>B5.b Portfolio in-flight state</b></td>
+      <td>Hours/days horizon. Multi-task state for the 5 in-flight tasks across N companies; survives session restart. Backs N24. Token-budget allocation + multi-thread state machine deferred to Phase 2 design.</td>
+      <td><a href="../master/index.html#b5b-portfolio">b5b-portfolio</a></td>
+    </tr>
+    <tr>
+      <td><b>B5.c Audit + replay</b></td>
+      <td>Days/forever horizon. DecisionProvenance + AUDIT surface. Backs N#8. Acceptance: 100% of decisions carry a DecisionProvenance row; replay any task end-to-end in &#8804;30s for a single-day window.</td>
+      <td><a href="../master/index.html#b5c-audit">b5c-audit</a></td>
+    </tr>
+    <tr>
+      <td><b>B5.d Learned patterns</b></td>
+      <td>Months/forever horizon. Person Formation + pattern emergence (k=4). Backs N#5. Learned patterns shape future iterations; operator standing prefs land here and future B2 reads them.</td>
+      <td><a href="../master/index.html#b5d-learned">b5d-learned</a></td>
+    </tr>
+    <tr>
+      <td><b>Memory layers (E.3) + forget rules (E.4)</b></td>
+      <td>Five layers with distinct lifespans: working memory (session, handoff if thread open) &#183; named entities (until forget or 90-day inactive + confirmed archive) &#183; trusted names (durable, change needs explicit confirmation) &#183; prior intents (rolling, older entries summarize) &#183; ratified directives (until revoked). Forgets: one-time sensitive content, expired time-bounded charters, anything operator asks to forget (immediate + visibly confirmed).</td>
+      <td><a href="../master/index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b>Skill modes (E.1)</b></td>
+      <td>Per-domain skill-mode map (SM1 novice / SM2 intermediate / SM3 expert) &#8212; how Native talks to this operator. Inferred from phrasing/corrections or set explicitly; per-domain, not global. Separate mechanism from the E.2 charter.</td>
+      <td><a href="../master/index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b>Charter &amp; declared preferences (E.2)</b></td>
+      <td>What the operator explicitly told Native about how to be served &#8212; cadence, hands-off level per ask class, communication style, channel defaults, people &amp; relationships. Durable until revoked.</td>
+      <td><a href="../master/index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b>Per-turn 5-artifact audit trail</b></td>
+      <td>Every Native turn produces 5 stored artifacts: 1. intent record (B1) &#183; 2. context manifest with ranked artifact list + what was dropped (B2) &#183; 3. decision provenance with phases + factors + authority verdict + output (B3) &#183; 4. outbound log (B4, if comms) &#183; 5. substrate write (B5: active-session ref + learned-pattern updates).</td>
+      <td><a href="../master/index.html#section-7-2-audit">section-7-2-audit</a></td>
+    </tr>
+    <tr>
+      <td><b>Versioned artifact store (D.12 lifecycle integrity)</b></td>
+      <td>Append-not-overwrite: every change adds a version, prior version stays accessible; reference-with-version (artifact@v3 resolves exactly); metadata (owner, version, source-of-truth status) travels with the artifact; every artifact write produces a DecisionProvenance row linking creator-Charter + reason + diff-from-prior. Zero silent overwrites (HS-4 fires on version-bump-less replace).</td>
+      <td><a href="../master/index.html#d12-artifact-governance">d12-artifact-governance</a></td>
+    </tr>
+    <tr>
+      <td><b>DecisionProvenance row schema (ADR-007)</b></td>
+      <td>3-channel append-only audit row per decision (ratified). HS-4 fires on triple-channel write failure (per B5 acceptance).</td>
+      <td><a href="../master/index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+    <tr>
+      <td><b>Telemetry sink (ADR-013)</b></td>
+      <td>JSONL + fsync as telemetry sink &#8212; no silent loss (ratified).</td>
+      <td><a href="../master/index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+  </table>
+
+<h2>How state flows</h2>
+  <ol>
+    <li>Writes enter from <b>System of Process</b> as the per-turn 5-artifact trail: intent record &#8594; context manifest &#8594; decision provenance &#8594; outbound log &#8594; substrate write.</li>
+    <li>The <b>substrate write</b> lands in B5.a active session, plus learned-pattern updates in B5.d.</li>
+    <li>The four stores <b>B5.a&#8211;d</b> are parallel time horizons, not a graduation pipeline &#8212; the PERSISTED step writes output to B5.a/b/c/d simultaneously. <b>B5.a</b> (minutes/hours) backs session continuity with handoff of open threads; <b>B5.b</b> portfolio in-flight (hours/days) holds multi-task state across N companies and survives restart.</li>
+    <li><b>B5.c</b> accumulates the append-only DecisionProvenance rows forever &#8212; 3-channel per ADR-007; HS-4 fires on triple-channel write failure or on any silent overwrite.</li>
+    <li><b>B5.d</b> distills learned patterns (months/forever, k=4 emergence). Together with the E.2/E.3 memory layers (working memory, named entities, trusted names, prior intents, ratified directives) and charter preferences, these are what B2 reads at intake and B1 reads for shorthand on future turns.</li>
+    <li>The <b>versioned artifact store (D.12)</b> cross-links to B5.c: every artifact write produces a DecisionProvenance row, references resolve to exact versions, and changes trigger Connector notifications outward.</li>
+    <li>Telemetry lands via the <b>JSONL + fsync sink</b> (ADR-013). The &#167;1.0 diagram splits SoR contents as "own | external". Every read and write across all parts is gated by <b>Authority + Tenancy</b> with cross-tenant default-deny.</li>
+  </ol>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap">B5 Ring 1 (Surface &#8212; operator voice) is entirely "Awaiting founder fill" (T-G1-14/15/16) &#8212; what is the operator-voice problem space / need / solution direction for the System of Record pillar?</li>
+<li class="gap">B5 Ring 3 mechanism is Phase 2 pending (governance-substrate-design.md, T-G3-05) &#8212; what is the physical storage engine / schema behind B5.a&#8211;d?</li>
+<li class="gap">&#167;1.0 diagram labels System of Record "own | external" &#8212; what distinguishes an own record from an external record, and is the external side read-only? Cited ranges never elaborate.</li>
+<li class="gap">How do the &#167;2.F.E memory layers (working memory / named entities / trusted names / prior intents / ratified directives) map onto B5.a&#8211;d time-horizon stores &#8212; one substrate with two taxonomies, or separate stores?</li>
+<li class="gap">How does state move between B5.a and B5.b, if at all? The source models the four stores as parallel time horizons written simultaneously &#8212; no inter-store promotion flow is specified.</li>
+<li class="gap">B5.b names an engineering hard-problem (token budget allocation + multi-thread state machine) deferred to Phase 2 &#8212; no design exists in the cited ranges.</li>
+<li class="gap">E.3 says inactive named entities archive after 90 days with operator confirmation &#8212; where do archived entities live, and does D.12 append-not-overwrite retention apply to memory layers or only to artifacts?</li>
+<li class="gap">B1 Ring 3 says intake artifacts write to B5.a (active session) &mdash; does Orchestration write to System of Record directly, or does that write route through System of Process? (Working assumption from founder session: only SoP writes back to SoR &mdash; &sect;1.0 shows SoP writing output to SoR but states no exclusivity. Confirm and write down, or drop.)<br><em>Carried verbatim from the Orchestration slice's founder queue (<a href="../master/index.html#so-orchestration">so-orchestration</a>) per this page's acceptance &#8212; the write-routing ownership decision lands on this block's boundary.</em></li>
+</ul>
+
+<h2>From record to system &#8212; the six mechanisms (ADR-022)</h2>
+<p style="font-size:13.5px;color:#1f2937">A record that nothing reads back is <em>telemetry</em>, not a system of record. Today Native runs design &#8594; execute &#8594; record, but the record fails two tests: it is not <strong>replayable</strong> (state cannot be rebuilt from the log alone) and not <strong>regulated</strong> (no decision rule reads it in-loop). Five independent disciplines &#8212; process mining, transaction processing, event sourcing, operations science, cybernetics &#8212; converge on the same shape: a system of work = contracted units + provably-safe composition + an append-only record the system can be rebuilt (replay) or rediscovered (mining) from. <code>ADR-022</code> adopts six mechanisms, dependency-ordered, that close that loop; this block is the foundation of all of them.</p>
+<table style="font-size:12.5px;border-collapse:collapse;width:100%;margin:8px 0">
+<tr style="background:#f3f4f6"><th style="text-align:left;padding:4px 8px;border:1px solid #e5e7eb">#</th><th style="text-align:left;padding:4px 8px;border:1px solid #e5e7eb">Mechanism</th><th style="text-align:left;padding:4px 8px;border:1px solid #e5e7eb">Turns the record into&#8230;</th></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">1</td><td style="padding:4px 8px;border:1px solid #e5e7eb"><strong>SoR truth upgrade</strong> (this block)</td><td style="padding:4px 8px;border:1px solid #e5e7eb">a replayable source of truth &#8212; bracket effects, persist LLM output as events, deterministic replay</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">2</td><td style="padding:4px 8px;border:1px solid #e5e7eb">Registration-at-birth</td><td style="padding:4px 8px;border:1px solid #e5e7eb">a where-used index &#8212; change impact becomes a query, not archaeology</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">3</td><td style="padding:4px 8px;border:1px solid #e5e7eb">Workflow authoring engine</td><td style="padding:4px 8px;border:1px solid #e5e7eb">a system of work the LLM drafts for any situation (Cynefin-classified, soundness-checked)</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">4</td><td style="padding:4px 8px;border:1px solid #e5e7eb">Comparator + admission</td><td style="padding:4px 8px;border:1px solid #e5e7eb">a control loop &#8212; reference limits + WIP cap read the record in-loop</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">5</td><td style="padding:4px 8px;border:1px solid #e5e7eb">The miner (loop closes here)</td><td style="padding:4px 8px;border:1px solid #e5e7eb">organic growth &#8212; mine the record to propose extraction/revision/retirement</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">6</td><td style="padding:4px 8px;border:1px solid #e5e7eb">Industry packs</td><td style="padding:4px 8px;border:1px solid #e5e7eb">any industry &#8212; templates + schemas + limits; the engine stays domain-free</td></tr>
+</table>
+<p style="font-size:13.5px;color:#1f2937">Mechanism #1 lives in THIS block and gates the rest (#4 comparator and #5 miner cannot read what is not durably recorded). Canon (linked, never copied &#8212; D54): <code>sutra/os/decisions/ADR-022</code> &#183; research: <code>holding/research/2026-06-12-unit-work-record-science.md</code>.</p>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>none &#8212; leaf page: the internal parts (5-artifact trail &#183; B5.a&#8211;d stores &#183; D.12 versioned artifact store &#183; ADR-007 row schema &#183; telemetry sink &#183; E.1&#8211;E.4 personalization memory) live on this page, not on child pages</li>
+<li>projects_to: none (manifest)</li>
+<li>downstream consumers (their internals live on their own pages): Observability (&#167;7) at <code>platform/observability.html</code> &#183; Connector (&#167;5) at <code>platform/connector.html</code></li>
+<li>sibling neighbor blocks under the same parent (authored in this wave): <code>platform/ui.html</code> &#183; <code>platform/host.html</code> &#183; <code>platform/orchestration.html</code> &#183; <code>platform/system-of-process.html</code> &#183; <code>platform/authority-tenancy.html</code> &#183; <code>platform/external-world.html</code> &#183; <code>platform/compute.html</code></li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned">
+<p><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The physical storage engine / schema behind B5.a&#8211;d is Phase 2 pending (gap list above); field names below are derived from this page's own D.12 lifecycle-integrity row (owner &#183; version &#183; source-of-truth status &#183; creator-Charter &#183; reason &#183; diff-from-prior). Unruled names are marked.</p>
+<p>Persisted artifact first &#8212; the D.12 versioned-artifact-store entry plus its linked B5.c DecisionProvenance row after a <code>W-emi-reconcile</code> run persists:</p>
+<pre>{"artifact":"emi-reconciliation-report@v4","owner":"charter/lending-ops","version":4,"source_of_truth":true,
+ "diff_from_prior":"+12 EMIs reconciled, 1 exception flagged",
+ "provenance_row":{"creator_charter":"charter/lending-ops","reason":"W-emi-reconcile daily close",
+  "channels":["gate-log","provenance","artifact"],"<decision_pending>store</decision_pending>":"B5.c (physical schema Phase 2 pending)"}}</pre>
+<p>Operator surface: B5.c audit replay renders it &#8212; replay any task end-to-end in &#8804;30s for a single-day window (acceptance above); the operator never sees the raw JSONL.</p>
+</div>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="../master/index.html#so-system-of-record">master &#167;1.0.1 &#8250; System of Record</a> &#8212; frozen source of the draft; diagram + "How state flows" list + both tables + 7-item gap list carried verbatim (doc-home hrefs retargeted to the frozen archive)</li>
+<li><a href="../master/index.html#section-1-0-1-second-order">master &#167;1.0.1 banner</a> &#8212; WORKING DRAFTS callout: founder review pending; promoted in place on lock</li>
+<li><a href="../_block-system-of-record.html">_block-system-of-record.html</a> &#8212; standalone working draft; cross-checked against the master slice: SVG, flow list, tables and the 7-gap list are content-identical (only href form differs)</li>
+<li><a href="../master/index.html#so-orchestration">master &#167;1.0.1 &#8250; Orchestration</a> &#8212; source of gap #8 (Orchestration&#8596;SoR write-routing), carried verbatim from its founder queue per this page's acceptance</li>
+<li><a href="../master/index.html#section-1-0-runtime">master &#167;1.0</a> &#8212; locked first-layer schema grounding the contract statement + the "own | external" split + the Authority+Tenancy wrap</li>
+<li>Doc homes cited in-row (all frozen master anchors): <a href="../master/index.html#pillar-b5">pillar-b5</a> &#183; <a href="../master/index.html#b5a-active">b5a-active</a> &#183; <a href="../master/index.html#b5b-portfolio">b5b-portfolio</a> &#183; <a href="../master/index.html#b5c-audit">b5c-audit</a> &#183; <a href="../master/index.html#b5d-learned">b5d-learned</a> &#183; <a href="../master/index.html#section-7-2-audit">&#167;7.2</a> &#183; <a href="../master/index.html#d12-artifact-governance">D.12</a> &#183; <a href="../master/index.html#section-2-f-5-personalization-memory">&#167;2.F.E</a> &#183; <a href="../master/index.html#section-12-1-adr-table">&#167;12.1 ADR table</a></li>
+<li>Sutra canon (linked, never copied &#8212; D54): <code>sutra/os/decisions/ADR-006-tenant-isolation-domain-field.md</code> &#183; <code>sutra/os/decisions/ADR-007-decision-provenance-schema.md</code> &#183; <code>sutra/os/decisions/ADR-013-telemetry-sink-fsync-jsonl.md</code></li>
+</ul>
+
+</div></div></body></html>

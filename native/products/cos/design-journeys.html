@@ -1,0 +1,419 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoS Design &#8212; &#167;2.F.C journeys (task &#183; query &#183; directive &#183; feedback &#183; new-idea)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+pre{background:#f8fafc;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;font-size:12px;line-height:1.45;overflow-x:auto}
+/* HERE highlight — replace with your box id */
+#map-product-cos-design{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a class="sb-cur" href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="index.html">product: CoS</a> &#8250; <a href="product-design.html">CoS design</a> &#8250; journeys &#160;&#183;&#160; spine: <a href="product-design.html">&#8592; Design</a> &#160;&#183;&#160; <a href="design-surfaces.html">Surfaces &#8594;</a></div>
+<h1>CoS Design &#8212; &#167;2.F.C the 5 journeys <span class="lvl">PRODUCTS &#183; zoom 2</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../../governance/index.html" xlink:href="../../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../../index.html" xlink:href="../../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../../roadmap/index.html" xlink:href="../../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../../distribution.html" xlink:href="../../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="index.html" xlink:href="index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../senior-expert/index.html" xlink:href="../senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="needs.html" xlink:href="needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="product-design.html" xlink:href="product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="matrix.html" xlink:href="matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="../../platform/index.html" xlink:href="../../platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="../../platform/observability.html" xlink:href="../../platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="../../platform/authority-tenancy.html" xlink:href="../../platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="../../platform/ui.html" xlink:href="../../platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="../../platform/host.html" xlink:href="../../platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="../../platform/runtime.html" xlink:href="../../platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="../../platform/orchestration.html" xlink:href="../../platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="../../platform/system-of-process.html" xlink:href="../../platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="../../platform/system-of-record.html" xlink:href="../../platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="../../platform/connector.html" xlink:href="../../platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="../../platform/external-world.html" xlink:href="../../platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="../../platform/compute.html" xlink:href="../../platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../../engineering/index.html" xlink:href="../../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="295" y="178" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Journeys</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>product-cos-design-journeys</code></td><td>PRODUCTS / <a href="product-design.html">product-cos-design</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">CoS Design &#8212; &#167;2.F.C journeys (task &#183; query &#183; directive &#183; feedback &#183; new-idea). Single home of the 5 operator-facing journey flows; each journey carries typical utterance, flow, branches, success and failure surfaces, plus the DIRECTIVE and NEW-IDEA flow diagrams.</td><td colspan="3">all 5 journeys carried over complete; cross-refs repointed; gaps preserved</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 330" role="img" aria-label="The 5 journeys and their neighbor edges">
+<defs><marker id="jah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- upstream neighbor: input & intent (lives on parent page product-design.html) -->
+<rect x="290" y="14" width="300" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="440" y="33" text-anchor="middle" font-size="10.5" font-weight="700">INPUT &amp; INTENT &#8212; &#167;2.F.B</text>
+<text x="440" y="47" text-anchor="middle" font-size="8.5" fill="#6b7280">neighbor &#183; lives on product-design.html</text>
+<!-- fan-out from intent to the 5 journeys -->
+<path d="M440,60 L440,76 L100,76 L100,100" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<path d="M440,60 L440,76 L270,76 L270,100" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<path d="M440,76 L440,100" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<path d="M440,60 L440,76 L610,76 L610,100" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<path d="M440,60 L440,76 L780,76 L780,100" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<text x="448" y="73" font-size="8.5" fill="#475569">utterance classified &#8594; journey chosen</text>
+<!-- the 5 journeys (internal parts of THIS page) -->
+<rect x="25" y="100" width="150" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="100" y="120" text-anchor="middle" font-size="10.5" font-weight="700">C.1 TASK</text>
+<text x="100" y="136" text-anchor="middle" font-size="8.5" fill="#6b7280">"do X for me"</text>
+<text x="100" y="150" text-anchor="middle" font-size="8.5" fill="#6b7280">artifact-first on irreversible</text>
+<rect x="195" y="100" width="150" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="270" y="120" text-anchor="middle" font-size="10.5" font-weight="700">C.2 QUERY</text>
+<text x="270" y="136" text-anchor="middle" font-size="8.5" fill="#6b7280">"tell me Y"</text>
+<text x="270" y="150" text-anchor="middle" font-size="8.5" fill="#6b7280">answer + source + confidence</text>
+<rect x="365" y="100" width="150" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="440" y="120" text-anchor="middle" font-size="10.5" font-weight="700">C.3 DIRECTIVE</text>
+<text x="440" y="136" text-anchor="middle" font-size="8.5" fill="#6b7280">"from now on, do Z"</text>
+<text x="440" y="150" text-anchor="middle" font-size="8.5" fill="#6b7280">scope read &#8594; charter</text>
+<rect x="535" y="100" width="150" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="610" y="120" text-anchor="middle" font-size="10.5" font-weight="700">C.4 FEEDBACK</text>
+<text x="610" y="136" text-anchor="middle" font-size="8.5" fill="#6b7280">"that was wrong, try again"</text>
+<text x="610" y="150" text-anchor="middle" font-size="8.5" fill="#6b7280">two-track: now + future</text>
+<rect x="705" y="100" width="150" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="780" y="120" text-anchor="middle" font-size="10.5" font-weight="700">C.5 NEW IDEA</text>
+<text x="780" y="136" text-anchor="middle" font-size="8.5" fill="#6b7280">"I want a new capability"</text>
+<text x="780" y="150" text-anchor="middle" font-size="8.5" fill="#6b7280">commit &#183; park &#183; drop</text>
+<!-- downstream neighbors (live on sibling page design-surfaces.html) -->
+<rect x="120" y="262" width="250" height="48" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="245" y="281" text-anchor="middle" font-size="10.5" font-weight="700">OUTPUTS &amp; CHANNELS &#8212; &#167;2.F.D</text>
+<text x="245" y="295" text-anchor="middle" font-size="8.5" fill="#6b7280">neighbor &#183; lives on design-surfaces.html</text>
+<rect x="510" y="262" width="250" height="48" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="635" y="281" text-anchor="middle" font-size="10.5" font-weight="700">OPERATOR STORES &#8212; charter (&#167;2.F.E)</text>
+<text x="635" y="295" text-anchor="middle" font-size="8.5" fill="#6b7280">+ parking lot (C.5) &#183; lives on design-surfaces.html</text>
+<!-- journey -> neighbor edges -->
+<path d="M100,170 L100,232 L200,232 L200,262" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<text x="40" y="200" font-size="8.5" fill="#475569">artifact + one-line summary</text>
+<path d="M270,170 L270,262" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<text x="278" y="200" font-size="8.5" fill="#475569">answer in-channel</text>
+<path d="M440,170 L440,232 L580,232 L580,262" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<text x="448" y="200" font-size="8.5" fill="#475569">standing rule &#8594; charter</text>
+<path d="M610,170 L610,243 L640,243 L640,262" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<text x="618" y="220" font-size="8.5" fill="#475569">correction carried forward</text>
+<path d="M780,170 L780,232 L710,232 L710,262" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#jah)"/>
+<text x="722" y="200" font-size="8.5" fill="#475569">parked ideas, nudged later</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge. The FEEDBACK&#8594;TASK feed-forward loop (C.1 step 5) is carried in the tables below, not drawn, to keep the diagram readable.</p>
+
+<h2>What a journey is</h2>
+<p>A journey is what the operator lives through from utterance to outcome. Each of the 5 intent types has its own shape, its own approval moments, its own success and failure surfaces. Same engine underneath &#8212; different choreography on top.</p>
+
+<h2>The 5 journeys at a glance</h2>
+<table>
+<tr><th>#</th><th>Journey</th><th>Operator says</th><th>Approval moment</th><th>Success</th><th>Failure handling</th></tr>
+<tr><td>C.1</td><td><a href="#section-2-f-3-task">TASK</a></td><td>"do X for me"</td><td>irreversible actions: artifact first, go-ahead before the external action</td><td>finished artifact + one-line "what I did"; seconds for drafting, minutes for multi-step</td><td>states what it tried, where it stopped, what it needs &#8212; never silent, never fabricated</td></tr>
+<tr><td>C.2</td><td><a href="#section-2-f-3-query">QUERY</a></td><td>"tell me Y"</td><td>none &#8212; declares the source instead</td><td>answer + source + confidence on one screen, no hunting</td><td>"I don't know" stated plainly, with what was checked and what's left to try</td></tr>
+<tr><td>C.3</td><td><a href="#section-2-f-3-directive">DIRECTIVE</a></td><td>"from now on, do Z"</td><td>scope confirmed back in one line before storing</td><td>rule visible in charter, fires automatically, marker shows it fired</td><td>captured but can't apply (capability gap) &#8594; surface the gap, park the rule</td></tr>
+<tr><td>C.4</td><td><a href="#section-2-f-3-feedback">FEEDBACK</a></td><td>"that was wrong, try again"</td><td>operator confirms the future-rule sticks, or scopes it down</td><td>redo lands; same miss does not repeat in 24h on similar work</td><td>can't tell what to change &#8594; ask once and stop, no loop guessing</td></tr>
+<tr><td>C.5</td><td><a href="#section-2-f-3-new-idea">NEW IDEA</a></td><td>"I want a new capability"</td><td>no build before commit; small v1 + success criteria proposed first</td><td>idea alive (committed) / warm (parked) / cleanly killed (dropped) &#8212; never lost</td><td>no viable shape &#8594; park with a note + check back, never pretend to commit</td></tr>
+</table>
+
+<h2 id="section-2-f-3-task">C.1 TASK journey &#8212; "do X for me"</h2>
+<p><strong>Typical utterance.</strong> "Draft the partner update for this week." / "Move the Friday standup to Thursday and send the new invite."</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Operator states the task.</li>
+<li>Native reads intent + scope &#8212; names the deliverable in one line back ("OK, drafting the weekly partner update covering Paisa + Testlify").</li>
+<li>If the task is reversible and low-risk: Native proceeds. If irreversible (sending email, deleting, charging, scheduling external): Native produces the artifact and asks for go-ahead before the external action.</li>
+<li>Native does the work, surfaces the result in-channel.</li>
+<li>Operator approves, edits, or rejects. Edits feed forward into the next similar task (see <a href="#section-2-f-3-feedback">&#167;C.4</a>).</li>
+<li>Native confirms completion in one line ("Sent. Logged under partner-updates.").</li>
+</ol>
+<table>
+<tr><th>Branch</th><th>Native's move</th></tr>
+<tr><td>Confidence low</td><td>Native confirms scope before starting ("I have two partner lists &#8212; Paisa investors or T4 users?").</td></tr>
+<tr><td>Native disagrees / can't do it</td><td>Native says so plainly ("I don't have access to the invoice tool yet &#8212; want me to draft the message and you send it?"). No fake completion.</td></tr>
+<tr><td>Operator changes mind mid-flow</td><td>"Stop, do it differently" cancels the in-flight task and restarts from the corrected ask. The half-finished draft is kept for one turn so the operator can salvage parts.</td></tr>
+</table>
+<table>
+<tr><th>Success</th><td>Operator sees the finished artifact + a one-line "what I did" summary. Time-to-result is in seconds for drafting, minutes for multi-step.</td></tr>
+<tr><th>Failure</th><td>Native states what it tried, where it stopped, and what it needs to finish &#8212; never silent, never fabricated. "I drafted the email but couldn't pull the Q2 number &#8212; sheet access denied. Paste the number and I'll finish."</td></tr>
+</table>
+
+<h2 id="section-2-f-3-query">C.2 QUERY journey &#8212; "tell me Y"</h2>
+<p><strong>Typical utterance.</strong> "What did we decide about Paisa pricing last week?" / "How many T4 users used the plugin yesterday?"</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Operator asks.</li>
+<li>Native picks the source &#8212; memory, prior session, connected data, web &#8212; and declares it.</li>
+<li>Native returns the answer with confidence level (high / moderate / low / unknown) and sources named inline.</li>
+<li>If the answer needs synthesis across sources, Native shows the synthesis + a "based on" line.</li>
+<li>Native offers one follow-up branch if obvious ("Want me to draft the reply to Benzy about this?").</li>
+</ol>
+<table>
+<tr><th>Branch</th><th>Native's move</th></tr>
+<tr><td>Confidence low</td><td>Native returns the partial answer and labels what it doesn't know ("I see two pricing discussions &#8212; I'm not sure which you mean. Both are below.").</td></tr>
+<tr><td>Native can't find it</td><td>"I don't have a record of that decision. Want me to check your email / Slack / docs?" &#8212; never invents.</td></tr>
+<tr><td>Operator changes mind</td><td>"Actually, just give me the Testlify number instead" &#8212; Native drops the prior answer, re-runs against the new ask.</td></tr>
+</table>
+<table>
+<tr><th>Success</th><td>Answer + source + confidence, on one screen, no hunting.</td></tr>
+<tr><th>Failure</th><td>"I don't know" stated plainly, with what Native checked and what's left to try. No fabrication, no padding.</td></tr>
+</table>
+
+<h2 id="section-2-f-3-directive">C.3 DIRECTIVE journey &#8212; "from now on, do Z"</h2>
+<p><strong>Typical utterance.</strong> "From now on, always cite sources." / "Stop emailing me on weekends unless it's urgent."</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Operator issues the directive.</li>
+<li>Native reads scope &#8212; one-time vs standing, this project vs all projects, this session vs forever.</li>
+<li>Native confirms scope back in one line ("Got it &#8212; applies to all research output, across every project, until you say otherwise. Logged.").</li>
+<li>Native stores it in the operator's charter (a visible, editable list &#8212; see &#167;2.F.E on <a href="design-surfaces.html">design-surfaces</a>).</li>
+<li>Next time a matching context appears, Native applies the directive and shows a small marker ("applied: cite-sources").</li>
+<li>Operator can list, edit, or revoke any standing directive in one ask ("show my standing rules" / "drop the weekend rule").</li>
+</ol>
+<table>
+<tr><th>Branch</th><th>Native's move</th></tr>
+<tr><td>Confidence low (scope unclear)</td><td>Native asks one disambiguation &#8212; "Just for Paisa or everywhere?"</td></tr>
+<tr><td>Native sees a conflict with an existing directive</td><td>Native surfaces both ("This conflicts with 'always email me daily summaries'. Drop the old one, or keep both with weekend exception?").</td></tr>
+<tr><td>Operator changes mind</td><td>"Actually, just for this week" &#8212; Native re-scopes to time-bounded and notes the expiry.</td></tr>
+</table>
+<pre>
+DIRECTIVE FLOW
+
+operator: "from now on, X"
+        &#9474;
+        &#9660;
+   scope read &#9472;&#9472;&#9472;&#9472; one-time? &#9472;&#9472;yes&#9472;&#9472;&#9658; apply now, don't store
+        &#9474;
+        no (standing)
+        &#9474;
+        &#9660;
+   confirm scope &#9472;&#9472;conflict with charter?&#9472;&#9472;yes&#9472;&#9472;&#9658; surface both, ask
+        &#9474;                                              &#9474;
+        no                                             &#9474;
+        &#9660;                                              &#9660;
+   add to charter &#9668;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; operator picks resolution
+        &#9474;
+        &#9660;
+   future contexts &#9472;&#9472;&#9658; apply + show marker "applied: X"
+        &#9474;
+        &#9660;
+   anytime: "show rules" / "drop X" / "edit X"
+</pre>
+<table>
+<tr><th>Success</th><td>Directive is visible in the charter, fires automatically the next time it applies, marker shows the operator it fired.</td></tr>
+<tr><th>Failure</th><td>Native captured the directive but couldn't apply it (capability gap) &#8212; surfaces the gap and parks the rule until the capability exists.</td></tr>
+</table>
+
+<h2 id="section-2-f-3-feedback">C.4 FEEDBACK journey &#8212; "that was wrong, try again"</h2>
+<p><strong>Typical utterance.</strong> "That summary missed the actual decision." / "Too long, cut by half next time."</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Operator corrects.</li>
+<li>Native reads what changed: format, content, tone, scope, or accuracy.</li>
+<li>Two-track response: <strong>now</strong> (re-do this output applying the correction) and <strong>future</strong> (carry the correction forward to similar work).</li>
+<li>Native re-runs the immediate output and surfaces it.</li>
+<li>Native names what it's carrying forward ("Got it &#8212; keeping summaries to ~5 lines for partner updates going forward.").</li>
+<li>Operator confirms the future-rule sticks, or scopes it down ("just for this one, not standing").</li>
+</ol>
+<table>
+<tr><th>Branch</th><th>Native's move</th></tr>
+<tr><td>Confidence low (what to change is unclear)</td><td>Native asks one targeted question &#8212; "Cut what &#8212; the context section, or the action items too?"</td></tr>
+<tr><td>Native disagrees with the correction</td><td>Native says so once, with reason, then complies &#8212; "I included the decision because it changed mid-week, but cutting it now. Flag if you want it back."</td></tr>
+<tr><td>Operator changes mind</td><td>"Actually, the first version was right" &#8212; Native restores and unlearns the queued correction.</td></tr>
+</table>
+<table>
+<tr><th>Success</th><td>Immediate redo lands; the same miss does not repeat in the next 24 hours on similar work. Operator sees both what changed now and what changed forward.</td></tr>
+<tr><th>Failure</th><td>If Native can't tell what to change, it asks once and stops &#8212; does not loop guessing.</td></tr>
+</table>
+
+<h2 id="section-2-f-3-new-idea">C.5 NEW IDEA journey &#8212; "I want a new capability"</h2>
+<p><strong>Typical utterance.</strong> "What if Native could pre-brief every meeting from my calendar?" / "Explore using OHS/wk to score departments."</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Operator floats the idea.</li>
+<li>Native does NOT immediately build or commit. It enters ideation mode &#8212; reflects the idea back in sharper words, names the question underneath, lists 2-3 shapes the idea could take.</li>
+<li>Operator picks a shape, parks it, or drops it.</li>
+<li>If parked: idea goes into the operator's parking lot &#8212; visible, named, dated.</li>
+<li>Native nudges the parked idea back at a relevant moment ("You parked 'pre-brief meetings' two weeks ago &#8212; calendar access just landed. Want to try it?").</li>
+<li>If the operator commits: Native proposes a small first version + what success looks like before any build.</li>
+</ol>
+<table>
+<tr><th>Branch</th><th>Native's move</th></tr>
+<tr><td>Confidence low (idea is vague)</td><td>Native asks two sharpening questions &#8212; "Pre-brief with what? Last meeting notes, or open threads with that person?"</td></tr>
+<tr><td>Native sees this is already a capability</td><td>Native says so + shows how to use it now ("This already runs as Daily Pulse &#8212; want me to add the meeting layer?").</td></tr>
+<tr><td>Operator changes mind</td><td>"Drop it" &#8212; idea leaves the parking lot; Native confirms the drop so it doesn't resurface.</td></tr>
+</table>
+<pre>
+NEW IDEA FLOW
+
+operator: "what if..."
+        &#9474;
+        &#9660;
+   reflect back &#9472;&#9472;&#9658; sharpen &#9472;&#9472;&#9658; show 2-3 shapes
+        &#9474;
+        &#9500;&#9472;&#9472;&#9658; COMMIT &#9472;&#9472;&#9658; propose small v1 + success criteria &#9472;&#9472;&#9658; build
+        &#9474;
+        &#9500;&#9472;&#9472;&#9658; PARK &#9472;&#9472;&#9472;&#9658; add to parking lot &#9472;&#9472;&#9658; nudge later when relevant
+        &#9474;
+        &#9492;&#9472;&#9472;&#9658; DROP &#9472;&#9472;&#9472;&#9658; confirm + don't resurface
+</pre>
+<table>
+<tr><th>Success</th><td>The idea is either alive (committed with a v1 in motion), warm (parked with a clear re-surface trigger), or cleanly killed (dropped, won't resurface). Never lost.</td></tr>
+<tr><th>Failure</th><td>Native can't find a viable shape for the idea &#8212; surfaces that plainly ("I don't see how this fits today &#8212; I'll park it with a note and check back in two weeks") rather than pretending to commit.</td></tr>
+</table>
+
+<h2>Cross-refs repointed (was: in-document &#167; refs in master)</h2>
+<table>
+<tr><th>Master ref</th><th>Where it points now</th></tr>
+<tr><td>C.1 step 5 "(see &#167;C.4)"</td><td>in-page anchor <a href="#section-2-f-3-feedback">&#167;C.4 FEEDBACK</a></td></tr>
+<tr><td>C.3 step 4 "(see &#167;E)"</td><td>&#167;2.F.E Personalization &amp; Memory on sibling page <a href="design-surfaces.html">design-surfaces</a> (master anchor: <a href="../../master/index.html#section-2-f-5-personalization-memory">&#167;2.F.E</a>)</td></tr>
+<tr><td>C.5 branch "already runs as Daily Pulse"</td><td>&#167;2.F.H Capability Discovery + Daily Pulse on <a href="design-surfaces.html">design-surfaces</a> (master anchor: <a href="../../master/index.html#section-2-f-8-capability-pulse">&#167;2.F.H</a>)</td></tr>
+</table>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<p class="note">None carried &#8212; master &#167;2.F.C (lines under anchor <code>section-2-f-3-journeys</code> through end of C.5) contains zero open-gap items at freeze: no <code>class="gaps"</code> list, no awaiting-founder-fill marker inside the slice (scanned 2026-06-12). Gap-conservation: nothing dropped. The "capability gap" phrase in C.3's failure row is journey behavior content, not an open-gap item.</p>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No child pages in manifest v1 &#8212; this is a leaf under <a href="product-design.html">product-cos-design</a>.</li>
+<li>Sibling consumer: <a href="design-surfaces.html">design-surfaces</a> (&#167;2.F.D-I) &#8212; outputs/channels land journey results; charter + memory store directives and corrections; trust moments gate irreversible TASK actions.</li>
+<li>Master's end-of-&#167;2.F note (on the design-surfaces slice): "Each journey, each output channel, and each lifecycle stage gets its own LLD as separate follow-up cards. The implementation layer (Native runtime, surfaces, primitives, gates, connectors, storage) is in &#167;4 + &#167;11." &#8212; <a href="../../master/index.html#section-2-f-9-lifecycle">master &#167;2.F.I tail</a>. Per-journey LLDs are roadmap scope, not authored here.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="../../master/index.html#section-2-f-3-journeys">master &#167;2.F.C The 5 journeys</a> &#8212; frozen source; all 5 journeys carried complete (flows verbatim; branches and success/failure reshaped into tables, wording unchanged)</li>
+<li>Sub-anchors: <a href="../../master/index.html#section-2-f-3-task">C.1 task</a> &#183; <a href="../../master/index.html#section-2-f-3-query">C.2 query</a> &#183; <a href="../../master/index.html#section-2-f-3-directive">C.3 directive</a> &#183; <a href="../../master/index.html#section-2-f-3-feedback">C.4 feedback</a> &#183; <a href="../../master/index.html#section-2-f-3-new-idea">C.5 new-idea</a></li>
+<li><code>holding/website/native/manifest.json</code> &#8212; row <code>product-cos-design-journeys</code> (band, parent, acceptance)</li>
+<li>No sutra canon copied on this page (D54) &#8212; runtime implementation of journeys is linked from the PLATFORM band, not here.</li>
+</ul>
+
+</div></div></body></html>

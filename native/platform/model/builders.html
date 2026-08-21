@@ -1,0 +1,343 @@
+<!doctype html>
+<!-- PAGE: platform-model-builders (v1, RULED at A13 — sheet §11 SITTING RECORD, sitting convened 2026-08-11, concluded 2026-08-17).
+     Uniform skeleton s1-s7. Facts trace to BUILDERS.md (contracts §3, child rule §4)
+     + DESIGN-DECISION-SHEET.md §11 + implementation.html s7 layer stack. A13 ruled the FULL 5-type table + root
+     (compressed set REJECTED), the always-derive child rule, narrowing-only, and the ADR-026 lookup extension.
+     Lifecycle/anatomy mechanics beyond the ruling remain Claude REC and are marked per section. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Builders</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+ol{margin:6px 0;padding-left:26px}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; builders</div>
+<h1>Builders — the workflow types that grow the OS <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-builders</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span> (A13 &#8212; set + child law; mechanics REC)</td><td>v1.1</td><td>claude</td></tr></table>
+<p><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span> &#8212; A13 landed at the sitting (convened 2026-08-11, concluded 2026-08-17; sheet &#167;11 SITTING RECORD): FULL 5-type builder table + root, compressed set REJECTED; always-derive child rule; narrowing-only; ADR-026 lookup extension. Lifecycle/anatomy mechanics beyond the ruling stay Claude REC, marked per section. Source: founder direction 2026-08-07 (in-session) &#183; BUILDERS.md &#183; sheet &#167;11 A13.</p>
+
+<h2 id="s1">What a builder is</h2>
+<p class="lead">A builder is a shipped workflow type that constructs model objects: it enforces the documented contract deterministically and judges the rest &#8212; "stochastic reasoning rides on deterministic, testable primitives." The child builder TYPE is WRITTEN; the builder ENGINE its runs birth is GROWN &#8212; never conflate the columns.</p>
+<p>The set (RULED at A13, sheet &#167;11: the FULL five-type table + root, per BUILDERS.md &#167;3):</p>
+<table>
+<tr><th>Builder</th><th>One line</th></tr>
+<tr><td><code>W-build-atom</code></td><td>constructs a Work-Atom definition &#8212; one goal + ONE verify instantiated from the pinned registry (G1), 4 particles present, constraints inherited in writing</td></tr>
+<tr><td><code>W-build-workflow</code></td><td>constructs a workflow definition &#8212; X1-valid step graph, failure policy + retry budget wired, per-step verifies pre-declared, full Workflow-primitive field set</td></tr>
+<tr><td><code>W-build-engine</code></td><td>writes the engine&#39;s wiring &#8212; X2 empty birth, record slice keyed by stable <code>workflow_id</code>, state = explicit record inputs only (Engine-Library rule); the engine itself is still born at first run, never at build</td></tr>
+<tr><td><code>W-build-system</code></td><td>constructs an Assembly + slots + child builders &#8212; pre-provisioned charter/system slots, X3/X4 boundary, &#8805;1-glue-engine test, styles seeded (A12), child-builder records minted; the System earns its noun later by living</td></tr>
+<tr><td>Root (OS) builder = the Sutra plugin</td><td>all of the above plus every mint gated, every artifact recorded, and the model vocabulary itself; reads the company at install day and mints the skeleton that then grows</td></tr>
+</table>
+<div class="note">Per the A13 ruling (sheet &#167;11): every builder ships CONTRACT + DoD (autonomous-CAPABLE per A16a); zero-delta child mint is mandatory at install. Rejected alternative: the compressed set (3 + root, BUILDERS.md &#167;2b) &#8212; REJECTED by the founder at A13.</div>
+<p>In programming-world terms, builders are the helper functions and scaffolding of the OS &#8212; small shared constructors that everything else calls instead of hand-rolling its own.</p>
+
+<h2 id="s2">The lifecycle — from intent to retirement</h2>
+<p class="lead">The centerpiece: one arc, walked start to finish. The standing thread: Credit-Ops (the digital lending company) needs a top-up eligibility workflow that does not exist yet.</p>
+<svg viewBox="0 0 880 545" role="img" aria-label="Proposed builder lifecycle: intent through the CONSTRUCT door, builder pipeline, gated approval, registration, run, engine birth, learned-pattern feedback, crystallization and retirement">
+<defs>
+<marker id="blf" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+<marker id="blg" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#047857"/></marker>
+</defs>
+<rect x="746" y="8" width="126" height="20" rx="4" fill="#ecfdf5" stroke="#047857"/>
+<text x="809" y="22" text-anchor="middle" font-size="10" fill="#047857">A13 RULED &#183; mechanics REC</text>
+<rect x="20" y="44" width="190" height="48" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="115" y="63" text-anchor="middle" font-size="9.5" font-weight="800">1 &#183; INTENT</text>
+<text x="115" y="79" text-anchor="middle" font-size="7.5" fill="#6b7280">Credit-Ops: top-up eligibility workflow</text>
+<rect x="250" y="44" width="190" height="48" rx="7" fill="#eef2ff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="345" y="63" text-anchor="middle" font-size="9.5" font-weight="800" fill="#3730a3">2 &#183; ROUTER &#8212; RESOLVE</text>
+<text x="345" y="79" text-anchor="middle" font-size="7.5" fill="#475569">no type matches &#8594; the CONSTRUCT door</text>
+<rect x="490" y="44" width="230" height="48" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="605" y="63" text-anchor="middle" font-size="9.5" font-weight="800">3 &#183; child W-build-workflow invoked</text>
+<text x="605" y="79" text-anchor="middle" font-size="7.5" fill="#6b7280">Credit-Ops&#39; child of the shipped base</text>
+<path d="M210,68 L250,68" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M440,68 L490,68" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<rect x="20" y="136" width="185" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="112" y="155" text-anchor="middle" font-size="9.5" font-weight="800">4 &#183; VALIDATE</text>
+<text x="112" y="171" text-anchor="middle" font-size="7.5" fill="#6b7280">contract preconditions</text>
+<rect x="230" y="136" width="185" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="322" y="155" text-anchor="middle" font-size="9.5" font-weight="800">5 &#183; CONSTRUCT</text>
+<text x="322" y="171" text-anchor="middle" font-size="7.5" fill="#6b7280">skeleton &#8212; enforced fields stamped</text>
+<rect x="440" y="136" width="185" height="54" rx="7" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="532" y="152" text-anchor="middle" font-size="9.5" font-weight="800" fill="#7c3aed">6 &#183; JUDGE</text>
+<text x="532" y="166" text-anchor="middle" font-size="7" fill="#475569">LLM fills judgment slots</text>
+<text x="532" y="178" text-anchor="middle" font-size="7" fill="#475569">charter + styles + house instructions</text>
+<rect x="650" y="136" width="185" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="742" y="155" text-anchor="middle" font-size="9.5" font-weight="800">7 &#183; VERIFY</text>
+<text x="742" y="171" text-anchor="middle" font-size="7.5" fill="#6b7280">output contract</text>
+<path d="M605,92 L605,114 L112,114 L112,136" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M205,163 L230,163" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M415,163 L440,163" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M625,163 L650,163" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<rect x="40" y="240" width="200" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="140" y="259" text-anchor="middle" font-size="9.5" font-weight="800">8 &#183; PROPOSE</text>
+<text x="140" y="275" text-anchor="middle" font-size="7.5" fill="#6b7280">the built draft lands as a proposal</text>
+<rect x="320" y="230" width="250" height="74" rx="9" fill="none" stroke="#991b1b" stroke-width="1.3" stroke-dasharray="5 4"/>
+<rect x="330" y="240" width="230" height="54" rx="7" fill="#fef2f2" stroke="#991b1b" stroke-width="2.4"/>
+<text x="445" y="257" text-anchor="middle" font-size="9.5" font-weight="800" fill="#991b1b">9 &#183; APPROVE &#8212; GATED</text>
+<text x="445" y="271" text-anchor="middle" font-size="7.5" fill="#475569">every mint is gated</text>
+<text x="445" y="284" text-anchor="middle" font-size="7.5" font-weight="700" fill="#991b1b">NEVER auto-registration (doctrine)</text>
+<rect x="650" y="240" width="200" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="750" y="259" text-anchor="middle" font-size="9.5" font-weight="800">10 &#183; REGISTER</text>
+<text x="750" y="275" text-anchor="middle" font-size="7.5" fill="#6b7280">catalog row + record entry</text>
+<path d="M742,190 L742,214 L140,214 L140,240" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M240,267 L320,267" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M570,267 L650,267" stroke="#991b1b" stroke-width="1.6" fill="none" marker-end="url(#blf)"/>
+<rect x="40" y="350" width="200" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="140" y="369" text-anchor="middle" font-size="9.5" font-weight="800">11 &#183; RUN</text>
+<text x="140" y="385" text-anchor="middle" font-size="7.5" fill="#6b7280">the workflow runs in Credit-Ops</text>
+<rect x="320" y="350" width="250" height="54" rx="7" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="445" y="369" text-anchor="middle" font-size="9.5" font-weight="800" fill="#047857">12 &#183; first run BIRTHS the engine</text>
+<text x="445" y="385" text-anchor="middle" font-size="7.5" fill="#475569">empty record slice (X2) &#8212; GROWN column</text>
+<rect x="650" y="350" width="200" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="750" y="369" text-anchor="middle" font-size="9.5" font-weight="800">13 &#183; engine accumulates</text>
+<text x="750" y="385" text-anchor="middle" font-size="7.5" fill="#6b7280">learned patterns per run</text>
+<path d="M750,294 L750,324 L140,324 L140,350" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M240,377 L320,377" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M570,377 L650,377" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M850,377 L868,377 L868,68 L720,68" stroke="#047857" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#blg)"/>
+<text x="876" y="230" font-size="8" fill="#047857" transform="rotate(90 876 230)">14 &#183; learned patterns feed future builds</text>
+<rect x="140" y="460" width="260" height="54" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/>
+<text x="270" y="479" text-anchor="middle" font-size="9.5" font-weight="800">15 &#183; CRYSTALLIZE / CODIFY</text>
+<text x="270" y="495" text-anchor="middle" font-size="7.5" fill="#6b7280">by run evidence &#8212; proposed + gated (C0&#8594;C1)</text>
+<rect x="520" y="460" width="240" height="54" rx="7" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="640" y="479" text-anchor="middle" font-size="9.5" font-weight="800" fill="#374151">16 &#183; RETIRE via the ledger (G4)</text>
+<text x="640" y="495" text-anchor="middle" font-size="7.5" fill="#6b7280">gated; record slice persists append-closed</text>
+<path d="M750,404 L750,434 L270,434 L270,460" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+<path d="M400,487 L520,487" stroke="#6b7280" stroke-width="1.4" fill="none" marker-end="url(#blf)"/>
+</svg>
+<p class="figcap">The proposed builder lifecycle, intent to retirement. The PROPOSE&#8594;APPROVE gate is drawn heavy on purpose &#8212; the no-auto-registration doctrine (codex P1).</p>
+<p>The same arc as a numbered story (the lending thread throughout):</p>
+<ol>
+<li>Intent hits the router: Credit-Ops asks for a top-up eligibility workflow. RESOLVE finds no matching workflow type &#8212; the intent falls through to the <strong>CONSTRUCT door</strong>.</li>
+<li>The CONSTRUCT door invokes the builder: Credit-Ops&#39; child <code>W-build-workflow</code> (child resolves before the shipped base &#8212; the proposed ADR-026 extension).</li>
+<li><strong>VALIDATE</strong> &#8212; contract preconditions checked deterministically; a request that cannot satisfy the floor is rejected before anything is built.</li>
+<li><strong>CONSTRUCT</strong> &#8212; the skeleton is laid down with the enforced fields stamped: X1-valid step graph, failure policy, retry-budget wiring, per-step verify slots.</li>
+<li><strong>JUDGE</strong> &#8212; the LLM fills the judgment slots reading the system&#39;s charter + its declared problem styles (A12) + its house instructions: the child builder&#39;s mindset. Credit-Ops&#39; house rule lands here &#8212; every money-touching workflow includes a reconciliation atom + a compliance countersigned verify.</li>
+<li><strong>VERIFY</strong> &#8212; the output contract: schema-complete against the Workflow primitive, every step carrying a verify. (Attempts against this check are a logged field on the atom&#39;s HOW particle &#8212; never a run-noun.)</li>
+<li><strong>PROPOSE</strong> &#8212; the built draft lands as a proposal, not as a registered object.</li>
+<li><strong>APPROVE</strong> &#8212; gated. Every mint is gated; there is NEVER auto-registration (codex P1). Denial, quarantine and replay live at this gate too &#8212; see the <a href="#s6">gaps register</a>: the ledger that would hold this draft state does not exist yet.</li>
+<li><strong>REGISTER</strong> &#8212; the approved workflow gets its catalog row + record entry.</li>
+<li>The workflow <strong>RUNS</strong> &#8212; <code>W-topup-eligibility</code> executes in Credit-Ops.</li>
+<li>The first run <strong>BIRTHS the engine</strong> &#8212; empty record slice (X2). The written child-builder TYPE stays WRITTEN; everything from here accumulates on the GROWN side.</li>
+<li>The engine <strong>accumulates learned patterns</strong> &#8212; after a year, Credit-Ops&#39; slice has learned that reconciliation atoms always follow disbursal atoms.</li>
+<li>Those patterns <strong>feed the child builder&#39;s future builds</strong> &#8212; the feedback arrow: the next W-build-workflow run in Credit-Ops constructs with what the engine learned.</li>
+<li>Hot paths <strong>crystallize / codify by evidence</strong> (C0&#8594;C1 <code>reuse_tag</code> promotion, proposed + gated); a workflow that outlives its use <strong>retires via the ledger</strong> (G4) &#8212; gated, its record slice preserved append-closed.</li>
+</ol>
+
+<h2 id="s3">Anatomy — what a builder consists of</h2>
+<h3>(a) The staged pipeline is a template method</h3>
+<p>The base fixes the skeleton: the validate / construct / verify / propose stages are FIXED &#8212; a child never reorders or removes them. A child overrides ONLY the judge hooks, and it may ADD validate rules &#8212; narrowing-only, never relax. A child that relaxes the base floor is invalid at derivation time, not merely denied at run time. The base/child mechanism itself is now ruled type-system ground: A17 (sheet &#167;11) rules Workflow as the FIRST base/child split &#8212; see <a href="type-system.html">Type System</a>.</p>
+<svg viewBox="0 0 880 240" role="img" aria-label="Template method anatomy: base fixes the stage skeleton, child overrides only judge hooks and adds narrowing validate rules">
+<defs>
+<marker id="banat" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#7c3aed"/></marker>
+</defs>
+<rect x="716" y="8" width="156" height="20" rx="4" fill="#ecfdf5" stroke="#047857"/>
+<text x="794" y="22" text-anchor="middle" font-size="10" fill="#047857">A17 RULED &#183; base/child split</text>
+<rect x="30" y="40" width="400" height="170" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.6"/>
+<text x="50" y="62" font-size="11" font-weight="800" fill="#0f172a">BASE &#8212; shipped in L-SHIP (template method)</text>
+<rect x="50" y="76" width="70" height="30" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/>
+<text x="85" y="95" text-anchor="middle" font-size="7" font-weight="700">VALIDATE</text>
+<rect x="126" y="76" width="70" height="30" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/>
+<text x="161" y="95" text-anchor="middle" font-size="7" font-weight="700">CONSTRUCT</text>
+<rect x="202" y="76" width="70" height="30" rx="4" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="237" y="95" text-anchor="middle" font-size="7" font-weight="700" fill="#7c3aed">JUDGE hook</text>
+<rect x="278" y="76" width="70" height="30" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/>
+<text x="313" y="95" text-anchor="middle" font-size="7" font-weight="700">VERIFY</text>
+<rect x="354" y="76" width="70" height="30" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/>
+<text x="389" y="95" text-anchor="middle" font-size="7" font-weight="700">PROPOSE</text>
+<text x="50" y="132" font-size="8" fill="#475569">stage order FIXED &#8212; validate / construct / verify / propose never move</text>
+<text x="50" y="152" font-size="8" fill="#7c3aed">judge hooks are the ONLY override points</text>
+<text x="50" y="172" font-size="8" fill="#6b7280">shared helper layer called from every stage (deterministic)</text>
+<text x="50" y="192" font-size="8" fill="#6b7280">the whole pipeline is itself ONE Workflow-primitive object</text>
+<rect x="480" y="40" width="370" height="170" rx="8" fill="#f0fdf4" stroke="#166534" stroke-width="1.6"/>
+<text x="500" y="62" font-size="11" font-weight="800" fill="#0f172a">CHILD &#8212; derived at system mint (always; zero-delta allowed)</text>
+<text x="500" y="90" font-size="8.5" fill="#374151">&#8226; overrides the judge hooks only &#8212; the system&#39;s mindset</text>
+<text x="500" y="112" font-size="8.5" fill="#166534">&#8226; may ADD validate rules &#8212; narrowing-only, never relax</text>
+<text x="500" y="134" font-size="8.5" fill="#991b1b">&#8226; a relaxing child is invalid at derivation time</text>
+<text x="500" y="156" font-size="8.5" fill="#475569">&#8226; pins the base version it derived from</text>
+<text x="500" y="178" font-size="8.5" font-weight="700" fill="#374151">&#8226; still a FULL Workflow-primitive object (codex P1)</text>
+<path d="M480,95 L276,95" stroke="#7c3aed" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#banat)"/>
+</svg>
+<p class="figcap">Template method: the base owns the stages, the child owns only the judgment inside them.</p>
+<h3>(b) A builder is itself a Workflow-primitive object</h3>
+<div class="key"><strong>CRITICAL (codex P1):</strong> a builder is a full Workflow-primitive object &#8212; content-addressed id + immutability, <code>domain_ref</code>, typed preconditions/postconditions, <code>failure_policy</code>, <code>stringency</code>, <code>reuse_tag</code>, non-null <code>return_contract</code>, <code>custody_owner</code>, approval, decommission semantics &#8212; none optional. The template-method hooks live INSIDE that contract, never instead of it.</div>
+<p>Two linked child mechanisms ride the same identity thread without being the same object:</p>
+<table>
+<tr><th>Mechanism</th><th>Column</th><th>What it is</th></tr>
+<tr><td>Child builder TYPE</td><td>WRITTEN</td><td>the derived template: base + the system&#39;s extra attributes / house instructions (its mindset)</td></tr>
+<tr><td>Builder ENGINE</td><td>GROWN</td><td>the runtime state that accumulates when that child builder runs: record slice + learned building patterns</td></tr>
+</table>
+<h3>(c) The shared helper layer (proposed; ships in L-SHIP)</h3>
+<p>The small deterministic utilities every builder calls instead of re-implementing them:</p>
+<table>
+<tr><th>Helper</th><th>What it does (deterministic)</th><th>Called by</th></tr>
+<tr><td>verify-template instantiation</td><td>instantiates a pinned registry template into a concrete, non-trivial verify (G1)</td><td>all three + root</td></tr>
+<tr><td>id minting</td><td>content-addressed ids for every built object</td><td>all three + root</td></tr>
+<tr><td>constraint-inheritance stamping</td><td>writes the parent&#39;s constraints into the child object in writing</td><td>all three + root</td></tr>
+<tr><td>slot pre-provisioning</td><td>pre-provisions charter/system slots + zero-delta child-builder records</td><td><code>W-build-assembly</code> + root</td></tr>
+</table>
+
+<h2 id="s4">Programming-world imports</h2>
+<p>Anchor order per codex: TEMPLATE METHOD is the core analogy; the GoF BUILDER pattern &#8212; despite the name &#8212; is demoted to a supporting row.</p>
+<table>
+<tr><th>Pattern</th><th>What we take</th><th>What we do NOT take</th></tr>
+<tr><td>TEMPLATE METHOD (core analogy)</td><td>base fixes the stage skeleton; child overrides only designated hooks</td><td>deep inheritance hierarchies; children overriding arbitrary stages</td></tr>
+<tr><td>FACTORY METHOD</td><td>the router&#39;s CONSTRUCT door picks WHICH builder to invoke</td><td>creation hidden from the record &#8212; every pick is logged and gated</td></tr>
+<tr><td>SCAFFOLDING GENERATORS (rails new / create-react-app)</td><td>the install-day skeleton: slots + stubs minted once, then grown</td><td>generate-and-abandon &#8212; builders stay in the object&#39;s lifecycle after birth</td></tr>
+<tr><td>MIGRATIONS</td><td>the additive-vs-floor update split; versioned, gated evolution of derived children</td><td>auto-run on deploy; silent mutation of children</td></tr>
+<tr><td>LINTERS / TYPE-CHECKS</td><td>hooks and gates as the static floor &#8212; deterministic checks before anything runs</td><td>advisory-only warnings standing in for enforcement</td></tr>
+<tr><td>GC / DESTRUCTORS</td><td>explicit end-of-life semantics &#8212; retirement via the ledger (G4)</td><td>automatic collection &#8212; retirement is gated and the record slice is preserved, never freed</td></tr>
+<tr><td>GoF BUILDER (supporting row only)</td><td>staged construction + a final validate before the object exists</td><td>fluent optional-parameter construction</td></tr>
+</table>
+
+<h2 id="s5">Contract floor (A13 RULED)</h2>
+<p>The per-builder enforced floor from BUILDERS.md &#167;3, restated for the A13-ruled five-type set (sheet &#167;11 SITTING RECORD). A13 ratified the set, the always-derive child rule, narrowing-only, and the ADR-026 lookup extension; every builder ships CONTRACT + DoD.</p>
+<h3>Founder Decisions (in-session 2026-08-07 &#8212; <span class="pill" style="background:#ecfdf5;color:#047857">RULED</span> at A13, sheet &#167;11)</h3>
+<table>
+<tr><th>#</th><th>Decision (verbatim-faithful)</th></tr>
+<tr><td>D-1</td><td>builders are workflow types &#8212; "these are just workflow types in the end. These are hard-coded workflow types" &#8212; and they are to be BUILT OUT</td></tr>
+<tr><td>D-2</td><td>the OS is not pre-installed &#8212; it installs and grows with the company; builders are how it grows</td></tr>
+<tr><td>D-3</td><td>base/child model &#8212; Sutra ships the base builder; "the system will always create a child class out of it"</td></tr>
+<tr><td>D-4</td><td>workflows built within a system are built with that system&#39;s mindset</td></tr>
+</table>
+<h3>Claude inference / REC — the floor per builder (drafted against the pre-ruling compressed set; superseded shape)</h3>
+<div class="note">A13 (sheet &#167;11) adopted the FULL five-type table + root and REJECTED the compressed 3+root set. The rows below still carry the compressed-set absorption notes (W-build-workflow absorbing W-build-engine wiring; W-build-assembly absorbing W-build-system) &#8212; read them as floor CONTENT mapped onto the ruled five types of <a href="#s1">s1</a>; the per-type floors of record live in BUILDERS.md &#167;3.</div>
+<table>
+<tr><th>Builder</th><th>ENFORCES (deterministic floor)</th><th>JUDGES (stochastic rider)</th><th>Output + verify</th></tr>
+<tr><td><code>W-build-atom</code></td><td>one goal + ONE verify; verify instantiated from the pinned registry (G1); 4 particles present; constraints inherited in writing; the means pick lands on the atom&#39;s HOW particle</td><td>atom cut; means pick (skill / LLM / code); context slice</td><td>an atom definition; verify = registry template instantiated + non-trivial</td></tr>
+<tr><td><code>W-build-workflow</code></td><td>X1; valid step graph; failure policy + retry budget wired (the budget reads the attempt log &#8212; a data field on HOW, never a run-noun); per-step verifies pre-declared; full Workflow-primitive field set; engine wiring absorbed from the dissolved W-build-engine &#8212; workflow_id-keyed slice + explicit-state rule written as registration fields (the engine itself is born at first run, X2, never at build)</td><td>FOLLOW vs CONSTRUCT; shape per Cynefin read; granularity; what the engine should learn</td><td>a workflow definition + registration; verify = schema-complete + every step carries a verify</td></tr>
+<tr><td><code>W-build-assembly</code></td><td>pre-provisioned charter + system slots; X3 / X4 boundary fields; &#8805;1-glue-engine test; styles seeded (A12); child-builder records minted (the always-derive invariant) &#8212; absorbs W-build-system, since building a system = writing its Assembly</td><td>boundary; which glue engines now vs later; which contracts to offer</td><td>an Assembly + slots + child builders; verify = slots exist + glue test stated</td></tr>
+<tr><td>Root (OS) builder</td><td>all of the above + every mint gated + every artifact recorded + the model vocabulary itself</td><td>reading the company: which standing systems, in what order</td><td>a company skeleton that then grows; verify = the S6-style walkthrough passes</td></tr>
+</table>
+<h3>Claude proposals — the child-derivation law</h3>
+<table>
+<tr><th>Rule</th><th>Statement</th><th>Provenance</th></tr>
+<tr><td>Always-derive invariant</td><td>at system mint a system-scope child builder RECORD is always created &#8212; even at zero deltas; the record is what makes D-3 checkable</td><td>Claude REC, codex-sharpened (BUILDERS.md &#167;2)</td></tr>
+<tr><td>Narrowing-only</td><td>a child may ADD and NARROW; it may NEVER relax the base floor &#8212; invalid at derivation time (same law as the authority cascade + constraint conjunction)</td><td>Claude proposal (BUILDERS.md &#167;4)</td></tr>
+<tr><td>Version pinning + update split</td><td>the child pins the base version it derived from; ADDITIVE base updates may stay pinned until convenient; FLOOR updates (enforced invariants, security) fire a MANDATORY gated re-derivation per system &#8212; migrate with deltas preserved or carry an explicit quarantine/compat status; silent staleness is not a valid state</td><td>codex P1, folded (BUILDERS.md &#167;2b)</td></tr>
+<tr><td>Maintenance is not building</td><td>re-wiring a live engine = a GROW write-back under gate; re-drawing a live system boundary = an Assembly amendment or shadow-system mint, gated, grown-state-preserving; builders build births only</td><td>codex P2, folded (BUILDERS.md &#167;2b)</td></tr>
+<tr><td>ADR-026 extension</td><td>builder selection resolves child-before-platform like any workflow type &#8212; proposed extension; ADR-026 does not independently govern this today</td><td>Claude proposal (BUILDERS.md &#167;2)</td></tr>
+</table>
+
+<h2 id="s6">Implementation today + the gaps register</h2>
+<p>What exists on disk that a builder story can honestly stand on:</p>
+<table>
+<tr><th>What exists</th><th>Evidence</th><th>Relation to builders</th></tr>
+<tr><td><code>/sutra-onboard</code> 8-phase playbook</td><td>plugin command, running today</td><td>the root builder&#39;s ancestor &#8212; it reads a company and mints a skeleton, but not through builder contracts</td></tr>
+<tr><td>Work-Atom runtime enforces goal + verify at open</td><td><code>holding/bin/sutra-atom</code></td><td>the floor <code>W-build-atom</code> would stamp already has a running enforcement point</td></tr>
+<tr><td>Eval engine ships</td><td>plugin 2.72.0</td><td>could hold builder golden-output evals &#8212; none exist (gap 4)</td></tr>
+<tr><td>user-kit has NO <code>workflows/</code> dir</td><td>GROUNDING-MAP.md</td><td>nothing a builder could REGISTER into (gap 5)</td></tr>
+</table>
+<div class="note">Canonical owner for the as-built state rows above (eval engine ships &#183; no <code>workflows/</code> dir &#183; registry missing): <a href="implementation.html">implementation</a> s2 &#8212; this page depends on it for as-built state and keeps only the &#8220;Relation to builders&#8221; reading.</div>
+<p>The gaps register &#8212; found on request, honest, one row each:</p>
+<table>
+<tr><th>#</th><th>Gap</th><th>Honest one-liner</th><th>Where it bites</th></tr>
+<tr><td>1</td><td>No caller</td><td>the CONSTRUCT door does not invoke builders today &#8212; sessions improvise the construction by hand</td><td>the lifecycle&#39;s step 2 is paper end to end</td></tr>
+<tr><td>2</td><td>No proposal/approval ledger for builder outputs</td><td>the draft state between VERIFY and REGISTER does not exist; approval, denial, quarantine, replay and audit all live there (codex P1)</td><td>the PROPOSE&#8594;APPROVE gate has no substrate</td></tr>
+<tr><td>3</td><td>Helper layer unnamed / homeless</td><td>the four shared utilities of s3c have no module, no owner, no home</td><td>every builder would re-implement them</td></tr>
+<tr><td>4</td><td>No builder golden-output evals</td><td>the eval engine exists (plugin 2.72.0) but no builder eval pack &#8212; a builder&#39;s output contract is unproven</td><td>VERIFY has no fixture to regress against</td></tr>
+<tr><td>5</td><td>Registry still missing (A2 / A11)</td><td>REGISTER has nowhere to register into &#8212; user-kit has no <code>workflows/</code> dir</td><td>steps 9-10 of the lifecycle</td></tr>
+<tr><td>6</td><td>Child-derivation trigger at system mint unwired</td><td>the always-derive invariant has no firing point in any mint path</td><td>D-3 is uncheckable today</td></tr>
+<tr><td>7</td><td>Builder-of-builders recursion bounded only by A10 budgets</td><td>no structural depth bound exists &#8212; only the per-task budget ceiling</td><td>the root builder&#39;s own build-out</td></tr>
+</table>
+
+<h2 id="s7">Open questions</h2>
+<p>The A13 asks first, then the s6 gaps restated as questions. Statuses refreshed against the 2026-08-17 sitting (sheet &#167;11) &#8212; per-row state below.</p>
+<table>
+<tr><th>#</th><th>Question</th><th>Owner / state</th><th>Source</th></tr>
+<tr><td>1</td><td>Compressed set (3 + root) or the uncompressed five base types? <strong>ANSWERED &#8212; RULED at A13 (sheet &#167;11): FULL five-type table + root; compressed set REJECTED</strong></td><td>A13 ask 1 &#8212; RULED</td><td>sheet &#167;11 SITTING RECORD (A13)</td></tr>
+<tr><td>2</td><td>Always-derive invariant: a child record at every system mint, zero-delta allowed?</td><td>A13 ask 2</td><td>BUILDERS.md &#167;2</td></tr>
+<tr><td>3</td><td>Narrowing-only override law for children (mirrors authority / constraints)?</td><td>A13 ask 3</td><td>BUILDERS.md &#167;4</td></tr>
+<tr><td>4</td><td>Extend ADR-026&#39;s lookup to builder selection &#8212; needs its own ADR clause?</td><td>A13 ask 4</td><td>BUILDERS.md &#167;2</td></tr>
+<tr><td>5</td><td>Naming cleanup: workflow builder vs engine cradle vs builder engine</td><td>A13 ask 5 &#8212; founder-owned</td><td>BUILDERS.md &#167;1</td></tr>
+<tr><td>6</td><td>Where do base types ship: plugin L0, registry-only, or both?</td><td>A13 ask 6</td><td>BUILDERS.md &#167;8</td></tr>
+<tr><td>7</td><td>Who calls the builders &#8212; where does the CONSTRUCT door bind to <code>W-build-*</code>?</td><td>gap 1 as a question</td><td>s6</td></tr>
+<tr><td>8</td><td>Where does the proposal/approval ledger live, and which states does it carry (approved / denied / quarantined / replayable)?</td><td>gap 2 as a question</td><td>s6 (codex P1)</td></tr>
+<tr><td>9</td><td>What is the helper layer&#39;s name and home?</td><td>gap 3 as a question</td><td>s6</td></tr>
+<tr><td>10</td><td>What does the builder golden-output eval pack look like &#8212; which fixtures, which drift detector?</td><td>gap 4 as a question</td><td>s6</td></tr>
+<tr><td>11</td><td>Registry ship timing (A2 / A11) &#8212; <strong>ANSWERED at A11 (sheet &#167;11): registry build FUNDED as the first v1 act</strong>; A2 ruled as REC (reuse_tag files are the catalog + one index spec)</td><td>gap 5 &#8212; RULED</td><td>sheet &#167;11 (A11 &#183; Quick eight)</td></tr>
+<tr><td>12</td><td>What fires child derivation at system mint?</td><td>gap 6 as a question</td><td>s6</td></tr>
+<tr><td>13</td><td>What bounds builder-of-builders recursion beyond A10 budgets?</td><td>gap 7 as a question</td><td>s6</td></tr>
+<tr><td>14</td><td>MAN-PAGE EMISSION &#8212; the lifecycle&#39;s REGISTER stage would emit the workflow&#39;s man page, generated from the registration fields (A14 fold; the lifecycle diagram itself is unchanged this pass)</td><td>DIRECTED (A14) &#8212; not ruled at the 2026-08-11 sitting</td><td>sheet A14 (founder-directed 2026-08-08)</td></tr>
+<tr><td>15</td><td>GAPS UPDATE &#8212; the gaps register&#39;s proposal/approval ledger (gap 2) and registry storage (gap 5) now have a named candidate home: the connection-graph slice + gated edge promotions recorded on the sheet as A15. The connection graph has no on-site definition page &#8212; DESIGN-DECISION-SHEET.md A15 is its only home. Cross-reference row only &#8212; the question stays open</td><td><span class="pill PROPOSED">PROPOSED</span> &#8212; cross-reference; question stays open</td><td>sheet A15 (founder-minted 2026-08-08; the sheet is the only home)</td></tr>
+</table>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The registry-entry + catalog-row schema is not ruled (A2 ruled as REC: reuse_tag files are the catalog + one index spec; the proposal/approval ledger of gap 2 has no substrate yet).
+<p>What a builder run persists at lifecycle steps 8-10, for the standing lending example (Credit-Ops&#39; <code>W-topup-eligibility</code> built by its child <code>W-build-workflow</code>):</p>
+<pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">{"proposal_id":"&lt;decision_pending&gt;","built_by":"W-build-workflow@credit-ops","object":"W-topup-eligibility",
+ "stage":"PROPOSE","verify":"schema-complete + every step carries a verify","approved_by":"&lt;decision_pending&gt;"}
+&#8594; on APPROVE, one catalog row (A2 index shape): {"id":"W-topup-eligibility","custody":"credit-ops","rung":"E0","decay_date":"&lt;decision_pending&gt;"}
+&#8594; plus one record entry keyed by stable workflow_id (the engine is born later, at first run &#8212; X2)</pre>
+<p>Operator surface: the proposal-queue + registry-catalog views (BA-11 shelf views, once built) would render these rows; nothing renders them today.</p></div>
+
+<h2>Sources</h2>
+<ul>
+<li>Builder spec (A13 sitting input): <code>holding/plans/native-sop-program/BUILDERS.md</code> &#8212; compressed REC &#167;2b; base contracts &#167;3; child rule &#167;4</li>
+<li>Rulings + open registers: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> (A1 family; A2 &#183; A10 &#183; A11 &#183; A12 &#183; A13; G1 &#183; G4; X1-X4)</li>
+<li>Layer stack (ship / install / grow): <a href="implementation.html">implementation</a> s7</li>
+<li>Hub: <a href="../the-model.html">The Model</a> &#183; siblings: <a href="particles.html">Particles</a> &#183; <a href="work-atom.html">Work-Atom</a> &#183; <a href="workflow-engine.html">Workflow + Engine</a> &#183; <a href="assembly-system.html">Assembly + System</a> &#183; <a href="internal-system.html">Internal System</a> &#183; <a href="shadow-systems.html">Shadow Systems</a> &#183; <a href="properties.html">Properties</a> &#183; <a href="evals.html">Evals</a></li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+
+</div></div></body></html>

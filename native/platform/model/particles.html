@@ -1,0 +1,241 @@
+<!doctype html>
+<!-- PAGE: platform-model-particles (v1, DRAFT). PRD subpage of platform-the-model (ruled vocabulary cluster, founder sittings 2026-08-05/06).
+     Uniform skeleton s1-s7: purpose / how it works / product use cases / operational scenarios / contract / implementation today / open questions.
+     Facts trace to DESIGN-DECISION-SHEET.md + GROUNDING-MAP.md + the-model.html only; gaps are bare TODO(founder) markers. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Particles</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+.pill.RULED{background:#ecfdf5;color:#047857}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; particles</div>
+<h1>Particles — goal, constraints, context, HOW <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-particles</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr></table>
+
+<h2 id="s1">Purpose</h2>
+<p>Particles are the four sub-atomic parts every unit of work is made of: <strong>goal</strong>, <strong>constraints</strong>, <strong>context</strong>, and <strong>HOW</strong>. They repeat at every level of the model — self-similarity is the design — but none can run alone: a particle has no verify and no state of its own. They exist so the smallest accountable unit, the <a href="../the-model.html#work-atom">Work-Atom</a>, is fully specified before anything runs: what done looks like (goal), what must hold regardless of progress (constraints), what slice of the record the motor may read (context), and which motor runs (HOW). Ruled in A1-ext (founder sitting 2026-08-05); the fourth particle was renamed to HOW in A1-FINAL-3 (2026-08-06), removing the word "work" everywhere, including the pending runtime field rename.</p>
+
+<h2 id="s2">How it works</h2>
+<p>Each particle carries a ruled definition and a runnable test. The tests are mis-cut detectors: an atom whose particles fail their tests is wrongly cut, not merely under-documented. The four boxes in <a href="../the-model.html#particles">the hub diagram</a> show the particles inside their Work-Atom container.</p>
+<table>
+<tr><th>Particle</th><th>Ruled definition (A1-ext)</th><th>Runnable test</th></tr>
+<tr><td><strong>goal</strong></td><td>Target state + the check that detects it. The check is the atom's ONE verify.</td><td>No verify = a wish, not a goal.</td></tr>
+<tr><td><strong>constraints</strong></td><td>Conditions that hold independent of goal progress.</td><td>Checkable without knowing progress.</td></tr>
+<tr><td><strong>context</strong></td><td>Minimal record slice the HOW needs.</td><td>Remove it → quality drops; add to it → only cost grows.</td></tr>
+<tr><td><strong>HOW</strong></td><td>The swappable motor — skill | LLM | code. Home of the C-state and the attempt log.</td><td>Swappable without touching the other particles; otherwise the atom is mis-cut.</td></tr>
+</table>
+<div class="note">Naming history: A1-ext originally named the fourth particle "means". A1-FINAL-3 supersedes that: the particle is <strong>HOW</strong>, and the word "work" is removed everywhere — including the runtime field rename <code>work</code> → <code>how</code> (see <a href="#s6">implementation today</a>).</div>
+<p>When an atom's how is undecided, it defaults to the intelligence floor — hand it to the LLM (A1-FINAL ladder, rung 1). An atom is atomic in accountability, not size: one goal, one verify, 1..n internal steps; the moment an internal step needs its own verify, split into two atoms.</p>
+
+<h3>The attempt log — a data field on HOW, never an object</h3>
+<p>Attempt was deleted as a ladder noun (A1-FINAL-3). It returns only as a <strong>logged field on the HOW particle</strong>: an attempt count plus history, kept for systemic purposes. Each live run of the atom increments it. The retry budget reads this field to decide whether another attempt is allowed.</p>
+<div class="key">RULED as REC — A8 (sheet §11, Quick eight: "A2 A3 A5 A6 A8 A10 as REC; budgets = labeled v1 dials", sitting concluded 2026-08-17): the retry budget lives in the Charter as <code>retry_budget</code> (default 3), a labeled v1 dial. Canonical owner of the budget's home: <a href="properties.html#s5">Properties s5 — charter contract</a>; this page keeps only the attempt-log mechanics. The S6 walkthrough gap ("attempt 2 of N — N undefined") is closed by the ruling; runtime enforcement remains a build gap (see <a href="#s6">s6</a>).</div>
+
+<h3>C-state — crystallization stage lives on HOW</h3>
+<svg viewBox="0 0 880 250" role="img" aria-label="The crystallization loop: declare target at authoring, run, promote when the record's evidence earns it, de-opt on drift in the same record">
+<defs><marker id="lp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="30" y="30" width="220" height="60" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="140" y="50" text-anchor="middle" font-size="9" font-weight="800">1 &#183; AUTHORING</text><text x="140" y="65" text-anchor="middle" font-size="7.5" fill="#6b7280">declare crystallization_target (ceiling)</text><text x="140" y="77" text-anchor="middle" font-size="7.5" fill="#6b7280">+ policy: auto | gated | pinned-soft</text>
+<rect x="330" y="30" width="220" height="60" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/><text x="440" y="50" text-anchor="middle" font-size="9" font-weight="800" fill="#9a3412">2 &#183; RUN &#8594; RECORD (evidence)</text><text x="440" y="65" text-anchor="middle" font-size="7.5" fill="#6b7280">the record logs: run-count &#183;</text><text x="440" y="77" text-anchor="middle" font-size="7.5" fill="#6b7280">output-variance &#183; cost (= the profiler)</text>
+<rect x="630" y="24" width="220" height="72" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/><text x="740" y="44" text-anchor="middle" font-size="9" font-weight="800" fill="#b45309">3 &#183; PROMOTE? (reads evidence)</text><text x="740" y="59" text-anchor="middle" font-size="7.5" fill="#6b7280">determinism = GATE &#183; frequency = TRIGGER</text><text x="740" y="71" text-anchor="middle" font-size="7.5" fill="#6b7280">stringency = how much review</text><text x="740" y="85" text-anchor="middle" font-size="7" fill="#9ca3af">C1&#8594;C2 freeze gated by approval (ADR-009)</text>
+<rect x="330" y="150" width="220" height="60" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/><text x="440" y="170" text-anchor="middle" font-size="9" font-weight="800">4 &#183; WRITE-BACK: ONE RUNG HARDER</text><text x="440" y="185" text-anchor="middle" font-size="7.5" fill="#6b7280">atom dispatch C0&#8594;C1&#8594;C2 (never past target)</text><text x="440" y="197" text-anchor="middle" font-size="7.5" fill="#6b7280">next runs use the harder form</text>
+<rect x="30" y="150" width="220" height="60" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.6"/><text x="140" y="170" text-anchor="middle" font-size="9" font-weight="800" fill="#b91c1c">DE-OPT (same evidence, reversed)</text><text x="140" y="185" text-anchor="middle" font-size="7.5" fill="#6b7280">rising variance / failures in the record</text><text x="140" y="197" text-anchor="middle" font-size="7.5" fill="#6b7280">&#8594; write dispatch back toward C0</text>
+<path d="M250,60 L330,60" stroke="#334155" stroke-width="1.3" marker-end="url(#lp)"/>
+<path d="M550,60 L630,60" stroke="#334155" stroke-width="1.3" marker-end="url(#lp)"/>
+<path d="M740,96 L740,180 L550,180" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#lp)"/>
+<path d="M440,150 L440,96" stroke="#047857" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#lp)"/><text x="455" y="120" font-size="7" fill="#047857">loop: run harder, re-profile</text>
+<path d="M330,180 L250,180" stroke="#b91c1c" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#lp)"/>
+<path d="M140,150 L140,92" stroke="#b91c1c" stroke-width="1.2" fill="none" stroke-dasharray="4 3" marker-end="url(#lp)"/><text x="150" y="120" font-size="7" fill="#b91c1c">re-soften the dispatch</text>
+<text x="440" y="243" text-anchor="middle" font-size="8" font-weight="800" fill="#b45309">DEFERRED past C0&#8594;C1 (sheet &#167;9) &#8212; full loop shown for design context only</text>
+</svg>
+<p class="figcap">The crystallization loop that moves a HOW up its C-ladder — declare at authoring, earn at runtime. Only the C0&#8594;C1 rung is canon today; the rest of the loop is DEFERRED until run data exists (<a href="#s7">s7</a>).</p>
+
+<p>How a HOW gets chosen: the lens primitive (value &#8646; axis) cutting DOWN (decompose), UP (generalize), or ACROSS (reframe). Canonical owner: <a href="../how-methodology.html">Method &#167;3</a> — this page depends on it for the lens doctrine and its labels (Realization / Reflection).</p>
+
+<p>A9 (ruled by consequence of A1-ext): the crystallization stage of an atom's motor lives on the HOW particle, written side. Workflow and Engine C-state is a derived aggregate over their atoms' HOW particles — mixed stages are allowed. Promotions are earned by attempt evidence, and are always proposed and gated, never automatic. Today only the C0→C1 rung (via <code>reuse_tag</code>) is canon; everything past C1 is deferred until run data exists.</p>
+
+<h2 id="s3">Product use cases</h2>
+<table>
+<tr><th>Actor</th><th>Wants</th><th>How particles serve it</th></tr>
+<tr><td>Docs system operator (<code>W-md-authoring</code>)</td><td>A doc that passes the writing standard, every time</td><td>The A-author atom's particles (S6 case #1): goal = file exists + §6 checklist passes (runnable); constraints = R1-R10 + tenant path + no ASCII art; context = rulings + standard + sibling docs (minimal slice); HOW = LLM + skill, already C1 — the standard is a crystallized skill.</td></tr>
+<tr><td>Lending ops manager (digital lending company)</td><td><code>W-kyc-verify</code> / <code>W-disburse-loan</code> to run reliably without babysitting</td><td>Every step is an atom whose goal carries its own check; when verify fails 3x, the retry budget exhausts and the atom routes <code>fail-escalate</code> → Approval instead of silently looping (S6 planted edge case; run-outcome enum pass / fail-retry / fail-escalate / blocked, sheet A14 — "ESCALATED" is the legacy label for <code>fail-escalate</code>).</td></tr>
+<tr><td>Governance stack operator</td><td>Zero documented-but-never-exercised control paths</td><td>The goal test ("no verify = a wish") makes every documented escape part of some atom's verify — an escape never exercised by a passing attempt cannot ship (real case R7: ACK env-vars documented but unreachable).</td></tr>
+<tr><td>Governance stack operator</td><td>The same failure never recurring three times</td><td>A learned lesson becomes a CONSTRAINT particle on the emit atom after failure 1; the engine's record slice carries it into attempt 2 (real case R1: H-Sutra header case-error redo loop).</td></tr>
+<tr><td>Docs system (growth)</td><td>Deterministic checks promoted out of the LLM</td><td>Because HOW is swappable without touching goal/constraints/context, the deterministic §6 self-audit can be proposed for C1→C2 crystallization (a linter) with the rest of the atom unchanged (S6 case #1, GROW layer).</td></tr>
+</table>
+
+<h2 id="s4">Operational scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Path through the particles</th><th>Outcome</th></tr>
+<tr><td>Happy path — "create a doc explaining the vocabulary ladder" (S6 case #1)</td><td>A-author atom constructed: goal check pre-declared, constraints bound from charter, context slice assembled, HOW = LLM + skill. Run 1: HOW executes against the context; the goal's checklist check passes.</td><td>Atom closes; the attempt log on HOW records one attempt; the run writes to the Md-Authoring Engine's record slice (X2).</td></tr>
+<tr><td>Failure path — verify fails, then fails again</td><td>Checklist fails → attempt 2; the attempt log increments and the retry budget reads it. In the lending-company plan: verify fails 3x → budget exhausted → <code>fail-escalate</code> → Approval, with the decision_trail persisted (sheet edge contract, VERIFY loop).</td><td>Escalation instead of an infinite loop — N's home is now ruled (A8 as REC: Charter <code>retry_budget</code>, labeled v1 dial — sheet §11 Quick eight), but exhaustion is still not enforced in the atom runtime (see <a href="#s6">s6</a>).</td></tr>
+<tr><td>Growth path — hot deterministic step (repayment-ledger-read)</td><td>Repeated passing attempts on the same HOW accumulate as attempt evidence; a C0→C1 <code>reuse_tag</code> promotion is proposed, gated, never auto (A9).</td><td>C-state advances on that atom's HOW particle; the workflow's and engine's C-state remain derived aggregates, mixed stages allowed.</td></tr>
+</table>
+
+<h2 id="s5">Contract</h2>
+<h3>Data model</h3>
+<table>
+<tr><th>Field</th><th>Type-ish</th><th>Meaning</th><th>Source of truth</th></tr>
+<tr><td><code>goal</code></td><td>text + runnable check</td><td>Target state plus the check that detects it; the check is the atom's ONE verify</td><td>A1-ext ruling; runtime enforces goal+verify pairing at open (<code>sutra-atom:267</code>)</td></tr>
+<tr><td><code>constraints</code></td><td>list of <code>{text, check}</code></td><td>Conditions holding independent of goal progress</td><td>A1-ext ruling; runtime shape <code>constraints:[{text,check:null}]</code> (<code>sutra-atom:262,268</code>)</td></tr>
+<tr><td><code>context</code></td><td>list of record refs</td><td>Minimal record slice the HOW may read</td><td>A1-ext ruling; runtime <code>context_refs:[]</code> (<code>sutra-atom:268</code>)</td></tr>
+<tr><td>HOW — kind</td><td><code>skill | LLM | code</code></td><td>Which swappable motor runs the atom</td><td>A1-ext (as means) + A1-FINAL-3 (name); runtime <code>work.dispatch_kind: llm|skill|bash|manual</code> (<code>sutra-atom:269</code>)</td></tr>
+<tr><td>HOW — ref</td><td>reference</td><td>Which specific skill / prompt / code the kind points at</td><td>Runtime <code>work.ref</code> (<code>sutra-atom:269</code>); <code>model</code> currently sits outside the particle (<code>sutra-atom:14</code>)</td></tr>
+<tr><td>HOW — attempt log</td><td>count + history</td><td>One entry per live run, for systemic purposes; the retry budget reads it</td><td>A1-FINAL-3 ruling; runtime today is an <code>attempt</code> int counter (<code>sutra-atom:337,:325</code>)</td></tr>
+<tr><td>HOW — C-state</td><td>crystallization stage</td><td>How crystallized this motor is; promotions earned by attempt evidence, gated</td><td>A9 ruling; only C0→C1 via <code>reuse_tag</code> is canon</td></tr>
+<tr><td>retry budget</td><td>int, default 3</td><td>Reads the attempt log (ruled); home = Charter field <code>retry_budget</code>, a labeled v1 dial — canonical owner <a href="properties.html#s5">Properties s5</a></td><td>A8 — RULED as REC (sheet §11, Quick eight)</td></tr>
+<tr><td>constraint <code>check</code> format</td><td>TODO(founder):</td><td>Machine-checkable form of a constraint; today <code>check</code> is never populated</td><td>Grounding map §1 (constraints row)</td></tr>
+</table>
+<h3>Invariants</h3>
+<ul>
+<li>Sub-atomic: no particle runs alone — no verify, no state of its own (A1-ext).</li>
+<li>One goal, ONE verify per atom; an internal step needing its own verify means split into two atoms — atomic in accountability, not size.</li>
+<li>Goal test: no verify = a wish, not a goal.</li>
+<li>Constraints test: checkable without knowing goal progress.</li>
+<li>Context test: remove → quality drops; add → only cost grows.</li>
+<li>HOW test: swappable without touching the other three particles; failing this test means the atom is mis-cut.</li>
+<li>Attempt is never an object or ladder noun — only logged data on HOW (A1-FINAL-3).</li>
+<li>C-state lives on HOW; Workflow/Engine C-state is a derived aggregate, mixed allowed; promotions earned by attempt evidence (A9).</li>
+<li>Particles repeat at every level of the ladder — self-similarity (A1-FINAL, rung 0).</li>
+<li>X1: the atom the particles compose always sits in a Workflow — a single atom is a workflow of one. X2: every run happens inside an Engine, writing to its record slice from run 1.</li>
+</ul>
+<h3>Lifecycle</h3>
+<ul>
+<li><strong>Authored (written side)</strong>: all four particles fixed at atom construction; the goal's check pre-declared before any run.</li>
+<li><strong>Run (grown side)</strong>: each attempt appends to HOW's attempt log and writes to the owning Engine's record slice (X2).</li>
+<li><strong>Verify loop</strong>: fail → <code>fail-retry</code> up to N → <code>fail-escalate</code>, with Approval on escalate and the decision_trail persisted (sheet §2 edge contract). N's home is ruled: Charter <code>retry_budget</code> (A8 as REC, sheet §11 Quick eight).</li>
+<li><strong>C-state</strong>: C0 → C1 via <code>reuse_tag</code> (canon); rungs past C1 deferred until run data exists (sheet §9).</li>
+</ul>
+<h3>Ownership and custody</h3>
+<ul>
+<li>The Work-Atom owns its particles (written side); the runtime writes the attempt log at close.</li>
+<li>Distribution ships templates only — instances and state never leave the tenant (A1-ext consequence; D33 in one sentence).</li>
+</ul>
+<h3>Failure modes</h3>
+<ul>
+<li>Verify fail → <code>fail-retry</code> → <code>fail-escalate</code> → Approval (the only ruled failure route for an atom; run-outcome enum, sheet A14).</li>
+<li>Mis-cut atom (HOW not swappable, or a step needing its own verify) → split; the particle tests are the detectors.</li>
+<li>Today-behavior: constraints ship as unpopulated prose and context is read by nothing, so neither is enforced at run time (grounding map §1).</li>
+</ul>
+<h3>Observability</h3>
+<ul>
+<li>Every close/abandon appends an atom-ledger row (<code>sutra-atom:361-388</code>); rows are keyed by session+atom, not by workflow — which is why no Engine is ever born today (grounding X2 row).</li>
+<li>Attempt increments are visible in the atom record; the only budget-like cap running today is the model-escalation cap (<code>sutra-dispatch:237-239</code>).</li>
+</ul>
+
+<h2 id="s6">Implementation today</h2>
+<p>Per the grounding map: the goal particle is the most faithful ruled object in the build; the other three particles exist in shape but not in force.</p>
+<table>
+<tr><th>What exists</th><th>File evidence</th><th>Fidelity</th><th>Gap</th></tr>
+<tr><td>Mandatory <code>goal</code> + verify pairing enforced at open</td><td><code>holding/bin/sutra-atom:267</code></td><td>FAITHFUL</td><td>None material</td></tr>
+<tr><td><code>constraints:[{text,check:null}]</code></td><td><code>sutra-atom:262,268</code></td><td>PARTIAL</td><td>Undecidable prose; <code>check</code> never populated; live atoms ship <code>[]</code></td></tr>
+<tr><td><code>context_refs:[]</code> — bare path list</td><td><code>sutra-atom:268</code></td><td>PARTIAL</td><td>Read by nothing today; no minimality test</td></tr>
+<tr><td>HOW, currently named <code>work</code> — <code>{dispatch_kind: llm|skill|bash|manual, ref}</code>; <code>model</code> outside it</td><td><code>sutra-atom:269,:14</code></td><td>PARTIAL</td><td>Wrong word; motor split across two fields. Pending rename <code>work</code>→<code>how</code> (grounding cheap move 1, ~30m: 3 sites + readers, SCHEMA_VERSION 0.4 with null-safe old-key read — v0.2→0.3 precedent at <code>sutra-atom:32</code>; fold <code>model</code> into the particle). Grounding recorded the target word as "means"; A1-FINAL-3 supersedes it to <code>how</code>.</td></tr>
+<tr><td><code>attempt</code> int counter incremented on close/hash-mismatch</td><td><code>sutra-atom:337,:325</code></td><td>PARTIAL</td><td>Scalar, not records; no retry budget exists — only the model-escalation cap (<code>sutra-dispatch:237-239</code>). Grounding cheap move 2 (~1h): add <code>retry_budget</code> to atom.json, enforce in cmd_close — implements the A8 ruling (RULED as REC, sheet §11 Quick eight) as running code</td></tr>
+</table>
+<div class="key">Completing cheap move 1 makes the Work-Atom the first fully-faithful ruled object in the build (grounding map §5).</div>
+
+<h2 id="s7">Open questions</h2>
+<table>
+<tr><th>Question</th><th>State</th><th>Where recorded</th></tr>
+<tr><td>A8 — retry budget home: Charter field <code>retry_budget</code>, default 3 (labeled v1 dial)</td><td>RULED as REC at the 2026-08-17 sitting (was OPEN — bit at S6 case #1, layer 9); runtime enforcement still pending (s6 cheap move 2)</td><td>Sheet §11 Quick eight (Group A)</td></tr>
+<tr><td>How is the HOW made (the how-of-how)</td><td>DEFERRED (Mode 3 / FQ1)</td><td>Sheet A1-FINAL-3</td></tr>
+<tr><td>FQ1 — the four HOW questions</td><td>Research cycle scheduled post-S5, not adjudicated</td><td>Sheet §6 B5</td></tr>
+<tr><td>Crystallization beyond C0→C1 (thresholds, de-opt, promotion policy)</td><td>DEFERRED — needs run data</td><td>Sheet §9</td></tr>
+<tr><td>Constraint propagation (system → engine → workflow → atom)</td><td>DEFERRED — named CONSTRAINT-PROPAGATION</td><td>Sheet A1-FINAL</td></tr>
+<tr><td>TODO(founder): machine-checkable constraint <code>check</code> format</td><td>—</td><td>Grounding map §1</td></tr>
+<tr><td>TODO(founder): runtime minimality test for the context slice</td><td>—</td><td>Grounding map §1</td></tr>
+</table>
+
+<h3>Sitting queue — 2026-08-07 (statuses refreshed against the 2026-08-17 sitting)</h3>
+<p>The sitting closed the queue (sheet §11). Per-row status below is now authoritative per §11; the decision sheet remains the record.</p>
+<table>
+<tr><th>Feature</th><th>What it requires</th><th>Status</th><th>Source</th></tr>
+<tr><td><code>W-crystallize</code> — judgment-freeze validation ritual for C-state promotion on the HOW particle</td><td>Would gate promotion behind a domain edge-case checklist + a parallel-run window (code would decide alongside judgment; disagreements reviewed) + versioned rollback — the gated propose→approve→register promotion ritual is the <a href="builders.html">builders lifecycle</a></td><td><span class="pill PROPOSED">PROPOSED</span> — parents ruled: A12 + A13 full 5-type table (sheet §11, Styles + Builders); this specific ritual itself has no §11 row</td><td>PROBLEM-STYLES.md + challenge set</td></tr>
+<tr><td>G1 verify-authoring — constructed verifies are INSTANTIATED from the pinned verify-template registry</td><td>This row covers only the C-state/verify ritual; registry extension is FOLLOW-catalog machinery — see <a href="workflow-engine.html#s7">workflow-engine s7</a></td><td><span class="pill RULED">RULED</span> — registry-only verifies, sheet §11 Router (A4)</td><td>Sheet §11 A4/G1</td></tr>
+</table>
+
+<h2 id="s-output">Output looks like</h2>
+<p>The persisted artifact the four particles produce is the <strong>atom record</strong> — the runtime JSON that fixes all four particles at construction and accumulates the attempt count. Today's runtime shape, exactly the fields of the <a href="#s5">s5 contract</a> (the <code>work</code> key is the pending rename to <code>how</code>, A1-FINAL-3):</p>
+<pre style="background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;font-size:12px;line-height:1.5;overflow-x:auto">{
+  "goal": {
+    "text": "PAN verified for applicant A-2214 (W-kyc-verify, step 2)",
+    "check": "grep -q 'pan_status: VERIFIED' records/kyc/A-2214.yaml"
+  },
+  "constraints": [ { "text": "no applicant PII leaves the tenant", "check": null } ],
+  "context_refs": [ "records/kyc/A-2214/", "user-kit/charters/C-credit-ops.json" ],
+  "work": { "dispatch_kind": "llm", "ref": "skills/kyc-verify" },
+  "attempt": 1
+}</pre>
+<p>On close or abandon, the runtime appends an atom-ledger row keyed by session+atom (<code>sutra-atom:361-388</code>) — that ledger is where an operator sees particle outcomes; the attempt counter above is the only budget-relevant state persisted today.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Rulings of record: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> (A1 family)</li>
+<li>Build grounding: <code>holding/plans/native-sop-program/GROUNDING-MAP.md</code></li>
+<li>Hub: <a href="../the-model.html">The Model</a> &#183; siblings: <a href="work-atom.html">Work-Atom</a> &#183; <a href="workflow-engine.html">Workflow + Engine</a> &#183; <a href="assembly-system.html">Assembly + System</a> &#183; <a href="internal-system.html">Internal System</a> &#183; <a href="shadow-systems.html">Shadow Systems</a> &#183; <a href="properties.html">Properties (Charter · Domain · Tenancy)</a></li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) · refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) · review: audit workflow wf_5c81f205 · earlier content: original page authors.</p>
+
+</div></div></body></html>

@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asawa Inc. — Systematic Company Building</title>
+<meta name="description" content="An AI operating system that builds companies the way an OS runs programs. From first idea to going public.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FAFAF7;
+    --deep: #0C0A08;
+    --ink: #1A1714;
+    --stone: #6B6560;
+    --warm: #A09889;
+    --line: #E8E3DB;
+    --cream: #F5F0E8;
+    --gold: #B8945F;
+    --gold-glow: rgba(184, 148, 95, 0.15);
+    --forest: #2D5A3E;
+    --forest-soft: rgba(45, 90, 62, 0.06);
+    --steel: #4A6B8B;
+    --rose: #8B4A6B;
+    --clay: #8B6B4A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  .stagger > * { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+  .stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+  .stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+  .stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+  .stagger.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+  .stagger.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: transparent; transition: all 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .inner {
+    max-width: 1200px; margin: 0 auto; padding: 24px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: padding 0.5s;
+  }
+  nav.scrolled .inner { padding: 16px 32px; }
+  .wordmark {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 500; letter-spacing: 2px; color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; color: var(--stone);
+    text-decoration: none; letter-spacing: 0.5px; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; }
+  .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0; transition: 0.3s; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 32px 80px; position: relative; overflow: hidden;
+  }
+  .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .particle {
+    position: absolute; width: 2px; height: 2px; background: var(--gold);
+    border-radius: 50%; opacity: 0; animation: float-particle linear infinite;
+  }
+  @keyframes float-particle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.3; } 90% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  .hero-content { max-width: 720px; position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px; opacity: 0; animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 400;
+    line-height: 1.15; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--gold), #D4B077);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-body {
+    font-size: 18px; font-weight: 300; line-height: 1.8; color: var(--stone);
+    max-width: 540px; margin: 0 auto; opacity: 0; animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero-line { width: 48px; height: 1px; background: var(--gold); margin: 40px auto 16px; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
+  .hero-year { font-size: 13px; font-weight: 400; color: var(--warm); letter-spacing: 2px; opacity: 0; animation: fadeUp 1s 1s forwards; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Belief */
+  .belief {
+    background: var(--deep); padding: 120px 32px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .belief::before {
+    content: ''; position: absolute; top: -200px; left: 50%; width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+    transform: translateX(-50%); pointer-events: none;
+  }
+  .belief .inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .belief .section-label { color: var(--gold); }
+  .belief h2 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; line-height: 1.3; color: var(--cream); margin-bottom: 24px; }
+  .belief h2 em { font-style: italic; color: var(--gold); }
+  .belief p { font-size: 16px; font-weight: 300; line-height: 1.9; color: rgba(245, 240, 232, 0.55); max-width: 480px; margin: 0 auto; }
+
+  /* Section */
+  .section { padding: 120px 32px; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .section h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 400; line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 16px; }
+  .section-intro { font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--stone); max-width: 520px; margin-bottom: 56px; }
+
+  /* === THE SYSTEM — Architecture Flow === */
+  .system-flow {
+    background: var(--cream);
+    padding: 120px 32px;
+    position: relative;
+  }
+
+  .system-flow .inner { max-width: 1000px; margin: 0 auto; }
+  .system-flow .section-label { text-align: center; }
+
+  .system-flow h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 400; line-height: 1.2;
+    text-align: center; margin-bottom: 16px;
+  }
+
+  .system-flow .section-intro {
+    text-align: center; max-width: 560px; margin: 0 auto 64px;
+    font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--stone);
+  }
+
+  /* Flow diagram */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .flow-node {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    transition: all 0.4s;
+  }
+
+  .flow-node:hover {
+    border-color: transparent;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .flow-node .node-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 4px 12px;
+    border-radius: 4px; margin-bottom: 12px;
+  }
+
+  .flow-node h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 500; margin-bottom: 8px;
+  }
+
+  .flow-node .node-desc {
+    font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--stone);
+  }
+
+  .flow-node.holding .node-badge { background: rgba(184,148,95,0.08); color: var(--gold); }
+  .flow-node.os .node-badge { background: rgba(139,107,74,0.08); color: var(--clay); }
+  .flow-node.product .node-badge { background: var(--forest-soft); color: var(--forest); }
+
+  /* Flow arrow */
+  .flow-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    color: var(--warm);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    gap: 4px;
+  }
+
+  .flow-arrow .arrow-line {
+    width: 1px;
+    height: 24px;
+    background: linear-gradient(to bottom, var(--line), var(--gold), var(--line));
+  }
+
+  /* Portfolio spread under Sutra */
+  .portfolio-spread {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .portfolio-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.4s;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .portfolio-card:hover {
+    border-color: transparent;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+  }
+
+  .portfolio-card .card-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .portfolio-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .portfolio-card .card-type {
+    font-size: 11px;
+    color: var(--stone);
+    font-weight: 400;
+  }
+
+  .portfolio-card .card-platform {
+    font-size: 10px;
+    color: var(--warm);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .portfolio-card.dayflow { border-top: 2px solid var(--forest); }
+  .portfolio-card.maze { border-top: 2px solid var(--steel); }
+  .portfolio-card.ppr { border-top: 2px solid var(--rose); }
+  .portfolio-card.jarvis { border-top: 2px solid var(--gold); }
+
+  /* Sutra section */
+  .sutra-deep {
+    background: var(--deep);
+    padding: 120px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sutra-deep::before {
+    content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(139,107,74,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .sutra-deep .inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .sutra-deep .section-label { color: var(--gold); text-align: center; }
+  .sutra-deep h2 {
+    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400;
+    line-height: 1.3; color: var(--cream); text-align: center; margin-bottom: 16px;
+  }
+  .sutra-deep h2 em { font-style: italic; color: var(--gold); }
+  .sutra-deep .section-intro {
+    text-align: center; max-width: 520px; margin: 0 auto 64px;
+    font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(245,240,232,0.5);
+  }
+
+  /* 8-phase grid */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .phase-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px 20px;
+    transition: all 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .phase-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(184,148,95,0.2);
+    transform: translateY(-2px);
+  }
+
+  .phase-num {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  }
+
+  .phase-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+
+  .phase-name {
+    font-size: 16px; font-weight: 600; color: var(--cream); margin-bottom: 4px;
+  }
+
+  .phase-desc {
+    font-size: 12px; color: rgba(245,240,232,0.4); line-height: 1.6;
+  }
+
+  .phase-time {
+    font-size: 10px; color: rgba(245,240,232,0.25); margin-top: 8px;
+    font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* CTA in Sutra section */
+  .sutra-cta {
+    text-align: center;
+  }
+
+  .sutra-cta-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 32px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold), #D4B077);
+    color: var(--deep); font-size: 14px; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: all 0.3s; box-shadow: 0 4px 16px var(--gold-glow);
+  }
+
+  .sutra-cta-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(184,148,95,0.3);
+  }
+
+  /* Analogy section */
+  .analogy {
+    padding: 120px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .analogy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 56px;
+  }
+
+  .analogy-cell {
+    background: var(--bg);
+    padding: 32px;
+  }
+
+  .analogy-cell.header {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--warm);
+    padding: 16px 32px;
+  }
+
+  .analogy-cell h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .analogy-cell p {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--stone);
+  }
+
+  .analogy-cell.highlight {
+    background: rgba(184,148,95,0.03);
+  }
+
+  /* Companies grid (enhanced) */
+  .companies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .company-card {
+    position: relative; border: 1px solid var(--line); border-radius: 20px;
+    padding: 40px 36px; text-decoration: none; color: var(--ink);
+    transition: all 0.4s ease; background: var(--bg); overflow: hidden;
+  }
+  .company-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left;
+  }
+  .company-card:hover { border-color: transparent; box-shadow: 0 12px 48px rgba(0,0,0,0.06); transform: translateY(-4px); }
+  .company-card:hover::before { transform: scaleX(1); }
+  .company-card.sutra::before { background: linear-gradient(90deg, var(--gold), #D4B077); }
+  .company-card.dayflow::before { background: linear-gradient(90deg, var(--forest), #4A8A5E); }
+  .company-card.maze::before { background: linear-gradient(90deg, var(--steel), #6A8BAB); }
+  .company-card.ppr::before { background: linear-gradient(90deg, var(--rose), #AB6A8B); }
+  .company-card.jarvis::before { background: linear-gradient(90deg, var(--gold), #D4B077); }
+
+  .card-badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; margin-bottom: 20px; }
+  .card-badge.os { background: rgba(184,148,95,0.08); color: var(--gold); }
+  .card-badge.product { background: var(--forest-soft); color: var(--forest); }
+  .card-badge.platform { background: rgba(74,107,139,0.06); color: var(--steel); }
+  .card-badge.personal { background: rgba(139,74,107,0.06); color: var(--rose); }
+  .card-badge.ai { background: rgba(184,148,95,0.08); color: var(--gold); }
+
+  .company-card h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 500; margin-bottom: 10px; }
+  .company-card .desc { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--stone); margin-bottom: 24px; }
+  .card-link { font-size: 13px; font-weight: 500; color: var(--gold); display: inline-flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+  .company-card:hover .card-link { gap: 14px; }
+
+  .card-stats {
+    display: flex; gap: 16px; margin-bottom: 16px;
+  }
+  .card-stat {
+    font-size: 11px; color: var(--warm); font-weight: 500;
+  }
+  .card-stat strong { color: var(--ink); font-weight: 600; }
+
+  /* Principles */
+  .principles-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .principle-cell { background: var(--bg); padding: 40px 32px; transition: background 0.4s; }
+  .principle-cell:hover { background: rgba(184,148,95,0.03); }
+  .principle-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; color: var(--line); margin-bottom: 16px; transition: color 0.4s; }
+  .principle-cell:hover .principle-num { color: var(--gold); }
+  .principle-cell h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .principle-cell p { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--stone); }
+
+  /* Mission */
+  .mission { background: var(--cream); padding: 120px 32px; text-align: center; }
+  .mission .inner { max-width: 640px; margin: 0 auto; }
+  .mission .section-label { color: var(--gold); }
+  .mission h2 {
+    font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400;
+    line-height: 1.4; color: var(--ink); margin-bottom: 24px; font-style: italic;
+  }
+  .mission p { font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--stone); max-width: 480px; margin: 0 auto; }
+
+  /* Team */
+  .team-section { padding: 120px 32px; max-width: 1200px; margin: 0 auto; }
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .team-photo { width: 100%; aspect-ratio: 1; background: var(--cream); border-radius: 24px; overflow: hidden; }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .team-info h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 500; margin-bottom: 8px; }
+  .team-info .role { font-size: 14px; font-weight: 500; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+  .team-info p { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--stone); margin-bottom: 16px; }
+  .team-info .values { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .team-info .value-tag {
+    font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 20px;
+    background: rgba(184,148,95,0.06); color: var(--gold); letter-spacing: 0.5px;
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--deep); padding: 120px 32px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .contact::before {
+    content: ''; position: absolute; bottom: -200px; left: 50%; width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+    transform: translateX(-50%); pointer-events: none;
+  }
+  .contact .inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+  .contact .section-label { color: var(--gold); }
+  .contact h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; color: var(--cream); margin-bottom: 20px; }
+  .contact p { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(245, 240, 232, 0.5); margin-bottom: 40px; }
+  .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+    border: 1px solid rgba(184,148,95,0.3); border-radius: 12px; text-decoration: none;
+    color: var(--cream); font-size: 14px; font-weight: 400; letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+  .contact-link:hover { background: rgba(184,148,95,0.1); border-color: var(--gold); color: var(--gold); }
+
+  /* Closing */
+  .closing { padding: 100px 32px; text-align: center; max-width: 700px; margin: 0 auto; }
+  .closing-mark { font-family: 'Playfair Display', serif; font-size: 64px; color: var(--line); margin-bottom: 24px; line-height: 1; }
+  .closing p { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; line-height: 1.6; color: var(--stone); font-style: italic; }
+
+  /* Footer */
+  footer {
+    padding: 40px 32px; max-width: 1200px; margin: 0 auto;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-left { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; letter-spacing: 1px; }
+  .footer-right { font-size: 12px; color: var(--warm); font-weight: 300; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav .inner { padding: 16px 20px; }
+    nav.scrolled .inner { padding: 14px 20px; }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0; padding: 8px 0;
+      background: rgba(250,250,247,0.97); backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 24px; font-size: 15px; }
+    .nav-toggle { display: block; }
+
+    .hero { padding: 100px 24px 48px; min-height: auto; }
+    .hero h1 { font-size: 36px; margin-bottom: 20px; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 3px; margin-bottom: 24px; }
+    .hero-body { font-size: 16px; line-height: 1.7; }
+
+    .belief { padding: 56px 24px; }
+    .belief h2 { font-size: 28px; }
+    .belief p { font-size: 15px; line-height: 1.7; }
+
+    .section { padding: 56px 24px; }
+    .section h2 { font-size: 28px; }
+    .section-intro { font-size: 15px; margin-bottom: 32px; }
+
+    .system-flow { padding: 56px 24px; }
+    .system-flow h2 { font-size: 28px; }
+    .portfolio-spread { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .sutra-deep { padding: 56px 24px; }
+    .sutra-deep h2 { font-size: 28px; }
+    .phase-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .phase-card { padding: 18px 14px; }
+
+
+    .analogy { padding: 56px 24px; }
+    .analogy-grid { grid-template-columns: 1fr; }
+
+    .companies-grid { grid-template-columns: 1fr; gap: 14px; }
+    .company-card { padding: 28px 24px; border-radius: 16px; }
+    .company-card h3 { font-size: 22px; }
+
+    .principles-grid { grid-template-columns: 1fr; border-radius: 16px; }
+    .principle-cell { padding: 28px 24px; }
+
+    .mission { padding: 56px 24px; }
+    .mission h2 { font-size: 26px; }
+
+    .team-section { padding: 56px 24px; }
+    .team-grid { grid-template-columns: 1fr; gap: 32px; }
+    .team-photo { max-width: 240px; margin: 0 auto; border-radius: 20px; }
+    .team-info { text-align: center; }
+    .team-info .values { justify-content: center; }
+
+    .contact { padding: 56px 24px; }
+    .contact h2 { font-size: 26px; }
+    .contact-links { flex-direction: column; align-items: stretch; gap: 12px; }
+
+    .closing { padding: 48px 24px; }
+    .closing p { font-size: 18px; }
+
+    footer { flex-direction: column; gap: 8px; padding: 24px 20px; text-align: center; }
+
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 30px; }
+    .phase-grid { grid-template-columns: 1fr; }
+    .portfolio-spread { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="inner">
+    <div class="wordmark">ASAWA</div>
+    <div class="nav-links">
+      <a href="#belief">Belief</a>
+      <a href="#system">The System</a>
+      <a href="#sutra">Sutra OS</a>
+      <a href="#companies">Portfolio</a>
+      <a href="#principles">Principles</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Systematic company building</div>
+    <h1>An AI operating system that <em>builds companies</em></h1>
+    <p class="hero-body">Not from templates. Not ad hoc. As an evolving system that gets smarter with every company it builds. You give it an idea. It constructs the entire company — principles, departments, processes, infrastructure — systematically.</p>
+    <div class="hero-line"></div>
+    <div class="hero-year">Asawa Inc. &middot; Est. 2026</div>
+  </div>
+</section>
+
+<section class="belief" id="belief">
+  <div class="inner">
+    <div class="section-label reveal">Our Belief</div>
+    <h2 class="reveal reveal-delay-1">Company building should be <em>systematic</em></h2>
+    <p class="reveal reveal-delay-2">Most companies lose their institutional knowledge every time someone leaves, every tool changes, every context switch happens. What if a company's entire operating intelligence — every decision, every lesson, every process — was encoded into a system that never forgets and compounds over time?</p>
+    <p class="reveal reveal-delay-3" style="margin-top: 20px; font-size: 13px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); opacity: 0.7;">A practice in AI-Native Organizational Cybernetics</p>
+  </div>
+</section>
+
+<!-- The System: Architecture Flow -->
+<section class="system-flow" id="system">
+  <div class="inner">
+    <div class="section-label reveal">The Architecture</div>
+    <h2 class="reveal reveal-delay-1">Three layers. One system.</h2>
+    <p class="section-intro reveal reveal-delay-2">Asawa Inc. is a holding company. Sutra is the operating system. Every portfolio company runs on Sutra from day one. The system learns from each company and improves for the next.</p>
+
+    <div class="flow-diagram stagger">
+      <!-- Asawa Inc -->
+      <div class="flow-node holding">
+        <span class="node-badge">Holding Company</span>
+        <h3>Asawa Inc.</h3>
+        <p class="node-desc">Governance, principles, enforcement framework, cross-company coordination. Sets the doctrine that flows down to every company. Owns the vision and the long-term direction.</p>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="arrow-line"></div>
+        Deploys OS
+        <div class="arrow-line"></div>
+      </div>
+
+      <!-- Sutra OS -->
+      <div class="flow-node os">
+        <span class="node-badge">Operating System</span>
+        <h3>Sutra OS</h3>
+        <p class="node-desc">The engine. 8-phase company construction. Protocols, processes, enforcement hooks, skill routing, department templates, feedback loops. Gets smarter with every client. Think of it as what Stripe did for payments, but for company operations.</p>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="arrow-line"></div>
+        Builds &amp; operates
+        <div class="arrow-line"></div>
+      </div>
+
+      <!-- Portfolio spread -->
+      <div class="portfolio-spread">
+        <a class="portfolio-card dayflow" href="https://dayflow-navy.vercel.app" target="_blank" rel="noopener">
+          <span class="card-icon">&#9201;</span>
+          <h4>Dawny</h4>
+          <div class="card-type">Daily planner</div>
+          <div class="card-platform">iOS + Android</div>
+        </a>
+        <a class="portfolio-card maze" href="#companies">
+          <span class="card-icon">&#127914;</span>
+          <h4>Maze</h4>
+          <div class="card-type">Humor feed</div>
+          <div class="card-platform">Web (Next.js)</div>
+        </a>
+        <a class="portfolio-card ppr" href="#companies">
+          <span class="card-icon">&#128141;</span>
+          <h4>PPR</h4>
+          <div class="card-type">Wedding command center</div>
+          <div class="card-platform">Web (Next.js)</div>
+        </a>
+        <a class="portfolio-card jarvis" href="https://dharmikapp.in" target="_blank" rel="noopener">
+          <span class="card-icon">&#128138;</span>
+          <h4>Dharmik</h4>
+          <div class="card-type">Spiritual products D2C</div>
+          <div class="card-platform">Shopify</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sutra OS Deep Dive -->
+<section class="sutra-deep" id="sutra">
+  <div class="inner">
+    <div class="section-label reveal">Sutra OS</div>
+    <h2 class="reveal reveal-delay-1">Eight phases. From idea to <em>operating company</em>.</h2>
+    <p class="section-intro reveal reveal-delay-2">You give Sutra a raw idea. Sixty minutes later, you have a fully operational company with principles, architecture, processes, deployment pipeline, and your first feature shipping.</p>
+
+    <div class="phase-grid stagger">
+      <div class="phase-card">
+        <div class="phase-num">Phase 1</div>
+        <span class="phase-icon">&#128270;</span>
+        <div class="phase-name">Intake</div>
+        <div class="phase-desc">Conversational extraction. One question at a time. Like a sharp co-founder.</div>
+        <div class="phase-time">5 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 2</div>
+        <span class="phase-icon">&#127758;</span>
+        <div class="phase-name">Market</div>
+        <div class="phase-desc">Validate against reality. Competitors, gaps, experts, anti-patterns.</div>
+        <div class="phase-time">10 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 3</div>
+        <span class="phase-icon">&#128208;</span>
+        <div class="phase-name">Shape</div>
+        <div class="phase-desc">PR/FAQ, feature carve, risk map, success metrics. Turn fuzzy into clear.</div>
+        <div class="phase-time">10 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 4</div>
+        <span class="phase-icon">&#9989;</span>
+        <div class="phase-name">Decide</div>
+        <div class="phase-desc">Three questions. GO, RESHAPE, or KILL. No ambiguity.</div>
+        <div class="phase-time">2 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 5</div>
+        <span class="phase-icon">&#128736;</span>
+        <div class="phase-name">Architect</div>
+        <div class="phase-desc">Product type, tech stack, data model, design approach, deploy pipeline.</div>
+        <div class="phase-time">15 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 6</div>
+        <span class="phase-icon">&#9881;</span>
+        <div class="phase-name">Configure</div>
+        <div class="phase-desc">Assemble the OS from modules. Departments, protocols, hooks, TODO list.</div>
+        <div class="phase-time">10 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 7</div>
+        <span class="phase-icon">&#128640;</span>
+        <div class="phase-name">Deploy</div>
+        <div class="phase-desc">GitHub repo, boundary hooks, session isolation, deployment pipeline.</div>
+        <div class="phase-time">5 min</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 8</div>
+        <span class="phase-icon">&#127775;</span>
+        <div class="phase-name">Activate</div>
+        <div class="phase-desc">Ship Feature #1. Log metrics. Feedback loop live. Company is operating.</div>
+        <div class="phase-time">5 min</div>
+      </div>
+    </div>
+
+    <div class="sutra-cta reveal">
+      <a class="sutra-cta-link" href="#companies">
+        See the companies built on Sutra &#8594;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Analogy section for product heads -->
+<section class="analogy" id="analogy">
+  <div class="section-label reveal">Why This Matters</div>
+  <h2 class="reveal reveal-delay-1">What if building a company was as structured as building software?</h2>
+  <p class="section-intro reveal reveal-delay-2">Software has compilers, frameworks, CI/CD, testing, and deployment pipelines. Company building has... a Google Doc and a prayer. We built the missing infrastructure.</p>
+
+  <div class="analogy-grid stagger">
+    <div class="analogy-cell header">Software has</div>
+    <div class="analogy-cell header">Sutra provides</div>
+
+    <div class="analogy-cell">
+      <h4>Compilers</h4>
+      <p>Turn human-readable code into machine-executable instructions.</p>
+    </div>
+    <div class="analogy-cell highlight">
+      <h4>Onboarding Engine</h4>
+      <p>Turns a raw idea into a fully structured company with operating instructions in 60 minutes.</p>
+    </div>
+
+    <div class="analogy-cell">
+      <h4>Frameworks</h4>
+      <p>Provide patterns, conventions, and structure so you don't reinvent the wheel.</p>
+    </div>
+    <div class="analogy-cell highlight">
+      <h4>Operating Templates</h4>
+      <p>Department structures, process pipelines, skill catalogs — customized per product type and stage.</p>
+    </div>
+
+    <div class="analogy-cell">
+      <h4>CI/CD Pipelines</h4>
+      <p>Automate testing, building, and deploying code to production.</p>
+    </div>
+    <div class="analogy-cell highlight">
+      <h4>Enforcement Hooks</h4>
+      <p>Automated gates that ensure process compliance, boundary isolation, and quality standards.</p>
+    </div>
+
+    <div class="analogy-cell">
+      <h4>Package Managers</h4>
+      <p>npm, pip — install what you need, version everything, share across projects.</p>
+    </div>
+    <div class="analogy-cell highlight">
+      <h4>Cross-Company Learning</h4>
+      <p>Every company feeds learnings back to Sutra. The fifth company benefits from everything the first four learned.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Full Portfolio -->
+<section class="section" id="companies">
+  <div class="section-label reveal">Portfolio &middot; Clients</div>
+  <h2 class="reveal reveal-delay-1">Six companies. One operating system.</h2>
+  <p class="section-intro reveal reveal-delay-2">Three we own and operate, two external clients, and Sutra itself. Each company is isolated, purpose-built, and versioned. All six are currently in-sync on Sutra v1.9 — every lesson from one feeds the system that runs the rest.</p>
+
+  <div class="companies-grid stagger">
+    <a class="company-card sutra" href="https://sankalpasawa.github.io/sutra/" target="_blank" rel="noopener">
+      <span class="card-badge os">Operating System</span>
+      <h3>Sutra</h3>
+      <p class="desc">The AI operating system that builds and operates companies. Tier-aware deployment, policy-coverage gate, auto-propagation on version bump, coverage engine, initiative charters. Ships as a marketplace plugin + full governance suite.</p>
+      <div class="card-stats">
+        <span class="card-stat"><strong>v2.36.0</strong> current</span>
+        <span class="card-stat"><strong>7</strong> companies in-sync</span>
+        <span class="card-stat"><strong>46</strong> enforcement hooks</span>
+      </div>
+      <span class="card-link">Visit sankalpasawa.github.io/sutra <span>&rarr;</span></span>
+    </a>
+    <a class="company-card dayflow" href="https://dayflow-navy.vercel.app" target="_blank" rel="noopener">
+      <span class="card-badge product">Product &middot; Owned</span>
+      <h3>Dawny</h3>
+      <p class="desc">A calm, calendar-shaped daily planner. Block time, log what happened, see where your hours actually go. The first product built end-to-end with Sutra — our primary functional validator.</p>
+      <div class="card-stats">
+        <span class="card-stat"><strong>iOS</strong> Expo</span>
+        <span class="card-stat"><strong>Android</strong> APK built</span>
+        <span class="card-stat"><strong>Sutra v1.9</strong> in-sync</span>
+      </div>
+      <span class="card-link">Visit dayflow-navy.vercel.app <span>&rarr;</span></span>
+    </a>
+    <a class="company-card maze" href="#">
+      <span class="card-badge platform">Content Platform &middot; Owned</span>
+      <h3>Maze</h3>
+      <p class="desc">Humor feed platform. Content diversification, brand identity, deep linking. Built through Sutra's full 8-phase onboarding and operated on v1.9.</p>
+      <div class="card-stats">
+        <span class="card-stat"><strong>Web</strong> Next.js</span>
+        <span class="card-stat"><strong>Sutra v1.9</strong> in-sync</span>
+        <span class="card-stat">Launch ready</span>
+      </div>
+      <span class="card-link">Coming soon <span>&rarr;</span></span>
+    </a>
+    <a class="company-card ppr" href="#">
+      <span class="card-badge personal">Personal &middot; Owned</span>
+      <h3>PPR</h3>
+      <p class="desc">Wedding command center. Guest management, vendor tracking, ceremony timeline, budget. Built on Sutra for a real wedding with a hard calendar deadline.</p>
+      <div class="card-stats">
+        <span class="card-stat"><strong>Web</strong> Next.js</span>
+        <span class="card-stat"><strong>Sutra v1.9</strong> in-sync</span>
+      </div>
+      <span class="card-link">In development <span>&rarr;</span></span>
+    </a>
+    <a class="company-card jarvis" href="https://dharmikapp.in" target="_blank" rel="noopener">
+      <span class="card-badge ai">D2C &middot; Client</span>
+      <h3>Dharmik</h3>
+      <p class="desc">Spiritual products from Vrindavan and sacred dhams — tulsi malas, rudraksha, prasad boxes, puja essentials. Trusted by 1M+ devotees. First external Sutra client; SEO + product-page audit delivered.</p>
+      <div class="card-stats">
+        <span class="card-stat"><strong>Shopify</strong> D2C</span>
+        <span class="card-stat"><strong>1M+</strong> customers</span>
+        <span class="card-stat"><strong>Sutra v1.8</strong> audit</span>
+      </div>
+      <span class="card-link">Visit dharmikapp.in <span>&rarr;</span></span>
+    </a>
+    <a class="company-card ppr" href="#">
+      <span class="card-badge personal">Fintech &middot; Client</span>
+      <h3>Paisa</h3>
+      <p class="desc">Full-stack digital personal loan company for India. Onboarded to Sutra in April 2026; MVP stage. Founder-led by an ex-Navi product head.</p>
+      <div class="card-stats">
+        <span class="card-stat"><strong>Web</strong> Next.js</span>
+        <span class="card-stat"><strong>India</strong> market</span>
+        <span class="card-stat"><strong>Sutra v1.9</strong> in-sync</span>
+      </div>
+      <span class="card-link">In build <span>&rarr;</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="principles">
+  <div class="section-label reveal">How We Operate</div>
+  <h2 class="reveal reveal-delay-1">Six principles</h2>
+  <p class="section-intro reveal reveal-delay-2">These don't change with the market. They are the foundation everything else is built on.</p>
+
+  <div class="principles-grid stagger">
+    <div class="principle-cell">
+      <div class="principle-num">01</div>
+      <h3>Structure before speed</h3>
+      <p>Ten minutes of clarity saves ten hours of rework. Every company gets an operating system before anyone writes code.</p>
+    </div>
+    <div class="principle-cell">
+      <div class="principle-num">02</div>
+      <h3>Data decides</h3>
+      <p>Every company tests whether its process works. If the data says the process is overhead, the process changes.</p>
+    </div>
+    <div class="principle-cell">
+      <div class="principle-num">03</div>
+      <h3>Compounding feedback</h3>
+      <p>Each company feeds learnings back. The hundredth company will be better than the first because the system learns.</p>
+    </div>
+    <div class="principle-cell">
+      <div class="principle-num">04</div>
+      <h3>Cognitive isolation</h3>
+      <p>Each company operates in its own space. No contamination. Clean thinking for every business we build.</p>
+    </div>
+    <div class="principle-cell">
+      <div class="principle-num">05</div>
+      <h3>Founder sovereignty</h3>
+      <p>The system advises. The founder decides. Strategy, taste, and direction will always belong to the human.</p>
+    </div>
+    <div class="principle-cell">
+      <div class="principle-num">06</div>
+      <h3>Built for a century</h3>
+      <p>We don't optimize for quarters. We build principles, systems, and companies designed to endure.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="inner reveal">
+    <div class="section-label">Our Mission</div>
+    <h2>We live to serve the people we build for</h2>
+    <p>Every product, every system, every company exists for one reason: to make someone's life better. We don't build for investors, for press, or for exits. We build for the person who opens the app at 7 AM and needs it to work.</p>
+  </div>
+</section>
+
+<section class="team-section" id="team">
+  <div class="section-label reveal">The Team</div>
+  <h2 class="reveal reveal-delay-1">Founded by Sankalp Asawa</h2>
+  <p class="section-intro reveal reveal-delay-2">One founder. A system of intelligent agents. And the belief that a small, focused team with the right tools can build things that matter.</p>
+
+  <div class="team-grid reveal reveal-delay-3">
+    <div class="team-photo"><img src="sankalp.jpg" alt="Sankalp Asawa" loading="lazy"></div>
+    <div class="team-info">
+      <h3>Sankalp Asawa</h3>
+      <div class="role">Founder and CEO</div>
+      <p>Builder at heart. Believes that the right structure unlocks human potential. Started Asawa Inc. to prove that one person with the right system can build a portfolio of meaningful companies.</p>
+      <p>Every company in the portfolio is personally shaped, from the product vision down to the design details. The AI handles the execution. The human holds the taste, the judgment, and the care.</p>
+      <div class="values">
+        <span class="value-tag">Product thinker</span>
+        <span class="value-tag">Design-driven</span>
+        <span class="value-tag">Systems builder</span>
+        <span class="value-tag">Long-term player</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="inner">
+    <div class="section-label reveal">Get in Touch</div>
+    <h2 class="reveal reveal-delay-1">Let's build something together</h2>
+    <p class="reveal reveal-delay-2">Whether you have an idea, a question, or just want to see the system in action. We're always happy to talk with people who care about building things that last.</p>
+    <div class="contact-links reveal reveal-delay-3">
+      <a class="contact-link" href="mailto:sankalpasawa@gmail.com">
+        <span>&#9993;</span> sankalpasawa@gmail.com
+      </a>
+      <a class="contact-link" href="https://x.com/sankalpasawa" target="_blank">
+        <span>&#119831;</span> @sankalpasawa
+      </a>
+      <a class="contact-link" href="https://github.com/sankalpasawa" target="_blank">
+        <span>&#9871;</span> GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="closing-mark reveal">A</div>
+  <p class="reveal reveal-delay-1">We don't build version one and walk away. We build every version, with you, until the vision is real.</p>
+</section>
+
+<footer>
+  <div class="footer-left">ASAWA INC.</div>
+  <div class="footer-right">&copy; 2026 Asawa Inc. All rights reserved.</div>
+</footer>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal, .stagger');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Floating particles
+  const particlesEl = document.getElementById('particles');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (10 + Math.random() * 15) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+    particlesEl.appendChild(p);
+  }
+</script>
+
+</body>
+</html>

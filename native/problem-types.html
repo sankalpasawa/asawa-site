@@ -1,0 +1,302 @@
+<!doctype html>
+<!-- PAGE: native/problem-types (WORKING DRAFT, 2026-08-03). The four problem types named by what is
+     MISSING (T1 operationalisation - T2 the answer - T3 the workflow - T4 the question), the four
+     economics, the three conversions and the decay caveat. Canon holder: sutra/os/decisions/
+     ADR-030-four-problem-types.md (codex ADVISORY 2026-08-03). Built from _template.html; the company
+     map is byte-identical to the template, only the highlight and the YOU-ARE-HERE label differ. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; problem types (what is missing)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-orch{stroke-width:3.5;stroke:#b45309}
+svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a class="sb-cur" href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="edges.html">Edges</a></div><div style="padding-left:28px"><a href="resource.html">Resource</a></div><div style="padding-left:28px"><a href="time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="index.html">Native hub</a> &#8250; problem types</div>
+<h1>Problem types &#8212; what is missing <span class="lvl">OVERVIEW &#183; zoom overview</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub 160,22 | map-roadmap 390,22 | map-distribution 620,22
+     map-product-cos 225,102 | map-product-senior-expert 555,102
+     map-needs 140,178 (research shares) | map-product-cos-design 295,178 | map-matrix 460,178
+     map-platform 240,250 (container) | map-platform-observability 370,281 (ring) | map-at 230,299 (wrap)
+     map-ui 119,316 | map-host 189,316 | map-platform-runtime 314,308 (daemon) | map-orch 272,310 | map-sop 352,310 (how shares)
+     map-sor 439,316 | map-conn 516,316 | map-ext 602,316 | map-compute 365,404
+     map-engineering 390,486 | map-runtime-canon 390,545 | map-governance(wrap) 560,598 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="governance/index.html" xlink:href="governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="index.html" xlink:href="index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="roadmap/index.html" xlink:href="roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="distribution.html" xlink:href="distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="products/cos/index.html" xlink:href="products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="products/senior-expert/index.html" xlink:href="products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="products/cos/needs.html" xlink:href="products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="products/cos/product-design.html" xlink:href="products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="products/cos/matrix.html" xlink:href="products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="platform/index.html" xlink:href="platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="platform/observability.html" xlink:href="platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="platform/authority-tenancy.html" xlink:href="platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="platform/ui.html" xlink:href="platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="platform/host.html" xlink:href="platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="platform/runtime.html" xlink:href="platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="platform/orchestration.html" xlink:href="platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="platform/system-of-process.html" xlink:href="platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="platform/system-of-record.html" xlink:href="platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="platform/connector.html" xlink:href="platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="platform/external-world.html" xlink:href="platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="platform/compute.html" xlink:href="platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="engineering/index.html" xlink:href="engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="272" y="310" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#183; problem types</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>problem-types</code></td><td>OVERVIEW / <a href="index.html">hub</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Name the four problem types by what is missing, keep them orthogonal to the Cynefin and workflow-type lenses, and state the honest ceiling per type.</td><td colspan="3">Every type carries its plain-English gloss; the T3 scope limit against ADR-010 is stated; decay is presented as an interpretive rule, not a state machine; no claim that T4 is solved; canon holder cited (ADR-030).</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 470" role="img" aria-label="Four problem types on awareness x understanding, with the three conversions and the decay path">
+<defs><marker id="pt" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+<marker id="ptd" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#b91c1c"/></marker></defs>
+<path d="M26,410 L26,16" stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#pt)"/>
+<text x="14" y="212" font-size="9.5" font-weight="800" fill="#6b7280" transform="rotate(-90 14 212)" text-anchor="middle">AWARENESS</text>
+<path d="M60,440 L846,440" stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#pt)"/>
+<text x="445" y="458" font-size="9.5" font-weight="800" fill="#6b7280" text-anchor="middle">UNDERSTANDING</text>
+
+<rect x="60" y="20" width="360" height="170" rx="9" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="80" y="44" font-size="9.5" font-weight="800" fill="#b45309">T2</text>
+<text x="110" y="44" font-size="14.5" font-weight="700">KNOWN UNKNOWNS</text>
+<text x="80" y="66" font-size="11" font-style="italic" fill="#6b7280">we know what we don&#8217;t know</text>
+<text x="80" y="96" font-size="10.5" font-weight="800" fill="#1d4ed8">MISSING: THE ANSWER</text>
+<text x="80" y="118" font-size="10.5" fill="#374151">run a bounded experiment that measures</text>
+<text x="80" y="136" font-size="10.5" fill="#374151">what actually happened</text>
+<text x="80" y="164" font-size="9.5" fill="#9ca3af">e.g. do tighter payment terms speed collection?</text>
+
+<rect x="470" y="20" width="360" height="170" rx="9" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="490" y="44" font-size="9.5" font-weight="800" fill="#b45309">T1</text>
+<text x="520" y="44" font-size="14.5" font-weight="700">KNOWN KNOWNS</text>
+<text x="490" y="66" font-size="11" font-style="italic" fill="#6b7280">we know it, we do it by hand</text>
+<text x="490" y="96" font-size="10.5" font-weight="800" fill="#1d4ed8">MISSING: OPERATIONALISATION</text>
+<text x="490" y="118" font-size="10.5" fill="#374151">author or reuse the workflow; run it with</text>
+<text x="490" y="136" font-size="10.5" fill="#374151">steps, approvals and audit</text>
+<text x="490" y="164" font-size="9.5" fill="#9ca3af">e.g. the month-end close, the payroll run</text>
+
+<rect x="60" y="234" width="360" height="170" rx="9" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="80" y="258" font-size="9.5" font-weight="800" fill="#b45309">T4</text>
+<text x="110" y="258" font-size="14.5" font-weight="700">UNKNOWN UNKNOWNS</text>
+<text x="80" y="280" font-size="11" font-style="italic" fill="#6b7280">we don&#8217;t know what we don&#8217;t know</text>
+<text x="80" y="310" font-size="10.5" font-weight="800" fill="#1d4ed8">MISSING: THE QUESTION</text>
+<text x="80" y="332" font-size="10.5" fill="#374151">watch weak signals on a cadence; the output</text>
+<text x="80" y="350" font-size="10.5" fill="#374151">is a surfaced question, never a workflow</text>
+<text x="80" y="378" font-size="9.5" fill="#9ca3af">e.g. a rule change makes a service line illegal</text>
+
+<rect x="470" y="234" width="360" height="170" rx="9" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="490" y="258" font-size="9.5" font-weight="800" fill="#b45309">T3</text>
+<text x="520" y="258" font-size="14.5" font-weight="700">UNKNOWN KNOWNS</text>
+<text x="490" y="280" font-size="11" font-style="italic" fill="#6b7280">we have it, we haven&#8217;t worked it out</text>
+<text x="490" y="310" font-size="10.5" font-weight="800" fill="#1d4ed8">MISSING: THE WORKFLOW</text>
+<text x="490" y="332" font-size="10.5" fill="#374151">surface the pattern, then propose a workflow</text>
+<text x="490" y="350" font-size="10.5" fill="#374151">for operator approval (ADR-010 shape)</text>
+<text x="490" y="378" font-size="9.5" fill="#9ca3af">e.g. which service lines earn after delivery cost</text>
+
+<path d="M245,234 L245,214" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#pt)"/>
+<text x="255" y="230" font-size="8.5" font-weight="700" fill="#475569">attention &#8212; T4 becomes T2</text>
+<path d="M655,234 L655,214" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#pt)"/>
+<text x="665" y="230" font-size="8.5" font-weight="700" fill="#475569">approve &#8212; T3 becomes T1</text>
+<path d="M420,105 L466,105" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#pt)"/>
+<text x="443" y="97" font-size="8" font-weight="700" fill="#475569" text-anchor="middle">recorded</text>
+<text x="443" y="118" font-size="8" font-weight="700" fill="#475569" text-anchor="middle">experiment</text>
+<path d="M560,190 L560,204 L140,204 L140,230" stroke="#b91c1c" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#ptd)"/>
+<text x="300" y="200" font-size="8.5" font-weight="700" fill="#b91c1c">assumptions expire unless re-verified</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>The four types &#8212; what is missing</h2>
+<p>Native already reads a unit of work two ways: the Cynefin lens judges <em>causality</em>, and workflow-type resolution (ADR-026) judges <em>process shape</em>. Neither answers the question that decides the first move &#8212; <strong>what is missing?</strong> These four types answer only that.</p>
+<p class="note"><strong>How to read the names.</strong> The first word is the <em>question</em>; the second word is the <em>answer</em>. Known unknowns = you hold the question, not the answer. Unknown knowns = the answer is in the building, nobody asked. Unknown unknowns = neither. Known knowns = both.</p>
+<table>
+<tr><th>Type</th><th>Cell + gloss</th><th>Missing</th><th>First move</th><th>Closable today?</th></tr>
+<tr><td><strong>T1</strong></td><td>known knowns &#183; <em>we know it, we do it by hand</em></td><td>operationalisation</td><td>author or reuse the workflow; run it on the RUN surface with steps, approvals, audit</td><td>yes</td></tr>
+<tr><td><strong>T2</strong></td><td>known unknowns &#183; <em>we know what we don&#8217;t know</em></td><td>the answer</td><td>a bounded experiment whose purpose is to measure</td><td>partial &#8212; the machine runs and records the test; a human still chooses what to test</td></tr>
+<tr><td><strong>T3</strong></td><td>unknown knowns &#183; <em>we have it, we haven&#8217;t worked it out</em></td><td>the workflow</td><td>surface the pattern, then propose a workflow for operator approval</td><td>only inside ADR-010&#8217;s unmatched-work detector &#8212; general record mining is <strong>not</strong> claimed</td></tr>
+<tr><td><strong>T4</strong></td><td>unknown unknowns &#183; <em>we don&#8217;t know what we don&#8217;t know</em></td><td>the question</td><td>watch weak signals on a cadence; output is a surfaced question, which converts the unit to T2</td><td>sensing only &#8212; never claim T4 is solved</td></tr>
+</table>
+
+<h2>Four different economics</h2>
+<p>Each type carries a different kind of cost, which is why one management toolkit cannot serve all four. Efficiency programmes operate on T1; applied to T4 they remove the slack T4 requires.</p>
+<table>
+<tr><th>Type</th><th>Cost type</th><th>What good management looks like</th><th>Budget line in a normal company</th></tr>
+<tr><td>T1</td><td>labour cost &#8212; visible, reducible</td><td>standardise, then operationalise</td><td>headcount + tooling</td></tr>
+<tr><td>T2</td><td>variance cost &#8212; wrong bets, missed forecasts</td><td>buy information cheaply before committing</td><td>contingency reserve, experiment budget</td></tr>
+<tr><td>T3</td><td>opportunity cost &#8212; already paid for, never harvested</td><td>analyse what is already held; write it down</td><td><strong>none &#8212; no line item, no owner</strong></td></tr>
+<tr><td>T4</td><td>existential cost &#8212; rare, severe</td><td>slack and optionality, not better forecasts</td><td>management reserve, insurance</td></tr>
+</table>
+<p class="note"><strong>Why the two low-awareness rows have no owner.</strong> Reporting systems can only report what somebody thought to measure, so T3 and T4 are structurally invisible to the P&amp;L, the KPI dashboard and the risk register alike. That is not an oversight in any particular company; it is a property of instrumentation.</p>
+
+<h2>The conversions &#8212; and the decay</h2>
+<p>Type is not a permanent label. Conversion is the work (ADR-030 Decision 4).</p>
+<table>
+<tr><th>Conversion</th><th>What buys it</th></tr>
+<tr><td>T4 &#8594; T2</td><td>attention: cadence watching of weak signals</td></tr>
+<tr><td>T2 &#8594; T1</td><td>a bounded experiment whose result is written down</td></tr>
+<tr><td>T3 &#8594; T1</td><td>a surfaced pattern the operator approves as a workflow</td></tr>
+<tr><td><strong>T1 &#8594; T4</strong></td><td><strong>nothing &#8212; this direction happens by default</strong></td></tr>
+</table>
+<div class="note"><strong>Decay is an interpretive rule, not a state machine (ADR-030 Decision 5).</strong> Canon defines no T1 lifecycle state and no automatic transition, and this page does not invent one. The claim is narrower: thresholds, rules and counterparty behaviour drift, so a workflow that has run unexamined for a long time should be read as <em>possibly</em> blind rather than <em>known</em>. Re-verification against the record is the counter. Any page presenting these four types as a one-way ratchet into T1 is misleading.</div>
+
+<h2>Three lenses, one unit &#8212; none substitutes for another</h2>
+<table>
+<tr><th>Lens</th><th>Question it answers</th><th>Source</th></tr>
+<tr><td>Problem type (T1&#8211;T4)</td><td>what is missing?</td><td>ADR-030 (this page)</td></tr>
+<tr><td>Cynefin lens</td><td>how does cause relate to effect?</td><td><code>core:flow</code> step [4]</td></tr>
+<tr><td>Workflow type</td><td>what shape of process fits?</td><td>ADR-026</td></tr>
+</table>
+<p>All three may be stated for the same unit. The types are exhaustive by construction &#8212; two binary axes &#8212; but they are a lens for reading a unit, <strong>not</strong> an enum any component may branch on until an ADR wires them (ADR-027 keeps the axis set open).</p>
+
+<h2>Status of this page</h2</h2>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li><strong>Not wired.</strong> The resolver does not read problem type. Wiring it into <code>core:flow</code> step [1] alongside the Cynefin lens &#8212; and deciding whether the type is operator-declared, inferred, or both &#8212; is open (ADR-030 open item 1).</li>
+<li><strong>T3 scope.</strong> Whether pattern surfacing extends beyond ADR-010&#8217;s unmatched-work detector is undecided. If it does, it needs its own ADR, a per-tenant compute budget and a tenancy review &#8212; the record is tenant data (open item 2).</li>
+<li><strong>T2 evidence.</strong> Where a measurement is stored and what evidence closes an experiment is undefined. DecisionProvenance (ADR-007) records decisions with fixed scopes; it is not a measurement store, so citing it for experiment results would be a category error (open item 3).</li>
+<li><strong>T4 probe object.</strong> Whether a &#8220;standing probe&#8221; is an ordinary Workflow with a TriggerSpec is undecided; today the phrase describes intent, not a defined object (open item 4).</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul><li>None &#8212; leaf page. Downstream consumers are the resolver (unwired) and any operator-facing surface that names a type.</li></ul>
+
+<h2>Sources</h2>
+<ul><li><a href="../../../sutra/os/decisions/ADR-030-four-problem-types.md"><code>ADR-030 &#8212; Four Problem Types</code></a> &#8212; the canon holder for this page (codex review 2026-08-03: ADVISORY, five corrections applied).</li>
+<li>ADR-010 organic emergence propose&#8594;approve &#8212; the propose/approve shape T3 inherits, within its detector&#8217;s scope only.</li>
+<li>ADR-017 cron daemon cadence tick &#8212; the substrate a T4 probe would run on, if defined as an object.</li>
+<li>ADR-007 DecisionProvenance &#8212; decision audit; explicitly <em>not</em> the T2 measurement store.</li>
+<li>ADR-026 workflow-type resolution &#183; ADR-027 value axis &#8212; the two orthogonal lenses.</li>
+<li>Provenance: Johari window (Luft + Ingham, 1955) supplies the 2&#215;2; Rumsfeld&#8217;s February 2002 briefing named three of the four cells; unknown knowns is &#381;i&#382;ek&#8217;s 2004 addition, read here as &#8220;held but never operationalised&#8221;. Sketchplanations supplies the awareness &#215; understanding axis labels. <em>(Dates high-confidence, not re-verified at authoring time.)</em></li></ul>
+
+</div></div></body></html>

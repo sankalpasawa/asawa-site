@@ -1,0 +1,250 @@
+<!doctype html>
+<!-- PAGE: platform-model-edge-system (v1, DESIGNED - BUILD PENDING). Native documentation for the A22 edge system: doc<->system binding. Founder-directed 2026-08-11: document in Native now, build completely later; holding prototype PARKED. Dual-AI doc-completeness pass folded (codex + deepseek-v4-pro). Session 92edec80. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; The Edge System</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+pre{background:#0f172a;color:#e2e8f0;padding:12px 14px;border-radius:8px;font-size:12px;line-height:1.5;overflow-x:auto}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.pill.RULED{background:#ecfdf5;color:#047857}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../the-model.html">The Model</a> &#8250; The Edge System</div>
+<h1>The Edge System <span class="pill RULED">RULED &#183; A22</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-edge-system</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill RULED">RULED</span> (A22, sitting concluded 2026-08-17) &#8212; membership rule + edge vocabulary ratified; 3 doc-pipeline builds funded NOW; A22-MECH prototype stays PARKED</td><td>v1</td><td>claude</td></tr></table>
+<p class="lead">Things that are connected drift apart silently. A page and its index. A decision sheet and the pages that cite it. A schema and the doc that mirrors it. The edge system makes those connections first-class objects &#8212; declared, watched, and honestly flagged when they go stale &#8212; so intelligence is spent on the frontier of a change, never on re-reading everything.</p>
+
+<h2 id="job">1 &#183; What this is for</h2>
+<table>
+<tr><th></th><th></th></tr>
+<tr><td><strong>The job</strong></td><td>Keep documents and the running system bound both ways: a doc change surfaces the implementations it touches; a system change surfaces the doc claims it invalidates. Nothing drifts silently.</td></tr>
+<tr><td><strong>Not the job</strong></td><td>Not a search index, not a knowledge graph of everything, not automatic rewriting. It never edits content on its own &#8212; it flags, and a dial owner clears.</td></tr>
+<tr><td><strong>"Correct" means</strong></td><td>Every governed node is reachable from its discovery surfaces (membership) AND no flag is silently lost: a change either fires its edges or the checker fails. Zero silent drift, zero flag spam (idempotent firing).</td></tr>
+</table>
+
+<h2 id="core">2 &#183; The whole system in three sentences</h2>
+<div class="key">
+<strong>1.</strong> Everything has a home &#8212; a registry row.<br>
+<strong>2.</strong> Everything says what it reads and what lists it &#8212; edges.<br>
+<strong>3.</strong> When something changes, its dependents get flagged &#8212; and each flag is cleared by code, by an LLM, or by a person, always with evidence.
+</div>
+
+<h2 id="incident">3 &#183; Born from a real incident</h2>
+<p>A new page was registered in the site manifest. The manifest checker passed. The sidebar-consistency checker passed. The page still never appeared in the index &#8212; the canonical sidebar was hand-maintained, and no edge connected &#8220;registered&#8221; to &#8220;listed.&#8221; The founder caught it by eye. The general rule that closes this class of hole:</p>
+<div class="key"><strong>Consistency checks compare representations. Membership checks prove reachability.</strong> A node is not &#8220;in the system&#8221; until a declared <code>member-of</code> edge makes it reachable from its discovery surfaces &#8212; passing consistency alone is instrument theater.</div>
+
+<h2 id="words">4 &#183; The words used here</h2>
+<table>
+<tr><th>Word</th><th>Meaning</th></tr>
+<tr><td>Node</td><td>Anything governed: a file, a doc, a section, a system surface. Identified by repo-qualified path (+ anchor when finer grain is needed).</td></tr>
+<tr><td>Claim</td><td>An anchored assertion inside a doc &#8212; the doc&#8217;s work-atom. Created lazily: only where an edge needs finer grain than the file.</td></tr>
+<tr><td>Edge</td><td>A declared, typed connection between two nodes: <code>member-of</code> &#183; <code>mirrors</code> &#183; <code>derives-from</code> &#183; <code>constrained-by</code> &#183; <code>evidenced-by</code> (more types register through <a href="type-system.html#s6">the evolution protocol</a>).</td></tr>
+<tr><td>Firing</td><td>A change event walking a node&#8217;s out-edges.</td></tr>
+<tr><td>Flag</td><td>One dependent needing attention, recorded per system level. <code>blocking</code> flags fail the checker; advisory flags inform.</td></tr>
+<tr><td>Dial</td><td>Who clears a flag: <strong>code</strong> (deterministic regenerator) &#183; <strong>llm</strong> (bounded check-and-rewrite) &#183; <strong>human</strong> (judgment seat).</td></tr>
+<tr><td>Evidence</td><td>The written proof attached at clearing. A flag cannot clear without it.</td></tr>
+<tr><td>Cursor</td><td>The orchestrator&#8217;s last-processed commit. Advances only after flags are safely written.</td></tr>
+<tr><td>Board</td><td>The human surface: flags by system lane, open in red, cleared in green with evidence.</td></tr>
+<tr><td>Not the same as</td><td>Two other on-site surfaces share the word &#8220;edge&#8221; with different vocabularies: the functional-spec edge pages (<a href="../../edges.html">Edges</a> &#183; <a href="../../spec-edge.html">EDGE spec</a>) and the A15 connection graph &#8212; typed workflow-to-workflow edges whose <code>edge_state</code> enum (observed / suggested / default / hardwired) and authority semantics belong to a different edge system. This page&#8217;s five doc-binding types never mix with those enums.</td></tr>
+</table>
+
+<h2 id="model">5 &#183; Where it sits in the model</h2>
+<p>Nothing here is a new ontology. It is the ruled model applied to documents:</p>
+<table>
+<tr><th>Model concept</th><th>Edge-system counterpart</th></tr>
+<tr><td>System</td><td>A governed document (or site, or register)</td></tr>
+<tr><td>Engine</td><td>A section that carries bindings</td></tr>
+<tr><td>Work-Atom (one goal, one verify)</td><td>A claim (one assertion, one staleness check)</td></tr>
+<tr><td>Declared Read Surface (A21)</td><td>A claim&#8217;s <code>derives-from</code> edges &#8212; what it is allowed to be built from. A21 is a ratified name (sheet &#167;11, Names row: ENGINE ACCRETION + DECLARED READ SURFACE); its register of record is sheet A21 &#8212; no owning site page yet.</td></tr>
+<tr><td>Continuous conformance (A18)</td><td>Staleness: an in-edge fired and propagation has not run</td></tr>
+<tr><td>Glue engine, owned by no work engine</td><td>The Edge Engine itself &#8212; it runs above every document and system, owned by none</td></tr>
+</table>
+
+<h2 id="records">6 &#183; The records (schemas before mechanisms)</h2>
+<p>Two append-only ledgers. Status is derived, last-row-wins. No row is ever edited or deleted.</p>
+<h3>Edge row</h3>
+<table>
+<tr><th>Field</th><th>Meaning</th></tr>
+<tr><td><code>edge</code>, <code>schema</code></td><td>Stable id; schema version for evolution.</td></tr>
+<tr><td><code>type</code>, <code>from</code>, <code>to</code></td><td>The typed connection. <code>from</code>/<code>to</code> are repo-qualified node ids.</td></tr>
+<tr><td><code>system</code></td><td>Which system level this edge&#8217;s flags land on.</td></tr>
+<tr><td><code>dial</code>, <code>blocking</code>, <code>clear_hint</code></td><td>Who clears, whether the checker fails on it, and the exact fix hint.</td></tr>
+<tr><td><code>status</code></td><td><code>active</code> &#8594; <code>retired</code> (retirement is a new row; history stays).</td></tr>
+</table>
+<h3>Flag row</h3>
+<table>
+<tr><th>Field</th><th>Meaning</th></tr>
+<tr><td><code>flag</code>, <code>edge</code>, <code>system</code></td><td>Identity + which edge fired + which system lane it landed on.</td></tr>
+<tr><td><code>reason</code>, <code>commit</code>, <code>trigger</code>, <code>opened_by</code>, <code>ts</code></td><td>Full provenance: why, at which change, fired by whom (manual / orchestrate / hook / ci), when (UTC).</td></tr>
+<tr><td><code>status</code>, <code>how</code>, <code>evidence</code>, <code>cleared_by</code></td><td><code>OPEN</code> &#8594; <code>CLEAR</code>; clearing records the dial used and the written evidence. Mandatory.</td></tr>
+</table>
+<div class="note"><strong>Invariants:</strong> append-only &#183; idempotent firing (one flag per edge+commit &#8212; re-runs never spam) &#183; evidence mandatory at clear &#183; reopening is a NEW flag citing the old one, never a status flip back.</div>
+
+<h2 id="mechanisms">7 &#183; The two mechanisms</h2>
+<p class="figcap">Fig 1 &#183; A change walks its edges: the orchestrator watches, the engine records, dials clear, the checker gates.</p>
+<svg viewBox="0 0 900 250" role="img" aria-label="Edge system flow">
+  <g font-size="11" font-weight="700" fill="#334155">
+    <rect x="10" y="90" width="130" height="52" rx="8" fill="#fff" stroke="#64748b" stroke-width="1.5"/><text x="24" y="112">something</text><text x="24" y="127">changes</text>
+    <rect x="180" y="90" width="150" height="52" rx="8" fill="#eef2ff" stroke="#3730a3" stroke-width="1.5"/><text x="194" y="112" fill="#3730a3">ORCHESTRATOR</text><text x="194" y="127" font-size="9" font-weight="400" fill="#3730a3">watches since cursor, fires</text>
+    <rect x="370" y="90" width="140" height="52" rx="8" fill="#eef2ff" stroke="#3730a3" stroke-width="1.5"/><text x="384" y="112" fill="#3730a3">EDGE ENGINE</text><text x="384" y="127" font-size="9" font-weight="400" fill="#3730a3">records flags per system</text>
+    <rect x="550" y="20" width="150" height="40" rx="6" fill="#fef2f2" stroke="#dc2626"/><text x="560" y="37" font-size="9.5" fill="#b91c1c">site lane: 1 BLOCKING</text><text x="560" y="51" font-size="9.5" fill="#b91c1c">flag OPEN</text>
+    <rect x="550" y="100" width="150" height="40" rx="6" fill="#fffbeb" stroke="#d97706"/><text x="560" y="117" font-size="9.5" fill="#92400e">program lane: 2 advisory</text><text x="560" y="131" font-size="9.5" fill="#92400e">flags OPEN</text>
+    <rect x="550" y="180" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#059669"/><text x="560" y="197" font-size="9.5" fill="#047857">governance lane: cleared</text><text x="560" y="211" font-size="9.5" fill="#047857">with evidence</text>
+    <rect x="750" y="90" width="140" height="52" rx="8" fill="#fff" stroke="#64748b" stroke-width="1.5"/><text x="764" y="109">CHECK gate</text><text x="764" y="124" font-size="9" font-weight="400" fill="#6b7280">fails while blocking</text><text x="764" y="136" font-size="9" font-weight="400" fill="#6b7280">flags stay open</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="1.5" fill="none">
+    <path d="M 140 116 L 180 116"/><path d="M 330 116 L 370 116"/>
+    <path d="M 510 105 Q 530 60 550 45"/><path d="M 510 116 L 550 118"/><path d="M 510 128 Q 530 185 550 198"/>
+    <path d="M 700 40 Q 730 80 750 100"/><path d="M 700 120 L 750 118"/>
+  </g>
+  <text x="184" y="170" font-size="10" fill="#6b7280">dials clear each flag: code regenerates &#183; LLM checks the one dependent &#183; human judges &#8212; always with written evidence</text>
+</svg>
+
+<h3>The Edge Engine (glue engine; owned by no system)</h3>
+<ul>
+<li><strong>Receives firings</strong> and opens one flag per dependent edge, recorded on that edge&#8217;s system level.</li>
+<li><strong>Clears</strong> only with dial + evidence; refuses empty evidence.</li>
+<li><strong>Checks</strong>: exit-fail while any blocking flag is open; per-system open/blocking counts always derivable from the ledger.</li>
+<li><strong>Boards</strong>: regenerates the human surface from the ledger &#8212; never from separate state.</li>
+</ul>
+<h3>The Orchestrator (the system-level seat)</h3>
+<ul>
+<li>Watches changes since the cursor (commit-based); fires edges for every registered node that changed.</li>
+<li>Cursor advances <em>only after</em> flags are safely written. An explicit <code>--since</code> never mutates the cursor unless asked.</li>
+<li>Intended seats: pre-commit chain, CI, cron. A firing is idempotent per edge+commit, so overlapping seats cannot double-flag.</li>
+</ul>
+<h3>Failure semantics (a conforming build must handle all of these)</h3>
+<table>
+<tr><th>Failure</th><th>Required behavior</th></tr>
+<tr><td>Duplicate firing (re-run, overlapping seats)</td><td>Idempotency key edge+commit: second firing is a no-op, logged as dedupe.</td></tr>
+<tr><td>Partial ledger write</td><td>Cursor does not advance; next run re-fires; dedupe absorbs the overlap.</td></tr>
+<tr><td>Stale/lost cursor (branch switch, fresh clone)</td><td>Detect non-ancestor base; require explicit <code>--since</code>; never guess.</td></tr>
+<tr><td>Registry miss (changed node has no edges)</td><td>Not an error &#8212; lazy grain means ungoverned is legal. Log count only.</td></tr>
+<tr><td>Concurrent clears of one flag</td><td>First CLEAR wins &#8212; enforced <em>before</em> append: the engine dedupes on flag id + status, so a second CLEAR row is never written (no-op with notice). This keeps first-CLEAR-wins consistent with last-row-wins derivation (&#167;6): the losing clear leaves no row for derivation to pick up.</td></tr>
+<tr><td>False-positive edge (fired but dependent unaffected)</td><td>Legal clear: dial owner records evidence &#8220;checked, unaffected.&#8221; High false-positive rate on an edge = retire or split the edge.</td></tr>
+<tr><td>Evidence unavailable at clear time</td><td>Flag stays OPEN. There is no evidence-free clear.</td></tr>
+</table>
+
+<h2 id="lifecycles">8 &#183; Lifecycles</h2>
+<table>
+<tr><th>Object</th><th>States</th><th>Rule</th></tr>
+<tr><td>Edge</td><td>active &#8594; retired</td><td>Retirement is an append row; a retired edge&#8217;s flags stay in history.</td></tr>
+<tr><td>Flag</td><td>OPEN &#8594; CLEAR</td><td>Never reopens; a recurrence is a new flag citing the old (<code>supersedes</code>).</td></tr>
+<tr><td>Cursor</td><td>unset &#8594; at-commit</td><td>Moves forward only, only after successful writes.</td></tr>
+<tr><td>Claim</td><td>implicit &#8594; anchored</td><td>Promoted from file-grain lazily, when an edge needs it. Never pre-decomposed.</td></tr>
+</table>
+
+<h2 id="human">9 &#183; What a person sees</h2>
+<p>At the moment a thing happens, the card answers five questions without a click: what changed, what it touches, whether it blocks, who owns the fix, and exactly how to clear it:</p>
+<pre>+-- EDGE FLAG -------------------------------------------------+
+| Flag:     f-003      OPEN   [BLOCKING]  age 0m
+| System:   governance
+| Changed:  holding/bin/sutra-edge
+| Reason:   new tool created (commit 5386d17)
+| Edge:     e-006 member-of -&gt; SYSTEM-MAP.md  (dial: llm)
+| Clear:    sutra-edge clear --flag f-003 --how llm
+|           --evidence '&lt;what you did&gt;'
+| Hint:     new tool needs a SYSTEM-MAP row
++--------------------------------------------------------------+</pre>
+<p>The standing surface is the <strong>board</strong>: one lane per system level; red cards for open blocking flags, amber for advisory, green for recently cleared &#8212; each green card showing its evidence. The board is a pure regeneration from the flag ledger. Acceptance for the board: a person who was not present at the change can decide <em>act now / delegate / safely ignore</em> from the card alone.</p>
+
+<h2 id="authority">10 &#183; Who may do what</h2>
+<table>
+<tr><th>Action</th><th>Authority</th></tr>
+<tr><td>Declare / retire an edge</td><td>The owning system&#8217;s charter authority (edges are part of its declared surface).</td></tr>
+<tr><td>Clear a flag</td><td>The edge&#8217;s dial owner. LLM clears carry the model&#8217;s evidence; human clears carry the person&#8217;s.</td></tr>
+<tr><td>Override a blocking flag</td><td>Founder / charter authority only, logged as an override &#8212; never silent.</td></tr>
+<tr><td>Change edge types or schemas</td><td>The <a href="type-system.html#s6">evolution protocol</a> (versioned, migration story required).</td></tr>
+</table>
+
+<h2 id="prototype">11 &#183; A working prototype exists (parked)</h2>
+<div class="note">A single-repo staging prototype was built and dogfooded in Asawa&#8217;s holding repo (<code>holding/bin/sutra-edge</code> + orchestrator seat + board, 2026-08-11): six real edges seeded, one full cycle run &#8212; 3 flags fired, the checker failed honestly on a blocking flag, a real fix landed, 3 clears with written evidence, checker passed. <strong>Status: PARKED by founder direction.</strong> It stands as reference code and bootstrap data for the complete Native build; nothing further is wired. Bootstrap note for the build team: seed <code>member-of</code> edges for discovery surfaces first (they catch the incident class), then mirrors of the ruling sheet; prototype ledgers carry forward as-is (schema v1).</div>
+
+<h2 id="buildout">12 &#183; The complete build-out (dependency-ordered)</h2>
+<div class="key">RULED (sheet &#167;11 Doc binding + sheet A22 record, sitting concluded 2026-08-17): membership rule + full edge vocabulary + build order ratified; <strong>the 3 doc-pipeline builds run NOW alongside v1</strong> &#8212; they are the doc-pipeline fixes, not the parked A22-MECH engine; the staleness checker goes HARD once built. The sheet does not map the funded three onto this table&#8217;s item numbers &#8212; that mapping is queued for the founder.</div>
+<table>
+<tr><th>#</th><th>Item</th><th>Depends on</th><th>Acceptance</th><th>Impact (who/what changes)</th><th>Effort</th></tr>
+<tr><td>1</td><td>Repo-qualified node ids + edge versioning</td><td>&#8212;</td><td>Two repos declare edges without collision; edge changes carry versions</td><td>Foundation for everything below; multi-repo orgs</td><td>~2d, schema + migration</td></tr>
+<tr><td>2</td><td>Membership-completeness checker</td><td>1</td><td>Every registry row reachable from &#8805;1 discovery surface or exempted with evidence</td><td>Kills the incident class permanently, fleet-wide</td><td>~1d, one checker</td></tr>
+<tr><td>3</td><td>Orchestrator seats: pre-commit + CI</td><td>1</td><td>A commit that changes a registered node cannot land without firing; overlap-safe</td><td>Flags become automatic, not remembered</td><td>~1d, wiring</td></tr>
+<tr><td>4</td><td>System-transition events ledger</td><td>2,3</td><td>Durable rows for &#8220;system became blocked / returned clear&#8221;</td><td>Fleet observability; CI dashboards</td><td>~1d (recorded divergence: derive-on-read chosen for v1)</td></tr>
+<tr><td>5</td><td>Lazy claim grain (anchors)</td><td>1</td><td>An edge can target <code>file#anchor</code>; firing scopes to the claim</td><td>10,000-item docs workable at fine grain</td><td>~2d</td></tr>
+<tr><td>6</td><td>Auto-extraction + confirm queue</td><td>1,5</td><td>Extractor proposes edges with confidence; nothing binds without confirmation</td><td>Edge acquisition scales past hand-declaration</td><td>~3d, iterative</td></tr>
+<tr><td>7</td><td>Board in the product UI</td><td>2,3</td><td>Flag lanes surface in the operator&#8217;s attention screen; act/delegate/ignore from the card</td><td>The human seat sees flags where they already look</td><td>~2d after UI host exists</td></tr>
+<tr><td>8</td><td>Fleet promotion (plugin)</td><td>1&#8211;4</td><td>A T2 client repo runs the full cycle with zero manual ledger edits</td><td>Every Sutra org gets the binding system</td><td>~2d + canary per D38</td></tr>
+</table>
+
+<h2 id="acceptance">13 &#183; A conforming implementation must demonstrate</h2>
+<ul>
+<li>The incident replay: register a page, skip the index &#8212; the checker fails on membership, not by eye.</li>
+<li>Idempotency: firing the same change twice yields one flag.</li>
+<li>Evidence discipline: no flag clears empty; every green card shows its proof.</li>
+<li>Honest staleness: a fired-but-unpropagated dependent is visibly STALE until cleared.</li>
+<li>Blocking semantics: check fails on blocking, passes with advisory, and says which system lane.</li>
+<li>Frontier economics: cost of a change scales with its edges, never with document size.</li>
+</ul>
+
+<div class="key"><strong>The whole page in one line:</strong> declare the connections once, watch them always, flag honestly, clear only with evidence &#8212; and spend intelligence on the frontier of the change, never on the whole document.</div>
+
+<p class="figcap" style="margin-top:26px">Sources: DESIGN-DECISION-SHEET.md (A22 + A22-MECH, ruling of record) &#183; the 2026-08-11 index incident (this site) &#183; parked prototype holding/bin/sutra-edge &#183; dual-AI passes folded 2026-08-11 (codex + deepseek-v4-pro, gate-logged).</p>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) · refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) · review: audit workflow wf_5c81f205 · earlier content: original page authors.</p>
+
+</div></div></body></html>

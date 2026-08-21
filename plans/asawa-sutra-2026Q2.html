@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asawa &middot; Sutra — Plan v1 (Family Edition)</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --subtle: #9ca3af;
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+    --biz: #1d4ed8;
+    --biz-bg: #eff6ff;
+    --biz-border: #bfdbfe;
+    --person: #047857;
+    --person-bg: #ecfdf5;
+    --person-border: #a7f3d0;
+    --decision: #b91c1c;
+    --decision-bg: #fef2f2;
+    --decision-border: #fecaca;
+    --warn: #b45309;
+    --warn-bg: #fffbeb;
+    --warn-border: #fde68a;
+    --status-open: #6b7280;
+    --status-draft: #b45309;
+    --status-locked: #1d4ed8;
+    --status-live: #047857;
+    --status-na: #9ca3af;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 1180px; margin: 0 auto; }
+
+  /* ---- HERO ---- */
+  .hero {
+    text-align: center;
+    padding: 3rem 1rem 2.5rem;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .hero img.portrait {
+    width: 100px; height: 100px; border-radius: 50%;
+    object-fit: cover; margin-bottom: 1.25rem;
+    border: 3px solid var(--surface);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .hero h1 {
+    font-size: 2.75rem; font-weight: 700;
+    letter-spacing: -0.025em; line-height: 1.1;
+  }
+  .hero .tagline {
+    font-size: 1.15rem; color: var(--muted);
+    margin: 0.75rem auto 0; max-width: 640px;
+  }
+  .hero .subline {
+    font-style: italic; color: var(--subtle);
+    margin-top: 0.4rem;
+  }
+  .hero .meta {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.8rem; color: var(--subtle);
+    margin-top: 1.5rem;
+  }
+
+  /* ---- ASSUMPTION BANNER ---- */
+  .banner {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-left: 4px solid var(--warn);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .banner h3 {
+    color: var(--warn); font-size: 0.9rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .banner p { font-size: 0.95rem; }
+  .banner strong { color: var(--warn); }
+
+  /* ---- TOC ---- */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .toc h2 {
+    font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.4rem;
+  }
+  .toc a {
+    color: var(--text); text-decoration: none;
+    padding: 0.5rem 0.75rem; border-radius: 6px;
+    font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem;
+    transition: background 0.1s;
+  }
+  .toc a:hover { background: var(--biz-bg); }
+  .toc a .pill {
+    display: inline-block; min-width: 1.75rem;
+    text-align: center; padding: 0.15rem 0.4rem;
+    border-radius: 4px; font-family: ui-monospace, monospace;
+    font-size: 0.75rem; font-weight: 700;
+    background: var(--biz-bg); color: var(--biz);
+  }
+  .toc a.person .pill { background: var(--person-bg); color: var(--person); }
+  .toc a.decision .pill { background: var(--decision-bg); color: var(--decision); }
+
+  /* ---- SECTION HEADERS ---- */
+  h2.section-title {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem;
+    color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 700;
+  }
+
+  /* ---- DEPENDENCY MAP ---- */
+  .dep-map {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    overflow-x: auto;
+  }
+  .dep-map pre {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--text);
+    white-space: pre;
+  }
+  .dep-map .caption {
+    margin-top: 1.25rem; padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+    color: var(--muted); font-size: 0.9rem;
+    font-family: inherit;
+  }
+
+  /* ---- STATUS BOARD ---- */
+  .scoreboard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+  .scoreboard table { width: 100%; border-collapse: collapse; }
+  .scoreboard th, .scoreboard td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .scoreboard th {
+    background: #f9fafb; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    font-size: 0.72rem; font-weight: 700;
+  }
+  .scoreboard tr:last-child td { border-bottom: none; }
+  .scoreboard td.num {
+    font-family: ui-monospace, monospace;
+    color: var(--subtle); width: 2.5rem;
+  }
+  .scoreboard td.label { font-weight: 500; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0.25rem 0.55rem; border-radius: 4px;
+    color: white;
+  }
+  .badge.open   { background: var(--status-open); }
+  .badge.draft  { background: var(--status-draft); }
+  .badge.locked { background: var(--status-locked); }
+  .badge.live   { background: var(--status-live); }
+  .badge.na     { background: var(--status-na); }
+  .badge.fill   { background: var(--decision); }
+
+  /* ---- PART HEADERS ---- */
+  .part { margin-bottom: 4rem; }
+  .part-header {
+    display: flex; align-items: baseline; gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .part-a .part-header { border-color: var(--biz); }
+  .part-b .part-header { border-color: var(--person); }
+  .part-c .part-header { border-color: var(--decision); }
+  .part-header h2 { font-size: 1.85rem; letter-spacing: -0.02em; }
+  .part-header .desc { color: var(--muted); font-size: 0.95rem; }
+
+  /* ---- BLOCKS ---- */
+  .blocks { display: grid; gap: 1.5rem; }
+  .block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .block-header {
+    display: flex; align-items: center; gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--biz-bg);
+  }
+  .part-b .block-header { background: var(--person-bg); }
+  .block-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.25rem; height: 2.25rem;
+    background: var(--biz); color: white;
+    border-radius: 6px;
+    font-family: ui-monospace, monospace;
+    font-weight: 700; font-size: 0.9rem;
+  }
+  .part-b .block-num { background: var(--person); }
+  .block-header h3 {
+    font-size: 1.1rem; flex: 1;
+    font-weight: 600; letter-spacing: -0.005em;
+  }
+
+  /* ---- BLOCK BODY ---- */
+  .block-body { padding: 1.5rem; }
+  .block-body.two-col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  @media (max-width: 760px) {
+    .block-body.two-col { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  .entity h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--biz);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--biz-border);
+    font-weight: 700;
+  }
+  .entity.sutra h4 { color: var(--person); border-color: var(--person-border); }
+  .part-b .entity h4 { color: var(--person); border-color: var(--person-border); }
+
+  dl { display: grid; gap: 1rem; }
+  dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  dd {
+    font-size: 0.95rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--border);
+  }
+  dd.fill {
+    color: var(--decision);
+    font-style: italic;
+    border-left-color: var(--decision);
+  }
+  dd.fill::before {
+    content: "[FOUNDER TO FILL] ";
+    font-weight: 700; font-style: normal;
+    font-size: 0.7rem; letter-spacing: 0.06em;
+  }
+  dd.assumption {
+    color: var(--warn);
+    border-left-color: var(--warn);
+  }
+  dd.assumption::before {
+    content: "[ASSUMPTION] ";
+    font-weight: 700;
+    font-size: 0.7rem; letter-spacing: 0.06em;
+  }
+
+  /* ---- BLOCK FOOTER ---- */
+  .block-footer {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border);
+    background: #f9fafb;
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: flex; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .block-footer .pill-mini {
+    background: white; border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem; border-radius: 3px;
+    color: var(--text);
+  }
+
+  /* ---- GATES ---- */
+  .gates { display: grid; gap: 1rem; }
+  .gate {
+    background: var(--decision-bg);
+    border: 1px solid var(--decision-border);
+    border-left: 4px solid var(--decision);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .gate h4 {
+    color: var(--decision);
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .gate .opts {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin: 0.75rem 0;
+  }
+  .gate .opt {
+    font-family: ui-monospace, monospace;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+    background: white;
+    border: 1px solid var(--decision-border);
+    border-radius: 5px;
+    color: var(--text);
+  }
+  .gate .meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: ui-monospace, monospace;
+    margin-top: 0.5rem;
+  }
+
+  /* ---- HOW FAMILY CAN HELP ---- */
+  .help-card {
+    background: var(--person-bg);
+    border: 1px solid var(--person-border);
+    border-left: 4px solid var(--person);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .help-card h3 {
+    color: var(--person);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .help-card ul { padding-left: 1.5rem; }
+  .help-card li { margin-bottom: 0.4rem; }
+
+  /* ---- DOC FOOTER ---- */
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  footer.doc-footer strong { color: var(--text); }
+  footer.doc-footer p { margin-bottom: 0.75rem; }
+
+  /* ---- PRINT ---- */
+  @media print {
+    body { background: white; padding: 0; font-size: 11pt; }
+    .container { max-width: 100%; }
+    .block, .gate, .help-card, .scoreboard, .dep-map, .toc, .banner {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .hero img.portrait { width: 70px; height: 70px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ========== HERO ========== -->
+  <header class="hero"><meta name="robots" content="noindex">
+    <img src="../sankalp.jpg" alt="Sankalp" class="portrait" onerror="this.style.display='none'">
+    <h1>Asawa &middot; Sutra</h1>
+    <p class="tagline">A holding company built by one operator, powered by an AI operating system.</p>
+    <p class="tagline subline">What I'm building &middot; where I'm going &middot; what I'm asking for.</p>
+    <p class="meta">v1.0 &nbsp;&middot;&nbsp; 26 May 2026 &nbsp;&middot;&nbsp; Sankalp Asawa &nbsp;&middot;&nbsp; family edition</p>
+  </header>
+
+  <!-- ========== ASSUMPTION BANNER ========== -->
+  <div class="banner">
+    <h3>About this document</h3>
+    <p>This is <strong>version 1</strong>, written in one sitting so we have something concrete to talk over. Where I haven't yet decided something, the line says <strong>FOUNDER TO FILL</strong>. Where I had to guess, the line is tagged <strong>[ASSUMPTION]</strong> so we can correct it together. Before sharing, this plan was reviewed independently by two AI critics (Codex and DeepSeek) to flag what's missing or weak.</p>
+  </div>
+
+  <!-- ========== TOC ========== -->
+  <nav class="toc">
+    <h2>Contents</h2>
+    <div class="toc-grid">
+      <a href="#dep-map"><span class="pill">MAP</span>How the pieces connect</a>
+      <a href="#status"><span class="pill">STAT</span>At-a-glance status</a>
+      <a href="#part-a"><span class="pill">A</span>The Business &mdash; 8 blocks</a>
+      <a href="#part-b" class="person"><span class="pill">B</span>The Person &mdash; 8 blocks</a>
+      <a href="#part-c" class="decision"><span class="pill">C</span>Decisions &amp; help needed</a>
+    </div>
+  </nav>
+
+  <!-- ========== DEPENDENCY MAP ========== -->
+  <h2 class="section-title">How the pieces connect</h2>
+  <section id="dep-map" class="dep-map">
+<pre>
+                          +----------------------------+
+                          |   01  COMPANY PLAN         |
+                          |   Asawa  |  Sutra          |
+                          |   "the root bet"           |
+                          +-------------+--------------+
+                                        |
+            +-------------+-------------+-------------+-------------+
+            v             v             v             v             v
+       +---------+   +---------+  +----------+  +----------+  +----------+
+       |   05    |   |   02    |  |    07    |  |    08    |  |    06    |
+       |  MILE-  |   |  TEAM   |  | LOCATION |  | PARTNER- |  |  SUTRA   |
+       | STONES  |   |         |  |  &amp; LEGAL |  |  SHIPS   |  | FINANCE  |
+       +----+----+   +----+----+  +----+-----+  +-----+----+  +-----+----+
+            |             |            |              |             |
+            +-------------+------+-----+--------------+-------------+
+                                 v
+                          +--------------+        +-----------------+
+                          |     03       |&lt;-------|  04  PROCESS    |
+                          |   HOLDING    |        |  (orthogonal,   |
+                          |   FINANCIAL  |        |   continuous)   |
+                          +------+-------+        +-----------------+
+                                 |
+                       +---------+---------+
+                       v                   v
+              +-----------------+   +-----------------+
+              | THE PERSON (B)  |   | OUTCOMES        |
+              | blocks 09 - 16  |   | 5 / 10 year     |
+              | (foundation)    |   | (block 16)      |
+              +-----------------+   +-----------------+
+</pre>
+    <div class="caption">
+      Every Business block (01-08) feeds <strong>Block 03 Holding Financial</strong> &mdash; the cash truth. The Person blocks (09-16) sit underneath everything: without the person, none of the business runs.
+    </div>
+  </section>
+
+  <!-- ========== STATUS BOARD ========== -->
+  <h2 class="section-title">At-a-glance status</h2>
+  <section id="status" class="scoreboard">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Block</th>
+          <th>Asawa</th>
+          <th>Sutra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">01</td><td class="label">Company plan</td><td><span class="badge draft">Draft</span></td><td><span class="badge draft">Draft</span></td></tr>
+        <tr><td class="num">02</td><td class="label">Team</td><td><span class="badge locked">Locked</span></td><td><span class="badge open">Open</span></td></tr>
+        <tr><td class="num">03</td><td class="label">Holding financial</td><td><span class="badge open">Open</span></td><td><span class="badge na">n/a</span></td></tr>
+        <tr><td class="num">04</td><td class="label">Process</td><td><span class="badge live">Live</span></td><td><span class="badge live">Live</span></td></tr>
+        <tr><td class="num">05</td><td class="label">Milestones</td><td><span class="badge draft">Draft</span></td><td><span class="badge draft">Draft</span></td></tr>
+        <tr><td class="num">06</td><td class="label">Sutra financial</td><td><span class="badge na">n/a</span></td><td><span class="badge open">Open</span></td></tr>
+        <tr><td class="num">07</td><td class="label">Location &amp; legal</td><td><span class="badge fill">Fill</span></td><td><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">08</td><td class="label">Partnerships</td><td><span class="badge draft">Draft</span></td><td><span class="badge draft">Draft</span></td></tr>
+        <tr><td class="num">09</td><td class="label">Vision / Why</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">10</td><td class="label">Time allocation</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">11</td><td class="label">Personal runway</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">12</td><td class="label">Risk + worst case</td><td colspan="2"><span class="badge draft">Draft</span></td></tr>
+        <tr><td class="num">13</td><td class="label">Health + sustainability</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">14</td><td class="label">Family role + support</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">15</td><td class="label">Key relationships</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+        <tr><td class="num">16</td><td class="label">Long-horizon outcomes</td><td colspan="2"><span class="badge fill">Fill</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== PART A: BUSINESS ========== -->
+  <section id="part-a" class="part part-a">
+    <header class="part-header"><meta name="robots" content="noindex">
+      <h2>Part A &mdash; The Business</h2>
+      <span class="desc">Eight blocks: what gets built, by whom, with what money, on what timeline.</span>
+    </header>
+    <div class="blocks">
+
+      <!-- BLOCK 01 -->
+      <article class="block" id="b01">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">01</span>
+          <h3>Company Plan</h3>
+          <span class="badge draft">Draft</span>
+        </header>
+        <div class="block-body two-col">
+          <div class="entity asawa">
+            <h4>Asawa Inc.</h4>
+            <dl>
+              <dt>Wedge</dt>
+              <dd>One-operator holding company that runs its portfolio through an in-house AI system (Sutra) instead of hiring a team per product.</dd>
+              <dt>12-month bet</dt>
+              <dd>Prove that one founder + AI can profitably operate a 6-product portfolio (DayFlow, Billu, Paisa, PPR, Maze, Reflection) without full-time staff per company.</dd>
+              <dt>Customer</dt>
+              <dd>Myself, as the operator. Through Sutra, the broader fleet of solo builders.</dd>
+              <dt>Moat</dt>
+              <dd>Depth of governance baked into Sutra + the daily loop of using it on real businesses, not toy demos.</dd>
+              <dt>Kill criteria</dt>
+              <dd>If, at 12 months, combined inflow from products + Sutra is below my personal burn + infra, I change shape.</dd>
+            </dl>
+          </div>
+          <div class="entity sutra">
+            <h4>Sutra</h4>
+            <dl>
+              <dt>Wedge</dt>
+              <dd>An operating system that weighs context and skills for AI work. Core IP is the weighting engine &mdash; not "another agent framework."</dd>
+              <dt>12-month bet</dt>
+              <dd>500+ active installs and 10+ paying customers; Asawa products as daily proving ground.</dd>
+              <dt>Customer</dt>
+              <dd>AI-leveraged builders and operators in the early-adopter market.</dd>
+              <dt>Moat</dt>
+              <dd>The weighting IP plus visible discipline of using it on real businesses.</dd>
+              <dt>Kill criteria</dt>
+              <dd>If, at 12 months, active installs are below 500 OR no one has paid for it, the shape changes.</dd>
+            </dl>
+          </div>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> nothing (root)</span>
+          <span><span class="pill-mini">Feeds</span> 02 &middot; 05 &middot; 06 &middot; 07 &middot; 08</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 02 -->
+      <article class="block" id="b02">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">02</span>
+          <h3>Team</h3>
+          <span class="badge locked">Locked</span>
+        </header>
+        <div class="block-body two-col">
+          <div class="entity asawa">
+            <h4>Asawa Inc.</h4>
+            <dl>
+              <dt>Headcount today</dt>
+              <dd>One person (me) + AI.</dd>
+              <dt>Hire plan</dt>
+              <dd>No full-time hires through Q4 2026.</dd>
+              <dt>Contract roles</dt>
+              <dd>Legal, accounting, specialized design as needed.</dd>
+              <dt>Why this shape</dt>
+              <dd>Hiring before the one-operator thesis is proven would defeat the experiment.</dd>
+            </dl>
+          </div>
+          <div class="entity sutra">
+            <h4>Sutra</h4>
+            <dl>
+              <dt>Headcount today</dt>
+              <dd>Zero dedicated. Founder time-share + AI.</dd>
+              <dt>First hire triggers</dt>
+              <dd>1 distribution/community person if active installs &gt; 100. 1 backend engineer if Sutra's core engine hits performance limits.</dd>
+              <dt>Hard gate</dt>
+              <dd>Monthly recurring revenue &gt;= $10,000 before any full-time hire.</dd>
+              <dt>Why this shape</dt>
+              <dd>Keep Sutra capital-light until paid demand exists.</dd>
+            </dl>
+          </div>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> 01</span>
+          <span><span class="pill-mini">Feeds</span> 03</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 03 -->
+      <article class="block" id="b03">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">03</span>
+          <h3>Holding Financial</h3>
+          <span class="badge open">Open</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Cash IN (Asawa-level)</dt>
+            <dd>Product revenue from the 6 owned products &middot; consulting fees from client work (Testlify, Dharmik) &middot; share of Sutra paid tier (once launched).</dd>
+            <dt>Cash OUT</dt>
+            <dd>My salary draw &middot; infrastructure (hosting, domains, AI subscriptions) &middot; AI API spend for build + review &middot; legal &middot; accounting &middot; small marketing.</dd>
+            <dt>18-month model</dt>
+            <dd class="fill">Numbers TBD &mdash; depends on product ramp rate, Sutra paid conversion, and chosen salary draw. Will be built as a separate companion spreadsheet next.</dd>
+            <dt>Decision rule</dt>
+            <dd>If at any quarter projected runway drops below 9 months, change shape (raise prices, cut burn, draw less salary).</dd>
+          </dl>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> 02 &middot; 05 &middot; 06</span>
+          <span><span class="pill-mini">Feeds</span> 11 (personal runway)</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 04 -->
+      <article class="block" id="b04">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">04</span>
+          <h3>Process &mdash; the operating system</h3>
+          <span class="badge live">Live</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>What's already running</dt>
+            <dd>Sutra (the operating system) ships me + the fleet a consistent set of governance, skills, and review tools. Internal departments (analytics, etc.) track what's working. Daily and per-company sessions follow the same structure.</dd>
+            <dt>Continuous principle</dt>
+            <dd>If I have to remember to do something, it's not done yet &mdash; turn it into a hook or skill so it happens automatically.</dd>
+            <dt>Review discipline</dt>
+            <dd>Every important plan or change passes through at least one independent AI critic (Codex and/or DeepSeek) before it's locked.</dd>
+            <dt>Why orthogonal</dt>
+            <dd>Process runs alongside everything else; it doesn't gate the other blocks but quietly compounds their quality over time.</dd>
+          </dl>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> nothing (orthogonal)</span>
+          <span><span class="pill-mini">Feeds</span> all other blocks (quality multiplier)</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 05 -->
+      <article class="block" id="b05">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">05</span>
+          <h3>Milestones</h3>
+          <span class="badge draft">Draft</span>
+        </header>
+        <div class="block-body two-col">
+          <div class="entity asawa">
+            <h4>Asawa &mdash; from May 2026</h4>
+            <dl>
+              <dt>3 months &middot; Aug 2026</dt>
+              <dd>All 6 products on the Sutra plugin. Financial model live.</dd>
+              <dt>6 months &middot; Nov 2026</dt>
+              <dd>One product crosses $5,000 monthly revenue.</dd>
+              <dt>12 months &middot; May 2027</dt>
+              <dd>Combined inflow covers my burn + infra.</dd>
+              <dt>24 months &middot; May 2028</dt>
+              <dd>Three products each above $10,000 monthly revenue.</dd>
+            </dl>
+          </div>
+          <div class="entity sutra">
+            <h4>Sutra &mdash; from May 2026</h4>
+            <dl>
+              <dt>3 months</dt>
+              <dd>Next-gen engine wired. 100+ active installs. 1 paid pilot.</dd>
+              <dt>6 months</dt>
+              <dd>Paid tier launched. 10+ paying customers.</dd>
+              <dt>12 months</dt>
+              <dd>$5,000 monthly recurring revenue. 500+ installs. Anthropic directory presence.</dd>
+              <dt>24 months</dt>
+              <dd>$25,000+ monthly recurring revenue. 2,000+ fleet. First enterprise contract.</dd>
+            </dl>
+          </div>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> 01</span>
+          <span><span class="pill-mini">Feeds</span> 03</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 06 -->
+      <article class="block" id="b06">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">06</span>
+          <h3>Sutra Financial</h3>
+          <span class="badge open">Open</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>The 3-stage funnel</dt>
+            <dd><strong>Install</strong> &rarr; <strong>Engaged</strong> (uses it weekly) &rarr; <strong>Paid</strong> (subscribes to the paid tier). Track conversion rate between each stage before forecasting revenue.</dd>
+            <dt>Paid tier shape</dt>
+            <dd class="fill">Flat / usage-based / per-seat &mdash; not yet decided. Also: free tier preserved or sunset?</dd>
+            <dt>Why funnel before forecast</dt>
+            <dd>Modeling SaaS revenue curves without paid-conversion data is fiction. First measure conversion, then forecast.</dd>
+            <dt>Operating costs</dt>
+            <dd>Infrastructure: negligible (delivered as a plugin via marketplace). AI API spend for daily use + peer-review: track monthly.</dd>
+          </dl>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> 01</span>
+          <span><span class="pill-mini">Feeds</span> 03 (as line item)</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 07 -->
+      <article class="block" id="b07">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">07</span>
+          <h3>Location &amp; Legal</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body two-col">
+          <div class="entity asawa">
+            <h4>Asawa Inc.</h4>
+            <dl>
+              <dt>Founder location</dt><dd class="fill">Where I live + work day-to-day.</dd>
+              <dt>Asawa Inc. domicile</dt><dd class="fill">India? US LLC? Both?</dd>
+              <dt>Tax residency</dt><dd class="fill">Where I file.</dd>
+              <dt>Hire locations</dt><dd class="fill">Where contractors / future hires sit.</dd>
+            </dl>
+          </div>
+          <div class="entity sutra">
+            <h4>Sutra</h4>
+            <dl>
+              <dt>Entity shape</dt><dd class="fill">DBA under Asawa? Subsidiary? Separate C-corp? (Gates how IP is held, how revenue is booked, fundraise-or-not optionality.)</dd>
+              <dt>IP holding</dt><dd class="fill">Where the weighting-engine IP lives legally.</dd>
+              <dt>Trademark</dt><dd class="fill">Sutra name + mark registered?</dd>
+            </dl>
+          </div>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> 01</span>
+          <span><span class="pill-mini">Feeds</span> 03 &middot; 08</span>
+        </footer>
+      </article>
+
+      <!-- BLOCK 08 -->
+      <article class="block" id="b08">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">08</span>
+          <h3>Partnerships</h3>
+          <span class="badge draft">Draft</span>
+        </header>
+        <div class="block-body two-col">
+          <div class="entity asawa">
+            <h4>Asawa</h4>
+            <dl>
+              <dt>Capital partners</dt>
+              <dd class="assumption">No venture capital. Paid-revenue self-fund posture. (Confirm.)</dd>
+              <dt>Distribution partners</dt>
+              <dd>Founder's network, per-product as relevant.</dd>
+              <dt>Integration partners</dt>
+              <dd>Anthropic, via Sutra plugin distribution.</dd>
+            </dl>
+          </div>
+          <div class="entity sutra">
+            <h4>Sutra</h4>
+            <dl>
+              <dt>Distribution partners</dt>
+              <dd>Anthropic marketplace (submitted April 2026) &middot; AI developer communities &middot; the existing fleet as design partners.</dd>
+              <dt>Integration partners</dt>
+              <dd>Claude (primary AI model) &middot; DeepSeek (peer-review AI) &middot; OpenAI Codex (peer-review AI) &middot; Context7 (live docs access) &middot; broader MCP ecosystem over time.</dd>
+              <dt>Capital posture</dt>
+              <dd class="assumption">Stay light &mdash; paid-MRR self-fund, do not raise.</dd>
+            </dl>
+          </div>
+        </div>
+        <footer class="block-footer">
+          <span><span class="pill-mini">Depends on</span> 01 &middot; 07</span>
+          <span><span class="pill-mini">Feeds</span> 03 &middot; 05</span>
+        </footer>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== PART B: PERSON ========== -->
+  <section id="part-b" class="part part-b">
+    <header class="part-header"><meta name="robots" content="noindex">
+      <h2>Part B &mdash; The Person</h2>
+      <span class="desc">Eight blocks: the human running it. Without these the business doesn't last.</span>
+    </header>
+    <div class="blocks">
+
+      <!-- BLOCK 09 -->
+      <article class="block" id="b09">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">09</span>
+          <h3>Vision &mdash; the Why</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Origin &mdash; how I got here</dt>
+            <dd class="fill">The path from where I started to today.</dd>
+            <dt>Why this specific work</dt>
+            <dd class="fill">Why a one-operator AI-leveraged holding company, and not the next obvious job.</dd>
+            <dt>10-year picture</dt>
+            <dd class="assumption">An AI-leveraged single operator running an enduring portfolio of small, profitable products; Sutra recognized as a category-defining piece of AI tooling.</dd>
+            <dt>What I will not do</dt>
+            <dd class="fill">Things I am explicitly saying no to (e.g. raising VC, moving abroad, large team, etc.).</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 10 -->
+      <article class="block" id="b10">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">10</span>
+          <h3>Time Allocation &mdash; the week-shape</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Weekly hours of work</dt>
+            <dd class="assumption">~50&ndash;60 hours/week (based on the hourly-cadence operating model).</dd>
+            <dt>Split across surfaces</dt>
+            <dd class="fill">% Sutra &middot; % owned products &middot; % client work &middot; % governance / operations &middot; % personal/family.</dd>
+            <dt>Protected hours</dt>
+            <dd class="fill">Hours reserved for family + non-work each week.</dd>
+            <dt>Decision rule</dt>
+            <dd class="fill">If protected hours drop two weeks in a row, replan.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 11 -->
+      <article class="block" id="b11">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">11</span>
+          <h3>Personal Financial Runway</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Savings cushion</dt>
+            <dd class="fill">Months of personal burn already covered without external income.</dd>
+            <dt>Monthly personal burn</dt>
+            <dd class="fill">What I need each month to live.</dd>
+            <dt>Salary I draw from Asawa</dt>
+            <dd class="fill">How much, how often, from which pocket.</dd>
+            <dt>Outside income or assets</dt>
+            <dd class="fill">Any other income, investments, property.</dd>
+            <dt>Decision rule</dt>
+            <dd>If runway drops below <strong>6 months</strong>, something material changes (raise prices, take consulting work, cut burn).</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 12 -->
+      <article class="block" id="b12">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">12</span>
+          <h3>Risk &amp; Worst Case</h3>
+          <span class="badge draft">Draft</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Top 3 risks (ranked)</dt>
+            <dd class="assumption">1) Sutra paid tier doesn't convert &mdash; kills the financial model. <br> 2) Owned products fail to find traction &mdash; slows portfolio cash. <br> 3) Single-operator model breaks &mdash; burnout, illness, or family event.</dd>
+            <dt>Worst case</dt>
+            <dd class="fill">What "worst case" means in concrete terms.</dd>
+            <dt>Fallback plan</dt>
+            <dd class="fill">If worst case lands &mdash; the explicit alternative (re-enter full-time work, partner with someone, pause for X months, etc.).</dd>
+            <dt>Insurance / contingency</dt>
+            <dd class="fill">Health, life, disability cover in place.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 13 -->
+      <article class="block" id="b13">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">13</span>
+          <h3>Health &amp; Sustainability</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Physical practice</dt>
+            <dd class="fill">Exercise, sleep, food &mdash; what's non-negotiable.</dd>
+            <dt>Mental practice</dt>
+            <dd class="fill">Reflection, therapy, journalling &mdash; what keeps me clear.</dd>
+            <dt>Burnout guardrails</dt>
+            <dd class="fill">The early signals + the predetermined response.</dd>
+            <dt>Decision rule</dt>
+            <dd>If I notice <strong>2 weeks of low energy or skipped practice</strong>, pause and re-plan before pushing harder.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 14 -->
+      <article class="block" id="b14">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">14</span>
+          <h3>Family Role &amp; Support</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Family makeup</dt>
+            <dd class="fill">Who is in the immediate circle and how they're related to this work.</dd>
+            <dt>What I'm asking from family</dt>
+            <dd class="fill">Patience, financial buffer, time, presence at specific moments, etc.</dd>
+            <dt>What I'm offering family</dt>
+            <dd class="fill">Outcomes, time once stable, financial cushion later, etc.</dd>
+            <dt>Decision boundaries</dt>
+            <dd class="fill">Which decisions I make alone vs which I bring family into.</dd>
+            <dt>If something happens to me</dt>
+            <dd class="fill">Succession / continuity plan &mdash; who decides, who inherits IP and any cash flow.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 15 -->
+      <article class="block" id="b15">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">15</span>
+          <h3>Key Relationships</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>Advisors</dt>
+            <dd class="fill">People I formally consult on big calls.</dd>
+            <dt>Mentors</dt>
+            <dd class="fill">People I learn from, regularly or on demand.</dd>
+            <dt>Peer founders</dt>
+            <dd class="fill">Peers solving similar problems &mdash; lateral support.</dd>
+            <dt>Customer champions</dt>
+            <dd class="fill">Early users / customers who'd advocate for the work.</dd>
+            <dt>Decision rule</dt>
+            <dd>For each list, name the gap and the one person to bring in next quarter.</dd>
+          </dl>
+        </div>
+      </article>
+
+      <!-- BLOCK 16 -->
+      <article class="block" id="b16">
+        <header class="block-header"><meta name="robots" content="noindex">
+          <span class="block-num">16</span>
+          <h3>Long-Horizon Outcomes</h3>
+          <span class="badge fill">Fill</span>
+        </header>
+        <div class="block-body">
+          <dl>
+            <dt>5-year picture</dt>
+            <dd class="fill">What life looks like in 5 years if this works.</dd>
+            <dt>10-year picture</dt>
+            <dd class="assumption">An enduring portfolio of small profitable products; Sutra a recognized standard in AI tooling; founder operates with autonomy and chosen time-shape.</dd>
+            <dt>Legacy</dt>
+            <dd class="fill">What I want this to mean for family / community when I'm done.</dd>
+            <dt>Exit / inheritance</dt>
+            <dd class="fill">If/how the company is passed on, sold, wound down.</dd>
+          </dl>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== PART C: DECISIONS ========== -->
+  <section id="part-c" class="part part-c">
+    <header class="part-header"><meta name="robots" content="noindex">
+      <h2>Part C &mdash; Decisions &amp; help needed</h2>
+      <span class="desc">Open questions only I (or we as a family) can answer. Resolve these to lock v1.0.</span>
+    </header>
+
+    <div class="gates">
+
+      <div class="gate">
+        <h4>Gate 1 &mdash; Sutra legal entity shape</h4>
+        <p>How Sutra is held legally. Affects taxes, IP, fundraise optionality.</p>
+        <div class="opts">
+          <span class="opt">( ) DBA under Asawa</span>
+          <span class="opt">( ) Asawa subsidiary</span>
+          <span class="opt">( ) Separate C-corp</span>
+        </div>
+        <p class="meta">due: 15 June 2026 &middot; blocks: 07, 08, 03</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 2 &mdash; Founder location &amp; Asawa domicile</h4>
+        <p>Where I live + work, and where Asawa Inc. is legally registered.</p>
+        <p class="meta">due: 15 June 2026 &middot; blocks: 07, 03</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 3 &mdash; Capital posture</h4>
+        <p>Confirm: no venture capital, fund growth from paid revenue.</p>
+        <div class="opts">
+          <span class="opt">[ ] Confirmed no-VC</span>
+          <span class="opt">[ ] Re-open if conditions change</span>
+        </div>
+        <p class="meta">due: 1 June 2026 &middot; blocks: 08</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 4 &mdash; Owned-products monetize set</h4>
+        <p>Which of the 6 owned products to actively monetize this year vs treat as exploration / learning.</p>
+        <p class="meta">due: 1 June 2026 &middot; blocks: 01, 05</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 5 &mdash; Consulting income materiality</h4>
+        <p>Is income from client consulting (Testlify, Dharmik) material to cash flow, or treated as founder-time-only?</p>
+        <p class="meta">due: 1 June 2026 &middot; blocks: 03</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 6 &mdash; Sutra paid tier shape</h4>
+        <p>Pricing model: flat / usage-based / per-seat. Free tier preserved or sunset.</p>
+        <p class="meta">due: 30 June 2026 &middot; blocks: 06, 03, 05</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 7 &mdash; Personal financial runway numbers</h4>
+        <p>Fill the actual savings cushion + monthly burn + salary draw in Block 11.</p>
+        <p class="meta">due: 1 June 2026 &middot; blocks: 11</p>
+      </div>
+
+      <div class="gate">
+        <h4>Gate 8 &mdash; Family support shape</h4>
+        <p>The explicit conversation about what's asked, what's offered, and which decisions involve family. Fill Block 14.</p>
+        <p class="meta">due: 15 June 2026 &middot; blocks: 14</p>
+      </div>
+
+    </div>
+
+    <!-- HOW FAMILY CAN HELP -->
+    <div class="help-card">
+      <h3>How family can help (concrete)</h3>
+      <ul>
+        <li><strong>Patience on the 12-month timeline</strong> &mdash; the bet has explicit kill criteria; I will not let it slide indefinitely.</li>
+        <li><strong>Read Part C and push back</strong> &mdash; the open gates are exactly where outside perspective sharpens the call.</li>
+        <li><strong>Flag if you see the warning signs</strong> in Block 13 (low energy, skipped practice) before I notice them myself.</li>
+        <li><strong>Hold me to the decision rules</strong> &mdash; runway &lt; 6 months, energy down 2 weeks, etc. They're written; ask if I'm honoring them.</li>
+        <li><strong>Be candid about anything I've assumed wrong</strong> in Blocks 09 / 14 / 16 &mdash; the personal blocks are mostly mine to fill, but family input is the highest-leverage edit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== DOC FOOTER ========== -->
+  <footer class="doc-footer">
+    <p><strong>Revision log</strong></p>
+    <p>v1.0 &middot; 26 May 2026 &middot; first cut. 8 business blocks pre-filled from internal planning; 8 person blocks largely stubs awaiting founder fill. Reviewed independently by Codex and DeepSeek before this share.</p>
+    <p><strong>How to read this</strong></p>
+    <p>Start with the dependency map (top). Skim the status board to see what's filled vs open. Read Part A to understand the business. Read Part B to understand the person. Stop at Part C &mdash; that's where the conversation happens.</p>
+    <p><strong>Cadence</strong></p>
+    <p>Status board refreshed monthly. Full revision quarterly (next: end of August 2026 &rarr; v1.1).</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; Block: Orchestration (translate request &#8594; find process)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+ol.gaps{margin:6px 0;padding-left:22px;font-size:13.5px;color:#1f2937}
+ol.gaps li{margin:7px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-orch{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb">hub &#8250; product: CoS &#8250; <a href="index.html">platform</a> &#8250; <b>orchestration</b> &#160;&#183;&#160; spine: <a href="runtime.html">&#8592; Daemon — Runtime</a> &#160;&#183;&#160; <a href="system-of-process.html">System of Process &#8594;</a></div>
+<h1>Block &#8212; Orchestration <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="272" y="310" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Orchestration</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-orchestration</code></td><td>PLATFORM / <a href="runtime.html">platform-runtime (daemon)</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">&#167;1.0 stated job: inside the always-on Daemon, Orchestration translates the request and finds the relevant process to run; the found process is handed to System of Process on the &#8220;task = process&#8221; edge (<a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a>).</td><td colspan="3">draft carried over; intent-parse LLM-call ownership gap preserved; contracts to SoP + Host declared</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 780 990" role="img" aria-label="Orchestration block second-order, fully wired">
+    <defs>
+      <marker id="orc-oah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- Authority + Tenancy wrap (gates every access; rendered as wrap, not a pipeline box) -->
+    <rect x="12" y="26" width="756" height="952" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="26" y="17" width="340" height="18" fill="#fff"/>
+    <text x="34" y="30" fill="#7c3aed" font-weight="700" font-size="12">AUTHORITY + TENANCY &#183; gates every access (&#167;1.0)</text>
+
+    <!-- EDGES (drawn first, under the boxes) -->
+    <!-- E1 Host -> Trigger intake (contract in) -->
+    <path d="M390,104 L390,198" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="398" y="128" font-size="9" fill="#475569">runs &#183; operator request (&#167;1.0 'runs' edge)</text>
+    <text x="398" y="141" font-size="9" fill="#475569">text &#183; Slack &#183; email &#183; scheduled (&#167;2.F.B.1)</text>
+
+    <!-- E2 Trigger intake -> Intent Layer -->
+    <path d="M390,260 L390,340" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="400" y="285" font-size="9" fill="#475569">enters same translate &#183; find-the-process path</text>
+
+    <!-- E3 Intent Layer -> Intent classifier -->
+    <path d="M390,408 L390,448" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="382" y="432" font-size="9" fill="#475569" text-anchor="end">typed intent + sub-intents (validated)</text>
+
+    <!-- E4 Context carry -> Intent classifier -->
+    <path d="M600,422 L478,448" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="560" y="438" font-size="9" fill="#475569">resolves references</text>
+
+    <!-- E5 Classifier -> Confidence gate -->
+    <path d="M390,510 L390,550" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="398" y="534" font-size="9" fill="#475569">intent type + confidence band</text>
+
+    <!-- E6 Confidence gate -> Fan-out router -->
+    <path d="M390,612 L390,652" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="398" y="636" font-size="9" fill="#475569">high / confirmed &#8594; proceed</text>
+
+    <!-- E7 Confidence gate -> Host (confirm-back, contract out) -->
+    <path d="M520,581 L732,581 L732,80 L490,80" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="540" y="70" font-size="9" fill="#475569">confirm-back / ASK BACK &#8594; operator answers</text>
+    <text x="540" y="94" font-size="9" fill="#475569">+ schema preview before execution (B1)</text>
+    <text x="540" y="107" font-size="8.5" fill="#9ca3af">(&#167;1.0 shows no upward edge &#8212; see gap 6)</text>
+
+    <!-- E8 Fan-out router -> Process finder -->
+    <path d="M390,716 L390,772" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="398" y="748" font-size="9" fill="#475569">typed intent on its journey</text>
+
+    <!-- E9 Process finder -> System of Process (contract out) -->
+    <path d="M390,834 L390,892" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#orc-oah)"/>
+    <text x="398" y="868" font-size="9" fill="#475569">task = process (&#167;1.0)</text>
+    <text x="398" y="881" font-size="9" fill="#475569">intent vs pre-declared schema (B1)</text>
+
+    <!-- NEIGHBOR STUB: Host (top) -->
+    <rect x="290" y="56" width="200" height="48" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="390" y="76" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4b5563">Host</text>
+    <text x="390" y="92" text-anchor="middle" font-size="9" fill="#9ca3af">Claude CLI &#183; neighbor</text>
+
+    <!-- ORCHESTRATION block frame -->
+    <rect x="40" y="168" width="700" height="688" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+    <rect x="54" y="159" width="300" height="18" fill="#fff"/>
+    <text x="62" y="172" fill="#0f766e" font-weight="700" font-size="12">ORCHESTRATION &#183; second-order &#183; fully wired</text>
+
+    <!-- Trigger intake -->
+    <rect x="280" y="198" width="220" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="220" text-anchor="middle" font-size="12.5" font-weight="700">TRIGGER INTAKE</text>
+    <text x="390" y="236" text-anchor="middle" font-size="9" fill="#6b7280">utterance &#183; cadence (cron) &#183; event (&#167;4.1)</text>
+    <text x="390" y="248" text-anchor="middle" font-size="9" fill="#6b7280">daemon fires scheduled triggers (&#167;4.0)</text>
+
+    <!-- REQUEST TRANSLATOR group frame -->
+    <rect x="60" y="300" width="660" height="436" rx="10" fill="#fff" stroke="#334155" stroke-width="1.3"/>
+    <rect x="74" y="291" width="295" height="18" fill="#fff"/>
+    <text x="82" y="304" font-size="11" font-weight="700" fill="#334155">REQUEST TRANSLATOR &#183; 'translates the request' (&#167;1.0)</text>
+
+    <!-- Intent Layer -->
+    <rect x="260" y="340" width="260" height="68" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="390" y="361" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">INTENT LAYER</text>
+    <text x="390" y="376" text-anchor="middle" font-size="9" fill="#3b5bdb">utterance &#8594; typed intent + sub-intents</text>
+    <text x="390" y="388" text-anchor="middle" font-size="9" fill="#3b5bdb">schema pre-declared &#183; post-LLM validated</text>
+    <text x="390" y="400" text-anchor="middle" font-size="9" fill="#3b5bdb">show-by-example &#183; trusted names (B1)</text>
+
+    <!-- Multi-turn context carry -->
+    <rect x="545" y="336" width="165" height="86" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="627" y="358" text-anchor="middle" font-size="11" font-weight="700">MULTI-TURN CONTEXT</text>
+    <text x="627" y="375" text-anchor="middle" font-size="9" fill="#6b7280">recent intents &#183; entities</text>
+    <text x="627" y="388" text-anchor="middle" font-size="9" fill="#6b7280">active charter &#183; deferred</text>
+    <text x="627" y="401" text-anchor="middle" font-size="9" fill="#6b7280">follow-ups &#183; open questions</text>
+    <text x="627" y="414" text-anchor="middle" font-size="9" fill="#6b7280">(&#167;2.F.B.3)</text>
+
+    <!-- Intent classifier -->
+    <rect x="260" y="448" width="260" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="470" text-anchor="middle" font-size="12.5" font-weight="700">INTENT CLASSIFIER</text>
+    <text x="390" y="485" text-anchor="middle" font-size="9" fill="#6b7280">Task &#183; Query &#183; Directive &#183; Feedback &#183; New Idea</text>
+    <text x="390" y="497" text-anchor="middle" font-size="9" fill="#6b7280">each resolved by its 'tell' (&#167;2.F.B.2)</text>
+
+    <!-- Confidence gate -->
+    <rect x="260" y="550" width="260" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="572" text-anchor="middle" font-size="12.5" font-weight="700">CONFIDENCE GATE</text>
+    <text x="390" y="587" text-anchor="middle" font-size="9" fill="#6b7280">high &#8594; proceed &#183; medium &#8594; yes/no confirm</text>
+    <text x="390" y="599" text-anchor="middle" font-size="9" fill="#6b7280">low &#8594; 'read as task?' &#183; very low &#8594; act / answer / remember?</text>
+
+    <!-- Intent -> journey fan-out router -->
+    <rect x="215" y="652" width="350" height="64" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="674" text-anchor="middle" font-size="12" font-weight="700">INTENT &#8594; JOURNEY FAN-OUT</text>
+    <text x="390" y="689" text-anchor="middle" font-size="9" fill="#6b7280">TASK&#8594;&#167;C.1 &#183; QUERY&#8594;&#167;C.2 &#183; DIRECTIVE&#8594;&#167;C.3 &#183; FEEDBACK&#8594;&#167;C.4</text>
+    <text x="390" y="701" text-anchor="middle" font-size="9" fill="#6b7280">NEW IDEA&#8594;&#167;C.5 &#183; UNKNOWN&#8594;ASK BACK (&#167;2.F.B.5)</text>
+
+    <!-- Process finder -->
+    <rect x="260" y="772" width="260" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="794" text-anchor="middle" font-size="12.5" font-weight="700">PROCESS FINDER</text>
+    <text x="390" y="809" text-anchor="middle" font-size="9" fill="#6b7280">'finds the relevant process to run' (&#167;1.0)</text>
+    <text x="390" y="821" text-anchor="middle" font-size="9" fill="#6b7280">matching mechanism not named &#8212; gap 2</text>
+
+    <!-- NEIGHBOR STUB: System of Process (bottom) -->
+    <rect x="290" y="892" width="200" height="50" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="390" y="912" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4b5563">System of Process</text>
+    <text x="390" y="928" text-anchor="middle" font-size="9" fill="#9ca3af">runs it as THE runtime &#183; neighbor</text>
+
+    <!-- Authority + Tenancy footnote inside the wrap -->
+    <text x="390" y="964" text-anchor="middle" font-size="9" fill="#7c3aed">Authority + Tenancy gates every access &#8212; no Orchestration-specific gate behavior detailed in the cited ranges (&#167;1.0)</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>First-layer position (&#167;1.0 LOCKED schema)</h2>
+<p style="font-size:13px;color:#6b7280;margin:2px 0 8px">Human &#8594; UI &#8594; Host &#8594; Daemon{ <b>Orchestration (here)</b> &#8594; System of Process } &#8594; SoR / External World &#183; Authority + Tenancy wraps &#183; Compute base. &#167;1.0 prose: &#8220;inside the always-on Daemon, Orchestration translates the request and finds the relevant process to run&#8221; (<a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a>). Status: WORKING DRAFT 2026-06-11, carried over &#8212; not locked; founder review pending.</p>
+
+<h2>Contracts &#8212; edges crossing the block boundary</h2>
+<table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>Host</b></td><td>in</td>
+      <td>Operator request dispatched into the Daemon ("the request runs on the Host; inside the always-on Daemon, Orchestration translates the request"). Arrives as freeform utterance via Day-1 modalities &mdash; text chat, Slack mention, email forward, scheduled prompt (voice + screenshot future, per &sect;2.F.B.1). &sect;1.0 diagram edge Host&rarr;Daemon is labeled "runs".</td>
+      <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Host</b></td><td>out</td>
+      <td>Confirm-back / ASK BACK to the operator when confidence is below threshold (&sect;2.F.B.4&ndash;B.5): clarification question ("you mean the Paisa partner email, not the Testlify one?"), operator answers, flow resumes. B1 interaction strip also shows a schema preview returned before execution ({ metrics:[], sources:[], format:one-pager }).</td>
+      <td><a href="../master/index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>System of Process</b></td><td>out</td>
+      <td>The selected process &mdash; &sect;1.0 edge label "task = process". Carried content per B1 acceptance: parsed intent_type + structured sub-intents (typed intent), against a pre-declared output schema. System of Process then runs it as THE runtime.</td>
+      <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority + Tenancy</b></td><td>gates</td>
+      <td>"Authority + Tenancy gates every access" &mdash; the dashed wrap in the &sect;1.0 diagram encloses the whole stack including the Daemon's Orchestration box; no Orchestration-specific gate behavior is detailed in the cited ranges.</td>
+      <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Runtime &sect;4 (daemon)</b></td><td>behavior</td>
+      <td>This part's runtime behavior is specified in <a href="runtime.html">Runtime &sect;4</a> &mdash; the always-on Daemon that contains Orchestration + System of Process (no &sect;4 sub-anchor names Orchestration alone; the daemon page is its parent home).</td>
+      <td><a href="../master/index.html#section-4-native-platform">section-4-native-platform</a></td>
+    </tr>
+    <tr>
+      <td><b>Observability &sect;7</b></td><td>observed by</td>
+      <td>Observed by <a href="observability.html">the &sect;7 ring</a> &mdash; the ring that watches the whole machine (per-pillar metrics &middot; audit + replay &middot; operator satisfaction signals).</td>
+      <td><a href="../master/index.html#section-7-observability">section-7-observability</a></td>
+    </tr>
+</table>
+
+<h2>Internal parts</h2>
+<table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>Request translator</b></td>
+      <td>First half of the block's stated job: "Orchestration translates the request" (&sect;1.0 prose; SVG sub-label "translate &middot; find the process"). Turns the operator's ask, as dispatched by the Host, into something the Daemon can act on. Rendered above as the group frame holding the intent machinery.</td>
+      <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Process finder</b></td>
+      <td>Second half of the stated job: "finds the relevant process to run". Output edge to System of Process is labeled "task = process" in the &sect;1.0 diagram &mdash; the found process IS the task handed down.</td>
+      <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Intent Layer (utterance parser)</b></td>
+      <td>Per B1 Ring 2 contract: parses freeform utterance into typed intent + sub-intents; pre-declared output schema shown before the LLM call; post-LLM output validated and rejected if non-conforming; returns parsed intent_type + structured sub-intents within one turn. Also: show-by-example (operator demonstrates once, Native re-runs) and trusted-names shortcut.</td>
+      <td><a href="../master/index.html#pillar-b1">pillar-b1</a></td>
+    </tr>
+    <tr>
+      <td><b>Intent classifier (5 types)</b></td>
+      <td>Per &sect;2.F.B.2: every utterance resolves to one of five intent types &mdash; Task, Query, Directive, Feedback, New Idea &mdash; each distinguished by a 'tell' (e.g. "from now on" = Directive; references prior output = Feedback; "what if" = New Idea).</td>
+      <td><a href="../master/index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Multi-turn context carry</b></td>
+      <td>Per &sect;2.F.B.3, five things persist across turns/sessions to resolve references: recent intent (last 3-5 asks), named entities, active charter (standing directives), deferred follow-ups (re-enter context at the right moment), and open questions Native asked but the operator hasn't answered.</td>
+      <td><a href="../master/index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Confidence gate (confirm-back)</b></td>
+      <td>Per &sect;2.F.B.4, four confidence bands: High &rarr; proceed (confidence shown only on request); Medium (object ambiguous) &rarr; yes/no confirm then proceed; Low (intent unclear) &rarr; "I read this as a task &mdash; is that right?"; Very low &rarr; "act, answer, or remember?". Operator is never surprised by what Native thought they meant.</td>
+      <td><a href="../master/index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Intent &rarr; journey fan-out router</b></td>
+      <td>Per &sect;2.F.B.5 diagram: INTENT READ &rarr; confidence check &rarr; fan-out of the typed intent to its journey (TASK&rarr;&sect;C.1, QUERY&rarr;&sect;C.2, DIRECTIVE&rarr;&sect;C.3, FEEDBACK&rarr;&sect;C.4, NEW IDEA&rarr;&sect;C.5, UNKNOWN&rarr;ASK BACK).</td>
+      <td><a href="../master/index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Trigger intake (utterance &middot; cadence &middot; event)</b></td>
+      <td>Per &sect;4.1 Trigger primitive: what fires a Workflow is an operator utterance, cadence (cron), or event; &sect;4.0 daemon fires triggers on schedule and dispatches matching Workflows. Scheduled prompts are also a Day-1 input modality (&sect;2.F.B.1), so clocked input enters the same translate/find-the-process path.</td>
+      <td><a href="../master/index.html#section-4-1-primitives">section-4-1-primitives</a></td>
+    </tr>
+</table>
+
+<h2>How a request moves through the block</h2>
+<p style="font-size:13.5px;color:#1f2937">An operator request enters from the Host (freeform utterance arriving via the &sect;2.F.B.1 modalities, or a scheduled/cadence/event Trigger fired by the daemon). The Intent Layer parses the utterance into typed intent + sub-intents against a pre-declared output schema (post-LLM validated, non-conforming output rejected); the intent classifier resolves it to one of five types (Task/Query/Directive/Feedback/New Idea) using its 'tell', drawing on the multi-turn context carry (recent intents, named entities, active charter, deferred follow-ups, open questions) to resolve references like "do that again for the other client". The result hits the confidence gate: high confidence proceeds; medium/low/very-low loops a confirm-back question out through the Host to the operator before proceeding. The fan-out router then maps the typed intent to its journey, and the process finder selects the relevant process &mdash; handed down to System of Process on the "task = process" edge. Authority + Tenancy gates every access along the way.</p>
+
+<h2>Intent-parse LLM-call ownership &#8212; the cross-block tension (preserved, unresolved)</h2>
+<div class="note">
+<p style="margin:0 0 6px">Three statements in the frozen master pull in different directions; none resolves which block issues B1's intent-parse LLM call. Gap 1 below is the founder question; these are the source statements, quoted for self-sufficiency:</p>
+<ul style="margin:0">
+<li>Pillar &#215; Block matrix, B1&#215;Host cell: &#8220;Intent parse is model work on the Host &#8212; schema shown before the LLM call, post-LLM output validated and rejected if non-conforming.&#8221; (<a href="../master/index.html#so-matrix">so-matrix</a>)</li>
+<li>Matrix open question: &#8220;Sec.4.1 puts LLM calls inside Workflow Steps (Step = 'LLM call OR deterministic action... where work happens' &#8212; SoP runtime) and ADR-005 selects the host-LLM per workflow, yet B1's parse contract ('pre-declared output schema shown before LLM call') sits in Orchestration's translate step &#8212; which block issues B1's intent-parse LLM call?&#8221; &#8212; that question's primary home is the matrix page; cross-referenced here, not duplicated as a gap. (<a href="../master/index.html#so-matrix">so-matrix</a>)</li>
+<li>System of Process draft, Host contract row: &#8220;The Step primitive (sec.4.1) is the doc's only LLM-call site, which implies System of Process is the Host caller; an explicit only-SoP-calls-Host rule is not yet stated anywhere in the doc.&#8221; (<a href="../master/index.html#so-system-of-process">so-system-of-process</a>)</li>
+</ul>
+</div>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<p class="figcap">Copied verbatim from the master Orchestration draft (numbering preserved &#8212; the diagram above references gaps 2 and 6 by number).</p>
+<ol class="gaps">
+    <li>Doc never explicitly assigns the B1 Intent Layer + &sect;2.F.B intent machinery to the Orchestration block &mdash; is &sect;1.0's "translates the request" exactly this machinery, or does part of intent parsing run on the Host? (B1 Ring 3 marks the Phase 2 intent-layer-design.md as pending, T-G3-01.)</li>
+    <li>"Finds the relevant process" has no named mechanism in the cited ranges &mdash; how is a typed intent matched to a process/Workflow (registry lookup? Trigger-spec match?), and how do the &sect;C.1&ndash;C.5 journeys of the B.5 fan-out map to processes?</li>
+    <li>Where does the B.3 multi-turn context persist &mdash; System of Record, the daemon's ~/.sutra-native/ user-kit, or a state envelope? The cited ranges don't locate it.</li>
+    <li>B1 Ring 3 says intake artifacts write to B5.a (active session) &mdash; does Orchestration write to System of Record directly, or does that write route through System of Process? (Working assumption from founder session: only SoP writes back to SoR &mdash; &sect;1.0 shows SoP writing output to SoR but states no exclusivity. Confirm and write down, or drop.)</li>
+    <li>Do cadence/cron + event Triggers route through Orchestration's translate/find step, or does the daemon dispatch matching Workflows straight to System of Process? &sect;4.0 only says the daemon "handles workflow dispatches + cadence ticks".</li>
+    <li>The &sect;1.0 diagram has no upward return edge from Orchestration to Host &mdash; the transport path for the B.4 confirm-back question is unspecified.</li>
+</ol>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No child pages in manifest v1 &#8212; this block has no zoom-deeper page yet.</li>
+<li>Sibling block pages (same band, contract neighbors): Host (upstream neighbor) at <code>platform/host.html</code> &#183; System of Process (downstream, receives "task = process") at <code>platform/system-of-process.html</code> &#183; Authority + Tenancy (the wrap) at <code>platform/authority-tenancy.html</code>. Referenced by manifest path; authored in the same migration wave.</li>
+<li>RUNTIME band: Native canon is linked, never copied (D54) &#8212; <code>sutra/os/engines/NATIVE-ENGINE.md</code> + <code>sutra/os/decisions/ADR-004*..ADR-017*.md</code>. Trigger/Step primitive canon homes per &#167;4.1: <code>primitives/trigger.md</code> &#183; <code>primitives/step.md</code>.</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned">
+<p><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. Where this record persists is unresolved (gaps 3&#8211;4 above: B5.a direct vs routed through System of Process), and the process-finder mechanism is unnamed (gap 2). Field names are derived from this page's own Internal-parts table (B1 Ring 2 contract &#183; &#167;2.F.B.2 intent types &#183; &#167;2.F.B.4 confidence bands &#183; &#167;2.F.B.5 fan-out). Unruled names are marked.</p>
+<p>Persisted artifact first &#8212; the intake intent record produced when an operator types &#8220;run KYC on today's borrower batch&#8221;:</p>
+<pre>{"intent_type":"Task","sub_intents":["select-borrower-batch","run-kyc-checks"],"confidence":"high",
+ "journey":"C.1","<decision_pending>process_match</decision_pending>":"W-kyc-verify",
+ "<decision_pending>store</decision_pending>":"B5.a active session (write-routing unresolved, gap 4)"}</pre>
+<p>Operator surface: the B1 interaction strip renders the pre-declared schema preview before execution, and the confirm-back question when confidence is medium or lower (&#167;2.F.B.4&#8211;B.5).</p>
+</div>
+
+<h2>Sources</h2>
+<ul>
+<li>Master &#8212; &#167;1.0.1 Orchestration draft (primary slice): <a href="../master/index.html#so-orchestration">master/index.html#so-orchestration</a></li>
+<li>Master &#8212; &#167;1.0 locked first-layer schema: <a href="../master/index.html#section-1-0-runtime">master/index.html#section-1-0-runtime</a></li>
+<li>Master &#8212; &#167;2.F.B input &amp; intent: <a href="../master/index.html#section-2-f-2-input-intent">master/index.html#section-2-f-2-input-intent</a></li>
+<li>Master &#8212; pillar B1: <a href="../master/index.html#pillar-b1">master/index.html#pillar-b1</a></li>
+<li>Master &#8212; &#167;4.1 primitives (Trigger &#183; Step): <a href="../master/index.html#section-4-1-primitives">master/index.html#section-4-1-primitives</a></li>
+<li>Standalone draft artifact (cross-checked, content-identical to master &#167;1.0.1 slice): <a href="../_block-orchestration.html">_block-orchestration.html</a></li>
+<li>Sutra canon (linked per D54, never copied): <code>sutra/os/engines/NATIVE-ENGINE.md</code> &#183; <code>sutra/os/decisions/ADR-005*.md</code> (host-LLM selection, referenced by the matrix open question)</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting &#183; review: audit workflow wf_5c81f205.</p>
+
+</div></div></body></html>

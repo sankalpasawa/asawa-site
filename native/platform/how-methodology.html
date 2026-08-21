@@ -1,0 +1,505 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HOW methodology &#8212; &#167;3 (atom &#183; axes &#183; dynamic selection &#183; acceptance)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-sop{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a class="sb-cur" href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">hub</a> &#8250; <a href="index.html">platform</a> &#8250; platform-how &#160;&#183;&#160; spine: <a href="system-of-process.html">&#8592; System of Process</a> &#160;&#183;&#160; <a href="system-of-record.html">System of Record &#8594;</a></div>
+<h1>Method per task &#8212; &#167;3 HOW methodology, inside System of Process <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+<div style="background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0"><b>ARCHIVED (v2)</b> &#8212; this page predates the ruled model (WRITTEN Work-Atom&#8594;Workflow&#8594;Assembly / GROWN Engine&#8594;System; 4th particle = HOW). Kept for history; the ruled account lives at <a href="the-model.html">The Model</a>.</div>
+<div class="planned"><strong>SUPERSEDED (2026-08-07) — this page is an archive.</strong> Its content now lives in <a href="the-model.html">The Model</a> and its PRD cluster (<a href="model/workflow-engine.html">Workflow + Engine</a> &#183; <a href="model/work-atom.html">Work-Atom</a> &#183; <a href="model/particles.html">Particles</a> &#183; <a href="model/assembly-system.html">Assembly + System</a> &#183; <a href="model/internal-system.html">Internal System</a>). Remaining pieces (coffee-era diagrams, Method &#167;3 detail, stringency cascade) migrate at the S5 pass per the decision sheet &#167;9b — read there, not here.</div>
+<div class="note"><strong>Where Method sits in the flow.</strong> Method is the <em>lens</em> &#8212; the why-this-shape. In the <a href="flow.html">end-to-end Flow</a> it is consulted on the <strong>CONSTRUCT</strong> branch: when no high-level guidance (lifecycle) is prescribed for the work, the lens + <a href="flow.html#factors">factors</a> shape the workflow. The unit that then runs each node is the <a href="work-atom.html">Work-Atom</a>. The trio: <strong>Method</strong> (why-this-shape) &#183; <a href="work-atom.html">Work-Atom</a> (what-runs-at-each-node) &#183; <a href="flow.html">Flow</a> (the whole journey).</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="352" y="310" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Method §3</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-how</code></td><td>PLATFORM / <a href="system-of-process.html">platform-system-of-process</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Owns the Lens primitive &#183; axes (Realization + Reflection as the recommended pair; many others available) &#183; the value-is-an-axis recursion &#183; examples &#183; the decision procedure &#183; the operator-facing surface of HOW. Does NOT own: execution (&#167;4 runtime), operator surface (&#167;2), transport (&#167;5), the DAG / build / Native-primitive implementation (Claude-suggested, archived &#8212; not committed design).</td><td colspan="3">&#167;3.1-&#167;3.9 carried over; FQ1 PROPOSED status flagged as founder gap; zero-runtime-enforcement audit finding preserved</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 400" role="img" aria-label="HOW methodology internal parts and neighbor edges">
+<defs><marker id="hah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- internal parts (solid) -->
+<rect x="40" y="20" width="160" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="120" y="40" text-anchor="middle" font-size="10.5" font-weight="700">ATOM &#167;3.1</text>
+<text x="120" y="54" text-anchor="middle" font-size="8.5" fill="#6b7280">value = axis, level-relative</text>
+<rect x="280" y="20" width="220" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="390" y="40" text-anchor="middle" font-size="10.5" font-weight="700">AXES &#167;3.2</text>
+<text x="390" y="54" text-anchor="middle" font-size="8.5" fill="#6b7280">Realization + Reflection recommended</text>
+<rect x="560" y="20" width="160" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="640" y="40" text-anchor="middle" font-size="10.5" font-weight="700">DYNAMIC &#167;3.3</text>
+<text x="640" y="54" text-anchor="middle" font-size="8.5" fill="#6b7280">nothing capped &#183; decision test</text>
+<rect x="560" y="110" width="160" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="640" y="130" text-anchor="middle" font-size="10.5" font-weight="700">EXAMPLES &#167;3.4</text>
+<text x="640" y="144" text-anchor="middle" font-size="8.5" fill="#6b7280">6 worked examples incl. 6&#215;7 cross</text>
+<rect x="280" y="110" width="220" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="390" y="130" text-anchor="middle" font-size="10.5" font-weight="700">DECISION PROCEDURE &#167;3.5</text>
+<text x="390" y="144" text-anchor="middle" font-size="8.5" fill="#6b7280">anchor &#183; on-path &#183; level &#183; real &#183; weigh &#183; record</text>
+<rect x="280" y="200" width="220" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="390" y="220" text-anchor="middle" font-size="10.5" font-weight="700">6 HOW DIMENSIONS &#167;3.6</text>
+<text x="390" y="234" text-anchor="middle" font-size="8.5" fill="#6b7280">operator-facing surface</text>
+<rect x="280" y="290" width="220" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="390" y="310" text-anchor="middle" font-size="10.5" font-weight="700">LENS SELECTION FLOW &#167;3.7</text>
+<text x="390" y="324" text-anchor="middle" font-size="8.5" fill="#6b7280">emits lens manifest &#183; &#167;3.8 everywhere &#183; &#167;3.9 acceptance</text>
+<!-- neighbors (dashed) -->
+<rect x="40" y="290" width="180" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="130" y="310" text-anchor="middle" font-size="10.5" font-weight="700">&#167;2 CoS PRODUCT</text>
+<text x="130" y="324" text-anchor="middle" font-size="8.5" fill="#6b7280">B1 intent &#183; task tier T0-T3 &#183; B5.d</text>
+<rect x="560" y="290" width="140" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="630" y="310" text-anchor="middle" font-size="10.5" font-weight="700">&#167;4 RUNTIME</text>
+<text x="630" y="324" text-anchor="middle" font-size="8.5" fill="#6b7280">executes lens manifest</text>
+<rect x="730" y="290" width="130" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="795" y="310" text-anchor="middle" font-size="10.5" font-weight="700">&#167;7 OBSERVABILITY</text>
+<text x="795" y="324" text-anchor="middle" font-size="8.5" fill="#6b7280">lens accuracy KPI</text>
+<!-- edges -->
+<path d="M200,43 L280,43" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="240" y="38" text-anchor="middle" font-size="8.5" fill="#475569">the move, repeated</text>
+<path d="M500,43 L560,43" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="530" y="38" text-anchor="middle" font-size="8.5" fill="#475569">uncapped</text>
+<path d="M580,66 L580,110" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="586" y="92" font-size="8.5" fill="#475569">shown in</text>
+<path d="M390,66 L390,110" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="396" y="92" font-size="8.5" fill="#475569">lenses feed decisions</text>
+<path d="M390,156 L390,200" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="396" y="182" font-size="8.5" fill="#475569">surfaces as</text>
+<path d="M390,246 L390,290" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="396" y="272" font-size="8.5" fill="#475569">values chosen in</text>
+<path d="M220,313 L280,313" stroke="#6b7280" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#hah)"/>
+<text x="250" y="306" text-anchor="middle" font-size="8.5" fill="#475569">intent + tier</text>
+<path d="M500,313 L560,313" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#hah)"/>
+<text x="530" y="306" text-anchor="middle" font-size="8.5" fill="#475569">lens manifest &#8594; &#167;4.3</text>
+<path d="M700,313 L730,313" stroke="#6b7280" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#hah)"/>
+<text x="715" y="306" text-anchor="middle" font-size="8.5" fill="#475569">measured</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>&#167;3 in one view &#8212; purpose &#183; owns &#183; depends &#183; excludes</h2>
+<table>
+<tr><td><strong>Purpose</strong></td><td>Native's IP: not "do the work" &#8212; "do the work via the right way of looking at this task." The methodology that defines what a Lens is, what axes Native recommends, and how an operator decides which Lens to apply.</td></tr>
+<tr><td><strong>Owns</strong></td><td>The Lens primitive &#183; axes (Realization + Reflection as the recommended pair; many others available) &#183; the value-is-an-axis recursion &#183; examples &#183; the decision procedure &#183; the operator-facing surface of HOW.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>&#167;2 task tier (T0-T3) &#8212; <a href="../products/cos/index.html">product-cos</a>; &#167;4 Native runtime (where Lens choices manifest) &#8212; <a href="runtime.html">platform-runtime</a>; &#167;7 Observability (where Lens accuracy is measured) &#8212; <a href="observability.html">platform-observability</a>.</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Execution (&#167;4 runtime); operator surface (&#167;2); transport (&#167;5 &#8212; <a href="connector.html">connector</a>); the DAG / build / Native-primitive implementation (Claude-suggested, archived &#8212; not committed design).</td></tr>
+</table>
+<div class="note"><strong>Placement (founder v5).</strong> Method per task &#8212; this page lives INSIDE the System of Process block (parent: <a href="system-of-process.html">platform-system-of-process</a>): &#167;3 is how the SoP chooses the way of working for each task. The doctrine lives here; execution stays in the runtime (&#167;4.6 HOW bridge).</div>
+<div class="note"><strong>One sentence (theory).</strong> Every piece of design knowledge is a "way of looking" (a <strong>Lens</strong>). There are many possible lenses (axes), not capped to any number; the two <em>recommended</em> ones for building anything are <strong>Realization</strong> (abstract idea &#8594; running thing) and <strong>Reflection</strong> (instance &#8594; axis &#8594; meta-axis &#8594; &#8230; &#8594; grammar). You don't have to use all axes &#8212; you pick the lenses a destination actually needs. This section is THEORY work; productization is the next step.</div>
+
+<h2>&#167;3.1 The atom &#8212; a value is just an axis</h2>
+<p>The smallest move is classification: a <strong>value</strong> is an item; an <strong>axis</strong> is a set of values. The role is RELATIVE to level &#8212; same thing is a value seen from above, an axis seen from below:</p>
+<pre>
+  a thing is a VALUE   seen from the axis above it
+  the same thing is an AXIS    seen from the values below it
+</pre>
+<p>"Value" and "axis" are the same kind of object viewed from one level up or down. This is the only primitive; everything else is this move repeated. (Formal grounding: type-universe relativity; Tarski's object-language / meta-language stratification.)</p>
+
+<h2>&#167;3.2 Axes &#8212; many possible, two recommended</h2>
+<p>An axis is a particular Lens &#8212; one way of looking at the thing being built. There can be MANY axes (viewpoint &#183; concern &#183; time &#183; ownership &#183; scale &#183; certainty &#183; &#8230;). You are not capped to any number. You pick the lenses that change a decision for this idea and ignore the rest. The two recommended for every idea:</p>
+<table>
+<tr><th>Axis</th><th>Name</th><th>Means</th><th>Example values</th></tr>
+<tr><td>Axis 1</td><td><strong>Realization</strong></td><td>abstract idea &#8594; concrete running thing</td><td>worldview &#183; vision &#183; strategy &#183; capability &#183; architecture &#183; feature &#183; contract &#183; implementation</td></tr>
+<tr><td>Axis 2</td><td><strong>Reflection</strong></td><td>instance &#8594; axis &#8594; meta-axis &#8594; method &#8594; framework &#8594; paradigm &#8594; grammar (the recursion, uncapped)</td><td>M0 instance &#183; M1 axis &#183; M2 meta-axis &#183; M3 method &#183; M4 framework &#183; M5 paradigm &#183; M6 grammar</td></tr>
+</table>
+<p>Other available lenses (add any per idea, only if it changes a decision): <em>viewpoint</em> (user / system / governance) &#183; <em>concern</em> (security / cost / accuracy) &#183; <em>time</em> (past / now / next / later &#183; v1 / v2 / v3) &#183; <em>ownership</em> (human / AI / human-in-loop) &#183; <em>scale</em> (fleet / cohort / instance).</p>
+<p><strong>Coupling (how the two recommended axes interact)</strong>: as you ascend Reflection to mint a structure (an axis, a schema), the forward Realization journey then <em>consumes</em> that structure instead of re-deriving it. Climb to write a schema once; descend and every instance conforms. The abstraction is carried forward as an input, not copied.</p>
+
+<h2>&#167;3.3 Dynamic &#8212; nothing is capped</h2>
+<p>The number of Realization levels and Reflection heights is <strong>not fixed</strong>. It is decided per idea.</p>
+<ul>
+<li><strong>Dimensions are generated, not listed.</strong> Each dimension = <code>(interrogative &#215; mechanism)</code> &#8212; a finite generator mints an open set on demand.</li>
+<li><strong>Realization stops by atomicity</strong> (downward): you stop decomposing at the smallest buildable unit.</li>
+<li><strong>Reflection stops by reflexivity</strong> (upward): you stop climbing at the level that describes itself.</li>
+<li><strong>Both stop by the decision test</strong> (the practical cap): add a level or a dimension only while it still changes <em>what you build</em> or <em>who reads it</em>.</li>
+</ul>
+<div class="note">Possibility is not obligation. The space is astronomic; you instantiate only the corner a destination needs.</div>
+
+<h2>&#167;3.4 Examples (concrete + visual)</h2>
+<p><strong>Example 1 &#8212; Realization axis (one idea, abstract &#8594; concrete)</strong>:</p>
+<pre>
+   worldview     operator sovereignty (the operator owns their own work)
+   vision        every operator has a Chief of Staff that classifies what they say
+   strategy      agentic OS + governance above AI + classify before acting
+   capability    classify the operator's intent from raw words
+   architecture  B1 Intent block inside the CoS layer of Native
+   feature       B1 intake (capture -> classify -> conf-gate -> log -> route)
+   contract      intent { type, confidence, routed_to, clarify }
+   implementation classifier prompt + intake_log.jsonl + emit
+</pre>
+<p><strong>Example 2 &#8212; Time axis (same thing across time)</strong> &#8212; time is an available lens (not primary), shown as a valid demonstration of "another axis":</p>
+<pre>
+   past      (no formal intake; operator wrote slash-commands instead)
+   v1 / now  single LLM call. Conf-gate at 0.6. Clarify-loop if below.
+   v2 / next eval-tuned threshold (raised to 0.75); golden-set CI on every change.
+   v3 / later voice + screenshot intent (multi-modal classifier).
+</pre>
+<p><strong>Example 3 &#8212; Many axes (the nD nature)</strong> &#8212; same B1 intake through other lenses, any of which you can add when a decision needs them:</p>
+<pre>
+   viewpoint lens     user sees:      "Got it, task. Confirm? Slack at 5?"
+                      system sees:    JSON event { type:task, conf:0.81 }
+                      governance sees: low-risk - reversible - auto-approve
+   concern lens       security - cost - accuracy (each with its own values)
+   ownership lens     classify=AI - clarify=human-in-loop - provenance=human-readable
+</pre>
+<p><strong>Example 4 &#8212; Realization &#215; Reflection clean 6&#215;7 cross (the recommended pair).</strong> What "Reflection" means here: the meta-ascent up the classification recursion &#8212; value &#8594; axis &#8594; meta-axis &#8594; method &#8594; framework &#8594; paradigm &#8594; reflexive grammar. NOT visibility; NOT the narrow CS sense; NOT the same as "going abstract" along the subject (that's Realization's job).</p>
+<table>
+<tr><th>Realization &#8595; / Reflection &#8594;</th><th>M0 instance</th><th>M1 axis</th><th>M2 meta-axis</th><th>M3 method</th><th>M4 framework</th><th>M5 paradigm</th><th>M6 grammar</th></tr>
+<tr><td><strong>Worldview</strong></td><td>"operator sovereignty"</td><td>founding principle</td><td>value-system kind</td><td>first-principles thinking</td><td>Founding Doctrine</td><td>ethics</td><td>distinction</td></tr>
+<tr><td><strong>Vision</strong></td><td>"OHS/wk North Star"</td><td>vision metric</td><td>outcome type</td><td>OKR / North-Star</td><td>Strategic Vision</td><td>leadership theory</td><td>inquiry</td></tr>
+<tr><td><strong>Strategy</strong></td><td>"governance above AI"</td><td>strategy facet</td><td>strategy kind</td><td>Wardley map</td><td>strategic craft</td><td>strategic management</td><td>rationality</td></tr>
+<tr><td><strong>Architecture</strong></td><td>"5 layers + 6 surfaces"</td><td>architecture facet</td><td>architecture style</td><td>C4 model</td><td>4+1 views / Zachman</td><td>enterprise architecture</td><td>systems thinking</td></tr>
+<tr><td><strong>Feature</strong></td><td>"B1 intake block"</td><td>feature facet</td><td>feature kind</td><td>story mapping / JTBD</td><td>Agile</td><td>product management</td><td>design thinking</td></tr>
+<tr><td><strong>Implementation</strong></td><td>"intake_log.jsonl + classifier prompt"</td><td>implementation facet</td><td>implementation pattern</td><td>TDD / BDD</td><td>XP / DDD</td><td>software engineering</td><td>computation</td></tr>
+</table>
+<p>Read any row left&#8594;right as: <em>a concrete thing &#8594; the axis it belongs to &#8594; the axis-of-axes &#8594; the method that produces them &#8594; the framework hosting the method &#8594; the paradigm &#8594; the reflexive grammar</em>. The recursion is the same shape every time.</p>
+<p><strong>Example 5 &#8212; One-to-many on both sides.</strong> The 6&#215;7 above is rendered "1 cell = 1 value" for readability; in real design every cell typically holds MULTIPLE values. Two examples:</p>
+<p><em>5a &#8212; Expanding ONE column (M3 method) &#8212; many methods per Realization tier:</em></p>
+<table>
+<tr><th>Realization tier</th><th>M3 method (multiple per cell)</th></tr>
+<tr><td><strong>Worldview</strong></td><td>first-principles thinking &#183; deontological reasoning &#183; virtue ethics &#183; pragmatism</td></tr>
+<tr><td><strong>Vision</strong></td><td>OKRs &#183; BHAG &#183; North-Star metric &#183; Vision Pyramid &#183; Amazon PR-FAQ</td></tr>
+<tr><td><strong>Strategy</strong></td><td>Wardley map &#183; Porter's Five Forces &#183; Blue Ocean &#183; Lean Startup &#183; Theory of Constraints</td></tr>
+<tr><td><strong>Architecture</strong></td><td>C4 model &#183; Zachman framework &#183; 4+1 views &#183; ADR pattern &#183; arc42</td></tr>
+<tr><td><strong>Feature</strong></td><td>story mapping &#183; Jobs-to-be-Done &#183; Kano model &#183; user stories &#183; MoSCoW</td></tr>
+<tr><td><strong>Implementation</strong></td><td>TDD &#183; BDD &#183; XP &#183; DDD &#183; Hexagonal architecture &#183; CQRS</td></tr>
+</table>
+<p><em>5b &#8212; Expanding ONE row (Architecture) &#8212; many values per Reflection level (fan-out tree):</em></p>
+<pre>
+  Architecture  (one Realization row, expanded across all 7 Reflection levels)
+   +-- M0 instance      +- 5-layer architecture
+   |                    +- 6 surfaces (ROUTE/RUN/GATE/EMERGE/AUDIT/TENANT)
+   |                    +- 10 primitives - 26 EngineEvents - 8 hardstops
+   +-- M1 axis          +- structure axis - behavior axis - deployment axis
+   +-- M2 meta-axis     +- monolithic &lt;-&gt; distributed
+   |                    +- synchronous &lt;-&gt; asynchronous
+   |                    +- stateful &lt;-&gt; stateless
+   +-- M3 method        +- C4 - Zachman - 4+1 - ADR pattern
+   +-- M4 framework     +- TOGAF - arc42 - 4+1 view model - Zachman
+   +-- M5 paradigm      +- enterprise / service-oriented / microservices / event-driven
+   +-- M6 grammar       +- systems thinking - cybernetics
+</pre>
+<p>The cross is <strong>many-to-many</strong>, not 1-to-1: each cell is a SET of candidates. A build decision is the act of picking one (or a few) from each relevant cell.</p>
+<p><strong>Example 6 &#8212; When more than 2 axes need to meet &#8212; how to capture it visually.</strong> You cannot draw n orthogonal axes flat. Established techniques:</p>
+<table>
+<tr><th>Technique</th><th>How it shows &gt;2 axes</th><th>Source</th></tr>
+<tr><td><strong>Small multiples</strong></td><td>a grid of 2D tables, one per value of the 3rd axis</td><td>Tufte</td></tr>
+<tr><td><strong>Parallel coordinates</strong></td><td>n vertical axes side-by-side; each item is a polyline crossing all</td><td>Inselberg</td></tr>
+<tr><td><strong>Heatmap</strong></td><td>2 axes as grid; 3rd encoded as cell color/intensity</td><td>standard</td></tr>
+<tr><td><strong>Faceted filter / browse</strong></td><td>never show all n; pick values on some axes, see the remaining slice &#8212; how nD is actually used in practice</td><td>Ranganathan</td></tr>
+<tr><td><strong>Hierarchical nested headers</strong></td><td>multi-level row/column headers stack two axes into one direction</td><td>standard table design</td></tr>
+<tr><td><strong>3D cube + slices</strong></td><td>cube for 3 axes; pull 2D slices and lay them out as small multiples</td><td>standard</td></tr>
+</table>
+<p><strong>Punchline</strong>: you don't visualize nD directly. You project. Every diagram is a 2D projection of an n-dimensional address space. Pick the projection (2 or 3 axes) that answers the question at hand.</p>
+
+<h2>&#167;3.5 Making decisions with Lenses</h2>
+<p>A decision is choosing which lens to apply; a <em>good</em> decision is one that changes the path to your destination. The framework's biggest gift is telling you which decisions you do <strong>not</strong> have to make yet.</p>
+<pre>
+ DECISION PROCEDURE
+ 1. ANCHOR    name the destination. No destination -> no decision.
+ 2. ON-PATH?  if the decision isn't in the destination's required
+              sub-graph -> DEFER. (Most "decisions" die here.)
+ 3. LEVEL     find the decision's level/dimension -> pick the matching
+              LENS. Decide architecture with the architecture lens,
+              not the implementation lens.
+ 4. REAL?     do the options lead to DIFFERENT downstream sub-graphs?
+              If not -> not a real decision. Pick either, move on.
+ 5. WEIGH     reversible -> decide fast, revise later. Irreversible ->
+              apply MULTIPLE lenses (viewpoint/concern/time); where the
+              lenses DISAGREE is the actual tradeoff to resolve.
+ 6. RECORD    node + provenance: destination, lenses used, choice, why.
+</pre>
+<p><em>Worked decision &#8212; "B1 classifier: single LLM call vs fine-tuned model?":</em></p>
+<table>
+<tr><th>Step</th><th>Applied</th></tr>
+<tr><td>1 Anchor</td><td>destination = ship B1 intake (v1)</td></tr>
+<tr><td>2 On-path?</td><td>yes &#8212; the classifier is in B1's closure</td></tr>
+<tr><td>3 Level / lens</td><td>component decision-level (master labels this "L3-component" &#8212; a change-cascade decision-level per <code>holding/HIERARCHY.md</code>, NOT a zoom band) + AI lens &#8212; <em>not</em> a strategy decision</td></tr>
+<tr><td>4 Real?</td><td>yes &#8212; fine-tune pulls in a whole data+training sub-graph; single-call doesn't. Different paths.</td></tr>
+<tr><td>5 Weigh</td><td>reversible-ish (the <code>intent{}</code> contract is unchanged either way) &#8594; lean decide-fast. Lenses: cost (fine-tune expensive), time (single-call ships now), accuracy (eval lens: spike hit 17/20 &#8805; threshold). Lenses <strong>agree</strong> &#8594; single-call for v1.</td></tr>
+<tr><td>6 Record</td><td>provenance: chose single-call; lenses [cost, time, accuracy, reversibility]; revisit if eval pass-rate drops below 90%.</td></tr>
+</table>
+<div class="note"><strong>Eliminates:</strong> off-path agonizing (step 2), false decisions (step 4), wrong-level thrash (step 3). <strong>Adds:</strong> effort calibrated to reversibility (step 5), multi-lens only for the genuinely hard ones (step 5), replayable rationale (step 6).</div>
+
+<h2>&#167;3.6 The 6 HOW dimensions (operator-facing surface)</h2>
+<p>The 6 dimensions below are the operator-facing surface of &#167;3.2's axes &#8212; they are the specific lenses an operator picks when working with Native today. Each row reads "what the operator is choosing" and "the values available."</p>
+<table>
+<tr><th>Dimension</th><th>The question the operator answers</th><th>Example choices</th></tr>
+<tr><td><strong>Approach</strong></td><td>Top-down, bottom-up, or by analogy?</td><td>Top-down: goal &#8594; factors &#8594; tasks &#183; Bottom-up: data &#8594; patterns &#8594; conclusion &#183; Analogy: this looks like prior X</td></tr>
+<tr><td><strong>Mindset</strong></td><td>Optimize &#183; explore &#183; repair &#183; audit?</td><td>Optimize: maximize known metric &#183; Explore: surface options &#183; Repair: fix broken state &#183; Audit: verify-only</td></tr>
+<tr><td><strong>Structure</strong></td><td>Tree of sub-tasks &#183; sequential pipeline &#183; parallel scan &#183; iteration loop?</td><td>Tree: T3 Charter decomposition &#183; Pipeline: T1 multi-action &#183; Scan: T2 iterative &#183; Loop: refinement</td></tr>
+<tr><td><strong>Detailing</strong></td><td>Coarse first pass + sharpen &#183; or fully detailed from start?</td><td>Coarse-first: T0/T1 fast iterations &#183; Detailed-first: T3 charter with locked requirements</td></tr>
+<tr><td><strong>Decomposition</strong></td><td>Break into 3 / 7 / by-stakeholder / by-deliverable / by-risk?</td><td>3-factor: forced parsimony &#183; 7-factor: completeness &#183; by-stakeholder: comms-heavy &#183; by-risk: high-stakes</td></tr>
+<tr><td><strong>Cascading</strong></td><td>When a sub-task gets stuck, recurse on the sub-task?</td><td>Sub-T3 spawns child T3 with its own Lens choices; depth bounded by complexity budget</td></tr>
+</table>
+
+<h2>&#167;3.7 Lens selection flow</h2>
+<pre>
+   operator intent (B1) + task tier (T0-T3)
+        |
+        v
+   LENS SELECTION
+     1. Read Charter scope (&#167;4 primitive)
+     2. Read past patterns from B5.d
+     3. Choose lens values: approach - mindset - structure -
+        detailing - decomposition
+     4. Estimate complexity -> cascade depth
+     5. Declare lens choice to operator (B3a if explicit; silent if known)
+        |
+        v
+   lens manifest emitted into state envelope (&#167;4.3);
+   &#167;4 Native runtime executes
+        |
+        v
+   if sub-task gets stuck -> recurse lens selection (cascade) with depth--
+</pre>
+<p>Maps to the &#167;3.5 decision procedure above &#8212; Anchor &#8594; Level &#8594; Real? &#8594; Weigh &#8594; Record.</p>
+
+<h2>&#167;3.8 Lenses are everywhere &#8212; cross-section presence</h2>
+<table>
+<tr><th>Where Lenses show up</th><th>What they mean there</th></tr>
+<tr><td>&#167;2.B B1 (Ask my way) &#8212; <a href="../products/cos/index.html">product-cos</a></td><td>Native parses operator's lens preferences from utterance (e.g., "quickly" = coarse-first detailing)</td></tr>
+<tr><td>&#167;2.B B3a (THINK) &#8212; <a href="../master/index.html#b3a-think">master</a></td><td>Brainstorm partnership uses Explore mindset; declares lens choice before deepening</td></tr>
+<tr><td>&#167;2.B B3b (DO)</td><td>Auto-execute uses Optimize mindset by default; switches to Repair when output fails verification</td></tr>
+<tr><td>&#167;4 Native runtime &#8212; <a href="runtime.html">runtime</a></td><td>Lens manifest in state envelope binds method routing (&#167;9 D.11 &#8212; <a href="../governance/index.html">governance</a>), agent scope, token budget</td></tr>
+<tr><td>&#167;4.5 Test-before-conclude &#8212; <a href="../master/index.html#section-4-5-test-before-conclude">master</a></td><td>Verification step is itself a lens choice (audit mindset &#183; by-deliverable decomposition)</td></tr>
+<tr><td>&#167;6 Distribution / onboarding &#8212; <a href="../distribution.html">distribution</a></td><td>Operator's first-week lens preferences are surfaced + ratified during Charter setup</td></tr>
+<tr><td>&#167;7 Observability &#8212; <a href="observability.html">observability</a></td><td>Lens accuracy KPI &#8212; operator drop rate per lens choice; drift signals on method-route accuracy</td></tr>
+</table>
+
+<h2>&#167;3.9 Acceptance criteria (theory v1)</h2>
+<div class="note"><strong>Forward-looking note</strong>: this section is THEORY work; productization is the next step. v1 ships the doctrine + the Lens primitive + the recommended axes; v2+ will lock the surface and refine based on dogfood signal.</div>
+<ul>
+  <li>Every Native turn carries an explicit lens manifest in state envelope (operator can request "show me your lenses").</li>
+  <li>Lens choices learned from B5.d learned patterns improve future selections (drift signal triggers re-learning).</li>
+  <li>Cascade depth bounded by complexity budget (Charter-set); depth-exhaustion escalates to operator (Authority gate).</li>
+  <li>Operator can override any lens choice; override learned + applied to future similar tasks.</li>
+</ul>
+
+<h2>&#167;3.A Origins &#8212; founder prompts that shaped &#167;3</h2>
+<details>
+<summary><strong>25 originating prompts</strong> (click to expand) &#8212; per founder direction 2026-05-31, every PRD artifact carries the originating prompts so the reasoning trail is replayable. Speech-to-text slips bracketed.</summary>
+<ol style="font-size:13px;">
+<li>"I'm looking for a high-level design from now and then, later on, for each of the sections, we can create low-level designs from a product point of view as well&#8230;"</li>
+<li>"Also, help me understand what the level method and artifact are in the above"</li>
+<li>"Are there more levels which we need to think about to make it holistic?"</li>
+<li>"I meant more access [<em>axes</em>]"</li>
+<li>"This is the foundation of how methodology &#8212; access [<em>axes</em>] and aspects in those access [<em>axes</em>]&#8230;"</li>
+<li>"Are there techniques already existing in industry which kind of do the access [<em>axes</em>] and the values, rather than us discovering on our own &#8212; some other fields of science?"</li>
+<li>"Let's keep both A, B, and C. As and when required, we can use that. This entire thing goes into the part of the how methodology, in addition to this&#8230;"</li>
+<li>"When you have some axes and some values, those axes can also be generated as values of some other axis&#8230;"</li>
+<li>"Do it for eight levels now."</li>
+<li>"Show me, for 11 levels, add values at each level, like at least 3&#8211;4 values at each level&#8230; We should do this."</li>
+<li>"So, using this descent, let's call this levels which go from abstraction to concreteness. That is one axis. Another is the abstraction of abstraction of abstraction&#8230;"</li>
+<li>"Let's name these axes. Whenever you are going in axis 2 upwards, then in axis 1 you traverse ahead&#8230; how do we go about the implementation of those?"</li>
+<li>"Give me an example of this. How will this work out?"</li>
+<li>"Write this entire PRD in the how methodology in the right way. Figure out the way as well how to write it&#8230; Don't cap it to any number&#8230;"</li>
+<li>"Why is it called reflection? It is actually abstraction, but it can be abstraction in any direction."</li>
+<li>"So the dimension was an abstraction, a way of looking at it, and the reflection, realization are just a subset of this."</li>
+<li>"[<em>Sure</em>], give a name&#8230; So, how do we use this to make decisions?"</li>
+<li>"add this to the how methodology and I'm going to pick it up later on"</li>
+<li>"Ensure that all my prompts are kind of saved as well somewhere&#8230;"</li>
+<li>"The realization and reflection example: there are only three axes in this&#8230; show me a cross dimension of a 6x7 kind of thing&#8230; show me that in a tabular fashion."</li>
+<li>"Also, the recommended ones are Realization and reflection."</li>
+<li>"While you can give it as a suggestion, realization versus concern, but reflection one is something I had designed before, so I want you to do that and also check what exactly reflection meant from this table."</li>
+<li>"Also, we can keep accesses [<em>axes</em>] as per the so this is currently a theory work, which accesses [<em>axes</em>] and everything that will probably come into the productization of it"</li>
+<li>"For the cross table, show also places wherein one particular axis, like M3&#8230; one-to-many relationship on both sides of the axis."</li>
+<li>"Combine the How section of the main document with this so that it doesn't look like a parallel document."</li>
+</ol>
+<p style="font-size:12px;color:#888;margin-top:8px;">A persistent prompts log lives at <code>holding/state/prompts/&lt;YYYY-MM&gt;.jsonl</code>; auto-captured via the L0 plugin hook <code>capture-prompt.sh</code> (v2.39.6+). ("L0" here = D38 build-layer vocabulary &#8212; plugin-shipped &#8212; not a zoom band.)</p>
+</details>
+
+<h2>&#167;3.Z provenance footer</h2>
+<p style="font-size:13px;color:#666;">&#167;3 was folded 2026-05-31 from the staging doc <code>how-methodology.html</code> (archived at <code>holding/research/_archive/native-v1.x/2026-05-28-how-methodology-staging.html</code>; Claude-suggested DAG/Implementation/Operating-loop sections preserved there, NOT folded into &#167;3 per founder direction "theory, productization later"). Sources borrowed: faceted classification (Ranganathan), morphological analysis (Zwicky), MDSOC / "N degrees of separation" (Tarr et al.), MOF metamodel layers, type universes, Zachman, Tufte, Inselberg.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap"><strong>FQ1 (PROPOSED &#8212; not yet ratified; founder gap).</strong> Verbatim from master &#167;C.6 (<a href="../master/index.html#c6-forward-open-questions">#c6-forward-open-questions</a>): "<strong>HOW methodology</strong> &#8212; open questions about Native's HOW Methodology engine. Which approach for which situation? When does cascading recursion stop? How are HOW choices learned vs. operator-overridden? When are HOW choices made silently vs. surfaced for ratification?" Status verbatim: "Status: PROPOSED 2026-05-13. Not yet ratified. Founder surfaced these forward; they enter a future research + design cycle (likely codex + deepseek consult round per question, producing ADRs in canon + capability contracts in PRD body)." Sub-questions T-G4-01 (FQ1.a which approach for which situation) &#183; T-G4-02 (FQ1.b cascading stop conditions) &#183; T-G4-03 (FQ1.c learned vs operator-overridden) are founder-input-required backlog rows whose primary home is the <a href="../roadmap/index.html">roadmap</a> (&#167;C.7 G4).</li>
+<li class="gap"><strong>Audit finding &#8212; "&#167;3 HOW has zero runtime enforcement" (P0, unresolved).</strong> Verbatim from master &#167;10.10 row 5 (<a href="../master/index.html#section-10-10-impl-vs-docs-audit">#section-10-10-impl-vs-docs-audit</a>): "<strong>HOW Methodology (&#167;3) has zero runtime enforcement</strong>" &#8212; Codex: "(implicit &#8212; codex Top 3 doesn't address directly)" &#8212; DeepSeek: "(B) #1 &#8212; 6-dimension methodology exists only as prose; no PreToolUse hook or skill forces adherence" &#8212; Action: "P0 &#8212; ship how-methodology-*.sh PreToolUse hook OR re-scope &#167;3 from 'engine' to 'doctrine'".</li>
+<li class="gap"><strong>Theory &#8594; productization open.</strong> Verbatim from &#167;3.9 forward-looking note: "this section is THEORY work; productization is the next step. v1 ships the doctrine + the Lens primitive + the recommended axes; v2+ will lock the surface and refine based on dogfood signal." Which axes and surfaces enter productization is undecided (founder prompt 23: "we can keep accesses [<em>axes</em>] as per the so this is currently a theory work, which accesses [<em>axes</em>] and everything that will probably come into the productization of it").</li>
+</ul>
+
+<h2>The science underneath &#8212; unit &#8594; work &#8594; record is a real discipline</h2>
+<p style="font-size:13.5px;color:#1f2937">The method this page describes is not an invention; it is a convergence. Five fields built independently over ~70 years &#8212; process science (van der Aalst), transaction processing (Gray&#8211;Reuter), event sourcing/DDD, operations science (Toyota/Goldratt/queueing), and cybernetics (Ashby/Beer) &#8212; land on the SAME falsifiable structure. That independent derivation of isomorphic results is the signature of a science, not a bundle of methodologies.</p>
+<p style="font-size:13.5px;color:#1f2937">Every field derives the same <strong>invariant triple</strong>: (1) a <strong>Unit</strong> = bounded work with an explicit contract (= Native&#8217;s Step: pre-declared output + post-check); (2) <strong>Composition</strong> operators safe only when contracts are explicit &#8212; nesting is safe by theorem, message-interaction is not; (3) a <strong>Record</strong> the system can be rebuilt from (replay) or rediscovered from (mining). The founder&#8217;s three questions answer cleanly:</p>
+<table style="font-size:12.5px;border-collapse:collapse;width:100%;margin:8px 0">
+<tr style="background:#f3f4f6"><th style="text-align:left;padding:4px 8px;border:1px solid #e5e7eb">Question</th><th style="text-align:left;padding:4px 8px;border:1px solid #e5e7eb">Answer</th><th style="text-align:left;padding:4px 8px;border:1px solid #e5e7eb">Named result</th></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">system out of a <strong>record</strong>?</td><td style="padding:4px 8px;border:1px solid #e5e7eb">close a loop on it &#8212; replay, mine, or regulate it</td><td style="padding:4px 8px;border:1px solid #e5e7eb">&#945;-algorithm (2004)</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">system of <strong>work</strong>?</td><td style="padding:4px 8px;border:1px solid #e5e7eb">contracted units + named patterns + soundness check + loop forever</td><td style="padding:4px 8px;border:1px solid #e5e7eb">workflow-net soundness (1998)</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e5e7eb">system out of a <strong>unit</strong>?</td><td style="padding:4px 8px;border:1px solid #e5e7eb">units become S1 of the next level + a metasystem no unit contains</td><td style="padding:4px 8px;border:1px solid #e5e7eb">Beer Recursive System Theorem (1979)</td></tr>
+</table>
+<p style="font-size:13.5px;color:#1f2937">The loop &#8212; <code>design &#8594; execute &#8594; record &#8594; compare &#8594; redesign</code> &#8212; has a theorem at each edge. That is what makes Native&#8217;s methodology a discipline, not a style. Canon (linked, never copied &#8212; D54): research <code>holding/research/2026-06-12-unit-work-record-science.md</code> &#183; the loop&#8217;s mechanisms at <code>ADR-022</code>.</p>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No child pages &#8212; <code>platform-how</code> is a leaf in the manifest.</li>
+<li>Downstream consumers: <a href="../engineering/index.html">engineering/</a> (compiled mechanisms cite &#167;3); &#167;4 Runtime executes the lens manifest &#8212; <a href="runtime.html">platform-runtime</a> (master ref: <a href="../master/index.html#section-4-native-platform">&#167;4</a>); &#167;7 Observability measures lens accuracy &#8212; <a href="observability.html">platform-observability</a> (master ref: <a href="../master/index.html#section-7-observability">&#167;7</a>).</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="../master/index.html#section-3-how-methodology">master &#167;3 (#section-3-how-methodology)</a> &#8212; primary slice: &#167;3.1-&#167;3.9 (anchors <code>#section-3-1-atom</code> &#8230; <code>#section-3-9-acceptance</code>) + &#167;3.A origins + &#167;3.Z footer.</li>
+<li><a href="../master/index.html#c6-forward-open-questions">master &#167;C.6 (#c6-forward-open-questions)</a> &#8212; FQ1 text + PROPOSED status (gap 1).</li>
+<li><a href="../master/index.html#section-10-10-impl-vs-docs-audit">master &#167;10.10 (#section-10-10-impl-vs-docs-audit)</a> &#8212; zero-runtime-enforcement audit row (gap 2).</li>
+<li>Archived staging doc (read-only): <code>holding/research/_archive/native-v1.x/2026-05-28-how-methodology-staging.html</code> &#8212; Claude-suggested DAG / Implementation / Operating-loop sections, NOT committed design.</li>
+<li>Prompts log (D54: cited, not copied): <code>holding/state/prompts/&lt;YYYY-MM&gt;.jsonl</code> via plugin hook <code>capture-prompt.sh</code>.</li>
+</ul>
+
+</div></div></body></html>

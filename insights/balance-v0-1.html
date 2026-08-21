@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Balance — Design v0.1 (first design, unratified)</title>
+<link rel="stylesheet" href="../native/preview/tokens.css">
+<style>
+  /* layout only — visuals from tokens.css (DS UI v2.0, LOCKED 2026-08-05) */
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#e9e6e0;padding:20px}
+  .window{width:1150px;max-width:100%;min-height:740px;background:var(--bg);border:1px solid #ddd8cf;border-radius:14px;box-shadow:0 22px 64px rgba(12,10,8,.18);overflow:hidden;position:relative;padding:34px 40px}
+  .tag{position:absolute;top:12px;right:16px;font-size:10px;letter-spacing:.14em;color:var(--gold)}
+  .note{font-size:10px;color:var(--faint);margin-top:4px}
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:var(--s4);margin-top:var(--s5)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s4) 18px;box-shadow:var(--shadow-rest)}
+  .card .k{font-size:var(--fs-label);letter-spacing:var(--ls-label);font-weight:700;color:var(--stone);text-transform:uppercase;margin-bottom:8px}
+  .card .k .sm{font-weight:400;font-size:9px;color:var(--faint);letter-spacing:0;text-transform:none}
+  .dial{display:flex;align-items:center;gap:16px}
+  .dial .state{font-family:var(--font-display);font-size:26px}
+  .dial .conf{font-size:11px;color:var(--stone)}
+  .strip{display:flex;gap:2px;margin-top:8px}
+  .cell{flex:1;height:26px;border-radius:3px;background:var(--cream)}
+  .cell.st{background:#dfe8df}
+  .cell.str{background:#f0e4cf}
+  .cell.sp{background:#ecd7e2}
+  .cell.now{outline:2px solid var(--gold)}
+  .legend{display:flex;gap:14px;font-size:10px;color:var(--stone);margin-top:8px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+  .sig{display:flex;justify-content:space-between;font-size:11.5px;padding:4px 0;border-bottom:1px dashed var(--line)}
+  .sig:last-child{border:0}
+  .sig .v{font-family:var(--font-mono);color:var(--stone)}
+  .ilog{font-size:11px}
+  .ilog .row{display:flex;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .ilog .row:last-child{border:0}
+  .ilog .t{font-family:var(--font-mono);color:var(--faint);flex-shrink:0}
+  .ilog .silent{color:var(--faint)}
+  .ilog .nudge{color:var(--decide);font-weight:600}
+  .eod{border-left:4px solid var(--gold);background:#fdfaf4}
+  .off{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--stone)}
+  .pill{font-size:9px;font-weight:700;letter-spacing:.1em;border-radius:var(--r-pill);padding:2px 8px;border:1px solid var(--line);color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="tag">INSIGHTS &middot; BALANCE &middot; DESIGN v0.1 &middot; UNRATIFIED &middot; 2026-08-07</div>
+
+  <div class="ds-greet">Balance</div>
+  <div class="ds-sub">Work-pattern inference from your own ledgers &middot; intervenes only when needed.</div>
+  <div class="note">Every value on this page is SAMPLE data illustrating the register — nothing here is live. Contract: holding/state/balance/ (state.json + log.jsonl + reports/).</div>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <div class="k">Current window <span class="sm">sample &middot; observe cadence 30 min</span></div>
+        <div class="dial">
+          <span class="ds-dot ok" style="width:14px;height:14px"></span>
+          <span class="state">Steady</span>
+          <span class="conf">confidence 0.8 &middot; friction indicators low &middot; action: SILENT</span>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:var(--s3)">
+        <div class="k">Today — 48 windows <span class="sm">sample day shape</span></div>
+        <div class="strip">
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell st"></div><div class="cell st"></div><div class="cell st"></div><div class="cell st"></div>
+          <div class="cell st"></div><div class="cell str"></div><div class="cell str"></div><div class="cell sp"></div>
+          <div class="cell sp"></div><div class="cell str"></div><div class="cell st"></div><div class="cell st"></div>
+          <div class="cell st"></div><div class="cell st"></div><div class="cell str"></div><div class="cell st"></div>
+          <div class="cell st now"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        </div>
+        <div class="legend">
+          <span><i style="background:#dfe8df"></i>steady</span>
+          <span><i style="background:#f0e4cf"></i>stretched</span>
+          <span><i style="background:#ecd7e2"></i>possible spike</span>
+          <span><i style="background:var(--cream)"></i>no activity (skipped silently)</span>
+        </div>
+      </div>
+
+      <div class="card eod" style="margin-top:var(--s3)">
+        <div class="k" style="color:var(--gold)">End of day — balance report <span class="sm">sample register</span></div>
+        <div style="font-size:12px;line-height:1.6">
+          Possible frustration spike 11:30&ndash;12:30: <b>9 gate blocks on one path</b> (hook-log evidence).
+          The friction points at a gap, not at you — <b>the envelope contract for out-of-repo paths</b> came up 3 times this week.<br>
+          <span style="color:var(--stone)">Rebalance suggestion: 30 min tomorrow on the recurring gap before new feature work.</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="k">Signals <span class="sm">sample &middot; ledger-only, no new surveillance</span></div>
+        <div class="sig"><span>Turn intensity (h-sutra)</span><span class="v">moderate</span></div>
+        <div class="sig"><span>Retry / block density (hook-log)</span><span class="v">low</span></div>
+        <div class="sig"><span>Prompt churn</span><span class="v">low</span></div>
+        <div class="sig"><span>Estimate drift (triage)</span><span class="v">on-track</span></div>
+        <div class="sig"><span>Latency spikes</span><span class="v">none</span></div>
+        <div class="sig"><span>Atom churn</span><span class="v">1 abandon / 5 closed</span></div>
+        <div class="sig"><span>Late-night pattern</span><span class="v">clear</span></div>
+      </div>
+
+      <div class="card" style="margin-top:var(--s3)">
+        <div class="k">Intervention log <span class="sm">sample &middot; SILENT rows are logged too</span></div>
+        <div class="ilog">
+          <div class="row"><span class="t">10:00</span><span class="silent">SILENT — steady, conf 0.8</span></div>
+          <div class="row"><span class="t">11:30</span><span class="silent">SILENT — possible spike, conf 0.5 (below threshold)</span></div>
+          <div class="row"><span class="t">12:00</span><span class="nudge">NUDGE — cockpit quiet-line: "9 blocks on one path — worth a look?"</span></div>
+          <div class="row"><span class="t">12:30</span><span class="silent">SILENT — cooldown (max 1 nudge / 2h)</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:var(--s3)">
+        <div class="k">Escalation &middot; consent <span class="sm">BQ-3</span></div>
+        <div class="off"><span class="ds-dot" style="background:var(--line)"></span> Contact-a-person: <b>OFF</b> <span class="pill">NO POLICY AUTHORED</span></div>
+        <div class="note" style="margin-top:6px">Turns on only per named-contact policy (channel, hours, topics, frequency) with preview + expiry per message. Kill-switch: ~/.balance-disabled.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

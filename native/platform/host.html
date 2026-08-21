@@ -1,0 +1,370 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Block &#8212; Host (Claude CLI: agent runtime + model)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-host{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">native hub</a> &#8594; <a href="index.html">platform</a> &#8594; host &#160;&#183;&#160; spine: <a href="ui.html">&#8592; UI</a> &#160;&#183;&#160; <a href="runtime.html">Daemon — Runtime &#8594;</a></div>
+<h1>Block &#8212; Host (Claude CLI: agent runtime + model) <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="189" y="316" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Host</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-host</code></td><td>PLATFORM / <a href="index.html">platform</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Block &#8212; Host (Claude CLI: agent runtime + model). Single home of the &#167;1.0 Host block's second-order detail: internal parts, neighbor contracts, internal flow, and the ADR-021 host-residency DECIDED state. Sibling blocks live on their own pages under <a href="index.html">platform</a>.</td><td colspan="3">draft carried over incl. ADR-021 host-residency DECIDED state; Host-absence semantics gap preserved</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<p style="font-size:12px;color:#9ca3af;margin:0 0 10px">First layer: Human &#8594; UI &#8594; <b>Host (here)</b> &#8594; Daemon{Orchestration &#8594; System of Process} &#8594; SoR / External World</p>
+<svg viewBox="0 0 780 690" role="img" aria-label="Host (Claude CLI) second-order block diagram, fully wired">
+  <defs>
+    <marker id="hst-hah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    <marker id="hst-hahs" markerWidth="9" markerHeight="9" refX="0" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M7,0 L0,3.5 L7,7 Z" fill="#334155"/></marker>
+  </defs>
+
+  <!-- Authority + Tenancy wrap (gate as border, never an inline box) -->
+  <rect x="12" y="26" width="756" height="640" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="26" y="17" width="346" height="18" fill="#fff"/>
+  <text x="34" y="30" fill="#7c3aed" font-weight="700" font-size="12">AUTHORITY + TENANCY &#183; gates every access (&#167;1.0)</text>
+
+  <!-- EDGES (under boxes) -->
+  <!-- UI -> Agent runtime -->
+  <path d="M220,102 L220,188" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hst-hah)"/>
+  <text x="228" y="140" font-size="9" fill="#475569">operator request</text>
+  <!-- Agent runtime <-> Model (fused) -->
+  <path d="M330,221 L450,221" stroke="#334155" stroke-width="1.8" fill="none" marker-start="url(#hst-hahs)" marker-end="url(#hst-hah)"/>
+  <text x="390" y="215" text-anchor="middle" font-size="9" fill="#475569">one unit</text>
+  <text x="390" y="176" text-anchor="middle" font-size="9.5" fill="#b45309">fused &#8212; &#8220;agent runtime + model in one&#8221; (&#167;1.0)</text>
+  <!-- Slot -> Model (selection) -->
+  <path d="M480,298 L540,254" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hst-hah)"/>
+  <text x="548" y="284" font-size="9" fill="#475569">selected host LLM</text>
+  <!-- Agent runtime -> Daemon ("runs") -->
+  <path d="M180,254 L180,468" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hst-hah)"/>
+  <text x="188" y="430" font-size="9" fill="#475569">&#8220;runs&#8221; &#8212; request handoff</text>
+  <text x="188" y="442" font-size="9" fill="#475569">(fused with run-relationship, &#167;1.0)</text>
+  <!-- Host -> Daemon (lifecycle) -->
+  <path d="M390,412 L390,468" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hst-hah)"/>
+  <text x="398" y="432" font-size="9" fill="#475569">daemon lifecycle via Sutra plugin (&#167;4.0):</text>
+  <text x="398" y="444" font-size="9" fill="#475569">boot-start &#183; stop &#183; re-exec, no state loss</text>
+  <text x="398" y="456" font-size="9" fill="#475569">(plugin = Host-resident layer &#8212; ADR-021; gap #4 closed)</text>
+  <!-- System of Process -> Slot (host-LLM invocation) -->
+  <path d="M450,540 L612,540 L612,338 L530,338" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hst-hah)"/>
+  <text x="618" y="420" font-size="9" fill="#475569">host-LLM invocation</text>
+  <text x="618" y="433" font-size="9" fill="#475569">per workflow &#183; ADR-005</text>
+  <!-- Host -> Compute (runs on) -->
+  <path d="M100,412 L100,606" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hst-hah)"/>
+  <text x="106" y="598" font-size="9" fill="#475569">runs on &#183; base layer, no data payload</text>
+
+  <!-- NEIGHBOR STUB: UI -->
+  <rect x="130" y="56" width="180" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="220" y="76" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4b5563">UI</text>
+  <text x="220" y="92" text-anchor="middle" font-size="9" fill="#9ca3af">neighbor &#183; operator side (&#167;1.0)</text>
+
+  <!-- HOST FRAME -->
+  <rect x="70" y="150" width="640" height="262" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="2"/>
+  <rect x="372" y="141" width="312" height="17" fill="#fff"/>
+  <text x="380" y="154" fill="#92400e" font-weight="700" font-size="11.5">HOST &#183; CLAUDE CLI &#8212; second-order &#183; fully wired</text>
+
+  <!-- INTERNAL: Agent runtime -->
+  <rect x="110" y="188" width="220" height="66" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+  <text x="220" y="212" text-anchor="middle" font-size="12.5" font-weight="700">AGENT RUNTIME</text>
+  <text x="220" y="228" text-anchor="middle" font-size="9" fill="#6b7280">agent-execution half of Claude CLI</text>
+  <text x="220" y="240" text-anchor="middle" font-size="9" fill="#9ca3af">no deeper sub-decomposition cited</text>
+
+  <!-- INTERNAL: Model -->
+  <rect x="450" y="188" width="220" height="66" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+  <text x="560" y="212" text-anchor="middle" font-size="12.5" font-weight="700">MODEL</text>
+  <text x="560" y="228" text-anchor="middle" font-size="9" fill="#6b7280">the LLM &#183; fused into the Host block</text>
+  <text x="560" y="240" text-anchor="middle" font-size="9" fill="#9ca3af">no separate LLM box in &#167;1.0</text>
+
+  <!-- INTERNAL: Per-workflow host-LLM slot -->
+  <rect x="250" y="298" width="280" height="74" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+  <text x="390" y="320" text-anchor="middle" font-size="12" font-weight="700">PER-WORKFLOW HOST-LLM SLOT</text>
+  <text x="390" y="336" text-anchor="middle" font-size="9.5" fill="#6b7280">ADR-005 (ratified) &#183; claude &#183; codex &#183; deepseek</text>
+  <text x="390" y="350" text-anchor="middle" font-size="9" fill="#9ca3af">Host position is selectable, not hardwired to Claude</text>
+
+  <!-- NEIGHBOR STUB: Daemon (with System of Process inside) -->
+  <rect x="140" y="468" width="330" height="112" rx="10" fill="#f8fafc" stroke="#0f766e" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="156" y="488" font-size="10.5" font-weight="700" fill="#0f766e">DAEMON &#183; always-on &#183; neighbor</text>
+  <text x="156" y="502" font-size="9" fill="#6b7280">Orchestration translates &#183; finds the process</text>
+  <rect x="270" y="514" width="180" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="360" y="535" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">System of Process</text>
+  <text x="360" y="550" text-anchor="middle" font-size="8.5" fill="#3b5bdb">neighbor &#183; runs the process</text>
+
+  <!-- NEIGHBOR STUB: Compute -->
+  <rect x="70" y="606" width="640" height="46" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="390" y="628" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">COMPUTE &#183; host machine</text>
+  <text x="390" y="642" text-anchor="middle" font-size="9" fill="#9ca3af">neighbor (base layer) &#183; where the Host + daemon execute (&#167;1.0)</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>Decided &#8212; ADR-021 Sutra plugin host residency</h2>
+<div class="note"><strong>DECIDED 2026-06-12 (Accepted)</strong> &#8212; the Sutra plugin is <strong>HOST-RESIDENT</strong>: hooks = Host lifecycle interceptors &#183; skills = Host-invokable bundles &#183; per-turn blocks = Host-emitted discipline; daemon-side analogs (workflow registry, EngineEvents) live in Orchestration/SoP. Upstream governance content the plugin carries (defaults, directions) is Authority+Tenancy material <em>transported</em> by the Host-resident layer. No new block needed. Canon (linked, never copied &#8212; D54): <code>sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md</code>. Decision record rendered at <a href="../master/index.html#section-4-12-parity">master &#167;4.12.4</a>. This closed Host open gap #4 &#8212; the item stays in the founder queue below, struck through, verbatim.</div>
+
+<h2>Contracts &#8212; neighbor edges</h2>
+<table>
+  <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+  <tr>
+    <td><b>UI</b></td><td>in</td>
+    <td>Operator request. &#167;1.0 prose: &#8220;The operator asks through the UI; the request runs on the Host&#8221;. Diagram edge UI &#8594; Host (unlabeled arrow).</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>Daemon (Orchestration)</b></td><td>out</td>
+    <td>Request handoff into the always-on Daemon, where Orchestration &#8220;translates the request and finds the relevant process to run&#8221;. NOTE: the &#167;1.0 diagram edge Host &#8594; Daemon is labeled &#8220;runs&#8221; (Host runs the Daemon), not &#8220;forwards&#8221; &#8212; the doc fuses request-flow and run-relationship on one edge.</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>Daemon (lifecycle)</b></td><td>out</td>
+    <td>Daemon start/stop: &#8220;Started by Sutra plugin at session boot OR by explicit sutra native start. Re-exec across plugin updates without state loss.&#8221; Lifecycle: START &#8594; RUNNING &#8594; STOP &#8594; RESTART (state restored from user-kit + decision-provenance log). The plugin doing the starting is Host-resident per ADR-021.</td>
+    <td><a href="../master/index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+  </tr>
+  <tr>
+    <td><b>System of Process</b></td><td>in</td>
+    <td>Host-LLM invocation per workflow. ADR-005 (ratified): &#8220;Per-workflow host LLM selection (claude &#183; codex &#183; deepseek)&#8221; &#8212; the running process calls back into a host LLM chosen per workflow. &#167;4.0 canon link cites &#8220;ADR-005 host-LLM selection&#8221; as part of the shipped daemon runtime at sutra/marketplace/native/.</td>
+    <td><a href="../master/index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+  </tr>
+  <tr>
+    <td><b>Authority + Tenancy</b></td><td>gates</td>
+    <td>&#8220;Authority + Tenancy gates every access&#8221; &#8212; cross-cutting wrap drawn as the dashed outer rect around the entire runtime diagram, Host included.</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>Compute</b></td><td>out</td>
+    <td>Runs-on relationship: &#8220;Host + daemon run on the Compute (host machine)&#8221;. Diagram footer: &#8220;COMPUTE &#183; host machine &#8212; where the Host + daemon execute&#8221;. Base layer, no data payload.</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>Runtime &#167;4 (daemon)</b></td><td>behavior</td>
+    <td>This part's runtime behavior is specified in <a href="runtime.html#s4-0">Runtime &#167;4.0</a> &#8212; daemon process model + lifecycle (&#8220;Started by Sutra plugin at session boot&#8221;; the plugin is Host-resident per ADR-021) and the host-LLM canon link (ADR-005).</td>
+    <td><a href="../master/index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+  </tr>
+  <tr>
+    <td><b>Observability &#167;7</b></td><td>observed by</td>
+    <td>Observed by <a href="observability.html">the &#167;7 ring</a> &#8212; the ring that watches the whole machine (per-pillar metrics &#183; audit + replay &#183; operator satisfaction signals).</td>
+    <td><a href="../master/index.html#section-7-observability">section-7-observability</a></td>
+  </tr>
+</table>
+
+<h2>Internal parts</h2>
+<table>
+  <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+  <tr>
+    <td><b>Agent runtime</b></td>
+    <td>The agent-execution half of Claude CLI. &#167;1.0 prose: &#8220;the request runs on the Host (Claude CLI &#8212; agent runtime + model in one)&#8221;. The doc gives no further sub-decomposition (no tool loop, session, or context-window detail in the cited ranges).</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>Model</b></td>
+    <td>The LLM, fused into the same block as the runtime &#8212; &#8220;agent runtime + model in one&#8221;. The locked schema and the &#167;1.0 diagram show NO separate LLM box; the Host rect carries only the labels &#8220;Host&#8221; / &#8220;Claude CLI&#8221;.</td>
+    <td><a href="../master/index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+  </tr>
+  <tr>
+    <td><b>Per-workflow host-LLM slot (ADR-005)</b></td>
+    <td>The Host position is a selectable slot, not hardwired to Claude: ADR-005 &#8220;host-llm-host-selection&#8221; (ratified) &#8212; &#8220;Per-workflow host LLM selection (claude &#183; codex &#183; deepseek)&#8221;. &#167;4.0 canon-link callout cites ADR-005 as part of the shipped daemon runtime.</td>
+    <td><a href="../master/index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+  </tr>
+</table>
+
+<h2>Internal flow</h2>
+<p>The operator request enters from the UI into the Host's agent runtime; runtime and model are one fused unit (single block, no internal edge to a separate LLM box &#8212; the doc explicitly collapses them: &#8220;Claude CLI &#8212; agent runtime + model in one&#8221;). The Host then carries the request downward into the Daemon on the edge labeled &#8220;runs&#8221;, where Orchestration translates it and selects the process. Daemon lifecycle (session-boot start or explicit <code>sutra native start</code>, &#167;4.0) is attributed by &#167;4.0 to the Sutra plugin (&#8220;managed by plugin&#8221;), now placed Host-resident per ADR-021 (gap #4 closed) &#8212; the lifecycle edge is drawn from the Host only on the partial support of &#167;1.0's &#8220;runs&#8221; label. A return edge comes back up from System of Process: when a process runs, it invokes a host LLM selected per workflow among claude/codex/deepseek (ADR-005) &#8212; so the Host slot is entered from below as well as above. Everything sits inside the Authority + Tenancy gate wrap and stands on the Compute base layer.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li>Working assumption carried from founder session (also echoed in sibling drafts _matrix.html / _block-orchestration.html, which are not source of truth): only System of Process calls the LLM/Host. This exclusivity appears nowhere in index.html &#8212; &#167;1.0 states no such rule, and ADR-005 only says host-LLM selection is per-workflow. Confirm and write it down (&#167;1.0 or an ADR), or drop it.</li>
+<li>ADR-005 allows codex/deepseek as host-LLMs, yet &#167;1.0 labels the Host box &#8220;Claude CLI&#8221; singular &#8212; is Claude CLI the fixed operator-facing host while per-workflow LLM calls may route to a different host, or can the top-of-stack Host itself be swapped? Cited ranges do not reconcile this.</li>
+<li>&#167;1.0's Host &#8594; Daemon edge label &#8220;runs&#8221; conflates lifecycle (Host runs the Daemon) with request flow (request reaches Orchestration) &#8212; which transport carries the request (CLI invocation, IPC, file)? Not specified in cited ranges.</li>
+<li><s>Where does the Sutra plugin live in the block diagram? &#167;4.0 says the daemon is &#8220;Started by Sutra plugin at session boot&#8221; / &#8220;managed by plugin&#8221;, but the plugin is not placed inside Host, Daemon, or any &#167;1.0 block.</s><br><strong>DECIDED 2026-06-12</strong> &#8212; Sutra plugin is <strong>HOST-RESIDENT</strong>: hooks = Host lifecycle interceptors &#183; skills = Host-invokable bundles &#183; per-turn blocks = Host-emitted discipline; daemon-side analogs live in Orchestration/SoP. <code>sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md</code> (Accepted) + <a href="../master/index.html#section-4-12-parity">&#167;4.12.4</a>.</li>
+<li>Host is per-session while Daemon is &#8220;always-on&#8221; &#8212; what happens to an in-flight operator request if the Host (Claude CLI session) exits while the Daemon is still RUNNING? Cited ranges cover daemon restart but not Host-absence semantics.</li>
+<li>No internal decomposition of the Host beyond &#8220;agent runtime + model in one&#8221; exists anywhere in the cited ranges &#8212; is second-order detail for the Host block (session state, tool loop, context window) intentionally deferred to the UI/_consumer-product detailing pass?</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>No child pages in the manifest &#8212; this is a leaf of the PLATFORM band.</li>
+<li>Downstream: the ENGINEERING band (tech design &#167;11 + ADR catalog &#167;12) builds under the PLATFORM parent once it is LOCKED; runtime canon stays in the sutra repo, linked never copied (D54).</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned">
+<p><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The Host block persists no store of its own in the cited ranges &#8212; its trace is the per-workflow host-LLM invocation the daemon records in <code>~/.sutra-native/decision-provenance.jsonl</code> (ADR-005: selection per workflow among claude &#183; codex &#183; deepseek). One illustrative row for a lending workflow run:</p>
+<pre><code>{"ts":"2026-08-18T06:12:04Z","workflow":"W-kyc-verify","event":"host_llm_invoked","host_llm":"claude","selected_per":"ADR-005"}</code></pre>
+<p>Only <code>host_llm</code> selection (ADR-005) and the log file's existence (&#167;4.0) are sourced; the remaining field names are <decision_pending>unruled &#8212; no Host-side record schema exists in the cited ranges</decision_pending>.</p>
+</div>
+<p>Operator surface: none Host-owned &#8212; the Host is watched by <a href="observability.html">the &#167;7 Observability ring</a>; its activity surfaces through daemon audit rows, not a Host-level view.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="../master/index.html#so-host">master &#167;1.0.1 &#8212; Host (Claude CLI) block draft</a> &#8212; primary source slice (frozen archive)</li>
+<li><a href="../master/index.html#section-1-0-1-second-order">master &#167;1.0.1 &#8212; second-order block detail index</a></li>
+<li><a href="../_block-host.html">_block-host.html</a> &#8212; standalone working draft (cross-check source per manifest)</li>
+<li><a href="../master/index.html#section-1-0-runtime">master &#167;1.0 &#8212; locked first-layer schema</a></li>
+<li><a href="../master/index.html#section-4-0-daemon">master &#167;4.0 &#8212; runtime daemon lifecycle</a></li>
+<li><a href="../master/index.html#section-12-1-adr-table">master &#167;12.1 &#8212; ADR table (ADR-005 host-LLM selection)</a></li>
+<li><a href="../master/index.html#section-4-12-parity">master &#167;4.12.4 &#8212; placement decision (ADR-021)</a></li>
+<li>Sutra canon (linked, never copied &#8212; D54): <code>sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md</code> (Accepted)</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting &#183; review: audit workflow wf_5c81f205.</p>
+
+</div></div></body></html>

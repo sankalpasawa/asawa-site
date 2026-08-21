@@ -1,0 +1,269 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design System — Sutra consumer surfaces (app · homepage · departments)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.sw{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:-2px;margin-right:5px;border:1px solid #e5e7eb}
+/* live specimens rendered in the DS itself */
+.spec{background:#FAFAF7;border:1px solid #E8E3DB;border-radius:12px;padding:16px;margin:8px 0;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+.s-dec{background:#fff;border:1px solid #E8E3DB;border-radius:12px;padding:11px 15px;display:flex;align-items:center;gap:10px;font:13px Inter,-apple-system,sans-serif;color:#1A1714;min-width:280px}
+.s-dec .m{width:7px;height:7px;border-radius:50%;background:#8B6B4A}
+.s-dec b{color:#8B6B4A;font-size:12px;margin-left:auto;cursor:pointer}
+.s-chip{font-size:9.5px;font-weight:600;border-radius:99px;padding:2px 9px;border:1px solid #E8E3DB;background:#fbfaf7;color:#6B6560}
+.s-quiet{font-size:12px;color:#b8b2a6}.s-quiet b{color:#4A6B8B}
+.s-bar{width:120px;height:8px;border-radius:99px;background:#E8E3DB;overflow:hidden;display:inline-block;vertical-align:middle}
+.s-bar i{display:block;height:100%;width:64%;background:#B8945F}
+.s-greet{font-family:Georgia,'Playfair Display',serif;font-size:19px;color:#1A1714}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="edges.html">Edges</a></div><div style="padding-left:28px"><a href="resource.html">Resource</a></div><div style="padding-left:28px"><a href="time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a class="sb-cur" href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="index.html">Hub</a> &rsaquo; <a href="platform/index.html">Platform</a> &rsaquo; <a href="platform/ui.html">UI</a> &rsaquo; <a href="consumer-ui.html">Consumer UI</a> &rsaquo; Design System</div>
+<h1>Design System &#8212; one skin for app, homepage, departments <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Where this sits</h2>
+<p class="figcap">Child of <a href="consumer-ui.html">Consumer UI</a> (which carries the company map + IA). This page is the SKIN AUTHORITY: every visual decision for the app, the Asawa homepage voice, and the departments site resolves here. A pixel that disagrees with this page is a bug.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>design-system</code></td><td>PLATFORM / <a href="consumer-ui.html">consumer-ui.html</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>asawa design session 2026-08-05</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">One token core, three named surface variants (app / editorial / directory). Shared components render identically across surfaces; divergence requires a named surface + token mapping + rationale (codex rule: divergence is expensive).</td><td colspan="3">Token tables complete; 13 components each carry a state row; departments-merge spec concrete; 50-task table w/ Impact+Effort+Wave.</td></tr>
+</table>
+
+<h2>This page's own diagram &#8212; the system's shape</h2>
+<svg viewBox="0 0 896 240" role="img" aria-label="Design system architecture">
+<defs><marker id="dsa" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="300" y="14" width="280" height="52" rx="9" fill="#FAFAF7" stroke="#B8945F" stroke-width="2"/>
+<text x="440" y="36" text-anchor="middle" font-size="11" font-weight="700">TOKEN CORE</text>
+<text x="440" y="52" text-anchor="middle" font-size="8.5" fill="#6b7280">color &#183; type &#183; space &#183; radius &#183; shadow &#8212; one file, no per-surface forks</text>
+<rect x="40" y="120" width="240" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="160" y="141" text-anchor="middle" font-size="10" font-weight="700">SURFACE: APP</text>
+<text x="160" y="156" text-anchor="middle" font-size="8" fill="#6b7280">dense &#183; operational &#183; restrained</text>
+<text x="160" y="168" text-anchor="middle" font-size="8" fill="#6b7280">cards only for decisions/records</text>
+<rect x="330" y="120" width="220" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="440" y="141" text-anchor="middle" font-size="10" font-weight="700">SURFACE: EDITORIAL</text>
+<text x="440" y="156" text-anchor="middle" font-size="8" fill="#6b7280">homepage voice &#183; serif rhythm</text>
+<text x="440" y="168" text-anchor="middle" font-size="8" fill="#6b7280">atmosphere only, never controls</text>
+<rect x="600" y="120" width="250" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="725" y="141" text-anchor="middle" font-size="10" font-weight="700">SURFACE: DIRECTORY</text>
+<text x="725" y="156" text-anchor="middle" font-size="8" fill="#6b7280">departments/domains site</text>
+<text x="725" y="168" text-anchor="middle" font-size="8" fill="#6b7280">inherits tokens, sheds old visual logic</text>
+<path d="M370,66 L160,120" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#dsa)"/>
+<path d="M440,66 L440,120" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#dsa)"/>
+<path d="M510,66 L725,120" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#dsa)"/>
+<text x="250" y="98" font-size="8" fill="#475569">maps tokens (named variant + rationale)</text>
+<rect x="40" y="200" width="810" height="28" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="445" y="218" text-anchor="middle" font-size="9" fill="#475569">SHARED COMPONENTS &#8212; buttons, cards, tables, chips, trays, empty/offline states: IDENTICAL on every surface unless variant-scoped with rationale</text>
+<path d="M160,176 L160,200" stroke="#64748b" stroke-width="1.2" fill="none" stroke-dasharray="5 4" marker-end="url(#dsa)"/>
+<path d="M440,176 L440,200" stroke="#64748b" stroke-width="1.2" fill="none" stroke-dasharray="5 4" marker-end="url(#dsa)"/>
+<path d="M725,176 L725,200" stroke="#64748b" stroke-width="1.2" fill="none" stroke-dasharray="5 4" marker-end="url(#dsa)"/>
+</svg>
+
+<div class="note"><b>The design system, running:</b> <a href="preview/app.html">open the DS UI v2.0 preview</a> &#8212; the locked 4-tab app (Right Now &#183; Chats &#183; Departments &#183; Settings) built on <code>preview/tokens.css</code>, the same token core specified below. Committed in git; served from this site.</div>
+<h2>Live specimens &#8212; the ratified register, rendered</h2>
+<div class="spec">
+<span class="s-greet">Good morning, Sankalp.</span>
+<div class="s-dec"><span class="m"></span>Commit the Experience department <b>Approve</b></div>
+<span class="s-chip">INBOUND&#183;DIRECT</span><span class="s-chip" style="color:#2D5A3E">RISK low</span><span class="s-chip" style="color:#8B6B4A">&#9656; Plan 3/3</span>
+<span class="s-quiet"><b>review 2</b> &#183; fyi 4 &#183; <span style="color:#2D5A3E">done 3 &#10003;</span> &#183; radar 2</span>
+<span><span class="s-bar"><i></i></span> <span style="font-size:11px;color:#6B6560">context 64%</span></span>
+</div>
+<p class="figcap">Rendered with the actual tokens below &#8212; the screenshot the founder ratified 2026-08-05, reduced to components.</p>
+
+<h2>Tokens &#8212; color (core + semantic)</h2>
+<table>
+<tr><th>token</th><th>value</th><th>role</th></tr>
+<tr><td><code>--bg</code></td><td><span class="sw" style="background:#FAFAF7"></span>#FAFAF7</td><td>page background, every surface</td></tr>
+<tr><td><code>--panel</code></td><td><span class="sw" style="background:#fff"></span>#FFFFFF</td><td>cards, panels</td></tr>
+<tr><td><code>--ink</code></td><td><span class="sw" style="background:#1A1714"></span>#1A1714</td><td>primary text</td></tr>
+<tr><td><code>--stone</code></td><td><span class="sw" style="background:#6B6560"></span>#6B6560</td><td>secondary text</td></tr>
+<tr><td><code>--faint</code></td><td><span class="sw" style="background:#B8B2A6"></span>#B8B2A6</td><td>tertiary/quiet text</td></tr>
+<tr><td><code>--line</code></td><td><span class="sw" style="background:#E8E3DB"></span>#E8E3DB</td><td>hairlines, borders</td></tr>
+<tr><td><code>--cream</code></td><td><span class="sw" style="background:#F5F0E8"></span>#F5F0E8</td><td>soft fills, deep-work blocks</td></tr>
+<tr><td><code>--gold</code></td><td><span class="sw" style="background:#B8945F"></span>#B8945F</td><td>brand accent: active nav, charter marks, NOW highlights</td></tr>
+<tr><td><code>--clay</code></td><td><span class="sw" style="background:#8B6B4A"></span>#8B6B4A</td><td>semantic: DECIDE / held / approve actions</td></tr>
+<tr><td><code>--steel</code></td><td><span class="sw" style="background:#4A6B8B"></span>#4A6B8B</td><td>semantic: REVIEW / inbox / links</td></tr>
+<tr><td><code>--forest</code></td><td><span class="sw" style="background:#2D5A3E"></span>#2D5A3E</td><td>semantic: DONE / proof / live status</td></tr>
+<tr><td><code>--rose</code></td><td><span class="sw" style="background:#8B4A6B"></span>#8B4A6B</td><td>semantic: NOW line / alerts / failing states</td></tr>
+</table>
+<p class="figcap">Rule: semantic colors ONLY carry involvement/status meaning (clay=decide, steel=review, forest=done, rose=alert). Never decorative.</p>
+<p class="figcap"><b>Fifth semantic family (documented per B18-3):</b> <code>ok / warn / block</code> — gate-verdict states used by governance surfaces (hook cards, gate banners). It is a separate family from the involvement four above: decide/review/done/alert describe <em>the operator&#8217;s relationship to work</em>; ok/warn/block describe <em>a gate&#8217;s verdict on an action</em>. The two never substitute for each other.</p>
+
+<h2>Tokens &#8212; type + space</h2>
+<table>
+<tr><th>token</th><th>value</th><th>use</th></tr>
+<tr><td>display</td><td>Playfair Display 500, 30/24/19px</td><td>greeting, page titles, card titles (app: 19px max except greeting)</td></tr>
+<tr><td>body</td><td>Inter 400, 14-15px / 1.6</td><td>everything else</td></tr>
+<tr><td>label</td><td>Inter 700, 9.5-10px, letter-spacing .13em, uppercase</td><td>section keys (CHARTER, NOW, DECIDE)</td></tr>
+<tr><td>mono</td><td>ui-monospace 10.5px</td><td>BLUEPRINT expansion, commands only</td></tr>
+<tr><td>space</td><td>4 / 8 / 12 / 16 / 24 / 32 / 64</td><td>the only spacing steps</td></tr>
+<tr><td>radius</td><td>8 (chips-inner) / 12 (cards) / 15 (composer) / 99 (pills)</td><td>&#8212;</td></tr>
+<tr><td>shadow</td><td>0 1px 3px rgba(12,10,8,.04) rest &#183; 0 4px 14px .09 hover</td><td>cards only; nothing else casts shadow</td></tr>
+</table>
+
+<h2>Components &#8212; 13, each with its states</h2>
+<table>
+<tr><th>#</th><th>component</th><th>anatomy</th><th>states</th></tr>
+<tr><td>1</td><td>Decision card</td><td>dot + title + meta line + Approve (clay bold) + quiet secondary</td><td>pending / hover (lift) / approved (fade + &#10003; audit) / rejected</td></tr>
+<tr><td>2</td><td>Chip (&#8804;3/row)</td><td>pill, 9.5px 600, semantic color = meaning</td><td>collapsed (headline+severity kept) / expanded / overflow "+n"</td></tr>
+<tr><td>3</td><td>Quiet line</td><td>tokens: review (steel, dot, first) &#183; fyi &#183; done &#10003; &#183; radar</td><td>default / expanded tray / alert token (rose, action-worded)</td></tr>
+<tr><td>4</td><td>Composer</td><td>panel, 15px placeholder, &#8984;K key</td><td>idle / focus / disconnected (queue locally, banner)</td></tr>
+<tr><td>5</td><td>WorkBlock card</td><td>calendar-located, left accent by kind</td><td>planned / active / done / offline-cached / skeleton / empty-CTA</td></tr>
+<tr><td>6</td><td>Atom card</td><td>pinned, forest border, label + goal + done-when</td><td>OPEN / CLOSED+proof / REFUSED / ABANDONED / STAGED</td></tr>
+<tr><td>7</td><td>Work card</td><td>3px left accent, bold verdict + one meta line</td><td>running / done / failed (plain words, 3 recovery options)</td></tr>
+<tr><td>8</td><td>Tray</td><td>label key + count, body collapses</td><td>closed / open / empty ("nothing here" one-liner)</td></tr>
+<tr><td>9</td><td>Held pill</td><td>clay on cream, count + escalation rule visible</td><td>n held / expanded / zero (hidden)</td></tr>
+<tr><td>10</td><td>Silence clock</td><td>rose 9.5px "proceeds in 46h"</td><td>counting / expired (item auto-proceeds, FYI logged)</td></tr>
+<tr><td>11</td><td>Status dot + banner</td><td>7px dot; banner for offline/stale, action-worded</td><td>ok / warn / offline-cached / stale-dimmed</td></tr>
+<tr><td>12</td><td>Compact table</td><td>13px, Impact+Effort mandatory on task lists</td><td>default / sorted / empty</td></tr>
+<tr><td>13</td><td>Nav rail + footer</td><td>labeled items, gold active, badges (2 max), identity footer</td><td>active / badge / red-dot (attention) / collapsed</td></tr>
+</table>
+
+<h2>Surface rules (codex-locked)</h2>
+<table>
+<tr><th>surface</th><th>rule</th></tr>
+<tr><td>APP</td><td>dense, operational, restrained. Cards only for decisions/records. Greeting is the single serif moment per screen. No atmosphere.</td></tr>
+<tr><td>EDITORIAL (homepage)</td><td>larger rhythm, serif moments, gold particles allowed as atmosphere only &#8212; never on controls. Same tokens.</td></tr>
+<tr><td>DIRECTORY (departments site)</td><td>light information system. Inherits tokens + shared components; sheds its old visual logic. Content and URLs untouched.</td></tr>
+<tr><td>DIVERGENCE</td><td>expensive by design: any variant needs (1) a named surface, (2) explicit token mapping, (3) a written rationale on this page. Otherwise it is a bug.</td></tr>
+</table>
+
+<h2>Departments-site merge spec (wave W-DEPT &#8212; runs on founder go)</h2>
+<ul>
+<li>Swap the domains site's stylesheet head for the token core: bg/ink/line/type from tokens above; keep its page structure, content, and C-*.html URLs byte-identical.</li>
+<li>Charter status dots + tables re-map to semantic tokens (forest=active, rose=draft-pending).</li>
+<li>Top strip gains the app's identity register (small, directory surface rules) so the embedded tab and the web page are indistinguishable.</li>
+<li>Verify: visual diff on 3 sample pages + all links resolve + the app's Departments tab shows no seam.</li>
+</ul>
+
+<h2>The 50 tasks &#8212; implementation plan</h2>
+<table>
+<tr><th>#</th><th>task</th><th>impact (who/what changes)</th><th>effort</th><th>wave</th></tr>
+<tr><td>T1</td><td>tokens.css &#8212; the core file (color/type/space/radius/shadow)</td><td>every surface consumes one file</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T2</td><td>Type loading (Playfair + Inter, self-hosted)</td><td>no CDN dependency</td><td>1h</td><td>W-DS</td></tr>
+<tr><td>T3</td><td>Decision card component + 4 states</td><td>home's core object</td><td>3h</td><td>W-DS</td></tr>
+<tr><td>T4</td><td>Chip component + collapse contract</td><td>every message</td><td>3h</td><td>W-DS</td></tr>
+<tr><td>T5</td><td>Quiet line + trays</td><td>home density discipline</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T6</td><td>Composer + offline queue</td><td>input never lost</td><td>3h</td><td>W-DS</td></tr>
+<tr><td>T7</td><td>WorkBlock card + 6 states</td><td>calendar layer</td><td>3h</td><td>W-DS</td></tr>
+<tr><td>T8</td><td>Atom card (5 states)</td><td>work visibility</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T9</td><td>Work card (running/done/failed)</td><td>agent visibility</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T10</td><td>Held pill + silence clock</td><td>P0 rendered</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T11</td><td>Status dot + banner set</td><td>non-happy states everywhere</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T12</td><td>Compact table (Impact+Effort enforced)</td><td>all lists</td><td>2h</td><td>W-DS</td></tr>
+<tr><td>T13</td><td>Nav rail + identity footer + badge rules</td><td>shell</td><td>3h</td><td>W-DS</td></tr>
+<tr><td>T14</td><td>Component specimen page (this page's live section auto-built from code)</td><td>DS can't drift from code</td><td>3h</td><td>W-DS</td></tr>
+<tr><td>T15</td><td><s>Skin the existing sutra-ui shell w/ tokens.css</s> — <b>DEAD (B18-3)</b>: prototype, unadopted; non-normative — not a task adopters implement</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr>
+<tr><td>T16</td><td>Home page scaffold (rightnow.html) on FastAPI route</td><td>the ratified screen exists in the app</td><td>3h</td><td>W-HOME</td></tr>
+<tr><td>T17</td><td>Greeting + decisions-count line from /api/day</td><td>real data</td><td>2h</td><td>W-HOME</td></tr>
+<tr><td>T18</td><td>Decision stack wired to dispatch/audit (Approve mutates)</td><td>real approvals from the app</td><td>5h</td><td>W-HOME</td></tr>
+<tr><td>T19</td><td>Quiet line fed by /api/state + ledgers</td><td>live counts</td><td>3h</td><td>W-HOME</td></tr>
+<tr><td>T20</td><td>Trays (review w/ silence clocks, inbox drafts, radar)</td><td>involvement axis live</td><td>5h</td><td>W-HOME</td></tr>
+<tr><td>T21</td><td>Composer -> /ws/chat handoff (opens session)</td><td>ask from home</td><td>3h</td><td>W-HOME</td></tr>
+<tr><td>T22</td><td>Alert token pipeline (connector failures, action-worded)</td><td>codex mitigation live</td><td>2h</td><td>W-HOME</td></tr>
+<tr><td>T23</td><td>Home non-happy states (offline-cached/skeleton/empty-CTA)</td><td>never blank</td><td>3h</td><td>W-HOME</td></tr>
+<tr><td>T24</td><td>/api/day v0 (DayTemplate + WorkBlocks + mode, single source)</td><td>the one new engine</td><td>8h</td><td>W-DATA</td></tr>
+<tr><td>T25</td><td>ReviewItem store (question + silence clock, thin)</td><td>REVIEW contract</td><td>4h</td><td>W-DATA</td></tr>
+<tr><td>T26</td><td>GTD clarify pipeline v0 (inbox -> needs-you/drafted/filed)</td><td>pre-reviewed inbox</td><td>8h</td><td>W-DATA</td></tr>
+<tr><td>T27</td><td>Decision object unification (A-ledger + dispatch + held)</td><td>one queue, no doubles</td><td>4h</td><td>W-DATA</td></tr>
+<tr><td>T28</td><td>Deep-link scheme sutra://page/object</td><td>R2 drill-down</td><td>3h</td><td>W-DATA</td></tr>
+<tr><td>T29</td><td>Session-state persistence (scroll/expansion/draft)</td><td>invariant 3</td><td>3h</td><td>W-DATA</td></tr>
+<tr><td>T30</td><td>Chats: session strip from /api/sessions + pinned resumes</td><td>session nav</td><td>3h</td><td>W-CHATS</td></tr>
+<tr><td>T31</td><td>Chats: context pane (placement, charter card, A-ledger) via org_api</td><td>the left pane live</td><td>5h</td><td>W-CHATS</td></tr>
+<tr><td>T32</td><td>Chats: stream renderer on /ws/chat w/ chip folding</td><td>the core surface</td><td>8h</td><td>W-CHATS</td></tr>
+<tr><td>T33</td><td>Chats: atom card pinning from ledger</td><td>work always visible</td><td>3h</td><td>W-CHATS</td></tr>
+<tr><td>T34</td><td>Chats: BLUEPRINT chip expansion (mono box)</td><td>plan visibility</td><td>2h</td><td>W-CHATS</td></tr>
+<tr><td>T35</td><td>Chats: decision card buttons feed answers into session</td><td>approve inline</td><td>4h</td><td>W-CHATS</td></tr>
+<tr><td>T36</td><td>Chats: ws disconnect banner + retry + local queue</td><td>trust under failure</td><td>3h</td><td>W-CHATS</td></tr>
+<tr><td>T37</td><td>Chats: session switching preserves state</td><td>invariant 3</td><td>2h</td><td>W-CHATS</td></tr>
+<tr><td>T38</td><td>Card->session navigation (home calendar -> chats)</td><td>card=session rule</td><td>2h</td><td>W-CHATS</td></tr>
+<tr><td>T39</td><td>Departments tab: iframe at published domains URL + fallback</td><td>zero-drift embed</td><td>1h</td><td>W-DEPT</td></tr>
+<tr><td>T40</td><td>Domains site: import tokens.css (structure untouched)</td><td>one skin</td><td>3h</td><td>W-DEPT</td></tr>
+<tr><td>T41</td><td>Domains site: status dots + tables to semantic tokens</td><td>meaning-consistent</td><td>3h</td><td>W-DEPT</td></tr>
+<tr><td>T42</td><td>Domains site: identity strip (directory register)</td><td>seamless in-tab</td><td>2h</td><td>W-DEPT</td></tr>
+<tr><td>T43</td><td>Visual diff on 3 sample pages + link check + deploy</td><td>merge verified</td><td>2h</td><td>W-DEPT</td></tr>
+<tr><td>T44</td><td>Homepage (asawa-inc): consume tokens.css, editorial variant declared</td><td>homepage joins the system</td><td>3h</td><td>W-DEPT</td></tr>
+<tr><td>T45</td><td>Settings: Connections panel (status, failures-first, re-auth)</td><td>the moved connectors</td><td>3h</td><td>W-SET</td></tr>
+<tr><td>T46</td><td>Settings: day-rhythm editor (template, windows, escalation)</td><td>P0 configurable</td><td>4h</td><td>W-SET</td></tr>
+<tr><td>T47</td><td>Settings: tone/trust toggles wired to config</td><td>caveman/anti-glaze/auto-approve</td><td>2h</td><td>W-SET</td></tr>
+<tr><td>T48</td><td>Settings: kill-switch board w/ audit links</td><td>one page, all gates</td><td>3h</td><td>W-SET</td></tr>
+<tr><td>T49</td><td>End-to-end pass: 4 tabs on live data, invariants 1-8 checked</td><td>V1 candidate</td><td>6h</td><td>W-SET</td></tr>
+<tr><td>T50</td><td>Founder acceptance ride-along + punch list -> V1 ship</td><td>G1 clock starts</td><td>4h</td><td>W-SET</td></tr>
+</table>
+<p class="figcap">Totals: 50 tasks &#183; ~157h &#183; waves: W-DS 15 &#8594; W-HOME 8 (+W-DATA 6 in parallel) &#8594; W-CHATS 9 &#8594; W-DEPT 6 &#8594; W-SET 6. W-DEPT (the departments/homepage merge) executes only on founder go &#8212; it touches live published sites.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap">A6 still uncommitted (department + charter + IA + 14 mocks) &#8212; the design system cites artifacts that exist only in the working tree.</li>
+<li class="gap">W-DEPT + T44 touch LIVE published sites (domains, asawa-inc homepage) &#8212; explicit founder go required before restyle.</li>
+<li class="gap">"code it" not yet given &#8212; T1 waits.</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul><li>W1 engineering page under <a href="engineering/ui.html">engineering/ui.html</a> when the build starts (tasks T1-T50 become its work orders).</li></ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="consumer-ui.html">consumer-ui.html</a> &#8212; IA, locked decisions L1-L10, A-ledger</li>
+<li><code>holding/departments/experience/desktop-app/mocks/2026-08-05-cockpit-final-v1.1.html</code> &#8212; the ratified assembly (screenshot-approved home)</li>
+<li><code>sutra/website/domains/</code> &#8212; the departments site to be merged (W-DEPT)</li>
+<li><code>holding/website/index.html</code> &#8212; Asawa homepage (editorial variant source)</li>
+<li>codex consults 2026-08-05 &#8212; surface rules + divergence-is-expensive contract</li>
+</ul>
+
+</div></div></body></html>

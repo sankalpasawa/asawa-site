@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>B5 — Governance Substrate — Native Tech Design</title><link rel="stylesheet" href="../../shared.css"></head>
+<body>
+<div style="background:#7c2d12;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>SUPERSEDED 2026-06-13.</b> This scaffold stub is replaced by the engineering band's cross-cutting views + per-part pages. See <a href="../../../engineering/index.html" style="color:#fed7aa">engineering/</a>. Archive retained for provenance.</div>
+<nav class="topnav"><a href="../../index.html">← Tech Design Hub</a> · <a href="../../../product-prd-native-v1.html">PRD</a> · Layer: <strong>LLD</strong> · Doc: <strong>B5 — Governance Substrate</strong></nav>
+<header><h1>B5 — Governance Substrate</h1><p class="subtitle">Mechanism deep design for Pillar B5 ("Remember, explain, and keep it mine"). Multi-tenant state machine + DecisionProvenance audit + replay + learned patterns (k=4). Matches §C.7 backlog row T-G3-05.</p></header>
+<div class="scaffold-banner"><span class="fill-me">SCAFFOLD</span> — fill-in pending.</div>
+<section><h2>Scope</h2><p>System-of-record + governance plumbing — what makes Native auditable, replayable, learnable while respecting tenant boundaries.</p></section>
+<div class="canon-pointer"><strong>Canon authority</strong>:<ul><li><a href="../../../../../../sutra/os/native/blocks/">B5 feature spec</a></li><li><a href="../../../product-prd-native-v1.html#pillar-b5">PRD §2.B B5</a></li><li><a href="../../../../../../sutra/os/decisions/ADR-007-decision-provenance-schema.md">ADR-007</a></li></ul></div>
+<section><h2>Planned sections</h2><div class="section-list"><ol><li>4-horizon state model — B5.a active · B5.b portfolio · B5.c audit · B5.d learned</li><li>B5.a active session — minutes/hours, current-in-flight state</li><li>B5.b portfolio in-flight — multi-task state machine (hard problem deferred)</li><li>B5.c audit + replay — DecisionProvenance + replay-window (≤30s for single-day)</li><li>B5.d learned patterns — emergence threshold k=4</li><li>Cross-tenant boundary enforcement (HS-3)</li><li>Standing prefs — operator writes directly</li><li>Persistence + recovery</li><li>Test strategy</li></ol></div></section>
+<section><h2>Back-references</h2><p>PRD §2.B B5 · ADR-007 · ADR-006 · T-G3-05</p></section>
+<footer>Scaffold 2026-05-20. <a href="../../index.html">↑ Hub</a></footer>
+</body></html>

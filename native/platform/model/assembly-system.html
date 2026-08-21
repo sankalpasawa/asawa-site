@@ -1,0 +1,361 @@
+<!doctype html>
+<!-- PAGE: platform-model-assembly-system (v1, DRAFT). PRD subpage of platform-the-model (ruled vocabulary cluster, founder sittings 2026-08-05/06).
+     Uniform skeleton s1-s7: purpose / how it works / product use cases / operational scenarios / contract / implementation today / open questions.
+     Facts trace to DESIGN-DECISION-SHEET.md + GROUNDING-MAP.md + the-model.html only; gaps are bare TODO(founder) markers. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Assembly and System</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.pill.PROPOSED{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; assembly + system</div>
+<h1>Assembly and System — the written composition and the grown organism <span class="lvl">PLATFORM &#183; zoom 4</span></h1>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-assembly-system</code></td><td>PLATFORM / <a href="../the-model.html">platform-the-model</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr></table>
+
+<h2 id="s1">Purpose</h2>
+<p><strong>Assembly</strong> is the WRITTEN composition: which workflow types, which glue types, which edges, plus the pre-provisioned charter and internal-system slots. <strong>System</strong> is the GROWN organism: work engines + glue engines operating together, daily, for a goal — with its OWN goals, constraints, and verify (the meta-unit). You <strong>FOLLOW an Assembly; you RUN a System</strong>. This pair is the composition rung of the ruled vocabulary (founder sittings 2026-08-05/06, decision sheet A1 / A1-ext / A1-FINAL): it exists so that composition — not just single workflows — has a written, followable template side and a lived, accumulating side, with the written/grown distinction preserved exactly as it is one rung down for <a href="../the-model.html#workflow-engine">Workflow → Engine</a>.</p>
+
+<h2 id="s2">How it works</h2>
+<svg viewBox="0 0 880 210" role="img" aria-label="Three edge types: handoff, shared-resource, must-cohere">
+<defs><marker id="eg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="14" y="14" width="276" height="184" rx="9" fill="#fcfcfd" stroke="#e5e7eb" stroke-width="1.4"/><text x="152" y="34" text-anchor="middle" font-size="10.5" font-weight="800">handoff</text>
+<rect x="44" y="70" width="80" height="40" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="84" y="94" text-anchor="middle" font-size="9.5" font-weight="700">A</text><rect x="180" y="70" width="80" height="40" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="220" y="94" text-anchor="middle" font-size="9.5" font-weight="700">B</text><path d="M124,90 L180,90" stroke="#334155" stroke-width="1.5" marker-end="url(#eg)"/>
+<text x="152" y="140" text-anchor="middle" font-size="8.5" fill="#475569">A's output feeds B</text><text x="152" y="156" text-anchor="middle" font-size="8" fill="#9ca3af">needs: order + a usable output</text>
+<rect x="302" y="14" width="276" height="184" rx="9" fill="#fcfcfd" stroke="#e5e7eb" stroke-width="1.4"/><text x="440" y="34" text-anchor="middle" font-size="10.5" font-weight="800">shared-resource</text>
+<rect x="322" y="58" width="74" height="34" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="359" y="80" text-anchor="middle" font-size="9.5" font-weight="700">A</text><rect x="322" y="108" width="74" height="34" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="359" y="130" text-anchor="middle" font-size="9.5" font-weight="700">B</text><rect x="468" y="80" width="92" height="44" rx="7" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/><text x="514" y="100" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1e3a8a">one finite</text><text x="514" y="113" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1e3a8a">thing</text>
+<path d="M396,75 L468,96" stroke="#334155" stroke-width="1.4" marker-end="url(#eg)"/><path d="M396,125 L468,108" stroke="#334155" stroke-width="1.4" marker-end="url(#eg)"/>
+<text x="440" y="166" text-anchor="middle" font-size="8.5" fill="#475569">compete</text><text x="440" y="181" text-anchor="middle" font-size="8" fill="#9ca3af">needs: an allocation rule</text>
+<rect x="590" y="14" width="276" height="184" rx="9" fill="#fcfcfd" stroke="#e5e7eb" stroke-width="1.4"/><text x="728" y="34" text-anchor="middle" font-size="10.5" font-weight="800">must-cohere</text>
+<rect x="610" y="58" width="74" height="34" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="647" y="80" text-anchor="middle" font-size="9.5" font-weight="700">A</text><rect x="610" y="108" width="74" height="34" rx="7" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="647" y="130" text-anchor="middle" font-size="9.5" font-weight="700">B</text><rect x="756" y="80" width="92" height="44" rx="7" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/><text x="802" y="100" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">ONE whole</text><text x="802" y="113" text-anchor="middle" font-size="8" fill="#475569">must fit</text>
+<path d="M684,75 L756,96" stroke="#334155" stroke-width="1.4" marker-end="url(#eg)"/><path d="M684,125 L756,108" stroke="#334155" stroke-width="1.4" marker-end="url(#eg)"/>
+<text x="728" y="166" text-anchor="middle" font-size="8.5" fill="#475569">pieces of one output</text><text x="728" y="181" text-anchor="middle" font-size="8" fill="#9ca3af">needs: a standard / integration</text>
+</svg>
+<p class="figcap">The three typed edges that wire a composition: handoff, shared-resource, must-cohere.</p>
+
+<svg viewBox="0 0 880 210" role="img" aria-label="A system contains workflows as its work plus glue; a unit can be a sub-system">
+<defs><marker id="cn" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="40" y="18" width="800" height="174" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/><text x="56" y="38" font-size="10" font-weight="800" fill="#047857">SYSTEM</text>
+<rect x="60" y="50" width="760" height="30" rx="7" fill="#fff" stroke="#047857" stroke-width="1.3" stroke-dasharray="5 4"/><text x="440" y="69" text-anchor="middle" font-size="9" font-weight="700" fill="#047857">the glue (coordination &#183; audit &#183; identity)</text>
+<text x="62" y="100" font-size="8.5" font-weight="700" fill="#475569">its work ("S1"):</text>
+<rect x="160" y="96" width="180" height="48" rx="8" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="250" y="116" text-anchor="middle" font-size="9" font-weight="700">workflow</text><text x="250" y="131" text-anchor="middle" font-size="7.5" fill="#6b7280">a job (atoms)</text>
+<rect x="360" y="96" width="180" height="48" rx="8" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="450" y="116" text-anchor="middle" font-size="9" font-weight="700">workflow</text><text x="450" y="131" text-anchor="middle" font-size="7.5" fill="#6b7280">a job (atoms)</text>
+<rect x="560" y="92" width="240" height="60" rx="8" fill="#eef2ff" stroke="#3730a3" stroke-width="1.6"/><text x="680" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#3730a3">SUB-SYSTEM</text><text x="680" y="127" text-anchor="middle" font-size="7.5" fill="#475569">a unit that is itself a system</text><text x="680" y="140" text-anchor="middle" font-size="7" fill="#6b7280">(this is the recursion)</text>
+<path d="M680,152 L680,176 L440,176" stroke="#3730a3" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#cn)"/><text x="450" y="173" font-size="7.5" fill="#3730a3">a slot can hold another whole system</text>
+</svg>
+<p class="figcap">A system = work + glue; any slot can hold a sub-system.</p>
+
+<svg viewBox="0 0 880 220" role="img" aria-label="Recursive nesting: company contains department contains team contains workflow">
+<rect x="40" y="14" width="800" height="192" rx="12" fill="none" stroke="#3730a3" stroke-width="2"/><text x="56" y="32" font-size="10" font-weight="800" fill="#3730a3">COMPANY (a system)</text>
+<rect x="90" y="44" width="700" height="148" rx="10" fill="none" stroke="#334155" stroke-width="1.6"/><text x="106" y="62" font-size="9.5" font-weight="700">DEPARTMENT (also a system)</text>
+<rect x="150" y="74" width="580" height="104" rx="9" fill="none" stroke="#334155" stroke-width="1.4"/><text x="166" y="92" font-size="9" font-weight="700">TEAM (also a system)</text>
+<rect x="220" y="104" width="440" height="58" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/><text x="440" y="128" text-anchor="middle" font-size="9.5" font-weight="700">WORKFLOW (the smallest job)</text><text x="440" y="144" text-anchor="middle" font-size="7.5" fill="#6b7280">made of atoms</text>
+</svg>
+<p class="figcap">The same shape nests: company, department, team, workflow.</p>
+
+<svg viewBox="0 0 880 200" role="img" aria-label="Composition and recursion: atom to workflow to skill to workflow-of-workflows, with interfaces_with edges">
+<defs><marker id="rc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="20" y="80" width="110" height="40" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="75" y="98" text-anchor="middle" font-size="9" font-weight="700">Work-Atom</text><text x="75" y="111" text-anchor="middle" font-size="7" fill="#6b7280">a Step</text>
+<rect x="180" y="80" width="120" height="40" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="240" y="98" text-anchor="middle" font-size="9" font-weight="700">Workflow</text><text x="240" y="111" text-anchor="middle" font-size="7" fill="#6b7280">step_graph of atoms</text>
+<rect x="350" y="80" width="140" height="40" rx="7" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/><text x="420" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#047857">reuse_tag &#8594; Skill</text><text x="420" y="111" text-anchor="middle" font-size="7" fill="#475569">+ return_contract = callable</text>
+<rect x="540" y="60" width="150" height="80" rx="9" fill="#fff" stroke="#334155" stroke-width="1.6"/><text x="615" y="80" text-anchor="middle" font-size="9" font-weight="700">Workflow-of-Workflows</text><text x="615" y="95" text-anchor="middle" font-size="7.5" fill="#6b7280">extension_ref (v1 null)</text>
+<rect x="556" y="102" width="54" height="26" rx="4" fill="#f8fafc" stroke="#64748b" stroke-width="1.1"/><text x="583" y="119" text-anchor="middle" font-size="7">sub-WF</text>
+<rect x="622" y="102" width="54" height="26" rx="4" fill="#f8fafc" stroke="#64748b" stroke-width="1.1"/><text x="649" y="119" text-anchor="middle" font-size="7">sub-WF</text>
+<rect x="730" y="80" width="130" height="40" rx="7" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="795" y="98" text-anchor="middle" font-size="9" font-weight="700">toward the whole system</text><text x="795" y="111" text-anchor="middle" font-size="7" fill="#6b7280">aspirational &#183; gated</text>
+<path d="M130,100 L180,100" stroke="#334155" stroke-width="1.3" marker-end="url(#rc)"/><text x="134" y="94" font-size="7" fill="#475569">step_graph</text>
+<path d="M300,100 L350,100" stroke="#047857" stroke-width="1.3" marker-end="url(#rc)"/><text x="304" y="94" font-size="7" fill="#475569">reuse_tag=true</text>
+<path d="M490,100 L540,100" stroke="#334155" stroke-width="1.3" marker-end="url(#rc)"/><text x="494" y="94" font-size="7" fill="#475569">skill_ref / extension_ref</text>
+<path d="M690,100 L730,100" stroke="#334155" stroke-width="1.3" marker-end="url(#rc)"/>
+<path d="M240,120 C240,160 420,160 420,120" stroke="#6b7280" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#rc)"/><text x="330" y="158" text-anchor="middle" font-size="7" fill="#6b7280">interfaces_with[] &#8212; typed edges between workflows</text>
+</svg>
+<p class="figcap">Composition and recursion — atom to workflow to skill toward systems (migrated from the v2 page).</p>
+
+<p>The two halves, side by side (see <a href="../the-model.html#assembly-system">the hub diagram</a>):</p>
+<table>
+<tr><th>Half</th><th>Life</th><th>Contents</th><th>State</th></tr>
+<tr><td><strong>Assembly</strong></td><td>WRITTEN (template)</td><td>workflow types + glue types + edges; pre-provisioned charter slot (may be empty) + five internal-system slots hardcoded from birth</td><td>none — stateless, FOLLOW-able</td></tr>
+<tr><td><strong>System</strong></td><td>GROWN (lived)</td><td>work engines + glue engines — only engines, nothing else (X3); own goals + constraints + verify</td><td>composition-owned state (delegation map, budgets, locks) held BY glue engines, never floating outside an engine (X3)</td></tr>
+</table>
+<p>Rules that shape the pair:</p>
+<ul>
+<li><strong>System test</strong>: a collection of engines is a System when at least one GLUE ENGINE runs above the work engines, owned by none of them (sheet A1).</li>
+<li><strong>Standing systems = the domain tree</strong> (Ruling 2): departments ARE standing systems; the domain tree is their address book. Standing systems may grow "discrete and messy" — that is allowed.</li>
+<li><strong>Nesting is free</strong> (X3): a nested System appears to its parent as ONE Engine; systems cascade arbitrarily. A System viewed from outside is one bigger Engine.</li>
+<li><strong>Boundaries</strong> (X4, as amended by Ruling 3): standing systems are domain-drawn; use-case-drawn compositions are <a href="../the-model.html#shadow-systems">shadow systems</a> — structured overlays with their own glue engine that coordinate standing systems and never mutate them.</li>
+<li><strong>Pre-provisioning</strong> (Ruling 1): every system gets its charter and <a href="../the-model.html#internal-system">internal-system</a> slots hardcoded from the start, even empty — growth stays bounded, nothing evolves into undefined shapes.</li>
+<li><strong>Charter is a property of the system</strong> (A1-FINAL-2): goals, constraints, authority; one-directional — only a System gets a charter, never the reverse. Rules, never work-state.</li>
+<li><strong>Two dials</strong> (A1-FINAL): means = intelligence | procedure | composition; life = template | lived. Assembly is the seed, System the grown organism.</li>
+</ul>
+<p><strong>The birth story (maturation strip)</strong> — things earn their nouns: workflows accrete and, by living, become engines (X2); engines collide on shared resources; the FIRST glue engine enables composition — a pile becomes a System by first glue + goal; the use case draws the boundary (X4). The S1→S5 maturation ladder becomes "which glue engines exist yet" (sheet A1).</p>
+
+<h2 id="s3">Product use cases</h2>
+<table>
+<tr><th>Actor</th><th>Wants</th><th>How Assembly / System serves it</th></tr>
+<tr><td>Lending ops manager (the digital lending company, sheet §8)</td><td><code>W-disburse-loan</code>, <code>W-kyc-verify</code>, <code>W-emi-reconcile</code> running as one daily operation</td><td>the branch is a standing System: three workflows grown to engines under shared glue; the Assembly is the written composition the walkthrough validates against the locked model</td></tr>
+<tr><td>Founder authoring docs (sheet §8c)</td><td>"publish coherent docs" — authoring, site-publish, sidebar-regen never drifting apart</td><td>the Documentation System passes the X4 test: md-authoring + site-publish + sidebar-regen engines held by REAL glue (<code>_sidebar.py</code> + <code>_manifest-check.py</code>) — the second existence proof for X3</td></tr>
+<tr><td>Governance operator (grounding §2)</td><td>silent failures surfaced and acted on without manual watching</td><td>daily governance audit + triage cron are running audit/adaptation glue engines — the first real glue engine and existence proof for X3; the governance stack is a System whose glue keeps the charter true</td></tr>
+<tr><td>Founder issuing a cross-cutting mandate ("cut cost 15%") or an investor update spanning two departments (Ruling 3)</td><td>cross-system work without rewiring departments</td><td>a shadow system: own glue engine + own charter, coordinates the standing systems, leaves them untouched, retires or persists on its own terms</td></tr>
+<tr><td>Department owner (Ruling 2)</td><td>a place where the department's engines, rules, and address live</td><td>the department IS a standing System; the domain tree is its address; its charter (pre-provisioned, possibly still empty) is its rule-book</td></tr>
+</table>
+
+<h2 id="s4">Operational scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Path through the concept</th><th>Outcome</th></tr>
+<tr><td>Happy path — "create a doc" (sheet §8c)</td><td>intent → FOLLOW <code>W-md-authoring</code> → atoms run inside the Md-Authoring Engine → System-level glue (<code>_sidebar.py</code>, <code>_manifest-check.py</code>) verifies site coherence</td><td>PASS with 3 gaps (A8, A3, A4) — the layers compose on a real case with zero forcing</td></tr>
+<tr><td>Failure path — verify fails 3x (sheet §8 edge case)</td><td>retry budget exhausted → ESCALATED → Approval; escalation crosses from the engine to the system's governance</td><td>human rules; the attempt history is on the record, not lost</td></tr>
+<tr><td>Failure path — marker race (R12)</td><td>two engines shipped by unaware peers contend on one store — this IS the coordination glue engine's trigger (X3): who-may-call-whom + shared-resource edge</td><td>concurrent engines touching one store are sequenced/locked by glue, not by luck</td></tr>
+<tr><td>Growth path — a pile becomes a System (A1-FINAL)</td><td>workflows accrete → become engines by living (X2) → engines collide → first glue engine minted → composition + goal = System; use case draws the boundary (X4)</td><td>the noun is earned, not declared; composition write-backs via GROW are ALWAYS gated, never auto</td></tr>
+</table>
+
+<h2 id="s5">Contract</h2>
+<svg viewBox="0 0 880 200" role="img" aria-label="Closed taxonomy is a fixed button menu; open is a free text box">
+<line x1="440" y1="24" x2="440" y2="186" stroke="#e5e7eb" stroke-width="1.5"/>
+<text x="215" y="20" text-anchor="middle" font-size="10" font-weight="800" fill="#047857">CLOSED &#8212; fixed menu</text>
+<rect x="40" y="34" width="350" height="120" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/><text x="215" y="52" text-anchor="middle" font-size="8.5" fill="#475569">failure_policy: exactly 5 buttons</text>
+<rect x="60" y="62" width="95" height="24" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="107" y="78" text-anchor="middle" font-size="7.5">rollback</text>
+<rect x="165" y="62" width="95" height="24" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="212" y="78" text-anchor="middle" font-size="7.5">escalate</text>
+<rect x="270" y="62" width="95" height="24" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="317" y="78" text-anchor="middle" font-size="7.5">pause</text>
+<rect x="60" y="94" width="95" height="24" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="107" y="110" text-anchor="middle" font-size="7.5">abort</text>
+<rect x="165" y="94" width="95" height="24" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="212" y="110" text-anchor="middle" font-size="7.5">continue</text>
+<text x="215" y="140" text-anchor="middle" font-size="7.5" fill="#047857">the machine knows every choice &#8594; handles all</text>
+<text x="665" y="20" text-anchor="middle" font-size="10" font-weight="800" fill="#b91c1c">OPEN &#8212; type anything</text>
+<rect x="490" y="62" width="350" height="56" rx="9" fill="#fef2ff" stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="5 4"/><text x="665" y="86" text-anchor="middle" font-size="8.5" fill="#b91c1c">[ free text &#8212; infinite kinds ]</text><text x="665" y="102" text-anchor="middle" font-size="7.5" fill="#b91c1c">new kinds appear unannounced</text>
+<text x="665" y="150" text-anchor="middle" font-size="7.5" fill="#6b7280">surprises slip through &#8594; break things</text>
+</svg>
+<p class="figcap">Closed menus vs open text — why the composition&#39;s kinds are a fixed menu.</p>
+
+<h3>Data model</h3>
+<table>
+<tr><th>Field</th><th>Type-ish</th><th>Meaning</th><th>Source of truth</th></tr>
+<tr><td><code>assembly.workflow_types</code></td><td>list of workflow-type refs</td><td>the work half of the written composition</td><td>sheet A1-ext (Composition row)</td></tr>
+<tr><td><code>assembly.glue_types</code></td><td>list of glue-engine types: coordination, priority/resource, audit, adaptation, identity</td><td>the glue half; the five types are engine TYPES — slot semantics canonical on <a href="internal-system.html">Internal System</a></td><td>sheet A1 (glue-engine types)</td></tr>
+<tr><td><code>assembly.edges</code></td><td>typed edges between members</td><td>who connects to whom in the written composition; cross-tenant edge lifecycle deferred (A7)</td><td>sheet A1-ext</td></tr>
+<tr><td><code>assembly.charter_slot</code></td><td>pre-provisioned property slot</td><td>the future system's charter, hardcoded from birth, empty is fine</td><td>Ruling 1 + A1-FINAL-2</td></tr>
+<tr><td><code>assembly.internal_system_slots</code></td><td>5 hardcoded slots</td><td>one slot per glue engine of the internal system</td><td>Ruling 1; hub internal-system section</td></tr>
+<tr><td>assembly serialization schema</td><td>—</td><td>TODO(founder):</td><td>none — no schema ruled; grounding: the <code>extension_ref</code> seam is mandated null v1.0</td></tr>
+<tr><td>assembly registry home</td><td>—</td><td>Assemblies are templates in the FOLLOW catalog at ALL levels (A1-ext consequence); the catalog itself has no home yet</td><td>A1-ext; catalog home OPEN (A2)</td></tr>
+<tr><td><code>system.members</code></td><td>work engines + glue engines</td><td>a System consists ONLY of engines and other engines (X3)</td><td>sheet A1 + X3</td></tr>
+<tr><td><code>system.goal</code> / <code>system.constraints</code> / <code>system.verify</code></td><td>own particles</td><td>the meta-unit: the System has its own goals, constraints, verify</td><td>A1-FINAL (System rung)</td></tr>
+<tr><td><code>system.charter</code></td><td>property</td><td>goals, constraints, authority; one-directional; rules, never work-state</td><td>A1-FINAL-2</td></tr>
+<tr><td><code>system.state</code></td><td>delegation map, budgets, locks</td><td>composition-owned state held BY glue engines: coordination owns who-may-call-whom, priority owns budgets</td><td>A1-ext + X3</td></tr>
+<tr><td>system representation</td><td>VIEW</td><td>a view over the <code>extension_ref</code> composition seam; no schema until the bootstrap proof (W5)</td><td>sheet A1</td></tr>
+<tr><td>parent-facing interface</td><td>object or view (IF1)</td><td>a nested System is one Engine to its parent (X3); object-vs-view is picked at canonization</td><td>X3; IF1 OPEN (sheet edge-case registry)</td></tr>
+<tr><td><code>system.tenancy</code></td><td>custody label</td><td>design DEFERRED by ruling ("later on, not right now")</td><td>A1-FINAL-2</td></tr>
+<tr><td>system identity field</td><td>—</td><td>TODO(founder):</td><td>—</td></tr>
+</table>
+<h3>Invariants</h3>
+<ul>
+<li>X1 no naked work — canonical owner: <a href="work-atom.html">Work-Atom</a> — this page depends on it for the atom floor.</li>
+<li>X2 no stateless execution — canonical owner: <a href="workflow-engine.html">Workflow + Engine</a> — this page depends on it for engine birth.</li>
+<li>X3 engines all the way down — Systems contain only engines; nested System = one Engine to its parent; all composition state is held by glue engines.</li>
+<li>X4 (amended) — standing systems are domain-drawn; use-case-drawn compositions are shadow systems.</li>
+<li>System test — at least one glue engine above the work engines, owned by none of them.</li>
+<li>Seam semantics (RULED, &#167;9c G7 — 2026-08-17 sitting) — min-wins on gates, conjunction on constraints, escalate on unsatisfiable.</li>
+<li>Charter is one-directional (only Systems have charters) and holds rules, never work-state.</li>
+<li>Engine-Library rule — canonical owner: <a href="workflow-engine.html">Workflow + Engine</a> — this page depends on it for crystallization safety.</li>
+<li>Shadow systems never mutate the standing systems they coordinate.</li>
+<li>Pre-provisioning — charter + internal-system slots exist from birth; empty is fine.</li>
+<li>Distribution ships templates only — canonical owner: <a href="workflow-engine.html">Workflow + Engine</a> (A1-ext consequence; D33 in one sentence).</li>
+</ul>
+<h3>Lifecycle</h3>
+<ul>
+<li>Authored: an Assembly is WRITTEN, starting from the use case (X4).</li>
+<li>FOLLOW → RUN: following the Assembly brings a System to life; each member engine is born at its workflow's first run (X2).</li>
+<li>Organic path: pile → System by first glue + goal; the maturation reading is "which glue engines exist yet".</li>
+<li>Shadow path: created for a cross-system use case; retires or persists on its own terms.</li>
+<li>Composition change: GROW write-backs (shapes, who-may-call-whom, catalog) are ALWAYS gated, never auto (sheet §2).</li>
+</ul>
+<h3>Ownership</h3>
+<ul>
+<li>Standing systems are addressed by the domain tree (Ruling 2); the charter is the system's own property.</li>
+<li>Within a System: the coordination glue engine owns who-may-call-whom; the priority engine owns budgets (X3).</li>
+<li>Assembly authoring/retiring authority: TODO(founder):</li>
+</ul>
+<h3>Failure modes</h3>
+<ul>
+<li>Verify fails repeatedly → retry budget exhausted → ESCALATED → Approval (sheet §8; budget home = Charter field <code>retry_budget</code>, default 3 — A8 RULED as REC at the 2026-08-17 sitting; grounding: no retry budget exists in the build yet).</li>
+<li>Resource contention between engines → coordination glue sequences/locks (R12).</li>
+<li>Un-workflowed mutation → cannot dispatch (X1); a workflowed-but-odd one surfaces via the audit glue engine within one cadence tick (R6).</li>
+<li>Decay — green-never-consulted and red-never-fixed instruments flagged by the audit glue engine (R10).</li>
+</ul>
+<h3>Observability + audit</h3>
+<ul>
+<li>Every run appends to the append-only record (X2); the audit glue engine reads the record on cadence (R6, R9).</li>
+<li><div class="note">EVIDENCE schema RULED as REC, spec-only (A3, 2026-08-17 sitting — nothing reads it in-loop yet) — the GROW arms that would grow a System consume prose today. Ledger rows in the build are keyed by session+atom, never by workflow, so no engine slice is queryable per-workflow; <code>flow-ledger.jsonl</code> is the closest store (grounding §3).</div></li>
+</ul>
+
+<h2 id="s6">Implementation today</h2>
+<div class="note">Per the grounding map, Assembly and System are the MISSING top of the ladder: neither exists as an object in the build. The reserved seam is <code>extension_ref</code>, mandated null v1.0 — the composition seam is explicitly closed.</div>
+<table>
+<tr><th>What exists</th><th>File evidence</th><th>Fidelity</th><th>Gap</th></tr>
+<tr><td>Assembly: nothing; <code>extension_ref</code> mandated null v1.0</td><td><code>primitives/workflow.md</code></td><td>MISSING</td><td>composition seam explicitly closed</td></tr>
+<tr><td>System: nothing</td><td>—</td><td>MISSING</td><td>X4 untestable today</td></tr>
+<tr><td>X3 as construct: 2 de-facto glue proofs run daily; nothing declares or composes them</td><td><code>daily-governance-audit.sh</code>; <code>_sidebar.py</code>; <code>_manifest-check.py</code></td><td>MISSING (as construct)</td><td>glue real, unnamed</td></tr>
+<tr><td>Real glue inventory across all five types (+ adaptation): audit, adaptation, coordination, priority/resource, identity components running</td><td>grounding §2 (<code>governance-triage-headless.sh</code>, <code>reset-turn-markers.sh</code>, flock mint lock, dispatch freeze-at-bind, <code>routing-policy.json</code>, <code>permission-gate.sh</code>)</td><td>evidence only</td><td>nothing declares or composes them; the Stop event's 18-hook battery is itself an unnamed audit glue engine (inference)</td></tr>
+<tr><td>Workflow runtime: zero workflows in user-kit (against 56 domains, 163 charters, 239 placements)</td><td><code>~/.sutra-native/user-kit/</code></td><td>MISSING (runtime)</td><td>the ladder builds Engine/Assembly/System on the one object with no runtime instances — registry build FUNDED as the first v1 act, P1 at v1 start (RULED 2026-08-17; grounding §6 kept as build status)</td></tr>
+<tr><td>Domain (the standing-system address view): 56 live <code>dref-*.json</code>, parent_ref tree, flock-guarded mint</td><td><code>user-kit/domains/</code>; <code>placement_engine.py:276-425</code></td><td>FAITHFUL</td><td><code>authority:{}</code> empty on every record</td></tr>
+<tr><td>Charter stubs: 163 <code>C-*.json</code>, domain_ref binding total (163/163)</td><td><code>user-kit/charters/</code>; <code>C-00f213b12f61c3ca.json</code></td><td>PARTIAL</td><td>shape-without-rules; binding unread by the atom runtime — Ruling 1 validates the stubs as intentional pre-provisioning, not debt</td></tr>
+</table>
+
+<h2 id="s7">Open questions</h2>
+<table>
+<tr><th>Question</th><th>State</th></tr>
+<tr><td>Work-state shelves — where a system's in-flight and thought-through-but-unimplemented work lives: four shelves in the system's record (intent queue / template shelf / live board / proposal queue), with owners; charter holds rules never work-state</td><td>RULED (A11, 2026-08-17 sitting) — four shelves with owners; HARD where stores exist; registry build FUNDED as the first v1 act</td></tr>
+<tr><td>CONSTRAINT-PROPAGATION — how constraints flow down system → engine → workflow → atom</td><td>DEFERRED (named open question)</td></tr>
+<tr><td>Tenancy design, including shadow-system tenancy semantics</td><td>DEFERRED by ruling</td></tr>
+<tr><td>IF1 — parent-facing interface of a nested System: object or view</td><td>OPEN (picked at canonization)</td></tr>
+<tr><td>Workflow-registry timing</td><td>RULED (2026-08-17 sitting) — registry build FUNDED as the first v1 act, P1 at v1 start; zero runtime workflows remains a build-status fact</td></tr>
+<tr><td>CH-BRAND — a charter spanning two domains: shadow-system charter OR spanning charter</td><td>OPEN (picked at canonization)</td></tr>
+<tr><td>A2 — FOLLOW catalog home (Assemblies are templates in it at all levels)</td><td>RULED as REC (2026-08-17 sitting, Quick eight) — reuse_tag files are the catalog + one index spec</td></tr>
+<tr><td>A7 — cross-tenant delegation grant/revoke (who-may-call-whom edge lifecycle)</td><td>DEFERRED (single-tenant small system never fires it)</td></tr>
+<tr><td>Maturation S2-S5 detector signatures ("which glue engines exist yet" sensing)</td><td>DEFERRED (sheet §9)</td></tr>
+<tr><td>Tenant-isolation wording vs code — ruling says isolation; <code>placement_engine.py:242-244</code> disclaims it</td><td>OPEN (grounding §6, founder decision needed)</td></tr>
+<tr><td>Assembly serialization schema</td><td>TODO(founder):</td></tr>
+<tr><td>System identity field</td><td>TODO(founder):</td></tr>
+<tr><td>Assembly authoring/retiring authority</td><td>TODO(founder):</td></tr>
+</table>
+
+<h3>Proposed features — 2026-08-07 sitting queue</h3>
+<p>These are PROPOSED product requirements awaiting founder ruling — nothing below is ruled; the decision sheet remains the authority.</p>
+<table>
+<tr><th>Feature</th><th>What it requires</th><th>Status</th><th>Source</th></tr>
+<tr><td>INTERACTION LAYER — pre-A7 candidate contract shape (A7's delegation lifecycle stays DEFERRED by ruling; this would only sketch a contract shape a future A7 ruling could adopt — it does NOT resolve or un-defer A7)</td><td>standing typed contracts between systems — requester, provider, allowed request types, evidence format, SLA, auto/ask posture per type, expiry, revoke switch</td><td><span class="pill PROPOSED">PROPOSED</span></td><td>founder direction 2026-08-07 · org-sim <code>wf_c9980072-51b</code> (internal organizational-simulation run recorded on the decision sheet; no on-site page)</td></tr>
+<tr><td>3-lane routing rule — contract call for routine known-shape exchanges / horizontal-owned class workflow for recurring classes / shadow for novel+temporary</td><td>sim-proposed amendments: contract amendment would be cheaper than stretching; horizontal performance checks; shadow starter kit</td><td><span class="pill PROPOSED">PROPOSED</span></td><td>sheet card A12 · org-sim wf_c9980072-51b</td></tr>
+<tr><td>HORIZONTALS — proposed as a CLASSIFICATION + contract routing, NOT a new standing-system drawing rule (X4 boundary language above stays authoritative: standing systems remain domain-drawn; use-case-drawn compositions remain shadows)</td><td>birth signal: same problem style declared on 3+ systems</td><td><span class="pill PROPOSED">PROPOSED</span></td><td>PROBLEM-STYLES.md (<code>holding/plans/native-sop-program/</code>; styles concept A12 RULED 2026-08-17) · org-sim <code>wf_c9980072-51b</code></td></tr>
+<tr><td>OPEN GAP — recurring AND temporary work fits no lane (sim S4, festival campaign): neither contract call, horizontal class, nor shadow would cover it</td><td>TODO(founder):</td><td><span class="pill PROPOSED">PROPOSED</span></td><td>sheet card A12 · org-sim wf_c9980072-51b</td></tr>
+<tr><td>PIPE — lane 0 below contracts: workflow A's stored output would feed workflow B once; recorded on the thread, mints nothing; used 3x, codify would PROPOSE the composed workflow (gated)</td><td>thread-recorded one-shot feed over existing stored outputs; a codify gate that would only PROPOSE — never auto-mint — the composed workflow</td><td><span class="pill PROPOSED">PROPOSED</span></td><td>sheet A14 (founder-directed 2026-08-08)</td></tr>
+<tr><td>SHELL — the named surface where pipes are legal and auto-recorded (today the operator session; later the cockpit); pipe and shell would mint together or not at all</td><td>one named surface designation; auto-recording of every pipe crossing it; paired minting with PIPE</td><td><span class="pill PROPOSED">PROPOSED</span></td><td>sheet A14 (founder-directed 2026-08-08)</td></tr>
+</table>
+
+<h3>Proposed architecture — system interaction (zero new objects)</h3>
+<p><span class="pill PROPOSED">PROPOSED</span> Source: founder direction 2026-08-07 (in-session) · sheet cards · zero new objects — composes existing primitives only. Everything below reads over primitives that already exist (Workflow, Step, Trigger, Charter, Domain, ExecutionResult, EngineEvent, Approval), ruled model mechanisms, and already-queued cards; the typed contract is only the SHAPE an eventual A7 ruling could adopt — A7 stays DEFERRED.</p>
+
+<svg viewBox="0 0 880 300" role="img" aria-label="Proposed repeating cell: one system holding five glue engines and work engines, with four seams: charter-in, intake, evidence-out, escalation-up">
+<defs><marker id="ia" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="696" y="8" width="172" height="20" rx="4" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="782" y="22" text-anchor="middle" font-size="8.5" font-weight="800" fill="#b45309">PROPOSED &#183; awaiting ruling</text>
+<text x="440" y="24" text-anchor="middle" font-size="9" font-weight="800" fill="#6b7280">PARENT SYSTEM</text>
+<path d="M300,34 L300,78" stroke="#334155" stroke-width="1.4" marker-end="url(#ia)"/><text x="290" y="50" text-anchor="end" font-size="8" fill="#475569">charter-in</text><text x="290" y="62" text-anchor="end" font-size="7" fill="#9ca3af">goals &#183; constraints &#183; budgets &#8212; narrowing only</text>
+<path d="M580,78 L580,34" stroke="#334155" stroke-width="1.4" marker-end="url(#ia)"/><text x="590" y="50" text-anchor="start" font-size="8" fill="#475569">escalation-up</text><text x="590" y="62" text-anchor="start" font-size="7" fill="#9ca3af">toward parent (ESCALATED &#8594; Approval)</text>
+<rect x="120" y="78" width="640" height="196" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/><text x="136" y="98" font-size="10" font-weight="800" fill="#047857">SYSTEM &#8212; from outside: ONE engine (X3)</text>
+<text x="136" y="120" font-size="8" font-weight="700" fill="#475569">glue engines:</text>
+<rect x="140" y="128" width="112" height="26" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="196" y="145" text-anchor="middle" font-size="7.5" font-weight="700">coordination</text>
+<rect x="260" y="128" width="112" height="26" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="316" y="141" text-anchor="middle" font-size="7.5" font-weight="700">priority</text><text x="316" y="150" text-anchor="middle" font-size="6" fill="#6b7280">(intent queue)</text>
+<rect x="380" y="128" width="112" height="26" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="436" y="145" text-anchor="middle" font-size="7.5" font-weight="700">audit</text>
+<rect x="500" y="128" width="112" height="26" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="556" y="145" text-anchor="middle" font-size="7.5" font-weight="700">adaptation</text>
+<rect x="620" y="128" width="112" height="26" rx="5" fill="#fff" stroke="#047857" stroke-width="1.2"/><text x="676" y="145" text-anchor="middle" font-size="7.5" font-weight="700">identity</text>
+<text x="136" y="186" font-size="8" font-weight="700" fill="#475569">work engines:</text>
+<rect x="180" y="194" width="250" height="52" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="305" y="215" text-anchor="middle" font-size="9" font-weight="700">Disbursal engine</text><text x="305" y="230" text-anchor="middle" font-size="7" fill="#6b7280">W-disburse-loan, grown by living (X2)</text>
+<rect x="470" y="194" width="250" height="52" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="595" y="215" text-anchor="middle" font-size="9" font-weight="700">Reconcile engine</text><text x="595" y="230" text-anchor="middle" font-size="7" fill="#6b7280">W-emi-reconcile, grown by living (X2)</text>
+<path d="M28,180 L120,180" stroke="#334155" stroke-width="1.4" marker-end="url(#ia)"/><text x="74" y="166" text-anchor="middle" font-size="8" fill="#475569">intake</text><text x="74" y="196" text-anchor="middle" font-size="6.5" fill="#9ca3af">requests &#8594; intent queue</text>
+<path d="M760,180 L852,180" stroke="#334155" stroke-width="1.4" marker-end="url(#ia)"/><text x="806" y="166" text-anchor="middle" font-size="8" fill="#475569">evidence-out</text><text x="806" y="196" text-anchor="middle" font-size="6.5" fill="#9ca3af">always &#183; append-only</text>
+</svg>
+<p class="figcap">The repeating cell (PROPOSED) — from outside, a system is ONE engine (ruled, X3); in this proposal everything would cross through these four seams: charter-in, intake, evidence-out, escalation-up. Slot semantics for the five glue engines: canonical on <a href="internal-system.html">Internal System</a>.</p>
+
+<p><strong>The three planes</strong> — every crossing would sit on exactly one of three planes; none would need a new object.</p>
+<table>
+<tr><th>Plane</th><th>What would cross</th><th>Composes (existing only)</th></tr>
+<tr><td><strong>DOWN</strong></td><td>charter writes + budget grants — gated, narrowing only (a child's charter can only narrow its parent's)</td><td>Charter (a property of the system, A1-FINAL-2) + Approval-gated GROW write-backs</td></tr>
+<tr><td><strong>ACROSS</strong></td><td>request/result between peer systems on a typed edge — the SHAPE an eventual A7 ruling would adopt; A7 stays DEFERRED</td><td><code>assembly.edges</code> typed edges + the six roles below</td></tr>
+<tr><td><strong>UP</strong></td><td>evidence always; escalation to the lowest shared parent</td><td>append-only record (X2) + ESCALATED state + Approval</td></tr>
+</table>
+
+<p><strong>Six message ROLES over existing primitives</strong> — no new types; the EngineEvent enum is closed. Every name below is a proposed ROLE read over primitives that already exist, never a new message or event type.</p>
+<table>
+<tr><th>Role</th><th>Existing primitive it composes</th><th>Status</th></tr>
+<tr><td>REQUEST</td><td>a typed intent (B1 vocabulary) carried by Trigger/routing; if accepted it would land on the proposed priority-glue intent queue and resolve to Workflow / WorkflowStep execution (X1 intact — no naked work)</td><td><span class="pill PROPOSED">PROPOSED</span></td></tr>
+<tr><td>ACCEPT / DECLINE</td><td>Approval</td><td><span class="pill PROPOSED">PROPOSED</span></td></tr>
+<tr><td>RESULT</td><td>ExecutionResult</td><td><span class="pill PROPOSED">PROPOSED</span></td></tr>
+<tr><td>SIGNAL</td><td>existing EngineEvent types consumed by a subscribed Trigger</td><td><span class="pill PROPOSED">PROPOSED</span></td></tr>
+<tr><td>ESCALATE</td><td>ESCALATED state + Approval</td><td><span class="pill PROPOSED">PROPOSED</span></td></tr>
+<tr><td>REVOKE</td><td>the revoke transition on the Approval/grant</td><td><span class="pill PROPOSED">PROPOSED</span></td></tr>
+</table>
+
+<div class="planned"><strong>Worked example (lending, proposed)</strong> — Collections asks Product for an EMI-reminder nudge. The REQUEST (goal: nudge overdue EMI payers; due-by: before the next reconcile run) would land on Product's intent queue. Product's own priority glue orders it against Product's other work — autonomy stays with Product; Collections never reaches inside. On completion the RESULT would come back as an ExecutionResult with evidence attached — one thread id end to end: request, approval, run, evidence on the same thread.</div>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The assembly serialization schema is an open TODO(founder) (s5) and neither Assembly nor System exists as an object in the build (s6, <code>extension_ref</code> mandated null v1.0). The mock below composes only this page's s5 data-model fields; <code>&lt;decision_pending&gt;</code> marks unruled fields. ILLUSTRATIVE — do not build against.
+<p>A written Assembly — the lending branch composition:</p>
+<pre style="background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">{
+  "assembly": "&lt;decision_pending — serialization schema, s5&gt;",
+  "workflow_types": ["W-disburse-loan", "W-kyc-verify", "W-emi-reconcile"],
+  "glue_types": ["coordination", "priority/resource", "audit", "adaptation", "identity"],
+  "edges": [
+    {"type": "handoff",         "from": "W-kyc-verify",   "to": "W-disburse-loan"},
+    {"type": "shared-resource", "members": ["W-disburse-loan", "W-emi-reconcile"], "resource": "branch ledger"},
+    {"type": "must-cohere",     "members": ["W-disburse-loan", "W-emi-reconcile"], "whole": "daily branch close"}
+  ],
+  "charter_slot": {},
+  "internal_system_slots": {"coordination": null, "priority": null, "audit": null, "adaptation": null, "identity": null}
+}</pre>
+</div>
+<p>The grown System persists no single file — its state is composition-owned state held BY glue engines (X3: delegation map, budgets, locks in their record slices). Its visible output is those slices — see <a href="internal-system.html#s-output">the glue-engine records on Internal System</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Rulings of record: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> (A1 family)</li>
+<li>Build grounding: <code>holding/plans/native-sop-program/GROUNDING-MAP.md</code></li>
+<li>Hub: <a href="../the-model.html">The Model</a> &#183; siblings: <a href="particles.html">Particles</a> &#183; <a href="work-atom.html">Work-Atom</a> &#183; <a href="workflow-engine.html">Workflow + Engine</a> &#183; <a href="internal-system.html">Internal System</a> &#183; <a href="shadow-systems.html">Shadow Systems</a> &#183; <a href="properties.html">Properties (Charter · Domain · Tenancy)</a></li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+
+</div></div></body></html>

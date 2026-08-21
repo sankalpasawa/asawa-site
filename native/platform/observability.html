@@ -1,0 +1,371 @@
+<!doctype html>
+<!-- CANONICAL PAGE TEMPLATE — Native IA v1 (migration P1, 2026-06-12).
+     Agents: copy this file, replace every __PLACEHOLDER__, keep everything else byte-identical.
+     Anatomy order is MANDATORY: map -> work-order -> own diagram -> tables -> prose/gaps.
+     The company map SVG is STRUCTURAL (no status colors on pages; status colors render on the hub only).
+     Highlight: (1) set the CSS rule below to your box id; (2) add the YOU-ARE-HERE label using the
+     coordinates table in the comment above the map. Do not otherwise edit the map.
+     Depth rule: pages one zoom deeper than their box highlight the same box and name themselves in the label. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Observability &#8212; &#167;7 (daily pulse &#183; coverage &#183; token efficiency)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-platform-observability{stroke-width:3.5;stroke:#b45309}
+ul.gaps li{margin:8px 0}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div style="padding-left:17px"><a href="../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../axes.html">Axes + families</a></div><div style="padding-left:28px"><a href="../axis-productization.html">Axis-productization</a></div><div style="padding-left:28px"><a href="../axis-materialization.html">Axis-materialization</a></div><div style="padding-left:28px"><a href="../open-axis.html">Open-axis rule</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE DIMENSIONS</div><div style="padding-left:28px"><a href="../edges.html">Edges</a></div><div style="padding-left:28px"><a href="../resource.html">Resource</a></div><div style="padding-left:28px"><a href="../time.html">Time</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL SPECS</div><div style="padding-left:28px"><a href="../spec-shape.html">SHAPE</a></div><div style="padding-left:28px"><a href="../spec-grow.html">GROW</a></div><div style="padding-left:28px"><a href="../spec-govern.html">GOVERN</a></div><div style="padding-left:28px"><a href="../spec-edge.html">EDGE</a></div><div style="padding-left:28px"><a href="../spec-resource.html">RESOURCE</a></div><div style="padding-left:28px"><a href="../spec-time.html">TIME</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">Internal System</a></div><div style="padding-left:28px"><a href="../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../platform/model/edge-system.html">The Edge System</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/implementation.html">Implementation</a></div><div style="padding-left:28px"><a href="../platform/model/evals.html">Evals</a></div><div style="padding-left:28px"><a href="../platform/model/engine-formation.html">Engine Formation (A21, stub)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../platform/model/industry-imports.html">Industry Imports (index)</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/particles.html">&#183; particles</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/work-atom.html">&#183; work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/workflow.html">&#183; workflow</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/engine.html">&#183; engine</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/assembly-system.html">&#183; assembly-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/internal-system.html">&#183; internal-system</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/shadow-systems.html">&#183; shadow-systems</a></div><div style="padding-left:39px"><a href="../platform/model/industry-imports/properties-charter.html">&#183; properties-charter</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a class="sb-cur" href="../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../platform/maturation-walkthrough.html">Maturation walkthrough (v2)</a></div><div style="padding-left:28px"><a href="../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-Functional</a></div><div style="padding-left:28px"><a href="../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+<div class="crumb">hub &#8250; product: CoS &#8250; <a href="index.html">platform</a> &#8250; <b>observability</b> &#160;&#183;&#160; spine: <a href="authority-tenancy.html">&#8592; Authority + Tenancy</a> &#160;&#183;&#160; <a href="../engineering/index.html">Engineering &#8594;</a></div>
+<h1>Observability &#8212; &#167;7, the ring that watches the whole machine <span class="lvl">PLATFORM &#183; zoom 3</span></h1>
+<p style="font-size:13px;color:#6b7280;margin:2px 0 8px">Not a sibling block in the pipeline &#8212; &#167;7 is the RING drawn around the whole machine on the map: it instruments every block cross-cuttingly and owns no decision execution, transport, or pricing.</p>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="../governance/index.html" xlink:href="../governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="../index.html" xlink:href="../index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="../roadmap/index.html" xlink:href="../roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="../distribution.html" xlink:href="../distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="../products/cos/index.html" xlink:href="../products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="../products/senior-expert/index.html" xlink:href="../products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="../products/cos/needs.html" xlink:href="../products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="../products/cos/product-design.html" xlink:href="../products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="../products/cos/matrix.html" xlink:href="../products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="index.html" xlink:href="index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="observability.html" xlink:href="observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="authority-tenancy.html" xlink:href="authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="ui.html" xlink:href="ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="host.html" xlink:href="host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="runtime.html" xlink:href="runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="orchestration.html" xlink:href="orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="system-of-process.html" xlink:href="system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="system-of-record.html" xlink:href="system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="connector.html" xlink:href="connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="external-world.html" xlink:href="external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="compute.html" xlink:href="compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="../engineering/index.html" xlink:href="../engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="370" y="281" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Observability (ring)</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="../governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="../master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-observability</code></td><td>PLATFORM / <a href="index.html">platform</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">The instrumentation layer of CoS: per-pillar quality metrics + drift signals so operator + Asawa team can see whether CoS is doing what it promises and where it's drifting (&#167;7.1, &#167;7.1.A accuracy KPI), the per-turn 5-artifact audit + replay surface (&#167;7.2), operator satisfaction signals (&#167;7.3), and the Daily Pulse module (&#167;7.5) that aggregates it all into the operator's once-a-day read. Instruments all layers cross-cuttingly; owns no decision execution, transport, or pricing.</td><td colspan="3">&#167;7 carried over; pulse module + RTK rows intact; links to live telemetry scripts cited not copied</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 440" role="img" aria-label="Observability internals: metrics, audit replay, satisfaction signals, Daily Pulse">
+<defs><marker id="obsah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="2" y="10" width="876" height="424" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/>
+<rect x="12" y="2" width="700" height="16" fill="#fff"/>
+<text x="18" y="14" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; D.6 authority gates render in the pulse &#183; D.7 CX bar gates the read time</text>
+<!-- neighbor row (dashed) -->
+<rect x="30" y="34" width="250" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="155" y="53" text-anchor="middle" font-size="10.5" font-weight="700">ALL LAYERS &#8212; 8 BLOCKS (&#167;1.0)</text>
+<text x="155" y="67" text-anchor="middle" font-size="8.5" fill="#6b7280">instrumented cross-cuttingly</text>
+<rect x="315" y="34" width="250" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="440" y="53" text-anchor="middle" font-size="10.5" font-weight="700">&#167;4.5 TEST-BEFORE-CONCLUDE</text>
+<text x="440" y="67" text-anchor="middle" font-size="8.5" fill="#6b7280">runtime &#167;4 &#8212; pass/fail + retry counts</text>
+<rect x="600" y="34" width="250" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="725" y="53" text-anchor="middle" font-size="10.5" font-weight="700">B5.c AUDIT PROMISE (&#167;2.B)</text>
+<text x="725" y="67" text-anchor="middle" font-size="8.5" fill="#6b7280">per-turn artifact obligations</text>
+<!-- internal row (solid) -->
+<rect x="30" y="140" width="250" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="155" y="161" text-anchor="middle" font-size="10.5" font-weight="700">&#167;7.1 + &#167;7.1.A METRICS</text>
+<text x="155" y="176" text-anchor="middle" font-size="8.5" fill="#6b7280">per-pillar quality &#183; accuracy KPI &#183; drift signals</text>
+<rect x="315" y="140" width="250" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="440" y="161" text-anchor="middle" font-size="10.5" font-weight="700">&#167;7.2 AUDIT + REPLAY</text>
+<text x="440" y="176" text-anchor="middle" font-size="8.5" fill="#6b7280">5-artifact trail per turn &#183; replay &#8804;30s</text>
+<rect x="600" y="140" width="250" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="725" y="161" text-anchor="middle" font-size="10.5" font-weight="700">&#167;7.3 SATISFACTION SIGNALS</text>
+<text x="725" y="176" text-anchor="middle" font-size="8.5" fill="#6b7280">time-to-decision &#183; refusals &#183; autonomy dial</text>
+<!-- edges from neighbors -->
+<path d="M155,80 L155,140" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="162" y="112" font-size="8.5" fill="#475569">quality + drift signals</text>
+<path d="M440,80 L440,108 L230,108 L230,140" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="250" y="120" font-size="8.5" fill="#475569">aggregated test results live in &#167;7.1.A</text>
+<path d="M725,80 L725,112 L500,112 L500,140" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="508" y="126" font-size="8.5" fill="#475569">promise made visible</text>
+<!-- Daily Pulse -->
+<rect x="250" y="250" width="380" height="60" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="440" y="272" text-anchor="middle" font-size="10.5" font-weight="700">&#167;7.5 DAILY PULSE &#8212; MODULE per &#167;1.4</text>
+<text x="440" y="287" text-anchor="middle" font-size="8.5" fill="#6b7280">auto-generated &#8804;60s after session-end &#183; observability-synthesis.sh</text>
+<path d="M155,196 L155,228 L300,228 L300,250" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="162" y="225" font-size="8.5" fill="#475569">weekly drift + accuracy snapshot</text>
+<path d="M440,196 L440,250" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="447" y="225" font-size="8.5" fill="#475569">replay refs + outstanding gates</text>
+<path d="M725,196 L725,228 L580,228 L580,250" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="660" y="244" font-size="8.5" fill="#475569">satisfaction trend</text>
+<!-- operator (dashed) -->
+<rect x="250" y="356" width="380" height="50" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="440" y="376" text-anchor="middle" font-size="10.5" font-weight="700">OPERATOR</text>
+<text x="440" y="391" text-anchor="middle" font-size="8.5" fill="#6b7280">reads once/day &#183; decides &#8804;2 min (D.7 CX bar) &#183; drift breach boxed</text>
+<path d="M440,310 L440,356" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#obsah)"/>
+<text x="447" y="337" font-size="8.5" fill="#475569">daily pulse delivered</text>
+<path d="M630,381 L815,381 L815,168 L845,168" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#obsah)"/>
+<text x="700" y="420" font-size="8.5" fill="#475569">behavior signals: dial direction &#183; refusals &#183; surface switches</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge.</p>
+
+<h2>&#167;7 contract &#8212; purpose &#183; owns &#183; depends &#183; does-not-own</h2>
+<table>
+<tr><td><strong>Purpose</strong></td><td>Instrument every layer so operator + Asawa team can see whether CoS is doing what it promises, and where it's drifting.</td></tr>
+<tr><td><strong>Owns</strong></td><td>Per-pillar quality metrics &#183; drift signals &#183; operator satisfaction signals &#183; audit + replay surfaces.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>All layers (instruments cross-cuttingly).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Decision execution; transport; pricing.</td></tr>
+</table>
+
+<h2 id="s7-1">&#167;7.1 Per-pillar metrics</h2>
+<table>
+<tr><th>Pillar</th><th>Primary metric</th><th>Drift signal</th></tr>
+<tr><td>B1 Ask my way</td><td>Intent parse accuracy (intent_type + sub-intents match operator's correction frequency)</td><td>Correction rate &gt;15% per week &#8594; drift</td></tr>
+<tr><td>B2 World's best + mine</td><td>Context relevance (operator drops &lt;10% of retrieved context)</td><td>Drop rate &gt;25% &#8594; drift</td></tr>
+<tr><td>B3 Think + Do + Present</td><td>Auto-vs-ask ratio; outcome quality (operator accepts &gt;80% of B3b outputs)</td><td>Accept rate falls &gt;15pp WoW</td></tr>
+<tr><td>B4 Talk for me</td><td>Outbound success rate; audience-calibration accuracy</td><td>Operator overrides voice &gt;20% of sends</td></tr>
+<tr><td>B5 Remember</td><td>Replay latency (&#8804;30s/day-window v1); cross-tenant default-deny verified</td><td>Replay latency &gt;60s OR any cross-tenant leak</td></tr>
+</table>
+
+<h2 id="s7-1-a">&#167;7.1.A Accuracy KPI (integration with <a href="../master/index.html#section-4-5-test-before-conclude">&#167;4.5 Test-before-conclude</a>)</h2>
+<table>
+<tr><th>Metric</th><th>Definition</th><th>Target v1</th><th>Drift signal</th></tr>
+<tr><td>First-time-test pass rate</td><td>% of CoS outputs that pass the pre-declared &#167;4.5 test on first try (no retry needed)</td><td>&#8805;85% T0, &#8805;75% T1, &#8805;65% T2, &#8805;55% T3 Charter milestones</td><td>Drop &gt;10pp WoW per task tier</td></tr>
+<tr><td>Retry-to-conclude ratio</td><td>Avg retries per concluded task (test-fail &#8594; B3 retry loop iterations)</td><td>&#8804;1.3 T0, &#8804;2.0 T1, &#8804;3.0 T2/T3</td><td>Ratio rises &gt;0.5 WoW</td></tr>
+<tr><td>Escalation rate (test-fail-exhausted)</td><td>% of tasks where retry budget exhausted &#8594; operator escalation</td><td>&#8804;5% across all tiers</td><td>&gt;10% any tier &#8594; workflow review</td></tr>
+<tr><td>Post-conclude operator-correction rate</td><td>% of CoS-concluded outputs operator subsequently corrects (test missed the failure)</td><td>&#8804;8% T0/T1, &#8804;15% T2/T3</td><td>Rate rises &#8594; test criteria need tightening</td></tr>
+</table>
+<p class="note">Accuracy is a per-workflow KPI, not a single number. Each task tier (T0-T3) + each pillar carries its own accuracy band. <a href="../master/index.html#section-4-native-platform">&#167;4.5 Test-before-conclude</a> is where the test runs; &#167;7.1.A is where the aggregated results live.</p>
+
+<h2 id="s7-2">&#167;7.2 Audit + replay surfaces</h2>
+<p>The audit promise of B5.c made visible. Every Native turn produces 5 artifacts; observability surfaces all 5 to operator on demand. The 5 artifacts flow in pillar order (the same chain as the master's per-turn audit trail figure at <a href="../master/index.html#section-7-2-audit">&#167;7.2</a>):</p>
+<table>
+<tr><th>#</th><th>Artifact</th><th>Pillar</th><th>What it records</th></tr>
+<tr><td>1</td><td>INTENT RECORD</td><td>B1</td><td>parsed intent + sub-intents + schema preview</td></tr>
+<tr><td>2</td><td>CONTEXT MANIFEST</td><td>B2</td><td>ranked artifact list used; what was dropped</td></tr>
+<tr><td>3</td><td>DECISION PROVENANCE</td><td>B3</td><td>phases + factors + authority verdict + output</td></tr>
+<tr><td>4</td><td>OUTBOUND LOG</td><td>B4 (if comms triggered)</td><td>audience + channel + draft + sent + replies</td></tr>
+<tr><td>5</td><td>SUBSTRATE WRITE</td><td>B5</td><td>active-session ref + learned-pattern updates</td></tr>
+</table>
+<ul>
+<li>Operator command: "replay last Paisa turn" &#8594; all 5 artifacts shown chronologically.</li>
+<li>Operator command: "show me what changed in B5.d this week" &#8594; diff of learned patterns.</li>
+</ul>
+
+<h2 id="s7-3">&#167;7.3 Operator satisfaction signals</h2>
+<ul>
+<li>Time-to-decision (operator decides on CoS output in &lt;30s &#8212; CX bar gate)</li>
+<li>Refusal-to-execute rate (operator says "don't do this, ask me first")</li>
+<li>Autonomy-dial direction (does operator dial autonomy up or down per domain over time?)</li>
+<li>Surface-switching frequency (operator should NOT switch surfaces mid-task per CX bar)</li>
+</ul>
+
+<h2 id="s7-4">&#167;7.4 Acceptance criteria (Observability v1)</h2>
+<ul>
+<li>5-artifact audit trail emitted per turn (HS-4 fires on any missing channel &#8212; hard-stop family lives at <a href="../master/index.html#section-4-native-platform">&#167;4 runtime</a>).</li>
+<li>Operator can request replay for any past turn within &#8804;30s for a single-day window.</li>
+<li>Drift signals tracked weekly; breach surfaces to founder via Daily Pulse.</li>
+</ul>
+
+<h2 id="s7-5">&#167;7.5 Daily Pulse &#8212; operator's daily aggregate dashboard (Module per &#167;1.4)</h2>
+<p>Daily Pulse is the visible artifact of &#167;2.E S5 whole-system state. Auto-generated by <code>holding/hooks/observability-synthesis.sh</code> from session-end data. Operator reads once/day to see what CoS did + drift signals across the portfolio.</p>
+<p class="note"><strong>Hierarchy tag</strong>: Daily Pulse is a <strong>Module</strong> per <a href="../master/index.html#section-1-architecture">&#167;1.4 Product Hierarchy</a> &#8212; composes cap-Telemetry + cap-Audit + cap-CrossPortfolio-Priority. Independent lifecycle. Per-Deployment BINDING (operator config: pulse cadence, channel, signal thresholds). Own RUNTIME STATE (daily-pulse archive per tenant). Reusable across future products on Native (designed for, not guaranteed v1).</p>
+
+<h2 id="s7-5-1">&#167;7.5.1 What Daily Pulse contains &#8212; 7 content sections</h2>
+<table>
+<tr><th>Section</th><th>Content</th></tr>
+<tr><td>Per-Charter status</td><td>Each company's Charter &#8212; active tasks &#183; completed today &#183; pending operator decisions &#183; drift signals</td></tr>
+<tr><td>Cross-portfolio priority</td><td>What matters now across all N companies &#8212; top 3-5 priorities surfaced via &#167;3 HOW + &#167;6 importance ranking</td></tr>
+<tr><td>Accuracy snapshot</td><td>First-time-test pass rate across task tiers (per <a href="#s7-1-a">&#167;7.1.A</a>); week-over-week trend</td></tr>
+<tr><td>Workforce health</td><td>Charter status (active &#183; drifting &#183; stale); agent materializations + outcomes</td></tr>
+<tr><td>Feedback summary</td><td>New operator feedback artifacts since last pulse; product team triage status</td></tr>
+<tr><td>Token / RTK efficiency</td><td>Token usage trend; RTK gain measurement; cost-per-task aggregate</td></tr>
+<tr><td>Outstanding gates</td><td>Authority-gated actions pending operator approval (per <a href="../master/index.html#d6-authority">D.6</a>)</td></tr>
+</table>
+
+<h2 id="s7-5-2">&#167;7.5.2 Operator commands</h2>
+<ul>
+<li><code>/asawa</code> &#8212; CEO dashboard for portfolio overview</li>
+<li><code>/status</code> &#8212; current session status + drift signals</li>
+<li>Daily Pulse delivered via <code>holding/OBSERVABILITY-PULSE.md</code> + optional email/Slack push per Charter</li>
+</ul>
+
+<h2 id="s7-5-3">&#167;7.5.3 Acceptance criteria (Daily Pulse v1)</h2>
+<ul>
+<li>Pulse auto-generates within 60s of session-end (no manual trigger needed).</li>
+<li>Operator scans pulse + decides next actions in &#8804;2 minutes (CX bar gate per <a href="../master/index.html#d7-cxbar">D.7</a>).</li>
+<li>Drift breach surfaced visually (boxed callout) &#8212; impossible to miss.</li>
+<li>Cross-portfolio priorities ranked by Charter weight + recency + risk per <a href="../master/index.html#section-3-how-methodology">&#167;3 HOW</a> decomposition.</li>
+</ul>
+<p class="note"><strong>Sources</strong> (carried verbatim from master &#167;7.5.3 sources callout): <code>holding/OBSERVABILITY-PULSE.md</code> &#183; <code>holding/ANALYTICS-PULSE.md</code> &#183; <code>holding/hooks/observability-synthesis.sh</code> &#183; <code>holding/scripts/daily-review.sh</code> (departments/observability) &#183; founder direction "cadence is hours not days".</p>
+
+<h2>Live telemetry scripts &#8212; cited, not copied (verified on disk 2026-06-12)</h2>
+<table>
+<tr><th>Repo path</th><th>Role</th><th>On disk</th><th>Cited by</th></tr>
+<tr><td><code>holding/hooks/observability-synthesis.sh</code></td><td>Auto-generates Daily Pulse from session-end data</td><td>yes</td><td>master &#167;7.5</td></tr>
+<tr><td><code>holding/OBSERVABILITY-PULSE.md</code></td><td>Pulse delivery artifact (operator-facing)</td><td>yes</td><td>master &#167;7.5.2 / &#167;7.5.3</td></tr>
+<tr><td><code>holding/ANALYTICS-PULSE.md</code></td><td>Token-budget state + KRs + current reading</td><td>yes</td><td>master &#167;7.5.3; asawa-holding CLAUDE.md (Load On Demand)</td></tr>
+<tr><td><code>holding/departments/observability/daily-review.sh</code></td><td>Daily review (departments/observability)</td><td>yes &#8212; note: master cites <code>holding/scripts/daily-review.sh</code>, see Open gaps</td><td>master &#167;7.5.3</td></tr>
+<tr><td><code>holding/hooks/rtk-health-check.sh</code></td><td>RTK gain snapshot for the Token / RTK efficiency row</td><td>yes</td><td>asawa-holding CLAUDE.md (RTK for voluminous bash)</td></tr>
+<tr><td><code>holding/observability/rtk-gain-log.md</code></td><td>RTK telemetry log (rtk-health-check output)</td><td>yes</td><td>asawa-holding CLAUDE.md (RTK for voluminous bash)</td></tr>
+</table>
+
+<p>How to read this page: &#167;7 is the cross-cutting instrumentation layer of the CoS platform &#8212; it owns no execution, it watches everything. The three internal surfaces (metrics &#167;7.1/&#167;7.1.A, audit + replay &#167;7.2, satisfaction &#167;7.3) feed one aggregate read, the Daily Pulse module (&#167;7.5), whose acceptance bars (&#167;7.4, &#167;7.5.3) are the page's testable promises. The master slice for this page carries no founder-fill gap items of its own &#8212; zero gaps were dropped in migration; the single item below is a migration finding, not a carried gap.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li>Migration finding (2026-06-12, agent-raised &#8212; not carried from master): master &#167;7.5.3 sources callout cites <code>holding/scripts/daily-review.sh</code>, but on disk the script lives at <code>holding/departments/observability/daily-review.sh</code> (verified <code>test -f</code>; master's own parenthetical "(departments/observability)" hints the real home). Which is canonical &#8212; move the script or amend the citation on any page that supersedes master?</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>Children: none &#8212; leaf page (no manifest row lists <code>platform-observability</code> as parent).</li>
+<li>What this page instruments lives on the sibling PLATFORM pages: <a href="index.html">platform (schema + 8 blocks)</a> &#183; <a href="../products/cos/matrix.html">matrix</a> &#183; per-block pages <a href="ui.html">UI</a> &#183; <a href="host.html">Host</a> &#183; <a href="orchestration.html">Orchestration</a> &#183; <a href="system-of-process.html">System of Process</a> &#183; <a href="system-of-record.html">System of Record</a> &#183; <a href="authority-tenancy.html">Authority + Tenancy</a> &#183; <a href="compute.html">Compute</a> &#183; <a href="external-world.html">External World</a>. <a href="runtime.html">Runtime &#167;4</a> &#183; <a href="how-methodology.html">HOW &#167;3</a> (both landed on disk after first authoring pass; deep sub-section cites on this page keep their frozen master anchors).</li>
+<li>Downstream band: ENGINEERING (<a href="../engineering/index.html">engineering/index.html</a>) &#8212; cascade-gated until the PLATFORM parent is LOCKED.</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<p>Persisted artifact first: &#167;7's operator-facing record is the <b>Daily Pulse</b>, written to <code>holding/OBSERVABILITY-PULSE.md</code> by <code>holding/hooks/observability-synthesis.sh</code> (&#167;7.5). One pulse excerpt, as it would render for a lending tenant running <code>W-emi-reconcile</code> and <code>W-kyc-verify</code>:</p>
+<div class="planned">
+<p style="font-size:12.5px;margin:6px 0"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. The seven section names are ruled (&#167;7.5.1 above); the concrete row format inside each section is not &#8212; unruled rows are marked <code>&lt;decision_pending&gt;</code>.</p>
+<pre style="background:#f3f4f6;padding:10px 12px;border-radius:6px;font-size:12px;overflow-x:auto">DAILY PULSE &#8212; 2026-08-18 (auto-generated &#8804;60s after session-end)
+Per-Charter status : paisa-lending &#8212; active: W-emi-reconcile &#183; completed today: 3 &#183; pending decisions: 1 &#183; drift: none
+Accuracy snapshot  : first-time-test pass T0 91% (target &#8805;85%) &#183; WoW +2pp
+Outstanding gates  : 1 &#8212; W-kyc-verify bureau send awaiting approval (D.6 by-tool)
+Token / RTK        : &lt;decision_pending &#8212; row format unruled&gt;
+(remaining &#167;7.5.1 sections &#8212; cross-portfolio priority &#183; workforce health &#183; feedback summary &#8212; same status)</pre>
+</div>
+<p>Each pulse line is backed by the per-turn 5-artifact audit trail (&#167;7.2 table above); &#8220;replay last Paisa turn&#8221; renders those five artifacts chronologically. Operator surface: <code>holding/OBSERVABILITY-PULSE.md</code> + <code>/asawa</code>, drift breach boxed per &#167;7.5.3.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Primary slice: <a href="../master/index.html#section-7-observability">master &#167;7 Observability</a> (anchor <code>section-7-observability</code> through end of &#167;7, ending before <code>roadmap</code>) &#8212; carried over here in full: contract table, &#167;7.1, &#167;7.1.A, &#167;7.2 (5-artifact trail rendered as a table; figure original in master), &#167;7.3, &#167;7.4, &#167;7.5 incl. all 7 content sections of &#167;7.5.1 with the Token / RTK efficiency row intact.</li>
+<li>Sub-anchors in master: <a href="../master/index.html#section-7-1-metrics">&#167;7.1</a> &#183; <a href="../master/index.html#section-7-1-a-accuracy">&#167;7.1.A</a> &#183; <a href="../master/index.html#section-7-2-audit">&#167;7.2</a> &#183; <a href="../master/index.html#section-7-3-satisfaction">&#167;7.3</a> &#183; <a href="../master/index.html#section-7-4-acceptance">&#167;7.4</a> &#183; <a href="../master/index.html#section-7-5-daily-pulse">&#167;7.5</a>.</li>
+<li>Live telemetry scripts: cited as repo paths in the table above (D54-style &#8212; linked by path, never copied); existence verified on disk 2026-06-12.</li>
+<li>RTK measurement provenance: asawa-holding <code>CLAUDE.md</code> &#167;"RTK for voluminous bash" (git-status 3,075 &#8594; 962 bytes, &#8722;68.7%; binary <code>~/.local/bin/rtk</code> v0.37.1; snapshot via <code>holding/hooks/rtk-health-check.sh</code> &#8594; <code>holding/observability/rtk-gain-log.md</code>).</li>
+<li>Manifest row: <code>platform-observability</code> in <a href="../manifest.json">manifest.json</a>.</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting &#183; review: audit workflow wf_5c81f205.</p>
+</div></div></body></html>

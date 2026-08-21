@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - Second-Order: System of Record</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:860px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:10px}
+  .draft{background:#fffbeb;border:1px solid #b45309;border-radius:8px;color:#92400e;font-size:12.5px;font-weight:600;padding:8px 12px;margin:0 0 14px}
+  .draft span{font-weight:400;color:#b45309}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#0f766e}
+  .crumb a{color:#0f766e}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:26px 0 9px}
+  ol,ul{margin:0;padding-left:20px;font-size:14px;color:#1f2937}
+  ol li,ul li{margin:6px 0}
+  ol b,ul b{color:#111827}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  td a{color:#0f766e}
+  .gaps li{color:#92400e}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:26px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="platform/system-of-record.html" style="color:#bfdbfe">platform/system-of-record.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native - Second-Order: System of Record</h1>
+  <div class="sub">The §1.0 <b>System of Record</b> block, fully wired · every part connected to the parts it actually touches</div>
+  <div class="draft">WORKING DRAFT <span>· date undefined</span><br>Not locked - founder review pending</div>
+  <div class="crumb">First layer: Human → UI → Host → Daemon{Orchestration → System of Process} → <b>SoR (here)</b> / External World · <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+
+  <svg viewBox="0 0 860 1030" role="img" aria-label="System of Record second-order, fully wired">
+    <defs>
+      <marker id="sah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- ===== NEIGHBOR STUB: System of Process (top, outside the wrap) ===== -->
+    <rect x="320" y="16" width="230" height="50" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="435" y="36" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4b5563">SYSTEM OF PROCESS</text>
+    <text x="435" y="52" text-anchor="middle" font-size="9" fill="#9ca3af">pillars B1&#8211;B4 &#183; neighbor (&#167;1.0)</text>
+
+    <!-- ===== AUTHORITY + TENANCY wrap ===== -->
+    <rect x="18" y="108" width="824" height="764" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="32" y="99" width="370" height="18" fill="#fff"/>
+    <text x="40" y="112" fill="#7c3aed" font-weight="700" font-size="11">AUTHORITY + TENANCY &#183; gates every read + write &#183; default-deny</text>
+
+    <!-- ===== SYSTEM OF RECORD frame ===== -->
+    <rect x="34" y="142" width="792" height="694" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+    <rect x="48" y="133" width="316" height="18" fill="#fff"/>
+    <text x="56" y="146" fill="#0f766e" font-weight="700" font-size="11.5">SYSTEM OF RECORD &#183; second-order &#183; fully wired</text>
+
+    <!-- ===== EDGES (drawn under the boxes) ===== -->
+    <!-- E2: SoP -> trail (writes) -->
+    <path d="M435,66 L435,172" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="443" y="97" font-size="9" fill="#475569">writes &#8595; per-turn 5-artifact trail</text>
+    <!-- E3: B5.d -> SoP (context reads up) -->
+    <path d="M780,320 L780,44 L556,44" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="772" y="150" text-anchor="end" font-size="9" fill="#475569">context reads &#8593;</text>
+    <text x="772" y="163" text-anchor="end" font-size="9" fill="#475569">B2 ranked retrieval</text>
+    <text x="772" y="176" text-anchor="end" font-size="9" fill="#475569">B1 shorthand at intake</text>
+    <!-- E1: trail -> telemetry sink -->
+    <path d="M210,206 L167,206" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="185" y="199" text-anchor="middle" font-size="9" fill="#475569">events</text>
+    <!-- E4: trail -> B5.d (learned-pattern updates) -->
+    <path d="M660,206 L740,206 L740,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="664" y="198" font-size="9" fill="#475569">learned-pattern updates</text>
+    <!-- E5: trail -> B5.a (substrate write) -->
+    <path d="M240,244 L126,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="118" y="288" text-anchor="end" font-size="9" fill="#475569">substrate write &#183;</text>
+    <text x="118" y="301" text-anchor="end" font-size="9" fill="#475569">session ref</text>
+    <!-- E6: trail -> B5.c (provenance rows) -->
+    <path d="M325,244 L325,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="317" y="282" text-anchor="end" font-size="9" fill="#475569">DecisionProvenance</text>
+    <text x="317" y="295" text-anchor="end" font-size="9" fill="#475569">rows &#183; append-only</text>
+    <!-- E7: trail -> D.12 (versioned artifacts) -->
+    <path d="M560,244 L560,320" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="568" y="282" font-size="9" fill="#475569">versioned output</text>
+    <text x="568" y="295" font-size="9" fill="#475569">artifacts &#8595;</text>
+    <!-- E8: trail -> B5.b (substrate write; B5.a-d are parallel horizons, not a pipeline) -->
+    <path d="M232,244 L232,460 L126,460 L126,480" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="226" y="436" text-anchor="end" font-size="9" fill="#475569">multi-task state &#183;</text>
+    <text x="226" y="449" text-anchor="end" font-size="9" fill="#475569">survives restart (N24)</text>
+    <!-- E9: ADR-007 schema -> B5.c -->
+    <path d="M325,480 L325,404" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="333" y="436" font-size="9" fill="#475569">3-channel rows (ADR-007)</text>
+    <text x="333" y="449" font-size="9" fill="#475569">HS-4 on write failure</text>
+    <!-- E10: D.12 -> B5.c (provenance row per artifact write) -->
+    <path d="M470,390 L416,390" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="440" y="346" text-anchor="middle" font-size="8.5" fill="#475569">provenance</text>
+    <text x="440" y="358" text-anchor="middle" font-size="8.5" fill="#475569">row per</text>
+    <text x="440" y="370" text-anchor="middle" font-size="8.5" fill="#475569">artifact write</text>
+    <!-- E11: B5.c -> Observability -->
+    <path d="M240,378 L226,378 L226,924" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="234" y="600" font-size="9" fill="#475569">replay 5 artifacts &#8804;30s</text>
+    <text x="234" y="613" font-size="9" fill="#475569">+ drift signals</text>
+    <!-- E12: D.12 -> Connector -->
+    <path d="M560,404 L560,924" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="568" y="600" font-size="9" fill="#475569">notify-on-change</text>
+    <text x="568" y="613" font-size="9" fill="#475569">&#8804;60s &#183; Slack/email</text>
+    <!-- E13: Operator -> E.2 (charter entries + standing prefs) -->
+    <path d="M698,924 L698,900 L660,900 L660,522 L686,522" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="652" y="660" text-anchor="end" font-size="9" fill="#475569">charter entries &#183;</text>
+    <text x="652" y="673" text-anchor="end" font-size="9" fill="#475569">standing prefs &#8593;</text>
+    <!-- E14: Operator -> E.3 (forget / correct / pin) -->
+    <path d="M712,924 L712,770" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="704" y="808" text-anchor="end" font-size="8.5" fill="#475569">forget /</text>
+    <text x="704" y="821" text-anchor="end" font-size="8.5" fill="#475569">correct /</text>
+    <text x="704" y="834" text-anchor="end" font-size="8.5" fill="#475569">pin &#8593;</text>
+    <!-- E15: E.3 -> Operator (curation surface) -->
+    <path d="M790,770 L790,924" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="782" y="808" text-anchor="end" font-size="8.5" fill="#475569">curation:</text>
+    <text x="782" y="821" text-anchor="end" font-size="8.5" fill="#475569">'what do you</text>
+    <text x="782" y="834" text-anchor="end" font-size="8.5" fill="#475569">remember X?' &#8595;</text>
+
+    <!-- ===== AUTHORITY+TENANCY GATE GLYPHS (every boundary crossing) ===== -->
+    <path d="M435,102 L441,108 L435,114 L429,108 Z" fill="#7c3aed"/>
+    <path d="M780,102 L786,108 L780,114 L774,108 Z" fill="#7c3aed"/>
+    <path d="M226,866 L232,872 L226,878 L220,872 Z" fill="#7c3aed"/>
+    <path d="M560,866 L566,872 L560,878 L554,872 Z" fill="#7c3aed"/>
+    <path d="M660,866 L666,872 L660,878 L654,872 Z" fill="#7c3aed"/>
+    <path d="M712,866 L718,872 L712,878 L706,872 Z" fill="#7c3aed"/>
+    <path d="M790,866 L796,872 L790,878 L784,872 Z" fill="#7c3aed"/>
+
+    <!-- ===== INTERNAL PARTS (solid boxes) ===== -->
+    <!-- Telemetry sink -->
+    <rect x="40" y="172" width="120" height="68" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="100" y="194" text-anchor="middle" font-size="10" font-weight="700">TELEMETRY SINK</text>
+    <text x="100" y="210" text-anchor="middle" font-size="8.5" fill="#6b7280">ADR-013 &#183; JSONL + fsync</text>
+    <text x="100" y="222" text-anchor="middle" font-size="8.5" fill="#6b7280">no silent loss</text>
+
+    <!-- Per-turn 5-artifact trail -->
+    <rect x="210" y="172" width="450" height="72" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="435" y="194" text-anchor="middle" font-size="12.5" font-weight="700">PER-TURN 5-ARTIFACT TRAIL (&#167;7.2)</text>
+    <text x="435" y="212" text-anchor="middle" font-size="9" fill="#6b7280">1 intent &#183; 2 context manifest &#183; 3 decision provenance</text>
+    <text x="435" y="227" text-anchor="middle" font-size="9" fill="#6b7280">4 outbound log &#183; 5 substrate write</text>
+
+    <!-- B5.a -->
+    <rect x="40" y="320" width="172" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="126" y="344" text-anchor="middle" font-size="10" font-weight="700">B5.a ACTIVE SESSION</text>
+    <text x="126" y="362" text-anchor="middle" font-size="8.5" fill="#6b7280">minutes&#8211;hours &#183; in-flight now</text>
+    <text x="126" y="375" text-anchor="middle" font-size="8.5" fill="#6b7280">session continuity (N22)</text>
+
+    <!-- B5.c (accent: the audit heart) -->
+    <rect x="240" y="320" width="170" height="84" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="325" y="344" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">B5.c AUDIT + REPLAY</text>
+    <text x="325" y="362" text-anchor="middle" font-size="8.5" fill="#3b5bdb">days&#8211;forever &#183; provenance</text>
+    <text x="325" y="375" text-anchor="middle" font-size="8.5" fill="#3b5bdb">+ AUDIT surface (N#8)</text>
+
+    <!-- D.12 versioned artifact store -->
+    <rect x="470" y="320" width="180" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="560" y="340" text-anchor="middle" font-size="10" font-weight="700">D.12 VERSIONED</text>
+    <text x="560" y="353" text-anchor="middle" font-size="10" font-weight="700">ARTIFACT STORE</text>
+    <text x="560" y="369" text-anchor="middle" font-size="8.5" fill="#6b7280">append-not-overwrite &#183;</text>
+    <text x="560" y="381" text-anchor="middle" font-size="8.5" fill="#6b7280">artifact@v3 resolves exactly &#183;</text>
+    <text x="560" y="393" text-anchor="middle" font-size="8.5" fill="#6b7280">zero silent overwrites</text>
+
+    <!-- B5.d -->
+    <rect x="660" y="320" width="160" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="740" y="344" text-anchor="middle" font-size="10" font-weight="700">B5.d LEARNED PATTERNS</text>
+    <text x="740" y="362" text-anchor="middle" font-size="8.5" fill="#6b7280">months&#8211;forever &#183; k=4 &#183;</text>
+    <text x="740" y="375" text-anchor="middle" font-size="8.5" fill="#6b7280">standing prefs (N#5)</text>
+
+    <!-- B5.b -->
+    <rect x="40" y="480" width="172" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="126" y="504" text-anchor="middle" font-size="10" font-weight="700">B5.b PORTFOLIO IN-FLIGHT</text>
+    <text x="126" y="522" text-anchor="middle" font-size="8.5" fill="#6b7280">hours&#8211;days &#183; 5 tasks &#215;</text>
+    <text x="126" y="535" text-anchor="middle" font-size="8.5" fill="#6b7280">N companies &#183; backs N24</text>
+
+    <!-- ADR-007 schema -->
+    <rect x="240" y="480" width="170" height="64" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="325" y="502" text-anchor="middle" font-size="9.5" font-weight="700">DECISIONPROVENANCE</text>
+    <text x="325" y="515" text-anchor="middle" font-size="9.5" font-weight="700">ROW SCHEMA (ADR-007)</text>
+    <text x="325" y="531" text-anchor="middle" font-size="8.5" fill="#6b7280">3-channel &#183; ratified</text>
+
+    <!-- E.1 skill mode + E.2 charter & declared preferences -->
+    <rect x="680" y="480" width="140" height="84" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="750" y="500" text-anchor="middle" font-size="9" font-weight="700">SKILL MODE (E.1) +</text>
+    <text x="750" y="513" text-anchor="middle" font-size="9" font-weight="700">CHARTER PREFS (E.2)</text>
+    <text x="750" y="529" text-anchor="middle" font-size="8" fill="#6b7280">E.2: cadence &#183; hands-off &#183;</text>
+    <text x="750" y="541" text-anchor="middle" font-size="8" fill="#6b7280">style &#183; channels &#183; people &#183;</text>
+    <text x="750" y="553" text-anchor="middle" font-size="8" fill="#6b7280">E.1: SM1/SM2/SM3 map</text>
+
+    <!-- E.3 memory layers + E.4 forget rules -->
+    <rect x="680" y="620" width="140" height="150" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="750" y="640" text-anchor="middle" font-size="9" font-weight="700">MEMORY LAYERS (E.3)</text>
+    <text x="750" y="653" text-anchor="middle" font-size="9" font-weight="700">+ FORGET RULES (E.4)</text>
+    <text x="750" y="669" text-anchor="middle" font-size="8" fill="#6b7280">working memory &#183; session</text>
+    <text x="750" y="681" text-anchor="middle" font-size="8" fill="#6b7280">named entities &#183; 90-day</text>
+    <text x="750" y="693" text-anchor="middle" font-size="8" fill="#6b7280">trusted names &#183; durable</text>
+    <text x="750" y="705" text-anchor="middle" font-size="8" fill="#6b7280">prior intents &#183; rolling</text>
+    <text x="750" y="717" text-anchor="middle" font-size="8" fill="#6b7280">ratified directives</text>
+    <text x="750" y="733" text-anchor="middle" font-size="8" fill="#6b7280">forgets: sensitive &#183; expired &#183;</text>
+    <text x="750" y="745" text-anchor="middle" font-size="8" fill="#6b7280">on operator ask (immediate)</text>
+
+    <!-- ===== NEIGHBOR STUBS (bottom, outside the wrap) ===== -->
+    <rect x="116" y="924" width="220" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="226" y="946" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">OBSERVABILITY (&#167;7)</text>
+    <text x="226" y="962" text-anchor="middle" font-size="9" fill="#9ca3af">replay &#183; drift &#183; pattern diffs</text>
+
+    <rect x="450" y="924" width="220" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="560" y="946" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">CONNECTOR (&#167;5)</text>
+    <text x="560" y="962" text-anchor="middle" font-size="9" fill="#9ca3af">notifies audience per Charter</text>
+
+    <rect x="690" y="924" width="160" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="770" y="944" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">OPERATOR</text>
+    <text x="770" y="958" text-anchor="middle" font-size="8.5" fill="#9ca3af">via UI &#8594; Host &#8594;</text>
+    <text x="770" y="970" text-anchor="middle" font-size="8.5" fill="#9ca3af">Daemon (runtime path)</text>
+
+    <!-- legend -->
+    <text x="430" y="1010" text-anchor="middle" font-size="9.5" fill="#6b7280">&#9670; = Authority + Tenancy gate &#8212; every crossing checked &#183; cross-tenant default-deny (ADR-006) &#183; dashed boxes = neighbor blocks</text>
+  </svg>
+
+  <h2>How state flows</h2>
+  <ol>
+    <li>Writes enter from <b>System of Process</b> as the per-turn 5-artifact trail: intent record &#8594; context manifest &#8594; decision provenance &#8594; outbound log &#8594; substrate write.</li>
+    <li>The <b>substrate write</b> lands in B5.a active session, plus learned-pattern updates in B5.d.</li>
+    <li>The four stores <b>B5.a&#8211;d</b> are parallel time horizons, not a graduation pipeline &#8212; the PERSISTED step writes output to B5.a/b/c/d simultaneously. <b>B5.a</b> (minutes/hours) backs session continuity with handoff of open threads; <b>B5.b</b> portfolio in-flight (hours/days) holds multi-task state across N companies and survives restart.</li>
+    <li><b>B5.c</b> accumulates the append-only DecisionProvenance rows forever &#8212; 3-channel per ADR-007; HS-4 fires on triple-channel write failure or on any silent overwrite.</li>
+    <li><b>B5.d</b> distills learned patterns (months/forever, k=4 emergence). Together with the E.2/E.3 memory layers (working memory, named entities, trusted names, prior intents, ratified directives) and charter preferences, these are what B2 reads at intake and B1 reads for shorthand on future turns.</li>
+    <li>The <b>versioned artifact store (D.12)</b> cross-links to B5.c: every artifact write produces a DecisionProvenance row, references resolve to exact versions, and changes trigger Connector notifications outward.</li>
+    <li>Telemetry lands via the <b>JSONL + fsync sink</b> (ADR-013). The &#167;1.0 diagram splits SoR contents as "own | external". Every read and write across all parts is gated by <b>Authority + Tenancy</b> with cross-tenant default-deny.</li>
+  </ol>
+
+  <h2>Contracts &#8212; neighbors</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>System of Process</b></td>
+      <td>bidirectional</td>
+      <td>IN (context reads): B2 reads at intake (ranked context retrieval); B1 reads for shorthand interpretation; learned patterns + standing prefs shape future iterations. OUT-bound from SoP (writes): every pillar B1&#8211;B4 writes here &#8212; per-turn 5-artifact audit trail, versioned output artifacts, DecisionProvenance row per decision/artifact-write, substrate write (active-session ref + learned-pattern updates). Diagram edge label: "context + output".</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority + Tenancy</b></td>
+      <td>gates</td>
+      <td>Gates every access (cross-cutting wrap). Tenant-scoped: cross-tenant queries default-deny (B5 acceptance + &#167;7.1 verified metric); B5 crosscut: whose data lives where + who can read across tenant boundaries; operator's portfolio is the boundary unit, not the company. Tenant isolation via Domain field on every primitive (ADR-006).</td>
+      <td><a href="index.html#pillar-b5">pillar-b5</a></td>
+    </tr>
+    <tr>
+      <td><b>Observability (&#167;7)</b></td>
+      <td>out</td>
+      <td>Audit + replay surfaces: all 5 per-turn artifacts replayed to operator on demand ("replay last Paisa turn" &#8594; 5 artifacts chronologically); replay &#8804;30s for a single-day window; learned-pattern diffs ("what changed in B5.d this week"); B5 drift signals (replay latency &gt;60s OR any cross-tenant leak).</td>
+      <td><a href="index.html#section-7-2-audit">section-7-2-audit</a></td>
+    </tr>
+    <tr>
+      <td><b>Connector (&#167;5)</b></td>
+      <td>out</td>
+      <td>Notify-on-change: when an artifact shared with audience X changes, &#167;5 Connector notifies audience X (Slack/email per Charter) within 60s of change.</td>
+      <td><a href="index.html#d12-artifact-governance">d12-artifact-governance</a></td>
+    </tr>
+    <tr>
+      <td><b>Operator (via UI&#8594;Host&#8594;Daemon runtime path)</b></td>
+      <td>bidirectional</td>
+      <td>IN: operator writes standing prefs directly (B5 Ring 3); charter entries (E.2); forget / correct / pin-as-durable commands (E.5, honored immediately + visibly confirmed). OUT: curation surface &#8212; "what do you remember about X?" returns structured view of entities, prior intents, standing directives, charter entries touching X.</td>
+      <td><a href="index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+  </table>
+
+  <h2>Internal parts</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>B5.a Active session store</b></td>
+      <td>Minutes/hours horizon. What's right-now in flight. Backs N22 session-continuity.</td>
+      <td><a href="index.html#b5a-active">b5a-active</a></td>
+    </tr>
+    <tr>
+      <td><b>B5.b Portfolio in-flight state</b></td>
+      <td>Hours/days horizon. Multi-task state for the 5 in-flight tasks across N companies; survives session restart. Backs N24. Token-budget allocation + multi-thread state machine deferred to Phase 2 design.</td>
+      <td><a href="index.html#b5b-portfolio">b5b-portfolio</a></td>
+    </tr>
+    <tr>
+      <td><b>B5.c Audit + replay</b></td>
+      <td>Days/forever horizon. DecisionProvenance + AUDIT surface. Backs N#8. Acceptance: 100% of decisions carry a DecisionProvenance row; replay any task end-to-end in &#8804;30s for a single-day window.</td>
+      <td><a href="index.html#b5c-audit">b5c-audit</a></td>
+    </tr>
+    <tr>
+      <td><b>B5.d Learned patterns</b></td>
+      <td>Months/forever horizon. Person Formation + pattern emergence (k=4). Backs N#5. Learned patterns shape future iterations; operator standing prefs land here and future B2 reads them.</td>
+      <td><a href="index.html#b5d-learned">b5d-learned</a></td>
+    </tr>
+    <tr>
+      <td><b>Memory layers (E.3) + forget rules (E.4)</b></td>
+      <td>Five layers with distinct lifespans: working memory (session, handoff if thread open) &#183; named entities (until forget or 90-day inactive + confirmed archive) &#183; trusted names (durable, change needs explicit confirmation) &#183; prior intents (rolling, older entries summarize) &#183; ratified directives (until revoked). Forgets: one-time sensitive content, expired time-bounded charters, anything operator asks to forget (immediate + visibly confirmed).</td>
+      <td><a href="index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b>Skill modes (E.1)</b></td>
+      <td>Per-domain skill-mode map (SM1 novice / SM2 intermediate / SM3 expert) &#8212; how Native talks to this operator. Inferred from phrasing/corrections or set explicitly; per-domain, not global. Separate mechanism from the E.2 charter.</td>
+      <td><a href="index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b>Charter &amp; declared preferences (E.2)</b></td>
+      <td>What the operator explicitly told Native about how to be served &#8212; cadence, hands-off level per ask class, communication style, channel defaults, people &amp; relationships. Durable until revoked.</td>
+      <td><a href="index.html#section-2-f-5-personalization-memory">section-2-f-5-personalization-memory</a></td>
+    </tr>
+    <tr>
+      <td><b>Per-turn 5-artifact audit trail</b></td>
+      <td>Every Native turn produces 5 stored artifacts: 1. intent record (B1) &#183; 2. context manifest with ranked artifact list + what was dropped (B2) &#183; 3. decision provenance with phases + factors + authority verdict + output (B3) &#183; 4. outbound log (B4, if comms) &#183; 5. substrate write (B5: active-session ref + learned-pattern updates).</td>
+      <td><a href="index.html#section-7-2-audit">section-7-2-audit</a></td>
+    </tr>
+    <tr>
+      <td><b>Versioned artifact store (D.12 lifecycle integrity)</b></td>
+      <td>Append-not-overwrite: every change adds a version, prior version stays accessible; reference-with-version (artifact@v3 resolves exactly); metadata (owner, version, source-of-truth status) travels with the artifact; every artifact write produces a DecisionProvenance row linking creator-Charter + reason + diff-from-prior. Zero silent overwrites (HS-4 fires on version-bump-less replace).</td>
+      <td><a href="index.html#d12-artifact-governance">d12-artifact-governance</a></td>
+    </tr>
+    <tr>
+      <td><b>DecisionProvenance row schema (ADR-007)</b></td>
+      <td>3-channel append-only audit row per decision (ratified). HS-4 fires on triple-channel write failure (per B5 acceptance).</td>
+      <td><a href="index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+    <tr>
+      <td><b>Telemetry sink (ADR-013)</b></td>
+      <td>JSONL + fsync as telemetry sink &#8212; no silent loss (ratified).</td>
+      <td><a href="index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+  </table>
+
+  <h2>Open / gaps &#8212; questions for the founder</h2>
+  <ul class="gaps">
+    <li>B5 Ring 1 (Surface &#8212; operator voice) is entirely "Awaiting founder fill" (T-G1-14/15/16) &#8212; what is the operator-voice problem space / need / solution direction for the System of Record pillar?</li>
+    <li>B5 Ring 3 mechanism is Phase 2 pending (governance-substrate-design.md, T-G3-05) &#8212; what is the physical storage engine / schema behind B5.a&#8211;d?</li>
+    <li>&#167;1.0 diagram labels System of Record "own | external" &#8212; what distinguishes an own record from an external record, and is the external side read-only? Cited ranges never elaborate.</li>
+    <li>How do the &#167;2.F.E memory layers (working memory / named entities / trusted names / prior intents / ratified directives) map onto B5.a&#8211;d time-horizon stores &#8212; one substrate with two taxonomies, or separate stores?</li>
+    <li>How does state move between B5.a and B5.b, if at all? The source models the four stores as parallel time horizons written simultaneously &#8212; no inter-store promotion flow is specified.</li>
+    <li>B5.b names an engineering hard-problem (token budget allocation + multi-thread state machine) deferred to Phase 2 &#8212; no design exists in the cited ranges.</li>
+    <li>E.3 says inactive named entities archive after 90 days with operator confirmation &#8212; where do archived entities live, and does D.12 append-not-overwrite retention apply to memory layers or only to artifacts?</li>
+  </ul>
+
+  <div class="foot">Fully-wired second-order of the System of Record block &#183; every box connected to what it touches &#183; content sourced from the locked extraction only (no invention). Sibling artifacts: _arch-review.html (platform) &#183; _consumer-product.html (UI). Working draft &#8212; not locked, founder review pending.</div>
+</div>
+</body>
+</html>
