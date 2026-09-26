@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Journeys On Screen</title>
+<meta name="description" content="Nine things a company does with Sutra Desktop, each played step by step inside the real department screen, with the touched element pulsing, the row it writes, and the gaps the design cannot yet answer.">
+<style>
+  :root{--serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--r:10px;
+    --bg:#fafaf9;--surface:#ffffff;--card:#ffffff;--line:#e2e0dd;--line-soft:#eeecea;--ink:#1c1917;--muted:#78716c;--faint:#a8a29e;--acc:#8A5D2E;--acc-bg:#f6efe7;--on-acc:#ffffff;--ok:#3f7d54;--warn:#8a6d12;--block:#9c3f34;--ok-bg:#eef4ef;--warn-bg:#f8f3e4;--warn-line:#e8dcbb;--ok-line:#cfe0d4;--inset:#fafaf9;--sepia:#faf6ef;--shadow:0 1px 2px rgba(28,25,23,.05),0 18px 44px -20px rgba(28,25,23,.16)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C0B09;--surface:#161412;--card:#1C1A17;--line:#2A2622;--line-soft:#221F1C;--ink:#F5F0E8;--muted:#8C857D;--faint:#6E6860;--acc:#C4956A;--acc-bg:rgba(196,149,106,.12);--on-acc:#0C0B09;--ok:#5A9E6F;--warn:#C9A227;--block:#B8574B;--ok-bg:rgba(90,158,111,.13);--warn-bg:rgba(201,162,39,.13);--warn-line:rgba(201,162,39,.3);--ok-line:rgba(90,158,111,.32);--inset:#161412;--sepia:rgba(196,149,106,.06);--shadow:0 1px 2px rgba(0,0,0,.16),0 18px 44px -18px rgba(0,0,0,.42)}}
+  :root[data-theme="dark"]{--bg:#0C0B09;--surface:#161412;--card:#1C1A17;--line:#2A2622;--line-soft:#221F1C;--ink:#F5F0E8;--muted:#8C857D;--faint:#6E6860;--acc:#C4956A;--acc-bg:rgba(196,149,106,.12);--on-acc:#0C0B09;--ok:#5A9E6F;--warn:#C9A227;--block:#B8574B;--ok-bg:rgba(90,158,111,.13);--warn-bg:rgba(201,162,39,.13);--warn-line:rgba(201,162,39,.3);--ok-line:rgba(90,158,111,.32);--inset:#161412;--sepia:rgba(196,149,106,.06);--shadow:0 1px 2px rgba(0,0,0,.16),0 18px 44px -18px rgba(0,0,0,.42)}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .app{display:grid;grid-template-columns:240px minmax(0,1fr) 260px;gap:9px;padding:9px;min-height:100vh;background:var(--surface)}
+  .col{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .head{display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-bottom:1px solid var(--line-soft);flex:none} .head h2{font-size:12.5px;font-weight:600;margin:0;flex:1}
+  .body{flex:1;overflow:auto;min-height:0;padding:6px}
+  .li{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center;padding:6px 8px;border-radius:7px;cursor:pointer} .li:hover{background:var(--sepia)} .li.on{background:var(--acc-bg)} .li .n{font-family:var(--mono);font-size:10.5px;color:var(--faint)} .li.done{color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--faint);flex:none} .dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.live{animation:pulse 2.4s infinite} @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(90,158,111,.45)}70%{box-shadow:0 0 0 7px rgba(90,158,111,0)}100%{box-shadow:0 0 0 0 rgba(90,158,111,0)}}
+  .strip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line-soft);flex:none;flex-wrap:wrap} .strip h1{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.02em;margin:0;line-height:1.1} .strip .cap{font-size:12px;color:var(--muted);flex:1}
+  .btn{font:inherit;font-size:12px;padding:4px 10px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer} .btn.stamp{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
+  .screen{flex:1;min-height:560px;border:0;border-bottom:1px solid var(--line-soft);background:var(--bg)}
+  .capt{padding:11px 13px} .q{font-family:var(--serif);font-size:17px;line-height:1.3;margin:0 0 4px} .ans{color:var(--muted)} .row{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:6px}
+  .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:5px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle} .tag.gap{color:var(--warn);border-color:var(--warn-line);background:var(--warn-bg)}
+  .steps{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px} .steps i{display:block;width:14px;height:5px;border-radius:3px;background:var(--line)} .steps i.done{background:var(--acc)} .steps i.gap{background:var(--warn)}
+  .gap{border:1px solid var(--warn-line);background:var(--warn-bg);border-radius:9px;padding:8px 10px;margin:6px} .gap .w{font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase} .gap .s{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:3px}
+  .quiet{color:var(--faint);padding:6px 8px}
+  @media (max-width:980px){.app{grid-template-columns:1fr;padding:16px;gap:12px}.col{overflow:visible}.body{overflow:visible}.screen{min-height:480px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="col"><div class="head"><h2>Journeys</h2></div><div class="body" id="list"></div></div>
+  <div class="col">
+    <div class="strip"><span class="dot ok live"></span><h1 id="jname">On screen</h1><span class="cap" id="jcap"></span><button class="btn stamp" id="play" type="button">Play</button><button class="btn" id="step" type="button">Step</button><button class="btn" id="next" type="button">Next journey</button></div>
+    <iframe class="screen" id="screen" src="department-screen.html" title="The department screen"></iframe>
+    <div class="capt" id="capt"></div>
+  </div>
+  <div class="col"><div class="head"><h2>Gaps</h2></div><div class="body" id="gaps"><div class="quiet">Nothing yet.</div></div></div>
+</div>
+
+<script>
+/* A scene: {sys, open, extra, tree, rows, hl, text, row, gap}. The screen is the real department page, driven by messages. */
+const SCENES = [
+ {name:"Hand the company a task",who:"Shadow",steps:[
+  {sys:"shadow",open:"now",text:"Sankalp types one line in the Now box: get the Paisa deck to the investor by Friday.",row:"",hl:".li[data-open='now']"},
+  {sys:"shadow",open:"now",extra:{waiting:{first:true,rows:[["Get the Paisa deck to the investor by Friday","chat"]]}},text:"Priority gives the line a row. It waits in Now with its origin, chat.",row:"work item row: origin chat",hl:"#rows, .card .rows"},
+  {sys:"shadow",open:"w-start-a-task",text:"Start a task runs: read the line, write the brief, one Shadow chat, one worker.",row:"run row: brief written",hl:".flow .step:nth-child(2)"},
+  {sys:"shadow",open:"now",rows:[["Get the Paisa deck to the investor by Friday","brief: 12 slides, the March numbers, by Friday","run","10:02","model","1 min"]],text:"A Running row: the task states its own done.",row:"run row",hl:"#rows .row:first-child"},
+  {sys:"shadow",open:"now",rows:[["Get the Paisa deck to the investor by Friday","deck v1 filed; 12 slides","ok","11:40","model","98 min"]],text:"The worker finishes. The check held. The deck is filed work.",row:"run row: passed; version row",hl:"#rows .row:first-child"},
+  {sys:"shadow",open:"f-running-row",extra:{filed:[["Paisa deck","Start a task","the investor; Sankalp",[["1","12 slides, the March numbers","in use"]],[["ok","Get the Paisa deck to the investor","12 slides","model","11:40"]]]]},text:"Filed work: one version, one reader outside, the row that made it.",row:"",hl:"[data-view='f-running-row']"}]},
+ {name:"Approve a held say",who:"Shadow",steps:[
+  {sys:"shadow",open:"now",rows:[["Get the Paisa deck to the investor","wants to email the investor","stall","11:45","model",""]],text:"The worker wants to send the deck out. An outside party: the charter says ask.",row:"run row: held",hl:"#rows .row:first-child"},
+  {sys:"shadow",open:"identity",text:"Identity judges the effect against the rules: an email to an investor is an ask.",row:"judgment row: ask",hl:"card:Effects against the rules"},
+  {sys:"shadow",open:"now",extra:{approvals:{first:true,rows:[["Identity","Email the deck to the investor.","An outside party. The exact text is held. Waits.",true]]}},text:"One card in Asks with the held text. Stamp or Refuse. Nothing else is asked.",row:"ask row",hl:".asks .askc:first-child"},
+  {sys:"shadow",open:"now",extra:{approvals:{first:true,rows:[["Identity","Email the deck to the investor.","An outside party. The exact text is held. Waits.",true]]}},rows:[["Email the deck to the investor","sent; the held text, one use","ok","11:52","Sankalp","1 min"]],text:"Sankalp stamps. The say is used once and the row lands.",row:"stamp row; run row",hl:"#rows .row:first-child"}]},
+ {name:"Research a market: an SEO audit",who:"Marketing",steps:[
+  {sys:"marketing",open:"now",text:"Nisha types: research the SEO of our loan pages.",row:"",hl:".li[data-open='now']"},
+  {sys:"marketing",open:"now",extra:{waiting:{first:true,rows:[["SEO audit: the loan pages","chat"]]}},text:"A row is born, origin chat. Priority puts it first.",row:"work item row",hl:".card .rows"},
+  {sys:"marketing",open:"coordination",text:"Coordination admits three model runs at once, the charter's cap, and holds Publish behind them.",row:"lock row",hl:"card:Locks"},
+  {sys:"marketing",open:"w-seo-audit",text:"SEO audit: on-site, competitor and AI-search lanes run in parallel, then nine pillars and a 30/60/90 roadmap.",row:"run rows: three lanes",hl:".flow"},
+  {sys:"marketing",open:"f-seo-audit",text:"The audit is filed work, version 1, read by Nisha and by Write a page.",row:"version row",hl:"[data-view='f-seo-audit']"},
+  {sys:"marketing",open:"adaptation",text:"On Adaptation's map: the audit feeds Write a page, which feeds Publish, which feeds the weekly report the goal reads.",row:"",hl:".map"}]},
+ {name:"A report writes itself",who:"Marketing",steps:[
+  {sys:"marketing",open:"w-weekly-traffic-report",text:"Each Monday at 06:00 the weekly report runs as code: read the week, rank the ten terms, one page.",row:"run row",hl:".flow"},
+  {sys:"marketing",open:"f-weekly-traffic-report",text:"Four reports so far; the charter reads its check from these rows: 3 of 4 passed.",row:"version rows",hl:"card:Versions"},
+  {sys:"marketing",open:"identity",text:"Identity's reading of the goal comes from those rows, not from anyone's word.",row:"computed",hl:".read"},
+  {sys:"marketing",open:"w-weekly-traffic-report",text:"Born: it was a proposal. Nisha asked four Mondays; Adaptation proposed; she stamped on 8 September.",row:"born row",hl:"[data-view='w-weekly-traffic-report'] .pane .card:first-child"}]},
+ {name:"A rule from above changes the work",who:"Lending, Underwriting",steps:[
+  {sys:"lending",open:"identity",text:"The regulator allows a verdict to be reused up to 45 days. Ravi rules it.",row:"",hl:".charter"},
+  {sys:"underwriting",open:"identity",extra:{charter:{rules:[["go","a verdict on a complete file"],["ask","reuse a verdict older than 45 days"],["no","a verdict without a bureau check"],["","one verdict per applicant"]]}},text:"The authority above changes Underwriting's charter: version 3, ask above 45 days.",row:"charter version row",hl:".charter > div:nth-child(2)"},
+  {sys:"underwriting",open:"w-verify-kyc",text:"Verify KYC's steps still say 30 days. An engine's own steps carry no version.",row:"",gap:"E5 Changes: an engine's own steps have no version",hl:".flow"},
+  {sys:"underwriting",open:"adaptation",text:"The waiting proposal 'reuse up to 45 days' lands the same day.",row:"proposal row: landed",hl:"card:Proposals"}]},
+ {name:"A department grows a child",who:"Marketing, Content",steps:[
+  {sys:"marketing",open:"adaptation",text:"Meters on every engine. Write a page and Publish a page are over on Asks and Spend, 30 days.",row:"meter rows",hl:"card:Meters"},
+  {sys:"marketing",open:"now",text:"Adaptation writes the card: Make Content a department, cut by craft. Owner Nisha. Goes ahead Monday.",row:"proposal row",hl:".asks .askc:first-child"},
+  {sys:"lending",open:"identity",text:"The parent's rule: a department born without an owner and two engines is refused. This one has both: go on stamp.",row:"judgment row",hl:"card:Effects against the rules"},
+  {sys:"marketing",open:"now",tree:[["Lending",["ok live","Content","content","sub"]]],text:"Nisha stamps. Content appears in the tree under Lending, beside Marketing.",row:"stamp row; charter row",hl:".tree .tr:last-child"},
+  {sys:"marketing",open:"adaptation",extra:{work:[]},text:"Nisha writes Content's charter; Write a page and Publish a page move under it; Marketing's meters fall back.",row:"charter row",gap:"S4 Engines born: moving an engine between departments has no rule for its filed work and readers",hl:".map"}]},
+ {name:"A failure and a take-over",who:"Shadow",steps:[
+  {sys:"shadow",open:"now",rows:[["Get the Paisa deck to the investor","past its 10 minute budget","stall","12:30","model","14 min"]],text:"The worker stalls: past its budget, no row for 14 minutes.",row:"stall row",hl:"#rows .row:first-child"},
+  {sys:"shadow",open:"identity",text:"Retries spent. Identity escalates to the owner.",row:"escalation row",hl:"card:Escalated to"},
+  {sys:"shadow",open:"now",extra:{approvals:{first:true,rows:[["Identity","Get the Paisa deck: stalled 14 minutes.","Take over, or let it retry. Waits.",true]]}},text:"A card: take over or retry. Sankalp takes over; the task is paused under him.",row:"ask row; paused row",gap:"E6 Fails: a paused state exists in Shadow's design but not on this screen",hl:".asks .askc:first-child"},
+  {sys:"shadow",open:"now",rows:[["Get the Paisa deck to the investor","handed back; running","run","12:41","model","1 min"]],text:"He fixes the brief and hands back. The pending ask survives the take-over.",row:"hand-back row",hl:"#rows .row:first-child"}]},
+ {name:"A feature from a line to the fleet",who:"Approvals inbox",steps:[
+  {sys:"feature",open:"identity",text:"A feature is a department: an Identity with a goal, cut by feature, and its own engines.",row:"charter row",hl:".charter"},
+  {sys:"feature",open:"w-realize",text:"Realize: eight rungs, worldview to implementation, each with a check and the artifact it makes. Five done, one running.",row:"run rows",hl:".flow"},
+  {sys:"feature",open:"f-architecture-note",text:"Each rung's artifact is filed with versions; a change enters at a rung and the rungs below run again.",row:"version rows",hl:"card:Versions"},
+  {sys:"feature",open:"now",text:"The ship waits for the owner: a change every company sees is an ask.",row:"ask row",hl:".asks .askc:last-child"},
+  {sys:"feature",open:"w-ship-to-the-fleet",text:"On the stamp: Ship to the fleet bumps, tags, releases.",row:"run row: tag",hl:".flow"}]},
+ {name:"A month in the life of a company",who:"Lending",steps:[
+  {sys:"servicing",open:"now",text:"Day 1. The daily reconcile at 06:00; Disburse waits on the ledger; the bank file was short once.",row:"run rows",hl:"#rows"},
+  {sys:"servicing",open:"adaptation",text:"Day 5. Adaptation proposes: match EMIs with code, not a model; forty identical runs. It goes ahead at 16:00.",row:"proposal row",hl:"card:Proposals"},
+  {sys:"marketing",open:"now",text:"Day 9. A founder line in Marketing becomes the SEO audit; twelve pages follow.",row:"work item rows",hl:".card .rows"},
+  {sys:"lending",open:"now",text:"Day 12. Volume climbs; Collections is proposed as a department from two meters over.",row:"proposal row",hl:".asks .askc:first-child"},
+  {sys:"bankmove",open:"identity",text:"Day 20. Bank move, a department with an end date, moves batch 4 of 6.",row:"run row",hl:".charter"},
+  {sys:"bankmove",open:"identity",text:"Day 30. 30 October. The department is done. No rule retires it or moves its engines.",row:"",gap:"S10 Retires: no rule for retiring a department or where its engines go",hl:"card:Effects against the rules"},
+  {sys:"lending",open:"adaptation",text:"Month end. Lending's map shows its engines, but the parent's check is not computed from its children's.",row:"",gap:"S6 Reads its goal: a parent does not compute from its children",hl:".map"},
+  {sys:"lending",open:"adaptation",text:"The audit is filed before the 5th. Adaptation's map shows every engine that reached the goal.",row:"version row",hl:".map"}]}
+];
+
+const esc = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+let ji = 0, si = -1, timer = null, playing = false; const seen = new Set(), gaps = [];
+const frame = document.getElementById("screen");
+function send(st){ const w = frame.contentWindow; if (!w) return; w.postMessage({ type:"scene", sys: st.sys, open: st.open, extra: st.extra || null, tree: st.tree || [], rows: st.rows || null, hl: st.hl || null, narrow: true }, "*"); }
+function listHtml(){ return SCENES.map((j, i) => { const g = j.steps.some(s => s.gap); return `<div class="li${i === ji ? " on" : ""}${seen.has(i) ? " done" : ""}" data-j="${i}"><span class="dot ${seen.has(i) ? (g ? "warn" : "ok") : (i === ji ? "ok live" : "")}"></span><span>${esc(j.name)}<div style="font-size:10.5px;color:var(--faint)">${esc(j.who)}</div></span><span class="n">${j.steps.length}</span></div>`; }).join(""); }
+function gapsHtml(){ return gaps.length ? gaps.map(g => `<div class="gap"><div class="w">${esc(g.j)}</div>${esc(g.text)}<div class="s">${esc(g.stage)}</div></div>`).join("") : `<div class="quiet">Nothing yet.</div>`; }
+function draw(){
+  const j = SCENES[ji];
+  document.getElementById("list").innerHTML = listHtml();
+  document.getElementById("jname").textContent = j.name;
+  document.getElementById("jcap").textContent = si < 0 ? `${ji + 1} of ${SCENES.length}` : `${ji + 1} of ${SCENES.length}, step ${si + 1} of ${j.steps.length}`;
+  const cur = si >= 0 ? j.steps[si] : null;
+  const bars = j.steps.map((st, k) => `<i class="${k <= si ? (st.gap ? "gap" : "done") : ""}"></i>`).join("");
+  document.getElementById("capt").innerHTML = cur ? `<p class="q">${esc(cur.text)}${cur.gap ? `<span class="tag gap">gap</span>` : ""}</p><div class="ans">${esc(j.who)}</div>${cur.row ? `<div class="row">${esc(cur.row)}</div>` : ""}${cur.gap ? `<div class="row">${esc(cur.gap)}</div>` : ""}<div class="steps">${bars}</div>` : `<p class="q">${esc(j.name)}</p><div class="ans">${esc(j.who)}, ${j.steps.length} steps</div><div class="steps">${bars}</div>`;
+  document.getElementById("gaps").innerHTML = gapsHtml();
+  document.getElementById("play").textContent = playing ? "Pause" : "Play";
+  if (cur) send(cur);
+}
+function step(){
+  const j = SCENES[ji];
+  if (si + 1 >= j.steps.length){ seen.add(ji); if (ji + 1 < SCENES.length){ ji++; si = -1; } else { playing = false; if (timer) clearTimeout(timer); } draw(); return; }
+  si++; const st = j.steps[si];
+  if (st.gap && !gaps.some(g => g.j === j.name && g.text === st.text)) gaps.push({ j: j.name, text: st.text, stage: st.gap });
+  draw();
+}
+function tick(){ if (!playing) return; step(); const j = SCENES[ji]; const pause = si < 0 ? 1600 : (j.steps[si].gap ? 4200 : 3200); timer = setTimeout(tick, pause); }
+document.getElementById("play").addEventListener("click", () => { playing = !playing; if (playing) tick(); else if (timer) clearTimeout(timer); draw(); });
+document.getElementById("step").addEventListener("click", () => { playing = false; if (timer) clearTimeout(timer); step(); });
+document.getElementById("next").addEventListener("click", () => { playing = false; if (timer) clearTimeout(timer); seen.add(ji); SCENES[ji].steps.forEach(st => { if (st.gap && !gaps.some(g => g.j === SCENES[ji].name && g.text === st.text)) gaps.push({ j: SCENES[ji].name, text: st.text, stage: st.gap }); }); ji = (ji + 1) % SCENES.length; si = -1; draw(); });
+document.getElementById("list").addEventListener("click", ev => { const el = ev.target.closest("[data-j]"); if (!el) return; playing = false; if (timer) clearTimeout(timer); ji = +el.dataset.j; si = -1; draw(); });
+frame.addEventListener("load", () => { draw(); });
+draw();
+</script>
+</body>
+</html>

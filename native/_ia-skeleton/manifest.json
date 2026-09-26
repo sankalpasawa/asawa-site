@@ -1,0 +1,94 @@
+{
+  "site": "native",
+  "current_version": "v1",
+  "status_flow": ["SEED", "DRAFT", "VERIFIED", "LOCKED", "SHIPPED"],
+  "bands": ["GOVERNANCE(wrap)", "COMPANY(zoom0)", "WHY(zoom1)", "PRODUCTS(zoom2)", "PLATFORM(zoom3)", "ENGINEERING(zoom4)", "RUNTIME(zoom5)"],
+  "comment": "DUMMY DATA — IA skeleton for founder review. One row per page. Agents read this file, filter by version+status, pick a node, work it, flip status. Bands use WORDS, not L-numbers: L0-L5 already means change-cascade levels in holding/HIERARCHY.md and build layers in D38. 'projects_to' = secondary-altitude cross-links (a concept can live on one page but project onto another band, e.g. BLUEPRINT is a PLATFORM mechanism that also surfaces as a DOWNSTREAM skill).",
+  "pages": [
+    {
+      "id": "hub",
+      "path": "index.html",
+      "band": "COMPANY",
+      "parent": null,
+      "title": "Native — Company Hub",
+      "status": "LOCKED",
+      "version": "v1",
+      "owner": "founder",
+      "projects_to": [],
+      "acceptance": "map + status board current; under 400 lines; every page below reachable in 2 clicks"
+    },
+    {
+      "id": "governance",
+      "path": "governance/index.html",
+      "band": "GOVERNANCE",
+      "parent": "hub",
+      "title": "Governance — doctrine · directions · charters · Authority+Tenancy (the wrap)",
+      "status": "DRAFT",
+      "version": "v1",
+      "owner": "founder+claude",
+      "projects_to": [],
+      "acceptance": "every invariant traces to source; every gate names its enforcement point; pages cite gates, never restate them"
+    },
+    {
+      "id": "needs",
+      "path": "needs/index.html",
+      "band": "WHY",
+      "parent": "hub",
+      "title": "Needs — why Native exists",
+      "status": "DRAFT",
+      "version": "v1",
+      "owner": "founder+claude",
+      "projects_to": [],
+      "acceptance": "every need traces to at least 1 product page; operator-voice cells filled by founder"
+    },
+    {
+      "id": "product-cos",
+      "path": "products/cos/index.html",
+      "band": "PRODUCTS",
+      "parent": "needs",
+      "title": "Product — Chief of Staff (CoS)",
+      "status": "DRAFT",
+      "version": "v1",
+      "owner": "claude",
+      "projects_to": [],
+      "acceptance": "5 pillars defined; each pillar cites a needs row; journeys complete; gaps listed"
+    },
+    {
+      "id": "product-senior-expert",
+      "path": "products/senior-expert/index.html",
+      "band": "PRODUCTS",
+      "parent": "needs",
+      "title": "Product — Senior Expert",
+      "status": "SEED",
+      "version": "v2",
+      "owner": "unassigned",
+      "projects_to": [],
+      "acceptance": "authored per ADR-020 Layer-B template; reuses platform pages, adds none"
+    },
+    {
+      "id": "platform-orchestration",
+      "path": "platform/orchestration.html",
+      "band": "PLATFORM",
+      "parent": "product-cos",
+      "title": "Platform — Orchestration block",
+      "status": "VERIFIED",
+      "version": "v1",
+      "owner": "claude",
+      "projects_to": ["governance"],
+      "projects_to_note": "dummy example — its approval moments are governance material surfaced at PLATFORM band",
+      "acceptance": "all claims cite source anchors; contracts to SoP + Host declared; open gaps listed for founder"
+    },
+    {
+      "id": "eng-orchestration-hld",
+      "path": "engineering/orchestration-hld.html",
+      "band": "ENGINEERING",
+      "parent": "platform-orchestration",
+      "title": "Engineering — Orchestration HLD",
+      "status": "SEED",
+      "version": "v1",
+      "owner": "unassigned",
+      "projects_to": [],
+      "acceptance": "design satisfies parent PLATFORM contract; cites sutra canon (ADRs, engines) — copies nothing (D54)"
+    }
+  ]
+}

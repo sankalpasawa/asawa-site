@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>03 — Control Flow — Native Tech Design</title><link rel="stylesheet" href="../shared.css"></head>
+<body>
+<div style="background:#7c2d12;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>SUPERSEDED 2026-06-13.</b> This scaffold stub is replaced by the engineering band's cross-cutting views + per-part pages. See <a href="../../engineering/index.html" style="color:#fed7aa">engineering/</a>. Archive retained for provenance.</div>
+<nav class="topnav"><a href="../index.html">← Tech Design Hub</a> · <a href="../../product-prd-native-v1.html">PRD</a> · Layer: <strong>HLD</strong> · Doc: <strong>03 — Control Flow</strong></nav>
+<header><h1>03 — Control Flow</h1><p class="subtitle">Workflow lifecycle from Trigger to ExecutionResult. State machines per phase. How the 6 surfaces orchestrate. Sequence diagrams of typical operator turn.</p></header>
+<div class="scaffold-banner"><span class="fill-me">SCAFFOLD</span> — fill-in pending.</div>
+<section><h2>Scope</h2><p>How control flows through Native during one operator turn — and across multi-turn sessions. Engineers consult this when building or debugging orchestration.</p></section>
+<div class="canon-pointer"><strong>Canon authority</strong>:<ul><li><a href="../../../../../sutra/os/native/surfaces/"><code>sutra/os/native/surfaces/</code></a></li><li><a href="../../../../../sutra/os/decisions/ADR-014-depth-router-via-workflow.md">ADR-014 depth-router</a></li><li><a href="../../product-prd-native-v1.html#section-4-2-state-machine">PRD §4.2 workforce state machine</a></li></ul></div>
+<section><h2>Planned sections</h2><div class="section-list"><ol><li>One operator turn — sequence diagram (B1 intake → B2 context → B3 act → B4 comms → B5 audit)</li><li>Workforce state machine — phases + transitions</li><li>Surface orchestration — when ROUTE / RUN / GATE / EMERGE / AUDIT / TENANT fire</li><li>HOW-method selection cascade</li><li>Authority gate triggering — 6 dimensions</li><li>Failure modes + recovery paths</li><li>Test-before-conclude gate</li></ol></div></section>
+<section><h2>Back-references</h2><p>ADR-014 · ADR-009 · PRD §3 HOW Methodology</p></section>
+<footer>Scaffold 2026-05-20. <a href="../index.html">↑ Hub</a></footer>
+</body></html>

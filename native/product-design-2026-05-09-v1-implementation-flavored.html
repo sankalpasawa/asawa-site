@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — product design (2026-05-09)</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fafaf7;
+    --accent: #1a4d8f;
+    --soft: #e8e6df;
+    --muted: #6a6a6a;
+    --good: #2d6a3e;
+    --warn: #a85b1f;
+    --code: #f5f2ec;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px; line-height: 1.6;
+  }
+  body { max-width: 940px; margin: 0 auto; padding: 48px 32px 96px; }
+  h1, h2, h3, h4 { font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+  h1 { font-size: 56px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h1 .accent { color: var(--accent); }
+  .tagline { font-size: 22px; color: var(--muted); margin: 0 0 48px; max-width: 720px; }
+  h2 { font-size: 36px; margin: 64px 0 16px; border-top: 1px solid var(--soft); padding-top: 48px; }
+  h2 .num { color: var(--muted); font-weight: 400; margin-right: 12px; font-feature-settings: "tnum"; }
+  h3 { font-size: 22px; margin: 32px 0 12px; }
+  h4 { font-size: 17px; margin: 24px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  p { margin: 0 0 16px; max-width: 740px; }
+  blockquote { margin: 16px 0; padding: 16px 24px; border-left: 4px solid var(--accent); background: var(--code); font-style: italic; }
+  blockquote .who { display: block; margin-top: 8px; font-style: normal; font-size: 14px; color: var(--muted); }
+  code, pre { font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 14px; }
+  code { background: var(--code); padding: 2px 6px; border-radius: 3px; }
+  pre { background: var(--code); padding: 20px 24px; border-radius: 6px; overflow-x: auto; line-height: 1.5; border: 1px solid var(--soft); }
+  table { border-collapse: collapse; margin: 16px 0 24px; font-size: 15px; width: 100%; }
+  th { text-align: left; padding: 10px 14px; background: var(--code); border-bottom: 2px solid var(--soft); font-weight: 600; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--soft); vertical-align: top; }
+  td.num { text-align: right; font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill.done { background: #e3f2e8; color: var(--good); }
+  .pill.flight { background: #fff4e6; color: var(--warn); }
+  .pill.pending { background: var(--soft); color: var(--muted); }
+  .stage-card { background: white; border: 1px solid var(--soft); border-radius: 8px; padding: 24px; margin: 16px 0; }
+  .stage-card h4 { margin: 0 0 8px; color: var(--accent); }
+  .stage-card .when { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .toc { background: white; border: 1px solid var(--soft); border-radius: 8px; padding: 24px; margin: 0 0 48px; }
+  .toc ol { margin: 0; padding-left: 24px; }
+  .toc li { padding: 4px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .ascii-box { background: var(--code); border: 1px solid var(--soft); border-radius: 6px; padding: 16px 20px; margin: 12px 0; font-family: "SF Mono", Menlo, monospace; font-size: 13px; line-height: 1.4; white-space: pre; overflow-x: auto; }
+  .meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  hr { border: none; border-top: 1px solid var(--soft); margin: 64px 0 32px; }
+  @media (max-width: 700px) {
+    body { padding: 24px 18px 64px; }
+    h1 { font-size: 36px; }
+    .tagline { font-size: 18px; }
+    h2 { font-size: 26px; margin: 48px 0 12px; padding-top: 32px; }
+    .grid3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1><span class="accent">Native</span> — operating system for multi-strand operators</h1>
+<p class="tagline">Native runs alongside founders + manager-ICs operating judgment-driven, multi-stranded work. Every decision becomes a typed artifact. Every consequential moment routes through a named, gated, audited workflow. Native learns the operator over time, carries picked work through analysis → decide → build → operationalize → auto-run, and stays out of the way until your judgment is needed.</p>
+
+<div class="toc">
+  <h4 style="margin-top:0;">CONTENTS</h4>
+  <ol>
+    <li><a href="#need">The user need</a></li>
+    <li><a href="#solution">The solution Native delivers</a></li>
+    <li><a href="#connect">How the design connects (one canvas)</a></li>
+    <li><a href="#evolution">Evolution stages</a></li>
+    <li><a href="#status">Where we are today</a></li>
+  </ol>
+</div>
+
+<h2 id="need"><span class="num">1.</span>The user need</h2>
+
+<h3>1.1 The operator's reality</h3>
+<p>Multi-strand operators — founders running 1-N companies, manager-ICs leading teams while also taking on judgment-driven initiatives and IC work — have a workload that is <em>variable, cross-cutting, and accumulating</em>. They cannot just "do their job," because the job IS the variability. Three types of work happen simultaneously:</p>
+
+<table>
+  <tr><th>Strand</th><th>Example (founder running 3 companies)</th></tr>
+  <tr><td><strong>Named scope</strong></td><td>CEO of holding co; leads orgs, hires</td></tr>
+  <tr><td><strong>Judgment work</strong></td><td>Cross-company initiatives picked because they matter, not because assigned</td></tr>
+  <tr><td><strong>IC work</strong></td><td>Hands-on code, writing, selling, deciding</td></tr>
+</table>
+
+<h3>1.2 Founder voice (verbatim, 2026-05-09)</h3>
+<blockquote>
+  "It can help me execute projects over time. It can help me do one-off tasks. It can surface relevant decisions it needs to take. It can understand my taste and the way I take decisions, the way I communicate. It can personalize communication for me and personalize the way I think about things and help me grow, and as I'm growing it can change things accordingly. It can help me have interactions between me and the Native. It can help me create and pick some work so it can run through the entire lifecycle of doing analysis, taking decisions, maybe building out and then operationalizing it, and once it is operationalized it can just automatically run so... so founder graduates to next problem."
+  <span class="who">Captured verbatim in <code>NATIVE-ENGINE.md §12.1</code></span>
+</blockquote>
+
+<h3>1.3 What the operator loses without Native</h3>
+<table>
+  <tr><th>Outcome the operator wants</th><th>What breaks without Native</th></tr>
+  <tr><td>Surface what was decided last week</td><td>Buried in chat / inbox / notes — minutes to recover, often re-decided</td></tr>
+  <tr><td>Consistent quality across N companies</td><td>Quality drifts; some cos get the A-version, some get the B-version</td></tr>
+  <tr><td>Convert a repeated pattern into a named workflow</td><td>Reinventing the same flow every Monday morning</td></tr>
+  <tr><td>Replay any past decision with full provenance</td><td>Memory becomes the audit trail — fragile, single-point-of-failure</td></tr>
+  <tr><td>Cross-tenant boundary integrity (no leakage)</td><td>Context spillover between cos; confidentiality breaches</td></tr>
+</table>
+<p class="meta">Anchor: <code>NATIVE-ENGINE.md §14.1</code> + <code>§14.3</code> JTBD outcomes.</p>
+
+<h2 id="solution"><span class="num">2.</span>The solution Native delivers</h2>
+
+<h3>2.1 Mission (one sentence)</h3>
+<blockquote>
+  <strong>Native is the operating system that runs alongside a manager-IC day-to-day — executing projects over time, picking up one-off tasks, surfacing decisions the operator needs to take, learning taste + decision-style + communication voice, personalizing how it thinks with the operator as the operator grows, and carrying picked work through its full lifecycle from analysis → decision → build → operationalize → auto-run.</strong>
+  <span class="who">Mission — <code>NATIVE-ENGINE.md §12.2</code>, RATIFIED v1 2026-05-09</span>
+</blockquote>
+
+<h3>2.2 The 5 outcome promises (v1 top-5 blocks)</h3>
+<p>Five capability blocks deliver the v1 outcome experience. Other 13 blocks ship as <em>stubs</em> in v1 (per pillar P3) and fill incrementally.</p>
+<table>
+  <tr><th style="width:90px;">Block</th><th>What operator says</th><th>Mechanism</th></tr>
+  <tr><td><strong>B9</strong></td><td>"Last week's decision is still there when I pick this up again."</td><td>Closed-loop artifact catalog. Every input + utterance + LLM output becomes a typed Artifact. Native re-consumes its own outputs.</td></tr>
+  <tr><td><strong>B7</strong></td><td>"Every LLM call shows me what it expected + what it got."</td><td>Pre/post validation gates per Workflow step. Testing-framework discipline applied to LLM execution.</td></tr>
+  <tr><td><strong>7d</strong></td><td>"I pick the work; Native carries it through analysis → auto-run."</td><td>Lifecycle orchestrator: ANALYZE → DECIDE → BUILD → OPERATIONALIZE → AUTO-RUN.</td></tr>
+  <tr><td><strong>B5</strong></td><td>"I control how Native explains things to me."</td><td>Explanation surface. Operator tunes verbosity, cadence, channel.</td></tr>
+  <tr><td><strong>B18</strong></td><td>"Native sounds more like me over time."</td><td>Person formation: taste / voice / decision-style / risk tolerance / cadence modeled passively + (opt-in) sparse explicit ratings.</td></tr>
+</table>
+
+<h3>2.3 The 6 surfaces the operator interacts with</h3>
+<div class="grid3">
+  <div class="stage-card"><h4>ROUTE</h4><p>Classify every operator utterance. Match a Workflow OR log + consider pattern emergence.</p></div>
+  <div class="stage-card"><h4>RUN</h4><p>Fire matched Workflow. Host-LLM executes each step. Pre/post-validation gates fire per step.</p></div>
+  <div class="stage-card"><h4>GATE</h4><p>Pause on steps requiring approval. Surface structured approval card. Resume on explicit utterance.</p></div>
+  <div class="stage-card"><h4>EMERGE</h4><p>When a pattern repeats ≥4 times, Native proposes a named Workflow. Operator approves once → registered.</p></div>
+  <div class="stage-card"><h4>AUDIT</h4><p>Every transition emits a typed EngineEvent (26 types) + DecisionProvenance row. 3-channel JSONL durability.</p></div>
+  <div class="stage-card"><h4>TENANT</h4><p>Each company is an isolated Tenant. Cross-tenant ops require explicit delegation. Default-deny.</p></div>
+</div>
+
+<h3>2.4 What Native is NOT (explicit non-goals)</h3>
+<ul>
+  <li>NOT a UI / visual designer. Terminal + audit log + slash commands only.</li>
+  <li>NOT autonomous execution. Daemon proposes; operator approves; host-LLM executes.</li>
+  <li>NOT a memory product. The artifact catalog is reuse, not memory.</li>
+  <li>NOT browser automation. Consume the commodity; don't build it.</li>
+  <li>NOT capability-additive over vanilla Claude Code. Native adds content + integration + curation + distribution + governance + multi-tenant.</li>
+</ul>
+
+<h2 id="connect"><span class="num">3.</span>How the design connects (one canvas)</h2>
+<p>Native is a graph. Nodes are part-files; edges are typed cross-references. The migration decomposes the monolithic canon into 127 part-files across 11 buckets, indexed by <code>NATIVE-ENGINE.md</code>.</p>
+
+<div class="ascii-box">
+                          [why]  L0  Founding Doctrine
+                                        |
+                                        v
+              +-- L1 POV  L2 Vision  L3 Mission  L4 Strategy --+
+              |              STRATEGIC NORTH                   |
+              +-------------------+----------------------------+
+                                  |
+                                  v
+                        +---------+---------+
+                        |   L6 PRD (WHAT)   |
+                        | problem  persona  |
+                        | goals  non-goals  |
+                        | risks  metrics    |
+                        +---------+---------+
+                                  |
+                                  v (solution = 6 surfaces)
+ +================================+================================+
+ |                       NATIVE RUNTIME                             |
+ |   +-------+   +-----+   +-----+   +-------+   +-----+   +------+ |
+ |   | ROUTE |--&gt;| RUN |--&gt;| GATE|--&gt;| EMERGE|--&gt;|AUDIT|--&gt;|TENANT| |
+ |   +-------+   +-----+   +-----+   +-------+   +-----+   +------+ |
+ +================================+=================================+
+                                  |
+                                  v
+              +-------------------+--------------------+
+              |        24 CAPABILITY BLOCKS            |
+              |  Top-5 v1: B9 B7 7d B5 B18             |
+              |  Other 13 ship as STUBS                |
+              +-------------------+--------------------+
+                                  |
+                                  v
+              +-------------------+--------------------+
+              |  10 TYPED PRIMITIVES + 26 EVENTS       |
+              |  Domain  Charter  Workflow  Step       |
+              |  Trigger  ExecutionResult  Event       |
+              |  Tenant  DecisionProvenance  Approval  |
+              +-------------------+--------------------+
+                                  |
+                                  v
+              +-------------------+--------------------+
+              |  SUBSTRATE (commodity)                 |
+              |  Claude / Codex (host-LLM)             |
+              |  JSONL audit  MCP  Connectors          |
+              +-------------------+--------------------+
+                                  |
+                                  v
+              +-------------------+--------------------+
+              |  OUTCOME (N* signal)                   |
+              |  Operator-Hours-Saved per Week         |
+              |  v1: &gt;=3 OHS/wk @ 14d post-install     |
+              |  v3: &gt;=20 OHS/wk mature                |
+              +----------------------------------------+
+</div>
+
+<h3>3.1 The 127-part graph (one node = one part-file)</h3>
+<table>
+  <tr><th>Bucket</th><th>Count</th><th>Connects to</th></tr>
+  <tr><td>Pillars (P1-P14)</td><td class="num">14</td><td>blocks (each pillar expressed)  falsification (§10.3)  doctrine (§10.4)</td></tr>
+  <tr><td>Surfaces</td><td class="num">6</td><td>events emitted/consumed  blocks living on surface  primitives consumed</td></tr>
+  <tr><td>Blocks (L8 features)</td><td class="num">24</td><td>primitives (data)  events (telemetry)  surfaces (host)  hardstops (fail)  pillars (express)</td></tr>
+  <tr><td>Events</td><td class="num">26</td><td>emitter surface/block  consumer surfaces  primitive payload refs</td></tr>
+  <tr><td>Primitives</td><td class="num">10</td><td>cross-primitive composition  events in payload  blocks consume</td></tr>
+  <tr><td>Hardstops</td><td class="num">8</td><td>trigger condition  recovery path  STRIDE class</td></tr>
+  <tr><td>ADRs</td><td class="num">14</td><td>primitive/event/block/hardstop they rationalize</td></tr>
+  <tr><td>Open Questions</td><td class="num">11</td><td>answered decision OR open status</td></tr>
+  <tr><td>Doc layers</td><td class="num">8</td><td>canon section indexed (L1=§10, L2=§11, ...)</td></tr>
+  <tr><td>Impl phases</td><td class="num">5</td><td>bucket(s) covered  entry/exit gates</td></tr>
+  <tr><td>N* metric</td><td class="num">1</td><td>leading inputs  blocks/surfaces that move it</td></tr>
+  <tr style="font-weight:600;"><td>Total</td><td class="num">127</td><td>fully connected graph (CHECK 8 audit enforces)</td></tr>
+</table>
+
+<h2 id="evolution"><span class="num">4.</span>Evolution stages</h2>
+<p>Native evolves across THREE timelines simultaneously: per-operator (how Native learns ONE operator over time), per-product-version (v1 → v2 → v3), and per-migration-phase (the 127-part canon decomp shipping now).</p>
+
+<h3>4.1 Per-operator evolution (the person-formation arc)</h3>
+<p>Per pillar P7 falsification test: <em>"If Native behaves identically at day-1 vs day-180 → P7 broken; personalization static not dynamic."</em></p>
+
+<div class="stage-card">
+  <h4>Day 1 — first install</h4>
+  <div class="when">Time-to-first-Execution ≤ 30 min · 0 OHS/wk baseline</div>
+  <p>Native is generic. Operator types an utterance; Native classifies, no Workflow matches yet, signal logged. Operator may run an ad-hoc one-off via <code>sutra run</code>. Audit log starts capturing voice + decision-style + cadence patterns.</p>
+</div>
+<div class="stage-card">
+  <h4>Day 14 — early signal (v1 target window)</h4>
+  <div class="when">≥3 OHS/wk · 4+ repetitions trigger first proposal</div>
+  <p>Native has logged enough operator activity to detect a pattern (k=4 emergence). Surfaces first Workflow proposal — "you've done this 4 times in 3 weeks; should I register it?" Operator approves → first auto-run candidate exists.</p>
+</div>
+<div class="stage-card">
+  <h4>Day 30 — operating cadence</h4>
+  <div class="when">Multiple registered Workflows · weekly Pulse view</div>
+  <p>Native uses operator's verbs in proposals. Multi-Workflow cadence schedule runs (Pulse, weekly portfolio review, etc.). Operator's weekly Pulse shows decisions queued + cycles auto-running + hours-saved. Approval gates fire on risky steps only.</p>
+</div>
+<div class="stage-card">
+  <h4>Day 90 — sustained automation</h4>
+  <div class="when">≥10 registered Workflows · founder predicts gate decisions</div>
+  <p>Person-model predicts operator's gate decisions ≥75% accurately. Operator can <em>watch</em> Native operate the work-week and intervenes only on novel decisions. Cross-tenant ops gated cleanly. Decision-replay works for every past Execution.</p>
+</div>
+<div class="stage-card">
+  <h4>Day 180 — adapted operator</h4>
+  <div class="when">Native runs work the operator's way</div>
+  <p>Native sounds like the operator. Workflow proposals come pre-shaped to operator's style. Cycle approval becomes implicit (trust signal ≥30d clean → fully autonomous on per-Workflow basis). Operator graduates to the next problem; prior Workflows keep running.</p>
+</div>
+
+<h3>4.2 Per-product-version evolution (Native v1 → v3)</h3>
+<table>
+  <tr><th>Stage</th><th>Wedge</th><th>What ships</th><th>Trigger to next</th></tr>
+  <tr>
+    <td><strong>v1</strong> (now)</td>
+    <td>Solo founder running 1-N companies (terminal-fluent)</td>
+    <td>6 surfaces · 18 blocks (top-5 full, 13 stubs) · 14 ADRs · 8 hardstops · multi-tenant · governance</td>
+    <td>Signal: ≥3 T4 clients green 14d OR ≥1 T2 portfolio co blocked on Native upgrade</td>
+  </tr>
+  <tr>
+    <td><strong>v2</strong></td>
+    <td>Manager-IC at any org (judgment + IC strands)</td>
+    <td>Full impl of remaining 13 blocks · multi-party approval quorum · per-tenant configurable k · outcome-based pricing experiment · semantic indexing (F1)</td>
+    <td>v2 PMF: enterprise outcome-based pricing proved + 100+ T4 operators retained 90d</td>
+  </tr>
+  <tr>
+    <td><strong>v3</strong></td>
+    <td>Any operator (terminal OR web/app)</td>
+    <td>Web/app surfaces (Q9 deferred) · embedding retrieval over Artifacts · multi-human-org A2A protocol (B16) · non-technical user paths (NG7 revisit)</td>
+    <td>n/a (mature product)</td>
+  </tr>
+</table>
+
+<h3>4.3 Per-migration-phase evolution (canon decomp shipping now)</h3>
+<table>
+  <tr><th>Phase</th><th>Scope</th><th>Status</th></tr>
+  <tr><td><strong>0 Setup</strong></td><td>D54 amendment + native-author-part skill</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>1 PoC</strong></td><td>5 part files, 1 per shape</td><td><span class="pill done">done</span> codex r7 PASS</td></tr>
+  <tr><td><strong>2 Pillars</strong></td><td>14 pillar files</td><td><span class="pill done">done</span> codex r9 PASS</td></tr>
+  <tr><td><strong>3 Surfaces</strong></td><td>6 surface files</td><td><span class="pill done">done</span> codex r8 PASS</td></tr>
+  <tr><td><strong>4 Hardstops</strong></td><td>8 hardstop files</td><td><span class="pill done">done</span> codex r8 PASS</td></tr>
+  <tr><td><strong>5 Primitives</strong></td><td>10 primitive files</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>6 Events</strong></td><td>26 event files</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>7 Blocks</strong></td><td>24 block files</td><td><span class="pill flight">in flight</span> wave-3 subagent</td></tr>
+  <tr><td><strong>8 Open Qs</strong></td><td>11 question files (all ANSWERED)</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>9 Doc layers</strong></td><td>8 doc-layer files (3 STUBS)</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>10 Impl phases</strong></td><td>5 phase files</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>11 N* metric</strong></td><td>1 metric file</td><td><span class="pill done">done</span></td></tr>
+  <tr><td><strong>12 Engine → INDEX</strong></td><td>Rewrite NATIVE-ENGINE.md as ~100-line INDEX</td><td><span class="pill pending">pending</span></td></tr>
+  <tr><td><strong>13 Decommission gate</strong></td><td>14d observation; CI-enforced final-deletion</td><td><span class="pill pending">pending</span></td></tr>
+</table>
+
+<h2 id="status"><span class="num">5.</span>Where we are today</h2>
+
+<h3>5.1 What ships in production right now</h3>
+<table>
+  <tr><th>Artifact</th><th>Where</th><th>Status</th></tr>
+  <tr><td>Sutra plugin</td><td>Anthropic marketplace v2.36+</td><td><span class="pill done">live</span> ships to T4 fleet</td></tr>
+  <tr><td>Native runtime</td><td><code>sutra/marketplace/native/src/</code></td><td><span class="pill done">live</span> v1.5.1</td></tr>
+  <tr><td>Canon (NATIVE-ENGINE.md)</td><td><code>sutra/os/engines/NATIVE-ENGINE.md</code></td><td><span class="pill done">RATIFIED v1</span> §10-§14</td></tr>
+  <tr><td>Migration plan</td><td><code>sutra/os/native/MIGRATION-PLAN.md</code></td><td><span class="pill done">RATIFIED v1.1</span></td></tr>
+  <tr><td>native-author-part skill</td><td><code>sutra/marketplace/plugin/skills/native-author-part/</code></td><td><span class="pill done">L0 fleet-shipped</span></td></tr>
+</table>
+
+<h3>5.2 Codex review audit trail (this migration cycle)</h3>
+<table>
+  <tr><th>Round</th><th>Topic</th><th>Verdict</th></tr>
+  <tr><td>r3</td><td>PRD ratification §10-§14</td><td>CHANGES-REQUIRED → fixes → PASS</td></tr>
+  <tr><td>r4</td><td>MIGRATION-PLAN v1</td><td>CHANGES-REQUIRED → 7 fixes</td></tr>
+  <tr><td>r5</td><td>MIGRATION-PLAN v1.1</td><td><span class="pill done">ADVISORY ✓</span></td></tr>
+  <tr><td>r6</td><td>PoC 5 files (shapes)</td><td>CHANGES-REQUIRED → template fixes</td></tr>
+  <tr><td>r7</td><td>PoC v1.1 (after fixes)</td><td><span class="pill done">PASS ✓</span></td></tr>
+  <tr><td>r8</td><td>Wave-1 buckets (4)</td><td>3 PASS + 1 CHANGES (pillars doctrine)</td></tr>
+  <tr><td>r9</td><td>Pillars-fix verification</td><td><span class="pill done">PASS ✓</span></td></tr>
+  <tr><td>r10</td><td>Wave-2 buckets (4)</td><td><span class="pill flight">in flight</span></td></tr>
+</table>
+
+<h3>5.3 Operator outcome target (N*)</h3>
+<div class="ascii-box">
+  Operator-Hours-Saved per Week (OHS/wk)
+  --------------------------------------------------
+  v1 baseline           0       pre-Native
+  v1 14d post-install   &gt;=3     early adoption signal
+  v3 mature             &gt;=20    sustained value
+
+  Leading inputs (5):
+    - Workflows successfully auto-run after operationalize
+    - Pattern proposals approved by operator (&gt;=75% precision)
+    - Cross-co decisions replayable (&gt;=99% complete)
+    - Operator weekly active sessions (12-wk trend up)
+    - Time-to-first-Execution on fresh install (&lt;=30 min)
+</div>
+
+<hr>
+<p class="meta">
+  Authored 2026-05-09 · Native v1 migration cycle · Sutra plugin canonical install at <code>~/.claude/plugins/cache/sutra/</code>.<br>
+  Source-of-truth: <code>sutra/os/engines/NATIVE-ENGINE.md</code> + <code>sutra/os/native/**</code> + <code>sutra/os/decisions/ADR-004..017</code>.
+</p>
+
+</body>
+</html>

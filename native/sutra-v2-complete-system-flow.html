@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sutra v2 -- Complete System: Human Input to Output</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'SF Mono','Fira Code',monospace;background:#0a0a0a;color:#ccc;padding:32px 40px;min-width:1200px}
+h1{font-size:24px;color:#fff;margin-bottom:4px}
+.sub{color:#555;font-size:12px;margin-bottom:40px}
+
+/* Phases */
+.phase{margin-bottom:48px;position:relative}
+.phase-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.phase-num{background:#111;border:1px solid #333;color:#888;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.phase-title{font-size:16px;font-weight:600;color:#fff}
+.phase-desc{color:#666;font-size:11px;margin-left:38px;margin-bottom:14px;max-width:900px;line-height:1.5}
+
+/* Blocks */
+.row{display:flex;gap:10px;margin-left:38px;margin-bottom:10px;flex-wrap:wrap}
+.b{border:1px solid #222;border-radius:8px;padding:12px 14px;background:#111;min-width:160px;max-width:340px;flex:1}
+.b-label{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:#555;margin-bottom:4px}
+.b-title{font-size:12px;font-weight:600;color:#ddd;margin-bottom:4px}
+.b-text{font-size:10px;color:#777;line-height:1.5}
+.b-text code{background:#0a0a0a;padding:1px 4px;border-radius:2px;color:#999;font-size:9px}
+.b-list{margin-top:6px;padding-top:6px;border-top:1px solid #1a1a1a}
+.b-item{font-size:10px;color:#888;margin-bottom:3px;padding-left:10px;position:relative}
+.b-item::before{content:'>';position:absolute;left:0;color:#444}
+
+/* Colors */
+.c-input{border-color:#666}.c-input .b-label{color:#999}
+.c-route{border-color:#7c7cff;background:#0d0d18}.c-route .b-label{color:#7c7cff}
+.c-proto{border-color:#a78bfa;background:#100d18}.c-proto .b-label{color:#a78bfa}
+.c-gate{border-color:#f59e0b;background:#18140a}.c-gate .b-label{color:#f59e0b}
+.c-domain{border-color:#7c7cff;background:#0d0d18}.c-domain .b-label{color:#7c7cff}
+.c-clear{border-color:#2dd4bf;background:#0a1816}.c-clear .b-label,.c-clear .b-title{color:#2dd4bf}
+.c-comp{border-color:#f59e0b;background:#18140a}.c-comp .b-label,.c-comp .b-title{color:#f59e0b}
+.c-complex{border-color:#ec4899;background:#180a12}.c-complex .b-label,.c-complex .b-title{color:#ec4899}
+.c-chaotic{border-color:#ef4444;background:#180a0a}.c-chaotic .b-label,.c-chaotic .b-title{color:#ef4444}
+.c-disorder{border-color:#a78bfa;background:#120d18}.c-disorder .b-label,.c-disorder .b-title{color:#a78bfa}
+.c-term{border-color:#22c55e;background:#0a160d}.c-term .b-label{color:#22c55e}
+.c-out{border-color:#06b6d4;background:#0a1418}.c-out .b-label{color:#06b6d4}
+.c-learn{border-color:#06b6d4;background:#0a1418}.c-learn .b-label{color:#06b6d4}
+.c-enforce{border-color:#ef4444;background:#140a0a}.c-enforce .b-label{color:#ef4444}
+.c-new{border-color:#f59e0b}.c-new .b-label{color:#f59e0b}
+
+/* Arrow */
+.arrow{margin-left:38px;padding:4px 0 4px 60px;color:#333;font-size:11px}
+.arrow::before{content:'|';display:block;margin-bottom:2px}
+
+/* Tag */
+.tag{display:inline-block;font-size:8px;padding:1px 6px;border-radius:3px;margin-right:4px;margin-top:4px}
+.tag-new{background:#1a1a0a;color:#f59e0b;border:1px solid #333020}
+.tag-exist{background:#0a1a0a;color:#22c55e;border:1px solid #1a3a1a}
+.tag-proto{background:#100a1a;color:#a78bfa;border:1px solid #201a30}
+
+/* Divider */
+hr{border:none;border-top:1px solid #1a1a1a;margin:40px 0}
+
+/* Wide */
+.b.wide{max-width:700px}
+.b.full{max-width:1100px}
+
+/* Loop */
+.loop{border:1px dashed #333;border-radius:10px;padding:16px;margin-left:38px;margin-bottom:12px;max-width:1140px;position:relative}
+.loop-tag{position:absolute;top:-9px;left:16px;background:#0a0a0a;padding:0 6px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#555}
+
+/* Columns */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-left:38px;margin-bottom:10px}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+
+.note{margin-left:38px;font-size:10px;color:#444;margin-bottom:10px;font-style:italic}
+</style>
+</head>
+<body>
+
+<h1>Sutra v2 -- Complete System Flow</h1>
+<p class="sub">Every step from human input to formatted output. All Asawa governance + Sutra protocols + v2 domain system included.</p>
+
+<!-- ============================== -->
+<!-- PHASE 0: HUMAN SPEAKS -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">0</div><div class="phase-title">Human Speaks</div></div>
+<p class="phase-desc">Founder types or says something. Could be a task, direction, question, feedback, or new concept. System has not processed anything yet.</p>
+<div class="row">
+  <div class="b wide c-input">
+    <div class="b-label">Raw Input</div>
+    <div class="b-title">Founder says something</div>
+    <div class="b-text">"Fix the bounce rate on DayFlow" / "We should always test in production" / "What's our revenue?" / "Build auth from scratch" / "The site is down"</div>
+  </div>
+</div>
+</div>
+
+<div class="arrow">Mandatory -- fires before ANY action</div>
+
+<!-- ============================== -->
+<!-- PHASE 1: INPUT ROUTING -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">1</div><div class="phase-title">Input Routing (Asawa L2 -- mandatory)</div></div>
+<p class="phase-desc">Classify the input BEFORE doing anything. This determines which protocols fire and which path the input takes. Whitelisted exceptions: memory files, checkpoints, TODO checkboxes, git ops.</p>
+
+<div class="row">
+  <div class="b c-route">
+    <div class="b-label">Classification</div>
+    <div class="b-title">Input Type</div>
+    <div class="b-list">
+      <div class="b-item"><b>direction</b> -- founder behavioral change ("always do X")</div>
+      <div class="b-item"><b>task</b> -- something to build/fix/ship</div>
+      <div class="b-item"><b>feedback</b> -- correction on past work</div>
+      <div class="b-item"><b>new concept</b> -- something system hasn't seen before</div>
+      <div class="b-item"><b>question</b> -- information request</div>
+    </div>
+  </div>
+
+  <div class="b c-route">
+    <div class="b-label">Classification</div>
+    <div class="b-title">Existing Home</div>
+    <div class="b-text">Where does this already live in the system? Check SYSTEM-MAP.md, protocols, existing files. If "none" -- flag for New Thing Protocol.</div>
+  </div>
+
+  <div class="b c-route">
+    <div class="b-label">Output</div>
+    <div class="b-title">Route + Fit Check</div>
+    <div class="b-text">
+      <code>INPUT: [what founder said]</code><br>
+      <code>TYPE: direction | task | ...</code><br>
+      <code>EXISTING HOME: [where or "none"]</code><br>
+      <code>ROUTE: [which protocol]</code><br>
+      <code>FIT CHECK: [what changes]</code><br>
+      <code>ACTION: [proposed]</code>
+    </div>
+  </div>
+</div>
+
+<div class="note">PROTO-006 (Process Discipline): this classification IS the process. Can't skip it. Can't write "TBD."</div>
+</div>
+
+<div class="arrow">Routes to different paths based on TYPE</div>
+
+<!-- ============================== -->
+<!-- PHASE 2: TYPE-SPECIFIC ROUTING -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">2</div><div class="phase-title">Type-Specific Protocols Fire</div></div>
+<p class="phase-desc">Based on input type, specific Asawa/Sutra protocols activate BEFORE the domain gate or any task execution.</p>
+
+<div class="cols">
+  <div class="b c-proto">
+    <div class="b-label">If TYPE = direction</div>
+    <div class="b-title">Direction Protocol</div>
+    <div class="b-list">
+      <div class="b-item">Add to FOUNDER-DIRECTIONS.md (D4)</div>
+      <div class="b-item">Model all downstream implications</div>
+      <div class="b-item">Encode TRIGGER / CHECK / ENFORCEMENT (D6)</div>
+      <div class="b-item">Apply immediately + going forward</div>
+      <div class="b-item">Cascade downstream (D13)</div>
+    </div>
+    <span class="tag tag-proto">FOUNDER-DIRECTIONS.md</span>
+    <span class="tag tag-proto">D4, D6, D13</span>
+  </div>
+
+  <div class="b c-proto">
+    <div class="b-label">If TYPE = new concept</div>
+    <div class="b-title">New Thing Protocol</div>
+    <div class="b-list">
+      <div class="b-item">ENCOUNTER: recognize something new</div>
+      <div class="b-item">CLASSIFY: direction / missing process / error / new capability / new domain</div>
+      <div class="b-item">RESPOND: generate process on the fly</div>
+      <div class="b-item">INTEGRATE: fit into existing architecture</div>
+      <div class="b-item">VERIFY: test with real action</div>
+    </div>
+    <span class="tag tag-proto">NEW-THING-PROTOCOL.md</span>
+    <span class="tag tag-proto">D3, D10</span>
+  </div>
+
+  <div class="b c-proto">
+    <div class="b-label">If TYPE = feedback</div>
+    <div class="b-title">Correction Protocol</div>
+    <div class="b-list">
+      <div class="b-item">Fix the instance first</div>
+      <div class="b-item">Find root cause (D11 -- fix process, not just instance)</div>
+      <div class="b-item">Update relevant protocol</div>
+      <div class="b-item">Run regression test (PROTO-016)</div>
+    </div>
+    <span class="tag tag-proto">PROTO-016</span>
+    <span class="tag tag-proto">D11</span>
+  </div>
+
+  <div class="b c-proto">
+    <div class="b-label">If TYPE = task or question</div>
+    <div class="b-title">Proceed to Domain Gate</div>
+    <div class="b-list">
+      <div class="b-item">Task: enters the full v2 flow below</div>
+      <div class="b-item">Question: may be answerable immediately (Clear) or require traversal (Complicated)</div>
+      <div class="b-item">Both go through domain classification</div>
+    </div>
+    <span class="tag tag-exist">TASK-LIFECYCLE.md</span>
+  </div>
+</div>
+
+<div class="note">Directions and new concepts are processed BEFORE entering the task flow. They change the system first, then the system processes any embedded task.</div>
+</div>
+
+<div class="arrow">If TYPE = task or question, continues to domain gate</div>
+
+<!-- ============================== -->
+<!-- PHASE 3: PRE-SCORING GATES -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">3</div><div class="phase-title">Pre-Scoring Gates (Asawa enforcement)</div></div>
+<p class="phase-desc">Hard gates fire before any classification or scoring. These set FLOORS that cannot be lowered. They also check session context and boundaries.</p>
+
+<div class="row">
+  <div class="b c-enforce">
+    <div class="b-label">Boundary Check</div>
+    <div class="b-title">Session Isolation</div>
+    <div class="b-text">Am I in the right session? Is this task within my company's boundary? God mode required for cross-company edits.</div>
+    <span class="tag tag-proto">PROTO-011</span>
+    <span class="tag tag-exist">enforce-boundaries.sh</span>
+  </div>
+
+  <div class="b c-enforce">
+    <div class="b-label">Sensitivity Check</div>
+    <div class="b-title">Auth / PII / Payments / Legal?</div>
+    <div class="b-text">If task touches sensitive domains, set verification floor. Cannot be overridden by scoring.</div>
+    <span class="tag tag-exist">Gate floor = Depth 4 equivalent</span>
+  </div>
+
+  <div class="b c-enforce">
+    <div class="b-label">Architecture Check</div>
+    <div class="b-title">PROTO-001, PROTO-005, PROTO-012</div>
+    <div class="b-text">Creating new structure? Check SYSTEM-MAP first (PROTO-001). Foundational work? Self-assess first (PROTO-005). Check architecture awareness (D12).</div>
+    <span class="tag tag-proto">PROTO-001</span>
+    <span class="tag tag-proto">PROTO-005</span>
+    <span class="tag tag-proto">D12</span>
+  </div>
+
+  <div class="b c-enforce">
+    <div class="b-label">Cost Check</div>
+    <div class="b-title">PROTO-003, PROTO-004</div>
+    <div class="b-text">Free tier first (PROTO-003). Keys in env vars only (PROTO-004). External resource sovereignty check.</div>
+    <span class="tag tag-proto">PROTO-003</span>
+    <span class="tag tag-proto">PROTO-004</span>
+  </div>
+</div>
+</div>
+
+<div class="arrow">Gates set floors, then domain classification begins</div>
+
+<!-- ============================== -->
+<!-- PHASE 4: DOMAIN GATE -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">4</div><div class="phase-title">Domain Gate (v2 -- primary classification)</div></div>
+<p class="phase-desc">THE gate. Determines response PATTERN, not depth. Fires before 10-parameter scoring. One question: is the cause-effect relationship known, discoverable, emergent, absent, or unclear?</p>
+
+<div class="row">
+  <div class="b wide c-domain">
+    <div class="b-label">Domain Classification</div>
+    <div class="b-title">Cynefin Gate + Enhancements</div>
+    <div class="b-list">
+      <div class="b-item">Classify: Known / Discoverable / Emergent / Absent / Unclear</div>
+      <div class="b-item">OODA tempo cap: must classify in &lt;30 seconds or default to Disorder</div>
+      <div class="b-item">Rumsfeld fallback: if Cynefin ambiguous, use Known/Unknown/Unknown-Unknown</div>
+      <div class="b-item">ESI resource scoring: how many systems, people, dependencies (1-5)</div>
+      <div class="b-item">Assessment Confidence check: if low, bump to Disorder regardless</div>
+    </div>
+    <span class="tag tag-exist">Cynefin (promoted from Step 2)</span>
+    <span class="tag tag-new">OODA cap</span>
+    <span class="tag tag-new">Rumsfeld fallback</span>
+    <span class="tag tag-new">ESI resource score</span>
+  </div>
+
+  <div class="b c-gate">
+    <div class="b-label">10-Parameter Scoring</div>
+    <div class="b-title">Still Runs (different purpose)</div>
+    <div class="b-text">
+      No longer produces depth. Now feeds:<br><br>
+      Irreversibility + Sensitivity &rarr; verification intensity per node<br>
+      Blast Radius + Resources &rarr; practice routing breadth<br>
+      Appetite &rarr; traversal budget (time/cost cap)<br>
+      Causal Clarity &rarr; confirms domain gate classification
+    </div>
+    <span class="tag tag-exist">ADAPTIVE-PROTOCOL.md (repurposed)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="b c-gate">
+    <div class="b-label">Estimation</div>
+    <div class="b-title">Estimation Engine (task-level)</div>
+    <div class="b-text">Full estimation table: impact, confidence, cost, time. Feeds appetite budget. Cost thresholds fire alerts. Confidence &lt;40% recommends research first.</div>
+    <span class="tag tag-exist">ESTIMATION-ENGINE.md</span>
+    <span class="tag tag-proto">D9, D23</span>
+  </div>
+
+  <div class="b c-gate">
+    <div class="b-label">Output</div>
+    <div class="b-title">Three Signals</div>
+    <div class="b-text">
+      <code>DOMAIN: Clear | Complicated | Complex | Chaotic | Disorder</code><br>
+      <code>RESOURCE: 1-5 (ESI)</code><br>
+      <code>PATTERN: Encode | Traverse | Probe | Stabilize | Decompose</code><br>
+      <code>APPETITE: $X / Y min (budget ceiling)</code>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="arrow">Domain selects one of five response patterns</div>
+
+<!-- ============================== -->
+<!-- PHASE 5: FIVE PATTERNS -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">5</div><div class="phase-title">Response Pattern Execution</div></div>
+<p class="phase-desc">Each domain gets a fundamentally different shape. Not variable depth of same process -- different process.</p>
+
+<div class="row">
+  <div class="b c-clear">
+    <div class="b-label">Clear</div>
+    <div class="b-title">ENCODE</div>
+    <div class="b-list">
+      <div class="b-item">Load existing pattern (protocol store)</div>
+      <div class="b-item">Pick mechanism: code / SQL / spreadsheet / checklist / direct</div>
+      <div class="b-item">LLM designs mechanism (with tests + assertions)</div>
+      <div class="b-item">Mechanism runs (not LLM)</div>
+      <div class="b-item">Verify: test pass/fail, schema validation</div>
+      <div class="b-item">If domain shifts mid-execution: pause, reclassify node</div>
+    </div>
+    <span class="tag tag-new">LLM exits execution loop</span>
+    <span class="tag tag-exist">Protocol store</span>
+  </div>
+
+  <div class="b c-comp">
+    <div class="b-label">Complicated</div>
+    <div class="b-title">TRAVERSE (DAG)</div>
+    <div class="b-list">
+      <div class="b-item">Node-by-node traversal (see Phase 6 below)</div>
+      <div class="b-item">Each node: observe &rarr; shape &rarr; plan &rarr; execute &rarr; precision &rarr; terminal check</div>
+      <div class="b-item">Context loaded per node (2-3 hops)</div>
+      <div class="b-item">Socratic: "what's the ONE thing I need to know?"</div>
+      <div class="b-item">One branch per node (park others in TODO)</div>
+      <div class="b-item">Working paper tracks all intermediate outputs</div>
+    </div>
+    <span class="tag tag-new">Per-node lifecycle</span>
+    <span class="tag tag-new">Socratic questioning</span>
+    <span class="tag tag-new">Working paper (anytime)</span>
+  </div>
+
+  <div class="b c-complex">
+    <div class="b-label">Complex</div>
+    <div class="b-title">PROBE</div>
+    <div class="b-list">
+      <div class="b-item">Frame what is UNKNOWN</div>
+      <div class="b-item">Design PROBE artifact: hypothesis, method, signal, cost, reversal</div>
+      <div class="b-item">HANDOFF to human (LLM cannot run probes)</div>
+      <div class="b-item">Signal returns: interpret PROBE-RESULT</div>
+      <div class="b-item">Terminal = decision with reversal conditions</div>
+      <div class="b-item">NEVER produces confident answer</div>
+    </div>
+    <span class="tag tag-new">PROBE artifact</span>
+    <span class="tag tag-new">PROBE-RESULT artifact</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="b c-chaotic">
+    <div class="b-label">Chaotic</div>
+    <div class="b-title">STABILIZE</div>
+    <div class="b-list">
+      <div class="b-item">ACT first (don't analyze)</div>
+      <div class="b-item">OBSERVE state after</div>
+      <div class="b-item">RE-CLASSIFY via domain gate</div>
+      <div class="b-item">Route to appropriate pattern</div>
+    </div>
+    <span class="tag tag-exist">INCIDENT-RESPONSE.md</span>
+    <span class="tag tag-new">Mandatory re-classification</span>
+  </div>
+
+  <div class="b c-disorder">
+    <div class="b-label">Disorder</div>
+    <div class="b-title">DECOMPOSE</div>
+    <div class="b-list">
+      <div class="b-item">Break into sub-problems</div>
+      <div class="b-item">Each sub-problem &rarr; domain gate independently</div>
+      <div class="b-item">If child re-enters Disorder: bad decomposition</div>
+      <div class="b-item">Track decomposition quality</div>
+    </div>
+    <span class="tag tag-new">Decomposition tracking</span>
+  </div>
+
+  <div class="b" style="border-color:#444">
+    <div class="b-label">Cross-Practice Routing</div>
+    <div class="b-title">Which practices involved?</div>
+    <div class="b-text">Based on blast radius + resource score, route to primary + secondary practices via ROUTING.md master table. Higher resource score = wider fan-out.</div>
+    <span class="tag tag-exist">ROUTING.md</span>
+    <span class="tag tag-exist">PROTO-002 (wait for parallel)</span>
+  </div>
+</div>
+</div>
+
+<div class="arrow">For Complicated (most common), enters per-node loop</div>
+
+<!-- ============================== -->
+<!-- PHASE 6: INSIDE A NODE -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">6</div><div class="phase-title">Inside a Complicated Node (per-node loop)</div></div>
+<p class="phase-desc">Each node in the DAG runs this micro-process. Repeats until terminal check passes or appetite budget exhausted.</p>
+
+<div class="loop" style="border-color:#f59e0b">
+<div class="loop-tag" style="color:#f59e0b">Loop: repeat until terminal or budget exhausted</div>
+
+<div class="row" style="margin-left:0">
+  <div class="b c-comp">
+    <div class="b-label">A. Observe</div>
+    <div class="b-title">Load Context for THIS Node</div>
+    <div class="b-list">
+      <div class="b-item">2-3 hops specific to this question</div>
+      <div class="b-item">Previous context retained, new scoped</div>
+      <div class="b-item">Bloom's: Apply? Analyze? Evaluate? Create?</div>
+      <div class="b-item">Classify THIS node's domain (may differ)</div>
+    </div>
+  </div>
+  <div class="b c-comp">
+    <div class="b-label">B. Shape</div>
+    <div class="b-title">Pick ONE Branch</div>
+    <div class="b-list">
+      <div class="b-item">Socratic: "What ONE thing do I need to know to make this terminal?"</div>
+      <div class="b-item">MCTS estimate: "If I follow this, what's likely terminal?" (1 sentence)</div>
+      <div class="b-item">Highest (leverage x confidence) wins</div>
+      <div class="b-item">Park others in TODO (breadth control)</div>
+    </div>
+  </div>
+  <div class="b c-comp">
+    <div class="b-label">C. Plan</div>
+    <div class="b-title">Node Estimate</div>
+    <div class="b-text">
+      <code>~3K tokens, ~$0.05, ~5min</code><br>
+      <code>Cumulative: $0.20 / 20min</code><br>
+      <code>Budget left: $1.80 / 40min</code><br><br>
+      If budget exhausted: surface working paper, flag incomplete.
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-left:0">
+  <div class="b c-comp">
+    <div class="b-label">D. Execute</div>
+    <div class="b-title">Produce ONE Artifact</div>
+    <div class="b-text">One conclusion, one spec, one code change. NOT a list. If multiple things, split into sub-nodes. Write to working paper.</div>
+    <span class="tag tag-proto">PROTO-009 (artifact, not narration)</span>
+    <span class="tag tag-proto">PROTO-007 (one metric)</span>
+  </div>
+  <div class="b" style="border-color:#f97316;background:#180f0a">
+    <div class="b-label" style="color:#f97316">E. Precision Enforcement</div>
+    <div class="b-title" style="color:#f97316">Per Node, Per Failure Mode</div>
+    <div class="b-list">
+      <div class="b-item">Calculation risk &rarr; external tool, temp=0</div>
+      <div class="b-item">Drift risk &rarr; constraint pre-declaration, working paper</div>
+      <div class="b-item">Confabulation &rarr; citation grounding</div>
+      <div class="b-item">Ambiguity &rarr; confidence gating</div>
+      <div class="b-item">14 mechanisms in catalog, matched to risk</div>
+    </div>
+    <span class="tag tag-new">Precision catalog</span>
+    <span class="tag tag-proto">PROTO-015 (verify before commit)</span>
+  </div>
+</div>
+
+<!-- Terminal Check -->
+<div class="row" style="margin-left:0">
+  <div class="b full c-term">
+    <div class="b-label">F. Terminal Check (6 free + 3 conditional)</div>
+    <div class="b-title">Is This Output Terminal?</div>
+
+    <div class="cols3" style="margin-top:8px">
+      <div style="border:1px solid #1a2a1a;border-radius:6px;padding:8px;background:#0a120a">
+        <div style="font-size:10px;font-weight:600;color:#22c55e;margin-bottom:2px">1. Output Type</div>
+        <div style="font-size:9px;color:#666">Decision / Artifact / Probe / Decomposition / Action Items. Action items BLOCKED unless task = planning.</div>
+      </div>
+      <div style="border:1px solid #1a2a1a;border-radius:6px;padding:8px;background:#0a120a">
+        <div style="font-size:10px;font-weight:600;color:#22c55e;margin-bottom:2px">2. "Who Does This?"</div>
+        <div style="font-size:9px;color:#666">Who takes this output? Do they think first? YES = not terminal.</div>
+      </div>
+      <div style="border:1px solid #1a2a1a;border-radius:6px;padding:8px;background:#0a120a">
+        <div style="font-size:10px;font-weight:600;color:#22c55e;margin-bottom:2px">3. Convergence Detection</div>
+        <div style="font-size:9px;color:#666">3+ verb-led items without specifics? Convergence signal.</div>
+      </div>
+      <div style="border:1px solid #1a2a0a;border-radius:6px;padding:8px;background:#0a100a">
+        <div style="font-size:10px;font-weight:600;color:#f59e0b;margin-bottom:2px">4. Specificity Threshold (NEW)</div>
+        <div style="font-size:9px;color:#666">Count concrete nouns (paths, numbers, names, dates). Need 3+.</div>
+      </div>
+      <div style="border:1px solid #1a2a0a;border-radius:6px;padding:8px;background:#0a100a">
+        <div style="font-size:10px;font-weight:600;color:#f59e0b;margin-bottom:2px">5. Output Inversion (NEW)</div>
+        <div style="font-size:9px;color:#666">Can it be a delta? before&rarr;after, old&rarr;new?</div>
+      </div>
+      <div style="border:1px solid #1a2a0a;border-radius:6px;padding:8px;background:#0a100a">
+        <div style="font-size:10px;font-weight:600;color:#f59e0b;margin-bottom:2px">6. Schema Fill (NEW)</div>
+        <div style="font-size:9px;color:#666">Code={file,line,old,new}. Decision={choice,rationale,reversal}.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;color:#ef4444;font-size:10px;padding:6px 0">Any fail? Fire conditional checks:</div>
+
+    <div class="cols3">
+      <div style="border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#120a0a">
+        <div style="font-size:10px;font-weight:600;color:#ef4444;margin-bottom:2px">7. Beam Search (NEW)</div>
+        <div style="font-size:9px;color:#666">Branch 2-3 alternatives. Pick one that reaches terminal. 2-3x cost this node.</div>
+      </div>
+      <div style="border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#120a0a">
+        <div style="font-size:10px;font-weight:600;color:#ef4444;margin-bottom:2px">8. Adversarial Check (NEW)</div>
+        <div style="font-size:9px;color:#666">"Prove this is NOT terminal." 2x cost this node.</div>
+      </div>
+      <div style="border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#120a0a">
+        <div style="font-size:10px;font-weight:600;color:#ef4444;margin-bottom:2px">9. Exemplar Compare (NEW)</div>
+        <div style="font-size:9px;color:#666">Compare against known terminal outputs from TRIAGE history.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;padding-top:8px;border-top:1px solid #1a2a1a;display:flex;gap:20px">
+      <span style="color:#22c55e;font-size:10px;font-weight:600">ALL PASS &rarr; TERMINAL. Exit loop. Go to Phase 7.</span>
+      <span style="color:#ef4444;font-size:10px;font-weight:600">ANY FAIL &rarr; Output becomes input for next node. Loop back to A.</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="arrow">Terminal reached (or budget exhausted with partial output)</div>
+
+<!-- ============================== -->
+<!-- PHASE 7: OUTPUT GATE -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">7</div><div class="phase-title">Output Readability Gate (Asawa -- mandatory)</div></div>
+<p class="phase-desc">Before the human sees ANYTHING, the output passes through the readability standard. This is the mirror of Input Routing. Every output is formatted before display.</p>
+
+<div class="row">
+  <div class="b c-out">
+    <div class="b-label">Format Selection</div>
+    <div class="b-title">Pick Output Type</div>
+    <div class="b-list">
+      <div class="b-item">Status update &rarr; status board (15 lines max)</div>
+      <div class="b-item">Comparison &rarr; table</div>
+      <div class="b-item">Decision needed &rarr; boxed with recommendation first</div>
+      <div class="b-item">Architecture &rarr; technical spec with formal terms (D34)</div>
+      <div class="b-item">Executive &rarr; HTML dashboard</div>
+      <div class="b-item">Error &rarr; 5-line alert block</div>
+    </div>
+    <span class="tag tag-exist">READABILITY-STANDARD.md</span>
+  </div>
+
+  <div class="b c-out">
+    <div class="b-label">Signal-to-Noise</div>
+    <div class="b-title">Three-Signal Constraint (D13)</div>
+    <div class="b-list">
+      <div class="b-item">SHIPPED: what's done</div>
+      <div class="b-item">NEXT: one item (not a roadmap)</div>
+      <div class="b-item">BROKEN: active blockers (omit if none)</div>
+    </div>
+    <div class="b-text" style="margin-top:6px">No process narration. No trailing summaries. No "I'm going to..."</div>
+    <span class="tag tag-exist">D1 (simplicity)</span>
+    <span class="tag tag-exist">D13 (human readability)</span>
+  </div>
+
+  <div class="b c-out">
+    <div class="b-label">Decision Highlighting</div>
+    <div class="b-title">If Decision Needed</div>
+    <div class="b-text">Decisions must be visually highlighted. Recommendation first, then alternatives. Impossible to miss. Max 4 options.</div>
+    <span class="tag tag-exist">HUMAN-AI-INTERFACE.md</span>
+    <span class="tag tag-exist">D19, D29</span>
+  </div>
+</div>
+
+<div class="note">If output is an HTML/executive doc: write file + run `open` immediately (Asawa core behavior). Founder never asks to see what was created.</div>
+</div>
+
+<div class="arrow">Output shown to founder. Now close the loop.</div>
+
+<!-- ============================== -->
+<!-- PHASE 8: MEASURE -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">8</div><div class="phase-title">Measure (close the loop)</div></div>
+<p class="phase-desc">Capture actuals. Compare to estimates. Log solution accuracy. Feed calibration. This is where the system learns whether it was right.</p>
+
+<div class="row">
+  <div class="b" style="border-color:#555">
+    <div class="b-label">Estimation Accuracy</div>
+    <div class="b-title">Estimate vs Actual</div>
+    <div class="b-text">Tokens, cost, time, files. Symmetric MAPE formula. Append to ESTIMATION-LOG.jsonl. Feed EWMA calibration.</div>
+    <span class="tag tag-exist">ESTIMATION-ENGINE.md</span>
+    <span class="tag tag-exist">D9, D23</span>
+  </div>
+
+  <div class="b" style="border-color:#555">
+    <div class="b-label">Extended TRIAGE</div>
+    <div class="b-title">Domain + Traversal + Solution</div>
+    <div class="b-text">
+      <code>domain_selected</code> + <code>domain_correct</code><br>
+      <code>nodes_traversed</code> (retrospective depth)<br>
+      <code>terminal_reached: yes/no</code><br>
+      <code>convergence_detected: N</code><br>
+      <code>solution.hypothesis</code><br>
+      <code>solution.observe_by</code> (pending verification)
+    </div>
+    <span class="tag tag-new">Solution accuracy</span>
+    <span class="tag tag-new">Pending verification queue</span>
+    <span class="tag tag-exist">Triage (extended)</span>
+  </div>
+
+  <div class="b" style="border-color:#555">
+    <div class="b-label">Compliance</div>
+    <div class="b-title">Protocol Check</div>
+    <div class="b-list">
+      <div class="b-item">Correct depth/pattern used?</div>
+      <div class="b-item">Metrics logged?</div>
+      <div class="b-item">Directions violated?</div>
+      <div class="b-item">Feedback written?</div>
+      <div class="b-item">File boundaries respected?</div>
+    </div>
+    <span class="tag tag-exist">ENFORCEMENT.md</span>
+  </div>
+</div>
+</div>
+
+<div class="arrow">Feed forward into learning</div>
+
+<!-- ============================== -->
+<!-- PHASE 9: LEARN -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">9</div><div class="phase-title">Learn (system gets smarter)</div></div>
+<p class="phase-desc">Five mechanisms that make the system faster and more accurate over time. This is what makes Sutra anti-bureaucratic -- process grows when needed, shrinks when proven unnecessary.</p>
+
+<div class="row">
+  <div class="b c-learn">
+    <div class="b-label">A. Protocol Extraction</div>
+    <div class="b-title">Task &rarr; Protocol</div>
+    <div class="b-text">Will this task type recur? Is solution generalizable? Extract: trigger, process, depth, verify. Store in os/protocols/.</div>
+    <div class="b-text" style="margin-top:4px">0 uses = candidate. 3 = proven. 10 = locked.</div>
+    <span class="tag tag-exist">TASK-LIFECYCLE.md LEARN</span>
+  </div>
+
+  <div class="b c-learn">
+    <div class="b-label">B. RL on Depth</div>
+    <div class="b-title">Auto-Predict Node Count</div>
+    <div class="b-text">After 10+ tasks in category, compute average nodes_traversed. "SEO = 5 nodes." Use as starting estimate next time.</div>
+    <span class="tag tag-new">From TRIAGE data</span>
+  </div>
+
+  <div class="b c-learn">
+    <div class="b-label">C. Exemplar Library</div>
+    <div class="b-title">Terminal vs Non-Terminal</div>
+    <div class="b-text">terminal_reached=yes + accurate=yes &rarr; positive exemplar. convergence_detected>0 &rarr; negative exemplar. Feeds terminal check #9.</div>
+    <span class="tag tag-new">Built from data</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="b c-learn">
+    <div class="b-label">D. Production Rules</div>
+    <div class="b-title">Locked Clear &rarr; No LLM</div>
+    <div class="b-text">Protocols with 10+ uses and 90%+ accuracy: convert to rule-based execution. LLM wrote the rules during Learn. System executes without LLM.</div>
+    <span class="tag tag-new">LLM exits entirely</span>
+  </div>
+
+  <div class="b c-learn">
+    <div class="b-label">E. Calibration</div>
+    <div class="b-title">Confidence + Compression</div>
+    <div class="b-text">Track LLM confidence vs actual accuracy. Auto-adjust precision enforcement intensity. Compress estimation for well-calibrated categories (10+ tasks, >80% accuracy &rarr; one-line estimate).</div>
+    <span class="tag tag-exist">ESTIMATION-ENGINE calibration</span>
+    <span class="tag tag-new">Dreyfus confidence calibration</span>
+  </div>
+
+  <div class="b c-learn">
+    <div class="b-label">F. Output Shape</div>
+    <div class="b-title">Capture Terminal Format</div>
+    <div class="b-text">Store not just the process but the OUTPUT SHAPE per problem type. "SEO tasks produce: {file, line, old_value, new_value}." Feeds exemplar library + schema enforcement.</div>
+    <span class="tag tag-new">Per-category capture</span>
+  </div>
+</div>
+
+<div class="note">D7 (Expand Then Contract): periodically audit. If protocol count grows but usage is sparse, merge or archive. 5+ expansions since last contraction = trigger simplification pass.</div>
+</div>
+
+<hr>
+
+<!-- ============================== -->
+<!-- PROTOCOL REFERENCE -->
+<!-- ============================== -->
+
+<div class="phase">
+<div class="phase-head"><div class="phase-num">&bull;</div><div class="phase-title">All Protocols Referenced (quick index)</div></div>
+
+<div class="row" style="flex-wrap:wrap;gap:6px">
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-000</b> Every change ships with implementation</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-001</b> Structure before creation</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-002</b> Wait for parallel completion</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-003</b> Free tier first</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-004</b> Keys in env vars only</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-005</b> Self-assess before foundational</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-006</b> Process discipline</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-007</b> One metric per feature</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-008</b> Follow sprint sequence</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-009</b> Narration is not artifact</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-010</b> Version focus</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-011</b> Company independence</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-012</b> Ownership model</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-013</b> Sutra version deploy</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-015</b> Verify before commit</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#a78bfa"><b>PROTO-016</b> Root cause on correction</div>
+</div>
+
+<div class="row" style="margin-top:10px;flex-wrap:wrap;gap:6px">
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D1</b> Simplicity</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D2</b> Thoroughness scales</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D3</b> Every task has a Sutra path</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D4</b> Model directions as living forces</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D6</b> Executable with regression tests</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D9</b> Recursive estimation</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D11</b> Fix process not instance</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D12</b> Architecture awareness</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D13</b> Cascade downstream</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D14</b> Don't stop</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D19</b> Escalate competing priorities</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D23</b> Push back with gates</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D26</b> Decomposition granularity</div>
+  <div style="font-size:9px;padding:4px 8px;background:#111;border:1px solid #222;border-radius:4px;color:#f59e0b"><b>D34</b> Technical rigor</div>
+</div>
+
+<div class="row" style="margin-top:10px;flex-wrap:wrap;gap:6px">
+  <div style="font-size:9px;padding:4px 8px;background:#0a1a0a;border:1px solid #1a3a1a;border-radius:4px;color:#22c55e"><b>Sovereignty</b> What=Human, How=Agent, When to stop=Human</div>
+  <div style="font-size:9px;padding:4px 8px;background:#0a1a0a;border:1px solid #1a3a1a;border-radius:4px;color:#22c55e"><b>Override</b> Human only. Scoped. Time-limited. Logged.</div>
+  <div style="font-size:9px;padding:4px 8px;background:#0a1a0a;border:1px solid #1a3a1a;border-radius:4px;color:#22c55e"><b>Natural lang = intent</b> "Fix this" = "Fix this using our process"</div>
+</div>
+</div>
+
+</body>
+</html>

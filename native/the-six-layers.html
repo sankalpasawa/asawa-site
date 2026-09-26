@@ -1,0 +1,217 @@
+<!doctype html>
+<!-- PAGE: the-six-layers (v2, 2026-09-08). Founder revision: examples, three visuals, no fluff, no added vocabulary.
+     Six layers per founder direction D71. Examples: one digital lending company (site convention).
+     Twin on the public site: sutra/website/how-sutra-works.html (same content, site skin).
+     Codex design-review v2: 12 findings, 11 folded; kept the founder's own three-word line, led by plain words. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The six layers</title>
+<style>
+body{font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:860px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:28px;margin:0 0 6px;letter-spacing:-.01em}
+.lead{font-size:18px;color:#374151;margin:10px 0}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:36px 0 10px;border-top:1px solid #eef2f7;padding-top:18px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:8px 11px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:12px 15px;font-size:14.5px;margin:16px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+svg{width:100%;height:auto;display:block;margin:14px 0}
+.cap{font-size:12px;color:#9ca3af;margin:-6px 0 18px;text-align:center}
+.rail{position:relative;margin:18px 0 8px;padding-left:34px}
+.rail:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:#d1fae5}
+.step{position:relative;margin:0 0 14px}
+.step:before{content:attr(data-n);position:absolute;left:-34px;top:0;width:24px;height:24px;border-radius:50%;background:#047857;color:#fff;font-size:11px;font-weight:800;text-align:center;line-height:24px}
+.step b{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#047857;margin-bottom:1px}
+.step .say{font-size:13.5px;color:#374151}
+.step .say i{color:#6b7280}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+.card{border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px}
+.card b{display:block;font-size:14px;margin-bottom:4px}
+.card .q{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.card .ex{font-size:13px;background:#f9fafb;border-radius:6px;padding:7px 9px;margin:6px 0}
+.card .ex:before{content:"Example";display:block;font-size:10px;font-weight:800;letter-spacing:.06em;color:#9ca3af;margin-bottom:2px}
+.card .see{font-size:12.5px;color:#374151}
+.card .see:before{content:"In Sutra: ";font-weight:700;color:#047857}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a class="sb-cur" href="the-six-layers.html">The six layers</a></div><div style="padding-left:17px"><a href="factory.html">The factory: what we build, and how</a></div><div style="padding-left:17px"><a href="where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div style="padding-left:17px"><a href="company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="structure-and-terms.html">Structure and terms</a></div><div style="padding-left:17px"><a href="roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="axes.html">Axes + families</a></div><div style="padding-left:39px"><a href="the-frame.html">The Frame (one picture)</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">THE SIX FUNCTIONAL SPECS</div><div style="padding-left:50px"><a href="spec-shape.html">SHAPE</a></div><div style="padding-left:50px"><a href="spec-grow.html">GROW</a></div><div style="padding-left:50px"><a href="spec-govern.html">GOVERN</a></div><div style="padding-left:50px"><a href="spec-edge.html">EDGE</a></div><div style="padding-left:50px"><a href="spec-resource.html">RESOURCE</a></div><div style="padding-left:50px"><a href="spec-time.html">TIME</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">THE DIMENSIONS</div><div style="padding-left:50px"><a href="edges.html">Edges</a></div><div style="padding-left:50px"><a href="resource.html">Resource</a></div><div style="padding-left:50px"><a href="time.html">Time</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">RULES FOR AXES</div><div style="padding-left:50px"><a href="open-axis.html">Open-axis rule</a></div><div style="padding-left:50px"><a href="axis-productization.html">Axis-productization</a></div><div style="padding-left:50px"><a href="axis-materialization.html">Axis-materialization</a></div><div class="sb-band">CAPABILITIES</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what it must do, and how well &#183; rests on THEORY</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL</div><div style="padding-left:28px"><a href="capability-priorities.html">What comes first</a></div><div style="padding-left:28px"><a href="system/solution.html">From capabilities to a solution</a></div><div style="padding-left:28px"><a href="system-grows.html">The system, grown in this order</a></div><div style="padding-left:39px"><a href="system/product.html">The product</a></div><div style="padding-left:39px"><a href="system/company.html">To a company</a></div><div style="padding-left:39px"><a href="system/model.html">The model: artifacts and work</a></div><div style="padding-left:39px"><a href="system/operable.html">To a running system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">NON-FUNCTIONAL</div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">The five functions</a></div><div style="padding-left:28px"><a href="platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="platform/model/edge-system.html">The Edge System</a></div><div style="padding-left:28px"><a href="platform/model/lifecycle.html">The life cycle</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/implementation.html">Implementation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="org-journeys.html">Org: CEO journeys</a></div><div style="padding-left:28px"><a href="platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="platform/model/running-a-department.html">Running a Department</a></div><div style="padding-left:28px"><a href="platform/model/eight-states.html">A Department’s Eight States</a></div><div style="padding-left:28px"><a href="platform/model/root-department.html">The Root Department</a></div><div style="padding-left:28px"><a href="platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="platform/model/industry-imports.html">Industry Imports (index)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RESEARCH</div><div style="padding-left:28px"><a href="platform/model/research/vsm-five-units.html">VSM: the five units</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/host.html">Host</a></div><div style="padding-left:39px"><a href="engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="units-and-artifacts.html">Artifacts and work &#8594; The model</a></div><div style="padding-left:17px"><a href="seed-to-company.html">From one step to a company &#8594; To a company</a></div><div style="padding-left:17px"><a href="product-step-by-step.html">The product, one family at a time &#8594; The product</a></div><div style="padding-left:17px"><a href="platform/maturation-walkthrough.html">Maturation walkthrough (v2) &#8594; Maturation</a></div><div style="padding-left:17px"><a href="platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="index.html">Native hub</a> &#8250; the six layers</div>
+<h1>The six layers</h1>
+<p class="lead">Sutra helps you design your work, then runs it. It does that in six layers. The first three are the spine: know the company, design the work, put agents on it. The other three keep it honest and growing: feedback, marketplaces, tooling.</p>
+
+<div class="key"><b>In one sentence:</b> Sutra builds a model of the organisation, designs workflows on top of that model, and deploys agents to execute those workflows &#8212; then records what happened and improves both, with your approval.</div>
+
+<h2>The six layers in one picture</h2>
+<svg viewBox="0 0 880 340" role="img" aria-label="Six layers: ontology shapes workflow design, which assigns agents; marketplaces and tooling equip them; every run leaves a record in feedback, which corrects the model and the playbooks">
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#047857"/></marker>
+<marker id="arrg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+<text x="40" y="48" font-size="12" font-weight="800" fill="#047857">SPINE &#8212; model &#8594; workflow &#8594; agent</text>
+<rect x="40" y="62" width="220" height="86" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="150" y="90" text-anchor="middle" font-size="13.5" font-weight="800" fill="#065f46">1 &#183; ONTOLOGY</text>
+<text x="150" y="110" text-anchor="middle" font-size="11.5" fill="#047857">what exists in the company</text>
+<text x="150" y="128" text-anchor="middle" font-size="11.5" fill="#047857">and how it is connected</text>
+<rect x="330" y="62" width="220" height="86" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="440" y="90" text-anchor="middle" font-size="13.5" font-weight="800" fill="#065f46">2 &#183; WORKFLOW DESIGN</text>
+<text x="440" y="110" text-anchor="middle" font-size="11.5" fill="#047857">how each outcome</text>
+<text x="440" y="128" text-anchor="middle" font-size="11.5" fill="#047857">should be produced</text>
+<rect x="600" y="62" width="220" height="86" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="710" y="90" text-anchor="middle" font-size="13.5" font-weight="800" fill="#065f46">3 &#183; AGENTS</text>
+<text x="710" y="110" text-anchor="middle" font-size="11.5" fill="#047857">who or what</text>
+<text x="710" y="128" text-anchor="middle" font-size="11.5" fill="#047857">does the work</text>
+<line x1="260" y1="105" x2="330" y2="105" stroke="#047857" stroke-width="1.6" marker-end="url(#arr)"/>
+<text x="295" y="96" text-anchor="middle" font-size="11" fill="#047857">shapes</text>
+<line x1="550" y1="105" x2="600" y2="105" stroke="#047857" stroke-width="1.6" marker-end="url(#arr)"/>
+<text x="575" y="96" text-anchor="middle" font-size="11" fill="#047857">assigns</text>
+<text x="40" y="207" font-size="12" font-weight="800" fill="#64748b">SUPPORT &#8212; feedback &#183; playbooks &#183; tools</text>
+<rect x="40" y="215" width="220" height="70" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="150" y="241" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">4 &#183; FEEDBACK</text>
+<text x="150" y="261" text-anchor="middle" font-size="11" fill="#64748b">what came back, what to change</text>
+<rect x="330" y="215" width="220" height="70" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="440" y="241" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">5 &#183; MARKETPLACES</text>
+<text x="440" y="261" text-anchor="middle" font-size="11" fill="#64748b">where reusable playbooks come from</text>
+<rect x="600" y="215" width="220" height="70" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="710" y="241" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">6 &#183; TOOLING</text>
+<text x="710" y="261" text-anchor="middle" font-size="11" fill="#64748b">what the agents can touch</text>
+<line x1="710" y1="215" x2="710" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="722" y="184" font-size="11.5" fill="#64748b">equips</text>
+<line x1="440" y1="215" x2="440" y2="148" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrg)"/>
+<text x="452" y="184" font-size="11.5" fill="#64748b">provides playbook shapes</text>
+<path d="M820,105 L850,105 L850,312 L150,312 L150,285" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="500" y="328" text-anchor="middle" font-size="11.5" fill="#64748b">run record</text>
+<line x1="150" y1="215" x2="150" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="162" y="184" font-size="11.5" fill="#64748b">corrects the model</text>
+<path d="M260,250 L295,250 L295,132 L330,132" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="300" y="172" font-size="11.5" fill="#64748b">corrects the playbooks</text>
+</svg>
+<p class="cap">Green is the spine. Grey is what keeps it honest and growing.</p>
+
+<h2>Each layer, with an example</h2>
+<p>All examples are one company: a digital lender that takes applications, sanctions loans, disburses money and collects EMIs. Its rule: a disbursal above &#8377;5 lakh needs a second approval.</p>
+<div class="grid">
+<div class="card"><b>1 &#183; Ontology</b><div class="q">What exists in this company, and how is it connected?</div>
+<div class="ex">Applicants, credit officers, loans, EMIs. A credit officer owns an application. An application can become a sanctioned loan. A disbursal above &#8377;5 lakh needs a second approval.</div>
+<div class="see">departments with written purposes, and a read-back before work starts: &#8220;this is a Finance request, medium size, owned by Collections&#8221;.</div></div>
+<div class="card"><b>2 &#183; Workflow design</b><div class="q">How should this outcome be produced?</div>
+<div class="ex">Verify identity &#8594; score &#8594; sanction or decline &#8594; disburse &#8594; reconcile the first EMI. If identity cannot be verified, stop and ask the owner. Done means: money moved, ledger matches, applicant informed.</div>
+<div class="see">a playbook with steps and a declared &#8220;done means this&#8221; check.</div></div>
+<div class="card"><b>3 &#183; Agents</b><div class="q">Who or what does the work?</div>
+<div class="ex">The agent runs the identity check, the scoring and the sanction on its own, then pauses before any step that needs an approval &#8212; such as a disbursal above &#8377;5 lakh.</div>
+<div class="see">steps ticking by, a receipt at the end, and a question only when the decision is genuinely yours.</div></div>
+<div class="card"><b>4 &#183; Feedback</b><div class="q">How does it get better?</div>
+<div class="ex">The bank file arrived late three Fridays running, and the check failed each time. The playbook gains a &#8220;wait until 11:00 on Fridays&#8221; step &#8212; after you approve it.</div>
+<div class="see">&#8220;Want me to keep this as the way we do it?&#8221; Every run is recorded. Sutra checks whether a playbook still works and flags it when it stops passing.</div></div>
+<div class="card"><b>5 &#183; Marketplaces</b><div class="q">Where do playbooks come from?</div>
+<div class="ex">Your identity-check playbook started as a shared template. You kept the shape. Your limits, your rules and your customers stayed yours.</div>
+<div class="see">playbook shapes can travel between companies; your customers, numbers and decisions do not.</div></div>
+<div class="card"><b>6 &#183; Tooling</b><div class="q">What can the agent touch and change?</div>
+<div class="ex">The bank export, the ledger, the CRM, the message to the applicant.</div>
+<div class="see">connectors to those systems, with every action written to the record.</div></div>
+</div>
+
+<h2>One request, through all six</h2>
+<p>You type: <i>&#8220;disburse loan 4821&#8221;</i>. Here is what happens, in order.</p>
+<div class="rail">
+<div class="step" data-n="1"><b>Layer 1 &#183; Ontology</b><div class="say">Loan 4821 is a sanctioned loan of &#8377;7 lakh, owned by credit officer Meera. Her limit is &#8377;5 lakh, so a second approval is required. <i>The company model already knows all of this.</i></div></div>
+<div class="step" data-n="2"><b>Layer 2 &#183; Workflow design</b><div class="say">The disbursal playbook applies: confirm sanction &#8594; second approval &#8594; send bank instruction &#8594; post to ledger &#8594; inform applicant. Done means: money moved, ledger matches, applicant told.</div></div>
+<div class="step" data-n="3"><b>Layer 5 &#183; Marketplaces</b><div class="say">That playbook&#8217;s shape came from a shared lending template last quarter. <i>The approval limit in it is yours.</i></div></div>
+<div class="step" data-n="4"><b>Layer 6 &#183; Tooling</b><div class="say">The agent can reach the bank portal, the ledger and the messaging channel. Nothing else.</div></div>
+<div class="step" data-n="5"><b>Layer 3 &#183; Agents</b><div class="say">The agent confirms the sanction, then stops: &#8220;&#8377;7 lakh is above Meera&#8217;s limit. Approve?&#8221; You approve. It sends the instruction, posts the ledger entry, messages the applicant, and hands you a receipt.</div></div>
+<div class="step" data-n="6"><b>Layer 4 &#183; Feedback</b><div class="say">The run is recorded and the check passed. If it had failed, work would have stopped with the evidence attached. If you had changed a step, Sutra would ask: &#8220;keep this as the way we do it?&#8221;</div></div>
+</div>
+<p class="cap">Numbers are the order in time. Marketplaces and tooling equip the agent before it runs.</p>
+
+<h2>Ontology is not workflow</h2>
+<svg viewBox="0 0 880 250" role="img" aria-label="Left: the ontology as connected things. Right: the workflow as a route with a check at the end.">
+<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#047857"/></marker>
+<marker id="a3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+<text x="215" y="28" text-anchor="middle" font-size="13" font-weight="800" fill="#64748b">ONTOLOGY &#8212; the map</text>
+<rect x="30" y="60" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="95" y="85" text-anchor="middle" font-size="12" fill="#065f46">credit officer</text>
+<rect x="240" y="60" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="305" y="85" text-anchor="middle" font-size="12" fill="#065f46">application</text>
+<line x1="160" y1="80" x2="240" y2="80" stroke="#047857" stroke-width="1.4" marker-end="url(#a2)"/><text x="200" y="72" text-anchor="middle" font-size="10.5" fill="#047857">owns</text>
+<rect x="240" y="150" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="305" y="175" text-anchor="middle" font-size="12" fill="#065f46">sanctioned loan</text>
+<line x1="305" y1="100" x2="305" y2="150" stroke="#047857" stroke-width="1.4" marker-end="url(#a2)"/><text x="318" y="130" font-size="10.5" fill="#047857">can become</text>
+<rect x="30" y="150" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="95" y="175" text-anchor="middle" font-size="12" fill="#065f46">disbursal</text>
+<line x1="240" y1="170" x2="160" y2="170" stroke="#047857" stroke-width="1.4" marker-end="url(#a2)"/><text x="200" y="162" text-anchor="middle" font-size="10.5" fill="#047857">paid out as</text>
+<text x="200" y="225" text-anchor="middle" font-size="11" fill="#6b7280">rule: a disbursal above &#8377;5 lakh needs a second approval</text>
+<line x1="440" y1="45" x2="440" y2="235" stroke="#e5e7eb" stroke-width="1"/>
+<text x="660" y="28" text-anchor="middle" font-size="13" font-weight="800" fill="#64748b">WORKFLOW &#8212; the route</text>
+<rect x="480" y="60" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="535" y="83" text-anchor="middle" font-size="11.5" fill="#475569">verify identity</text>
+<rect x="620" y="60" width="90" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="665" y="83" text-anchor="middle" font-size="11.5" fill="#475569">score</text>
+<rect x="740" y="60" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="795" y="83" text-anchor="middle" font-size="11.5" fill="#475569">sanction</text>
+<line x1="590" y1="78" x2="620" y2="78" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<line x1="710" y1="78" x2="740" y2="78" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<path d="M795,96 L795,120 L535,120 L535,140" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<rect x="480" y="140" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="535" y="163" text-anchor="middle" font-size="11.5" fill="#475569">disburse</text>
+<rect x="620" y="140" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="675" y="163" text-anchor="middle" font-size="11.5" fill="#475569">reconcile EMI</text>
+<line x1="590" y1="158" x2="620" y2="158" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<rect x="760" y="136" width="90" height="44" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/><text x="805" y="154" text-anchor="middle" font-size="10.5" font-weight="800" fill="#92400e">DONE MEANS</text><text x="805" y="170" text-anchor="middle" font-size="10.5" fill="#92400e">ledger matches</text>
+<line x1="730" y1="158" x2="760" y2="158" stroke="#b45309" stroke-width="1.4" marker-end="url(#a3)"/>
+<text x="660" y="225" text-anchor="middle" font-size="11" fill="#6b7280">every step refers to things on the map; the check at the end is part of the route</text>
+</svg>
+<p class="cap">The map does not change when you reorder the route. The route means nothing without the map.</p>
+<p>This is why the order matters. A workflow without an ontology has nobody to own it, nothing to check against, and nowhere to put an exception. An agent without a workflow improvises. Sutra insists on the model first, the design second, the agent third.</p>
+
+<h2>The loop is the product</h2>
+<div class="key">Agents do the work, and they are not what makes Sutra different. What compounds is the loop: understand the company, design its work, run it, record what came back, correct the model and the playbooks. Take the feedback layer away and you have a collection of agents. Keep it and you have a system whose work can be inspected, corrected and reused.</div>
+<div class="key" style="background:#f8fafc;border-color:#64748b"><b>In plain words:</b> understand the organisation, design its work, execute its work. Tooling lets the agents act; feedback lets the system improve. <span style="color:#6b7280">(The short form: Ontology &#8594; Orchestration &#8594; Agency.)</span></div>
+
+<h2>Where each layer lives on this site</h2>
+<table>
+<tr><th>Layer</th><th>Pages</th></tr>
+<tr><td>1 Ontology</td><td><a href="platform/model/properties.html">Properties &#8212; Charter &#183; Domain &#183; Tenancy</a>, <a href="platform/placement.html">Placement</a>, <a href="company-map.html">The Company Map</a></td></tr>
+<tr><td>2 Workflow design</td><td><a href="platform/model/work-atom.html">Work-Atom</a>, <a href="platform/model/workflow-engine.html">Workflow + Engine</a>, <a href="platform/system-of-process.html">System of Process</a></td></tr>
+<tr><td>3 Agents</td><td><a href="platform/host.html">Host</a>, <a href="platform/orchestration.html">Orchestration</a>, <a href="platform/authority-tenancy.html">Authority + Tenancy</a></td></tr>
+<tr><td>4 Feedback</td><td><a href="platform/system-of-record.html">System of Record</a>, <a href="platform/model/evals.html">Evals</a>, <a href="platform/observability.html">Observability</a></td></tr>
+<tr><td>5 Marketplaces</td><td><a href="distribution.html">Distribution</a>, <a href="distribution-ops.html">Distribution Ops</a></td></tr>
+<tr><td>6 Tooling</td><td><a href="platform/connector.html">Connector</a>, <a href="platform/external-world.html">External World</a>, <a href="platform/compute.html">Compute</a>, <a href="platform/ui.html">UI</a></td></tr>
+</table>
+
+<h2>Next</h2>
+<table>
+<tr><th>Question</th><th>Page</th></tr>
+<tr><td>What does this feel like day by day?</td><td><a href="what-is-native.html">What is Native</a></td></tr>
+<tr><td>The whole machine in one picture</td><td><a href="company-map.html">The Company Map</a></td></tr>
+<tr><td>Where does this sit against ontology vendors and workflow tools?</td><td><a href="where-this-fits.html">Where this fits</a></td></tr>
+</table>
+
+<p style="font-size:12px;color:#9ca3af;margin-top:30px">Examples are illustrative and use one digital lending company throughout.</p>
+
+</div></div></body></html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lending Journeys</title>
+<meta name="description" content="Fourteen things that happen to a lending company, each played as a journey across the departments and their stations, one after another, with the gaps the design cannot yet answer collected as they appear.">
+<style>
+  :root{--serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--r:10px;
+    --bg:#fafaf9;--surface:#ffffff;--card:#ffffff;--line:#e2e0dd;--line-soft:#eeecea;--ink:#1c1917;--muted:#78716c;--faint:#a8a29e;--acc:#8A5D2E;--acc-bg:#f6efe7;--on-acc:#ffffff;
+    --ok:#3f7d54;--warn:#8a6d12;--block:#9c3f34;--ok-bg:#eef4ef;--warn-bg:#f8f3e4;--block-bg:#faeeec;--ok-line:#cfe0d4;--warn-line:#e8dcbb;--block-line:#eccfc9;--inset:#fafaf9;--sepia:#faf6ef;
+    --shadow:0 1px 2px rgba(28,25,23,.05),0 18px 44px -20px rgba(28,25,23,.16);--row-shadow:0 1px 2px rgba(28,25,23,.08),inset 0 0 0 1px rgba(138,93,46,.16)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C0B09;--surface:#161412;--card:#1C1A17;--line:#2A2622;--line-soft:#221F1C;--ink:#F5F0E8;--muted:#8C857D;--faint:#6E6860;--acc:#C4956A;--acc-bg:rgba(196,149,106,.12);--on-acc:#0C0B09;--ok:#5A9E6F;--warn:#C9A227;--block:#B8574B;--ok-bg:rgba(90,158,111,.13);--warn-bg:rgba(201,162,39,.13);--block-bg:rgba(184,87,75,.14);--ok-line:rgba(90,158,111,.32);--warn-line:rgba(201,162,39,.3);--block-line:rgba(184,87,75,.38);--inset:#161412;--sepia:rgba(196,149,106,.06);--shadow:0 1px 2px rgba(0,0,0,.16),0 18px 44px -18px rgba(0,0,0,.42);--row-shadow:0 1px 2px rgba(0,0,0,.32),inset 0 0 0 1px rgba(196,149,106,.18)}}
+  :root[data-theme="dark"]{--bg:#0C0B09;--surface:#161412;--card:#1C1A17;--line:#2A2622;--line-soft:#221F1C;--ink:#F5F0E8;--muted:#8C857D;--faint:#6E6860;--acc:#C4956A;--acc-bg:rgba(196,149,106,.12);--on-acc:#0C0B09;--ok:#5A9E6F;--warn:#C9A227;--block:#B8574B;--ok-bg:rgba(90,158,111,.13);--warn-bg:rgba(201,162,39,.13);--block-bg:rgba(184,87,75,.14);--ok-line:rgba(90,158,111,.32);--warn-line:rgba(201,162,39,.3);--block-line:rgba(184,87,75,.38);--inset:#161412;--sepia:rgba(196,149,106,.06);--shadow:0 1px 2px rgba(0,0,0,.16),0 18px 44px -18px rgba(0,0,0,.42);--row-shadow:0 1px 2px rgba(0,0,0,.32),inset 0 0 0 1px rgba(196,149,106,.18)}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .app{display:grid;grid-template-columns:240px minmax(0,1fr) 280px;gap:9px;padding:9px;min-height:100vh;background:var(--surface)}
+  .col{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .head{display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-bottom:1px solid var(--line-soft);flex:none} .head h2{font-size:12.5px;font-weight:600;margin:0;flex:1}
+  .body{flex:1;overflow:auto;min-height:0;padding:6px}
+  .li{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center;padding:6px 8px;border-radius:7px;cursor:pointer} .li:hover{background:var(--sepia)} .li.on{background:var(--acc-bg)} .li .n{font-family:var(--mono);font-size:10.5px;color:var(--faint)} .li.done{color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--faint);flex:none} .dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.block{background:var(--block)}
+  .dot.live{animation:pulse 2.4s infinite} @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(90,158,111,.45)}70%{box-shadow:0 0 0 7px rgba(90,158,111,0)}100%{box-shadow:0 0 0 0 rgba(90,158,111,0)}}
+  .strip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line-soft);flex:none;flex-wrap:wrap} .strip h1{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.02em;margin:0;line-height:1.1} .strip .cap{font-size:12px;color:var(--muted);flex:1}
+  .btn{font:inherit;font-size:12px;padding:4px 10px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer} .btn.stamp{background:var(--acc);color:var(--on-acc);border-color:var(--acc)} .btn:disabled{opacity:.5;cursor:default}
+  .floor{padding:12px;position:relative} .floor svg{width:100%;height:auto;display:block}
+  .floor text{font-family:var(--sans);font-size:11px;fill:var(--muted)} .floor .dh{font-size:12px;font-weight:600;fill:var(--ink)} .floor .cell{fill:var(--surface);stroke:var(--line-soft);stroke-width:1} .floor .cell.on{fill:var(--acc-bg);stroke:var(--acc)} .floor .cell.was{stroke:var(--acc);stroke-opacity:.35} .floor .cell.gap{fill:var(--warn-bg);stroke:var(--warn)} .floor .trail{fill:none;stroke:var(--acc);stroke-width:1.5;stroke-opacity:.5;stroke-dasharray:3 3} .floor .col-child{fill:var(--sepia)}
+  .token{fill:var(--acc);stroke:var(--card);stroke-width:2;transition:transform .55s cubic-bezier(.4,0,.2,1)} .token.gap{fill:var(--warn)}
+  .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:11px 13px;margin:0 12px 12px} .card h3{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+  .q{font-family:var(--serif);font-size:18px;line-height:1.3;margin:0 0 4px} .ans{color:var(--muted)} .row{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:6px}
+  .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:5px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;margin-left:6px;vertical-align:middle} .tag.gap{color:var(--warn);border-color:var(--warn-line);background:var(--warn-bg)} .tag.ok{color:var(--ok);border-color:var(--ok-line);background:var(--ok-bg)}
+  .steps{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px} .steps i{display:block;width:14px;height:5px;border-radius:3px;background:var(--line)} .steps i.done{background:var(--acc)} .steps i.gap{background:var(--warn)}
+  .gap{border:1px solid var(--warn-line);background:var(--warn-bg);border-radius:9px;padding:8px 10px;margin:6px} .gap .w{font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase} .gap .s{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:3px}
+  .quiet{color:var(--faint);padding:6px 8px}
+  @media (max-width:980px){.app{grid-template-columns:1fr;padding:16px;gap:12px}.col{overflow:visible}.body{overflow:visible}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="col"><div class="head"><h2>Journeys</h2></div><div class="body" id="list"></div></div>
+  <div class="col">
+    <div class="strip"><span class="dot ok live"></span><h1 id="jname">Lending</h1><span class="cap" id="jcap"></span><button class="btn stamp" id="play" type="button">Play</button><button class="btn" id="step" type="button">Step</button><button class="btn" id="next" type="button">Next journey</button></div>
+    <div class="floor" id="floor"></div>
+    <div class="card" id="capt"></div>
+  </div>
+  <div class="col"><div class="head"><h2>Gaps</h2></div><div class="body" id="gaps"><div class="quiet">Nothing yet.</div></div></div>
+</div>
+
+<script>
+/* The floor: departments across, stations down. */
+const DEPTS = [["out","Outside"],["len","Lending"],["ori","Origination"],["und","Underwriting"],["ser","Servicing"],["com","Compliance"],["child","Child"]];
+const STATIONS = [["now","Now, Asks"],["pri","Priority"],["coo","Coordination"],["eng","Engines"],["filed","Filed work"],["aud","Audit"],["ada","Adaptation"],["ide","Identity, Owner"]];
+
+/* Each step: [department, station, what happens, the row written, gap stage or null]. */
+const JOURNEYS = [
+ {name:"A loan application arrives",steps:[
+  ["out","now","An applicant sends four documents.","",null],
+  ["ori","now","Take an application: a work item is born, check: four documents present.","work item row",null],
+  ["ori","eng","Take an application runs as a checklist.","run row: file complete",null],
+  ["ori","filed","Application file, version 4, filed; reader Underwriting.","version row",null],
+  ["ori","coo","Hand-off: Origination to Underwriting, the file; both sides' check runs.","hand-off row",null],
+  ["und","eng","Bureau check by code; Verify KYC as a model; one verdict, one reason.","two run rows",null],
+  ["und","ide","The verdict judged against the charter: go, a complete file.","judgment row",null],
+  ["und","filed","KYC verdict, version 1, filed; readers Servicing, Compliance.","version row",null],
+  ["ser","eng","Disburse a loan: verdict under 30 days; bank instruction; ledger line; message.","run row",null],
+  ["ser","filed","Disbursals filed.","version row",null],
+  ["len","aud","Lending's Audit: every disbursal names a verdict under 30 days old, 212 of 212.","finding row",null]]},
+ {name:"The daily reconcile",steps:[
+  ["ser","pri","06:00 tick: Fetch bank file admitted, then Reconcile EMIs.","queue row",null],
+  ["ser","eng","Fetch bank file: 188 rows.","run row",null],
+  ["ser","coo","Reconcile EMIs takes the ledger lock; Disburse waits.","lock row",null],
+  ["ser","eng","Match rows to loans as a model, three minutes; post to ledger by code.","run rows",null],
+  ["ser","filed","Daily reconciliation, version 3: matched 212, unmatched 3.","version row",null],
+  ["ser","aud","Claim 'ledger balanced' against the record: balanced.","finding row",null],
+  ["len","now","Lending's goal reads its check from the rows: 4 of 5 runs.","computed, no row",null]]},
+ {name:"The bank file is short",steps:[
+  ["ser","eng","Fetch bank file: 0 rows; the check fails.","run row: failed",null],
+  ["ser","pri","Retry 2 of 3 under the charter's budget.","retry row",null],
+  ["ser","eng","Retry: 0 rows again.","run row: failed",null],
+  ["ser","ide","Retries spent: escalate to Meera.","escalation row",null],
+  ["ser","now","Ask card: bank file absent; Stamp or Refuse.","ask row",null],
+  ["ser","eng","Reconcile EMIs runs anyway on a 61 row file and passes.","run row: passed","E6 Fails: no paused state; a dependent engine keeps running"],
+  ["ser","aud","Claim 'zero unmatched' against the record: 61 rows, usual 190; flagged.","finding row",null],
+  ["ser","ada","Proposal: start Friday's reconcile at 7:30; goes ahead 16:00.","proposal row",null]]},
+ {name:"A borrower goes overdue",steps:[
+  ["ser","pri","10:00 tick: Chase overdue EMIs admitted.","queue row",null],
+  ["ser","eng","Pick the overdue by code: loans past 30 days.","run row",null],
+  ["ser","eng","Call the borrower, as the Collections officer; one call, one note.","run row",null],
+  ["ser","ide","A settlement offered: ask, under the officer's rules.","judgment row: ask",null],
+  ["ser","now","Ask card for Meera: settlement on loan 4711; Stamp.","ask row, stamp row",null],
+  ["ser","filed","Call notes filed; readers Meera, Compliance.","version row",null],
+  ["com","filed","Compliance reads the notes through the hand-off.","read row",null]]},
+ {name:"The regulator asks for the quarter",steps:[
+  ["out","now","The regulator asks for the quarter's audit.","",null],
+  ["len","pri","RBI audit admitted, quarter end.","queue row",null],
+  ["com","eng","Monthly audit reads KYC verdicts and Ledger lines for three months.","run rows",null],
+  ["com","aud","Every verdict of the month in the audit: yes.","finding row",null],
+  ["len","eng","RBI audit pulls four departments' files; writes the audit file.","run row",null],
+  ["len","ide","Send to the regulator: Ravi stamps.","stamp row",null],
+  ["out","now","Accepted.","",null]]},
+ {name:"A new product: gold loans",steps:[
+  ["len","now","Ravi types: we start gold loans in November.","",null],
+  ["len","pri","A row is born, origin chat.","work item row",null],
+  ["len","ide","The goal fits no charter's done: Identity proposes a department, axis product.","proposal row",null],
+  ["len","ide","A change every department sees: ask.","judgment row: ask",null],
+  ["len","now","Card: Make Gold loans a department; Ravi stamps.","stamp row",null],
+  ["child","now","Gold loans is born: Ravi writes its charter; its five engines start.","charter row",null],
+  ["child","eng","Its first engines: Verify KYC and Disburse a loan again, for gold.","","S4 Engines born: no rule for reusing an engine across departments"],
+  ["child","pri","Its own budget and queue start.","queue row",null]]},
+ {name:"A rule changes outside",steps:[
+  ["out","now","The regulator: a verdict may be reused up to 45 days.","",null],
+  ["len","now","Ravi rules it for Underwriting.","",null],
+  ["len","ide","The authority above changes Underwriting's charter: version 3.","charter version row",null],
+  ["und","filed","Underwriting's charter, version 3: ask above 45 days.","version row",null],
+  ["und","eng","Verify KYC's steps still say 30 days.","","E5 Changes: an engine's own steps have no version"],
+  ["und","ada","The waiting proposal 'reuse up to 45 days' lands.","proposal row: landed",null],
+  ["und","aud","Every verdict reused under 45 days: checked from tomorrow.","finding row",null]]},
+ {name:"The bank migration",steps:[
+  ["len","now","Ravi: move every EMI to the new bank by 30 October.","",null],
+  ["len","ide","Ravi writes a charter with an end date; its engines will run in Servicing and Compliance.","charter row",null],
+  ["child","now","Bank move is born, until 30 October; owner Ravi.","charter row",null],
+  ["child","eng","Move the EMI mandates, each Friday, six times.","run rows",null],
+  ["ser","coo","Servicing's bank connector locked on Fridays by Bank move.","lock row",null],
+  ["com","filed","Compliance reads the mandate list directly.","read row",null],
+  ["child","aud","Two bank files reconcile five days in a row.","finding row",null],
+  ["child","eng","Close the old account: Ravi.","run row",null],
+  ["child","ide","30 October. The department is done.","","S10 Retires: no rule for retiring a department or where its engines go"]]},
+ {name:"Volume goes up ten times",steps:[
+  ["ser","ada","Meters: Chase overdue EMIs, asks 31 a day, spend 46%.","meter rows",null],
+  ["ser","ada","Thirty days over on two meters: proposal, Make Collections a department, cut by stage.","proposal row",null],
+  ["len","ide","The parent's rule: ask.","judgment row: ask",null],
+  ["len","now","Card in Asks; Ravi stamps.","stamp row",null],
+  ["child","now","Collections is born; owner: a collections officer; two engines move under it.","charter row",null],
+  ["child","eng","Chase overdue EMIs runs under Collections.","run row",null],
+  ["ser","ada","Servicing's meters fall back under their lines.","meter rows",null]]},
+ {name:"A founder line becomes an engine",steps:[
+  ["ser","now","Meera: why are Friday reconciles late?","",null],
+  ["ser","pri","A row, origin chat, runs as a model.","work item row",null],
+  ["ser","eng","Explain: reads six Fridays; answers in the chat.","run row",null],
+  ["ser","now","Meera asks the same line again the next week, and the next.","work item rows",null],
+  ["ser","ada","Six runs: proposal, make 'Explain Fridays' an engine.","proposal row","E3 Lives: how many runs make an engine live is not written"],
+  ["ser","now","Card; Meera stamps.","stamp row",null],
+  ["ser","eng","Born: runs each Friday as a model.","born row",null]]},
+ {name:"A person leaves",steps:[
+  ["out","now","The collections officer resigns.","",null],
+  ["ser","eng","Call the borrower: the step runs as a role with no person.","run row: stalled","E6 Fails: a role with no person; no rule for reassigning a role"],
+  ["ser","ide","Every call becomes an ask to Meera.","escalation rows",null],
+  ["ser","now","Forty asks a day.","ask rows",null],
+  ["ser","ada","Proposal: run the call step as a model until a person is named; ask.","proposal row",null],
+  ["ser","now","Meera stamps; or names a person under the role.","stamp row",null]]},
+ {name:"Nobody reads an artifact",steps:[
+  ["ser","eng","Monthly EMI report runs at month end.","run row",null],
+  ["ser","filed","Monthly EMI report, version 1, filed.","version row",null],
+  ["ser","aud","Never looked at: the report, three months unopened.","finding row",null],
+  ["ser","ada","No rule to propose retiring an engine.","","E8 Retires: no retire rule for an engine"],
+  ["ser","eng","It runs again next month.","run row",null]]},
+ {name:"The machine stops",steps:[
+  ["out","now","The machine reboots at 02:00.","",null],
+  ["ser","pri","No tick for six hours.","",null],
+  ["ser","aud","The department looks live; no last tick is shown.","","S11 Fails: no last tick; no rule for a department whose five never fire"],
+  ["len","ide","Restart: the daemon re-reads open rows.","restart row",null],
+  ["ser","eng","Stalled rows resume; the 06:00 reconcile runs at 08:10.","run rows",null],
+  ["ser","aud","Claim 'by 8 a.m.' against the record: late; flagged.","finding row",null]]},
+ {name:"Month end, quarter end",steps:[
+  ["ser","pri","Month end: Monthly EMI report admitted.","queue row",null],
+  ["ser","eng","A model writes one page; Ravi has it.","run row",null],
+  ["com","eng","Monthly audit reads every verdict and every ledger line.","run row",null],
+  ["com","ide","Filed before the 5th: go.","judgment row",null],
+  ["len","filed","Monthly audit filed; readers Ravi, the regulator.","version row",null],
+  ["len","aud","The parent's check reads the children's: not computed.","","S6 Reads its goal: a parent does not compute from its children"]]}
+];
+
+const esc = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const W = 150, H = 44, GX = 8, GY = 8, LX = 0, TY = 30;
+const cx = d => LX + DEPTS.findIndex(x => x[0] === d) * (W + GX) + W / 2;
+const cy = s => TY + STATIONS.findIndex(x => x[0] === s) * (H + GY) + H / 2;
+function floorSvg(){
+  const w = DEPTS.length * (W + GX), h = TY + STATIONS.length * (H + GY);
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="The floor">`;
+  s += `<rect class="col-child" x="${cx("child") - W / 2 - 4}" y="0" width="${W + 8}" height="${h}" rx="10"/>`;
+  DEPTS.forEach(d => { s += `<text class="dh" x="${cx(d[0])}" y="18" text-anchor="middle">${esc(d[1])}</text>`; });
+  STATIONS.forEach(st => DEPTS.forEach(d => { const x = cx(d[0]) - W / 2, y = cy(st[0]) - H / 2; s += `<rect class="cell" id="c-${d[0]}-${st[0]}" x="${x}" y="${y}" width="${W}" height="${H}" rx="9"/>`; if (d[0] === "out" && st[0] !== "now") return; s += `<text x="${x + 10}" y="${y + 26}">${esc(d[0] === "out" ? "" : st[1])}</text>`; }));
+  s += `<path class="trail" id="trail" d=""/><circle class="token" id="token" r="9" cx="0" cy="0" style="transform:translate(${cx("out")}px,${cy("now")}px)"/></svg>`;
+  return s;
+}
+let ji = 0, si = -1, timer = null, playing = false; const seen = new Set(), gaps = [];
+function listHtml(){ return JOURNEYS.map((j, i) => { const g = j.steps.some(s => s[4]); return `<div class="li${i === ji ? " on" : ""}${seen.has(i) ? " done" : ""}" data-j="${i}"><span class="dot ${seen.has(i) ? (g ? "warn" : "ok") : (i === ji ? "ok live" : "")}"></span><span>${esc(j.name)}</span><span class="n">${j.steps.length}</span></div>`; }).join(""); }
+function gapsHtml(){ return gaps.length ? gaps.map(g => `<div class="gap"><div class="w">${esc(g.j)}</div>${esc(g.text)}<div class="s">${esc(g.stage)}</div></div>`).join("") : `<div class="quiet">Nothing yet.</div>`; }
+function draw(){
+  const j = JOURNEYS[ji];
+  document.getElementById("list").innerHTML = listHtml();
+  document.getElementById("jname").textContent = j.name;
+  document.getElementById("jcap").textContent = si < 0 ? `${ji + 1} of ${JOURNEYS.length}` : `${ji + 1} of ${JOURNEYS.length}, step ${si + 1} of ${j.steps.length}`;
+  document.querySelectorAll(".cell").forEach(c => { c.classList.remove("on", "was", "gap"); });
+  let d = "";
+  j.steps.slice(0, si + 1).forEach((st, k) => { const c = document.getElementById(`c-${st[0]}-${st[1]}`); if (c) c.classList.add(k === si ? (st[4] ? "gap" : "on") : "was"); d += (k ? " L " : "M ") + cx(st[0]) + " " + cy(st[1]); });
+  document.getElementById("trail").setAttribute("d", d);
+  const cur = si >= 0 ? j.steps[si] : ["out", "now", "", "", null];
+  const tk = document.getElementById("token"); tk.style.transform = `translate(${cx(cur[0])}px,${cy(cur[1])}px)`; tk.classList.toggle("gap", !!cur[4]);
+  const bars = j.steps.map((st, k) => `<i class="${k <= si ? (st[4] ? "gap" : "done") : ""}"></i>`).join("");
+  document.getElementById("capt").innerHTML = si < 0 ? `<p class="q">${esc(j.name)}</p><div class="ans">${j.steps.length} steps</div><div class="steps">${bars}</div>` : `<p class="q">${esc(cur[2])}${cur[4] ? `<span class="tag gap">gap</span>` : ""}</p><div class="ans">${esc(DEPTS.find(x => x[0] === cur[0])[1])}, ${esc(cur[0] === "out" ? "outside" : STATIONS.find(x => x[0] === cur[1])[1])}</div>${cur[3] ? `<div class="row">${esc(cur[3])}</div>` : ""}${cur[4] ? `<div class="row">${esc(cur[4])}</div>` : ""}<div class="steps">${bars}</div>`;
+  document.getElementById("gaps").innerHTML = gapsHtml();
+  document.getElementById("play").textContent = playing ? "Pause" : "Play";
+}
+function step(){
+  const j = JOURNEYS[ji];
+  if (si + 1 >= j.steps.length){ seen.add(ji); if (ji + 1 < JOURNEYS.length){ ji++; si = -1; } else { playing = false; if (timer) clearTimeout(timer); } draw(); return; }
+  si++; const st = j.steps[si];
+  if (st[4] && !gaps.some(g => g.j === j.name && g.text === st[2])) gaps.push({ j: j.name, text: st[2], stage: st[4] });
+  draw();
+}
+function tick(){ if (!playing) return; step(); const j = JOURNEYS[ji]; const pause = si < 0 ? 1400 : (j.steps[si][4] ? 3000 : 1900); timer = setTimeout(tick, pause); }
+document.getElementById("play").addEventListener("click", () => { playing = !playing; if (playing) tick(); else if (timer) clearTimeout(timer); draw(); });
+document.getElementById("step").addEventListener("click", () => { playing = false; if (timer) clearTimeout(timer); step(); });
+document.getElementById("next").addEventListener("click", () => { playing = false; if (timer) clearTimeout(timer); seen.add(ji); JOURNEYS[ji].steps.forEach(st => { if (st[4] && !gaps.some(g => g.j === JOURNEYS[ji].name && g.text === st[2])) gaps.push({ j: JOURNEYS[ji].name, text: st[2], stage: st[4] }); }); ji = (ji + 1) % JOURNEYS.length; si = -1; draw(); });
+document.getElementById("list").addEventListener("click", ev => { const el = ev.target.closest("[data-j]"); if (!el) return; playing = false; if (timer) clearTimeout(timer); ji = +el.dataset.j; si = -1; draw(); });
+document.getElementById("floor").innerHTML = floorSvg();
+draw();
+</script>
+</body>
+</html>

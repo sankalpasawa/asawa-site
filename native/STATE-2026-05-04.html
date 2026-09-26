@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Native — Production State (snapshot 2026-05-03T20:55Z)</title>
+<meta name="description" content="What Native is, what's in production, what's remaining. Codex-reviewed (4 rounds, ADVISORY).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --bg-elev: #ffffff;
+    --bg-code: #f3f0eb;
+    --text: #1a1d20;
+    --text-muted: #5a5f66;
+    --text-faint: #8a8f96;
+    --border: #e5e3df;
+    --border-strong: #c8c5bf;
+    --accent: #0d4f8c;
+    --accent-soft: #d8e7f5;
+    --warn: #8c5a0d;
+    --warn-soft: #f5ebd8;
+    --ok: #2d6e3e;
+    --ok-soft: #dceadf;
+    --defer: #6a4f8c;
+    --defer-soft: #e6dcf2;
+    --content-max: 980px;
+    --toc-w: 240px;
+    --gutter: 32px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --bg-elev: #1d2024;
+      --bg-code: #1d2024;
+      --text: #e6e8eb;
+      --text-muted: #a8acb1;
+      --text-faint: #7a7f86;
+      --border: #2a2d31;
+      --border-strong: #3a3d41;
+      --accent: #5ea3e0;
+      --accent-soft: #1c2c3d;
+      --warn: #d4a44a;
+      --warn-soft: #2d2419;
+      --ok: #6cbf80;
+      --ok-soft: #1a2a1f;
+      --defer: #b59ed4;
+      --defer-soft: #251c33;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    gap: var(--gutter);
+  }
+  @media (min-width: 1024px) {
+    .layout {
+      grid-template-columns: var(--toc-w) minmax(0, 1fr);
+      padding: 64px 32px 120px;
+    }
+  }
+
+  /* Header banner */
+  header.banner {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+    margin-bottom: 12px;
+  }
+  header.banner h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  header.banner .sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-elev);
+    color: var(--text-muted);
+  }
+  .badge.advisory { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+  .badge.snapshot { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+  /* TOC */
+  .toc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  @media (min-width: 1024px) {
+    .toc {
+      position: sticky;
+      top: 32px;
+      align-self: start;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+  }
+  .toc h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+  .toc ul { list-style: none; padding: 0; margin: 0; }
+  .toc li { margin: 0; }
+  .toc a {
+    display: block;
+    padding: 6px 0 6px 12px;
+    border-left: 2px solid var(--border);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.1s, border-color 0.1s;
+  }
+  .toc a:hover { color: var(--text); border-left-color: var(--border-strong); }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 16px 0 32px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* Content */
+  main { min-width: 0; max-width: var(--content-max); }
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 48px 0 16px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  h2:first-child { margin-top: 0; }
+  h3 { font-size: 16px; margin: 28px 0 10px; color: var(--text-muted); font-weight: 600; }
+  p { margin: 0 0 14px; color: var(--text); }
+  p.lede { font-size: 17px; color: var(--text); margin-bottom: 24px; }
+  blockquote {
+    margin: 16px 0;
+    padding: 14px 18px;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--text);
+    font-size: 15px;
+    border-radius: 0 4px 4px 0;
+  }
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92em;
+    background: var(--bg-code);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--text);
+  }
+  pre {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  pre.diagram {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 24px;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-elev);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  td code { font-size: 0.88em; }
+
+  /* Status pills */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11.5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .pill.ok { color: var(--ok); background: var(--ok-soft); }
+  .pill.warn { color: var(--warn); background: var(--warn-soft); }
+  .pill.defer { color: var(--defer); background: var(--defer-soft); }
+
+  /* Footer */
+  footer {
+    grid-column: 1 / -1;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+  }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  ul.tight { margin: 6px 0 14px 20px; padding: 0; }
+  ul.tight li { margin: 4px 0; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <header class="banner"><meta name="robots" content="noindex">
+    <h1>Native — Production State</h1>
+    <div class="sub">
+      <span class="badge snapshot">Snapshot 2026-05-03T20:55Z</span>
+      <span class="badge advisory">Codex review · 4 rounds · ADVISORY</span>
+      <span>For live HEAD: <code>cd sutra &amp;&amp; git rev-parse origin/main</code></span>
+    </div>
+  </header>
+
+  <aside class="toc">
+    <h4>Contents</h4>
+    <ul>
+      <li><a href="#definition">§1 Definition</a></li>
+      <li><a href="#production-state">§2 Production state</a></li>
+      <li><a href="#block-diagram">§3 Block diagram</a></li>
+      <li><a href="#emergence">v1.2 organic emergence</a></li>
+      <li><a href="#backlog">§4 Remaining backlog</a></li>
+      <li><a href="#one-line">§5 One-line answer</a></li>
+      <li><a href="#sources">§6 Source files</a></li>
+    </ul>
+    <h4 style="margin-top: 24px;">Related</h4>
+    <ul>
+      <li><a href="index.html">Native portal</a></li>
+      <li><a href="native.html">Native technical</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <div class="legend">
+      <strong style="color: var(--text);">Legend</strong>
+      <span><span class="pill ok">✅ shipped</span> on live runtime path</span>
+      <span><span class="pill warn">🟡 partial / latent</span> built but not wired, or stub</span>
+      <span><span class="pill defer">⚪ deferred</span> v1.x, re-trigger required</span>
+    </div>
+
+    <h2 id="definition">§1 — Definition</h2>
+    <blockquote>
+      <strong>Native</strong> is the deployable Sutra plugin (<code>sutra/marketplace/native/</code>) that one founder + one LLM install with a single command to run a whole company's operating layer end-to-end. Implements the V2.4 Sutra Engine architecture (4 primitives + 6 laws + Skill Engine + 6 terminal-check predicates) on top of <strong>10 capabilities — 5 fully covered, 4 partial, 1 deferred</strong>.
+    </blockquote>
+
+    <h2 id="production-state">§2 — Production state</h2>
+
+    <h3>Tag chain (full, on origin)</h3>
+    <pre>Phase 2 milestone tags (M1-M11):
+  native-v1.0-m1-shipped → m2 (+codex-p1/p2 fix tags) → m3 (+codex-p1 fix) →
+  m4 → m5 → m5.5 → m6 → m7 → m8 → m9 → m10 → m11
+
+Phase 2 GA + patches:
+  native-v1.0.0 → native-v1.0.1 → native-v1.0.2
+
+NPD productization + organic-emergence:
+  native-v1.1.0 → native-v1.1.0-productization → native-v1.1.1 →
+  native-v1.2-organic-loop-v1 → native-v1.2-organic-loop-v1-build-fixed (= a7eb9fc)
+
+Latest *native* tag = a7eb9fc.
+(plugin-v2.18.1 is a later repo-wide non-native tag at 5d3840e — separate plugin track.)</pre>
+
+    <h3>HEAD vs latest native tag</h3>
+    <ul class="tight">
+      <li>sutra <code>origin/main</code> HEAD = <code>8ef5628</code> — <strong>6 commits ahead</strong> of latest native tag <code>a7eb9fc</code></li>
+      <li>holding <code>origin/main</code> HEAD = <code>8f25fba</code> — 4 commits past corresponding bump</li>
+    </ul>
+
+    <h3>Version metadata (all 5 surfaces aligned at HEAD = 1.1.3)</h3>
+    <table>
+      <thead><tr><th>Surface</th><th>Value</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>package.json</td><td><code>1.1.3</code></td><td><code>sutra/marketplace/native/package.json:3</code></td></tr>
+        <tr><td>CLI VERSION</td><td><code>1.1.3</code></td><td><code>src/cli/sutra-native.ts:57</code></td></tr>
+        <tr><td>Exported NATIVE_VERSION</td><td><code>1.1.3</code></td><td><code>src/index.ts:37</code></td></tr>
+        <tr><td>Plugin manifest</td><td><code>1.1.3</code></td><td><code>.claude-plugin/plugin.json:3</code></td></tr>
+        <tr><td>Marketplace catalog</td><td><code>1.1.3</code></td><td><code>sutra/.claude-plugin/marketplace.json:34</code></td></tr>
+        <tr><td>Latest published tag</td><td><code>(none for 1.1.3)</code></td><td>last tag pinned at <code>1.2-organic-loop-v1-build-fixed</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Install path (verified live)</h3>
+    <pre>/plugin marketplace add sankalpasawa/sutra
+/plugin install native@sutra
+# bin/sutra-native version → 1.1.3
+# SessionStart hook auto-activates engine
+# T-onboarding ("hello"/"start"/"begin") → W-onboarding-tour → SUCCESS Execution</pre>
+
+    <h2 id="block-diagram">§3 — Block diagram (4 layers, top-down)</h2>
+
+    <pre class="diagram">┌──────────────────────────────────────────────────────────────────────────────┐
+│  LAYER 0 — DISTRIBUTION  (founder-facing surface)                            │
+│  ────────────────────────────────────────────────────────────────────────    │
+│  /plugin marketplace add sankalpasawa/sutra                                  │
+│  /plugin install native@sutra                                                │
+│  bin/sutra-native {start|stop|status|version|create-domain|create-charter|   │
+│                     create-workflow|list|run}    → SHIPPED                   │
+│  /start-native + slash commands                                              │
+│  SessionStart hook → auto-activates engine on first session in each project  │
+│                                                                              │
+│  Cohort rollout (per RESUME-NATIVE-CHARTER §5 / Phase 3 UNBLOCKED+READY):    │
+│    A. Marketplace publish (founder action)        🟢 READY                   │
+│    B. T0 Asawa dogfood (post-publish)             🟡 IN-FLIGHT (canary 60s)  │
+│    C. T4 new clients via marketplace (pull)       🟡 PULL-BASED (canary 7d)  │
+│    D. T2 owned (DayFlow/Billu/Paisa/PPR/Maze)     ⚪ DEFERRED per D41        │
+│    E. T3 (Testlify/Dharmik)                       ⚪ DEFERRED per D41        │
+│    Revert trigger: ≥3 T4 green for 14d · portfolio co blocked · founder dir  │
+│    NOTE: MIGRATION.md still documents older T0→T2→T3→T4 — separate fix       │
+└──────────────────────────────────────────────────────────────────────────────┘
+                                    │ founder utterance
+                                    ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  LAYER 1 — RUNTIME  (NPD productization v1.1.x; D2 vertical slice + v1.2)    │
+│  ────────────────────────────────────────────────────────────────────────    │
+│                                                                              │
+│   LIVE PATH (NativeEngine.handleHSutraEvent):                                │
+│   ┌──────────────────┐  ┌────────────┐  ┌─────────────────┐  ┌────────────┐  │
+│   │ H-Sutra connector│→ │   Router   │→ │ executeWorkflow │→ │  Renderer  │  │
+│   │ (READ-ONLY;      │  │ .route()   │  │ (LiteExecutor — │  │  Registry  │  │
+│   │  intake from     │  │ SYNC ONLY  │  │  sync step_graph│  │ (11 default│  │
+│   │  H-Sutra log)    │  │ ✅ shipped │  │  runner; full   │  │  renderers:│  │
+│   │ ✅ D2.step1      │  │ requires   │  │  Temporal NOT   │  │  8 D2 + 3  │  │
+│   │ depends on       │  │ core@sutra │  │  on live path)  │  │  v1.2)     │  │
+│   │ core@sutra log   │  └────────────┘  │ ✅ Lite v1.1.x  │  │ ✅ D2.step4│  │
+│   └──────────────────┘                  │ ⚪ Full Temporal│  │  + emerg.  │  │
+│                                         │   on live path  │  └────────────┘  │
+│                                         │   = v1.2 backlog│                  │
+│                                         └─────────────────┘                  │
+│                                                                              │
+│   LATENT (constructed but NOT on live execution path):                       │
+│   • Router.routeAsync() + LLMFallback hook  — defined, not called by engine  │
+│   • ArtifactCatalog (sha256+lineage+index.jsonl) — built, not called         │
+│                                                                              │
+│   PID lock + crash recovery + R-FS-SAFETY hardening   ✅ D5.1-D5.5,5.8       │
+│   R-MARKETPLACE-SMOKE clean-install workflow          ⚪ D5.6 deferred        │
+│   R-FW.1-4 git-diff firewall guards                   ⚪ D5.7 deferred        │
+└──────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  LAYER 2 — ENGINE CORE  (Phase 2, M1-M12 GA: v1.0.0)                         │
+│  ────────────────────────────────────────────────────────────────────────    │
+│                                                                              │
+│   PRIMITIVES (M2)        LAWS (M3)              SCHEMAS (M4)                 │
+│   ┌──────────────┐       ┌─────────────────┐    ┌───────────────────┐        │
+│   │ Domain       │       │ L1 DATA         │    │ DataRef           │        │
+│   │ Charter      │       │ L2 BOUNDARY     │    │ Asset             │        │
+│   │ Workflow     │       │ L3 ACTIVATION   │    │ TriggerSpec       │        │
+│   │ Execution    │       │ L4 COMMITMENT   │    │ BoundaryEndpoint  │        │
+│   │ ✅ 70 tests  │       │ L5 META         │    │ Interface         │        │
+│   └──────────────┘       │ L6 REFLEXIVITY  │    │ Constraint        │        │
+│                          │ + T1-T6 terminal│    │ Cohort            │        │
+│                          │ ✅ M3 shipped   │    │ ✅ M4 shipped     │        │
+│                          └─────────────────┘    └───────────────────┘        │
+│                                                                              │
+│   ENGINES (M5-M9 GA + M10-M12 productization)                                │
+│   ┌────────────────────────────────────────────────────────────────────┐    │
+│   │ Temporal Adapter shell + deps + Activity wrapper ✅ M5             │    │
+│   │   (@temporalio/{client,worker,workflow,testing} in package.json;   │    │
+│   │    not wired into live runtime path yet — that = v1.2 backlog)     │    │
+│   │ Step-graph executor + failure_policy (5-set)     ✅ M5             │    │
+│   │ F-10 typed parsers (preconditions/failure_policy + 2 deferred M7) ✅│    │
+│   │ Rolling integration harness                      ✅ M5.5           │    │
+│   │ Charter→Rego compiler + OPA bundle service       ✅ M6/M8          │    │
+│   │ Skill Engine + Skill invocation                  ✅ M7/M8          │    │
+│   │ Policy Dispatcher + OTel emitter                 🟡 M8             │    │
+│   │   (NoopExporter live; OTLPHttpExporter is non-functional stub;     │    │
+│   │    no WAL — production transport NOT wired)                        │    │
+│   │ Governance overhead measurement (≤15% gate)      ✅ M8             │    │
+│   │ Host-LLM Activity (claude --bare subprocess)     ✅ M8             │    │
+│   │ Tenant-isolation engine (delegates_to edges)     ✅ M9             │    │
+│   │ Cadence-scheduler engine (I-12 ±5min)            ✅ M9             │    │
+│   │ HS-2 overhead-termination (all exit paths)       ✅ M9             │    │
+│   │ F-1..F-7 forbidden coupling E2E suite            ✅ M9             │    │
+│   │ V2 §8 Vinit hook E2E + I-1..I-12 invariants      ✅ M9             │    │
+│   │ Core→Native MIGRATION.md + cutover_contract      ✅ M10            │    │
+│   │ Asawa T0 dogfood time-to-value (G-0..G-6)        ✅ M11            │    │
+│   │ SBOM per version + codex master review           ✅ M12            │    │
+│   └────────────────────────────────────────────────────────────────────┘    │
+│                                                                              │
+│   PERSISTENCE (NPD + v1.2):                                                  │
+│   • user-kit/ — primitives loaded at boot (Workflows + TriggerSpecs)         │
+│   • user-kit/proposals/ — per-pattern JSON files (NOT JSONL)                 │
+│   • user-kit/decision-provenance.jsonl — audit log (JSONL append-only)       │
+│                                                                              │
+│   Tests (per RESUME-NATIVE-CHARTER): 1273/1273 vitest passing                │
+│   (manifests stale: marketplace.json/plugin.json advertise 1207 — sync TODO) │
+└──────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼</pre>
+
+    <h3>Layer 3 — 10-capability map</h3>
+    <p>V2.4 architecture; vendor choices.<br>
+    <strong>Coverage: 5 fully covered · 4 partial · 1 deferred.</strong></p>
+    <table>
+      <thead><tr><th>#</th><th>Capability</th><th>Tool / Standard</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Identity</td><td>OS process owner</td><td><span class="pill ok">✅ single-tenant</span></td></tr>
+        <tr><td>2</td><td>Authority</td><td>OPA + Rego</td><td><span class="pill ok">✅ Activity-wrapped</span></td></tr>
+        <tr><td>3</td><td>Workflow durability</td><td>Temporal OSS</td><td><span class="pill warn">🟡 adapter+deps shipped; not on live path</span></td></tr>
+        <tr><td>4</td><td>In-process coord.</td><td>Temporal child workflows</td><td><span class="pill warn">🟡 Temporal-gated (blocked by #3)</span></td></tr>
+        <tr><td>5</td><td>Tool invocation</td><td>MCP</td><td><span class="pill warn">🟡 partial (per-invoke MCP ctx deferred)</span></td></tr>
+        <tr><td>6</td><td>Cross-process comm</td><td>A2A</td><td><span class="pill defer">⚪ DEFERRED v1.x</span></td></tr>
+        <tr><td>7</td><td>Telemetry</td><td>OpenTelemetry</td><td><span class="pill warn">🟡 emitter shape live (Noop); OTLP stub; no WAL</span></td></tr>
+        <tr><td>8</td><td>Skill packaging</td><td>SKILL.md</td><td><span class="pill ok">✅ Anthropic std</span></td></tr>
+        <tr><td>9</td><td>Repo convention</td><td>AGENTS.md</td><td><span class="pill ok">✅ OpenAI/AAIF std</span></td></tr>
+        <tr><td>10</td><td>LLM access</td><td>claude --bare + codex CLI</td><td><span class="pill ok">✅ subprocess</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="emergence">v1.2 — Organic Emergence (D45)</h2>
+    <p>Merged into the live path behind feature gate <code>SUTRA_NATIVE_PROPOSER</code> (env var; OFF by default).</p>
+
+    <pre class="diagram">═══════════════════════════════════════════════════════════════════════════════
+   v1.2 ORGANIC EMERGENCE (D45) — MERGED INTO LIVE PATH BEHIND FEATURE GATE
+═══════════════════════════════════════════════════════════════════════════════
+
+   Feature gate: SUTRA_NATIVE_PROPOSER (env var; OFF by default)
+
+   Plumbing across 8 files:
+   ┌──────────────────┐   ┌──────────────────┐   ┌──────────────────────┐
+   │ pattern-detector │ → │ proposal-builder │ → │ emergence-provenance │
+   │ (H-Sutra log →   │   │ (Pattern → Work- │   │ (founder Y/N gate →  │
+   │  DetectedPattern │   │  flow + Trigger- │   │  DecisionProvenance  │
+   │  k≥4 repeats,    │   │  Spec + Proposal-│   │  policy_id=D45,      │
+   │  NO LLM v1)      │   │  Entry skeleton) │   │  scope=WORKFLOW)     │
+   └──────────────────┘   └──────────────────┘   └──────────────────────┘
+   + native-engine.ts (handleHSutraEvent + no-match → propose path)
+   + engine-event.ts (3 new types: pattern_proposed, proposal_approved, _rejected)
+   + renderer-registry.ts (3 new default renderers for the above)
+   + proposal-ledger.ts (per-pattern JSON store under user-kit/proposals/)
+   + user-kit.ts (HOME override + dir layout)
+
+   Storage:
+   • Proposals → per-pattern JSON files at user-kit/proposals/&lt;hash&gt;.json
+   • Decision audit → user-kit/decision-provenance.jsonl (JSONL append-only)
+
+   Scope: T0 Asawa (this session) + T2 owned portfolio (when each onboards)
+   T4 stays under D44 (no LLM, existing instrumentation only)
+═══════════════════════════════════════════════════════════════════════════════</pre>
+
+    <h2 id="backlog">§4 — Remaining backlog</h2>
+
+    <h3>v1.2 backlog (some shipped above; remaining items)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Item</th><th>Why deferred</th><th>Re-trigger</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Wire Full Temporal Workflow Executor onto live runtime path</td><td>Adapter + deps shipped; LiteExecutor sync stub covers T0/T4 single-process today</td><td>First crash-recovery failure OR multi-step workflow &gt;5 min</td></tr>
+        <tr><td>2</td><td>Own UserPromptSubmit intake</td><td>Currently depends on <code>core@sutra</code> writing H-Sutra log</td><td>Native-only install (without core) requested by client</td></tr>
+        <tr><td>3</td><td>Advanced operator skills</td><td>Founder flow covered by current 8 CLI commands; "workflow CLI" already shipped</td><td>T4 client requests workflow-editing UX</td></tr>
+        <tr><td>4</td><td>Wire <code>Router.routeAsync()</code> + LLMFallback into live path</td><td>Sync routing covers T0/T4 today; LLM fallback latent</td><td>First trigger-spec gap a deterministic predicate cannot close</td></tr>
+        <tr><td>5</td><td>Wire <code>ArtifactCatalog</code> into execution path</td><td>Catalog built but not called by engine</td><td>First lineage/replay use case</td></tr>
+        <tr><td>6</td><td>Wire OTel production transport (OTLP HTTP exporter from stub → live; add WAL)</td><td>Emitter shape live with NoopExporter; transport stub</td><td>First production telemetry need</td></tr>
+        <tr><td>7</td><td>D5.6 R-MARKETPLACE-SMOKE clean-install workflow</td><td>Manual smoke covers it</td><td>T4 cohort scaling to ≥10</td></tr>
+        <tr><td>8</td><td>D5.7 R-FW.1..4 git-diff firewall guards</td><td>Native-only firewall enforced at PR review</td><td>First cross-package leak</td></tr>
+      </tbody>
+    </table>
+
+    <h3>v1.x deferred (per <code>final-architecture §6</code>)</h3>
+    <table>
+      <thead><tr><th>Component</th><th>Re-trigger</th></tr></thead>
+      <tbody>
+        <tr><td>LLMSubstrate adapter (OpenAI / Gemini swap)</td><td>First non-Claude use case</td></tr>
+        <tr><td>MCP gateway / sandbox / allowlist</td><td>First production incident OR pre-T4-fleet scale</td></tr>
+        <tr><td>SPIFFE / SPIRE multi-tenant</td><td>First multi-tenant deployment</td></tr>
+        <tr><td>A2A cross-process workflow comm</td><td>First cross-process workflow</td></tr>
+        <tr><td>Constitutional veto Safety predicate</td><td>First "authorized but unsafe" decision</td></tr>
+        <tr><td>Learning / reflection / auto-retire skills</td><td>v1.x case-by-case</td></tr>
+        <tr><td>Coverage templates per business function</td><td>T4 user demand</td></tr>
+        <tr><td>Per-invocation MCP context passing in <code>--bare</code></td><td>Founder hits MCP-context need</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cohort distribution remaining</h3>
+    <table>
+      <thead><tr><th>Tier</th><th>Status (per RESUME-NATIVE-CHARTER §5)</th><th>Trigger to advance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>T0 Asawa dogfood</strong></td><td><span class="pill warn">🟡 in-flight; verify-routine fires daily</span></td><td>continuous</td></tr>
+        <tr><td><strong>T4 new clients</strong></td><td><span class="pill warn">🟡 pull-based (canary 7d each)</span></td><td>marketplace organic install</td></tr>
+        <tr><td><strong>T2 owned</strong> (DayFlow / Billu / Paisa / PPR / Maze)</td><td><span class="pill defer">⚪ DEFERRED per D41</span></td><td>≥3 T4 green for 14d OR portfolio co blocked</td></tr>
+        <tr><td><strong>T3 projects</strong> (Testlify / Dharmik)</td><td><span class="pill defer">⚪ DEFERRED per D41</span></td><td>T4 metrics 3-week green + sign-off</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Doc / manifest sync TODOs (separate from v1.2 build)</h3>
+    <ul class="tight">
+      <li><code>MIGRATION.md</code> cohort order still T0→T2→T3→T4 — needs update to charter's A→B→C→D→E</li>
+      <li><code>marketplace.json</code> + <code>plugin.json</code> advertise 8 default renderers + 1207 tests — source ships 11 + 1273</li>
+    </ul>
+
+    <h2 id="one-line">§5 — Founder's 1-line answer</h2>
+    <blockquote>
+      Native v1.0 GA (Apr 30) → v1.1.0 productization (May 3) → v1.2 organic-emergence loop merged into live path behind <code>SUTRA_NATIVE_PROPOSER</code> feature gate. At snapshot 2026-05-03T20:55Z: sutra HEAD = <code>8ef5628</code>, 6 commits ahead of latest native tag <code>a7eb9fc</code>; all 5 version surfaces aligned at 1.1.3. Engine live path: H-Sutra connector → Router (sync) → LiteExecutor → Renderer Registry (11 default renderers). Latent (built, not wired): LLMFallback + ArtifactCatalog + OTel production transport + Temporal-on-live-path. Backlog: wire Temporal/LLMFallback/ArtifactCatalog/OTel into live, own UserPromptSubmit intake, advanced operator skills, multi-tenant, cross-process. Cohort: T0 in-flight, T4 pulling, T2/T3 deferred per D41 until T4 metrics green.
+    </blockquote>
+
+    <h2 id="sources">§6 — Source files</h2>
+    <table>
+      <thead><tr><th>Doc</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>Charter / resume</td><td><code>holding/RESUME-NATIVE-CHARTER.md</code></td></tr>
+        <tr><td>Final architecture (canonical)</td><td><code>holding/research/2026-04-29-native-v1.0-final-architecture.md</code></td></tr>
+        <tr><td>Charter origin</td><td><code>holding/research/2026-04-28-sutra-engine-charter.md</code></td></tr>
+        <tr><td>D45 organic-emergence direction</td><td><code>holding/FOUNDER-DIRECTIONS.md</code> §D45</td></tr>
+        <tr><td>D41 cohort pivot</td><td><code>holding/FOUNDER-DIRECTIONS.md</code> §D41</td></tr>
+        <tr><td>Engine code</td><td><code>sutra/marketplace/native/src/runtime/native-engine.ts</code></td></tr>
+        <tr><td>Proposer feature gate</td><td><code>SUTRA_NATIVE_PROPOSER</code> env var (<code>native-engine.ts:120</code>)</td></tr>
+        <tr><td>Persistence</td><td><code>sutra/marketplace/native/src/persistence/{user-kit,proposal-ledger}.ts</code></td></tr>
+        <tr><td>Telemetry shape</td><td><code>sutra/marketplace/native/src/engine/otel-emitter.ts</code></td></tr>
+        <tr><td>Temporal adapter</td><td><code>sutra/marketplace/native/src/engine/temporal-adapter.ts</code></td></tr>
+        <tr><td>Tags</td><td><code>cd sutra &amp;&amp; git tag -l "native-*"</code></td></tr>
+        <tr><td>Markdown source</td><td><code>holding/research/2026-05-04-native-block-diagram.md</code></td></tr>
+        <tr><td>Codex review (4 rounds)</td><td><code>.enforcement/codex-reviews/2026-05-04-native-block-diagram.md</code></td></tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <span>Native — Sutra Engine Plugin · snapshot 2026-05-03T20:55Z · Codex 4-round review (final: ADVISORY)</span>
+      <span><a href="index.html">Native portal</a> · <a href="native.html">Native technical</a></span>
+    </footer>
+
+  </main>
+
+</div>
+
+<script>
+  // TOC active-state: highlight section in view
+  const links = document.querySelectorAll('.toc a[href^="#"]');
+  const sections = Array.from(links).map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = document.querySelector('.toc a[href="#' + id + '"]');
+      if (!link) return;
+      if (e.isIntersecting) {
+        document.querySelectorAll('.toc a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

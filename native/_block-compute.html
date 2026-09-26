@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - Second-Order: Compute</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:820px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:14px}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#0f766e}
+  .draft{background:#fffbeb;border:1px solid #b45309;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#92400e;margin-bottom:18px}
+  .draft b{letter-spacing:.04em}
+  .draft a{color:#92400e}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:26px 0 9px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  td a{color:#1d4ed8;text-decoration:none}
+  td a:hover{text-decoration:underline}
+  p.flow{font-size:14px;color:#1f2937;margin:0 0 10px}
+  ul.gaps{margin:0;padding-left:20px;font-size:14px;color:#1f2937}
+  ul.gaps li{margin:7px 0}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:26px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="platform/compute.html" style="color:#bfdbfe">platform/compute.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native - Second-Order: Compute</h1>
+  <div class="sub">The &sect;1.0 <b>Compute</b> block, fully wired &middot; the host machine the Host + daemon execute on</div>
+  <div class="crumb">First layer: Human &rarr; UI &rarr; Host &rarr; Daemon{Orchestration &rarr; System of Process} &rarr; SoR / External World &middot; base: <b>Compute (here)</b></div>
+  <div class="draft"><b>WORKING DRAFT</b> &middot; 2026-06-11 &middot; Not locked - founder review pending &middot; back to <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+
+  <svg viewBox="0 0 780 768" role="img" aria-label="Compute block second-order, wired">
+    <defs>
+      <marker id="cah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- Authority + Tenancy wrap (gating renders as boundary, not a pipeline box) -->
+    <rect x="10" y="24" width="760" height="730" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="24" y="15" width="524" height="18" fill="#fff"/>
+    <text x="32" y="28" fill="#7c3aed" font-weight="700" font-size="12">AUTHORITY + TENANCY &#183; gates every access &#183; per-tenant isolation (HS-3 + ADR-006)</text>
+
+    <!-- neighbor stubs (muted, dashed) -->
+    <rect x="110" y="54" width="190" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="205" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#6b7280">Host</text>
+    <text x="205" y="94" text-anchor="middle" font-size="9" fill="#9ca3af">Claude CLI &#183; neighbor (&sect;1.0)</text>
+
+    <rect x="460" y="54" width="220" height="56" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="570" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#6b7280">Daemon</text>
+    <text x="570" y="94" text-anchor="middle" font-size="9" fill="#9ca3af">always-on runtime &#183; neighbor (&sect;4.0)</text>
+
+    <!-- boundary-crossing contract edges -->
+    <!-- Compute -> Host stub -->
+    <path d="M330,180 L330,82 L300,82" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="322" y="140" text-anchor="end" font-size="9" fill="#475569">execution substrate (&sect;1.0)</text>
+    <text x="322" y="152" text-anchor="end" font-size="9" fill="#475569">&#8220;where the Host + daemon execute&#8221;</text>
+    <!-- Process facility -> Daemon stub -->
+    <path d="M370,370 L370,82 L460,82" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="378" y="152" font-size="9" fill="#475569">single process per operator</text>
+    <text x="378" y="164" font-size="9" fill="#475569">lifecycle START &#8594; RUNNING &#8594; STOP &#8594; RESTART</text>
+    <!-- Filesystem state -> Daemon stub -->
+    <path d="M595,215 L595,110" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="603" y="140" font-size="9" fill="#475569">~/.sutra-native/ persistence</text>
+    <text x="603" y="152" font-size="9" fill="#475569">audit: JSONL &#183; stderr &#183; tmp</text>
+
+    <!-- COMPUTE block frame (subject) -->
+    <rect x="36" y="180" width="708" height="530" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+    <rect x="50" y="171" width="246" height="18" fill="#fff"/>
+    <text x="58" y="184" fill="#334155" font-weight="700" font-size="12">COMPUTE &#183; host machine</text>
+
+    <!-- internal edges (drawn under boxes where possible) -->
+    <!-- Cron -> Process: START trigger -->
+    <path d="M130,281 L130,395 L280,395" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="150" y="388" font-size="9" fill="#475569">START trigger</text>
+    <!-- Cron -> Process: cadence ticks -->
+    <path d="M210,281 L210,425 L280,425" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="86" y="442" font-size="9" fill="#475569">cadence ticks (ADR-017)</text>
+    <!-- Process -> Filesystem: writes -->
+    <path d="M500,385 L690,385 L690,281" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="510" y="378" font-size="9" fill="#475569">writes audit JSONL &#183; user-kit</text>
+    <!-- Filesystem -> Process: restore on RESTART -->
+    <path d="M650,281 L650,415 L500,415" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="510" y="432" font-size="9" fill="#475569">state restored on RESTART</text>
+    <!-- Process -> Substrate -->
+    <path d="M390,440 L390,520" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text x="398" y="484" font-size="9" fill="#475569">executes on</text>
+    <!-- Filesystem -> Substrate (right gutter) -->
+    <path d="M710,260 L728,260 L728,534 L710,534" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#cah)"/>
+    <text transform="translate(737 397) rotate(-90)" text-anchor="middle" font-size="9" fill="#475569">stored on local disk</text>
+    <!-- Cloud (deferred) -> Substrate -->
+    <path d="M220,620 L220,576" stroke="#9ca3af" stroke-width="1.6" stroke-dasharray="4 4" fill="none" marker-end="url(#cah)"/>
+    <text x="230" y="603" font-size="9" fill="#6b7280">would replace operator-local machine (v2+, gated)</text>
+
+    <!-- internal parts (solid boxes) -->
+    <rect x="70" y="215" width="200" height="66" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="170" y="238" text-anchor="middle" font-size="12" font-weight="700">CRON / SCHEDULING</text>
+    <text x="170" y="254" text-anchor="middle" font-size="8.5" fill="#6b7280">per-Workflow trigger spec &#183; cadence field</text>
+    <text x="170" y="266" text-anchor="middle" font-size="8.5" fill="#6b7280">one of three daemon START paths</text>
+
+    <rect x="480" y="215" width="230" height="66" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="595" y="238" text-anchor="middle" font-size="11.5" font-weight="700">PER-OPERATOR FILESYSTEM STATE</text>
+    <text x="595" y="254" text-anchor="middle" font-size="8.5" fill="#6b7280">~/.sutra-native/ &#183; user-kit &#183; provenance JSONL &#183; log</text>
+    <text x="595" y="266" text-anchor="middle" font-size="8.5" fill="#6b7280">user-kit markdown = authoritative state (ADR-008)</text>
+
+    <rect x="280" y="370" width="220" height="70" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="390" y="393" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">OS PROCESS FACILITY</text>
+    <text x="390" y="409" text-anchor="middle" font-size="8.5" fill="#3b5bdb">single daemon process per operator</text>
+    <text x="390" y="423" text-anchor="middle" font-size="8.5" fill="#3b5bdb">re-exec across plugin updates &#183; no state loss</text>
+
+    <rect x="70" y="520" width="640" height="56" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="543" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">HOST MACHINE &#183; execution substrate</text>
+    <text x="390" y="559" text-anchor="middle" font-size="9" fill="#6b7280">per-operator &#183; local (v1) &#8212; base layer of the &sect;1.0 runtime</text>
+
+    <rect x="70" y="620" width="300" height="58" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="220" y="643" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6b7280">CLOUD-HOSTED COMPUTE &#183; deferred v2+</text>
+    <text x="220" y="660" text-anchor="middle" font-size="8.5" fill="#9ca3af">managed infra &#183; activation-gated (&sect;1.4.5)</text>
+  </svg>
+
+  <h2>Contracts with neighbor blocks</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>Host (Claude CLI)</b></td>
+      <td>out</td>
+      <td>Execution substrate &mdash; &ldquo;Host + daemon run on the Compute (host machine)&rdquo;; SVG caption: &ldquo;where the Host + daemon execute&rdquo;. The doc states nothing beyond hosting; no interface, resource, or co-location contract is specified.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Daemon</b></td>
+      <td>out</td>
+      <td>Execution substrate + filesystem persistence (~/.sutra-native/ root, JSONL audit channels, user-kit markdown, tmp fallback) + process lifecycle (single background process per operator; cold boot is a START trigger; RESTART restores from on-disk state) + cron cadence ticks (ADR-017).</td>
+      <td><a href="index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority + Tenancy</b></td>
+      <td>gates</td>
+      <td>Cross-cutting wrap &mdash; the &sect;1.0 diagram&rsquo;s dashed Authority+Tenancy boundary encloses the Compute box (&ldquo;gates every access&rdquo;). No compute-level enforcement mechanism is named in the doc; the only compute-adjacent tenancy fact is per-tenant isolation of the daemon (HS-3 + ADR-006, default-deny cross-tenant).</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+  </table>
+
+  <h2>Internal parts</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>Host machine (execution substrate)</b></td>
+      <td>The base layer of the &sect;1.0 runtime diagram: a single dashed box labeled &ldquo;COMPUTE &middot; host machine &mdash; where the Host + daemon execute&rdquo;. The doc defines it only as the machine on which Host (Claude CLI) and Daemon run; v1 compute is per-operator and local (&ldquo;Native runs as a per-operator local daemon&rdquo;).</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Per-operator filesystem state (~/.sutra-native/)</b></td>
+      <td>Compute-resident daemon root holding user-kit (charters, domains, triggers, workflows), decision-provenance.jsonl, native.log; plus the 3-channel audit persistence (DecisionProvenance JSONL + stderr beacon + tmp fallback) and user-kit markdown as authoritative state (ADR-008). Documented under &sect;4.0 as the daemon&rsquo;s footprint on the host machine; not operator-visible.</td>
+      <td><a href="index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+    </tr>
+    <tr>
+      <td><b>OS process facility (single daemon process)</b></td>
+      <td>Single background daemon process per operator, started by Sutra plugin at session boot or explicit &ldquo;sutra native start&rdquo;; re-exec across plugin updates without state loss; lifecycle START (plugin launch / cron / cold boot) &rarr; RUNNING &rarr; STOP &rarr; RESTART (state restored from user-kit + decision-provenance log).</td>
+      <td><a href="index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+    </tr>
+    <tr>
+      <td><b>Cron / scheduling facility</b></td>
+      <td>Host-machine cadence source: per-Workflow trigger spec with cadence field (ADR-017 cron-daemon-cadence-tick); daemon fires triggers on schedule. Cron is also one of the three daemon START paths (plugin launch / cron / cold boot).</td>
+      <td><a href="index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+    </tr>
+    <tr>
+      <td><b>Cloud-hosted compute (deferred, v2+)</b></td>
+      <td>Managed-infra distribution channel where the operator does not run their own daemon. Deferred behind activation gates: multi-tenant infra spec + HS-3 tenant-boundary extension to shared-host, per-tenant data-residency + key-isolation, pricing tier, cloud-managed install path. Until then, Compute = operator-local machine only.</td>
+      <td><a href="index.html#section-1-4-5-activation">section-1-4-5-activation</a></td>
+    </tr>
+  </table>
+
+  <h2>Internal flow (as documented)</h2>
+  <p class="flow">The doc draws Compute as one undivided dashed box at the base of the &sect;1.0 diagram; all internal structure above is assembled from the daemon&rsquo;s documented footprint in &sect;4.0, not from a Compute-section decomposition. On the host machine, the OS process facility runs the single per-operator daemon process; the cron facility feeds the process facility twice (as a START trigger alongside plugin launch and cold boot, and as recurring cadence ticks that the daemon turns into Workflow dispatches per ADR-017); the process facility reads and writes the per-operator filesystem state at ~/.sutra-native/ continuously (audit JSONL writes + user-kit markdown while RUNNING) and reads it back on RESTART (state restored from user-kit + decision-provenance log, surviving plugin re-exec without state loss).</p>
+  <p class="flow">The Host (Claude CLI) executes on the same machine, but the doc draws no compute-internal edge between Host and the daemon at this layer &mdash; their interaction is modeled above Compute in the &sect;1.0 stack. The deferred cloud-hosted variant (v2+) would replace the operator-local machine entirely, with no schema impact described yet.</p>
+
+  <h2>Open / gaps &mdash; questions for the founder</h2>
+  <ul class="gaps">
+    <li>No hardware/OS requirements for Compute anywhere in the doc (supported OS, CPU/memory/disk minimums) &mdash; what does an operator&rsquo;s machine need?</li>
+    <li>Is Host + Daemon co-location on one machine a hard constraint, or can they split across machines? &sect;1.0 only says both &ldquo;run on the Compute&rdquo;.</li>
+    <li>Compute failure semantics beyond &ldquo;cold boot &rarr; START&rdquo;: what happens to in-flight Workflow executions when the machine sleeps, crashes, or loses power mid-run?</li>
+    <li>Cloud-hosted channel (&sect;1.4.5) defers managed compute to v2+ but never says how the &sect;1.0 schema changes when compute is not operator-local &mdash; where does the Host (Claude CLI) run in that channel?</li>
+    <li>No resource governance on the operator&rsquo;s machine: nothing caps daemon CPU/disk usage or defines retention/rotation for decision-provenance.jsonl and native.log growth.</li>
+    <li>Authority + Tenancy &ldquo;gates every access&rdquo; wraps the Compute box in the diagram, but no compute-level enforcement mechanism (disk encryption, key storage location, local access control) is named.</li>
+  </ul>
+
+  <div class="foot">Second-order of the Compute block &middot; internal structure assembled from the daemon&rsquo;s &sect;4.0 footprint (the doc has no Compute-section decomposition) &middot; working artifact, not locked.</div>
+</div>
+</body>
+</html>

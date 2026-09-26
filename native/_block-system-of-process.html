@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - Second-Order: System of Process</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:880px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:10px}
+  .banner{background:#fffbeb;border:1px solid #b45309;color:#92400e;font-size:12.5px;padding:8px 12px;border-radius:8px;margin:0 0 14px;font-weight:600}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#1d4ed8}
+  .crumb a{color:#0f766e}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:26px 0 9px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  ol{margin:0;padding-left:20px;font-size:14px;color:#1f2937}
+  ol li{margin:6px 0}
+  ul.gaps{margin:0;padding-left:20px;font-size:13.5px;color:#1f2937}
+  ul.gaps li{margin:8px 0}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:26px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="platform/system-of-process.html" style="color:#bfdbfe">platform/system-of-process.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native - Second-Order: System of Process</h1>
+  <div class="banner">WORKING DRAFT &middot; 2026-06-11 &middot; Not locked - founder review pending</div>
+  <div class="sub">The &sect;1.0 <b>System of Process</b> block, fully wired &middot; every part connected to the parts it actually touches</div>
+  <div class="crumb">First layer: Human &rarr; UI &rarr; Host &rarr; Daemon{Orchestration &rarr; <b>System of Process (here)</b>} &rarr; SoR / External World &middot; <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+
+  <svg viewBox="0 0 960 1100" role="img" aria-label="System of Process second-order, wired">
+    <defs>
+      <marker id="sah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+      <marker id="sahs" markerWidth="9" markerHeight="9" refX="0" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M7,0 L0,3.5 L7,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- Authority + Tenancy wrap (gating boundary, never an in-line box) -->
+    <rect x="20" y="118" width="740" height="842" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="276" y="102" width="368" height="18" fill="#fff"/>
+    <text x="284" y="115" fill="#7c3aed" font-weight="700" font-size="12">AUTHORITY + TENANCY &#183; gates every access</text>
+
+    <!-- System of Process frame -->
+    <rect x="40" y="150" width="700" height="786" rx="12" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <rect x="276" y="142" width="340" height="16" fill="#fff"/>
+    <text x="284" y="155" fill="#1e3a8a" font-weight="700" font-size="12">SYSTEM OF PROCESS &#183; runs the process &#183; runtime</text>
+
+    <!-- EDGES (under the boxes) -->
+    <!-- E1 Orchestration -> daemon -->
+    <path d="M170,78 L170,190" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="178" y="100" font-size="9" fill="#475569">task = process</text>
+    <text x="178" y="112" font-size="9" fill="#475569">translated request &#8594; process</text>
+    <!-- E2 daemon -> state machine -->
+    <path d="M190,260 L190,300 L380,300 L380,325" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="198" y="280" font-size="9" fill="#475569">dispatch Workflow under Charter</text>
+    <text x="198" y="292" font-size="9" fill="#475569">Trigger: utterance &#183; cron &#183; event</text>
+    <!-- E3 HOW bridge -> state machine -->
+    <path d="M230,378 L300,378" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="265" y="348" font-size="9" fill="#475569" text-anchor="middle">inherits</text>
+    <text x="265" y="360" font-size="9" fill="#475569" text-anchor="middle">HOW ctx</text>
+    <!-- E4 state machine -> primitives -->
+    <path d="M410,405 L410,480" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="418" y="438" font-size="9" fill="#475569">ordered Steps</text>
+    <text x="418" y="450" font-size="9" fill="#475569">execute</text>
+    <!-- E5 primitives -> Host -->
+    <path d="M550,498 L790,498" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="558" y="478" font-size="9" fill="#475569">LLM call per Step</text>
+    <text x="558" y="490" font-size="9" fill="#475569">pre-declared output + post-check</text>
+    <!-- E6 envelope <-> primitives -->
+    <path d="M615,400 L615,445 L510,445 L510,480" stroke="#334155" stroke-width="1.8" fill="none" marker-start="url(#sahs)" marker-end="url(#sah)"/>
+    <text x="623" y="420" font-size="9" fill="#475569">state round-trips</text>
+    <text x="623" y="432" font-size="9" fill="#475569">zero-loss or HS-4</text>
+    <!-- E7 primitives -> test gate -->
+    <path d="M300,560 L300,640" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="292" y="590" font-size="9" fill="#475569" text-anchor="end">candidate output +</text>
+    <text x="292" y="602" font-size="9" fill="#475569" text-anchor="end">pre-declared test</text>
+    <!-- E8 test gate -> audit (pass) -->
+    <path d="M400,684 L480,684" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="440" y="656" font-size="9" fill="#475569" text-anchor="middle">pass &#8594;</text>
+    <text x="440" y="668" font-size="9" fill="#475569" text-anchor="middle">PERSISTED</text>
+    <!-- E9 test gate -> primitives (fail loop) -->
+    <path d="M370,640 L370,560" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="378" y="590" font-size="9" fill="#475569">fail &#8594; retry &#8804; N</text>
+    <text x="378" y="602" font-size="9" fill="#475569">per Charter</text>
+    <!-- E10 test gate -> failure states -->
+    <path d="M200,720 L200,800" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="206" y="748" font-size="9" fill="#475569">retry budget exhausted &#8594;</text>
+    <text x="206" y="760" font-size="9" fill="#475569">ESCALATED via Approval</text>
+    <!-- E11 hardstops -> failure states -->
+    <path d="M310,835 L270,835" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="290" y="778" font-size="9" fill="#475569" text-anchor="middle">HS fires</text>
+    <text x="290" y="790" font-size="9" fill="#475569" text-anchor="middle">&#8594; PAUSED</text>
+    <!-- E12 audit -> System of Record (writes) -->
+    <path d="M510,720 L510,948 L160,948 L160,1000" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="170" y="940" font-size="9" fill="#475569">writes: artifacts &#183; ExecutionResults &#183; b5_writes &#183; audit rows</text>
+    <!-- E12b System of Record -> daemon (reads) -->
+    <path d="M140,1000 L140,985 L58,985 L58,225 L80,225" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text transform="rotate(-90 50 600)" x="50" y="600" font-size="9" fill="#475569" text-anchor="middle">reads user-kit: Charters &#183; Domains &#183; Workflows (ADR-008) &#183; context my_own</text>
+    <!-- E13 primitives <-> External World (gated effects) -->
+    <path d="M550,540 L770,540 L770,654 L790,654" stroke="#334155" stroke-width="1.8" fill="none" marker-start="url(#sahs)" marker-end="url(#sah)"/>
+    <text x="556" y="554" font-size="9" fill="#475569">effects out (gated):</text>
+    <text x="556" y="566" font-size="9" fill="#475569">send &#183; write &#183; delete &#183; pay</text>
+    <text x="556" y="578" font-size="9" fill="#475569">inbound responses return</text>
+    <path d="M770,592 l8,8 l-8,8 l-8,-8 Z" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="782" y="604" font-size="8" fill="#7c3aed">Authority gate</text>
+    <!-- E14 audit -> delivery -->
+    <path d="M690,720 L690,800" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="680" y="755" font-size="9" fill="#475569" text-anchor="end">PERSISTED deliverable</text>
+    <text x="680" y="768" font-size="9" fill="#475569" text-anchor="end">+ D.12 metadata</text>
+    <!-- E15 daemon <-> CSM -->
+    <path d="M310,240 L470,240" stroke="#334155" stroke-width="1.8" fill="none" marker-start="url(#sahs)" marker-end="url(#sah)"/>
+    <text x="390" y="212" font-size="9" fill="#475569" text-anchor="middle">live capability ledger</text>
+    <text x="390" y="224" font-size="9" fill="#475569" text-anchor="middle">cap-NNN &#183; L0/L1/L2</text>
+    <!-- E16 audit -> Observability -->
+    <path d="M545,720 L545,985 L620,985 L620,1000" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="553" y="977" font-size="9" fill="#475569">accuracy KPI (&sect;4.5) &#183; replay &#183; Pulse health</text>
+    <!-- E18 failure states -> state machine (operator exit) -->
+    <path d="M120,800 L120,460 L330,460 L330,405" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#sah)"/>
+    <text x="128" y="452" font-size="9" fill="#475569">operator decides &#8594; ACTIVE / RETIRED</text>
+
+    <!-- INTERNAL PARTS (solid) -->
+    <rect x="80" y="190" width="230" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="195" y="213" text-anchor="middle" font-size="11" font-weight="700">RUNTIME DAEMON SUBSTRATE</text>
+    <text x="195" y="229" text-anchor="middle" font-size="8.5" fill="#6b7280">~/.sutra-native &#183; lifecycle &#183; cron ticks (ADR-017)</text>
+    <text x="195" y="243" text-anchor="middle" font-size="8.5" fill="#6b7280">per-tenant isolation (HS-3 &#183; ADR-006)</text>
+
+    <rect x="470" y="190" width="230" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="585" y="213" text-anchor="middle" font-size="11" font-weight="700">CAPABILITY SURFACE MAP</text>
+    <text x="585" y="229" text-anchor="middle" font-size="8.5" fill="#6b7280">cap-NNN PROPOSED &#8594; &#8230; &#8594; LIVE &#8594; DEPRECATED</text>
+    <text x="585" y="243" text-anchor="middle" font-size="8.5" fill="#6b7280">L0 fleet &#183; L1 cohort &#183; L2 instance</text>
+
+    <rect x="70" y="330" width="160" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="150" y="353" text-anchor="middle" font-size="11" font-weight="700">HOW BRIDGE</text>
+    <text x="150" y="369" text-anchor="middle" font-size="8.5" fill="#6b7280">&sect;3 doctrine &#183; method</text>
+    <text x="150" y="381" text-anchor="middle" font-size="8.5" fill="#6b7280">routing (D.11) &#183; D.6 gate</text>
+
+    <rect x="300" y="325" width="220" height="80" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="410" y="350" text-anchor="middle" font-size="10.5" font-weight="700">DEPLOYMENT STATE MACHINE</text>
+    <text x="410" y="368" text-anchor="middle" font-size="8.5" fill="#6b7280">PROPOSED &#8594; ACTIVE &#8594;</text>
+    <text x="410" y="381" text-anchor="middle" font-size="8.5" fill="#6b7280">PERSISTED &#8594; RETIRED</text>
+
+    <rect x="560" y="330" width="160" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="640" y="353" text-anchor="middle" font-size="11" font-weight="700">STATE ENVELOPE</text>
+    <text x="640" y="369" text-anchor="middle" font-size="8.5" fill="#6b7280">typed pillar handoffs</text>
+    <text x="640" y="381" text-anchor="middle" font-size="8.5" fill="#6b7280">zero-loss round-trip</text>
+
+    <rect x="270" y="480" width="280" height="80" rx="8" fill="#fff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="410" y="505" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a8a">10 TYPED PRIMITIVES</text>
+    <text x="410" y="523" text-anchor="middle" font-size="8.5" fill="#3b5bdb">Step = LLM call OR deterministic action</text>
+    <text x="410" y="537" text-anchor="middle" font-size="8.5" fill="#3b5bdb">pre-declared output + post-call check (P2)</text>
+
+    <rect x="140" y="640" width="260" height="80" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="270" y="665" text-anchor="middle" font-size="10.5" font-weight="700">TEST-BEFORE-CONCLUDE GATE</text>
+    <text x="270" y="683" text-anchor="middle" font-size="8.5" fill="#6b7280">never concluded before tested</text>
+    <text x="270" y="697" text-anchor="middle" font-size="8.5" fill="#6b7280">tiered tests T0&#8211;T3 &#183; determinism check</text>
+
+    <rect x="480" y="640" width="240" height="80" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="600" y="665" text-anchor="middle" font-size="10.5" font-weight="700">TRIPLE-CHANNEL AUDIT</text>
+    <text x="600" y="683" text-anchor="middle" font-size="8.5" fill="#6b7280">gate-log + provenance + artifact</text>
+    <text x="600" y="697" text-anchor="middle" font-size="8.5" fill="#6b7280">JSONL + stderr + tmp (ADR-013)</text>
+
+    <rect x="80" y="800" width="190" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="175" y="823" text-anchor="middle" font-size="10.5" font-weight="700">FAILURE STATES</text>
+    <text x="175" y="839" text-anchor="middle" font-size="8" fill="#6b7280">PAUSED &#183; ESCALATED &#183; DEGRADED</text>
+    <text x="175" y="852" text-anchor="middle" font-size="8" fill="#6b7280">DEGRADED: connector half-fail</text>
+
+    <rect x="310" y="800" width="180" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="823" text-anchor="middle" font-size="10.5" font-weight="700">HARDSTOP CATALOG</text>
+    <text x="400" y="839" text-anchor="middle" font-size="8" fill="#6b7280">HS-1..HS-8 &#183; operator-visible</text>
+    <text x="400" y="852" text-anchor="middle" font-size="8" fill="#6b7280">HS-4..8 mechanism-pending</text>
+
+    <rect x="560" y="800" width="160" height="70" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="640" y="821" text-anchor="middle" font-size="10" font-weight="700">WORKFORCE OUTPUTS</text>
+    <text x="640" y="838" text-anchor="middle" font-size="8" fill="#6b7280">software + agentic systems</text>
+    <text x="640" y="851" text-anchor="middle" font-size="8" fill="#6b7280">D1 client &#183; D2 Sutra &#183; D3 internal</text>
+
+    <!-- NEIGHBOR STUBS (muted / dashed) -->
+    <rect x="70" y="30" width="200" height="48" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="170" y="50" text-anchor="middle" font-size="12.5" font-weight="600" fill="#374151">Orchestration</text>
+    <text x="170" y="64" text-anchor="middle" font-size="9" fill="#6b7280">translate &#183; find the process</text>
+
+    <rect x="790" y="464" width="150" height="68" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="865" y="492" text-anchor="middle" font-size="12.5" font-weight="600" fill="#92400e">Host</text>
+    <text x="865" y="507" text-anchor="middle" font-size="9" fill="#b45309">Claude CLI</text>
+
+    <rect x="790" y="620" width="150" height="68" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="865" y="648" text-anchor="middle" font-size="12.5" font-weight="600" fill="#374151">External World</text>
+    <text x="865" y="663" text-anchor="middle" font-size="9" fill="#6b7280">via connectors (&sect;5)</text>
+
+    <rect x="60" y="1000" width="200" height="64" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="160" y="1026" text-anchor="middle" font-size="12.5" font-weight="600" fill="#374151">System of Record</text>
+    <text x="160" y="1042" text-anchor="middle" font-size="9" fill="#6b7280">user-kit &#183; provenance &#183; artifacts</text>
+
+    <rect x="540" y="1000" width="200" height="64" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="640" y="1026" text-anchor="middle" font-size="12.5" font-weight="600" fill="#374151">Observability (&sect;7)</text>
+    <text x="640" y="1042" text-anchor="middle" font-size="9" fill="#6b7280">cross-cutting &#183; Daily Pulse</text>
+  </svg>
+
+  <h2>How a run flows</h2>
+  <ol>
+    <li><b>Orchestration hands in task = process.</b> The daemon substrate dispatches the matching Workflow (Trigger fire: utterance, cron cadence, or event) under an ACTIVE Charter &mdash; the Charter reached ACTIVE earlier via operator approval of PROPOSED (&sect;4.2); new tasks arrive only while the Charter is already ACTIVE.</li>
+    <li><b>An agent materializes</b> scoped to that Charter, with inherited HOW context from the method-routing bridge.</li>
+    <li><b>Steps execute in declared order</b> (the Workflow declares "ordered Steps"; whether execution is strictly one-at-a-time vs parallel-capable is not stated in the doc) &mdash; each Step is an LLM call to the Host or a deterministic action, wrapped in pre-declared-output + post-call check &mdash; while the typed state envelope carries turn state across pillar stages (intent &rarr; context_envelope &rarr; decision_trail &rarr; outbound &rarr; b5_writes), with Native enforcing shape + authority on every handoff.</li>
+    <li><b>Before any conclusion, the test-before-conclude gate</b> runs the tier-appropriate pre-declared test: pass routes to PERSISTED (artifact + triple-channel audit written to System of Record, output presented); fail loops back to B3 retry up to N times per Charter, then ESCALATED through the Approval primitive / Authority gate to the operator.</li>
+    <li><b>External-effect calls</b> (send / write / delete / pay) exit via connectors only after the Authority gate; connector half-failures push the run into DEGRADED with reconciliation paths.</li>
+    <li><b>Hardstops HS-1..HS-8</b> can drop the runtime into PAUSED at any point.</li>
+    <li><b>CSM sits alongside</b> as the lifecycle ledger of which runtime capabilities are live.</li>
+    <li><b>Operator feedback post-conclude</b> feeds B5.d learned patterns that adapt future test thresholds.</li>
+  </ol>
+
+  <h2>Contracts with neighbor blocks</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr><td><b>Orchestration</b></td><td>in</td><td>task = process: Orchestration translates the operator request and finds the relevant process; hands the process to the runtime to run (SVG edge label "task = process"). At runtime granularity this arrives as a Workflow dispatch on Trigger fire (operator utterance, cadence cron, or event).</td><td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td></tr>
+    <tr><td><b>System of Record</b></td><td>bidirectional</td><td>context + output (SVG edge label): reads operator context (context_envelope my_own; user-kit markdown Charter/Domain/Workflow specs as authoritative state per ADR-008); writes back artifacts + ExecutionResults + b5_writes (session refs, provenance rows, learned-pattern updates) + triple-channel audit (DecisionProvenance JSONL gate-log/provenance/artifact).</td><td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td></tr>
+    <tr><td><b>External World</b></td><td>bidirectional</td><td>context + effects (SVG edge label) via the Connector layer for any out-of-process tool call: outbound external-effect calls (send / write / delete / pay) each pass the Authority gate; inbound responses return into envelope outbound[].inbound_responses; connector half-failures drop the workflow into DEGRADED.</td><td><a href="index.html#section-4-native-platform">section-4-native-platform</a></td></tr>
+    <tr><td><b>Host (Claude CLI)</b></td><td>out</td><td>LLM calls at Step granularity: each Step is pre-declared expected output + LLM call OR deterministic action + post-call check (P2 pre/post-LLM-validation). The Step primitive (sec.4.1) is the doc's only LLM-call site, which implies System of Process is the Host caller; an explicit only-SoP-calls-Host rule is not yet stated anywhere in the doc &mdash; see open question below.</td><td><a href="index.html#section-4-1-primitives">section-4-1-primitives</a></td></tr>
+    <tr><td><b>Authority + Tenancy</b></td><td>gates</td><td>Gates every access: Authority gate fires at every external-effect call (send / write / delete / pay); escalations captured as Approval primitive (pending state + operator verdict + audit row); cross-tenant default-deny with explicit delegates_to edge required (HS-3 + ADR-006); cross-tenant audit queries also default-deny.</td><td><a href="index.html#section-4-4-acceptance">section-4-4-acceptance</a></td></tr>
+    <tr><td><b>Observability (&sect;7, cross-cutting)</b></td><td>out</td><td>Accuracy KPI (% of outputs passing first-time test vs needing retry); daemon health surfaced only via Daily Pulse health row; audit replay surfaces; platform-health instrumentation ("Depends on &hellip; Observability (instruments platform health)" per the &sect;4 header table).</td><td><a href="index.html#section-4-5-test-before-conclude">section-4-5-test-before-conclude</a></td></tr>
+  </table>
+
+  <h2>The eleven internal parts</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr><td><b>Runtime daemon substrate</b></td><td>Per-operator local background daemon the runtime lives in: home dir ~/.sutra-native/ (user-kit charters/domains/triggers/workflows, decision-provenance.jsonl, native.log); lifecycle START &rarr; RUNNING &rarr; STOP &rarr; RESTART with state restored from user-kit + provenance log; cadence cron ticks fire Triggers and dispatch matching Workflows (ADR-017); re-exec across plugin updates without state loss; per-Tenant isolated boundary (HS-3 + ADR-006).</td><td><a href="index.html#section-4-0-daemon">section-4-0-daemon</a></td></tr>
+    <tr><td><b>10 typed primitives</b></td><td>Domain, Charter, Workflow, Step, Trigger, ExecutionResult, EngineEvent (26-event catalog), Tenant, Approval, DecisionProvenance. Step is where work happens: pre-declared expected output + LLM call OR deterministic action + post-call check (P2 pre/post-LLM-validation). Explicitly NOT primitives anymore: Agent (composed from Workflow + Step + Charter scope + Authority gate), Method routing (per-Step config + HOW Engine), Audit substrate (replaced by DecisionProvenance + 3-channel ADR-013).</td><td><a href="index.html#section-4-1-primitives">section-4-1-primitives</a></td></tr>
+    <tr><td><b>Workforce deployment state machine</b></td><td>Happy path: PROPOSED (operator adds Charter) &rarr; ACTIVE (Charter live; new task T0&ndash;T3 arrives) &rarr; agent materializes scoped to Charter &rarr; task completes &rarr; PERSISTED (artifact + audit row, output to B5.a&ndash;d) &rarr; RETIRED (operator revokes / scope expires / superseded; audit replayable forever).</td><td><a href="index.html#section-4-2-state-machine">section-4-2-state-machine</a></td></tr>
+    <tr><td><b>State envelope</b></td><td>Typed envelope carried across pillar-to-pillar handoffs; Native enforces shape + authority. Fields: turn_id, operator_id, charter_ref, task_tier (T0&ndash;T3), intent (from B1), context_envelope (from B2: my_own / worlds_best / peer_sutras_v2), decision_trail (from B3: phase, factors, authority_verdict, output_ref), outbound (from B4: audience, channel, draft, sent_status, inbound_responses), b5_writes (active_session_ref, provenance_row_ref, learned_pattern_updates). Must round-trip with zero data loss or HS-4 fires.</td><td><a href="index.html#section-4-3-state-envelope">section-4-3-state-envelope</a></td></tr>
+    <tr><td><b>Test-before-conclude gate (verify)</b></td><td>Accuracy primitive &mdash; task never marked done before testing output. 5 steps: (1) pre-declare verification per task tier (T0 grep/file-exists/contract-match; T1 step-by-step + integration check; T2 operator-visible 1-min iteration; T3 milestone-gate); (2) B3 generates output; (3) run pre-declared test (determinism: same input + same Charter &rarr; same expected output shape); (4) pass &rarr; conclude + audit row + present; fail &rarr; loop to B3 retry, max N per Charter, then escalate to operator via Authority gate; (5) operator feedback (drop/accept/refine) becomes B5.d test signal; thresholds adapt per workflow.</td><td><a href="index.html#section-4-5-test-before-conclude">section-4-5-test-before-conclude</a></td></tr>
+    <tr><td><b>HOW / method-routing bridge</b></td><td>Every primitive embeds a HOW choice from &sect;3 doctrine: Charters declare HOW preferences at creation; agents materialize with HOW context inherited; method routing (D.11) implements HOW-tier mapping (different problem classes get different solving strategies, per B3b DO); authority gate (D.6) defers to HOW escalation logic. Runtime executes; &sect;3 is the doctrine.</td><td><a href="index.html#section-4-6-how-bridge">section-4-6-how-bridge</a></td></tr>
+    <tr><td><b>Triple-channel audit writes</b></td><td>100% of decisions written to triple-channel (gate-log + provenance + artifact); DecisionProvenance JSONL + stderr beacon + tmp fallback (HS-4 + ADR-013); cross-tenant queries default-deny; operator can replay any decision end-to-end via B5.c but never sees raw JSONL.</td><td><a href="index.html#section-4-4-acceptance">section-4-4-acceptance</a></td></tr>
+    <tr><td><b>Workforce-output delivery capability</b></td><td>Workforce produces software + agentic systems, not just text/decisions. Three destinations: D1 shipped-to-client (client owns; Native deletes its copy post-handoff), D2 shipped-back-to-Sutra-org (ratified into plugin/platform for fleet), D3 operator-internal tool. All deliverables emit DecisionProvenance + D.12 artifact-governance metadata (version, owner, source-Charter, audit trail). Delivery pipeline itself owned by &sect;6 Distribution; &sect;4.7 declares only the capability.</td><td><a href="index.html#section-4-7-workforce-outputs">section-4-7-workforce-outputs</a></td></tr>
+    <tr><td><b>Capability Surface Map (CSM)</b></td><td>Feature lifecycle for what the runtime can do: cap-NNN PROPOSED &rarr; CANDIDATE &rarr; DESIGNED &rarr; BUILT (under &sect;4.5 verification) &rarr; SHIPPING (T1&rarr;T4 cadence) &rarr; LIVE/STABLE &rarr; DEPRECATED. Fleet tiering L0 fleet-shipped / L1 cohort-staged / L2 instance-local. Operator sees via sutra-capability skill + SessionStart banner.</td><td><a href="index.html#section-4-8-csm">section-4-8-csm</a></td></tr>
+    <tr><td><b>Hardstop catalog (HS-1..HS-8)</b></td><td>Operator-visible failure behavior when the runtime cannot continue safely: HS-1 reflexive-check (refuse self-modification), HS-2 governance-overhead &gt;25% token budget (abort turn), HS-3 tenant-boundary (deny cross-tenant without delegates_to), HS-4 audit-unwritable across all 3 channels (full stop &mdash; no silent unaudited execution), HS-5 cutover-rollback-fails (pause + HITL), HS-6 3+ governance hooks fail in one turn (session suspended), HS-7 codex-queue-stale (shipments blocked), HS-8 canary-regression (auto-rollback). UX contract: every hardstop emits what happened + recommended next action + audit-row link. Doc flags HS-4..HS-8 as doctrine, mechanism pending (detectors not yet in shipped runtime); HS-1..HS-3 partially enforced.</td><td><a href="index.html#section-4-10-1-hardstops">section-4-10-1-hardstops</a></td></tr>
+    <tr><td><b>Failure states</b></td><td>Runtime extension of the &sect;4.2 happy path: PAUSED (hardstop fired or Charter Authority needs operator decision; exit via operator decide &rarr; ACTIVE or RETIRED), ESCALATED (B3 retry budget exhausted or Authority ESCALATE class; operator gets B3a THINK 3-angle brainstorm + recommended angle; exit via confirm &rarr; ACTIVE with B3b auto-execute, or RETIRED), DEGRADED (connector half-fail / partial side-effect, e.g. send succeeded but audit write missed; exit via idempotent-retry or manual-log-write reconciliation &rarr; ACTIVE or PAUSED).</td><td><a href="index.html#section-4-10-2-failure-states">section-4-10-2-failure-states</a></td></tr>
+  </table>
+
+  <h2>Open / gaps &mdash; questions for the founder</h2>
+  <ul class="gaps">
+    <li><s>&sect;4 header table (id section-4-native-platform) says "Depends on: &sect;4 Connector layer; &sect;6 Observability" &mdash; stale pre-renumber references (Connector is now &sect;5, Observability &sect;7). Scheduled for the anchor-drift cleanup?</s><br><strong>RESOLVED 2026-06-12</strong> &mdash; Depends-on row was already fixed in <code>4db4c76</code>; the missed remainder ("&sect;3 surfaces the runtime behavior + state" callout under the &sect;4 header table) corrected to &sect;4 in this commit. No pre-renumber anchor ids remain in either file.</li>
+    <li>The cited section-1-0-runtime text/SVG never explicitly states "only System of Process calls the LLM/Host" &mdash; the Host&rarr;Daemon edge is labeled "runs" (downward only). Where is the SoP&rarr;Host call edge documented in the doc body, beyond the Step primitive implying it?</li>
+    <li>Boundary tension: section-4-0-daemon describes the WHOLE daemon (which per section-1-0-runtime also contains Orchestration as a sibling block) &mdash; is the daemon substrate inside System of Process or shared with Orchestration, and where do Orchestration's own internals get documented?</li>
+    <li>Section-1-0-runtime says "context-build" is second-level detail inside System of Process, but the cited &sect;4 ranges only show the context_envelope arriving "from B2" &mdash; where is the SoP-side context-gathering/build mechanism specified at &sect;4 level?</li>
+    <li>Retry budget "max N retries per Charter" (section-4-5-test-before-conclude) &mdash; N is undefined in the cited ranges; where does the per-Charter N get set and stored?</li>
+    <li>HS-4..HS-8 are flagged MECHANISM-PENDING (detectors not in shipped runtime) &mdash; what does the runtime actually do today when those failure conditions occur, given the failure-state table (PAUSED/ESCALATED/DEGRADED) assumes hardstops fire?</li>
+  </ul>
+
+  <div class="foot">Fully-wired second-order of the System of Process block &middot; every box participates in at least one labeled edge &middot; content sourced only from index.html &sect;1.0 + &sect;4.0&ndash;&sect;4.10 extraction (no invention). Sibling artifacts: _block-orchestration.html &middot; _block-system-of-record.html &middot; _block-external-world.html &middot; _consumer-product.html.</div>
+</div>
+</body>
+</html>

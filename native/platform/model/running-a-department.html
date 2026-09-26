@@ -1,0 +1,214 @@
+<!doctype html>
+<!-- PAGE: platform-model-running-a-department (v1). How a department runs: the owner's
+     loop, the run loop, what fires unattended, and the two proposed kinds that would close
+     the loop. Moved off department-life on 2026-09-23 (founder: give it its own section).
+     Superseded header of the source page: platform-model-department-life (v1, ONE STORY). Founder-directed warm visual: the Collections gateway case in 4 diagrams — conversion, formation, the edit path, decisions-as-settings. Dual-AI design check applied. Session 92edec80. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; Running a Department</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../the-six-layers.html">The six layers</a></div><div style="padding-left:17px"><a href="../../factory.html">The factory: what we build, and how</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../structure-and-terms.html">Structure and terms</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:39px"><a href="../../the-frame.html">The Frame (one picture)</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">THE SIX FUNCTIONAL SPECS</div><div style="padding-left:50px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:50px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:50px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:50px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:50px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:50px"><a href="../../spec-time.html">TIME</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">THE DIMENSIONS</div><div style="padding-left:50px"><a href="../../edges.html">Edges</a></div><div style="padding-left:50px"><a href="../../resource.html">Resource</a></div><div style="padding-left:50px"><a href="../../time.html">Time</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">RULES FOR AXES</div><div style="padding-left:50px"><a href="../../open-axis.html">Open-axis rule</a></div><div style="padding-left:50px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:50px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div class="sb-band">CAPABILITIES</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what it must do, and how well &#183; rests on THEORY</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL</div><div style="padding-left:28px"><a href="../../capability-priorities.html">What comes first</a></div><div style="padding-left:28px"><a href="../../system/solution.html">From capabilities to a solution</a></div><div style="padding-left:28px"><a href="../../system-grows.html">The system, grown in this order</a></div><div style="padding-left:39px"><a href="../../system/product.html">The product</a></div><div style="padding-left:39px"><a href="../../system/company.html">To a company</a></div><div style="padding-left:39px"><a href="../../system/model.html">The model: artifacts and work</a></div><div style="padding-left:39px"><a href="../../system/operable.html">To a running system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">NON-FUNCTIONAL</div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div style="padding-left:28px"><a href="../../platform/model/lifecycle.html">The life cycle</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../org-journeys.html">Org: CEO journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/running-a-department.html">Running a Department</a></div><div style="padding-left:28px"><a href="../../platform/model/eight-states.html">A Department’s Eight States</a></div><div style="padding-left:28px"><a href="../../platform/model/root-department.html">The Root Department</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RESEARCH</div><div style="padding-left:28px"><a href="../../platform/model/research/vsm-five-units.html">VSM: the five units</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../units-and-artifacts.html">Artifacts and work &#8594; The model</a></div><div style="padding-left:17px"><a href="../../seed-to-company.html">From one step to a company &#8594; To a company</a></div><div style="padding-left:17px"><a href="../../product-step-by-step.html">The product, one family at a time &#8594; The product</a></div><div style="padding-left:17px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2) &#8594; Maturation</a></div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; running a department</div>
+<h1>Running a Department <span class="pill DRAFT">TWO LOOPS &#183; 3 PICTURES</span></h1>
+<p class="lead">A department is a set of records until something moves it. This page is what moves it: the loop you walk to bring one into being, the loop it walks by itself afterwards, and the exact line between what fires while you sleep and what waits for you. Every box names a record or an actor that exists in the built app today; the one proposal on this page is marked as such and sits at the end.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-running-a-department</code></td><td>L2 THE VOCABULARY / <a href="../the-model.html">the model</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">Say how a department runs, in the model's own words, without overclaiming: what a person does, what the machine does, and where the two meet.</td><td colspan="3">Two loop diagrams and one kinds diagram; a table of what fires unattended with the reason in each row; the proposal marked and its open calls listed; nothing on the page that the built app cannot do, unless it says it is proposed.</td></tr>
+</table>
+
+<h2 id="r1">1 &#183; The owner's loop &#8212; one line to a running department</h2>
+<p>Four things come into being, and a stamp stands in front of each. Nothing in the row below happens without the stamp above it.</p>
+<svg viewBox="0 0 860 150" role="img" aria-label="From one line to a running department">
+<rect x="15" y="45" width="150" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="28" y="70" font-size="12" fill="#475569">one line: what</text>
+<text x="28" y="86" font-size="12" fill="#475569">this is for</text>
+<text x="28" y="102" font-size="11" fill="#94a3b8">you, or a page</text>
+<rect x="235" y="45" width="150" height="66" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="248" y="70" font-size="12" fill="#065f46">the department,</text>
+<text x="248" y="86" font-size="12" fill="#065f46">and its folder</text>
+<text x="248" y="102" font-size="11" fill="#6ee7b7">where its work lives</text>
+<rect x="455" y="45" width="150" height="66" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="468" y="70" font-size="12" fill="#065f46">Identity: goal,</text>
+<text x="468" y="86" font-size="12" fill="#065f46">done line, rules</text>
+<text x="468" y="102" font-size="11" fill="#6ee7b7">and who owns it</text>
+<rect x="675" y="45" width="150" height="66" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="688" y="70" font-size="12" fill="#065f46">an engine, and</text>
+<text x="688" y="86" font-size="12" fill="#065f46">the moment it fires</text>
+<text x="688" y="102" font-size="11" fill="#6ee7b7">on demand, or weekly</text>
+<line x1="165" y1="78" x2="235" y2="78" stroke="#6b7280" stroke-width="2"/>
+<line x1="385" y1="78" x2="455" y2="78" stroke="#6b7280" stroke-width="2"/>
+<line x1="605" y1="78" x2="675" y2="78" stroke="#6b7280" stroke-width="2"/>
+<rect x="172" y="12" width="56" height="22" rx="11" fill="#fffbeb" stroke="#d97706"/><text x="181" y="27" font-size="10" fill="#92400e">stamp</text>
+<rect x="392" y="12" width="56" height="22" rx="11" fill="#fffbeb" stroke="#d97706"/><text x="401" y="27" font-size="10" fill="#92400e">stamp</text>
+<rect x="612" y="12" width="56" height="22" rx="11" fill="#fffbeb" stroke="#d97706"/><text x="621" y="27" font-size="10" fill="#92400e">stamp</text>
+<line x1="200" y1="34" x2="200" y2="78" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3"/>
+<line x1="420" y1="34" x2="420" y2="78" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3"/>
+<line x1="640" y1="34" x2="640" y2="78" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3"/>
+</svg>
+<p class="figcap">Edges: one line &#8594; stamp &#8594; the department and its folder &#8594; stamp &#8594; Identity &#8594; stamp &#8594; an engine with the moment it fires.</p>
+<p>This is the recipe the Deckem department was born from on 2026-09-21, and the one the start-a-department workflow now replays: six writes, every one an ask the owner stamped. The story of that birth is on <a href="department-life.html#d8">A Department's Life</a>, section 8.</p>
+
+<h2 id="r2">2 &#183; The run loop &#8212; what happens after the stamp</h2>
+<p>This is the loop that repeats, and the only one that can run while you sleep.</p>
+<svg viewBox="0 0 860 240" role="img" aria-label="The run loop of an engine">
+<rect x="15" y="30" width="128" height="60" rx="8" fill="#eff6ff" stroke="#1d4ed8"/>
+<text x="27" y="55" font-size="12" fill="#1e40af">the moment</text>
+<text x="27" y="71" font-size="12" fill="#1e40af">arrives</text>
+<rect x="183" y="30" width="128" height="60" rx="8" fill="#eff6ff" stroke="#1d4ed8"/>
+<text x="195" y="55" font-size="12" fill="#1e40af">the engine runs</text>
+<text x="195" y="71" font-size="12" fill="#1e40af">in the folder</text>
+<rect x="351" y="30" width="128" height="60" rx="8" fill="#eff6ff" stroke="#1d4ed8"/>
+<text x="363" y="55" font-size="12" fill="#1e40af">a work item:</text>
+<text x="363" y="71" font-size="12" fill="#1e40af">one goal, one check</text>
+<rect x="519" y="30" width="128" height="60" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="531" y="55" font-size="12" fill="#065f46">the check flips:</text>
+<text x="531" y="71" font-size="12" fill="#065f46">filed work</text>
+<rect x="687" y="30" width="150" height="60" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="699" y="55" font-size="12" fill="#065f46">Audit checks the</text>
+<text x="699" y="71" font-size="12" fill="#065f46">claim against it</text>
+<line x1="143" y1="60" x2="183" y2="60" stroke="#6b7280" stroke-width="2"/>
+<line x1="311" y1="60" x2="351" y2="60" stroke="#6b7280" stroke-width="2"/>
+<line x1="479" y1="60" x2="519" y2="60" stroke="#6b7280" stroke-width="2"/>
+<line x1="647" y1="60" x2="687" y2="60" stroke="#6b7280" stroke-width="2"/>
+<rect x="351" y="130" width="128" height="52" rx="8" fill="#fef2f2" stroke="#b91c1c"/>
+<text x="363" y="152" font-size="12" fill="#b91c1c">it does not flip:</text>
+<text x="363" y="168" font-size="12" fill="#b91c1c">reopened, in Now</text>
+<line x1="415" y1="90" x2="415" y2="130" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="4,3"/>
+<rect x="551" y="130" width="150" height="52" rx="8" fill="#fffbeb" stroke="#d97706"/>
+<text x="563" y="152" font-size="12" fill="#92400e">Adaptation asks</text>
+<text x="563" y="168" font-size="12" fill="#92400e">for the next engine</text>
+<line x1="762" y1="90" x2="762" y2="156" stroke="#6b7280" stroke-width="2"/>
+<line x1="762" y1="156" x2="701" y2="156" stroke="#6b7280" stroke-width="2"/>
+<line x1="626" y1="182" x2="626" y2="204" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,4"/>
+<line x1="626" y1="204" x2="79" y2="204" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,4"/>
+<line x1="79" y1="204" x2="79" y2="90" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,4"/>
+<rect x="196" y="192" width="290" height="24" rx="6" fill="#fffbeb" stroke="#d97706"/>
+<text x="208" y="208" font-size="11" fill="#92400e">you stamp it, and the loop runs again, one engine wider</text>
+</svg>
+<p class="figcap">Edges: the moment arrives &#8594; the engine runs in the folder &#8594; a work item &#8594; the check flips, so filed work &#8594; Audit checks the claim; the check does not flip &#8594; reopened and shown in Now; Audit &#8594; Adaptation asks for the next engine &#8594; your stamp &#8594; back to the moment arrives.</p>
+<p>The circle closes at the stamp. A department gets better by asking, and the owner is the only one who can say yes &#8212; which is why the loop widens one engine at a time rather than drifting.</p>
+
+<h2 id="r3">3 &#183; What fires with nobody there</h2>
+<p>One row of this table is the whole of a department's autonomy today.</p>
+<table>
+<tr><th>Step</th><th>Without a person?</th><th>Why</th></tr>
+<tr><td>An engine already enabled</td><td>yes</td><td>a calendar job outside the app runs it headless in its folder; a timer inside the app would never fire, because the app stops its own back end when the last window closes</td></tr>
+<tr><td>A task already running</td><td>yes</td><td>it keeps its own turns until it finishes, needs a decision, or hits its check; five at once, twenty at the ceiling</td></tr>
+<tr><td>After the app restarts</td><td>yes</td><td>what was running is resumed and the queue drained at start-up</td></tr>
+<tr><td>Creating or enabling an engine</td><td>no</td><td>an ask, and an ask applies nothing until it is stamped</td></tr>
+<tr><td>Any change to a record</td><td>no</td><td>the same: the ask is the only write path</td></tr>
+<tr><td>A function's own chat</td><td>no</td><td>a click always comes first; nothing in a department speaks on its own</td></tr>
+</table>
+<div class="key">A stamped engine is the only part of a department that acts while you are away. <strong>Autonomy is measured in engines, not in functions.</strong></div>
+<p>So a department runs itself exactly as far as its engines reach, and no further. Everything else is your loop. That is not a flaw in the build, it is the shape of the model as it stands: the five functions judge, order, hold and check, and the only thing with hands is an engine.</p>
+
+<h2 id="r4">4 &#183; The hole this leaves</h2>
+<p>Running a real department's own Identity chat three times, on the built screen, against the real records, showed the limit plainly: <b>Identity judges, it does not make.</b> Asked to build the thing its department exists for, it read, judged and reported. Nothing in the model hands that work to something with hands, so every piece of work passes through the owner. The run and its three gaps are written up in <code>holding/plans/department-screen/RUN-A-DEPARTMENT.md</code>.</p>
+
+<h2 id="r5">5 &#183; Proposed: the two kinds that would close the loop</h2>
+<p class="planned">Proposal, nothing built. The founder, 2026-09-23: a kind of function that <em>creates</em> &#8212; departments, engines, everything &#8212; and a kind that <em>starts</em> one. The name <b>Maker</b> was ruled by the founder the same day: it sits beside engine, work item and filed work without needing explanation, which is the test every word in this model has to pass.</p>
+<svg viewBox="0 0 860 170" role="img" aria-label="Five that govern, two that make">
+<rect x="15" y="25" width="470" height="120" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5,4"/>
+<text x="30" y="46" font-size="12" fill="#64748b">govern &#8212; judge, order, hold, check, adapt. No hands.</text>
+<rect x="30" y="58" width="82" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8"/><text x="41" y="79" font-size="11" fill="#1e40af">Identity</text>
+<rect x="122" y="58" width="92" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8"/><text x="133" y="79" font-size="11" fill="#1e40af">Adaptation</text>
+<rect x="224" y="58" width="78" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8"/><text x="235" y="79" font-size="11" fill="#1e40af">Priority</text>
+<rect x="312" y="58" width="104" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8"/><text x="323" y="79" font-size="11" fill="#1e40af">Coordination</text>
+<rect x="30" y="100" width="70" height="34" rx="6" fill="#eff6ff" stroke="#1d4ed8"/><text x="41" y="121" font-size="11" fill="#1e40af">Audit</text>
+<rect x="525" y="25" width="320" height="120" rx="10" fill="#fffbeb" stroke="#d97706" stroke-dasharray="5,4"/>
+<text x="540" y="46" font-size="12" fill="#92400e">make &#8212; the only two with hands</text>
+<rect x="540" y="58" width="130" height="34" rx="6" fill="#ecfdf5" stroke="#047857"/><text x="551" y="79" font-size="11" fill="#065f46">Starter</text>
+<text x="684" y="79" font-size="11" fill="#78716c">before one exists</text>
+<rect x="540" y="100" width="130" height="34" rx="6" fill="#ecfdf5" stroke="#047857"/><text x="551" y="121" font-size="11" fill="#065f46">Maker</text>
+<text x="684" y="121" font-size="11" fill="#78716c">inside one</text>
+<line x1="485" y1="85" x2="525" y2="85" stroke="#6b7280" stroke-width="2"/>
+</svg>
+<p class="figcap">The five that govern sit on one side and write only asks; the two that make sit on the other; the line between them is the stamp.</p>
+<table>
+<tr><th>Kind</th><th>Runs when</th><th>Judged by</th><th>May write</th><th>Ends when</th></tr>
+<tr><td><b>Starter</b></td><td>the department does not exist yet</td><td>the parent department's Identity and rules</td><td>nothing but asks, filed in the parent</td><td>the first engine is stamped</td></tr>
+<tr><td><b>Maker</b></td><td>the department exists</td><td>its own department's Identity and rules</td><td>files inside its own folder; records only by ask</td><td>the work item's check flips</td></tr>
+</table>
+<p>One rule separates them, and it is the rule the model already lives by: <b>a function needs an Identity above it to judge what it does.</b> A department being born has none of its own, so the parent's Identity judges its Starter. Everything made afterwards is judged by the department's own. If the founder prefers one kind to two, the Starter is simply the Maker's first job, run one level up.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li><b>Two kinds or one.</b> Starter as its own kind, or the Maker's first job run in the parent department.</li>
+<li><b>What a Maker may do without asking.</b> Write anything inside its own folder, with the folder as the fence, or file an ask per artifact and keep every step on the record.</li>
+<li><b>Where a Maker's work is judged.</b> Audit checks it after the fact, or Identity judges each effect before it lands, as it does today.</li>
+<li><b>Departments minted without an ask.</b> The app mints a department from every local project folder at start-up, outside the ask path; that is the one write into the tree that nobody stamps.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li>The built runtime, read 2026-09-23: routines and their calendar firing, the task runner and its ceiling, the proposal path, the app's start-up work.</li>
+<li><code>holding/plans/department-screen/PRD.md</code> sections M and N &#8212; the same two loops with file and line evidence, the build order and the open calls.</li>
+<li><code>holding/plans/department-screen/RUN-A-DEPARTMENT.md</code> &#8212; the three runs of a real department's own chat.</li>
+<li><a href="department-life.html">A Department's Life</a> &#8212; how one is born; <a href="internal-system.html">The Internal System</a> &#8212; what the five functions are.</li>
+<li><a href="lifecycle.html#s8">The life cycle</a> &#8212; the eleven stages in five phases, who may ignite one, the order the five functions come up, the journeys crossed with the phases, and retirement (s8 to s12).</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude, session 8e2713c3, 2026-09-23 &#183; moved here from A Department's Life sections 9 and 10 on the founder's word that it deserves its own section &#183; the loops are drawn from a read of the shipped runtime on the same day; the proposal is the founder's, with the name ruled by him (department-screen DECISIONS.md DS-17) &#183; review: none by a second model.</p>
+
+</div></div></body></html>

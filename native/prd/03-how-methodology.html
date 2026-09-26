@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§3 — HOW Methodology (Native's epistemic core) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="02-cos.html">prev: 02 cos</a> · <strong>§3 — HOW Methodology (Native's epistemic core)</strong> · <a href="04-native-platform.html">next: 04 native platform</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§3 — HOW Methodology (Native's epistemic core)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/HLD/03-control-flow.html">HLD/03 Control Flow</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-3-how-methodology">
+<h2>§3 HOW Methodology — Native's epistemic core <a href="../product-prd-native-v1.html#section-3-how-methodology" class="anchor">#</a></h2>
+<table class="pillar-6block">
+<tr><td><strong>Purpose</strong></td><td>Native's IP: not "do the work" — "do the work via the right HOW for this task." The methodology engine that the platform operationalizes.</td></tr>
+<tr><td><strong>Owns</strong></td><td>HOW selection per task tier · approach · mindset · structure · detailing · decomposition · cascading recursion · before-doing thinking.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>§2 task tier (T0-T3); §4 Native runtime (executes HOW choices); §7 Observability (measures HOW accuracy).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Execution (§4 runtime); operator surface (§2); transport (§5).</td></tr>
+</table>
+<p class="callout">Native exists <strong>to operationalize HOW</strong>, not as a platform with a HOW feature. Every operator turn — every Charter, every agent materialization, every Method route — embeds a HOW choice. §3 is the doctrine; §4 Native Platform is the runtime that enforces it.</p>
+
+<h3 id="section-3-1-how-dimensions">§3.1 The 6 HOW dimensions</h3>
+<table>
+<tr><th>Dimension</th><th>The question Native answers</th><th>Example choices</th></tr>
+<tr><td><strong>Approach</strong></td><td>Are we attacking this top-down, bottom-up, or by analogy?</td><td>Top-down: goal → factors → tasks · Bottom-up: data → patterns → conclusion · Analogy: this looks like prior X</td></tr>
+<tr><td><strong>Mindset</strong></td><td>Optimize · explore · repair · audit?</td><td>Optimize: maximize known metric · Explore: surface options · Repair: fix broken state · Audit: verify-only</td></tr>
+<tr><td><strong>Structure</strong></td><td>Tree of sub-tasks · sequential pipeline · parallel scan · iteration loop?</td><td>Tree: T3 Charter decomposition · Pipeline: T1 multi-action · Scan: T2 iterative · Loop: refinement</td></tr>
+<tr><td><strong>Detailing</strong></td><td>Coarse first pass + sharpen · or fully detailed from start?</td><td>Coarse-first: T0/T1 fast iterations · Detailed-first: T3 charter with locked requirements</td></tr>
+<tr><td><strong>Decomposition</strong></td><td>Break into 3 / 7 / by-stakeholder / by-deliverable / by-risk?</td><td>3-factor: forced parsimony · 7-factor: completeness · by-stakeholder: comms-heavy tasks · by-risk: high-stakes</td></tr>
+<tr><td><strong>Cascading</strong></td><td>When a sub-task gets stuck, recurse the HOW engine on the sub-task?</td><td>Sub-T3 spawns child T3 with own HOW choices; depth bounded by complexity budget</td></tr>
+</table>
+
+<h3 id="section-3-2-how-selection-flow">§3.2 HOW selection flow</h3>
+<pre>
+              operator intent (B1) + task tier (T0-T3)
+                              │
+                              ▼
+        ┌─────────────────────────────────────────┐
+        │  HOW ENGINE                              │
+        │  ─────────                               │
+        │  1. Read Charter scope (§4 primitive)    │
+        │  2. Read past patterns from B5.d         │
+        │  3. Choose: approach · mindset ·         │
+        │             structure · detailing ·      │
+        │             decomposition                │
+        │  4. Estimate complexity → cascade depth  │
+        │  5. Declare HOW choice to operator       │
+        │     (B3a if explicit; silent if known)   │
+        └────────────────────┬────────────────────┘
+                              │
+                              ▼
+                  HOW manifest emitted into state envelope
+                  (§4.3); §4 Native runtime executes
+                              │
+                              ▼
+                  if sub-task gets stuck →
+                  recurse HOW engine (cascade) with depth--
+</pre>
+
+<h3 id="section-3-3-how-everywhere">§3.3 HOW is everywhere — cross-section presence</h3>
+<table>
+<tr><th>Where HOW shows up</th><th>What HOW means there</th></tr>
+<tr><td>§2.B B1 (Ask my way)</td><td>Native parses operator's HOW preferences from utterance (e.g., "quickly" = coarse-first detailing)</td></tr>
+<tr><td>§2.B B3a (THINK)</td><td>Brainstorm partnership uses Explore mindset; declares HOW choice before deepening</td></tr>
+<tr><td>§2.B B3b (DO)</td><td>Auto-execute uses Optimize mindset by default; switches to Repair when output fails verification</td></tr>
+<tr><td>§4 Native runtime</td><td>HOW manifest in state envelope binds method routing (§9 D.11), agent scope, token budget</td></tr>
+<tr><td>§4.5 Test-before-conclude</td><td>Verification step is itself a HOW choice (audit mindset · by-deliverable decomposition)</td></tr>
+<tr><td>§6 Distribution / onboarding</td><td>Operator's first-week HOW preferences are surfaced + ratified during Charter setup</td></tr>
+<tr><td>§7 Observability</td><td>HOW accuracy KPI — operator drop rate per HOW choice; drift signals on method-route accuracy</td></tr>
+</table>
+
+<h3 id="section-3-4-how-acceptance">§3.4 Acceptance criteria (HOW engine v1)</h3>
+<p class="callout"><strong>Forward-looking note</strong>: HOW Methodology has open questions documented at <a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ1</a> — which approach for which situation, when cascading stops, when HOW is learned vs operator-overridden. v1 ships the doctrine + operationalization shape; v2+ refines based on dogfood signal.</p>
+<ul>
+  <li>Every Native turn carries an explicit HOW manifest in state envelope (operator can request "show me your HOW").</li>
+  <li>HOW choices learned from B5.d learned patterns improve future selections (drift signal triggers re-learning).</li>
+  <li>Cascade depth bounded by complexity budget (Charter-set); depth-exhaustion escalates to operator (Authority gate).</li>
+  <li>Operator can override any HOW choice; override learned + applied to future similar tasks.</li>
+</ul>
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/HLD/03-control-flow.html">HLD/03 Control Flow</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

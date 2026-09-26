@@ -1,0 +1,170 @@
+<!doctype html>
+<!-- PAGE: platform-model-eight-states (v1.1; the runner now reads done lines and rules back before states 2 and 7 count, re-quoted 2026-09-25). The life cycle as a walk: eight states,
+     what a person does at each, and which of them a script can reach today. Written
+     2026-09-23 from a run of holding/plans/department-lifecycle/run-journey.py; the
+     output on this page is that run's own, quoted.
+     Sibling shell: platform-model-running-a-department (v1). How a department runs: the owner's
+     loop, the run loop, what fires unattended, and the two proposed kinds that would close
+     the loop. Moved off department-life on 2026-09-23 (founder: give it its own section).
+     Superseded header of the source page: platform-model-department-life (v1, ONE STORY). Founder-directed warm visual: the Collections gateway case in 4 diagrams — conversion, formation, the edit path, decisions-as-settings. Dual-AI design check applied. Session 92edec80. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; A Department's Eight States</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div class="sb-band">FRONT DOOR</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">start here &#183; not in the spine</div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../the-six-layers.html">The six layers</a></div><div style="padding-left:17px"><a href="../../factory.html">The factory: what we build, and how</a></div><div style="padding-left:17px"><a href="../../where-this-fits.html">Where this fits</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div style="padding-left:17px"><a href="../../company-map.html">The Company Map</a></div><div style="padding-left:17px"><a href="../../structure-and-terms.html">Structure and terms</a></div><div style="padding-left:17px"><a href="../../roadmap/index.html">Roadmap</a></div><div style="padding-left:17px"><a href="../../distribution.html">Distribution</a></div><div class="sb-band">L1 &#183; THEORY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the foundation &#183; rests on nothing</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FIRST PRINCIPLES</div><div style="padding-left:28px"><a href="../../the-system-simply.html">The system, simply</a></div><div style="padding-left:28px"><a href="../../problem-types.html">Problem types (T1-T4)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE AXES</div><div style="padding-left:28px"><a href="../../axes.html">Axes + families</a></div><div style="padding-left:39px"><a href="../../the-frame.html">The Frame (one picture)</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">THE SIX FUNCTIONAL SPECS</div><div style="padding-left:50px"><a href="../../spec-shape.html">SHAPE</a></div><div style="padding-left:50px"><a href="../../spec-grow.html">GROW</a></div><div style="padding-left:50px"><a href="../../spec-govern.html">GOVERN</a></div><div style="padding-left:50px"><a href="../../spec-edge.html">EDGE</a></div><div style="padding-left:50px"><a href="../../spec-resource.html">RESOURCE</a></div><div style="padding-left:50px"><a href="../../spec-time.html">TIME</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">THE DIMENSIONS</div><div style="padding-left:50px"><a href="../../edges.html">Edges</a></div><div style="padding-left:50px"><a href="../../resource.html">Resource</a></div><div style="padding-left:50px"><a href="../../time.html">Time</a></div><div style="padding-left:39px;font-size:8.5px;color:#b0b6bf;letter-spacing:.05em;margin:4px 0 1px">RULES FOR AXES</div><div style="padding-left:50px"><a href="../../open-axis.html">Open-axis rule</a></div><div style="padding-left:50px"><a href="../../axis-productization.html">Axis-productization</a></div><div style="padding-left:50px"><a href="../../axis-materialization.html">Axis-materialization</a></div><div class="sb-band">CAPABILITIES</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what it must do, and how well &#183; rests on THEORY</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FUNCTIONAL</div><div style="padding-left:28px"><a href="../../capability-priorities.html">What comes first</a></div><div style="padding-left:28px"><a href="../../system/solution.html">From capabilities to a solution</a></div><div style="padding-left:28px"><a href="../../system-grows.html">The system, grown in this order</a></div><div style="padding-left:39px"><a href="../../system/product.html">The product</a></div><div style="padding-left:39px"><a href="../../system/company.html">To a company</a></div><div style="padding-left:39px"><a href="../../system/model.html">The model: artifacts and work</a></div><div style="padding-left:39px"><a href="../../system/operable.html">To a running system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">NON-FUNCTIONAL</div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">L2 &#183; THE VOCABULARY</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THEORY &#183; the ruled objects, states and journeys of work</div><div style="padding-left:17px"><a href="../../platform/the-model.html">The Vocabulary (ruled)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">OBJECTS</div><div style="padding-left:28px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:28px"><a href="../../platform/model/work-atom.html">Work-Atom</a></div><div style="padding-left:28px"><a href="../../platform/model/workflow-engine.html">Workflow + Engine</a></div><div style="padding-left:28px"><a href="../../platform/model/assembly-system.html">Assembly + System</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:28px"><a href="../../platform/model/shadow-systems.html">Shadow Systems</a></div><div style="padding-left:28px"><a href="../../platform/model/edge-system.html">The Edge System</a></div><div style="padding-left:28px"><a href="../../platform/model/lifecycle.html">The life cycle</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONSTRUCTION</div><div style="padding-left:28px"><a href="../../platform/model/properties.html">Properties</a></div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type System</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/implementation.html">Implementation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RELEASE STATE</div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Versions (v1&#8211;v5)</a></div><div style="padding-left:28px"><a href="../../platform/model/prd.html">Product PRD</a></div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">Desktop App (reverse-eng)</a></div><div style="padding-left:28px"><a href="../../consumer-ui-prd.html">Desktop UI PRD</a></div><div style="padding-left:28px"><a href="../../daemon-prd.html">Daemon PRD</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IN USE</div><div style="padding-left:28px"><a href="../../platform/model/user-journeys.html">User Journeys</a></div><div style="padding-left:28px"><a href="../../org-journeys.html">Org: CEO journeys</a></div><div style="padding-left:28px"><a href="../../platform/model/department-life.html">A Department&#8217;s Life</a></div><div style="padding-left:28px"><a href="../../platform/model/running-a-department.html">Running a Department</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/eight-states.html">A Department’s Eight States</a></div><div style="padding-left:28px"><a href="../../platform/model/root-department.html">The Root Department</a></div><div style="padding-left:28px"><a href="../../platform/model/product-journey.html">The Product Journey</a></div><div style="padding-left:28px"><a href="../../platform/model/product-vertical.html">Inside the Product Vertical</a></div><div style="padding-left:28px"><a href="../../consumer-ui.html">Consumer UI (cockpit)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">INDUSTRY IMPORTS</div><div style="padding-left:28px"><a href="../../platform/model/industry-imports.html">Industry Imports (index)</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">RESEARCH</div><div style="padding-left:28px"><a href="../../platform/model/research/vsm-five-units.html">VSM: the five units</a></div><div class="sb-band">L3 &#183; THE PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE VOCABULARY &#183; each block: what it is + how it&#8217;s built</div><div style="padding-left:17px"><a href="../../platform/index.html">Schema &#167;1.0</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SURFACE</div><div style="padding-left:28px"><a href="../../platform/ui.html">UI</a></div><div style="padding-left:39px"><a href="../../design-system.html">Design System (site-wide skin)</a></div><div style="padding-left:39px"><a href="../../engineering/ui.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/host.html">Host</a></div><div style="padding-left:39px"><a href="../../engineering/host.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CORE</div><div style="padding-left:28px"><a href="../../platform/runtime.html">Daemon &#8212; Runtime &#167;4</a></div><div style="padding-left:39px"><a href="../../engineering/runtime.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/orchestration.html">Orchestration</a></div><div style="padding-left:39px"><a href="../../engineering/orchestration.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-process.html">System of Process</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-process.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/system-of-record.html">System of Record</a></div><div style="padding-left:39px"><a href="../../engineering/system-of-record.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">REACH</div><div style="padding-left:28px"><a href="../../platform/connector.html">Connector</a></div><div style="padding-left:39px"><a href="../../engineering/connector.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/external-world.html">External World</a></div><div style="padding-left:39px"><a href="../../engineering/external-world.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/compute.html">Compute</a></div><div style="padding-left:39px"><a href="../../engineering/compute.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CONTROL</div><div style="padding-left:28px"><a href="../../platform/authority-tenancy.html">Authority + Tenancy</a></div><div style="padding-left:39px"><a href="../../engineering/authority-tenancy.html">&#8594; how it&#8217;s built</a></div><div style="padding-left:28px"><a href="../../platform/observability.html">Observability &#167;7</a></div><div style="padding-left:39px"><a href="../../engineering/observability.html">&#8594; how it&#8217;s built</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HOW IT GROWS (v2 &#183; not built)</div><div style="padding-left:28px"><a href="../../platform/evolution.html">Evolution (v2)</a></div><div style="padding-left:28px"><a href="../../platform/maturation.html">Maturation (v2)</a></div><div style="padding-left:28px"><a href="../../platform/crystallization.html">Crystallization (v2)</a></div><div style="padding-left:28px"><a href="../../platform/comprehension.html">Comprehension (v2)</a></div><div style="padding-left:28px"><a href="../../platform/placement.html">Placement (v2)</a></div><div class="sb-band">L4 &#183; ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; cross-block build substrate</div><div style="padding-left:17px"><a href="../../engineering/index.html">Tech design &#167;11+&#167;12</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THE BUILD SPINE</div><div style="padding-left:28px"><a href="../../engineering/matrix.html">Matrix</a></div><div style="padding-left:28px"><a href="../../engineering/data-model.html">Data Model</a></div><div style="padding-left:28px"><a href="../../engineering/control-flow.html">Control Flow</a></div><div style="padding-left:28px"><a href="../../engineering/interfaces.html">Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">CATALOGS</div><div style="padding-left:28px"><a href="../../engineering/catalog-primitives.html">Catalog: Primitives</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-hardstops.html">Catalog: Hardstops</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-surfaces.html">Catalog: Surfaces</a></div><div style="padding-left:28px"><a href="../../engineering/catalog-interfaces.html">Catalog: Interfaces</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PILLARS</div><div style="padding-left:28px"><a href="../../engineering/pillar-b1.html">B1 Intent</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b2.html">B2 Context</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b3.html">B3 Action</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b4.html">B4 Connector</a></div><div style="padding-left:28px"><a href="../../engineering/pillar-b5.html">B5 Governance</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SHIPPING IT</div><div style="padding-left:28px"><a href="../../engineering/governance.html">Governance view</a></div><div style="padding-left:28px"><a href="../../engineering/deployment.html">Deployment</a></div><div style="padding-left:28px"><a href="../../roadmap/build.html">Build Ledger (archive)</a></div><div class="sb-band">L5 &#183; PRODUCTS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">rests on THE PLATFORM &#183; what a customer buys</div><div style="padding-left:17px"><a href="../../products/cos/index.html">CoS</a></div><div style="padding-left:28px"><a href="../../products/cos/needs.html">Needs (why)</a></div><div style="padding-left:28px"><a href="../../products/cos/product-design.html">Design</a></div><div style="padding-left:28px"><a href="../../products/cos/matrix.html">Matrix</a></div><div style="padding-left:39px"><a href="../../products/cos/needs-research.html">Research foundations</a></div><div style="padding-left:39px"><a href="../../products/cos/design-journeys.html">Design: journeys</a></div><div style="padding-left:39px"><a href="../../products/cos/design-surfaces.html">Design: surfaces</a></div><div style="padding-left:17px"><a href="../../products/senior-expert/index.html">Senior Expert (planned)</a></div><div style="padding-left:17px"><a href="../../distribution-ops.html">Distribution Ops (machinery)</a></div><div class="sb-band">L6 &#183; GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every layer above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded &#183; out of spine</div><div style="padding-left:17px"><a href="../../units-and-artifacts.html">Artifacts and work &#8594; The model</a></div><div style="padding-left:17px"><a href="../../seed-to-company.html">From one step to a company &#8594; To a company</a></div><div style="padding-left:17px"><a href="../../product-step-by-step.html">The product, one family at a time &#8594; The product</a></div><div style="padding-left:17px"><a href="../../platform/maturation-walkthrough.html">Maturation walkthrough (v2) &#8594; Maturation</a></div><div style="padding-left:17px"><a href="../../platform/flow.html">Workflow (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/work-atom.html">Work-Atom (v2) &#8594; model/work-atom</a></div><div style="padding-left:17px"><a href="../../platform/work-structure.html">Work structure (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/company-decomposed.html">Company decomposed (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../platform/how-methodology.html">Method &#167;3 (v2) &#8594; The Vocabulary</a></div><div style="padding-left:17px"><a href="../../engineering/how.html">Method &#167;3 (engineering) &#8212; archived B18-9</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v1",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isTop=function(el){return el.classList&&el.classList.contains("sb-band")&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var bands=[];var cur=null;
+kids.forEach(function(el){if(isTop(el)){cur={band:el,items:[]};bands.push(cur)}else if(cur){cur.items.push(el)}});
+bands.forEach(function(g){
+ var name=g.band.textContent.trim();if(!g.items.length)return;
+ var hasCur=g.items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")});
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";
+ g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ var set=function(collapsed){
+  g.items.forEach(function(el){el.style.display=collapsed?"none":""});
+  arrow.textContent=collapsed?"\u25B8 ":"\u25BE ";
+  g.band.setAttribute("aria-expanded",collapsed?"false":"true");
+  st[name]=collapsed;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ var init=hasCur?false:(st[name]===true);
+ g.items.forEach(function(el){el.style.display=init?"none":""});
+ arrow.textContent=init?"\u25B8 ":"\u25BE ";
+ g.band.setAttribute("aria-expanded",init?"false":"true");
+ var toggle=function(){set(g.band.getAttribute("aria-expanded")==="true")};
+ g.band.addEventListener("click",toggle);
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+});}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="../the-model.html">the model</a> &#8250; eight states</div>
+<h1>A Department's Eight States <span class="pill DRAFT">A WALK &#183; RUNNABLE</span></h1>
+<p class="lead">The <a href="lifecycle.html">life cycle</a> says what the stages are. This page is the walk: what a person does at each state, what they see, and which record proves it. Everything below was produced by running it &#8212; seven of the eight states were reached on a throwaway registry, in about a second, with no app open.</p>
+
+<h2 id="e1">The eight states</h2>
+<svg viewBox="0 0 860 210" role="img" aria-label="The eight states of a department">
+<rect x="10" y="26" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="20" y="45" font-size="10" font-weight="700" fill="#065f46">1 Ignited</text><text x="20" y="60" font-size="10" fill="#065f46">it exists</text>
+<rect x="224" y="26" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="234" y="45" font-size="10" font-weight="700" fill="#065f46">2 Identity</text><text x="234" y="60" font-size="10" fill="#065f46">what it is for</text>
+<rect x="438" y="26" width="196" height="46" rx="7" fill="#fef2f2" stroke="#b91c1c" stroke-dasharray="5,4"/><text x="448" y="45" font-size="10" font-weight="700" fill="#b91c1c">3 Able to act</text><text x="448" y="60" font-size="10" fill="#b91c1c">it has an engine</text>
+<rect x="652" y="26" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="662" y="45" font-size="10" font-weight="700" fill="#065f46">4 Working</text><text x="662" y="60" font-size="10" fill="#065f46">work is filed</text>
+<rect x="10" y="130" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="20" y="149" font-size="10" font-weight="700" fill="#065f46">5 Reads</text><text x="20" y="164" font-size="10" fill="#065f46">done vs filed</text>
+<rect x="224" y="130" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="234" y="149" font-size="10" font-weight="700" fill="#065f46">6 Grown</text><text x="234" y="164" font-size="10" fill="#065f46">a child below</text>
+<rect x="438" y="130" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="448" y="149" font-size="10" font-weight="700" fill="#065f46">7 Changed</text><text x="448" y="164" font-size="10" fill="#065f46">new rules version</text>
+<rect x="652" y="130" width="196" height="46" rx="7" fill="#ecfdf5" stroke="#047857"/><text x="662" y="149" font-size="10" font-weight="700" fill="#065f46">8 Ended</text><text x="662" y="164" font-size="10" fill="#065f46">re-homed, retired</text>
+<line x1="206" y1="49" x2="224" y2="49" stroke="#6b7280" stroke-width="2"/>
+<line x1="206" y1="153" x2="224" y2="153" stroke="#6b7280" stroke-width="2"/>
+<line x1="420" y1="49" x2="438" y2="49" stroke="#6b7280" stroke-width="2"/>
+<line x1="420" y1="153" x2="438" y2="153" stroke="#6b7280" stroke-width="2"/>
+<line x1="634" y1="49" x2="652" y2="49" stroke="#6b7280" stroke-width="2"/>
+<line x1="634" y1="153" x2="652" y2="153" stroke="#6b7280" stroke-width="2"/>
+<line x1="848" y1="72" x2="848" y2="100" stroke="#6b7280" stroke-width="2"/>
+<line x1="848" y1="100" x2="108" y2="100" stroke="#6b7280" stroke-width="2"/>
+<line x1="108" y1="100" x2="108" y2="130" stroke="#6b7280" stroke-width="2"/>
+<text x="470" y="96" font-size="10" fill="#6b7280">the walk continues</text>
+<text x="438" y="16" font-size="10" fill="#b91c1c">state 3 is the one a script cannot reach: an engine lives in the app's store</text>
+</svg>
+<p class="figcap">Green = reached by the run. Dashed red = reachable only through the app. The line returns from state 4 to state 5 because reading is continuous, not a step you finish.</p>
+
+<h2 id="e2">What a person does at each</h2>
+<table>
+<tr><th>#</th><th>State</th><th>What you do</th><th>What you see</th><th>What proves it</th><th>The run</th></tr>
+<tr><td>1</td><td><b>Ignited</b></td><td>ask for a new department on its parent, or say one line in a chat</td><td>a birth ask in the parent's Asks, carrying the line that caused it</td><td>the department exists, live, under its parent</td><td class="yes">reached</td></tr>
+<tr><td>2</td><td><b>Identity set</b></td><td>stamp the Identity ask: goal, done lines, tagged rules, owner, folder</td><td>Identity's card filled in; the department opens on Now</td><td>a rules record under the department, with its goal, scope, done lines and tagged rules, read back from the record before the state counts</td><td class="yes">reached</td></tr>
+<tr><td>3</td><td><b>Able to act</b></td><td>on Adaptation, ask for the first engine: what it does, where, when it fires</td><td>the engine in the Engines list, with its next run</td><td>a routine record in the app's own store</td><td class="no">app only</td></tr>
+<tr><td>4</td><td><b>Working</b></td><td>let the engine fire, or ask Identity for a thing in its chat</td><td>Running while it works, filed work when it finishes</td><td>filed work under the department, pointing at its rules</td><td class="yes">reached</td></tr>
+<tr><td>5</td><td><b>Read against its goal</b></td><td>open Identity's card and read the done line against what is filed</td><td>the reading, computed at that moment</td><td>nothing stored: it is recomputed every time</td><td class="yes">reached</td></tr>
+<tr><td>6</td><td><b>Grown</b></td><td>when two meters stay over for a month, stamp the birth card for a child</td><td>the child under it in the tree</td><td>a second department whose parent is the first</td><td class="yes">reached</td></tr>
+<tr><td>7</td><td><b>Changed from above</b></td><td>as the authority above, rewrite the rules, the budget or the owner</td><td>a new version line under Identity's card</td><td>a new rules record superseding the old, carrying the changed rules, read back; the old one kept</td><td class="yes">reached</td></tr>
+<tr><td>8</td><td><b>Ended</b></td><td>name a successor, then retire it</td><td>nothing yet: there is no retire ask to stamp</td><td>retired, with every child, rule and filed item re-homed, reversibly</td><td class="yes">reached</td></tr>
+</table>
+
+<h2 id="e3">The run, in its own words</h2>
+<p>The walk is a script, not a description. It points the registry at a temp folder before it loads the engine, so it never touches anyone's records.</p>
+<pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:11px 13px;font-size:12px;overflow:auto">#  state                   proved by   result
+------------------------------------------------------------------------
+1  Ignited                 record      reached
+2  Identity set            record      reached
+3  Able to act             app         BLOCKED
+4  Working                 record      reached
+5  Read against its goal   computed    reached
+6  Grown                   record      reached
+7  Changed from above      record      reached
+8  Ended                   record      reached
+------------------------------------------------------------------------
+7 of 8 states reached without the app; 1 needs it</pre>
+<p>State 8 is the one worth reading closely. The engine refuses to end a department while anything under it has nowhere to go, then re-homes everything onto the successor, and the whole move can be reversed:</p>
+<pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:11px 13px;font-size:12px;overflow:auto">a retire with no successor is refused: 4 item(s) would be stranded
+
+[8] Ended  --  reached
+    status=retired; child re-parented to the successor=True; filed work re-homed=True; recovery manifest=written
+
+    unretire: ok=True; status now active</pre>
+<p>States 2 and 7 count only after the record is read back. This is what the run prints for them:</p>
+<pre style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:11px 13px;font-size:12px;overflow:auto">[2] Identity set  --  reached
+    rules record C-f7c3253e83e65ddf written; goal and scope on it; read back from the record: 2 done lines, 2 tagged rules (go, refuse); folder set=True
+
+[7] Changed from above  --  reached
+    new rules version C-2b99ee54062c7c55, superseding C-f7c3253e83e65ddf; the old one is kept; read back: 3 rules on the new version, the added refuse line among them</pre>
+
+<h2 id="e4">What the walk exposes</h2>
+<table>
+<tr><th>#</th><th>Finding</th><th>Consequence</th></tr>
+<tr><td>1</td><td>Seven of eight states are reachable with no app at all</td><td>the model is real in the record, not only on screens</td></tr>
+<tr><td>2</td><td>The one state that needs the app is <b>Able to act</b></td><td>the engine is a department's only pair of hands, and it is the one state kept outside the registry</td></tr>
+<tr><td>3</td><td>Ending works, is strict, and is reversible</td><td>what is missing is one ask, not a mechanism</td></tr>
+<tr><td>4</td><td>Two states pass in the record and read wrong on screen</td><td>a working department looks idle; a rules change shows no version</td></tr>
+<tr><td>5</td><td>The walk needed no chat, no engine run and no network</td><td>a department's life is a sequence of records; everything else is how a person touches them</td></tr>
+</table>
+<div class="key">Seven of eight states need no app. <strong>The eighth is the one that gives a department hands.</strong></div>
+
+<h2 id="e5">To make all eight runnable</h2>
+<table>
+<tr><th>#</th><th>Piece</th><th>Impact</th><th>Effort</th></tr>
+<tr><td>1</td><td>A retire ask, wired to the engine verb that exists</td><td>an owner can end a department from the app</td><td>3 h, 3 files</td></tr>
+<tr><td>2</td><td>A headless way to create an engine on a test registry</td><td>state 3 becomes runnable, and this walk becomes a test</td><td>4 h, 2 files</td></tr>
+<tr><td>3</td><td>The work item written at open</td><td>state 4 reads true on screen</td><td>2 h, 1 file</td></tr>
+<tr><td>4</td><td>A rules Versions card</td><td>state 7 reads true on screen</td><td>2 h, 1 file</td></tr>
+</table>
+
+<h2>Sources</h2>
+<ul>
+<li><code>holding/plans/department-lifecycle/run-journey.py</code> &#8212; the walk itself; the output above is one of its runs.</li>
+<li><code>holding/plans/department-lifecycle/JOURNEY.md</code> &#8212; the same walk with the app-side detail; <code>PRD.md</code> beside it carries the requirements and the founder's calls.</li>
+<li><a href="lifecycle.html">The life cycle</a> &#8212; the eleven stages and five phases these eight states sit on; <a href="running-a-department.html">Running a Department</a> &#8212; the two loops underneath them.</li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude, session 8e2713c3, 2026-09-23; v1.1 on 2026-09-25 &#183; every state on this page was walked by the runner against a throwaway registry; the three quoted blocks are that run's own output, unedited &#183; state 3 is reported as app-only from the code that stores engines &#183; review: in-house adversarial lane 2026-09-25, finding A1: the runbook claimed a read-back the runner did not do; fixed in the runner, re-run, and every quoted block replaced with the new run's output.</p>
+
+</div></div></body></html>
