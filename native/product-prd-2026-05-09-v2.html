@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Product Requirements Document (Google PRD format)</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fafaf7;
+    --accent: #1a4d8f;
+    --soft: #e8e6df;
+    --muted: #6a6a6a;
+    --good: #2d6a3e;
+    --code: #f5f2ec;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { max-width: 920px; margin: 0 auto; padding: 48px 32px 96px; }
+  .header-bar { background: white; border: 1px solid var(--soft); border-radius: 8px; padding: 16px 24px; margin: 0 0 32px; font-size: 14px; color: var(--muted); }
+  .header-bar strong { color: var(--ink); }
+  .header-bar table { width: 100%; border: none; margin: 0; }
+  .header-bar td { padding: 4px 0; border: none; vertical-align: top; }
+  .header-bar td:first-child { width: 140px; color: var(--muted); }
+  h1 { font-size: 44px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.15; }
+  h1 .accent { color: var(--accent); }
+  .doc-subtitle { font-size: 17px; color: var(--muted); margin: 0 0 40px; }
+  h2 { font-size: 28px; margin: 56px 0 12px; padding-top: 32px; border-top: 1px solid var(--soft); letter-spacing: -0.01em; font-weight: 600; }
+  h2 .num { color: var(--muted); font-weight: 400; margin-right: 12px; }
+  h3 { font-size: 19px; margin: 28px 0 10px; font-weight: 600; }
+  h4 { font-size: 14px; margin: 20px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  p { margin: 0 0 14px; max-width: 740px; }
+  code { font-family: "SF Mono", Menlo, monospace; font-size: 14px; background: var(--code); padding: 2px 6px; border-radius: 3px; }
+  pre, .flow { font-family: "SF Mono", Menlo, monospace; font-size: 13px; line-height: 1.45; background: var(--code); border: 1px solid var(--soft); border-radius: 6px; padding: 16px 20px; overflow-x: auto; white-space: pre; margin: 12px 0; }
+  blockquote { margin: 16px 0; padding: 14px 22px; border-left: 4px solid var(--accent); background: var(--code); }
+  blockquote .who { display: block; margin-top: 8px; font-size: 13px; color: var(--muted); }
+  table { border-collapse: collapse; margin: 12px 0 20px; font-size: 14.5px; width: 100%; }
+  th { text-align: left; padding: 10px 14px; background: var(--code); border-bottom: 2px solid var(--soft); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--soft); vertical-align: top; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .toc { background: white; border: 1px solid var(--soft); border-radius: 8px; padding: 20px 24px; margin: 0 0 32px; }
+  .toc ol { columns: 2; margin: 0; padding-left: 18px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; background: #e3f2e8; color: var(--good); }
+  .meta-row { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .decision-box { border: 2px solid var(--accent); border-radius: 6px; padding: 14px 18px; background: white; margin: 16px 0; }
+  .decision-box strong { color: var(--accent); }
+  @media (max-width: 700px) { body { padding: 24px 18px 64px; } h1 { font-size: 30px; } h2 { font-size: 22px; } .toc ol { columns: 1; } }
+</style>
+</head>
+<body>
+
+<div class="header-bar">
+  <table>
+    <tr><td>Document</td><td><strong>Native — Product Requirements Document</strong></td></tr>
+    <tr><td>Format</td><td>Google PRD template (Marty Cagan style)</td></tr>
+    <tr><td>Status</td><td><span class="pill">RATIFIED v2</span> — codex r18 PASS (12/12 checklist) 2026-05-10</td></tr>
+    <tr><td>Owner</td><td>Sankalp Asawa (Founder / CEO of Asawa)</td></tr>
+    <tr><td>Last updated</td><td>2026-05-10</td></tr>
+    <tr><td>Reviewers</td><td>Founder · Codex (PROTO-019 advisor) · Sutra Forge</td></tr>
+    <tr><td>Canon source</td><td><code>sutra/os/engines/NATIVE-ENGINE.md §14</code> (RATIFIED v1)</td></tr>
+  </table>
+</div>
+
+<h1><span class="accent">Native</span> Product Requirements</h1>
+<p class="doc-subtitle">An operating system for the solo founder operating a portfolio of 1-N companies (typical 2-7) — terminal-fluent, design-particular, time-poor.</p>
+
+<div class="toc">
+  <h4 style="margin-top:0;">CONTENTS</h4>
+  <strong>Single source of truth — Native v1 PRD</strong>
+  <ol>
+    <li><a href="#idea">The Idea</a></li>
+    <li><a href="#needs">User Needs</a> (8 categorized)</li>
+    <li><a href="#system-diagram">System Diagram</a> (master view)</li>
+    <li><a href="#user-journeys">User Journeys</a> (9 operator scenarios)</li>
+    <li><a href="#philosophy">Philosophy + Design Pillars</a> (14)</li>
+    <li><a href="#engines">Engines</a> (6 sub-sections)</li>
+    <li><a href="#features">Features</a> (25 sub-sections, grouped by user need)</li>
+    <li><a href="#adrs">Architecture Decision Records</a> (17)</li>
+    <li><a href="#tech-docs">Tech Documentation</a> (canon paths)</li>
+    <li><a href="#assumptions">Assumptions + Constraints</a></li>
+    <li><a href="#risks">Risks + Hardstops + NFR</a></li>
+    <li><a href="#metrics">Metrics + Success Criteria</a></li>
+    <li><a href="#timeline">Timeline + Release Phases</a></li>
+    <li><a href="#open">Open Questions</a> (Q1-Q11 ANSWERED)</li>
+    <li><a href="#research">Research</a> (hyperlinks)</li>
+    <li><a href="#review-methodology">PRD Review Methodology</a></li>
+  </ol>
+  <p class="meta-row" style="margin-top: 8px; font-size: 12px;"><em>Legacy A.* sections retired 2026-05-10 — content migrated into the 16 sections above; nothing lost.</em></p>
+  <ol type="A" start="1" style="display:none">
+    <li><a href="#tldr">TL;DR</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#nongoals">Non-goals</a></li>
+    <li><a href="#hsutra">How Native understands what you say</a> <em>(to be removed per Cagan "What not How")</em></li>
+    <li><a href="#users">Users &amp; Personas</a></li>
+    <li><a href="#stories">User Stories</a></li>
+    <li><a href="#flows">User Flows</a></li>
+    <li><a href="#requirements">Functional Requirements</a></li>
+    <li><a href="#nfr">Non-functional Requirements</a></li>
+    <li><a href="#metrics">Success Metrics</a></li>
+    <li><a href="#risks">Risks &amp; Mitigations</a></li>
+    <li><a href="#timeline">Timeline &amp; Phases</a></li>
+    <li><a href="#open">Open Questions</a></li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- NEW STRUCTURE — user-need-centric (drafted 2026-05-10)        -->
+<!-- ============================================================ -->
+
+<h2 id="idea"><span class="num">1.</span>The Idea</h2>
+<p>Native is the operating system for a portfolio CEO running 2-7 companies. The operator speaks in natural language; Native captures intent, finds relevant context, runs work through safety-checked steps, pauses for risky decisions, and learns the operator's style over time. Each company's data stays isolated. Every step is typed; every risky action requires explicit approval; every decision is replayable. Outputs become next inputs — Native's work compounds week over week.</p>
+
+<!-- ============================================================ -->
+<h2 id="needs"><span class="num">2.</span>User Needs</h2>
+<p>Eight needs the operator has. Each becomes a component section below (§4-§11) showing the zoomed-in blocks that satisfy it.</p>
+
+<table>
+<tr><th>#</th><th>User need (operator's own words)</th><th>Native delivers via</th></tr>
+<tr><td>1</td><td>"I want to say what I want without filling out forms"</td><td>Capture utterance → classify → break it down</td></tr>
+<tr><td>2</td><td>"Find me the relevant context — I shouldn't have to remember everything"</td><td>Context structuring · charter scoping · research-on-fly</td></tr>
+<tr><td>3</td><td>"Do the work — and check yourself before showing me"</td><td>Constrained prompt building · pre/post validation · lifecycle orchestration</td></tr>
+<tr><td>4</td><td>"Pause and ask me before doing anything risky"</td><td>Approval gate · explanation surface · block-by-block mode · mid-execution mutation</td></tr>
+<tr><td>5</td><td>"Learn how I work; get better over time"</td><td>Pattern emergence · person formation · closed-loop artifacts</td></tr>
+<tr><td>6</td><td>"My data stays mine; companies don't bleed into each other"</td><td>Tenant boundary · multi-human-org architecture · local-vs-org artifacts</td></tr>
+<tr><td>7</td><td>"Use my existing tools (Slack, email, web) — don't make me switch"</td><td>External tool connectors · native-native agent-to-agent</td></tr>
+<tr><td>8</td><td>"Show me what happened and why; let me replay anything"</td><td>Audit surface · decision provenance · typed config at every layer</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="user-stories"><span class="num">2.5</span>User Stories (JTBD form)</h2>
+
+<p>Each need (§2) expressed as a Job To Be Done in <code>When [trigger] · I want [capability] · so I can [outcome]</code> form. Story IDs (S1-S8) referenced by the §6.Z Traceability Matrix.</p>
+
+<table>
+<tr><th>ID</th><th>Serves</th><th>Story</th></tr>
+<tr><td>S1</td><td>Need #1 Input</td><td><strong>When</strong> I have a complex multi-step task, <strong>I want</strong> to type it as freeform plain English, <strong>so I can</strong> move without filling out forms or picking a workflow.</td></tr>
+<tr><td>S2</td><td>Need #2 Context</td><td><strong>When</strong> Native runs a step, <strong>I want</strong> the right artifacts attached automatically, <strong>so I can</strong> stop remembering what context to feed each call.</td></tr>
+<tr><td>S3</td><td>Need #3 Execution + Validation</td><td><strong>When</strong> the LLM produces an output, <strong>I want</strong> it validated against a declared schema before I see it, <strong>so I can</strong> avoid silent downstream errors.</td></tr>
+<tr><td>S4</td><td>Need #4 Operator Control</td><td><strong>When</strong> a step is risky or materially changes state, <strong>I want</strong> Native to pause and ask before proceeding, <strong>so I can</strong> stay in control without micromanaging routine steps.</td></tr>
+<tr><td>S5</td><td>Need #5 Learning</td><td><strong>When</strong> patterns repeat in my work, <strong>I want</strong> Native to surface a proposal to automate, <strong>so I can</strong> compound effort week over week.</td></tr>
+<tr><td>S6</td><td>Need #6 Boundaries</td><td><strong>When</strong> I run multiple companies, <strong>I want</strong> per-tenant artifact + audit isolation by default, <strong>so I can</strong> keep portfolios from bleeding into each other.</td></tr>
+<tr><td>S7</td><td>Need #7 Interop</td><td><strong>When</strong> my work happens in Slack / email / web, <strong>I want</strong> Native to read from + write to those surfaces, <strong>so I can</strong> stop switching apps mid-flow.</td></tr>
+<tr><td>S8</td><td>Need #8 Audit + Replay</td><td><strong>When</strong> something goes wrong (or right), <strong>I want</strong> to replay the full decision trail end-to-end, <strong>so I can</strong> debug, defend, or compound the outcome.</td></tr>
+</table>
+
+<p class="meta-row"><strong>Connects to</strong>: §2 User Needs (1:1 mapping) · §11.0 Goals (each story is gated by ≥1 goal metric) · §6 Features (each story is satisfied by ≥1 feature; see §6.Z Traceability Matrix).</p>
+
+<!-- ============================================================ -->
+<h2 id="system-diagram"><span class="num">3.</span>System Diagram (master view)</h2>
+
+<p>One view showing how all 25 features + 6 surfaces + 10 primitives compose to deliver the 8 user needs. Each band below is one need; sections §4-§11 zoom into each.</p>
+
+<div class="flow">
+                        +================================================+
+                        |                  THE OPERATOR                  |
+                        |        (portfolio CEO, multi-company)          |
+                        +================================================+
+                                            |
+                                            v
+                                       utterance
+                                            |
+                                            v
++=====================================================================+
+|  Need 1 — INPUT                                                     |
+|    ROUTE surface  --&gt;  Intent Layer (B1)  --&gt;  Decomposition (B2)   |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 2 — CONTEXT                                                   |
+|    Context Structuring (7a) + Localized Intelligence (7b)           |
+|    Charter &lt;-&gt; Context (B4) + Research-on-fly (B6)                  |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 3 — EXECUTION + VALIDATION                                    |
+|    PromptBuilder (B11) --&gt; RUN surface --&gt; Pre/Post Validation (B7) |
+|    Lifecycle Orchestrator (7d) + Task Framework (B8)                |
+|    E2E Testing (B12) + Domain/Charter Typed Config (B10)            |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 4 — OPERATOR CONTROL                                          |
+|    GATE surface &lt;-- Approval primitive                              |
+|    Explanation Surface (B5) + Block-by-Block Mode (7c)              |
+|    Mid-Exec Mutation (7e)                                           |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 5 — LEARNING                                                  |
+|    EMERGE surface --&gt; Person Formation (B18)                        |
+|    Closed-Loop Artifact (B9)                                        |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 6 — BOUNDARIES                                                |
+|    TENANT surface --&gt; Multi-Human-Org (B14)                         |
+|    Local-vs-Org Artifacts (B15) + Multi-Runtime Concurrency (B13)   |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 7 — INTEROP                                                   |
+|    External Tools Connectors (B17) + Native-Native A2A (B16)        |
++=====================================================================+
+                                            |
+                                            v
++=====================================================================+
+|  Need 8 — AUDIT + REPLAY                                            |
+|    AUDIT surface --&gt; DecisionProvenance primitive                   |
+|    (every step recorded; replay any past run end-to-end)            |
++=====================================================================+
+                                            |
+                                            v
+                                       response
+                                            |
+                                            v
+                              back to THE OPERATOR
+                              (artifact ID returned;
+                               work compounds week over week)
+
+
+CROSS-CUTTING (fire at any band):
+  HS-1..HS-8 hardstops  — refuse to continue on failure
+  P1..P14 design pillars — beliefs guiding every choice
+</div>
+
+<p>Read top-to-bottom for the full operator journey. Each band's components are detailed in their own section.</p>
+
+<!-- ============================================================ -->
+<!-- LEGACY CONTENT (to be migrated section by section)             -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<h2 id="user-journeys"><span class="num">3.5</span>User Journeys (operator scenarios)</h2>
+
+<p>Nine operator scenarios from trigger to end-state. Each shows which features fire + which user need is being served + connects back to the system diagram in §3. Read top-to-bottom to feel how Native compounds over time (Journeys 1 → 7).</p>
+
+<h3>3.5.1 First-time install</h3>
+<div class="flow">
+Operator                              Native
+--------                              ------
+type:  curl ... | sh                  install completes (under 30s)
+type:  sutra start                    Native shows: "ready"
+                                        |
+type:  "review my portfolio cos"      no workflow registered for this yet
+                                      ask: "no registered workflow — run
+                                       as a one-off? (y/n)"
+type:  y                              produce a structured response
+                                      hand back an artifact ID
+see:   structured response +          (under 30 minutes total)
+       "first execution complete"
+       artifact id  A-3f9a
+</div>
+<p class="meta-row"><strong>Trigger</strong>: fresh machine. <strong>End state</strong>: first execution complete; first artifact stored. <strong>Features fired</strong>: ROUTE · Intent Layer (B1) · Decomposition (B2) · Closed-Loop Artifact (B9). <strong>Serves</strong>: Need #1 Input.</p>
+
+<h3>3.5.2 One-off task</h3>
+<div class="flow">
+Operator                              Native
+--------                              ------
+type:  "summarize yesterday's        classify task
+        DayFlow Slack channel"
+                                      show estimate:
+                                        "task ≈ 12 min, ~1.4k tokens,
+                                         ~$0.08 cost"
+                                      proceed? (y/n)
+type:  y                              dispatch
+                                      → pulls channel
+                                      → ranks threads
+                                      → summarizes top 5
+see:   summary + 5 threads ranked
+       artifact id  A-7d2c
+type:  (nothing — done)               one-off; not registered
+                                      Native quietly notes the request so
+                                      it can recognize a pattern later
+</div>
+<p class="meta-row"><strong>Trigger</strong>: ad-hoc operator request. <strong>End state</strong>: task done; artifact stored; pattern-seed captured. <strong>Features fired</strong>: Estimation Engine · Intent Layer (B1) · Connectors (B17 Slack) · Closed-Loop Artifact (B9) · EMERGE surface. <strong>Serves</strong>: Need #1 + #2.</p>
+
+<h3>3.5.3 Pattern emergence (4th repeat)</h3>
+<div class="flow">
+Time         Operator action                Native state
+----         ---------------                ------------
+Mon, wk 1    type: "summarize..."           Native notices the request
+Tue, wk 2    type: "summarize..."           Native notices a 2nd time
+Thu, wk 2    type: "summarize..."           Native notices a 3rd time
+Mon, wk 3    type: "summarize..."           4th repeat → Native surfaces a
+                                            workflow proposal
+
+                                            +--- PROPOSAL P-9c1e ---+
+                                            | "I noticed you've done|
+                                            |  this 4 times in 3wks.|
+                                            |  Register as workflow?|
+                                            |                       |
+                                            |  Proposed name:       |
+                                            |   slack-hotthreads-   |
+                                            |   daily               |
+                                            |  Trigger: weekdays    |
+                                            |   9:00am IST          |
+                                            |                       |
+                                            |  Reply:               |
+                                            |   approve P-9c1e      |
+                                            |   approve once        |
+                                            |   reject  P-9c1e ...  |
+                                            |   modify  P-9c1e ...  |
+                                            +-----------------------+
+
+type:  approve P-9c1e                      workflow registered
+                                            cadence set
+                                            confirmation: "registered;
+                                              first run tomorrow 9:00"
+</div>
+<p class="meta-row"><strong>Trigger</strong>: 4 repeats of same task across weeks. <strong>End state</strong>: workflow auto-runs from now. <strong>Features fired</strong>: EMERGE surface · Person Formation (B18) · Workflow primitive · Approval primitive. <strong>Serves</strong>: Need #5 Learning.</p>
+
+<h3>3.5.4 Approval gate (running workflow hits risky step)</h3>
+<div class="flow">
+Time         Native (what the operator sees)         Operator
+----         ----------------------------            --------
+9:00 am      scheduled run begins
+             step 1: pull channel  → done
+             step 2: rank threads  → done
+             step 3: send-email    → paused for approval
+                                     (risky: external + 5 recipients)
+
+             +--- APPROVAL E-7f2a ---+
+             | step 3 of 5           |
+             | external email send   |
+             | recipients: 5         |
+             | preview: "Top 3..."   |
+             |                       |
+             | pre-check: PASS       |
+             |                       |
+             | reply:                |
+             |  approve E-7f2a       |
+             |  reject  E-7f2a ...   |
+             |  pause   E-7f2a       |
+             +-----------------------+
+                                                  type: approve E-7f2a
+             step 3: send-email → done
+             step 4: log-decision → done
+             step 5: archive       → done
+             run complete; operator notified
+</div>
+<p class="meta-row"><strong>Trigger</strong>: workflow hits risky step. <strong>End state</strong>: operator notified; run complete. <strong>Features fired</strong>: GATE surface · Approval primitive · Mid-Exec Mutation (7e) · Explanation Surface (B5). <strong>Serves</strong>: Need #4.</p>
+
+<h3>3.5.5 Lifecycle — weeks-long work</h3>
+<div class="flow">
+Day 1   ANALYZE   operator: "build a new pricing experiment for Billu"
+                  Native: scope, gather context, prior decisions, risks
+                  Native shows: 1-page analysis brief
+
+Day 2   DECIDE    Native: 3 options with tradeoffs
+                  GATE: operator picks option 2 + modifies
+                  decision logged with provenance
+
+Day 3-6 BUILD     Native: writes code; second-opinion review on each change
+                  GATE: operator approves merges
+                  artifacts: design doc · code diff · tests
+
+Day 7   OPERATIONALIZE   Native: prepares for live rollout
+                         monitors in place · alerts configured ·
+                         safe rollback path ready
+                         GATE: operator approves rollout
+
+Day 8+  AUTO-RUN  cadence active; Native runs the experiment cycle
+                  Native: weekly Pulse w/ results
+                  trust signal: 30d clean → operator no longer
+                    gates each cycle; intervenes on novelty only
+
+Day 60+ operator has graduated to next problem; experiment still
+        running; Native owns the cadence.
+</div>
+<p class="meta-row"><strong>Trigger</strong>: operator picks weeks-long work. <strong>End state</strong>: long-running work runs unattended; operator graduates. <strong>Features fired</strong>: Lifecycle Orchestrator (7d) · Task Framework (B8) · Pre/Post Validation (B7) · Person Formation (B18). <strong>Serves</strong>: Need #3 + #5.</p>
+
+<h3>3.5.6 Weekly Pulse (Friday landing view)</h3>
+<div class="flow">
+                                                  Operator opens Pulse
+                                                       |
++================ WEEKLY PULSE ===================+   |
+| Friday 2026-05-09  ·  Asawa                     |&lt;-+
++=================================================+
+| Hours-saved this week:  4.2 / target 3.0  ✓     |
+| Workflows auto-ran:     17 (DayFlow 9 · Billu 8)|
+| Patterns to register:   2 pending               |
+| Decisions to approve:   3 pending               |
+| Decisions replayable:   100% (24/24)            |
++--- decisions needing your eye -------------------+
+| E-7f2a · DayFlow · send weekly-pulse-email      |
+| E-3a91 · Billu   · drop X-team from review       |
+| E-bb2c · Paisa   · approve pricing exp $200K     |
++--- pattern proposals ----------------------------+
+| P-9c1e · DayFlow · slack-hotthreads-daily        |
+| P-4f08 · Asawa   · weekly-portfolio-pulse        |
++--- work in flight (lifecycle phase) -------------+
+| Billu pricing-v2  · BUILD       · ETA Tue       |
+| Paisa onboarding  · ANALYZE     · ETA Mon       |
++==================================================+
+| reply: approve E-&lt;id&gt;  · reject E-&lt;id&gt; ...      |
+|        approve P-&lt;id&gt;  · status W-&lt;id&gt;          |
++==================================================+
+                                                       |
+                                              Operator acts on
+                                              each item via terminal
+                                              utterance.
+</div>
+<p class="meta-row"><strong>Trigger</strong>: Friday 9am opens Pulse. <strong>End state</strong>: week summarized; pending items handled in ~5 min. <strong>Features fired</strong>: AUDIT surface · EMERGE surface · Person Formation (B18) · Closed-Loop Artifact (B9). <strong>Serves</strong>: Need #8 + #4.</p>
+
+<h3>3.5.7 Person-formation (over time)</h3>
+<table>
+  <tr><th>Day</th><th>What changed</th><th>Operator-visible effect</th></tr>
+  <tr><td>1</td><td>Install. Native is generic.</td><td>Replies are stock; explanations are full verbosity.</td></tr>
+  <tr><td>14</td><td>~4 patterns surface; first proposals appear.</td><td>"I noticed you've done X 4 times…" — operator approves first workflow.</td></tr>
+  <tr><td>30</td><td>Native uses operator's verbs in proposals.</td><td>Proposals start to sound less like a template, more like a draft.</td></tr>
+  <tr><td>90</td><td>Native predicts operator's gate decisions ≥75% of the time.</td><td>Approvals fire faster (operator agrees with the pre-shaped recommendation).</td></tr>
+  <tr><td>180</td><td>Native runs work the operator's way.</td><td>Operator graduates to next problem; prior work runs unattended.</td></tr>
+</table>
+<p class="meta-row"><strong>Trigger</strong>: continued use over months. <strong>End state</strong>: Native runs work the operator's way. <strong>Features fired</strong>: Person Formation (B18) · DecisionProvenance · trust calc · EMERGE. <strong>Serves</strong>: Need #5. <strong>Falsification (P7)</strong>: if day-1 == day-180, the personalization loop is broken.</p>
+
+<h3>3.5.8 Multi-tenant switching (context change mid-day)</h3>
+<div class="flow">
+Operator                              Native
+--------                              ------
+type:  "switch to Billu — what's     classify intent (tenant-switch)
+        the status of pricing-v2?"   load Billu domain config + charters
+                                      + relevant artifacts (Billu-scoped only)
+                                        |
+                                      respond with Billu-scoped status
+                                      (no DayFlow data leaks)
+see:   Billu pricing-v2 status,
+       sourced from Billu Charter
+type:  "approve E-3a91"               operate within Billu tenant
+                                      decision logged scoped to Billu
+                                      DayFlow data remains untouched
+</div>
+<p class="meta-row"><strong>Trigger</strong>: operator changes context mid-day. <strong>End state</strong>: context switched cleanly; no cross-tenant bleed. <strong>Features fired</strong>: TENANT surface · Domain Hierarchy (B3) · Charter ↔ Context (B4) · Multi-Human-Org (B14). <strong>Serves</strong>: Need #6.</p>
+
+<h3>3.5.9 Cross-tenant attempt (default-deny)</h3>
+<div class="flow">
+Operator                              Native
+--------                              ------
+type:  "compare DayFlow churn rate    classify intent (cross-tenant access)
+        to Billu margin"              tenant boundary check fires
+                                      PolicyDispatcher: default-deny (ADR-006)
+                                        |
+                                      surface: "This requires explicit
+                                       cross-tenant authorization.
+                                       Confirm? (y/n)"
+type:  n                              cancel; no cross-tenant data accessed
+                                      audit row written:
+                                       tenant_boundary_check.denied
+</div>
+<p class="meta-row"><strong>Trigger</strong>: operator references multiple tenants. <strong>End state</strong>: cross-tenant op requires explicit operator authorization. <strong>Features fired</strong>: TENANT surface · HS-3 hardstop · Tenant primitive · DecisionProvenance. <strong>Serves</strong>: Need #6.</p>
+
+<p class="meta-row"><strong>Connectedness</strong>: Each journey above directly fires features from §6 + surfaces + primitives. Journeys are the operator-facing manifestation of features. Read §3.5 first for WHAT; drill into §6 for HOW PER COMPONENT.</p>
+
+<!-- ============================================================ -->
+<h2 id="philosophy"><span class="num">4.</span>Philosophy + Design Pillars</h2>
+
+<p>Native's design beliefs — the 14 pillars that shape every feature. Each is a falsifiable claim about how operators should be served.</p>
+
+<p class="meta-row"><strong>Foundation doc</strong>: <code>sutra/os/native/doc-layers/L1-philosophy.md</code> · <strong>Per-pillar detail</strong>: <code>sutra/os/native/pillars/P1..P14.md</code></p>
+
+<table>
+<tr><th>ID</th><th>Pillar</th><th>What it means for the operator</th></tr>
+<tr><td>P1</td><td>Artifact-first</td><td>Everything you produce + consume is a typed Artifact — versioned, replayable, citeable</td></tr>
+<tr><td>P2</td><td>Pre/post LLM validation</td><td>Every LLM call has a schema check before AND after — outputs are typed, not freeform</td></tr>
+<tr><td>P3</td><td>All blocks in v1</td><td>Ship the full feature set at v1; don't dribble — the feature set IS the wedge</td></tr>
+<tr><td>P4</td><td>Product POV before tech POV</td><td>Every feature starts from "what for the operator?" before "how to build?"</td></tr>
+<tr><td>P5</td><td>MECE domains</td><td>Every workflow lives in exactly one domain; together they cover the operator's full surface</td></tr>
+<tr><td>P6</td><td>Operator controls explanation</td><td>You decide verbosity, channel, what to surface, what to hide</td></tr>
+<tr><td>P7</td><td>Native grows with operator</td><td>Native learns your voice + style over time (person-formation)</td></tr>
+<tr><td>P8</td><td>Lifecycle is the unit of value</td><td>Tasks compose into lifecycles (analyze → decide → build → operationalize → auto-run); the lifecycle is what ships, not individual tasks</td></tr>
+<tr><td>P9</td><td>Closed-loop artifact</td><td>Outputs become next inputs — work compounds week over week</td></tr>
+<tr><td>P10</td><td>Typed config at every layer</td><td>No tacit rules — every constraint declared in Domain config + Charter config</td></tr>
+<tr><td>P11</td><td>Constrained problem construction</td><td>Prompts are composed deterministically from declared inputs, not freeform</td></tr>
+<tr><td>P12</td><td>Deterministic surface, stochastic core</td><td>Wrapper is testable; only the LLM is non-deterministic</td></tr>
+<tr><td>P13</td><td>Multi-human-org-Native architecture</td><td>Orgs + humans + Native instances compose; data stays in the right scope</td></tr>
+<tr><td>P14</td><td>Outcomes drive design</td><td>Start from operator outcome (hours saved, decisions replayable), not from feature</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="engines"><span class="num">5.</span>Engines</h2>
+
+<p>Six engines compose Native at the system level. Each engine is a durable home for a class of behavior — a bound that holds skills + project-level state (memory, time, context). Per engine: purpose · which user need it serves · what it requires · operator impact · risks · canon source.</p>
+
+<p class="meta-row"><strong>Canon</strong>: <code>sutra/os/engines/*.md</code> — each engine has its own charter. Add your detailing per engine; codex review at end.</p>
+
+<h3 id="engine-adaptive">5.1 Adaptive Protocol Engine</h3>
+<table>
+<tr><th>Purpose</th><td>Picks the right task-decomposition granularity for every request — how finely the task is broken before the LLM executes each piece.</td></tr>
+<tr><th>Serves user need</th><td>#3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>Task Framework (B8) · Decomposition Layer (B2) · Domain Typed Config (B10)</td></tr>
+<tr><th>Operator impact</th><td>Simple tasks run one-shot; complex tasks decompose step-by-step; operator doesn't pick granularity</td></tr>
+<tr><th>Risks</th><td>Over-decomposition wastes tokens; under-decomposition loses accuracy</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/engines/ADAPTIVE-PROTOCOL.md</code></td></tr>
+<tr><th>Acceptance</th><td>Same task type at two different complexity levels produces different decomposition granularity; operator can override the chosen granularity per task; the chosen granularity is recorded in audit so operator can see why.</td></tr>
+</table>
+
+<h3 id="engine-blueprint">5.2 Blueprint Engine</h3>
+<table>
+<tr><th>Purpose</th><td>Generates a per-task plan-preview block BEFORE Claude takes any tool action — operator sees planned steps, scale (files/time/cost), stop conditions, kill-switch.</td></tr>
+<tr><th>Serves user need</th><td>#4 Operator Control</td></tr>
+<tr><th>Requires</th><td>Estimation Engine · hooks framework · tool-use awareness · Intent Layer (B1)</td></tr>
+<tr><th>Operator impact</th><td>Sees plan + scale + cost BEFORE Claude touches files; pre-spend intervention point</td></tr>
+<tr><th>Risks</th><td>Plan-preview overhead per turn; over-detailed plans clutter; under-detailed plans miss risks</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/engines/BLUEPRINT-ENGINE.md</code></td></tr>
+<tr><th>Acceptance</th><td>Before any mutation / branching / multi-step tool action, operator sees a plan-preview with steps, scale (files / time / cost), stop conditions, and kill-switch; the kill-switch ON suppresses preview; preview is skipped on read-only single-call turns.</td></tr>
+</table>
+
+<h3 id="engine-coverage">5.3 Coverage Engine</h3>
+<table>
+<tr><th>Purpose</th><td>Tracks whether a session followed the full Sutra process — like code coverage, but for the operating system itself.</td></tr>
+<tr><th>Serves user need</th><td>#3 Execution + Validation (governance compliance)</td></tr>
+<tr><th>Requires</th><td>per-turn instrumentation hooks · log JSONL · governance block emitters</td></tr>
+<tr><th>Operator impact</th><td>Founder can see WHICH governance steps fired per turn; misses surfaced</td></tr>
+<tr><th>Risks</th><td>False-negatives if hook fails silently; over-instrumentation noise</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/engines/COVERAGE-ENGINE.md</code></td></tr>
+<tr><th>Acceptance</th><td>At end of session, operator can query "which governance steps fired this turn" and receive a structured rollup; missing required emissions surface as advisory (not block); coverage report exports.</td></tr>
+</table>
+
+<h3 id="engine-estimation">5.4 Estimation Engine</h3>
+<table>
+<tr><th>Purpose</th><td>Generates a structured cost / impact / confidence / time table BEFORE every task — so founder + system make informed commit-or-defer decisions.</td></tr>
+<tr><th>Serves user need</th><td>#4 Operator Control + #3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>Task Framework (B8) · classification (Human-Sutra) · historical observable distributions</td></tr>
+<tr><th>Operator impact</th><td>Sees expected cost / time / impact before approving; can commit or defer</td></tr>
+<tr><th>Risks</th><td>Stale estimates if calibration drifts; over-cautious estimates lead to under-shipping</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/engines/ESTIMATION-ENGINE.md</code></td></tr>
+<tr><th>Acceptance</th><td>Before every multi-step task operator sees estimated cost + time + files-touched + impact; after task completion, ACTUAL vs ESTIMATE is captured for calibration; drift ≥20% over a rolling 30-day window surfaces as a recalibration advisory in the next estimate.</td></tr>
+</table>
+
+<h3 id="engine-hsutra">5.5 Human-Sutra Engine</h3>
+<table>
+<tr><th>Purpose</th><td>Classifier that labels every operator ↔ Native ↔ Native message into a 9-cell grid (3 verbs × 3 directions) with 3 tags + reversibility note. The entry point for every operator utterance.</td></tr>
+<tr><th>Serves user need</th><td>#1 Input</td></tr>
+<tr><th>Requires</th><td>input router · audit log · founder-direction reader · log JSONL</td></tr>
+<tr><th>Operator impact</th><td>Native responds appropriately per message type (question vs critique vs instruction); fewer redundant clarifications</td></tr>
+<tr><th>Risks</th><td>Misclassification → wrong response shape; over-asking when confidence low</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/engines/HUMAN-SUTRA-ENGINE.md</code> · ADR-001</td></tr>
+<tr><th>Acceptance</th><td>Every operator utterance receives a 9-cell classification + 3 tags + reversibility tag emitted as the first-line header on the response; operator-override rate (operator corrects the classification) stays ≤5% over a rolling 7-day window.</td></tr>
+</table>
+
+<h3 id="engine-native">5.6 Native Engine (the runtime)</h3>
+<table>
+<tr><th>Purpose</th><td>The runtime that executes operator-declared workflows. Composes every other engine + feature; supports multiple tenants; every step is recorded so operator can replay; hardstops refuse to continue on declared failure modes.</td></tr>
+<tr><th>Serves user need</th><td>All 8 — the umbrella that composes every other engine + feature</td></tr>
+<tr><th>Requires</th><td>Everything else — all 6 engines + 25 features + 6 surfaces + 10 primitives + canon ADRs</td></tr>
+<tr><th>Operator impact</th><td>The whole Native product — workflows declared, run, audited; multi-tenant; replayable</td></tr>
+<tr><th>Risks</th><td>Surface invariant violations · canon drift · cross-tenant leakage (mitigated by hardstops HS-1..HS-8)</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/engines/NATIVE-ENGINE.md</code> (INDEX, 116 lines) + 113 part files in <code>sutra/os/native/</code></td></tr>
+<tr><th>Acceptance</th><td>Native runtime executes operator-declared workflows; every step is recorded so operator can replay; workflows survive process restart; cross-tenant calls obey ACL; hardstops HS-1..HS-8 fire on their declared triggers.</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="features"><span class="num">6.</span>Features (25 product blocks)</h2>
+
+<p>25 feature blocks — what Native does for the operator. Grouped by which user need they primarily serve. Each block has a concise card; detailing is iterative.</p>
+
+<p class="meta-row"><strong>Canon</strong>: <code>sutra/os/native/blocks/*.md</code> — 25 L8 Feature Spec files. Each card links back.</p>
+
+<h3 id="features-input">6.A Input + Decomposition — serves Need #1, #3 (5 features)</h3>
+
+<h4 id="feature-b1">6.A.1 Intent Layer (B1)</h4>
+<table>
+<tr><th>Summary</th><td>Captures user intent (high-level) + specifics (detailed sub-tasks); pre-LLM declares expected output schema, post-LLM checks actual against it.</td></tr>
+<tr><th>Serves</th><td>#1 Input</td></tr>
+<tr><th>Requires</th><td>ROUTE surface · PromptBuilder (B11) · Pre/Post Validation (B7)</td></tr>
+<tr><th>Operator impact</th><td>Operator types freeform; Native infers structure + checks output before showing</td></tr>
+<tr><th>Risks</th><td>Misclassification → wrong workflow runs; ambiguous intent → over-clarifying</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B1-intent-layer.md</code></td></tr>
+<tr><th>Acceptance</th><td>Operator types freeform intent; Native returns parsed intent_type + structured sub-intents within one turn; pre-declared output schema is shown to operator before LLM call; post-LLM output validated against that schema and rejected if non-conforming.</td></tr>
+</table>
+
+<h4 id="feature-b2">6.A.2 Decomposition Layer (B2)</h4>
+<table>
+<tr><th>Summary</th><td>Splits the operator's request into sub-intents; branches into a clarification sub-routine when ambiguous, otherwise context-resolves via the Native ecosystem.</td></tr>
+<tr><th>Serves</th><td>#1 Input</td></tr>
+<tr><th>Requires</th><td>Intent Layer (B1) · Domain Hierarchy (B3) · clarification flow</td></tr>
+<tr><th>Operator impact</th><td>Operator says big things; Native breaks them into runnable steps</td></tr>
+<tr><th>Risks</th><td>Over-decomposition → fragmented work; under-decomposition → too coarse</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B2-decomposition.md</code></td></tr>
+<tr><th>Acceptance</th><td>Given an ambiguous intent, Native surfaces clarification questions before decomposing; given a clear intent, Native returns a runnable sub-task list within one turn; each sub-task either maps to an existing Workflow or surfaces "no workflow yet" with a proposed shape.</td></tr>
+</table>
+
+<h4 id="feature-b11">6.A.3 PromptBuilder — Constrained Problem Construction (B11)</h4>
+<table>
+<tr><th>Summary</th><td>Every LLM call composed deterministically from Domain config + Charter config + relevant Artifacts + Step inputs + Intent specifics. The problem is constructed before being given to the LLM.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>Domain Typed Config (B10) · Charter (B4) · Artifact catalog · Intent Layer (B1)</td></tr>
+<tr><th>Operator impact</th><td>Same inputs always produce same output — replayable, auditable</td></tr>
+<tr><th>Risks</th><td>Stale Charter/Domain → stale prompts; lossy Charter selection misses constraints</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B11-promptbuilder.md</code></td></tr>
+<tr><th>Acceptance</th><td>Same operator input + same Charter/Domain config produces byte-identical LLM prompt across re-runs; prompt assembly is traceable — operator can ask "show what went into this prompt" and see the Domain + Charter + Artifacts + Step inputs + Intent specifics that composed it.</td></tr>
+</table>
+
+<h4 id="feature-b8">6.A.4 Task Framework + Factors-Reasoning (B8)</h4>
+<table>
+<tr><th>Summary</th><td>Sutra's 8-phase task lifecycle (OBJECTIVE → OBSERVE → SHAPE → PLAN → EXECUTE → MEASURE → OPERATIONALIZE → LEARN) + a typed <code>factors[]</code> array between SHAPE and PLAN — enumerated, weighted factors that frame the reasoning step.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>Adaptive Protocol Engine · Task Lifecycle (D30a)</td></tr>
+<tr><th>Operator impact</th><td>Every task progresses through the 8 phases; the factors framing each plan are made explicit</td></tr>
+<tr><th>Risks</th><td>Per-phase overhead; factors quality depends on Charter quality</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B8-task-framework-factors.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every multi-step task progresses through OBJECTIVE → OBSERVE → SHAPE → PLAN → EXECUTE → MEASURE → OPERATIONALIZE → LEARN; operator can inspect current phase + factors[] at any time; phase transitions are recorded in the audit surface.</td></tr>
+</table>
+
+<h4 id="feature-7d">6.A.5 Lifecycle Orchestrator (7d)</h4>
+<table>
+<tr><th>Summary</th><td>The 8-phase lifecycle becomes Native's first-class Execution-state phases — picked + carried by the Task Framework.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>Task Framework (B8) · ExecutionResult primitive · Workflow primitive</td></tr>
+<tr><th>Operator impact</th><td>Long-running work progresses cleanly; operator sees the current phase</td></tr>
+<tr><th>Risks</th><td>Lifecycle state drift between Native + operator's mental model</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/7d-lifecycle-orchestrator.md</code></td></tr>
+<tr><th>Acceptance</th><td>A weeks-long task survives session restart with current phase preserved; operator sees current phase on resume; phase transitions emit notifications per operator preferences (no surprise advances).</td></tr>
+</table>
+
+<h3 id="features-context">6.B Context — serves Need #2 (4 features)</h3>
+
+<h4 id="feature-7a">6.B.1 Context Structuring (7a)</h4>
+<table>
+<tr><th>Summary</th><td>For each LLM call, Native picks the right artifacts from the catalog so the operator does not have to remember and assemble context per task — relevance over recency over volume, within the call's budget.</td></tr>
+<tr><th>Serves</th><td>#2 Context</td></tr>
+<tr><th>Requires</th><td>Artifact catalog · Charter scope (B4) · scope-bounded retrieval (v1) · F1 semantic ranking (v2+ only)</td></tr>
+<tr><th>Operator impact</th><td>Right context appears for each LLM call without operator having to remember and pick</td></tr>
+<tr><th>Risks</th><td>Wrong retrieval → wrong context → wrong output; retrieval cost</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/7a-context-structuring.md</code></td></tr>
+<tr><th>Acceptance</th><td>For any LLM call, operator can ask "show me the context used" and receive a ranked artifact list — <strong>v1</strong>: ranked by Charter-declared scope + recency + explicit operator tags (no semantic similarity); <strong>v2+</strong>: semantic relevance ranking lands via F1. The assembled context fits the declared budget either way; operator does not pick context per routine task in either version.</td></tr>
+</table>
+
+<h4 id="feature-7b">6.B.2 Localized Intelligence (7b)</h4>
+<table>
+<tr><th>Summary</th><td>Per-task context-window declaration — Tenant + Project + Workflow scoping turns the global artifact catalog into a task-specific working set so the LLM's attention is localized.</td></tr>
+<tr><th>Serves</th><td>#2 Context</td></tr>
+<tr><th>Requires</th><td>Context Structuring (7a) · Tenant primitive · Workflow primitive</td></tr>
+<tr><th>Operator impact</th><td>Context stays narrow + relevant per task; cheaper LLM calls</td></tr>
+<tr><th>Risks</th><td>Over-narrow window misses cross-domain dependencies</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/7b-localized-intelligence.md</code></td></tr>
+<tr><th>Acceptance</th><td>Given a Tenant + Project + Workflow scope, retrieved context excludes artifacts outside the scope; per-task LLM cost drops vs full-catalog retrieval; cross-Domain dependencies surface as advisory rather than being silently included.</td></tr>
+</table>
+
+<h4 id="feature-b4">6.B.3 Charter ↔ Context Boundary (B4)</h4>
+<table>
+<tr><th>Summary</th><td>Each Charter declares a bounded <code>context_scope</code> (included artifacts + excluded artifacts) so Charter-level retrieval is scoped.</td></tr>
+<tr><th>Serves</th><td>#2 Context</td></tr>
+<tr><th>Requires</th><td>Charter primitive · Artifact metadata · scope schema</td></tr>
+<tr><th>Operator impact</th><td>Charters are reusable scoping units; operator declares once + reuses</td></tr>
+<tr><th>Risks</th><td>Stale scope as artifact catalog evolves; over-narrow scope misses signal</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B4-charter-context.md</code></td></tr>
+<tr><th>Acceptance</th><td>Given a Charter with context_scope declared, every LLM call under that Charter retrieves only included artifacts; when operator updates the Charter scope, the next LLM call's retrieved set reflects the new scope.</td></tr>
+</table>
+
+<h4 id="feature-b6">6.B.4 Research-on-the-fly (B6)</h4>
+<table>
+<tr><th>Summary</th><td>Native orchestrates ecosystem tools (Context7, web search, Slack, other Connectors) into a <code>ResearchWorkflow</code> class that produces a Research Artifact in response to operator's research ask.</td></tr>
+<tr><th>Serves</th><td>#2 Context</td></tr>
+<tr><th>Requires</th><td>Connector layer (B17) · Workflow primitive · Artifact catalog</td></tr>
+<tr><th>Operator impact</th><td>Operator asks "look this up" → Native returns a sourced, citable artifact</td></tr>
+<tr><th>Risks</th><td>Stale 3rd-party docs; rate-limit failures; cost spikes on long research</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B6-research-on-fly.md</code></td></tr>
+<tr><th>Acceptance</th><td>Operator asks "research X" and receives a Research Artifact citing sources within ≤90 seconds for a short query (≤3 sources) or ≤5 minutes for deep research; sources are visible + clickable; the Artifact appears in the catalog for re-use; failures (rate-limit, stale doc) surface with a retry option, not silent partial output.</td></tr>
+</table>
+
+<h3 id="features-validation">6.C Validation — serves Need #3 (3 features)</h3>
+
+<h4 id="feature-b7">6.C.1 Pre/Post LLM-Node Validation (B7)</h4>
+<table>
+<tr><th>Summary</th><td>Every LLM-bearing step pre-declares an expected output schema and post-checks the actual output against that schema before the step is allowed to complete.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>PromptBuilder (B11) · typed config (B10)</td></tr>
+<tr><th>Operator impact</th><td>LLM outputs are typed + checked; failures surface immediately, not silently downstream</td></tr>
+<tr><th>Risks</th><td>Schema drift between block versions; false rejects on valid-but-novel output</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B7-pre-post-validation.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every LLM-bearing step pre-declares an expected output shape; post-LLM output is validated against that shape; non-conforming output surfaces as a step failure (not silently passed downstream); validation failures route to operator for review.</td></tr>
+</table>
+
+<h4 id="feature-b12">6.C.2 End-to-End Testing (B12)</h4>
+<table>
+<tr><th>Summary</th><td>Every Native primitive + every PromptBuilder + every artifact-resolve has a deterministic test; only <code>invoke_host_llm</code> + <code>host_action</code> are stochastic.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation</td></tr>
+<tr><th>Requires</th><td>Test infrastructure · primitive registry · fixtures</td></tr>
+<tr><th>Operator impact</th><td>Regressions caught fast; non-LLM core remains deterministic</td></tr>
+<tr><th>Risks</th><td>Test maintenance burden; missing-fixture coverage gaps</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B12-e2e-testing.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every Native primitive has at least one deterministic test; the full deterministic suite runs in CI in ≤2 minutes for v1 scope; only LLM-bearing + external-action steps are flagged stochastic; on failure the broken primitive name + step are surfaced.</td></tr>
+</table>
+
+<h4 id="feature-7c">6.C.3 Block-by-Block Mode (7c)</h4>
+<table>
+<tr><th>Summary</th><td>A step-through operating mode where Native surfaces "context used" per step, pauses for the founder to verify, then continues — gives the operator explicit per-step verification with tunable verbosity.</td></tr>
+<tr><th>Serves</th><td>#4 Operator Control + #3 Validation</td></tr>
+<tr><th>Requires</th><td>Workflow primitive · Step primitive · operator UI</td></tr>
+<tr><th>Operator impact</th><td>Operator sees mid-execution detail; can stop / adjust per step</td></tr>
+<tr><th>Risks</th><td>Slow execution; cognitive load on operator at every step</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/7c-block-by-block-mode.md</code></td></tr>
+<tr><th>Acceptance</th><td>With Block-by-Block mode ON, Native pauses after each step + surfaces "context used" + waits for operator to verify before continuing; operator can adjust + resume; mode is a one-toggle ON/OFF per Workflow.</td></tr>
+</table>
+
+<h3 id="features-control">6.D Operator Control — serves Need #4 (3 features)</h3>
+
+<h4 id="feature-b5">6.D.1 Explanation Surface (B5)</h4>
+<table>
+<tr><th>Summary</th><td>Artifacts are produced silently in the background; the human-facing explanation surface is a separate, operator-controlled layer (verbosity, what to surface, what to hide, which channel).</td></tr>
+<tr><th>Serves</th><td>#4 Operator Control</td></tr>
+<tr><th>Requires</th><td>AUDIT surface · operator preferences config</td></tr>
+<tr><th>Operator impact</th><td>Operator tunes how Native explains itself; no over-explaining; no under-surfacing</td></tr>
+<tr><th>Risks</th><td>Under-explanation hides important state; mis-tuned channels miss notifications</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B5-explanation-surface.md</code></td></tr>
+<tr><th>Acceptance</th><td>Operator tunes (per Tenant) which surfaces emit explanations + verbosity level; artifacts are produced even when explanation surface is OFF; the AUDIT surface still captures the silent operations for later inspection.</td></tr>
+</table>
+
+<h4 id="feature-7e">6.D.2 Mid-Execution Mutation (7e)</h4>
+<table>
+<tr><th>Summary</th><td>Operator may edit a Workflow during its run; system gates the edit by change-class — trivial changes auto-approved, material changes founder-approved (backed by HS-1 reflexive check + Approval primitive).</td></tr>
+<tr><th>Serves</th><td>#4 Operator Control</td></tr>
+<tr><th>Requires</th><td>Workflow primitive · GATE surface · change-classifier</td></tr>
+<tr><th>Operator impact</th><td>Operator nudges mid-flight without restarting; material edits gated</td></tr>
+<tr><th>Risks</th><td>Material mutation during execution → inconsistency; classifier false-trivial → unsafe edit slips</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/7e-mid-exec-mutation.md</code></td></tr>
+<tr><th>Acceptance</th><td>Operator edits a running Workflow; trivial edits (description, comment, non-runtime config) auto-apply; material edits (steps, primitives, gates) require approval before apply; the edit class is shown to operator before commit.</td></tr>
+</table>
+
+<h4 id="feature-b18">6.D.3 Person Formation (B18)</h4>
+<table>
+<tr><th>Summary</th><td>Native models the operator's persona over time by aggregating decisions + events + utterances + estimates into a queryable taste / decision-style / voice / risk-tolerance / cadence profile.</td></tr>
+<tr><th>Serves</th><td>#5 Learning (primary) + #4 Operator Control (proposals match operator voice)</td></tr>
+<tr><th>Requires</th><td>DecisionProvenance primitive · audit log · EMERGE surface</td></tr>
+<tr><th>Operator impact</th><td>Native's proposals + outputs increasingly match the operator's voice + risk posture + cadence</td></tr>
+<tr><th>Risks</th><td>Overfit to short window; learned persona ≠ current persona after life/role changes</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B18-person-formation.md</code></td></tr>
+<tr><th>Acceptance</th><td>After 14 days of operator usage, Native's proposals match the operator's stated taste / risk / voice profile at ≥70% operator agree-rate (measured by operator approve vs reject on proposals over a rolling 14-day window); profile is queryable + editable by operator.</td></tr>
+</table>
+
+<h3 id="features-config">6.E Typed Config — serves Need #3 (2 features)</h3>
+
+<h4 id="feature-b10">6.E.1 Domain Typed Config + Charter Typed Config (B10)</h4>
+<table>
+<tr><th>Summary</th><td>Domain carries typed <code>principles[]</code> + <code>guidelines[]</code> + <code>decisions[]</code>; Charter carries typed <code>instructions[]</code> + <code>guidelines[]</code> + <code>constraints[]</code>. Every constraint is declared, not tacit, and consumed by PromptBuilder.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation · feeds PromptBuilder</td></tr>
+<tr><th>Requires</th><td>typed schema registry · Domain primitive · Charter primitive</td></tr>
+<tr><th>Operator impact</th><td>No tacit rules; every constraint declared; Native applies them explicitly per call</td></tr>
+<tr><th>Risks</th><td>Schema rigidity vs new constraints; stale entries drag</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B10-typed-config.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every constraint applied to an LLM call is traceable back to a Domain entry or a Charter entry — no untyped / tacit rules; operator adds a constraint and sees it reflected in the next prompt without manual wiring.</td></tr>
+</table>
+
+<h4 id="feature-b3">6.E.2 Domain Hierarchy (MECE) (B3)</h4>
+<table>
+<tr><th>Summary</th><td>Domains are MECE (Mutually Exclusive, Collectively Exhaustive) per user — every Workflow lives in exactly one Domain, no overlap, together they cover the user's full surface.</td></tr>
+<tr><th>Serves</th><td>#3 Execution + Validation (per-Domain context isolation)</td></tr>
+<tr><th>Requires</th><td>Domain primitive · Workflow primitive</td></tr>
+<tr><th>Operator impact</th><td>Operator's surface partitions cleanly; no orphan workflows; clear ownership</td></tr>
+<tr><th>Risks</th><td>Domain re-partitioning is disruptive; cross-Domain leakage if MECE is wrong</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B3-domain-hierarchy-mece.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every Workflow is registered under exactly one Domain — no orphans, no duplicates; audit surface flags MECE violations at registration time; operator can rebalance Domains without losing Workflow references.</td></tr>
+</table>
+
+<h3 id="features-closedloop">6.F Closed-Loop — serves Need #5 (1 feature)</h3>
+
+<h4 id="feature-b9">6.F.1 Closed-Loop Artifact (B9)</h4>
+<table>
+<tr><th>Summary</th><td>Every typed input, every operator utterance, every LLM output is stored as a Native-recognized typed Artifact and re-consumed by the LLM on the next iteration — Native's outputs become Native's next inputs.</td></tr>
+<tr><th>Serves</th><td>#5 Learning (compounding work week over week)</td></tr>
+<tr><th>Requires</th><td>Artifact primitive · catalog · re-consume mechanism (Context Structuring 7a)</td></tr>
+<tr><th>Operator impact</th><td>Native's work compounds — outputs become inputs; lifecycle gets richer over time</td></tr>
+<tr><th>Risks</th><td>Artifact catalog growth → retrieval cost; stale artifacts re-consumed</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B9-closed-loop-artifact.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every operator utterance + LLM output is stored as a typed Artifact in the catalog; the next LLM iteration for a related task retrieves prior Artifacts as context; operator can ask "what did Native learn from last week" and see Artifact lineage.</td></tr>
+</table>
+
+<h3 id="features-boundaries">6.G Boundaries — serves Need #6 (3 features)</h3>
+
+<h4 id="feature-b14">6.G.1 Multi-Human-Org Architecture (B14)</h4>
+<table>
+<tr><th>Summary</th><td>Org-Tenant has child Human-Tenants; each Human-Tenant runs its own Native instance with isolated audit log + ACL; Org-Tenant carries org-shared artifacts.</td></tr>
+<tr><th>Serves</th><td>#6 Boundaries</td></tr>
+<tr><th>Requires</th><td>Tenant primitive · audit isolation · ACL surface</td></tr>
+<tr><th>Operator impact</th><td>Companies + people don't bleed; org-level shared artifacts visible where authorized</td></tr>
+<tr><th>Risks</th><td>ACL drift over time; cross-tenant leakage if isolation breaks</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B14-multi-human-org.md</code></td></tr>
+<tr><th>Acceptance</th><td>Two Human-Tenants under the same Org-Tenant have isolated audit + ACL; Org-Tenant artifacts are visible only to authorized Human-Tenants; cross-Human-Tenant queries default-deny unless ACL explicitly allows.</td></tr>
+</table>
+
+<h4 id="feature-b15">6.G.2 Local vs Org Artifacts (B15)</h4>
+<table>
+<tr><th>Summary</th><td>Each Artifact carries a <code>scope</code> ∈ {<code>local-tenant</code>, <code>org-tenant</code>}; cross-tenant reads require PolicyDispatcher allow per the ADR-006 Tenant-isolation pattern.</td></tr>
+<tr><th>Serves</th><td>#6 Boundaries</td></tr>
+<tr><th>Requires</th><td>Artifact primitive · PolicyDispatcher · Tenant primitive (ADR-006)</td></tr>
+<tr><th>Operator impact</th><td>Operator declares scope per artifact; cross-tenant requires explicit policy</td></tr>
+<tr><th>Risks</th><td>Mis-scoped artifacts → leak or starvation</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B15-local-org-artifacts.md</code></td></tr>
+<tr><th>Acceptance</th><td>Every Artifact declares a scope (local-tenant or org-tenant); cross-tenant read requires explicit PolicyDispatcher allow; denied access emits an AUDIT row with the reason for the deny.</td></tr>
+</table>
+
+<h4 id="feature-b13">6.G.3 Multi-Runtime Concurrency (B13)</h4>
+<table>
+<tr><th>Summary</th><td>Two Native instances can run side-by-side against the same Artifact catalog without corrupting state — the operator does not have to coordinate them by hand. Deadlock recovery deferred to v2.</td></tr>
+<tr><th>Serves</th><td>#6 Boundaries</td></tr>
+<tr><th>Requires</th><td>file-system locks · lock table · cross-process visibility</td></tr>
+<tr><th>Operator impact</th><td>Two Native instances run concurrently without state corruption</td></tr>
+<tr><th>Risks</th><td>Deadlock (deferred to v2); orphan lock files</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B13-multi-runtime-concurrency.md</code></td></tr>
+<tr><th>Acceptance</th><td>Two Native instances running concurrently against the same Artifact catalog do not corrupt state; on a write conflict, one succeeds + the other surfaces a retry option to operator; concurrent reads always succeed.</td></tr>
+</table>
+
+<h3 id="features-interop">6.H Interop — serves Need #7 (2 features)</h3>
+
+<h4 id="feature-b17">6.H.1 External Tools (Connector Layer) (B17)</h4>
+<table>
+<tr><th>Summary</th><td>Every external tool (Slack / email / web) appears inside Native as a Connector — incoming messages land in the operator's artifact catalog automatically; outbound calls are recorded for replay. Operator stops switching apps to consume + send.</td></tr>
+<tr><th>Serves</th><td>#7 Interop</td></tr>
+<tr><th>Requires</th><td>Connector type registry · Workflow primitive</td></tr>
+<tr><th>Operator impact</th><td>Operator's existing tools (Slack/Email/web) plug into Native; no need to switch surfaces</td></tr>
+<tr><th>Risks</th><td>3rd-party API changes break connectors; rate-limit / auth failures</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B17-external-tools-connectors.md</code></td></tr>
+<tr><th>Acceptance</th><td>Slack / Email / web Connectors emit typed inbound Artifacts into the catalog; outbound calls record DecisionProvenance + Artifact rows; Connector failure surfaces with a retry or alt-path; operator does not switch surfaces to consume Connector output.</td></tr>
+</table>
+
+<h4 id="feature-b16">6.H.2 Native-Native A2A (B16)</h4>
+<table>
+<tr><th>Summary</th><td>Two Native instances can exchange typed messages with each other — sender knows the message landed, receiver knows who sent it. v1 ships a log-only stub for operator visibility; full coordination protocol deferred to v2+.</td></tr>
+<tr><th>Serves</th><td>#7 Interop</td></tr>
+<tr><th>Requires</th><td><strong>v1</strong>: DecisionProvenance logger only (no transport); <strong>v2+</strong>: A2A transport protocol + ack mechanism</td></tr>
+<tr><th>Operator impact</th><td><strong>v1</strong>: operator can audit attempted A2A intents via DecisionProvenance (no actual cross-instance behavior); <strong>v2+</strong>: multi-Native-instance setups coordinate through real message exchange</td></tr>
+<tr><th>Risks</th><td>Ack failures; protocol churn between Native versions</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B16-native-native-a2a.md</code></td></tr>
+<tr><th>Acceptance</th><td><strong>v1 (log-only stub)</strong>: a Native instance records its outbound A2A intent + receiver identity into DecisionProvenance with agent_identity_chain so operator can audit attempted cross-instance communication; no actual cross-instance transport. <strong>v2+</strong>: two Native instances exchange a typed message and receive ack within ≤5 seconds per message; ack failure surfaces as a retry option, not silent loss.</td></tr>
+</table>
+
+<h3 id="features-audit">6.I Audit + Replay — serves Need #8 (1 feature)</h3>
+
+<h4 id="feature-b19">6.I.1 Audit Trail (B19)</h4>
+<table>
+<tr><th>Summary</th><td>Every step Native takes is recorded — the operator can replay any past run end-to-end, see what happened, why, and what the inputs were. Cross-cutting: every other feature emits audit rows into this trail.</td></tr>
+<tr><th>Serves</th><td>#8 Audit + Replay</td></tr>
+<tr><th>Requires</th><td>AUDIT surface · DecisionProvenance primitive · Artifact catalog · all 6 engines emit audit rows</td></tr>
+<tr><th>Operator impact</th><td>Operator never loses the why behind a past decision; full replay supports debug + defend + compound</td></tr>
+<tr><th>Risks</th><td>Audit log volume growth → storage cost; replay performance on long histories; silent fail-open mitigated by HS-4</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/B19-audit-trail.md</code> (forward-canon to land with implementation)</td></tr>
+<tr><th>Acceptance</th><td>100% of decisions have a DecisionProvenance row (zero gaps, enforced by HS-4 on write failure); operator can replay any past task end-to-end with full input / output / decision trail; replay completes within ≤30 seconds for a single-day window.</td></tr>
+</table>
+
+<h3 id="features-deferred">6.X Deferred to v2+</h3>
+
+<h4 id="feature-f1">6.X.1 Indexing + Context-Retrieval Mechanisms (F1)</h4>
+<table>
+<tr><th>Summary</th><td>Semantic content-similarity indexing + embedding retrieval for the artifact catalog. <strong>Deferred to v2+</strong> per canon §12.13 row F1. <strong>v1 retrieval</strong> is metadata-driven via 7a Context Structuring — Charter scope filter + recency + explicit operator tags + exact-ID lookup. F1 adds the missing semantic similarity dimension.</td></tr>
+<tr><th>Serves</th><td>#2 Context (v2+)</td></tr>
+<tr><th>Requires</th><td>vector store · embedding model · retrieval framework</td></tr>
+<tr><th>Operator impact</th><td><strong>v2+</strong>: operator queries return semantically-relevant artifacts (content-similarity ranked). <strong>v1</strong>: operator still gets metadata-driven retrieval via 7a (Charter scope + recency + explicit tags + exact-ID lookup); semantic content-similarity is the gap F1 closes in v2+.</td></tr>
+<tr><th>Risks</th><td>Stale embeddings; retrieval quality; cost at scale</td></tr>
+<tr><th>Canon</th><td><code>sutra/os/native/blocks/F1-indexing.md</code></td></tr>
+<tr><th>Acceptance (v2+)</th><td>Operator's semantic query returns ranked artifacts by relevance (content-similarity); embedding refresh on artifact create / update; cost stays within budget per query. <strong>v1</strong>: F1 is out of scope; v1 retrieval is the metadata-driven 7a path (Charter scope + recency + explicit tags + exact-ID lookup) — not "ID-only".</td></tr>
+</table>
+
+<h3 id="traceability">6.Z Traceability Matrix (Need → Goal → Story → Feature)</h3>
+
+<p>One row per feature. Each row links the operator's need (§2) to the goal it advances (§11.0), the JTBD story that expresses it (§2.5), and the feature block that delivers it (§6). Reverse-readable: any goal lets you list its supporting features; any feature points back to its operator-need parent.</p>
+
+<table>
+<tr><th>Feature</th><th>Need</th><th>Goal(s)</th><th>Story(s)</th></tr>
+<tr><td>B1 Intent Layer</td><td>#1 Input</td><td>G1</td><td>S1</td></tr>
+<tr><td>B2 Decomposition Layer</td><td>#1 Input</td><td>G1</td><td>S1</td></tr>
+<tr><td>B11 PromptBuilder</td><td>#3 Execution + Validation</td><td>G1 · G5</td><td>S3</td></tr>
+<tr><td>B8 Task Framework + Factors</td><td>#3 Execution + Validation</td><td>G1</td><td>S1 · S3</td></tr>
+<tr><td>7d Lifecycle Orchestrator</td><td>#3 Execution + Validation</td><td>G1 · G4 · G5</td><td>S3</td></tr>
+<tr><td>7a Context Structuring</td><td>#2 Context</td><td>G1</td><td>S2</td></tr>
+<tr><td>7b Localized Intelligence</td><td>#2 Context</td><td>G1</td><td>S2</td></tr>
+<tr><td>B4 Charter ↔ Context Boundary</td><td>#2 Context</td><td>G1</td><td>S2</td></tr>
+<tr><td>B6 Research-on-the-fly</td><td>#2 Context</td><td>G1</td><td>S2</td></tr>
+<tr><td>B7 Pre/Post LLM-Node Validation</td><td>#3 Execution + Validation</td><td>G1 · G5</td><td>S3</td></tr>
+<tr><td>B12 End-to-End Testing</td><td>#3 Execution + Validation</td><td>G5</td><td>S3 · S8</td></tr>
+<tr><td>7c Block-by-Block Mode</td><td>#4 Operator Control (+ #3)</td><td>G2</td><td>S4</td></tr>
+<tr><td>B5 Explanation Surface</td><td>#4 Operator Control</td><td>G2</td><td>S4 · S8</td></tr>
+<tr><td>7e Mid-Execution Mutation</td><td>#4 Operator Control</td><td>G2</td><td>S4</td></tr>
+<tr><td>B18 Person Formation</td><td>#5 Learning (+ #4)</td><td>G1 · G3 · G4</td><td>S5</td></tr>
+<tr><td>B10 Domain + Charter Typed Config</td><td>#3 Execution + Validation</td><td>G1 · G5</td><td>S3</td></tr>
+<tr><td>B3 Domain Hierarchy (MECE)</td><td>#3 Execution + Validation</td><td>G1</td><td>S1</td></tr>
+<tr><td>B9 Closed-Loop Artifact</td><td>#5 Learning</td><td>G1 · G5</td><td>S5 · S8</td></tr>
+<tr><td>B14 Multi-Human-Org Architecture</td><td>#6 Boundaries</td><td>G7</td><td>S6</td></tr>
+<tr><td>B15 Local vs Org Artifacts</td><td>#6 Boundaries</td><td>G7</td><td>S6</td></tr>
+<tr><td>B13 Multi-Runtime Concurrency</td><td>#6 Boundaries</td><td>G6 · G7</td><td>S6</td></tr>
+<tr><td>B17 External Tools (Connector Layer)</td><td>#7 Interop</td><td>G1</td><td>S7</td></tr>
+<tr><td>B16 Native-Native A2A</td><td>#7 Interop</td><td>G1</td><td>S7</td></tr>
+<tr><td>F1 Indexing + Context-Retrieval (v2+)</td><td>#2 Context (v2+)</td><td>—</td><td>S2 (v2+)</td></tr>
+<tr><td>B19 Audit Trail</td><td>#8 Audit + Replay</td><td>G5 · G6</td><td>S8</td></tr>
+<tr><td colspan="4"><em>Cross-cutting note: every feature above ALSO emits rows into the §6.I.1 B19 Audit Trail. B19 is the dedicated feature card; the cross-cutting behavior is the runtime guarantee that no feature writes outside the audit boundary.</em></td></tr>
+</table>
+
+<p class="meta-row"><strong>Reverse views</strong>: <em>by Goal</em> — pick a G-row in §11.0 + scan this matrix for matching rows. <em>by Story</em> — pick an S-row in §2.5 + scan for matching rows. <em>by Need</em> — group rows by the Need column. <strong>Connects to</strong>: §2 Needs · §2.5 Stories · §6 Features · §11.0 Goals.</p>
+
+<!-- ============================================================ -->
+<h2 id="adrs"><span class="num">7.</span>Architecture Decision Records (ADRs)</h2>
+
+<p>17 decisions locked in canon. Each ADR captures: Status · Context · Decision · Consequences (Nygard 2011 format). Add your detailing per ADR; codex reviews on changes.</p>
+
+<p class="meta-row"><strong>Canon</strong>: <code>sutra/os/decisions/ADR-001..017.md</code></p>
+
+<table>
+<tr><th>ID</th><th>Title</th><th>Topic</th></tr>
+<tr><td>ADR-001</td><td>Human-Sutra Interaction Layer — 9-Cell CQRS-Extended Grid + 3 Tags</td><td>Input classification grid; the entry block for every operator utterance</td></tr>
+<tr><td>ADR-002</td><td>OUT-DIRECT 3-check + REQUEST·HUMAN-EXEC sub-form</td><td>Native asking operator to do something: 3-check safety + human-exec carve-out</td></tr>
+<tr><td>ADR-003</td><td>PERMISSIONS extension — MCP auto-approve + first-time Edit/Write inside cwd</td><td>Permission boundary for MCP tools + first-time file ops</td></tr>
+<tr><td>ADR-004</td><td>Registry-and-Effector Split (Native vs Claude)</td><td>What Native registers vs what Claude effects — clean split</td></tr>
+<tr><td>ADR-005</td><td>Host-LLM Host Selection (claude --bare vs codex)</td><td>Which LLM host runs each workflow step</td></tr>
+<tr><td>ADR-006</td><td>Tenant Isolation via <code>Domain.tenant_id</code></td><td>Multi-tenant boundary at the Domain primitive level</td></tr>
+<tr><td>ADR-007</td><td>Decision Provenance as Typed Primitive</td><td>Replay record schema — every decision is reconstructable</td></tr>
+<tr><td>ADR-008</td><td>Authoritative-vs-Advisory State on Every DataRef</td><td>Markdown vs code — which is the source of truth per artifact</td></tr>
+<tr><td>ADR-009</td><td>Approval Gate as Workflow-Level Primitive</td><td>Approval is a first-class primitive, not a runtime hook</td></tr>
+<tr><td>ADR-010</td><td>Organic Emergence: Propose-Approve at k≥4</td><td>Pattern threshold for proposing workflows from repeated tasks</td></tr>
+<tr><td>ADR-011</td><td><code>on_failure</code> Policy: Closed 5-Set</td><td>Five failure responses: rollback / continue / abort / pause / handoff</td></tr>
+<tr><td>ADR-012</td><td>PNC Predicates: Typed Parser, Not Trusted Prose</td><td>Pre/Post-Node Check predicates are typed parsers, not LLM-judged</td></tr>
+<tr><td>ADR-013</td><td>Telemetry Sink: fsync'd JSONL Append</td><td>3-channel durable audit log; fsync per append</td></tr>
+<tr><td>ADR-014</td><td>Depth Router via Native's Own Workflow (W-load-native-context)</td><td>Depth selection is itself a Native workflow</td></tr>
+<tr><td>ADR-015</td><td>Native Ships Its Own H-Sutra Producer (Vendored)</td><td>H-Sutra classifier ships with Native, not as external dep</td></tr>
+<tr><td>ADR-016</td><td>Asawa Replica as Isolated <code>SUTRA_NATIVE_HOME</code> User-Kit</td><td>Test replica isolated via SUTRA_NATIVE_HOME env</td></tr>
+<tr><td>ADR-017</td><td>Cadence Scheduling: Daemon-Side setInterval Tick</td><td>Cron scheduling lives in daemon, not external cron</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="tech-docs"><span class="num">8.</span>Tech Documentation</h2>
+
+<p>Where to find every piece of Native's technical canon. Each row links to the source file(s).</p>
+
+<table>
+<tr><th>Layer</th><th>Where it lives</th><th>What's there</th></tr>
+<tr><td>Master engine doc (INDEX)</td><td><code>sutra/os/engines/NATIVE-ENGINE.md</code></td><td>116-line INDEX pointing to all 113 part files + 14 ADRs (post Phase 12.2 cutover)</td></tr>
+<tr><td>Engine charters (6)</td><td><code>sutra/os/engines/*.md</code></td><td>ADAPTIVE-PROTOCOL · BLUEPRINT-ENGINE · COVERAGE-ENGINE · ESTIMATION-ENGINE · HUMAN-SUTRA-ENGINE · NATIVE-ENGINE</td></tr>
+<tr><td>Pillars (14)</td><td><code>sutra/os/native/pillars/P1..P14.md</code></td><td>Design beliefs with falsification tests + doctrine inheritance</td></tr>
+<tr><td>Primitives (10)</td><td><code>sutra/os/native/primitives/*.md</code></td><td>Domain · Charter · Workflow · WorkflowStep · Trigger · ExecutionResult · EngineEvent · Tenant · Approval · DecisionProvenance</td></tr>
+<tr><td>Events (26)</td><td><code>sutra/os/native/events/*.md</code></td><td>EngineEvent type catalog — schemas (CloudEvents) + emitters + consumers + ordering invariants</td></tr>
+<tr><td>Surfaces (6)</td><td><code>sutra/os/native/surfaces/*.md</code></td><td>ROUTE · RUN · GATE · EMERGE · AUDIT · TENANT — interfaces + invariants</td></tr>
+<tr><td>Hardstops (8)</td><td><code>sutra/os/native/hardstops/HS-1..HS-8.md</code></td><td>HS-1 reflexive-check · HS-2 governance-overhead · HS-3 tenant-boundary · HS-4 audit-unwritable · HS-5 cutover-rollback · HS-6 governance-hooks · HS-7 codex-queue · HS-8 canary-regression</td></tr>
+<tr><td>Blocks (25)</td><td><code>sutra/os/native/blocks/*.md</code></td><td>L8 Feature Specs — B1-B19 + sub-blocks 7a-7e + F1; the 25 product features (see §6)</td></tr>
+<tr><td>Open questions (11)</td><td><code>sutra/os/native/open-questions/Q1..Q11.md</code></td><td>All ANSWERED 2026-05-09; ratified answers captured per Q</td></tr>
+<tr><td>Doc layers (8)</td><td><code>sutra/os/native/doc-layers/L1..L14.md</code></td><td>L1 Philosophy · L2 Vision · L3 Mission · L4 Strategy · L6 PRD · L7 PRFAQ · L11 OKRs · L14 Comms</td></tr>
+<tr><td>Implementation phases (5)</td><td><code>sutra/os/native/impl-phases/phase-A..E.md</code></td><td>Phase A PRD docs · B Feature Specs · C Impl · D Codex Review · E Ship & Iterate</td></tr>
+<tr><td>North Star metric (1)</td><td><code>sutra/os/native/metrics/north-star-ohs-per-week.md</code></td><td>OHS/wk — operator-hours-saved per week (L11 OKR style)</td></tr>
+<tr><td>Migration plan</td><td><code>sutra/os/native/MIGRATION-PLAN.md</code></td><td>RATIFIED v1.1 — Phase 12.2 cutover landed 2026-05-09; Phase 13 + §6 + §9 MQ5 RETIRED 2026-05-12 (decommission gate dropped per founder direction); Phases 0-12 complete</td></tr>
+<tr><td>Runtime binary</td><td><code>sutra/marketplace/plugin/bin/sutra</code></td><td>Sutra plugin CLI; native subcommands; daemon launcher</td></tr>
+<tr><td>Daemon home</td><td><code>~/.sutra-native/</code></td><td>Live runtime — user-kit (charters, domains, triggers, workflows), decision-provenance.jsonl, native.log</td></tr>
+<tr><td>Test fixtures</td><td><code>sutra/marketplace/plugin/skills/human-sutra/tests/fixtures.json</code></td><td>13-fixture regression set for H-Sutra classifier (ADR-001 evolution discipline)</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="research"><span class="num">14.</span>Research (hyperlinks)</h2>
+
+<p>Background research that informed Native's design. Linked here for traceability; not duplicated.</p>
+
+<ul>
+  <li><code>holding/research/2026-04-29-native-problem-state.md</code> — problem statement origin</li>
+  <li><code>holding/research/2026-04-29-native-d1-authority-map.md</code> — authority + governance map</li>
+  <li><code>holding/research/2026-04-29-native-d2-decision-provenance-spec.md</code> — decision provenance schema</li>
+  <li><code>holding/research/2026-04-29-native-d3-ontology-state-machine.md</code> — ontology + state machine</li>
+  <li><code>holding/research/2026-04-29-native-d4-primitives-composition-spec.md</code> — primitives composition</li>
+  <li><code>holding/research/2026-04-29-native-d5-invariant-register.md</code> — invariants I-1..I-N</li>
+  <li><code>holding/research/2026-04-29-native-gap-audit.md</code> — pre-build gap audit</li>
+  <li><code>holding/research/2026-04-29-native-parallel-efforts-scan.md</code> — parallel effort de-duplication</li>
+  <li><code>holding/research/2026-04-29-native-patch-list.md</code> — patch list pre-v1</li>
+  <li><code>holding/research/2026-04-30-native-threat-model.md</code> — STRIDE threat model</li>
+  <li><code>holding/research/2026-04-30-native-asawa-dogfood-findings.md</code> — dogfood findings</li>
+  <li><code>holding/research/2026-05-04-native-block-diagram.md</code> — block diagram research</li>
+  <li><code>holding/research/2026-05-04-native-workflow-stub-diagnosis.md</code> — workflow stub issues</li>
+  <li><code>holding/research/2026-05-04-native-v1.2.1-visual-proof.md</code> — visual proof</li>
+  <li><code>holding/research/2026-05-04-asawa-native-replica.md</code> — replica setup</li>
+  <li><code>holding/research/2026-05-06-w-load-native-context-design.md</code> — context-load workflow design</li>
+  <li><code>holding/research/2026-05-06-native-understanding-guide.md</code> — operator understanding guide</li>
+  <li><code>holding/research/_archive/native-v1.x/INDEX.md</code> — historical archive (pre-decomp content)</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="review-methodology"><span class="num">15.</span>PRD Review Methodology (industry standards)</h2>
+
+<p>How to review this PRD effectively. Grounded in IEEE 29148 (the international standard for requirements engineering) + 2026 modern PRD review practice + cross-functional collaborative review.</p>
+
+<h3>15.1 Standards reference</h3>
+<table>
+<tr><th>Standard</th><th>What it covers</th></tr>
+<tr><td><strong>IEEE/ISO/IEC 29148</strong></td><td>Defines what "good" looks like for requirements quality across the lifecycle. Coverage: stakeholder needs, requirements engineering, processes, artifacts.</td></tr>
+<tr><td><strong>Nygard ADR (2011)</strong></td><td>4-section Architecture Decision Record format: Status · Context · Decision · Consequences. All 17 ADRs in §7 follow this.</td></tr>
+<tr><td><strong>Cagan PRD (Silicon Valley Product Group)</strong></td><td>PRD describes WHAT (operator outcome), not HOW (implementation). 37-page Cagan PRDs are deprecated; lean PRDs + prototypes are 2026 default.</td></tr>
+<tr><td><strong>Lenny Rachitsky one-pager template</strong></td><td>Problem statement is "the single most important step." Modern PRDs lead with problem clarity, not feature list.</td></tr>
+</table>
+
+<h3>15.2 Review checklist (apply to this PRD)</h3>
+<table>
+<tr><th>Check</th><th>Pass criterion</th><th>Where it lives in this PRD</th></tr>
+<tr><td>1. Problem stated clearly?</td><td>One-sentence problem statement that a non-engineer reads cleanly</td><td>§1 The Idea + §2 User Needs</td></tr>
+<tr><td>2. Target user named + characterized?</td><td>Primary persona explicit; anti-persona explicit; consistent across sections</td><td>doc-subtitle + §1 + §9.0 Anti-persona + §13 Q1 (all reconciled to the same wedge)</td></tr>
+<tr><td>3. Goals measurable?</td><td>Each goal has metric + threshold + verification + owner</td><td>§11.0 Goals (G1-G7)</td></tr>
+<tr><td>4. Scope bounded?</td><td>Non-goals explicit; in-scope / out-of-scope unambiguous</td><td>§9.3 In-Scope vs Out-of-Scope</td></tr>
+<tr><td>5. User stories in JTBD format?</td><td>Each story = When _ I want _ so I can _</td><td>§2.5 User Stories (S1-S8)</td></tr>
+<tr><td>6. Acceptance criteria per requirement?</td><td>Each feature has a testable, measurable, operator-observable criterion</td><td>§5 Engine Acceptance rows + §6 Feature Acceptance rows (31 cards total — 6 engines + 25 features incl. B19)</td></tr>
+<tr><td>7. NFR present?</td><td>Latency · durability · security · privacy · reliability · auditability</td><td>§10.3 Non-functional Requirements</td></tr>
+<tr><td>8. Risks + mitigations enumerated?</td><td>Each risk has a mitigation; severity × likelihood scored as Priority</td><td>§10.1 Risks (S × L = P columns)</td></tr>
+<tr><td>9. Timeline + phases?</td><td>v1 → v2 → v3 with what ships in each + trigger to next</td><td>§12.1 Version strategy + §12.2 Implementation phases</td></tr>
+<tr><td>10. Open questions visible?</td><td>Numbered + tracked; closed answers captured</td><td>§13 Open Questions (Q1-Q11 ANSWERED)</td></tr>
+<tr><td>11. Traceability — every feature back to a need?</td><td>Each feature traces Need → Goal → Story → Feature in one matrix</td><td>§6.Z Traceability Matrix</td></tr>
+<tr><td>12. Change control — how this PRD evolves?</td><td>Change-process documented; canon discipline enforced</td><td>§15.4 Review cadence + §15.5 Single-source-of-truth + D54 canon-only governance</td></tr>
+</table>
+
+<h3>15.3 Review participants (cross-functional)</h3>
+<table>
+<tr><th>Role</th><th>What they review</th></tr>
+<tr><td>Founder (CEO of Asawa / Sutra)</td><td>Problem framing · operator voice · scope · strategic fit</td></tr>
+<tr><td>Codex (PROTO-019 advisor)</td><td>Structural integrity · operator-vs-engineering language · acceptance-criteria testability · canon discipline</td></tr>
+<tr><td>Sutra Forge engineering</td><td>Feasibility · architecture · primitive dependencies · multi-tenant safety</td></tr>
+<tr><td>T2 portfolio operators (DayFlow / Billu / Paisa) — Phase 7+</td><td>Operator-perspective sanity check; would they actually use this?</td></tr>
+<tr><td>T4 fleet (post-launch)</td><td>Real-world friction in installed Native; bugs + UX gaps + missing features</td></tr>
+</table>
+
+<h3>15.4 Review cadence</h3>
+<table>
+<tr><th>Cadence</th><th>What runs</th></tr>
+<tr><td>Per-section (during build)</td><td>You + Claude iterate per §N; codex consult on structurally-significant sections (e.g., when a new engine or feature is added)</td></tr>
+<tr><td>Per-version (v1, v2, ...)</td><td>Full codex review (mode: design-review) with all 12 checklist items in §15.2; verdict file written to <code>.enforcement/codex-reviews/</code></td></tr>
+<tr><td>30-60 min collaborative review</td><td>Quick session with at least one engineer + one QA member to catch ambiguity early (per 2026 modern PRD review practice)</td></tr>
+<tr><td>Per-change (post-launch)</td><td>Impact analysis required for material edits to F-NN / NG / Goal / Metric; change carries through to every affected downstream doc</td></tr>
+</table>
+
+<h3>15.5 Single-source-of-truth discipline</h3>
+<p>This PRD is the single source of truth for the Native project. Implication:</p>
+<ul>
+  <li>New ADRs → first land in <code>sutra/os/decisions/ADR-NNN.md</code>, then add a row to §7 here within the same PR</li>
+  <li>New features → first land in <code>sutra/os/native/blocks/B*.md</code>, then add a card to §6 here</li>
+  <li>New research → first land in <code>holding/research/YYYY-MM-DD-*.md</code>, then add a link in §14 here</li>
+  <li>Engine changes → reflected in §5 here within the same change</li>
+  <li>This file lives at <code>holding/website/native/product-prd-2026-05-09-v2.html</code>; canonical name during build; rename to <code>product-prd-v1.html</code> at official v1 ship</li>
+</ul>
+
+<p class="meta-row"><strong>Sources for this section</strong>:
+  <a href="https://www.jamasoftware.com/requirements-management-guide/writing-requirements/product-requirements-document/">Jama Software PRD 2026 Guide</a> ·
+  <a href="https://en.wikipedia.org/wiki/IEEE_29148">IEEE 29148 Wikipedia</a> ·
+  <a href="https://www.cimit.org/documents/20151/228904/How%20To%20Write%20a%20Good%20PRD.pdf/9262a05e-05b2-6c19-7a37-9b2196af8b35">Marty Cagan: How To Write a Good PRD</a> ·
+  <a href="https://www.lennysnewsletter.com/p/my-favorite-templates-issue-37">Lenny Rachitsky's favorite PRD templates</a> ·
+  <a href="https://www.atlassian.com/agile/product-management/requirements">Atlassian PRD Guide</a> ·
+  <a href="https://www.parallelhq.com/blog/how-to-write-product-requirements">How to Write Product Requirements (2026)</a> ·
+  <a href="https://www.aha.io/roadmapping/guide/requirements-management/what-is-a-good-product-requirements-document-template">Aha! PRD Templates</a>
+</p>
+
+
+<!-- ============================================================ -->
+<h2 id="assumptions"><span class="num">9.</span>Assumptions + Constraints</h2>
+
+<h3>9.0 Anti-persona (who Native is NOT for, v1)</h3>
+<p>Operator types Native v1 explicitly does not serve. Trying to fit one of these breaks the v1 wedge — the value drops below the friction.</p>
+
+<table>
+<tr><th>#</th><th>Anti-persona</th><th>Why not v1</th></tr>
+<tr><td>AP1</td><td>Casual chatbot user — wants conversational AI for one-off queries</td><td>Native is workflow-shaped, not conversational; no value compounds in a single one-off session</td></tr>
+<tr><td>AP2</td><td>Full-autonomy seeker — expects an agent to run unsupervised with no operator-in-loop</td><td>Operator-control (#4) is core; GATE surface gates risky steps; trust earned over time, not granted up front</td></tr>
+<tr><td>AP3</td><td>Non-terminal operator — wants GUI / web / mobile-first experience</td><td>v1 terminal-only per NG7 + Q9; v3 revisit for broader markets</td></tr>
+<tr><td>AP4</td><td>Single-tenant solo user (one company, no portfolio)</td><td>Multi-tenant architecture (#6) is overhead — Native's value sits in cross-tenant boundary management for portfolio operators</td></tr>
+<tr><td>AP5</td><td>Compliance-mandated black-box buyer — wants closed-source, certified, vendor-warranted system</td><td>v1 ships open-architecture + operator-managed; formal certification deferred</td></tr>
+</table>
+
+<h3>9.1 Assumptions (if wrong, rework needed)</h3>
+<table>
+<tr><th>#</th><th>Assumption</th><th>If wrong, what breaks</th></tr>
+<tr><td>A1</td><td>Operator is terminal-fluent (per NG7)</td><td>v1 wedge fails; v3 revisit for non-terminal-fluent</td></tr>
+<tr><td>A2</td><td>Operator runs 1-7 companies (primary persona)</td><td>scope of multi-tenant features mis-sized</td></tr>
+<tr><td>A3</td><td>Operator wants compounding outcomes, not one-off automation</td><td>Closed-Loop Artifact (B9) value collapses</td></tr>
+<tr><td>A4</td><td>LLM costs continue to fall (or at least stabilize)</td><td>cost-per-operator-week exceeds value; pricing model breaks</td></tr>
+<tr><td>A5</td><td>Operator has Mac/Linux (v1 ships these)</td><td>Windows users blocked; addressable market shrinks</td></tr>
+<tr><td>A6</td><td>Codex + Claude available as host-LLMs</td><td>multi-provider abstraction (NG3 deferred) becomes urgent</td></tr>
+<tr><td>A7</td><td>Operator opts in to person-formation ratings (optional)</td><td>person-formation depth halves; falls back to behavioral signals only</td></tr>
+</table>
+
+<h3>9.2 Constraints (immovable for v1)</h3>
+<table>
+<tr><th>#</th><th>Constraint</th><th>Why</th></tr>
+<tr><td>C1</td><td>Terminal-only v1</td><td>NG1 — UI deferred; terminal is the wedge surface</td></tr>
+<tr><td>C2</td><td>Single-LLM-provider abstraction locked v1</td><td>NG3 — multi-provider v2+</td></tr>
+<tr><td>C3</td><td>No browser automation</td><td>NG5 — consume via connector, don't build</td></tr>
+<tr><td>C4</td><td>Audit log: 3-channel write (durability)</td><td>HS-4 must not silently fail</td></tr>
+<tr><td>C5</td><td>Multi-tenant default-deny</td><td>ADR-006 — explicit authorization required for cross-tenant</td></tr>
+<tr><td>C6</td><td>Reversibility checked before risky actions</td><td>P12 + HS-1 reflexive check</td></tr>
+<tr><td>C7</td><td>Person-formation ratings opt-in (never required)</td><td>F-10 operator control over personalization data</td></tr>
+<tr><td>C8</td><td>Native's own rules cannot be modified at runtime without explicit operator clearance</td><td>HS-1 reflexive check — prevents self-modification</td></tr>
+</table>
+
+<h3>9.3 In-Scope vs Out-of-Scope (v1)</h3>
+<p>Explicit list of what ships in v1 and what is deferred. Out-of-scope items are not "missing"; they are intentionally not built for the v1 wedge.</p>
+
+<table>
+<tr><th>In-scope (v1 ships)</th><th>Out-of-scope (deferred or NG)</th></tr>
+<tr><td>Terminal-only operator surface</td><td>GUI / web / mobile UI (NG1; v3 revisit per Q9)</td></tr>
+<tr><td>Single-LLM-provider abstraction (Codex / Claude)</td><td>Multi-LLM-provider abstraction (NG3; v2+)</td></tr>
+<tr><td>Connector layer (Slack / email / web)</td><td>Browser automation (NG5; consume via connector, do not build)</td></tr>
+<tr><td>Metadata-based retrieval (Charter scope filter + recency + explicit operator tags + exact-ID lookup) per 7a</td><td>Semantic content-similarity ranking + embedding retrieval (F1 deferred v2+)</td></tr>
+<tr><td>Mac + Linux v1</td><td>Windows v1 (deferred — addressable-market constraint)</td></tr>
+<tr><td>Multi-Human-Org tenancy (one operator, many companies)</td><td>Cross-org federation (multiple operators sharing) — deferred v2+</td></tr>
+<tr><td>Person-Formation as opt-in personalization</td><td>Required personalization (operator-control invariant — never required)</td></tr>
+<tr><td>v1 per-Tenant subscription pricing</td><td>v2 outcome-based pricing (validated post v1 per Q6)</td></tr>
+<tr><td>Native-Native A2A v1 stub (log-only)</td><td>Full A2A coordination protocol (v2+)</td></tr>
+<tr><td>Operator-in-loop on risky steps</td><td>Full autonomy without operator gates (NG; see AP2)</td></tr>
+</table>
+
+<p class="meta-row"><strong>Connects to</strong>: §1 (assumptions ground the operator persona) · §5 Engines (constraints surface in engine design) · §10 Hardstops (constraints enforced via hardstops) · §9.0 Anti-persona (out-of-scope often = anti-persona).</p>
+
+<!-- ============================================================ -->
+<h2 id="risks"><span class="num">10.</span>Risks + Hardstops + NFR (operator-facing safety model)</h2>
+
+<h3>10.1 Risks + Mitigations</h3>
+<p><strong>Severity</strong> (S, 1-5) = how bad if it happens. <strong>Likelihood</strong> (L, 1-5) = how likely without mitigation. <strong>Priority</strong> = S × L (1-25). Rows sorted by Priority desc.</p>
+<table>
+<tr><th>#</th><th>Risk</th><th>S</th><th>L</th><th>P</th><th>Mitigation</th></tr>
+<tr><td>R8</td><td>Multi-agent orchestration cost spikes at scale</td><td>4</td><td>3</td><td>12</td><td>Per-task estimation enforces budget; cadence-fired workflows rate-limited by daemon</td></tr>
+<tr><td>R2</td><td>Audit log unwritable → silent fail-open</td><td>5</td><td>2</td><td>10</td><td>Multiple redundant write paths plus a last-resort beacon; if all fail, Native stops rather than continue silently — operator sees the failure (HS-4)</td></tr>
+<tr><td>R3</td><td>Cross-tenant accidental leakage</td><td>5</td><td>2</td><td>10</td><td>Default-deny; operator must explicitly authorize each cross-tenant action; any boundary breach surfaces (HS-3)</td></tr>
+<tr><td>R4</td><td>Operator review fatigue (too many approvals)</td><td>3</td><td>3</td><td>9</td><td>Trust signal: 30d clean → fewer gates; per-step approval toggles</td></tr>
+<tr><td>R5</td><td>Pricing model wrong for portfolio operator</td><td>3</td><td>3</td><td>9</td><td>v1 per-Tenant subscription; v2 outcome-based experiment once N* validated</td></tr>
+<tr><td>R9</td><td>Canon drift between docs + runtime</td><td>3</td><td>3</td><td>9</td><td>D54 canon-only discipline; codex per-change review (PROTO-019)</td></tr>
+<tr><td>R6</td><td>v1 wedge too narrow (terminal-only) to fund v2</td><td>4</td><td>2</td><td>8</td><td>Wedge validates personalization + governance + audit + closed-loop reuse; v2 widens to web / app per Q9</td></tr>
+<tr><td>R1</td><td>Pattern-emergence false positives create noise (proposal fatigue)</td><td>2</td><td>3</td><td>6</td><td>k=4 threshold default; operator can pause proposals; precision tracked as leading input</td></tr>
+<tr><td>R7</td><td>Person-formation model overfits to short window</td><td>2</td><td>2</td><td>4</td><td>Adaptation reads from a long baseline of operator activity; explicit ratings stay optional and sparse; the operator can reset or pause adaptation at any time</td></tr>
+</table>
+
+<h3>10.2 Hardstops (where Native refuses to continue)</h3>
+<table>
+<tr><th>ID</th><th>Trigger</th><th>What operator sees</th></tr>
+<tr><td>HS-1</td><td>Native trying to modify its own rules without operator clearance</td><td>Native stops; surfaces "reflexive modification denied — needs explicit authorization"</td></tr>
+<tr><td>HS-2</td><td>Governance overhead exceeds 25% of work</td><td>Native flags overhead; suggests config tuning</td></tr>
+<tr><td>HS-3</td><td>Cross-tenant boundary breached without explicit delegation</td><td>Operation denied; operator can explicitly authorize</td></tr>
+<tr><td>HS-4</td><td>Audit log unwritable across all 3 redundant channels</td><td>Native stops; surfaces the failure (no silent fail-open)</td></tr>
+<tr><td>HS-5</td><td>Cutover rollback fails</td><td>Native stops; operator must manually unblock</td></tr>
+<tr><td>HS-6</td><td>3+ governance hooks fail in same turn</td><td>Native stops; surfaces hook diagnostics</td></tr>
+<tr><td>HS-7</td><td>Codex review queue stale (&gt;20 OR &gt;7d)</td><td>New canon changes pause; queue drained before proceeding</td></tr>
+<tr><td>HS-8</td><td>Production canary regression detected</td><td>Auto-rollback to last known-good; operator notified</td></tr>
+</table>
+
+<h3>10.3 Non-functional Requirements (operator-facing)</h3>
+<table>
+<tr><th>Dimension</th><th>Requirement</th></tr>
+<tr><td>Latency</td><td>Pulse view loads in ≤2 s. Approval-card surface in ≤500 ms after gate fires.</td></tr>
+<tr><td>Durability</td><td>The operator can replay every past action even after worst-case failure (crash, full disk, process kill).</td></tr>
+<tr><td>Security</td><td>The operator must explicitly authorize cross-tenant actions and must explicitly approve risky steps; nothing risky runs without their say-so. Modifications to Native's own rules require explicit operator clearance.</td></tr>
+<tr><td>Accessibility</td><td>Terminal-only v1 (per NG7). Output is plain text + ASCII boxes; screen-reader-friendly.</td></tr>
+<tr><td>Privacy</td><td>The operator's data stays per-tenant; nothing is aggregated across tenants unless the operator explicitly opts in.</td></tr>
+<tr><td>Reliability</td><td>If Native crashes, the operator's in-flight work resumes within 30 seconds without manual recovery.</td></tr>
+<tr><td>Auditability</td><td>The operator can replay any past run end-to-end with full visibility — no decision is lost or untraceable.</td></tr>
+</table>
+
+<p class="meta-row"><strong>Connects to</strong>: §5 Engines (constraints enforced) · §6 Features B7 (validation) · §9 Assumptions/Constraints · §3.5 Journey 9 (cross-tenant attempt).</p>
+
+<!-- ============================================================ -->
+<h2 id="metrics"><span class="num">11.</span>Metrics + Success Criteria</h2>
+
+<h3>11.0 Goals (G1-G7)</h3>
+<p>Seven measurable goals Native commits to for v1. Each goal is in metric + threshold + verification + owner form. G1 is the North Star (detailed in §11.1).</p>
+
+<table>
+<tr><th>ID</th><th>Goal</th><th>Metric</th><th>Threshold</th><th>Verification</th><th>Owner</th></tr>
+<tr><td>G1</td><td>Operator saves measurable hours per week</td><td>OHS/wk (operator-reported + timed)</td><td>≥3 within 14 days of install · ≥20 for a mature operator</td><td>Weekly Pulse self-report cross-checked against the timed audit log</td><td>Founder + Native</td></tr>
+<tr><td>G2</td><td>Operator review fatigue reduces as trust builds</td><td>Gates / cycle ratio</td><td>≥30% drop from week 1 to week 6</td><td>Audit gate-count rollup over rolling window</td><td>Native (Adaptive + Approval)</td></tr>
+<tr><td>G3</td><td>Pattern emergence proposes high-value automations (low noise)</td><td>Proposal approve rate</td><td>≥50% over a rolling 30-day window</td><td>Audit log proposal verdicts (approve vs reject)</td><td>Native (Pattern detection)</td></tr>
+<tr><td>G4</td><td>Workflows shift to auto-execution as Native earns trust</td><td>Auto-run share of total Workflow runs</td><td>≥70% by day 90</td><td>Workflow execution log rollup</td><td>Native (Workflow runtime)</td></tr>
+<tr><td>G5</td><td>Every decision is replayable</td><td>% of decisions with a DecisionProvenance row</td><td>100% — zero gaps</td><td>Audit log integrity check job</td><td>Native (audit surface)</td></tr>
+<tr><td>G6</td><td>Audit log never silently fails</td><td>Silent fail-open events (zero target)</td><td>0 events in any rolling 30-day window (HS-4 fires instead)</td><td>HS-4 trigger log + production canary</td><td>Native (HS-4)</td></tr>
+<tr><td>G7</td><td>Cross-tenant boundary respected</td><td>Cross-tenant access attempts denied unless ACL allows</td><td>100% — zero leakage (HS-3 fires on any breach)</td><td>HS-3 trigger log + periodic ACL audit</td><td>Native (PolicyDispatcher)</td></tr>
+</table>
+
+<p class="meta-row"><strong>Connects to</strong>: §2 User Needs (goals operationalize each need) · §6 Features (per-feature Acceptance contributes to goal metrics) · §6.Z Traceability Matrix (Need → Goal → Story → Feature chain).</p>
+
+<h3>11.1 North Star (G1)</h3>
+<div class="decision-box">
+  <strong>OHS/wk — Operator Hours Saved per Week</strong><br/><br/>
+  v1 success: <strong>≥3 OHS/wk within 14 days of install</strong><br/>
+  Mature operator: <strong>≥20 OHS/wk</strong><br/><br/>
+  Canon: <code>sutra/os/native/metrics/north-star-ohs-per-week.md</code>
+</div>
+
+<h3>11.2 Leading inputs (act on these to move N*)</h3>
+<table>
+<tr><th>Input</th><th>What it measures</th></tr>
+<tr><td>Daily utterance count</td><td>Operator engagement; tracks if Native is in the operator's flow</td></tr>
+<tr><td>Workflow registration rate</td><td>How fast operator-effort converts to standing automation</td></tr>
+<tr><td>Approval throughput (decisions/day)</td><td>Operator's gate-handling capacity; if this caps, redesign GATE</td></tr>
+<tr><td>Pattern detection precision</td><td>% of proposals approved vs rejected; if &lt;50%, k=4 threshold needs tune</td></tr>
+<tr><td>Trust progression (gates/cycle ratio)</td><td>Reducing gates over time = trust earning correctly</td></tr>
+</table>
+
+<h3>11.3 Lagging outputs (validate N*)</h3>
+<table>
+<tr><th>Output</th><th>What it measures</th></tr>
+<tr><td>Hours saved (operator-reported + timed)</td><td>The N* metric directly; cross-checked vs operator weekly self-report</td></tr>
+<tr><td>Decisions replayable (% of all decisions)</td><td>P9 closed-loop artifact compliance; target 100%</td></tr>
+<tr><td>Workflows auto-running (vs operator-triggered)</td><td>Steady-state share; target &gt;70% by day 90</td></tr>
+<tr><td>Operator weekly Pulse engagement (Friday review rate)</td><td>If operator stops reading Pulse, value is leaking somewhere</td></tr>
+</table>
+
+<h3>11.4 Per-feature acceptance criteria</h3>
+<p>Shipped 2026-05-10 — see the Acceptance row on each feature card in §6 (25 features + 6 engines = 31 cards). Per-feature Acceptance feeds the goal metrics in §11.0 (G1-G7) via the §6.Z Traceability Matrix.</p>
+
+<p class="meta-row"><strong>Connects to</strong>: §2 User Needs (each need has its lagging metric) · §6 Features (per-feature criteria) · §3.5 User Journeys (each journey's end-state IS a success criterion).</p>
+
+<!-- ============================================================ -->
+<h2 id="timeline"><span class="num">12.</span>Timeline + Release Phases</h2>
+
+<h3>12.1 Version strategy</h3>
+<table>
+<tr><th>Version</th><th>Window</th><th>What ships</th><th>Trigger to next</th></tr>
+<tr><td>v1</td><td>Q2 2026</td><td>Terminal-fluent portfolio CEO wedge. All 25 blocks in v1 (per P3). T2 install (DayFlow / Billu / Paisa).</td><td>T2 N* ≥3 OHS/wk for ≥2 weeks; &lt;5 critical bugs at 30d</td></tr>
+<tr><td>v2</td><td>Q3 2026</td><td>TAM expansion — voice / web / app surface; broader operator market beyond terminal-fluent. F1 semantic indexing ships.</td><td>v1 N* mature ≥20 OHS/wk validated; v2 prototype tested with non-terminal-fluent operators</td></tr>
+<tr><td>v3</td><td>Q4 2026</td><td>Operationalize — fleet scale; partnerships; SaaS pricing tier.</td><td>v2 adoption count + revenue threshold met</td></tr>
+</table>
+
+<h3>12.2 Implementation phases (current cycle)</h3>
+<table>
+<tr><th>Phase</th><th>What's in scope</th><th>Status</th></tr>
+<tr><td>A — PRD docs</td><td>This PRD; canon ratified; phase-A doc layer L6 PRD</td><td>~85% scaffolded (single source of truth)</td></tr>
+<tr><td>B — Feature specs</td><td>L8 Feature Specs in <code>sutra/os/native/blocks/B*.md</code> for all 25 blocks</td><td>scaffolded (concise format); detailing iterative</td></tr>
+<tr><td>C — Implementation</td><td>Native runtime daemon, primitives in code, surfaces wired, hardstops live</td><td>partial — daemon exists at <code>~/.sutra-native/</code>; bin/sutra in plugin; v0 dogfood active</td></tr>
+<tr><td>D — Codex review</td><td>PROTO-019 codex review on every canon change; rN gate enforces measurable acceptance + traceability + scope coherence</td><td>r13→r17 fix passes applied (each pass closed previous-round findings + surfaced downstream cross-refs); r18 expected PASS or SHIP-WITH-CHANGES then commit</td></tr>
+<tr><td>E — Ship + iterate</td><td>T2 onboarding (DayFlow / Billu / Paisa) → measure OHS/wk → iterate</td><td>queued (Phase 7 of go-live arc); 7d wall after install</td></tr>
+</table>
+
+<p class="meta-row"><strong>Connects to</strong>: §11 Metrics (gate criteria) · §8 Tech Documentation (phase artifacts) · §15 Review Methodology (per-version codex review).</p>
+
+<!-- ============================================================ -->
+<h2 id="open"><span class="num">13.</span>Open Questions</h2>
+
+<p>Eleven open questions surfaced during Native v1 design; <strong>all ANSWERED 2026-05-09</strong>. Each Q has a ratified answer + the canon file that holds it.</p>
+
+<table>
+<tr><th>#</th><th>Question</th><th>Ratified answer</th></tr>
+<tr><td>Q1</td><td>Who is the primary persona for v1?</td><td>Solo founder operating a portfolio of 1-N companies; terminal-fluent; design-particular. Canon: <code>Q1-persona.md</code></td></tr>
+<tr><td>Q2</td><td>Should v1 ship terminal-only or also web/app?</td><td>Terminal-only v1 (NG1 / NG7); v3 revisit. Canon: <code>Q2-ng7-non-tech.md</code></td></tr>
+<tr><td>Q3</td><td>Should v1 ship its own "memory" framing?</td><td>No — Native's claim is governance + multi-tenant + emergence + audit + closed-loop reuse, not memory (NG6). Canon: <code>Q3-ng6-memory.md</code></td></tr>
+<tr><td>Q4</td><td>What threshold k for pattern emergence?</td><td>k=4 default (tunable v2+); after 4 repeats Native surfaces proposal. Canon: <code>Q4-pattern-emergence-k.md</code></td></tr>
+<tr><td>Q5</td><td>What's the approval scope — per-step or per-workflow?</td><td>Per-step v1 (risky steps gate); 30d clean → trust signal reduces gate frequency. Canon: <code>Q5-approval-scope.md</code></td></tr>
+<tr><td>Q6</td><td>What's the v1 pricing model?</td><td>v1 per-Tenant subscription; v2 outcome-based once N* validated. Canon: <code>Q6-pricing.md</code></td></tr>
+<tr><td>Q7</td><td>What's the trigger from v1 → v2?</td><td>N* mature ≥20 OHS/wk; v2 prototype tested with non-terminal-fluent operators. Canon: <code>Q7-v2-trigger.md</code></td></tr>
+<tr><td>Q8</td><td>Founder checkpoints during v1?</td><td>Weekly Pulse on Friday; mid-week ad-hoc if N* drops. Canon: <code>Q8-founder-checkpoints.md</code></td></tr>
+<tr><td>Q9</td><td>Why terminal-only?</td><td>Wedge requires terminal fluency; v3 revisit for broader markets. Canon: <code>Q9-terminal-only.md</code></td></tr>
+<tr><td>Q10</td><td>How does founder portfolio play in v1?</td><td>Multi-Human-Org architecture (B14); each company is a Human-Tenant under Asawa Org-Tenant. Canon: <code>Q10-founder-portfolio.md</code></td></tr>
+<tr><td>Q11</td><td>What about the truncated bullet (§12.4)?</td><td>Resolved as part of v1.1+ migration plan. Canon: <code>Q11-truncated-bullet.md</code></td></tr>
+</table>
+
+<p class="meta-row"><strong>Connects to</strong>: §7 ADRs (each ratified answer references the ADR locking the decision) · §6 Features (Q4, Q5 → feature behaviors) · §12 Timeline (Q7 → v2 trigger). Canon: <code>sutra/os/native/open-questions/</code>.</p>
+
+<!-- ============================================================ -->
+<p style="background: #fff4e5; border-left: 4px solid #b86b00; padding: 12px 16px; font-size: 13px; margin-top: 32px;">
+  <strong>PRD v2 — RATIFIED (codex r18 PASS, 2026-05-10)</strong>. Single source of truth for Native v1. r13 → r18 (5 rounds of codex review): 25 features + 6 engines carry Acceptance rows (31 cards) with concrete operator-observable thresholds; Goals G1-G7 + §6.Z Traceability Matrix + §2.5 JTBD User Stories + §9.0 Anti-persona + §9.3 In/Out-of-Scope + §6.I B19 Audit Trail in place; §10.1 risks scored Severity × Likelihood; persona reconciled across subtitle + §1 + §9.0 + §13 Q1; 7a + B16 + F1 v1-vs-v2+ scope explicit. Phase 1 complete. Next: Phase 2 (design / multi-agent orchestration deep doc). Iterate by asking "detail X" to deepen any engine, feature, ADR, pillar, or user journey.
+</p>
+
+<p class="meta-row" style="margin-top: 24px;">
+  Authored 2026-05-09 / restructured 2026-05-10. Native v1 product cycle. PRD format: industry-standard 8-step (Cagan / Lenny / IEEE 29148) + Native-specific extensions (Engines · Features · ADRs · Tech Docs · User Journeys · Review Methodology) — see §15 Review Methodology.
+</p>
+
+</body>
+</html>

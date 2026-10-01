@@ -1,0 +1,187 @@
+<!doctype html>
+<!-- PAGE: platform-model-consumer-product (v2, DRAFT, 2026-09-29). Child of platform-journeys under IN USE.
+     v2, the founder's cut: one use case, a website for my existing organisation (a digital footprint). One window in three
+     states, drawn in the Design System's tokens on top of what the Website department already does. The flab of v1 (six
+     phone frames, return line, messages, undo) is in git history (holding 56c02e83); the high level stays on platform-journeys.html.
+     Design only: no code changed. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — The first use case: a website for my organisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.conf{background:#fef2f2;border-left:3px solid #b91c1c;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.b{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#ecfdf5;color:#047857}
+.c{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#fffbeb;color:#b45309}
+.x{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#fef2f2;color:#b91c1c}
+.m{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#eef2ff;color:#3730a3}
+/* ---- the one window, three states, drawn in the Design System's tokens ---- */
+.frames{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:14px 0}
+@media (max-width:760px){.frames{grid-template-columns:1fr}}
+.w{--bg:#FAFAF7;--panel:#FFFFFF;--ink:#1A1714;--stone:#6B6560;--faint:#B8B2A6;--line:#E8E3DB;--cream:#F5F0E8;--gold:#B8945F;--clay:#8B6B4A;--steel:#4A6B8B;--forest:#2D5A3E;--rose:#8B4A6B;
+ width:100%;aspect-ratio:4/5;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:13px/1.45 Inter,-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.w .top{padding:12px 16px 0;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--stone)}
+.w .body{flex:1;padding:8px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.w .greet{font-family:"Playfair Display",serif;font-weight:500;font-size:22px;line-height:1.2;color:var(--ink);margin-top:14px}
+.w .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12.5px}
+.w .her{align-self:flex-end;background:var(--cream);border-radius:12px;padding:8px 12px;max-width:88%;font-size:12.5px}
+.w .q{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding:5px 0}.w .q:first-of-type{border-top:0}.w .q i{color:var(--faint);font-style:normal}
+.w .rule{display:inline-block;font-size:11px;border:1px solid var(--gold);color:var(--clay);border-radius:99px;padding:3px 10px}
+.w .btn{display:inline-block;border-radius:99px;padding:7px 14px;font-weight:600;font-size:12.5px;color:#fff;background:var(--forest)}
+.w .btn.s{background:var(--steel)}.w .btn.q2{background:transparent;color:var(--stone);border:1px solid var(--line);font-weight:500}
+.w .row{display:flex;gap:8px;flex-wrap:wrap}
+.w .foot{padding:8px 16px 14px}
+.w .box{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:10px 14px;color:var(--faint);font-size:12.5px;display:flex;justify-content:space-between;align-items:center}
+.w .box span{color:var(--ink);font-weight:600;font-size:12px}
+.w .quiet{font-size:11px;color:var(--faint);text-align:center;margin-top:4px}
+.w .dot{display:inline-block;width:8px;height:8px;border-radius:99px;background:var(--forest);margin-right:8px;animation:br 1.6s ease-in-out infinite}
+@keyframes br{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+@media (prefers-reduced-motion:reduce){.w .dot{animation:none}}
+.w .pages{display:flex;gap:5px;margin-top:6px}.w .pages i{flex:1;height:5px;border-radius:99px;background:var(--line)}.w .pages i.on{background:var(--forest)}
+.w .site{background:var(--cream);border-radius:12px;height:84px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:16px;color:var(--ink)}
+.w .label{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--stone)}
+.cap{font-size:11.5px;color:#6b7280;margin:4px 0 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../company-map.html">The company map</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="the-model.html">the model</a> &#8250; <a href="platform-journeys.html">platform journeys</a> &#8250; the first use case</div>
+<h1>The first use case: a website for my organisation <span class="lvl">DESIGN &#183; zoom 4</span></h1>
+
+<p class="lead">The founder's cut, 2026-09-29: "I want to create a website for my existing organisation. I want to create a digital footprint. Let's solve for that. Remove all the flab. Create the design experience on top of what we have, as simple as we can."</p>
+<svg viewBox="0 0 920 200" role="img" aria-label="Figure: one window, three states -- say, working, live" style="width:100%;max-width:920px;background:#fff;border:1px solid #e5e7eb;border-radius:8px">
+<rect x="20" y="20" width="240" height="150" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/><text x="32" y="44" font-size="12.5" font-weight="700" fill="#111827">S1 SAY</text><text x="32" y="66" font-size="10.5" fill="#92400e">one box; the org in</text><text x="32" y="80" font-size="10.5" fill="#92400e">your own words</text><text x="32" y="102" font-size="10.5" fill="#92400e">the missing facts,</text><text x="32" y="116" font-size="10.5" fill="#92400e">one card, one button</text>
+<line x1="260" y1="95" x2="286" y2="95" stroke="#9ca3af" stroke-width="1.5"/><polygon points="286,91 293,95 286,99" fill="#9ca3af"/>
+<rect x="296" y="20" width="240" height="150" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="308" y="44" font-size="12.5" font-weight="700" fill="#111827">S2 WORKING</text><text x="308" y="66" font-size="10.5" fill="#065f46">a sign at once,</text><text x="308" y="80" font-size="10.5" fill="#065f46">page n of 6, a Stop</text><text x="308" y="102" font-size="10.5" fill="#065f46">the department runs</text><text x="308" y="116" font-size="10.5" fill="#065f46">Plan, Write, Check, Publish</text>
+<line x1="536" y1="95" x2="562" y2="95" stroke="#9ca3af" stroke-width="1.5"/><polygon points="562,91 569,95 562,99" fill="#9ca3af"/>
+<rect x="572" y="20" width="260" height="150" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/><text x="584" y="44" font-size="12.5" font-weight="700" fill="#111827">S3 LIVE</text><text x="584" y="66" font-size="10.5" fill="#1e3a8a">the link, Open,</text><text x="584" y="80" font-size="10.5" fill="#1e3a8a">Copy the link</text><text x="584" y="102" font-size="10.5" fill="#1e3a8a">the change box: a line</text><text x="584" y="116" font-size="10.5" fill="#1e3a8a">in, a correction becomes</text><text x="584" y="130" font-size="10.5" fill="#1e3a8a">a rule Check keeps</text>
+<path d="M792,170 C 792,192 632,192 632,170" fill="none" stroke="#9ca3af" stroke-width="1.4"/><polygon points="632,170 628,178 638,176" fill="#9ca3af"/>
+<text x="660" y="196" font-size="10" fill="#6b7280">a change is one line, same window</text>
+</svg>
+<p class="figcap">Say, wait, live: the whole experience in one window. A change loops back through the same box in S3.</p>
+<p>The high level (two products, the seven moments, who it is for) stays on <a href="platform-journeys.html">Platform journeys</a>. This page is one use case, one window, three states, on top of the Website department that already runs. <span class="b">BUILT</span> is used as it is (a label may differ). <span class="m">MODE</span> shows or hides a built part behind a setting. <span class="c">CAPABILITY</span> is new and small. <span class="x">CONFLICT</span> needs a change to today's logic and waits for the founder.</p>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td>platform-model-consumer-product</td><td>PLATFORM / <a href="platform-journeys.html">platform-model-platform-journeys</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v2</td><td>claude, for the founder to rule</td></tr></table>
+
+<h2>The person and the use case</h2>
+<table><tr><th>Who</th><th>Has</th><th>Wants</th><th>Done when</th></tr>
+<tr><td>the owner of an existing organisation (the founder first; then any owner)</td><td>a name, what it does, where, a phone; often a Google listing, an Instagram, an old site, a brochure</td><td>the organisation on the web, in its own words, without learning a tool</td><td>a live site he can send, reached in one sitting; a change is one line in the same window</td></tr></table>
+
+<h2>One window, three states</h2>
+<div class="frames">
+
+<div><div class="w"><div class="top">Your organisation</div><div class="body">
+<div class="greet">Put Asawa on the web.</div>
+<div style="color:var(--stone)">Tell me about the organisation in your words, or paste what you have: a link, a listing, a brochure.</div>
+<div class="her">Asawa Inc, Bengaluru. We build Sutra, an operating system for small companies. Founded 2025. hello@asawa.in</div>
+<div class="card"><div class="label" style="margin-bottom:4px">Three things I still need</div>
+<div class="q">Who do you serve?<i>type here</i></div><div class="q">Anything to show? (logo, photos)<i>type or paste</i></div><div class="q">Your address, or "no address"<i>type here</i></div></div>
+<div class="row"><span class="btn">Make my site</span><span class="btn q2">That's all I know</span></div>
+</div><div class="foot"><div class="quiet">Nothing goes live without you.</div></div></div><p class="cap">S1 SAY &#8212; one box, then the department's questions in one card; one button.</p></div>
+
+<div><div class="w"><div class="top">Your organisation</div><div class="body">
+<div class="card"><span class="dot"></span><b>Making your site</b><div style="color:var(--stone);margin-top:4px">page 3 of 6 &#183; Services</div><div class="pages"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+<div class="row"><span class="btn q2">Stop</span></div>
+</div><div class="foot"><div class="box">Change something&#8230;<span>Send</span></div></div></div><p class="cap">S2 WORKING &#8212; a sign at once, progress in pages, a way out. Nothing else on the screen.</p></div>
+
+<div><div class="w"><div class="top">Your organisation</div><div class="body">
+<div class="greet" style="font-size:19px;margin-top:6px">asawa.in is live.</div>
+<div class="site">Asawa Inc</div>
+<div class="row"><span class="btn">Open</span><span class="btn s">Copy the link</span></div>
+<div class="her">say "we build Sutra" on the first line, not "operating system"</div>
+<div class="card">Changed. First line: "We build Sutra." <span class="rule" style="margin-left:6px">your rule &#183; kept</span></div>
+</div><div class="foot"><div class="box">Change something&#8230;<span>Send</span></div></div></div><p class="cap">S3 LIVE &#8212; the link, the site, and the same box for every change; a correction becomes a rule.</p></div>
+
+</div>
+<div class="key">That is the whole experience: say, wait, live. Everything else the app has (Org, departments, Root, functions, the Board) stays where it is and is not shown to this person until they have a second thing running.</div>
+
+<h2>Every element, against what runs today</h2>
+<table><tr><th>State</th><th>Element</th><th>Uses today, unchanged</th><th>State</th></tr>
+<tr><td>S1</td><td>the one box on open</td><td>Root's box; Root's Identity hears and hands to the Website department (2.306.4)</td><td><span class="b">BUILT</span></td></tr>
+<tr><td>S1</td><td>opens here, not on Org; no "Root", no chip</td><td>the app opens on Org (bootScreen); the box names Root; answers wear a department chip</td><td><span class="m">MODE</span> when the organisation has one department, open on its chat with the org words off; routing untouched</td></tr>
+<tr><td>S1</td><td>paste a link, a listing, a brochure</td><td>the SEO Writer's knowledge reader reads pages for facts; nothing feeds it from the box</td><td><span class="c">CAPABILITY</span> a pasted link read for facts before the first question</td></tr>
+<tr><td>S1</td><td>the questions in one card</td><td>Identity asks for every missing fact in one turn; an answer is a fact, never a rule (test_69, test_75)</td><td><span class="b">BUILT</span> as it is. The v1 "one question at a time" conflict is dropped: one card is simpler and is what runs</td></tr>
+<tr><td>S1</td><td>"That's all I know"</td><td>a hole stays "to be confirmed" and is named before publish</td><td><span class="b">BUILT</span> label only</td></tr>
+<tr><td>S1</td><td>"Make my site", one button</td><td>a stamp on the brief, then Start; nothing runs before Start (D81)</td><td><span class="x">CONFLICT</span> the only one left: one tap that stamps and starts, or two taps as today</td></tr>
+<tr><td>S2</td><td>"page 3 of 6", Stop</td><td>the working line with page n of m; Stop as a turn (test_74, test_80)</td><td><span class="b">BUILT</span></td></tr>
+<tr><td>S2</td><td>the dot at once</td><td>the first sign today is the working line when the run starts; 39 s to the first answer in the walk</td><td><span class="c">CAPABILITY</span> SIM-3 (a)</td></tr>
+<tr><td>S3</td><td>"asawa.in is live." + Open</td><td>"Live site v1 is live." with Open the live site (test_70, W29); the host set before the first publish</td><td><span class="b">BUILT</span></td></tr>
+<tr><td>S3</td><td>Copy the link; the site card</td><td>none</td><td><span class="c">CAPABILITY</span> one link and one card, no logic</td></tr>
+<tr><td>S3</td><td>a change is one line; a correction is a rule</td><td>an owner turn makes a version and reruns what it touches; a directive becomes an owner rule Check runs; a build that breaks it is sent back (test_72)</td><td><span class="b">BUILT</span></td></tr></table>
+
+<div class="conf"><b>CONFLICT, the one that remains.</b> Today the brief is stamped and Start is pressed: two taps, by D81 (nothing runs in the background, nothing without a press). The design has one button, "Make my site", that does both. Your call: one tap, or keep two and the design shows "Yes, that's right" then "Make my site".</div>
+
+<h2>What to build, in order</h2>
+<table><tr><th>#</th><th>Unit</th><th>Impact (who, what changes)</th><th>Effort (time, files)</th></tr>
+<tr><td>1</td><td>open on the chat when the organisation has one department; org words off (MODE)</td><td>the first minute; nothing else moves</td><td>half a day; 02-helpers.js boot, 22-website.js labels, one setting; W tests</td></tr>
+<tr><td>2</td><td>the dot at once, before the run's first line</td><td>every wait</td><td>half a day; 22-website.js; W test</td></tr>
+<tr><td>3</td><td>the site card and Copy the link on the live turn</td><td>S3</td><td>half a day; 22-website.js; W test</td></tr>
+<tr><td>4</td><td>a pasted link read for facts before the first question</td><td>an existing organisation gives less typing</td><td>1-2 days; engine_runtime.py identity ask, the knowledge reader; tests</td></tr></table>
+<div class="note">Then the Human Simulation walks it as the founder on Asawa, by clicks alone, and every miss is a SIM row. The digital footprint beyond the site (the Google listing, social) is a later use case, not this one.</div>
+
+<h2>The founder's check: was this ruled before?</h2>
+<p>Asked 2026-09-29: "I think we have already decided these things in the past." Searched: FOUNDER-DIRECTIONS, DECISIONS, DECISION-LOG, every program's DECISIONS.md, sutra/os/decisions, the Now redesign record (51 files).</p>
+<table><tr><th>Thing</th><th>Found</th><th>Where</th></tr>
+<tr><td>what needs you first on the main screen</td><td>RULED for the app's Now screen: status mark in the bar, All clear panel, FYI 24 h</td><td>the Now redesign, 2026-09-27, released in 2.305.0</td></tr>
+<tr><td>the website as the first thing to build</td><td>RULED: "the first build is one autonomous department that builds a website"</td><td>DECISION-LOG 2026-09-27 and 2026-09-28</td></tr>
+<tr><td>one screen across departments and orgs</td><td>NOT FOUND; only today's ledger row N-021</td><td>none</td></tr>
+<tr><td>the operator as the person</td><td>PARTLY: the CEO as operator in the Org journeys brief (DRAFT); D44 is about T4 clients' workflows, not this</td><td>org-journeys.html, 2026-09-12</td></tr></table>
+
+<h2>Sources</h2>
+<p>The Website department and its tests (<code>sutra-ui/engine_runtime.py</code>, <code>website_dept.py</code>, <code>static/js/22-website.js</code>, <code>02-helpers.js</code>); the walks of 2026-09-28 (<code>qa/sim/runs/</code>); the knowledge reader (<code>agents_api.py</code>). Skin: <a href="../../design-system.html">Design System</a>. High level: <a href="platform-journeys.html">Platform journeys</a>. v1 of this page (Rekha's six phone frames, four conflicts) is in git history, holding 56c02e83.</p>
+<p style="font-size:11.5px;color:#9ca3af">Provenance &#183; author: claude (2026-09-29) for the founder's direction of the same day (one use case, a website for my existing organisation, the flab removed, the experience as simple as possible) &#183; review: none by a second model &#183; confidence: high on BUILT rows (each names its test or walk); high on the one conflict; moderate on the effort column.</p>
+</div></div></body></html>

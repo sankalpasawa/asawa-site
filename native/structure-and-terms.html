@@ -1,0 +1,386 @@
+<!doctype html>
+<!-- PAGE: structure-and-terms (v1, 2026-09-11). The structure and the words Sutra is organized by:
+     Domain > Charter + Placements + Artifacts; Module and Component above artifacts; Surface reserved.
+     Canon terms are RULED and cite their ADR or primitive; the additions of 2026-09-11 were RULED by the founder on 2026-09-12 (D74 Rulings).
+     One zoom under the company map (principle 2: the question "what words and shape organize Sutra" is a
+     front-door question). Founder direction 2026-09-11. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Structure and terms</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+.lead{font-size:16px;color:#374151;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+.RULED{background:#ecfdf5;color:#047857}.PROPOSED{background:#fffbeb;color:#92400e}.RESERVED{background:#f3f4f6;color:#4b5563}.DIRECTED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.small{font-size:12px;color:#6b7280}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="current-state.html">Current state</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="market.html">Market and people</a></div><div style="padding-left:17px"><a href="platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a class="sb-cur" href="structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="company-map.html">The company map</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="system/department.html">A department</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="index.html">Native hub</a> &#8250; <a href="company-map.html">company map</a> &#8250; structure and terms</div>
+<h1>How Sutra is organized &#8212; the structure and the words <span class="lvl">FRONT DOOR &#183; zoom 1</span></h1>
+<p class="lead">Seven words carry the whole organization. A <b>Domain</b> (you say "department") owns <b>Charters</b>, receives <b>Placements</b>, and produces <b>Artifacts</b>. Inside Artifact sit three refinements: <b>Module</b>, <b>Component</b>, and <b>doc layer</b>. Everything the system creates fits these dimensions; a genuinely new kind is flagged to you, never added silently. Green = ruled in canon. Blue = founder direction of 2026-09-11. Amber = proposed, awaiting ruling.</p>
+
+<h2>Work order</h2>
+<table>
+<tr><th>id</th><th>parent</th><th>status</th><th>contract</th><th>acceptance</th></tr>
+<tr><td>structure-and-terms</td><td><a href="company-map.html">company-map</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>one reference for the organizing tree and vocabulary; canon terms cited; proposals labelled</td><td>every RULED term cites an ADR, primitive or skill; every PROPOSED term says so; one tree, one table, no synonyms introduced</td></tr>
+</table>
+
+<h2>The structure</h2>
+<svg id="structure-diagram" viewBox="0 0 940 430" role="img" aria-label="Structure: a Domain owns Charters, receives Placements and produces Artifacts; Artifacts bundle into Modules or render as Components; every artifact carries kind, facing and doc layer; a closed-vocabulary rule applies to anything new">
+<defs><marker id="sta" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="310" y="18" width="320" height="60" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="470" y="42" text-anchor="middle" font-size="13" font-weight="800" fill="#065f46">DOMAIN</text>
+<text x="470" y="60" text-anchor="middle" font-size="9.5" fill="#065f46">you say "department" &#183; registry node: parent, description, charters</text>
+<line x1="470" y1="78" x2="170" y2="130" stroke="#64748b" stroke-width="1.3" marker-end="url(#sta)"/>
+<line x1="470" y1="78" x2="470" y2="130" stroke="#64748b" stroke-width="1.3" marker-end="url(#sta)"/>
+<line x1="470" y1="78" x2="770" y2="130" stroke="#64748b" stroke-width="1.3" marker-end="url(#sta)"/>
+<text x="300" y="104" font-size="9" fill="#6b7280">owns</text>
+<text x="478" y="108" font-size="9" fill="#6b7280">receives</text>
+<text x="620" y="104" font-size="9" fill="#6b7280">produces</text>
+<rect x="60" y="130" width="220" height="60" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="170" y="153" text-anchor="middle" font-size="12" font-weight="800" fill="#065f46">CHARTER(S)</text>
+<text x="170" y="170" text-anchor="middle" font-size="9.5" fill="#065f46">what must always hold &#183; C-hash, immutable</text>
+<rect x="360" y="130" width="220" height="60" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="470" y="153" text-anchor="middle" font-size="12" font-weight="800" fill="#065f46">PLACEMENTS</text>
+<text x="470" y="170" text-anchor="middle" font-size="9.5" fill="#065f46">one domain + one charter per unit of work</text>
+<rect x="660" y="130" width="220" height="60" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="770" y="153" text-anchor="middle" font-size="12" font-weight="800" fill="#065f46">ARTIFACTS</text>
+<text x="770" y="170" text-anchor="middle" font-size="9.5" fill="#065f46">every typed, addressable output</text>
+<line x1="740" y1="190" x2="650" y2="250" stroke="#64748b" stroke-width="1.2" marker-end="url(#sta)"/>
+<line x1="800" y1="190" x2="850" y2="250" stroke="#64748b" stroke-width="1.2" marker-end="url(#sta)"/>
+<text x="655" y="222" font-size="9" fill="#6b7280">bundle into</text>
+<text x="828" y="222" font-size="9" fill="#6b7280">or render as</text>
+<rect x="530" y="250" width="240" height="66" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="650" y="272" text-anchor="middle" font-size="12" font-weight="800" fill="#065f46">MODULE</text>
+<text x="650" y="288" text-anchor="middle" font-size="9.5" fill="#065f46">own identity, charter, navigation</text>
+<text x="650" y="303" text-anchor="middle" font-size="9.5" fill="#065f46">shown to users as an App (ruled 2026-09-12)</text>
+<rect x="785" y="250" width="140" height="66" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="855" y="272" text-anchor="middle" font-size="12" font-weight="800" fill="#065f46">COMPONENT</text>
+<text x="855" y="288" text-anchor="middle" font-size="9.5" fill="#065f46">render-only, no</text>
+<text x="855" y="303" text-anchor="middle" font-size="9.5" fill="#065f46">own lifecycle</text>
+<rect x="540" y="340" width="385" height="60" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/>
+<text x="732" y="362" text-anchor="middle" font-size="11" font-weight="800" fill="#065f46">EACH ARTIFACT CARRIES THREE FIELDS (RULED 2026-09-12, ADR-042)</text>
+<text x="732" y="380" text-anchor="middle" font-size="9.5" fill="#065f46">kind &#183; facing (user, operator, backend) &#183; doc layer (L5-L14 or none)</text>
+<line x1="770" y1="316" x2="760" y2="340" stroke="#d97706" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#sta)"/>
+<rect x="60" y="250" width="270" height="66" rx="9" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="195" y="272" text-anchor="middle" font-size="12" font-weight="800" fill="#1e40af">THE RULE FOR ANYTHING NEW</text>
+<text x="195" y="288" text-anchor="middle" font-size="9.5" fill="#1e40af">every output fits these dimensions;</text>
+<text x="195" y="303" text-anchor="middle" font-size="9.5" fill="#1e40af">a new kind is flagged to you, never silent</text>
+<text x="60" y="345" font-size="9.5" fill="#6b7280">Worked example, Shadow: one Module made of 5 artifacts of 3 kinds (policy, code, doc); owner domain still unassigned.</text>
+<text x="60" y="361" font-size="9.5" fill="#6b7280">Worked example, Dispatch: 0 modules, 45 artifacts (6 cli, 10 hook, 1 policy, 2 ledger, 11 test, 1 runbook, 3 doc, 22 plan).</text>
+<text x="60" y="390" font-size="9.5" fill="#9ca3af">Green = ruled in canon (ADR-023, ADR-028, ADR-042, primitives, pillar P1). The 2026-09-11 proposals were ruled on 2026-09-12 and are green now. Blue = founder direction 2026-09-11.</text>
+<text x="60" y="406" font-size="9.5" fill="#9ca3af">Read: a Domain owns, receives and produces; only artifacts with their own identity and navigation earn the word Module.</text>
+</svg>
+<p class="figcap">The tree is the same at every level: a sub-department is a child Domain with its own charters, placements and artifacts. Deeper nodes never rearrange when status changes; only the counts move.</p>
+
+<h2>The words &#8212; one meaning each</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th><th>You say</th><th>Status</th><th>Source</th></tr>
+<tr><td>Domain</td><td>an org node in the placement registry: parent, description, attached charters</td><td>department</td><td><span class="pill RULED">RULED</span></td><td><code>sutra/os/native/primitives/domain.md</code>; domains skill terminology, locked 2026-07-30</td></tr>
+<tr><td>Charter</td><td>the governance contract attached to one domain: purpose, scope in and out, obligations, invariants, metrics, ACL, termination; content-addressed, immutable</td><td>charter</td><td><span class="pill RULED">RULED</span></td><td><code>primitives/charter.md</code>; <a href="platform/model/properties.html">Properties</a>; ADR-028</td></tr>
+<tr><td>Placement</td><td>one domain plus one charter stamped on a unit of work before it mutates anything</td><td>placement</td><td><span class="pill RULED">RULED</span></td><td>ADR-028 Decisions 1-6</td></tr>
+<tr><td>Artifact</td><td>any output that is typed, addressable, logged, reusable and system-readable</td><td>artifact</td><td><span class="pill RULED">RULED</span></td><td>pillar P1 artifact-first</td></tr>
+<tr><td>Module</td><td>a named bundle of artifacts with its own lifecycle, charter, authority, deployment and product identity; owns navigation; composes components; owns no engine behavior</td><td>module (D-M22 proposes "App" in the Mac app; that word is still proposed)</td><td><span class="pill RULED">RULED</span></td><td>ADR-023 Decision 2 four-test</td></tr>
+<tr><td>Component</td><td>a render-only UI unit that projects state and has no lifecycle of its own</td><td>component</td><td><span class="pill RULED">RULED</span></td><td>ADR-023 Decision 2</td></tr>
+<tr><td>Surface</td><td>not part of this vocabulary. Native uses it internally for its own interfaces; nothing you create is called a surface.</td><td>(not used)</td><td><span class="pill RESERVED">NOT USED</span></td><td>founder direction 2026-09-11; Native's use stays in <code>sutra/os/native/surfaces/</code></td></tr>
+<tr><td>Doc layer</td><td>which of the L0-L14 founder-doc layers a document belongs to</td><td>layer</td><td><span class="pill RULED">RULED</span></td><td><code>holding/PRODUCT-DOC-STANDARD.md</code> section 3</td></tr>
+</table>
+<div class="note"><span class="pill RULED">RULED</span> Words this vocabulary does without: "surface" for department outputs (Native's internal word) and "internal module" (a hook or CLI is an artifact of a system kind; it fails the four-test).</div>
+
+<h2>Artifact typing &#8212; three fields <span class="pill RULED">RULED 2026-09-12</span></h2>
+<svg viewBox="0 0 940 250" role="img" aria-label="Three fields on every artifact: kind, facing, doc layer. app and page face the user; cli and skill face the operator; the other kinds face the backend; doc carries a layer">
+<text x="20" y="24" font-size="11" font-weight="800" fill="#374151">KIND (one of 17, closed list; ADR-042)</text>
+<g font-size="10" fill="#111827">
+<rect x="20" y="34" width="52" height="24" rx="6" fill="#eef2ff" stroke="#c7d2fe"/><text x="46" y="50" text-anchor="middle">app</text>
+<rect x="80" y="34" width="52" height="24" rx="6" fill="#eef2ff" stroke="#c7d2fe"/><text x="106" y="50" text-anchor="middle">page</text>
+<rect x="140" y="34" width="52" height="24" rx="6" fill="#fef3c7" stroke="#fde68a"/><text x="166" y="50" text-anchor="middle">cli</text>
+<rect x="200" y="34" width="52" height="24" rx="6" fill="#fef3c7" stroke="#fde68a"/><text x="226" y="50" text-anchor="middle">skill</text>
+<rect x="260" y="34" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="286" y="50" text-anchor="middle">code</text>
+<rect x="320" y="34" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="346" y="50" text-anchor="middle">sql</text>
+<rect x="20" y="66" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="46" y="82" text-anchor="middle">engine</text>
+<rect x="80" y="66" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="106" y="82" text-anchor="middle">hook</text>
+<rect x="140" y="66" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="166" y="82" text-anchor="middle">policy</text>
+<rect x="200" y="66" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="226" y="82" text-anchor="middle">ledger</text>
+<rect x="260" y="66" width="52" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="286" y="82" text-anchor="middle">test</text>
+<rect x="320" y="66" width="52" height="24" rx="6" fill="#dcfce7" stroke="#bbf7d0"/><text x="346" y="82" text-anchor="middle">doc</text>
+<rect x="20" y="98" width="52" height="24" rx="6" fill="#dcfce7" stroke="#bbf7d0"/><text x="46" y="114" text-anchor="middle">plan</text>
+<rect x="80" y="98" width="52" height="24" rx="6" fill="#dcfce7" stroke="#bbf7d0"/><text x="106" y="114" text-anchor="middle">adr</text>
+<rect x="140" y="98" width="52" height="24" rx="6" fill="#dcfce7" stroke="#bbf7d0"/><text x="166" y="114" text-anchor="middle">charter</text>
+<rect x="200" y="98" width="60" height="24" rx="6" fill="#dcfce7" stroke="#bbf7d0"/><text x="230" y="114" text-anchor="middle">direction</text>
+<rect x="268" y="98" width="58" height="24" rx="6" fill="#dcfce7" stroke="#bbf7d0"/><text x="297" y="114" text-anchor="middle">protocol</text>
+</g>
+<text x="440" y="24" font-size="11" font-weight="800" fill="#374151">FACING (one of 3)</text>
+<g font-size="10">
+<rect x="440" y="34" width="110" height="24" rx="6" fill="#eef2ff" stroke="#c7d2fe"/><text x="495" y="50" text-anchor="middle">user</text>
+<rect x="440" y="66" width="110" height="24" rx="6" fill="#fef3c7" stroke="#fde68a"/><text x="495" y="82" text-anchor="middle">operator</text>
+<rect x="440" y="98" width="110" height="24" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/><text x="495" y="114" text-anchor="middle">backend</text>
+</g>
+<text x="600" y="24" font-size="11" font-weight="800" fill="#374151">DOC LAYER (L5-L14, or none)</text>
+<g font-size="9.5" fill="#374151">
+<text x="600" y="46">L5 Directions &#183; L6 PRD + Evidence (Asawa: charter, protocol)</text>
+<text x="600" y="62">L7 PRFAQ (Asawa: initiative brief)</text>
+<text x="600" y="78">L8 Features (Asawa: operating memo, runbook, README)</text>
+<text x="600" y="94">L9 Tech Spec (LLD) &#183; L10 ADRs &#183; L11 OKRs</text>
+<text x="600" y="110">L12 Roadmap (TODO) &#183; L13 Release Notes (reports)</text>
+<text x="600" y="126">L14 Comms (published site, one-pager)</text>
+</g>
+<g font-size="9.5" fill="#6b7280">
+<text x="20" y="130">blue kinds face the user &#183; amber kinds face the operator &#183; grey kinds face the backend &#183; green doc carries a layer</text>
+<text x="20" y="150">A doc that describes a system artifact keeps that artifact's facing and its own layer: a hook's runbook is kind doc, facing backend, layer L8.</text>
+<text x="20" y="170">Layers L0-L4 (principles, philosophy, vision, mission, strategy) are company-level documents, not department artifacts.</text>
+</g>
+<rect x="20" y="190" width="900" height="44" rx="8" fill="#ecfdf5" stroke="#047857"/>
+<text x="470" y="209" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">RULED 2026-09-12: the three field names and the 17-value kind list are canon (ADR-042 Accepted). Schemas follow when the Org program needs them.</text>
+<text x="470" y="225" text-anchor="middle" font-size="9.5" fill="#065f46">Engine schemas today know only the module kinds chat, page, link (modules_api.py) and the doc layers.</text>
+</svg>
+
+<h2>Module or component &#8212; the four-test (ADR-023)</h2>
+<svg viewBox="0 0 940 200" role="img" aria-label="Four-test matrix: independent lifecycle and identity, owns navigation, composes render-only parts, owns no engine behavior; module answers yes yes yes yes; component answers no no yes yes">
+<g font-size="10.5" fill="#374151">
+<text x="20" y="28" font-weight="800">Test</text><text x="560" y="28" font-weight="800">Module</text><text x="720" y="28" font-weight="800">Component</text>
+<line x1="20" y1="36" x2="900" y2="36" stroke="#e5e7eb"/>
+<text x="20" y="62">Independent lifecycle, charter, authority, deployment, product identity</text><text x="560" y="62" fill="#047857" font-weight="700">YES</text><text x="720" y="62" fill="#b91c1c" font-weight="700">NO</text>
+<text x="20" y="92">Owns workflow or navigation semantics</text><text x="560" y="92" fill="#047857" font-weight="700">YES</text><text x="720" y="92" fill="#b91c1c" font-weight="700">NO</text>
+<text x="20" y="122">Renders exposure-contract projections</text><text x="560" y="122" fill="#6b7280" font-weight="700">via its components</text><text x="720" y="122" fill="#047857" font-weight="700">YES</text>
+<text x="20" y="152">May own engine behavior or mutate domain state</text><text x="560" y="152" fill="#b91c1c" font-weight="700">NO</text><text x="720" y="152" fill="#b91c1c" font-weight="700">NO</text>
+<line x1="20" y1="164" x2="900" y2="164" stroke="#e5e7eb"/>
+<text x="20" y="186" font-size="9.5" fill="#6b7280">Applied 2026-09-11: Shadow, Help and Settings pass 3 of 4; Balance passes 2 of 4 and reads as a component. Source: research note, modules section.</text>
+</g>
+</svg>
+
+<h2>Classifying a department &#8212; nine facets <span class="pill RULED">RULED 2026-09-12</span></h2>
+<table>
+<tr><th>#</th><th>Facet</th><th>Values</th><th>Source of truth today</th></tr>
+<tr><td>1</td><td>Identity</td><td>slug, name, directory</td><td><code>holding/departments/&lt;slug&gt;/</code></td></tr>
+<tr><td>2</td><td>Placement</td><td>domain ref, charter id, display path</td><td>placement registry (ADR-028)</td></tr>
+<tr><td>3</td><td>Org scope</td><td>asawa-only, extension, sutra-vendor</td><td>department registry, Scope column</td></tr>
+<tr><td>4</td><td>Build layer</td><td>L0 plugin, L1 staging, L2 instance</td><td>D38 marker rules</td></tr>
+<tr><td>5</td><td>Tier reach</td><td>per tier T1-T4: mandate, recommend, inform, none</td><td>D34; the Compliance row shows the pattern</td></tr>
+<tr><td>6</td><td>Lifecycle</td><td>planned, formalized, shipped, deferred, archived</td><td>department registry, status summary</td></tr>
+<tr><td>7</td><td>Governance</td><td>charters, engines, ADRs, directions, protocols</td><td><code>sutra/os/</code>, FOUNDER-DIRECTIONS</td></tr>
+<tr><td>8</td><td>Artifacts</td><td>typed list (kind, facing, doc layer); modules called out</td><td>the directory plus the paths it owns</td></tr>
+<tr><td>9</td><td>Relations</td><td>parent, sub-departments, depends-on, feeds</td><td>registry notes, README</td></tr>
+</table>
+<p class="small">Facets 2, 4, 5 and 7 already existed as separate rules; the ruling of 2026-09-12 reads all nine through one card per department (no new schema until the Org program needs one).</p>
+
+<h2>The rule for anything new <span class="pill DIRECTED">FOUNDER DIRECTION 2026-09-11</span></h2>
+<ul>
+<li><b>Closed vocabulary.</b> Every output the system creates is a Domain, a Charter, a Placement, or an Artifact (with its kind, facing and doc layer; possibly a Module or Component). Nothing else.</li>
+<li><b>Complete creation.</b> When something new is created, all its dimensions are created with it: the domain it belongs to, the charter it answers to, the placement that pins it, and the typed artifact record. A subagent checks this on every creation; it cannot be bypassed.</li>
+<li><b>New kinds are events.</b> If an output does not fit any dimension, the system says so to you as a highlighted event. It never adds a kind silently.</li>
+</ul>
+<p class="small">Implementation is the directory program (paper first: the complete directory of everything that exists; then the creation guard; the registry sync and the Mac app view come after).</p>
+
+<h2>Open gaps</h2>
+<div class="gap"><b>Ruled 2026-09-12.</b> Artifact fields (kind, facing, doc layer), the nine facets, and "App" as the user word for Module (D-M22) were accepted by the founder ("Second one: do everything"; D74 Rulings 2026-09-12, ADR-042 Accepted). They live in documents now; schemas follow in the Org program.</div>
+<div class="gap"><b>The live tree.</b> The registry was reset on 2026-09-11 (see <code>holding/research/2026-09-11-built-inventory.md</code>), restored the same day, and restructured on 2026-09-12 under D76: one root <b>Sutra</b> whose only children are <b>Desktop</b> (this machine's app instance) and <b>Asawa Inc.</b> (the organisation). Counts on the company map refresh with the census.</div>
+
+<h2>Children</h2>
+<p class="small">None. Related: <a href="platform/the-model.html">The Model</a> (ruled platform vocabulary: particles, work-atom, workflow, assembly, system), <a href="platform/model/properties.html">Properties</a> (Charter, Domain, Tenancy as primitives), <a href="company-map.html">The Company Map</a> (where each block sits).</p>
+
+<h2>Sources</h2>
+<ul>
+<li><code>sutra/os/decisions/ADR-023-platform-ui-kit-exposure-contract.md</code> Decision 2 (module vs component); <code>sutra/os/decisions/ADR-028-mandatory-work-placement.md</code> Decisions 1-6 (placement)</li>
+<li><code>sutra/os/native/primitives/domain.md</code>, <code>charter.md</code>, <code>placement.md</code>; <code>sutra/os/native/pillars/P1-artifact-first.md</code>; <code>sutra/os/native/surfaces/</code></li>
+<li><code>sutra/marketplace/plugin/skills/domains/SKILL.md</code> (departments = domains, locked 2026-07-30); <code>holding/PRODUCT-DOC-STANDARD.md</code> section 3 (doc layers)</li>
+<li><code>holding/research/2026-09-11-built-inventory.md</code> (worked examples, four-test results, the incident)</li>
+</ul>
+<h2>Provenance</h2>
+<p class="small">Authored 2026-09-11 from the founder's vocabulary session of the same day. Status DRAFT; LOCKED is founder-only. Dual-lane reviewed (codex, DeepSeek) before registration.</p>
+
+<h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px">Folded here</h2>
+<p style="font-size:13px;color:#6b7280">Pages on the same subject, kept whole under their own titles (the consolidation of 2026-09-29).</p>
+<details class="folded-from" id="folded-the-six-layers-html" data-folded-from="the-six-layers.html"><summary style="cursor:pointer;font-weight:700;margin:22px 0 6px">The six layers <span style="font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563;margin-left:6px">folded from the-six-layers.html on 2026-09-29</span></summary>
+<p class="lead">Sutra helps you design your work, then runs it. It does that in six layers. The first three are the spine: know the company, design the work, put agents on it. The other three keep it honest and growing: feedback, marketplaces, tooling.</p>
+
+<div class="key"><b>In one sentence:</b> Sutra builds a model of the organisation, designs workflows on top of that model, and deploys agents to execute those workflows &#8212; then records what happened and improves both, with your approval.</div>
+
+<h2>The six layers in one picture</h2>
+<svg viewBox="0 0 880 340" role="img" aria-label="Six layers: ontology shapes workflow design, which assigns agents; marketplaces and tooling equip them; every run leaves a record in feedback, which corrects the model and the playbooks">
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#047857"/></marker>
+<marker id="arrg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+<text x="40" y="48" font-size="12" font-weight="800" fill="#047857">SPINE &#8212; model &#8594; workflow &#8594; agent</text>
+<rect x="40" y="62" width="220" height="86" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="150" y="90" text-anchor="middle" font-size="13.5" font-weight="800" fill="#065f46">1 &#183; ONTOLOGY</text>
+<text x="150" y="110" text-anchor="middle" font-size="11.5" fill="#047857">what exists in the company</text>
+<text x="150" y="128" text-anchor="middle" font-size="11.5" fill="#047857">and how it is connected</text>
+<rect x="330" y="62" width="220" height="86" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="440" y="90" text-anchor="middle" font-size="13.5" font-weight="800" fill="#065f46">2 &#183; WORKFLOW DESIGN</text>
+<text x="440" y="110" text-anchor="middle" font-size="11.5" fill="#047857">how each outcome</text>
+<text x="440" y="128" text-anchor="middle" font-size="11.5" fill="#047857">should be produced</text>
+<rect x="600" y="62" width="220" height="86" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="710" y="90" text-anchor="middle" font-size="13.5" font-weight="800" fill="#065f46">3 &#183; AGENTS</text>
+<text x="710" y="110" text-anchor="middle" font-size="11.5" fill="#047857">who or what</text>
+<text x="710" y="128" text-anchor="middle" font-size="11.5" fill="#047857">does the work</text>
+<line x1="260" y1="105" x2="330" y2="105" stroke="#047857" stroke-width="1.6" marker-end="url(#arr)"/>
+<text x="295" y="96" text-anchor="middle" font-size="11" fill="#047857">shapes</text>
+<line x1="550" y1="105" x2="600" y2="105" stroke="#047857" stroke-width="1.6" marker-end="url(#arr)"/>
+<text x="575" y="96" text-anchor="middle" font-size="11" fill="#047857">assigns</text>
+<text x="40" y="207" font-size="12" font-weight="800" fill="#64748b">SUPPORT &#8212; feedback &#183; playbooks &#183; tools</text>
+<rect x="40" y="215" width="220" height="70" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="150" y="241" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">4 &#183; FEEDBACK</text>
+<text x="150" y="261" text-anchor="middle" font-size="11" fill="#64748b">what came back, what to change</text>
+<rect x="330" y="215" width="220" height="70" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="440" y="241" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">5 &#183; MARKETPLACES</text>
+<text x="440" y="261" text-anchor="middle" font-size="11" fill="#64748b">where reusable playbooks come from</text>
+<rect x="600" y="215" width="220" height="70" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="710" y="241" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">6 &#183; TOOLING</text>
+<text x="710" y="261" text-anchor="middle" font-size="11" fill="#64748b">what the agents can touch</text>
+<line x1="710" y1="215" x2="710" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="722" y="184" font-size="11.5" fill="#64748b">equips</text>
+<line x1="440" y1="215" x2="440" y2="148" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrg)"/>
+<text x="452" y="184" font-size="11.5" fill="#64748b">provides playbook shapes</text>
+<path d="M820,105 L850,105 L850,312 L150,312 L150,285" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="500" y="328" text-anchor="middle" font-size="11.5" fill="#64748b">run record</text>
+<line x1="150" y1="215" x2="150" y2="148" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="162" y="184" font-size="11.5" fill="#64748b">corrects the model</text>
+<path d="M260,250 L295,250 L295,132 L330,132" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrg)"/>
+<text x="300" y="172" font-size="11.5" fill="#64748b">corrects the playbooks</text>
+</svg>
+<p class="cap">Green is the spine. Grey is what keeps it honest and growing.</p>
+
+<h2>Each layer, with an example</h2>
+<p>All examples are one company: a digital lender that takes applications, sanctions loans, disburses money and collects EMIs. Its rule: a disbursal above &#8377;5 lakh needs a second approval.</p>
+<div class="grid">
+<div class="card"><b>1 &#183; Ontology</b><div class="q">What exists in this company, and how is it connected?</div>
+<div class="ex">Applicants, credit officers, loans, EMIs. A credit officer owns an application. An application can become a sanctioned loan. A disbursal above &#8377;5 lakh needs a second approval.</div>
+<div class="see">departments with written purposes, and a read-back before work starts: &#8220;this is a Finance request, medium size, owned by Collections&#8221;.</div></div>
+<div class="card"><b>2 &#183; Workflow design</b><div class="q">How should this outcome be produced?</div>
+<div class="ex">Verify identity &#8594; score &#8594; sanction or decline &#8594; disburse &#8594; reconcile the first EMI. If identity cannot be verified, stop and ask the owner. Done means: money moved, ledger matches, applicant informed.</div>
+<div class="see">a playbook with steps and a declared &#8220;done means this&#8221; check.</div></div>
+<div class="card"><b>3 &#183; Agents</b><div class="q">Who or what does the work?</div>
+<div class="ex">The agent runs the identity check, the scoring and the sanction on its own, then pauses before any step that needs an approval &#8212; such as a disbursal above &#8377;5 lakh.</div>
+<div class="see">steps ticking by, a receipt at the end, and a question only when the decision is genuinely yours.</div></div>
+<div class="card"><b>4 &#183; Feedback</b><div class="q">How does it get better?</div>
+<div class="ex">The bank file arrived late three Fridays running, and the check failed each time. The playbook gains a &#8220;wait until 11:00 on Fridays&#8221; step &#8212; after you approve it.</div>
+<div class="see">&#8220;Want me to keep this as the way we do it?&#8221; Every run is recorded. Sutra checks whether a playbook still works and flags it when it stops passing.</div></div>
+<div class="card"><b>5 &#183; Marketplaces</b><div class="q">Where do playbooks come from?</div>
+<div class="ex">Your identity-check playbook started as a shared template. You kept the shape. Your limits, your rules and your customers stayed yours.</div>
+<div class="see">playbook shapes can travel between companies; your customers, numbers and decisions do not.</div></div>
+<div class="card"><b>6 &#183; Tooling</b><div class="q">What can the agent touch and change?</div>
+<div class="ex">The bank export, the ledger, the CRM, the message to the applicant.</div>
+<div class="see">connectors to those systems, with every action written to the record.</div></div>
+</div>
+
+<h2>One request, through all six</h2>
+<p>You type: <i>&#8220;disburse loan 4821&#8221;</i>. Here is what happens, in order.</p>
+<div class="rail">
+<div class="step" data-n="1"><b>Layer 1 &#183; Ontology</b><div class="say">Loan 4821 is a sanctioned loan of &#8377;7 lakh, owned by credit officer Meera. Her limit is &#8377;5 lakh, so a second approval is required. <i>The company model already knows all of this.</i></div></div>
+<div class="step" data-n="2"><b>Layer 2 &#183; Workflow design</b><div class="say">The disbursal playbook applies: confirm sanction &#8594; second approval &#8594; send bank instruction &#8594; post to ledger &#8594; inform applicant. Done means: money moved, ledger matches, applicant told.</div></div>
+<div class="step" data-n="3"><b>Layer 5 &#183; Marketplaces</b><div class="say">That playbook&#8217;s shape came from a shared lending template last quarter. <i>The approval limit in it is yours.</i></div></div>
+<div class="step" data-n="4"><b>Layer 6 &#183; Tooling</b><div class="say">The agent can reach the bank portal, the ledger and the messaging channel. Nothing else.</div></div>
+<div class="step" data-n="5"><b>Layer 3 &#183; Agents</b><div class="say">The agent confirms the sanction, then stops: &#8220;&#8377;7 lakh is above Meera&#8217;s limit. Approve?&#8221; You approve. It sends the instruction, posts the ledger entry, messages the applicant, and hands you a receipt.</div></div>
+<div class="step" data-n="6"><b>Layer 4 &#183; Feedback</b><div class="say">The run is recorded and the check passed. If it had failed, work would have stopped with the evidence attached. If you had changed a step, Sutra would ask: &#8220;keep this as the way we do it?&#8221;</div></div>
+</div>
+<p class="cap">Numbers are the order in time. Marketplaces and tooling equip the agent before it runs.</p>
+
+<h2>Ontology is not workflow</h2>
+<svg viewBox="0 0 880 250" role="img" aria-label="Left: the ontology as connected things. Right: the workflow as a route with a check at the end.">
+<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#047857"/></marker>
+<marker id="a3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+<text x="215" y="28" text-anchor="middle" font-size="13" font-weight="800" fill="#64748b">ONTOLOGY &#8212; the map</text>
+<rect x="30" y="60" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="95" y="85" text-anchor="middle" font-size="12" fill="#065f46">credit officer</text>
+<rect x="240" y="60" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="305" y="85" text-anchor="middle" font-size="12" fill="#065f46">application</text>
+<line x1="160" y1="80" x2="240" y2="80" stroke="#047857" stroke-width="1.4" marker-end="url(#a2)"/><text x="200" y="72" text-anchor="middle" font-size="10.5" fill="#047857">owns</text>
+<rect x="240" y="150" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="305" y="175" text-anchor="middle" font-size="12" fill="#065f46">sanctioned loan</text>
+<line x1="305" y1="100" x2="305" y2="150" stroke="#047857" stroke-width="1.4" marker-end="url(#a2)"/><text x="318" y="130" font-size="10.5" fill="#047857">can become</text>
+<rect x="30" y="150" width="130" height="40" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.5"/><text x="95" y="175" text-anchor="middle" font-size="12" fill="#065f46">disbursal</text>
+<line x1="240" y1="170" x2="160" y2="170" stroke="#047857" stroke-width="1.4" marker-end="url(#a2)"/><text x="200" y="162" text-anchor="middle" font-size="10.5" fill="#047857">paid out as</text>
+<text x="200" y="225" text-anchor="middle" font-size="11" fill="#6b7280">rule: a disbursal above &#8377;5 lakh needs a second approval</text>
+<line x1="440" y1="45" x2="440" y2="235" stroke="#e5e7eb" stroke-width="1"/>
+<text x="660" y="28" text-anchor="middle" font-size="13" font-weight="800" fill="#64748b">WORKFLOW &#8212; the route</text>
+<rect x="480" y="60" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="535" y="83" text-anchor="middle" font-size="11.5" fill="#475569">verify identity</text>
+<rect x="620" y="60" width="90" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="665" y="83" text-anchor="middle" font-size="11.5" fill="#475569">score</text>
+<rect x="740" y="60" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="795" y="83" text-anchor="middle" font-size="11.5" fill="#475569">sanction</text>
+<line x1="590" y1="78" x2="620" y2="78" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<line x1="710" y1="78" x2="740" y2="78" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<path d="M795,96 L795,120 L535,120 L535,140" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<rect x="480" y="140" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="535" y="163" text-anchor="middle" font-size="11.5" fill="#475569">disburse</text>
+<rect x="620" y="140" width="110" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><text x="675" y="163" text-anchor="middle" font-size="11.5" fill="#475569">reconcile EMI</text>
+<line x1="590" y1="158" x2="620" y2="158" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a3)"/>
+<rect x="760" y="136" width="90" height="44" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/><text x="805" y="154" text-anchor="middle" font-size="10.5" font-weight="800" fill="#92400e">DONE MEANS</text><text x="805" y="170" text-anchor="middle" font-size="10.5" fill="#92400e">ledger matches</text>
+<line x1="730" y1="158" x2="760" y2="158" stroke="#b45309" stroke-width="1.4" marker-end="url(#a3)"/>
+<text x="660" y="225" text-anchor="middle" font-size="11" fill="#6b7280">every step refers to things on the map; the check at the end is part of the route</text>
+</svg>
+<p class="cap">The map does not change when you reorder the route. The route means nothing without the map.</p>
+<p>This is why the order matters. A workflow without an ontology has nobody to own it, nothing to check against, and nowhere to put an exception. An agent without a workflow improvises. Sutra insists on the model first, the design second, the agent third.</p>
+
+<h2>The loop is the product</h2>
+<div class="key">Agents do the work, and they are not what makes Sutra different. What compounds is the loop: understand the company, design its work, run it, record what came back, correct the model and the playbooks. Take the feedback layer away and you have a collection of agents. Keep it and you have a system whose work can be inspected, corrected and reused.</div>
+<div class="key" style="background:#f8fafc;border-color:#64748b"><b>In plain words:</b> understand the organisation, design its work, execute its work. Tooling lets the agents act; feedback lets the system improve. <span style="color:#6b7280">(The short form: Ontology &#8594; Orchestration &#8594; Agency.)</span></div>
+
+<h2>Where each layer lives on this site</h2>
+<table>
+<tr><th>Layer</th><th>Pages</th></tr>
+<tr><td>1 Ontology</td><td><a href="platform/model/properties.html">Properties &#8212; Charter &#183; Domain &#183; Tenancy</a>, <a href="platform/placement.html">Placement</a>, <a href="company-map.html">The Company Map</a></td></tr>
+<tr><td>2 Workflow design</td><td><a href="platform/model/work-atom.html">Work-Atom</a>, <a href="platform/model/workflow-engine.html">Workflow + Engine</a>, <a href="platform/system-of-process.html">System of Process</a></td></tr>
+<tr><td>3 Agents</td><td><a href="platform/host.html">Host</a>, <a href="platform/orchestration.html">Orchestration</a>, <a href="platform/authority-tenancy.html">Authority + Tenancy</a></td></tr>
+<tr><td>4 Feedback</td><td><a href="platform/system-of-record.html">System of Record</a>, <a href="platform/model/evals.html">Evals</a>, <a href="platform/observability.html">Observability</a></td></tr>
+<tr><td>5 Marketplaces</td><td><a href="distribution.html">Distribution</a>, <a href="distribution-ops.html">Distribution Ops</a></td></tr>
+<tr><td>6 Tooling</td><td><a href="platform/connector.html">Connector</a>, <a href="platform/external-world.html">External World</a>, <a href="platform/compute.html">Compute</a>, <a href="platform/ui.html">UI</a></td></tr>
+</table>
+
+<h2>Next</h2>
+<table>
+<tr><th>Question</th><th>Page</th></tr>
+<tr><td>What does this feel like day by day?</td><td><a href="what-is-native.html">What is Native</a></td></tr>
+<tr><td>The whole machine in one picture</td><td><a href="company-map.html">The Company Map</a></td></tr>
+<tr><td>Where does this sit against ontology vendors and workflow tools?</td><td><a href="where-this-fits.html">Where this fits</a></td></tr>
+</table>
+
+<p style="font-size:12px;color:#9ca3af;margin-top:30px">Examples are illustrative and use one digital lending company throughout.</p>
+</details>
+</div></div></body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§8 — Roadmap (versions · phases · risks · backlog) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="07-observability.html">prev: 07 observability</a> · <strong>§8 — Roadmap (versions · phases · risks · backlog)</strong> · <a href="09-meta.html">next: 09 meta</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§8 — Roadmap (versions · phases · risks · backlog)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/index.html">Tech Design Hub</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="roadmap">
+<h2>§8 Roadmap <a href="../product-prd-native-v1.html#roadmap" class="anchor">#</a></h2>
+
+<section id="c1-versions">
+<h3>C.1 Version strategy <a href="../product-prd-native-v1.html#c1-versions" class="anchor">#</a></h3>
+<table>
+<tr><th>Version</th><th>Window</th><th>What ships</th><th>Trigger to next</th></tr>
+<tr><td>v1</td><td>Q2 2026</td><td>Terminal-fluent operator wedge. 5 pillars · 25 feature blocks. T2 install (DayFlow / Billu / Paisa).</td><td>T2 N* ≥3 OHS/wk for ≥2 weeks; &lt;5 critical bugs at 30d</td></tr>
+<tr><td>v2</td><td>Q3 2026</td><td>Capability expansion — F1 semantic retrieval; B2.c peer-Sutra federation; full A2A; non-terminal-surface PROTOTYPE tested (graduate to v3). Per ratified <a href="../product-prd-native-v1.html#c3-open-questions">Q2 + Q9</a>: full non-terminal launch deferred to v3.</td><td>v1 N* mature ≥20 OHS/wk; v2 prototype tested non-terminal</td></tr>
+<tr><td>v3</td><td>Q4 2026</td><td>TAM expansion + operationalize — non-terminal surfaces ship (voice / web / app per ratified <a href="../product-prd-native-v1.html#c3-open-questions">Q2 + Q9</a>); fleet scale; partnerships; SaaS pricing.</td><td>v2 adoption count + revenue threshold met; v2 non-terminal prototype validated</td></tr>
+</table>
+</section>
+
+<section id="c2-phases">
+<h3>C.2 Implementation phases <a href="../product-prd-native-v1.html#c2-phases" class="anchor">#</a></h3>
+<table>
+<tr><th>Phase</th><th>What's in scope</th><th>Status</th></tr>
+<tr><td>A — PRD docs</td><td>This file (v1 canonical). r13→r18 fix passes applied to v2 (archived).</td><td>scaffold complete 2026-05-12; founder fills 1-3 next</td></tr>
+<tr><td>B — Feature specs</td><td>L8 Feature Specs at <code>sutra/os/native/blocks/B*.md</code> for all 25 blocks</td><td>scaffolded; detailing iterative</td></tr>
+<tr><td>C — Implementation</td><td>Native runtime daemon; primitives in code; surfaces wired; hardstops live</td><td>partial — daemon at <code>~/.sutra-native/</code>; v0 dogfood active</td></tr>
+<tr><td>D — Codex + DeepSeek review</td><td>PROTO-019 cross-AI peer review on every canon change</td><td>r18 PASS on v2; v3 enters review after founder fills 1-3</td></tr>
+<tr><td>E — Ship + iterate</td><td>T2 onboarding (DayFlow / Billu / Paisa) → measure OHS/wk</td><td>queued post-v1</td></tr>
+</table>
+</section>
+
+<section id="c3-open-questions">
+<h3>C.3 Open questions <a href="../product-prd-native-v1.html#c3-open-questions" class="anchor">#</a></h3>
+<p>Eleven open questions from v1 design — <strong>all ratified 2026-05-09</strong>. Canon at <code>sutra/os/native/open-questions/</code>.</p>
+<table>
+<tr><th>#</th><th>Question</th><th>Ratified answer</th></tr>
+<tr><td>Q1</td><td>Primary persona for v1?</td><td>Solo founder, 1-N companies, terminal-fluent</td></tr>
+<tr><td>Q2</td><td>Terminal-only or also web/app v1?</td><td>Terminal-only v1; v3 revisit</td></tr>
+<tr><td>Q3</td><td>Memory framing in v1?</td><td>No — governance + multi-tenant + emergence instead</td></tr>
+<tr><td>Q4</td><td>Pattern emergence threshold k?</td><td>k=4 default; tunable v2+</td></tr>
+<tr><td>Q5</td><td>Approval scope — per-step or per-workflow?</td><td>Per-step v1; trust-signal reduces at 30d clean</td></tr>
+<tr><td>Q6</td><td>v1 pricing model?</td><td>Per-Tenant subscription; v2 outcome-based</td></tr>
+<tr><td>Q7</td><td>v1 → v2 trigger?</td><td>N* mature ≥20 OHS/wk; v2 prototype non-terminal</td></tr>
+<tr><td>Q8</td><td>Founder checkpoints during v1?</td><td>Weekly Pulse Friday; mid-week ad-hoc on N* drop</td></tr>
+<tr><td>Q9</td><td>Why terminal-only?</td><td>Wedge requires terminal fluency; v3 broader</td></tr>
+<tr><td>Q10</td><td>Portfolio play in v1?</td><td>Multi-Human-Org architecture; each company = Human-Tenant</td></tr>
+<tr><td>Q11</td><td>Truncated bullet (§12.4 in v2)?</td><td>Resolved as v1.1+ migration plan</td></tr>
+</table>
+</section>
+
+<section id="c4-risks">
+<h3>C.4 Risks + mitigations <a href="../product-prd-native-v1.html#c4-risks" class="anchor">#</a></h3>
+<p>Severity × Likelihood = Priority. Rows sorted desc.</p>
+<table>
+<tr><th>#</th><th>Risk</th><th>S</th><th>L</th><th>P</th><th>Mitigation</th></tr>
+<tr><td>R8</td><td>Multi-agent orchestration cost spikes at scale</td><td>4</td><td>3</td><td>12</td><td>Per-task estimation budget; rate-limited workflows</td></tr>
+<tr><td>R2</td><td>Audit log unwritable → silent fail-open</td><td>5</td><td>2</td><td>10</td><td>Triple-channel redundancy; HS-4 stops on all-fail</td></tr>
+<tr><td>R3</td><td>Cross-tenant accidental leakage</td><td>5</td><td>2</td><td>10</td><td>Default-deny; explicit auth; HS-3 surfaces breaches</td></tr>
+<tr><td>R4</td><td>Operator review fatigue</td><td>3</td><td>3</td><td>9</td><td>Trust signal: 30d clean → fewer gates</td></tr>
+<tr><td>R5</td><td>Pricing model wrong for portfolio operator</td><td>3</td><td>3</td><td>9</td><td>v1 subscription; v2 outcome-based experiment</td></tr>
+<tr><td>R9</td><td>Canon drift between docs + runtime</td><td>3</td><td>3</td><td>9</td><td>D54 canon-only; codex + deepseek per-change review</td></tr>
+<tr><td>R6</td><td>v1 wedge too narrow to fund v2</td><td>4</td><td>2</td><td>8</td><td>Wedge validates personalization + governance + audit</td></tr>
+<tr><td>R1</td><td>Pattern-emergence false positives</td><td>2</td><td>3</td><td>6</td><td>k=4 default; operator pause; precision tracked</td></tr>
+<tr><td>R7</td><td>Person-formation overfits short window</td><td>2</td><td>2</td><td>4</td><td>Long baseline; explicit ratings opt-in</td></tr>
+</table>
+</section>
+
+<section id="c5-assumptions">
+<h3>C.5 Assumptions + constraints <a href="../product-prd-native-v1.html#c5-assumptions" class="anchor">#</a></h3>
+<table>
+<tr><th>#</th><th>Assumption</th></tr>
+<tr><td>A1</td><td>Operator is terminal-fluent (NG7)</td></tr>
+<tr><td>A2</td><td>Operator runs 1-7 companies</td></tr>
+<tr><td>A3</td><td>Operator wants compounding outcomes</td></tr>
+<tr><td>A4</td><td>LLM costs stabilize or fall</td></tr>
+<tr><td>A5</td><td>Operator has Mac/Linux</td></tr>
+<tr><td>A6</td><td>Codex + Claude available as host-LLMs</td></tr>
+<tr><td>A7</td><td>Operator opts in to person-formation ratings</td></tr>
+</table>
+<table>
+<tr><th>#</th><th>Constraint (immovable v1)</th></tr>
+<tr><td>C1</td><td>Terminal-only v1 (NG1)</td></tr>
+<tr><td>C2</td><td>Single-LLM-provider abstraction (NG3)</td></tr>
+<tr><td>C3</td><td>No browser automation (NG5)</td></tr>
+<tr><td>C4</td><td>Audit log 3-channel durability (HS-4)</td></tr>
+<tr><td>C5</td><td>Multi-tenant default-deny (ADR-006)</td></tr>
+<tr><td>C6</td><td>Reversibility checked pre-risky actions (P12 + HS-1)</td></tr>
+<tr><td>C7</td><td>Person-formation ratings opt-in</td></tr>
+<tr><td>C8</td><td>Native's own rules not modifiable at runtime (HS-1)</td></tr>
+</table>
+</section>
+
+<section id="c6-forward-open-questions">
+<h3>C.6 Open questions which we need to tackle in the future <a href="../product-prd-native-v1.html#c6-forward-open-questions" class="anchor">#</a></h3>
+<p>Distinct from <a href="../product-prd-native-v1.html#c3-open-questions">§C.3 Open questions</a> (v1 design questions; all ratified 2026-05-09). These are forward-looking open questions about ongoing Native capability — surfaced 2026-05-13 by founder; not yet ratified. Each may produce ADRs in canon (engineering decisions) + PRD body updates (operator-facing contracts).</p>
+<table>
+<tr><th>#</th><th>Open question</th><th>Where it touches existing PRD</th></tr>
+<tr><td>FQ1</td><td><strong>HOW methodology</strong> — open questions about Native's HOW Methodology engine. Which approach for which situation? When does cascading recursion stop? How are HOW choices learned vs. operator-overridden? When are HOW choices made silently vs. surfaced for ratification?</td><td>Foundation in <a href="../product-prd-native-v1.html#section-3-how-methodology">§3 HOW Methodology</a> (6 HOW dimensions); operator interaction in <a href="../product-prd-native-v1.html#b3a-think">§2.B B3a THINK</a>; learning loop in <a href="../product-prd-native-v1.html#b5d-learned">§2.B B5.d learned patterns</a></td></tr>
+<tr><td>FQ2</td><td><strong>Accuracy</strong> — open questions about Native's accuracy contract. What KPIs measure accuracy per task tier (T0-T3)? What's the right test depth at each phase? When does test-before-conclude become test-by-sample (cost tradeoff)? How does accuracy compound vs degrade over time?</td><td>Foundation in <a href="../product-prd-native-v1.html#section-3-native-platform">§4.5 Test-before-conclude gate</a>; observability in <a href="../product-prd-native-v1.html#section-6-observability">§7 Observability</a>; failure surfacing in HS-1 / HS-4 hardstops</td></tr>
+<tr><td>FQ3</td><td><strong>Change-impact awareness for existing systems (including 2nd/3rd-order effects)</strong> — when making a change to an operator's existing system, how does Native ensure it (a) identifies ALL relevant things that might be affected by the change FIRST, (b) considers all relevant things that need to be considered for making the change, and (c) understands second-order and third-order effects of making the change? What is the cascading-impact-analysis engine — and how does the operator inspect what was checked vs missed?</td><td>Touches: Authority Model (<a href="../product-prd-native-v1.html#d6-authority">§D.6</a>) escalation triggers; HOW Cascading dimension (<a href="../product-prd-native-v1.html#section-3-how-methodology">§3.1</a>); Workforce state machine (<a href="../product-prd-native-v1.html#section-3-native-platform">§4.2</a>); B3a THINK mode for novel-state work. <strong>Gap</strong>: no current PRD section formally specifies cascade-impact analysis as a Native capability. <span class="marker marker-deeper-founder-impact"><a href="../product-prd-native-v1.html#c7-g4">T-G4-07</a></span> <span class="marker marker-deeper-founder-impact"><a href="../product-prd-native-v1.html#c7-g4">T-G4-08</a></span> <span class="marker marker-deeper-founder-impact"><a href="../product-prd-native-v1.html#c7-g4">T-G4-09</a></span></td></tr>
+</table>
+<p class="callout"><strong>Status: PROPOSED 2026-05-13.</strong> Not yet ratified. Founder surfaced these forward; they enter a future research + design cycle (likely codex + deepseek consult round per question, producing ADRs in canon + capability contracts in PRD body).</p>
+</section>
+
+<section id="c7-backlog">
+<h3>C.7 Backlog — atomic tasks indexed by inline markers <a href="../product-prd-native-v1.html#c7-backlog" class="anchor">#</a></h3>
+<p>104 atomic tasks across 8 groups (G0-G7). Each row's marker pill matches an inline marker placed in the PRD body (per <a href="../product-prd-native-v1.html#d14-prd-authoring">D.14 rule 4</a>). Items without marker pill (—) are work-tasks (engineering / verification / ratification) that don't surface as inline gaps. Approx mix: ~17% awaiting founder voice or input, ~37% v2+ activation gates already documented in <a href="../product-prd-native-v1.html#section-1-4-5-activation">§1.4.5</a>, ~26% engineering work, ~20% review · cross-cutting · meta-protocol.</p>
+<p class="callout"><strong>Schema</strong>: <code>ID · Item · Section · Marker · Status · Notes</code>. ID convention <code>T-G{group}-{NN}</code>. Status values: <code>TODO</code> · <code>IN-PROGRESS</code> · <code>BLOCKED</code> · <code>DEFERRED</code> · <code>DONE</code>. Group ownership: G0-G1 founder · G2-G3 founder + Native runtime · G4 founder + codex+deepseek · G5 Sutra Forge + Native runtime · G6 codex+deepseek · G7 Sutra Forge.</p>
+
+<h4 id="c7-g0">§C.7.1 G0 — Meta / protocol (3 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G0-01</td><td>Ring-1-fill protocol — document how founder fills 15 Ring-1 cells (voice register, length, exemplars from §0 Tuesday narratives)</td><td><a href="../product-prd-native-v1.html#d14-prd-authoring">D.14 rule 2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Predecessor to G1.</td></tr>
+<tr><td>T-G0-02</td><td>D.14 PRD Authoring Contract — ratify via codex + deepseek r19 review</td><td><a href="../product-prd-native-v1.html#d14-prd-authoring">D.14</a></td><td>—</td><td>TODO</td><td>Landed C1 (commit bfb0990).</td></tr>
+<tr><td>T-G0-03</td><td>Multi-page restructure (Option A hub-and-spoke split)</td><td><a href="../product-prd-native-v1.html#d14-prd-authoring">D.14 rule 6</a></td><td>—</td><td>IN-PROGRESS</td><td>C4 of current wave.</td></tr>
+</table>
+
+<h4 id="c7-g1">§C.7.2 G1 — Ring 1 founder fills (18 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G1-01</td><td>§A.1 Problem statement — founder voice replaces working frame stub</td><td><a href="../product-prd-native-v1.html#a1-problem">§A.1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Working frame in place.</td></tr>
+<tr><td>T-G1-02</td><td>B1 Ring 1 cell 1 — Problem space ("ask in my own words")</td><td><a href="../product-prd-native-v1.html#pillar-b1">§2.B B1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-03</td><td>B1 Ring 1 cell 2 — Need / outcome</td><td><a href="../product-prd-native-v1.html#pillar-b1">§2.B B1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-04</td><td>B1 Ring 1 cell 3 — Solution direction</td><td><a href="../product-prd-native-v1.html#pillar-b1">§2.B B1</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-05</td><td>B2 Ring 1 cell 1 — Problem space ("world's best thinking")</td><td><a href="../product-prd-native-v1.html#pillar-b2">§2.B B2</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-06</td><td>B2 Ring 1 cell 2 — Need / outcome</td><td><a href="../product-prd-native-v1.html#pillar-b2">§2.B B2</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-07</td><td>B2 Ring 1 cell 3 — Solution direction</td><td><a href="../product-prd-native-v1.html#pillar-b2">§2.B B2</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-08</td><td>B3 Ring 1 cell 1 — Problem space ("think with me, do the rest")</td><td><a href="../product-prd-native-v1.html#pillar-b3">§2.B B3</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-09</td><td>B3 Ring 1 cell 2 — Need / outcome</td><td><a href="../product-prd-native-v1.html#pillar-b3">§2.B B3</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-10</td><td>B3 Ring 1 cell 3 — Solution direction</td><td><a href="../product-prd-native-v1.html#pillar-b3">§2.B B3</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-11</td><td>B4 Ring 1 cell 1 — Problem space ("talk to my people for me")</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-12</td><td>B4 Ring 1 cell 2 — Need / outcome</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-13</td><td>B4 Ring 1 cell 3 — Solution direction</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-14</td><td>B5 Ring 1 cell 1 — Problem space ("remember and keep it mine")</td><td><a href="../product-prd-native-v1.html#pillar-b5">§2.B B5</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-15</td><td>B5 Ring 1 cell 2 — Need / outcome</td><td><a href="../product-prd-native-v1.html#pillar-b5">§2.B B5</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-16</td><td>B5 Ring 1 cell 3 — Solution direction</td><td><a href="../product-prd-native-v1.html#pillar-b5">§2.B B5</a></td><td><span class="marker marker-awaiting-founder-fill">awaiting-founder-fill</span></td><td>TODO</td><td>Blocked by T-G0-01.</td></tr>
+<tr><td>T-G1-17</td><td>§0 First-operator quote — replace illustrative placeholder with real pilot week-8 quote</td><td><a href="../product-prd-native-v1.html#section-0-press-release">§0</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>BLOCKED</td><td>Blocked on pilot data.</td></tr>
+<tr><td>T-G1-18</td><td>§6.2 Pricing + packaging — replace placeholder with operator-economics-validated pricing</td><td><a href="../product-prd-native-v1.html#section-6-2-pricing">§6.2</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>BLOCKED</td><td>Blocked on economics data.</td></tr>
+</table>
+
+<h4 id="c7-g2">§C.7.3 G2 — v2+ activation gates (39 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G2-01</td><td>B2.c Peer Sutras — federation protocol authored as canon ADR</td><td><a href="../product-prd-native-v1.html#b2c-peer-sutras">§2.B B2.c</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (1/4).</td></tr>
+<tr><td>T-G2-02</td><td>B2.c Peer Sutras — trust + boundary model ratified per §D.6</td><td><a href="../product-prd-native-v1.html#b2c-peer-sutras">§2.B B2.c</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (2/4).</td></tr>
+<tr><td>T-G2-03</td><td>B2.c Peer Sutras — ≥3 T2/T3 operators opt-in for prototype</td><td><a href="../product-prd-native-v1.html#b2c-peer-sutras">§2.B B2.c</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (3/4).</td></tr>
+<tr><td>T-G2-04</td><td>B2.c Peer Sutras — HS-3 tenant-boundary extended cross-Native</td><td><a href="../product-prd-native-v1.html#b2c-peer-sutras">§2.B B2.c</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (4/4).</td></tr>
+<tr><td>T-G2-05</td><td>F1 Semantic retrieval — embedding pipeline ships</td><td><a href="../product-prd-native-v1.html#a6-scope">§A.6</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (1/4).</td></tr>
+<tr><td>T-G2-06</td><td>F1 Semantic retrieval — per-tenant vector store with HS-3 boundary</td><td><a href="../product-prd-native-v1.html#a6-scope">§A.6</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (2/4).</td></tr>
+<tr><td>T-G2-07</td><td>F1 Semantic retrieval — A/B ≥10pp accuracy delta on T2 dogfood</td><td><a href="../product-prd-native-v1.html#a6-scope">§A.6</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (3/4).</td></tr>
+<tr><td>T-G2-08</td><td>F1 Semantic retrieval — cost model fits §C.4 R8 budget</td><td><a href="../product-prd-native-v1.html#a6-scope">§A.6</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (4/4).</td></tr>
+<tr><td>T-G2-09</td><td>Full A2A — B2.c Peer Sutras LIVE (prerequisite)</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (1/4); chains G2-01..04.</td></tr>
+<tr><td>T-G2-10</td><td>Full A2A — protocol authored as canon ADR</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (2/4).</td></tr>
+<tr><td>T-G2-11</td><td>Full A2A — identity + auth model for cross-Native calls</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (3/4).</td></tr>
+<tr><td>T-G2-12</td><td>Full A2A — audit trail extends to cross-Native DecisionProvenance</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a></td><td>—</td><td>DEFERRED</td><td>v2 gate (4/4).</td></tr>
+<tr><td>T-G2-13</td><td>Non-terminal surfaces — v2 prototype tested with ≥5 T4 operators</td><td><a href="../product-prd-native-v1.html#c1-versions">§C.1 v3</a></td><td>—</td><td>DEFERRED</td><td>v3 gate (1/3).</td></tr>
+<tr><td>T-G2-14</td><td>Non-terminal surfaces — v1 N* mature ≥20 OHS/wk</td><td><a href="../product-prd-native-v1.html#c1-versions">§C.1 v3</a></td><td>—</td><td>DEFERRED</td><td>v3 gate (2/3); chains G5-19/20.</td></tr>
+<tr><td>T-G2-15</td><td>Non-terminal surfaces — per-surface UX validated against zero-terminal post-onboarding rule</td><td><a href="../product-prd-native-v1.html#a2-persona">§A.2.2</a></td><td>—</td><td>DEFERRED</td><td>v3 gate (3/3).</td></tr>
+<tr><td>T-G2-16</td><td>Senior Expert — ADR-020 Layer-B authoring template ratified</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>chains G6-01.</td></tr>
+<tr><td>T-G2-17</td><td>Senior Expert — per-product PRD authored per ADR-020 contract</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>baseline draft at senior-expert-prd-baseline-draft.html.</td></tr>
+<tr><td>T-G2-18</td><td>Senior Expert — per-product codex + deepseek review</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>PROTO-019.</td></tr>
+<tr><td>T-G2-19</td><td>Senior Expert — Asawa Forge installs first instance for T1 dogfood</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>Dogfood gate.</td></tr>
+<tr><td>T-G2-20</td><td>Project Manager — ADR-020 template ratified (shared with G2-16)</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>chains G6-01.</td></tr>
+<tr><td>T-G2-21</td><td>Project Manager — per-product PRD authored per ADR-020 contract</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>v2-test draft at project-manager-prd-v2-test-draft.html.</td></tr>
+<tr><td>T-G2-22</td><td>Project Manager — per-product codex + deepseek review</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>PROTO-019.</td></tr>
+<tr><td>T-G2-23</td><td>Project Manager — Asawa Forge installs first instance for T1 dogfood</td><td><a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a></td><td>—</td><td>TODO</td><td>Dogfood gate.</td></tr>
+<tr><td>T-G2-24</td><td>Phone connector — telephony provider chosen + integration tested (Twilio/Vonage)</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (1/4).</td></tr>
+<tr><td>T-G2-25</td><td>Phone connector — per-call Authority gate spec</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (2/4).</td></tr>
+<tr><td>T-G2-26</td><td>Phone connector — voice-data retention + PII sanitization extends D.12</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (3/4).</td></tr>
+<tr><td>T-G2-27</td><td>Phone connector — cost model per minute fits §C.4 R8 budget</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (4/4).</td></tr>
+<tr><td>T-G2-28</td><td>Browser co-work — driver chosen (Playwright/Chromium per gstack pattern)</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v1.x gate (1/4); Charter TODO-005.</td></tr>
+<tr><td>T-G2-29</td><td>Browser co-work — operator-consent model (read-only default; Authority escalation)</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v1.x gate (2/4).</td></tr>
+<tr><td>T-G2-30</td><td>Browser co-work — sandbox + identity isolation per HS-3</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v1.x gate (3/4).</td></tr>
+<tr><td>T-G2-31</td><td>Browser co-work — audit row per Native-issued browser action</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a></td><td>—</td><td>DEFERRED</td><td>v1.x gate (4/4).</td></tr>
+<tr><td>T-G2-32</td><td>Cloud-hosted channel — multi-tenant infra spec + HS-3 extended</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (1/4).</td></tr>
+<tr><td>T-G2-33</td><td>Cloud-hosted channel — per-tenant data-residency + key-isolation</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (2/4).</td></tr>
+<tr><td>T-G2-34</td><td>Cloud-hosted channel — pricing tier defined (operator-economics validated)</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (3/4); chains G1-18.</td></tr>
+<tr><td>T-G2-35</td><td>Cloud-hosted channel — onboarding flow §6.3 gains cloud-managed install path</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (4/4).</td></tr>
+<tr><td>T-G2-36</td><td>Partner-deployed channel — partner contract framework ratified</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (1/4).</td></tr>
+<tr><td>T-G2-37</td><td>Partner-deployed channel — partner-side onboarding tooling (partner Forge)</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (2/4).</td></tr>
+<tr><td>T-G2-38</td><td>Partner-deployed channel — partner-fleet observability (HS-3-respecting)</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (3/4).</td></tr>
+<tr><td>T-G2-39</td><td>Partner-deployed channel — ≥1 partner pilot with ≥3 participants closed-loop</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1</a></td><td>—</td><td>DEFERRED</td><td>v2+ gate (4/4).</td></tr>
+</table>
+
+<h4 id="c7-g3">§C.7.4 G3 — Phase 2 design docs (7 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G3-01</td><td>intent-layer-design.md — B1 mechanism deep doc</td><td><a href="../product-prd-native-v1.html#pillar-b1">§2.B B1 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>How freeform→typed intent compiles.</td></tr>
+<tr><td>T-G3-02</td><td>context-retrieval-design.md — B2 mechanism deep doc</td><td><a href="../product-prd-native-v1.html#pillar-b2">§2.B B2 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Ranking algo + budget allocator.</td></tr>
+<tr><td>T-G3-03</td><td>action-engine-design.md — B3 mechanism deep doc</td><td><a href="../product-prd-native-v1.html#pillar-b3">§2.B B3 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Method routing + escalation.</td></tr>
+<tr><td>T-G3-04</td><td>connector-comms-design.md — B4 mechanism deep doc</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Connector transport semantics.</td></tr>
+<tr><td>T-G3-05</td><td>governance-substrate-design.md — B5 mechanism deep doc</td><td><a href="../product-prd-native-v1.html#pillar-b5">§2.B B5 Ring 3</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>Multi-tenant state + audit plumbing.</td></tr>
+<tr><td>T-G3-06</td><td>sutra-federation-design.md — B2.c v2+ federation protocol</td><td><a href="../product-prd-native-v1.html#b2c-peer-sutras">§2.B B2.c</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>DEFERRED</td><td>chains G2-01.</td></tr>
+<tr><td>T-G3-07</td><td>design-v2-deep-doc.html — global Phase 2 companion doc</td><td><a href="../product-prd-native-v1.html#d5-references">D.5 References</a></td><td><span class="marker marker-pending-design">pending-design</span></td><td>TODO</td><td>D.5 row 7 marked "forthcoming".</td></tr>
+</table>
+
+<h4 id="c7-g4">§C.7.5 G4 — Forward open questions (9 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G4-01</td><td>FQ1.a HOW — which approach for which situation</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ1</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ1.</td></tr>
+<tr><td>T-G4-02</td><td>FQ1.b HOW — cascading stop conditions</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ1</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ1.</td></tr>
+<tr><td>T-G4-03</td><td>FQ1.c HOW — learned vs operator-overridden</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ1</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ1.</td></tr>
+<tr><td>T-G4-04</td><td>FQ2.a Accuracy — KPIs per task tier T0-T3</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ2.</td></tr>
+<tr><td>T-G4-05</td><td>FQ2.b Accuracy — test depth per phase</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ2.</td></tr>
+<tr><td>T-G4-06</td><td>FQ2.c Accuracy — test-before-conclude vs test-by-sample cost tradeoff</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ2</a></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Sub-Q of FQ2.</td></tr>
+<tr><td>T-G4-07</td><td>FQ3.a Change-impact — relevant-things identification engine</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ3</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>TODO</td><td>FQ3 explicit PRD gap.</td></tr>
+<tr><td>T-G4-08</td><td>FQ3.b Change-impact — 2nd/3rd-order analysis engine</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ3</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>TODO</td><td>FQ3 explicit PRD gap.</td></tr>
+<tr><td>T-G4-09</td><td>FQ3.c Change-impact — operator inspection surface for checked vs missed</td><td><a href="../product-prd-native-v1.html#c6-forward-open-questions">§C.6 FQ3</a></td><td><span class="marker marker-deeper-founder-impact">deeper-founder-impact</span></td><td>TODO</td><td>FQ3 explicit PRD gap.</td></tr>
+</table>
+
+<h4 id="c7-g5">§C.7.6 G5 — Implementation phases B-E (20 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G5-01</td><td>Phase B — L8 Feature Spec for B1 Intent Layer at sutra/os/native/blocks/B01-*.md</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 B</a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffolded; detailing iterative.</td></tr>
+<tr><td>T-G5-02</td><td>Phase B — L8 Feature Spec for B2 Context retrieval</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 B</a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-03</td><td>Phase B — L8 Feature Spec for B3 Action engine</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 B</a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-04</td><td>Phase B — L8 Feature Spec for B4 Connector comms</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 B</a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-05</td><td>Phase B — L8 Feature Spec for B5 Governance substrate</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 B</a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffolded.</td></tr>
+<tr><td>T-G5-06</td><td>Phase B — all 25 block specs at L8 detail (B1-B25)</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 B</a></td><td>—</td><td>IN-PROGRESS</td><td>Iterative; pegged to Native runtime build pace.</td></tr>
+<tr><td>T-G5-07</td><td>Phase C — Native runtime daemon production-ready</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 C</a></td><td>—</td><td>IN-PROGRESS</td><td>v0 dogfood at ~/.sutra-native/.</td></tr>
+<tr><td>T-G5-08</td><td>Phase C — 10 canon primitives in code (Domain · Charter · Workflow · Step · Trigger · ExecutionResult · EngineEvent · Tenant · Approval · DecisionProvenance)</td><td><a href="../product-prd-native-v1.html#section-4-1-primitives">§4.1</a></td><td>—</td><td>IN-PROGRESS</td><td>Per ADR-020.</td></tr>
+<tr><td>T-G5-09</td><td>Phase C — Hardstops HS-1..HS-8 live in runtime</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 C</a></td><td>—</td><td>TODO</td><td>Per shared hardstop catalog.</td></tr>
+<tr><td>T-G5-10</td><td>Phase C — 26 EngineEvents emitted from runtime</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 C</a></td><td>—</td><td>TODO</td><td>Per shared event catalog.</td></tr>
+<tr><td>T-G5-11</td><td>Phase C — 6 surfaces wired (ROUTE · RUN · GATE · EMERGE · AUDIT · TENANT)</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 C</a></td><td>—</td><td>TODO</td><td>Per shared surface set.</td></tr>
+<tr><td>T-G5-12</td><td>Phase D — r19 codex review on v3 PRD (post founder Ring-1 fills)</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 D</a></td><td>—</td><td>TODO</td><td>Blocked by G1.</td></tr>
+<tr><td>T-G5-13</td><td>Phase D — r19 deepseek review on v3 PRD</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 D</a></td><td>—</td><td>TODO</td><td>Blocked by G1.</td></tr>
+<tr><td>T-G5-14</td><td>Phase D — convergence verdict + commit ratification (PROTO-019)</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 D</a></td><td>—</td><td>TODO</td><td>Blocked by G5-12/13.</td></tr>
+<tr><td>T-G5-15</td><td>Phase E — T2 DayFlow onboarding (first install)</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 E</a></td><td>—</td><td>TODO</td><td>Per CM9.</td></tr>
+<tr><td>T-G5-16</td><td>Phase E — T2 Billu onboarding</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 E</a></td><td>—</td><td>TODO</td><td>Per portfolio sequence.</td></tr>
+<tr><td>T-G5-17</td><td>Phase E — T2 Paisa onboarding</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 E</a></td><td>—</td><td>TODO</td><td>Per portfolio sequence.</td></tr>
+<tr><td>T-G5-18</td><td>Phase E — OHS/wk measurement infrastructure deployed across T2</td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 E</a></td><td>—</td><td>TODO</td><td>Per G1 measurement.</td></tr>
+<tr><td>T-G5-19</td><td>Phase E — N* mature ≥3 OHS/wk per T2 within 14d of install</td><td><a href="../product-prd-native-v1.html#c1-versions">§C.1 v1</a></td><td>—</td><td>TODO</td><td>v1 ship-gate.</td></tr>
+<tr><td>T-G5-20</td><td>Phase E — v1→v2 trigger criteria (N* mature ≥20 OHS/wk for ≥2 weeks; &lt;5 critical bugs at 30d)</td><td><a href="../product-prd-native-v1.html#c1-versions">§C.1 v1</a></td><td>—</td><td>TODO</td><td>v1 ship-gate.</td></tr>
+</table>
+
+<h4 id="c7-g6">§C.7.7 G6 — ADR-020 close (4 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G6-01</td><td>ADR-020 — R11 codex + deepseek review (currently PROPOSED 2026-05-13)</td><td><code>sutra/os/decisions/ADR-020-*</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Blocks G2-16..23.</td></tr>
+<tr><td>T-G6-02</td><td>OQ-020-1 — cross-product Charter sharing (one Charter scopes both vs one per Product)</td><td><code>ADR-020 OQ-020-1</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>DEFERRED</td><td>Defer to first concrete second-product spec.</td></tr>
+<tr><td>T-G6-03</td><td>OQ-020-2 — HOW preference inheritance (specialize from base vs compose from scratch)</td><td><code>ADR-020 OQ-020-2</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>TODO</td><td>Likely specialize.</td></tr>
+<tr><td>T-G6-04</td><td>OQ-020-3 — operator UX switching between products (single thread vs per-product context)</td><td><code>ADR-020 OQ-020-3</code></td><td><span class="marker marker-founder-input-required">founder-input-required</span></td><td>DEFERRED</td><td>Defer to UX research.</td></tr>
+</table>
+
+<h4 id="c7-g7">§C.7.8 G7 — Cross-cutting / drift (4 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G7-01</td><td>TOC deep-nav §1-§2 (anchor coverage parity with §3-§7 commit d149f2a)</td><td>TOC sidebar</td><td>—</td><td>TODO</td><td>Verify §1-§2 sub-anchors render in sidebar.</td></tr>
+<tr><td>T-G7-02</td><td>Memory <code>project_native_prd_phase_a_complete.md</code> — line count update (901 → current)</td><td>memory file</td><td>—</td><td>TODO</td><td>Stale fact in memory.</td></tr>
+<tr><td>T-G7-03</td><td>Memory <code>reference_native_render_path.md</code> — URL shape update post-C4 restructure</td><td>memory file</td><td>—</td><td>TODO</td><td>Hub stays at /native/product-prd-native-v1.html; spokes at /native/prd/NN-*.html.</td></tr>
+<tr><td>T-G7-04</td><td>Phase 2 design-doc filenames in PRD Ring 3 — clarify all 7 are pending (link to G3-01..07)</td><td>per-pillar Ring 3</td><td>—</td><td>TODO</td><td>C3 applies pending-design markers; this row tracks the trace.</td></tr>
+</table>
+
+<h4 id="c7-g8">§C.7.9 G8 — Tech Design Hub fill-in (18 rows)</h4>
+<table>
+<tr><th>ID</th><th>Item</th><th>Section</th><th>Marker</th><th>Status</th><th>Notes</th></tr>
+<tr><td>T-G8-01</td><td>tech-design/index.html hub — onboarding flow + open-questions section ratified by tech leadership</td><td><a href="../tech-design/index.html"><code>tech-design/index.html</code></a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffold landed 2026-05-20; 4 open questions for tech leadership pending.</td></tr>
+<tr><td>T-G8-02</td><td>HLD/01 System Overview — fill 7 sections (5-layer · 10 primitives · 6 surfaces · 26 events · 8 hardstops · 14 pillars · ASCII diagram)</td><td><a href="../tech-design/HLD/01-system-overview.html"><code>HLD/01</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-02</a></span></td><td>TODO</td><td>Scaffold only; engineering author fills.</td></tr>
+<tr><td>T-G8-03</td><td>HLD/02 Data Model — fill 12 sections (10 primitives + relationships + lifecycle)</td><td><a href="../tech-design/HLD/02-data-model.html"><code>HLD/02</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-03</a></span></td><td>TODO</td><td>Cross-references canon primitives dir.</td></tr>
+<tr><td>T-G8-04</td><td>HLD/03 Control Flow — fill 7 sections (sequence + state machine + surface orchestration)</td><td><a href="../tech-design/HLD/03-control-flow.html"><code>HLD/03</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-04</a></span></td><td>TODO</td><td>One operator turn sequence diagram (ASCII).</td></tr>
+<tr><td>T-G8-05</td><td>HLD/04 Interfaces — fill 7 sections (Connector inventory + 26 events + Native↔CoS API + v2+ federation)</td><td><a href="../tech-design/HLD/04-interfaces.html"><code>HLD/04</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-05</a></span></td><td>TODO</td><td>v2+ A2A protocol design separated as deferred.</td></tr>
+<tr><td>T-G8-06</td><td>HLD/05 Governance — fill 10 sections (Authority Model 6-dim + HS-1..HS-8 + tenant + DecisionProvenance)</td><td><a href="../tech-design/HLD/05-governance.html"><code>HLD/05</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-06</a></span></td><td>TODO</td><td>HS-5..HS-8 names pending (current scaffold leaves placeholders).</td></tr>
+<tr><td>T-G8-07</td><td>HLD/06 Deployment — fill 9 sections (runtime daemon + 3-artifact + L0/L1/L2 + tier-staged onboarding)</td><td><a href="../tech-design/HLD/06-deployment.html"><code>HLD/06</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-07</a></span></td><td>TODO</td><td>Cross-link to D33 firewall · D38 Build-Layer · D52 push.</td></tr>
+<tr><td>T-G8-08</td><td>HLD/07 Non-Functional — fill 8 sections (perf · security · observability · accuracy · reliability · cost · resilience)</td><td><a href="../tech-design/HLD/07-non-functional.html"><code>HLD/07</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-08</a></span></td><td>TODO</td><td>FQ2 Accuracy KPIs blocks part of this — chains to T-G4-04..06.</td></tr>
+<tr><td>T-G8-09</td><td>LLD/B1 Intent Layer — fill 9 sections (parser · schema · show-by-example · trusted-names · refinement)</td><td><a href="../tech-design/LLD/pillars/B1-intent-layer.html"><code>LLD/B1</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-09</a></span></td><td>TODO</td><td>Chains G3-01.</td></tr>
+<tr><td>T-G8-10</td><td>LLD/B2 Context Retrieval — fill 8 sections (3-source assembly · ranking · budget)</td><td><a href="../tech-design/LLD/pillars/B2-context-retrieval.html"><code>LLD/B2</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-10</a></span></td><td>TODO</td><td>Chains G3-02.</td></tr>
+<tr><td>T-G8-11</td><td>LLD/B3 Action Engine — fill 8 sections (method routing · THINK/DO/PRESENT · escalation)</td><td><a href="../tech-design/LLD/pillars/B3-action-engine.html"><code>LLD/B3</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-11</a></span></td><td>TODO</td><td>Chains G3-03.</td></tr>
+<tr><td>T-G8-12</td><td>LLD/B4 Connector Comms — fill 8 sections (transport · audience voice · A2A stub)</td><td><a href="../tech-design/LLD/pillars/B4-connector-comms.html"><code>LLD/B4</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-12</a></span></td><td>TODO</td><td>Chains G3-04.</td></tr>
+<tr><td>T-G8-13</td><td>LLD/B5 Governance Substrate — fill 9 sections (4-horizon state · audit + replay · learned patterns k=4)</td><td><a href="../tech-design/LLD/pillars/B5-governance-substrate.html"><code>LLD/B5</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-13</a></span></td><td>TODO</td><td>Chains G3-05.</td></tr>
+<tr><td>T-G8-14</td><td>LLD/primitives catalog — index per 10 canon primitives</td><td><a href="../tech-design/LLD/primitives.html"><code>LLD/primitives</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-14</a></span></td><td>TODO</td><td>One-line per primitive + canon link.</td></tr>
+<tr><td>T-G8-15</td><td>LLD/hardstops catalog — index per HS-1..HS-8 + override paths</td><td><a href="../tech-design/LLD/hardstops.html"><code>LLD/hardstops</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-15</a></span></td><td>TODO</td><td>HS-5..HS-8 names pending.</td></tr>
+<tr><td>T-G8-16</td><td>LLD/surfaces catalog — index per ROUTE · RUN · GATE · EMERGE · AUDIT · TENANT</td><td><a href="../tech-design/LLD/surfaces.html"><code>LLD/surfaces</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-16</a></span></td><td>TODO</td><td>Surface-to-surface interaction map.</td></tr>
+<tr><td>T-G8-17</td><td>LLD/interfaces catalog — wire-level reference for connectors + 26 events + A2A</td><td><a href="../tech-design/LLD/interfaces.html"><code>LLD/interfaces</code></a></td><td><span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g8">T-G8-17</a></span></td><td>TODO</td><td>Per-connector spec.</td></tr>
+<tr><td>T-G8-18</td><td>decisions catalog — fill one-line summary per ADR (001-020 baseline + future ADRs)</td><td><a href="../tech-design/decisions.html"><code>decisions.html</code></a></td><td>—</td><td>IN-PROGRESS</td><td>Scaffold has all 20 ADR rows; summaries are baseline (engineering refinement pending).</td></tr>
+</table>
+
+<p class="callout"><strong>Backlog audit cadence</strong>: rows reviewed at every PROTO-019 review pass (codex + deepseek r-cycle). Closed rows preserved with <code>Status: DONE</code> for traceability per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12 Artifact Governance</a>; never deleted. New rows append below existing IDs (no renumbering per <a href="../product-prd-native-v1.html#d4-change-control">D.4 Change control</a>).</p>
+</section>
+
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/index.html">Tech Design Hub</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

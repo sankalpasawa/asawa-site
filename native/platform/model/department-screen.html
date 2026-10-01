@@ -1,0 +1,319 @@
+<!doctype html>
+<!-- PAGE: platform-model-department-screen (v2, DRAFT, 2026-09-29). Child of platform-journeys under IN USE.
+     v2, the founder's cut: no new structure. Every screen of one department captured on Sutra 2.306.10 and cleaned up element
+     by element from the UI side (remove, rename, merge, keep); the organisation shown as a name over its Root. Logic untouched.
+     v1 (one status line that flows to Now) is in git history (holding e69d4609) and parked at the end of this page. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — The department screens, cleaned up</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.conf{background:#fef2f2;border-left:3px solid #b91c1c;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+.r{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#fef2f2;color:#b91c1c}
+.n{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#fffbeb;color:#b45309}
+.m{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#eef2ff;color:#3730a3}
+.k{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#ecfdf5;color:#047857}
+.f{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563}
+.shot{border:1px solid #e5e7eb;border-radius:10px;width:100%;display:block;margin:8px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.cap{font-size:11.5px;color:#6b7280;margin:4px 0 0}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../company-map.html">The company map</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a class="sb-cur" href="../../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../../index.html">Native hub</a> &#8250; <a href="../index.html">platform</a> &#8250; <a href="the-model.html">the model</a> &#8250; <a href="platform-journeys.html">platform journeys</a> &#8250; the department screens</div>
+<h1>The department screens, cleaned up <span class="lvl">CLEANUP &#183; zoom 4</span></h1>
+<p class="lead">The founder, 2026-09-29: no new structure; improve the elements of each department screen from the UI side; the organisation is a name over its Root and has no departments at its own level; clean up each screen first. Every screen of one department was captured on the running app and is listed below, element by element. Logic untouched; nothing built.</p>
+<p>Marks: <span class="r">REMOVE</span> <span class="n">RENAME</span> <span class="m">MERGE</span> <span class="k">KEEP</span> <span class="f">FLAG</span> (a bug seen in the capture, for a SIM row). Every mark is UI only. A mark that would touch the record says so.</p>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td>platform-model-department-screen</td><td>PLATFORM / <a href="platform-journeys.html">platform-model-platform-journeys</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v2</td><td>claude, for the founder to rule</td></tr></table>
+
+<h2>0 &#183; The tree and the organisation</h2>
+<img class="shot" src="../../assets/dept-00-org-2026-09-29.png" alt="the organisation abc selected: a department's chrome with nothing in it">
+<p class="cap">The organisation abc selected. It gets a department's middle column (functions, engines, filed work, people, apps) with nothing in it, and a Now that says nothing is waiting.</p>
+<p>On the record, an organisation has one Root; departments hang under Root, not under the organisation. So yes: the organisation is a name over its Root. The screen shows two rows, abc and Root, and gives abc a department screen it cannot fill.</p>
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>the rows abc and Root</td><td>two rows, one under the other</td><td><span class="m">MERGE</span> one row, abc; it opens Root's screen; the word Root is not shown</td><td>untouched: the record keeps organisation and Root</td></tr>
+<tr><td>the organisation's screen</td><td>a department's chrome with "Not read yet", "Nothing filed yet"</td><td><span class="r">REMOVE</span> the empty groups; the organisation's screen is Root's chat and its departments</td><td>untouched</td></tr>
+<tr><td>the rows Claude, Desktop (grey), Asawa Holding</td><td>registry roots beside the website organisations</td><td><span class="f">FLAG</span> which of these are organisations with a Root; the others out of this tree</td><td>the founder's call</td></tr>
+<tr><td>the header "abc Website &#183; Root"</td><td>the parent shown as Root</td><td><span class="n">RENAME</span> the parent as abc</td><td>untouched</td></tr></table>
+
+<h2>1 &#183; Chat</h2>
+<img class="shot" src="../../assets/2-dept-chat-today-2026-09-29.png" alt="the department chat">
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>"Root handed to abc Website" lines</td><td>four of them; "filed in the Brief", "sent a correction to the line"</td><td><span class="r">REMOVE</span> once the department has answered; the first stays as one quiet "via Root" (SIM-3 f)</td><td>untouched: the turns stay in the record</td></tr>
+<tr><td>the author of a turn</td><td>Root, for the department's own words</td><td><span class="n">RENAME</span> the department's name on its own turns</td><td>untouched: the turn carries the department already</td></tr>
+<tr><td>the ask "say whether the site may go live..."</td><td>a plain line with "asks" after it</td><td><span class="n">RENAME</span> a card with its two buttons on it</td><td>untouched: Stamp and Refuse exist</td></tr>
+<tr><td>the chip "to abc Website x" on the box</td><td>a removable chip and "Say it to abc Website"</td><td><span class="k">KEEP</span>; inside the department the chip is implied, so show it only on Root's box</td><td>untouched</td></tr>
+<tr><td>the middle column, 22 rows</td><td>5 tabs, 5 functions, 4 engines, 5 filed works, people, apps</td><td><span class="m">MERGE</span> into 6 rows: Chat, Map, Status, Work, Functions, Settings (see the summary)</td><td>untouched</td></tr></table>
+
+<h2>2 &#183; Map</h2>
+<img class="shot" src="../../assets/dept-02-map-2026-09-29.png" alt="the Map">
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>the map itself</td><td>people, functions, work with versions, knows</td><td><span class="k">KEEP</span>; it is the best screen; the middle column repeats it</td><td>untouched</td></tr>
+<tr><td>the legend, 9 items</td><td>function, engine, work, filed and checked, running, waiting, fault, hand-off, speaks to</td><td><span class="r">REMOVE</span>; the colours carry it; a hover names a shape</td><td>untouched</td></tr>
+<tr><td>the crumb "abc Root &#8250; abc Website"</td><td>Root in the path</td><td><span class="n">RENAME</span> "abc &#8250; abc Website"</td><td>untouched</td></tr>
+<tr><td>the On toggle and "Live site"</td><td>top right</td><td><span class="k">KEEP</span>; the same pair belongs on every tab's header, not only the Map</td><td>untouched</td></tr></table>
+
+<h2>3 &#183; System status and Motor</h2>
+<div class="two"><div><img class="shot" src="../../assets/dept-03-system-status-2026-09-29.png" alt="System status"><p class="cap">System status: four empty groups, a Say box, Replies.</p></div><div><img class="shot" src="../../assets/dept-04-motor-2026-09-29.png" alt="Motor"><p class="cap">Motor: state, two explanatory blocks, eight checks.</p></div></div>
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>the two tabs</td><td>System status and Motor, each with a Stop or a state</td><td><span class="m">MERGE</span> into one tab, Status: state, now, next; asks, waits, running, escalated as four counts; the eight checks</td><td>untouched</td></tr>
+<tr><td>"It only reads" and "What it does each tick"</td><td>ten rows of explanation</td><td><span class="r">REMOVE</span>; that is help text, and the product carries none</td><td>untouched</td></tr>
+<tr><td>Say and Replies on System status</td><td>a second box and a second list of the same turns</td><td><span class="r">REMOVE</span>; the Chat has them</td><td>untouched</td></tr>
+<tr><td>the eight checks</td><td>Motor, Slots, Versions, Stuck, Front door, Awake, Budget, Done</td><td><span class="k">KEEP</span>, under Status; "Front door: a request was lost at its bound" is amber</td><td>untouched</td></tr></table>
+
+<h2>4 &#183; Board, and the Human Sutra app</h2>
+<div class="two"><div><img class="shot" src="../../assets/dept-05-board-2026-09-29.png" alt="the Board"><p class="cap">The Board: the same turns, attributed to Root and Identity.</p></div><div><img class="shot" src="../../assets/dept-21-human-sutra-2026-09-29.png" alt="Human Sutra"><p class="cap">Human Sutra: the same turns a third time, with DONE and FAILED marks.</p></div></div>
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>three views of one conversation</td><td>Chat, Board, Human Sutra</td><td><span class="m">MERGE</span> into the Chat with one switch, "show the functions' exchanges"; the Board tab goes; the app stays in the Library</td><td>untouched: one record, two views is the rule; this is one view with a switch</td></tr>
+<tr><td>the turn "Root . asks 19:25"</td><td>an empty turn, and on Human Sutra it is FAILED</td><td><span class="f">FLAG</span> an empty post reached the record; a SIM row</td><td>a fix, not a UI change</td></tr>
+<tr><td>"Root hi FAILED"</td><td>a greeting sent as a task and failed</td><td><span class="f">FLAG</span> a greeting should be answered, not run; a SIM row</td><td>a fix</td></tr></table>
+
+<h2>5 &#183; A function: Identity's chat, Priority's settings</h2>
+<div class="two"><div><img class="shot" src="../../assets/5-identity-chat-today-2026-09-29.png" alt="Identity's chat"><p class="cap">Identity's chat: the step rows ("Gate the effect by rule, admit") between the turns.</p></div><div><img class="shot" src="../../assets/4-priority-settings-today-2026-09-29.png" alt="Priority's settings"><p class="cap">Priority's settings: template, limit, ladder, starts, hears.</p></div></div>
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>the step rows in a function's chat</td><td>"Read the request, code", "Gate the effect by rule: admit", eight per turn</td><td><span class="m">MERGE</span> into one folded line per turn, "6 steps", opened on click; the function's own words stay (SIM-3 c)</td><td>untouched</td></tr>
+<tr><td>the three tabs per function</td><td>Identity, Chat, Settings</td><td><span class="n">RENAME</span> the first tab About; Settings stays</td><td>untouched</td></tr>
+<tr><td>Ladder: four numbers with internal names</td><td>"runs before a step climbs", "misses that step it down"</td><td><span class="k">KEEP</span> under Settings; the words become one line each in the owner's words</td><td>untouched</td></tr>
+<tr><td>five functions as five rows</td><td>Identity, Adaptation, Priority, Coordination, Audit in the middle column</td><td><span class="m">MERGE</span> into one row, Functions, opening a screen with the five as cards</td><td>untouched</td></tr></table>
+
+<h2>6 &#183; An engine: Plan</h2>
+<img class="shot" src="../../assets/dept-11-plan-2026-09-29.png" alt="the Plan engine">
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>the step cards</td><td>rung bars, "Code" or "Improvised call", "Hold", a PASSING bar, "To the next rung"</td><td><span class="m">MERGE</span> into a list: step name, a dot, one word (code or call); the bars behind a Details link</td><td>untouched</td></tr>
+<tr><td>IDLE beside each engine in the middle column</td><td>a word</td><td><span class="n">RENAME</span> a dot: grey idle, green running, amber waiting</td><td>untouched</td></tr>
+<tr><td>"Starts on / unless"</td><td>chips naming other functions' rules</td><td><span class="k">KEEP</span>; it is the one line that says when it runs</td><td>untouched</td></tr>
+<tr><td>four engines as four rows</td><td>Plan, Write, Check, Publish</td><td><span class="m">MERGE</span> into the Work row with the filed works: Brief &#8594; Plan &#8594; Site plan &#8594; Write &#8594; Pages, the line the Map already draws</td><td>untouched</td></tr></table>
+
+<h2>7 &#183; A filed work: the Brief</h2>
+<img class="shot" src="../../assets/dept-15-brief-2026-09-29.png" alt="the Brief">
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>the tabs</td><td>The work item, Preview, Versions, Trace</td><td><span class="n">RENAME</span> About, Preview (default), Versions, History</td><td>untouched</td></tr>
+<tr><td>the brief in monospace with # and ##</td><td>markdown shown raw</td><td><span class="n">RENAME</span> rendered as text</td><td>untouched</td></tr>
+<tr><td>"Correct this: No correction needed &#8212; feedback confirms creation, it does not report a defect..."</td><td>the model's own note inside the brief</td><td><span class="f">FLAG</span> an internal note leaked into the owner's artifact; a SIM row</td><td>a fix</td></tr>
+<tr><td>the dots beside each filed work</td><td>three dots, two dots</td><td><span class="n">RENAME</span> the version, v3, v2</td><td>untouched</td></tr></table>
+
+<h2>8 &#183; People and Apps</h2>
+<table><tr><th>Element</th><th>Today</th><th>Cleanup</th><th>Logic</th></tr>
+<tr><td>People: "SankalpAsawa"</td><td>the account handle</td><td><span class="n">RENAME</span> the person's name; "you" when it is the viewer</td><td>untouched</td></tr>
+<tr><td>Apps: Human Sutra</td><td>a row that opens the third view of the chat</td><td><span class="m">MERGE</span> into the Chat's switch (section 4); Apps stays for apps that do something else</td><td>untouched</td></tr></table>
+
+<h2>The summary: 22 rows become 6</h2>
+<table><tr><th>Row after</th><th>Holds</th><th>From today's rows</th><th>Impact (who, what changes)</th><th>Effort (time, files)</th></tr>
+<tr><td>Chat</td><td>the department's own voice, asks as cards, a switch for the functions' exchanges</td><td>Chat, Board, Human Sutra</td><td>half the lines gone; one conversation</td><td>1 day; 22-website.js; W tests</td></tr>
+<tr><td>Map</td><td>as today, without the legend</td><td>Map</td><td>none</td><td>1 hour; 23-screens.js</td></tr>
+<tr><td>Status</td><td>state, now, next, four counts, eight checks; Stop</td><td>System status, Motor</td><td>one place for health</td><td>half a day; 20-dept.js; test_dept.js</td></tr>
+<tr><td>Work</td><td>the line: filed works with versions and the engines between them</td><td>4 engines, 5 filed works</td><td>the Map's line as a list</td><td>1 day; 20-dept.js, 22-website.js</td></tr>
+<tr><td>Functions</td><td>five cards; each opens About, Chat (steps folded), Settings</td><td>5 functions</td><td>the five out of the way until wanted</td><td>half a day; 20-dept.js</td></tr>
+<tr><td>Settings</td><td>people, apps, the template, host</td><td>People, Apps</td><td>none</td><td>2 hours; 20-dept.js</td></tr></table>
+<div class="key">And the tree: abc and Root become one row, abc, that opens Root's screen; the header's parent reads abc; the organisation's own empty department screen goes. Nothing in the record moves.</div>
+<div class="conf"><b>Three flags for SIM rows, not UI:</b> an empty post reached the record ("Root . asks 19:25", FAILED); a greeting ("hi") was run as a task and failed; the model's own correction note leaked into the Brief. <b>One call for the founder:</b> which rows in the tree are organisations (Claude, Desktop, Asawa Holding sit beside abc and City Care Hospital).</div>
+
+<h2>Parked: the v1 idea</h2>
+<p>v1 of this page proposed one status line at the top of the department that is also its row on Now. The founder set it aside on 2026-09-29 ("I am not looking to change anything"). It stays in git history (holding e69d4609) for later.</p>
+
+<h2>Sources</h2>
+<p>Captures: <code>holding/website/native/assets/dept-*-2026-09-29.png</code> and <code>*-today-2026-09-29.png</code>, taken on Sutra 2.306.10 by the walk tool and a one-off script that clicked every row of the middle column (22 captures; the function rows did not switch the pane on click, so the function screens come from the earlier set). Screen code: <code>sutra-ui/static/js/19-org2.js</code> (tree), <code>20-dept.js</code> (middle column, functions, engines), <code>22-website.js</code> (chat, box), <code>23-screens.js</code> (Map). High level: <a href="platform-journeys.html">Platform journeys</a>; the first use case: <a href="consumer-product.html">a website for my organisation</a>.</p>
+<p style="font-size:11.5px;color:#9ca3af">Provenance &#183; author: claude (2026-09-29) for the founder's direction of the same day &#183; review: none by a second model &#183; confidence: high on what each capture shows and on "logic untouched" for every UI mark (each names the screen file); moderate on the effort column.</p>
+
+<h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px">Folded here</h2>
+<p style="font-size:13px;color:#6b7280">Pages on the same subject, kept whole under their own titles (the consolidation of 2026-09-29).</p>
+<details class="folded-from" id="folded-platform-model-org-chat-html" data-folded-from="platform/model/org-chat.html"><summary style="cursor:pointer;font-weight:700;margin:22px 0 6px">The organisation row is Root&#x27;s chat: one screen in the existing Org screen; clicking the o <span style="font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563;margin-left:6px">folded from platform/model/org-chat.html on 2026-09-29</span></summary>
+<p class="lead">The founder, 2026-09-29: fit the existing Mac app; one screen in the hierarchy; click the organisation and it is a chat with Root, nothing else; the departments below keep the screens they have. That is all for now.</p>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td>platform-model-org-chat</td><td>PLATFORM / <a href="platform-journeys.html">platform-model-platform-journeys</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude, for the founder's word</td></tr></table>
+
+<h2>Today, and the one screen</h2>
+<div class="two">
+<div><img class="shot" src="../../assets/dept-00-org-2026-09-29.png" alt="today: the organisation selected shows a department's chrome with nothing in it"><p class="cap">Today (Sutra 2.306.10): the organisation abc selected. A department's middle column with nothing in it; Root is a second row under it.</p></div>
+<div><div class="app">
+<div class="rail"><div>Now</div><div>Focus</div><div>Chats</div><div>Market</div><div class="on">Org</div></div>
+<div class="tree"><div class="s">Search</div><div class="r serif">Sutra</div><div class="r l1 serif">Asawa Holding</div><div class="r l1 serif">City Care Hospital</div><div class="r l1 serif sel">abc</div><div class="r l2">abc Website</div><div class="r l1 serif">Personal Website</div></div>
+<div class="pane"><div class="hd"><div><span class="name">abc</span><span class="sub">Sutra</span></div><div class="ic">Library &#183; map &#183; edit</div></div>
+<div class="chat"><div class="you">Make the website of Paris Hospital</div><div class="t"><div class="who">abc</div>Handed to abc Website. It filed your words in the Brief and is planning the pages.</div><div class="t"><div class="who">abc Website</div>Live site v2 is live. <u>Open the live site</u></div><div class="you">hi</div><div class="t"><div class="who">abc</div>Hello. Say what you want done, or name a department.</div></div>
+<div class="foot"><div class="box">Say it to abc<span>Send</span></div></div></div>
+</div><p class="cap">The one screen: the organisation row shows Root's chat, full width. No middle column. Root's turns wear the organisation's name. The Root row is gone from the tree; abc Website sits under abc.</p></div>
+</div>
+
+<div class="key">The working prototype, grown one screen per turn: <a href="../../preview/org.html">Asawa on Sutra</a>. Live so far: the organisation chat, and the department's Chat. The earlier four-screen prototype (<a href="../../preview/department.html">preview/department.html</a>) is set aside.</div>
+<h2>The change, in the existing app</h2>
+<table><tr><th>#</th><th>Where</th><th>Today</th><th>Change</th><th>Logic</th></tr>
+<tr><td>1</td><td>the tree (19-org2.js)</td><td>abc, then Root under it, then the departments under Root</td><td>the Root row is not drawn; its children are drawn under the organisation</td><td>untouched: the record keeps Root; the tree skips one level when drawing</td></tr>
+<tr><td>2</td><td>the pane for the organisation row (19-org2.js, 20-dept.js)</td><td>a department's middle column with empty groups, and Now</td><td>Root's chat (wbChatHtml on the Root's ref), full width; no middle column</td><td>untouched: the same chat the Root row shows today</td></tr>
+<tr><td>3</td><td>the header</td><td>"abc &#183; Sutra"</td><td>the same; the three icons stay</td><td>untouched</td></tr>
+<tr><td>4</td><td>the chat's turns (22-website.js)</td><td>Root's turns say "Root"</td><td>Root's turns say the organisation's name</td><td>untouched: a label</td></tr></table>
+<div class="key">Two files, one render branch, one label. Everything under the organisation stays exactly as today. A test: selecting an organisation row renders the chat and no <code>.dp-nav</code>; the Root ref is not a tree row.</div>
+
+<h2>Sources</h2>
+<p>Capture: <code>assets/dept-00-org-2026-09-29.png</code>. Code: <code>sutra-ui/static/js/19-org2.js</code> (o2Select, the tree and the pane), <code>20-dept.js</code> (the middle column), <code>22-website.js</code> (wbChatHtml). The wider designs of the day, set aside by the founder: <a href="org-and-department-screens.html">the screens as one journey</a>, <a href="department-screen.html">the department screens, cleaned up</a>.</p>
+<p style="font-size:11.5px;color:#9ca3af">Provenance &#183; author: claude (2026-09-29) &#183; review: none &#183; confidence: high on the change table (the functions are named from the code; the branch is one condition on the selected node's kind).</p>
+</details>
+
+<details class="folded-from" id="folded-platform-model-org-and-department-screens-html" data-folded-from="platform/model/org-and-department-screens.html"><summary style="cursor:pointer;font-weight:700;margin:22px 0 6px">The screens, as one journey: from the first open, a new organisation as a chat (Root behin <span style="font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563;margin-left:6px">folded from platform/model/org-and-department-screens.html on 2026-09-29</span></summary>
+<p class="key">Set aside by the founder on 2026-09-29 ("this is not what I was thinking; fit the existing Mac app"). What stands instead: <a href="org-chat.html">the organisation row is Root's chat</a>, one screen. This page stays as a record.</p>
+<p class="lead">One person, from the first open to an organisation with several departments. Every step is a screen: drawn on the left in the Design System's tokens, its purpose on the right. 80/20: what a person needs is on the screen; the rest is behind a tab or a Details link. Chat and Board are one. An engine says which template, workflow and skills it uses, and for what. Nothing is built; each panel ends with a line for your note.</p>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td>platform-model-org-and-department-screens</td><td>PLATFORM / <a href="platform-journeys.html">platform-model-platform-journeys</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude, for the founder's feedback screen by screen</td></tr></table>
+
+<h2>The words, once</h2>
+<table><tr><th>Word</th><th>Means</th><th>In the app today</th></tr>
+<tr><td>organisation</td><td>a name; it speaks through its Root</td><td>an organisation node with one Root under it</td></tr>
+<tr><td>department</td><td>a thing that runs: a template, five functions, engines, filed work</td><td>abc Website, from the Website kind</td></tr>
+<tr><td>template</td><td>the Library copy a department, a function or a filed work was made from</td><td>engine_defs/website.json; function-templates (Default, Product build, Money movement); artifact-templates (Brief, Site plan, Pages, Build, Live site)</td></tr>
+<tr><td>workflow</td><td>the ordered steps an engine runs when its trigger fires</td><td>Plan: Read the brief, Propose the pages, Fit the page list, File the plan</td></tr>
+<tr><td>skill</td><td>what one step uses: code, or a prompt the model answers, with its check</td><td>a step born on code (C2) or a call (C0, ceiling C1), each with a check such as "the brief has words"</td></tr></table>
+
+<!-- 1 -->
+<div class="stepno">Step 1 &#183; the first open</div>
+<div class="step">
+<div class="w"><div class="hd"><div class="name">Sutra</div><div class="gear">Settings</div></div><div class="body"><div class="greet">Good evening, Sankalp.</div><div style="color:var(--stone)">Start with an organisation: give it a name, and speak with it.</div></div><div class="foot"><div class="box">Name your organisation&#8230;<span>Start</span></div></div></div>
+<div class="panel"><h3>The first open</h3><dl><dt>Purpose</dt><dd>one thing to do: name an organisation.</dd><dt>80/20 shown</dt><dd>a greeting and one box.</dd><dt>80/20 hidden</dt><dd>Settings (the app's own); the Org tree, the Library, Chats, Market: not until something exists.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> the Now screen's greeting and box (2.305.0); <span class="c">TO CHANGE</span> the box founds an organisation instead of opening on Org.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 2 -->
+<div class="stepno">Step 2 &#183; the organisation, born</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa</div><div class="sub">no departments yet</div></div><div class="gear">Root settings</div></div><div class="body"><div class="t"><div class="who">Asawa</div>I am set up. Tell me what you want done and I will make a department for it.</div></div><div class="foot"><div class="chips"><span class="add">+ department</span></div><div class="box">Say it to Asawa<span>Send</span></div></div></div>
+<div class="panel"><h3>The organisation is a chat</h3><dl><dt>Purpose</dt><dd>speak with the organisation; Root answers in its name.</dd><dt>80/20 shown</dt><dd>the name, the chat, the departments as chips under the box, one button for Root's settings.</dd><dt>80/20 hidden</dt><dd>behind Root settings: its template, host, limits, people, its five functions and its own Map and Status. The word Root itself.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> Root's chat, the front door, one Root per organisation (2.306.4); <span class="c">TO CHANGE</span> the organisation and Root rows become one; the organisation's empty department chrome goes.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 3 -->
+<div class="stepno">Step 3 &#183; the first department, from the chat</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa</div><div class="sub">no departments yet</div></div><div class="gear">Root settings</div></div><div class="body"><div class="you">Put Asawa on the web: what we build, who we are, how to reach us.</div><div class="t ask"><div class="who">Asawa asks</div>A new department for this, from the Website template: <b>Asawa Website</b>. It will plan, write, check and publish the site, and keep it.<br><span class="btn">Yes, start it</span> <span class="btn q">Change the name</span></div></div><div class="foot"><div class="chips"><span class="on">Asawa Website &#183; starting</span></div><div class="box">Say it to Asawa<span>Send</span></div></div></div>
+<div class="panel"><h3>A department is made by asking</h3><dl><dt>Purpose</dt><dd>one line from the person becomes a department, with a stamp.</dd><dt>80/20 shown</dt><dd>the ask card: the name, the template, what it will do, two buttons.</dd><dt>80/20 hidden</dt><dd>the Library, the template's insides, the founding steps.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> Root spawns a department from a Library template through an ask (founding, test_61); today it is the Edit menu's "New website organisation" plus Root's ask; <span class="c">TO CHANGE</span> the ask reads as a card with the template named.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 4 -->
+<div class="stepno">Step 4 &#183; the department's chat (this is the board)</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa Website</div><div class="sub"><b>On</b> &#183; from the Website template &#183; 1 thing needs you</div></div><div class="gear">Stop</div></div><div class="tabs"><b>Chat</b><span>Map</span><span>Status</span><span>Work</span><span>Functions</span><span>Settings</span></div><div class="body"><div class="t"><div class="who">Asawa Website</div>Filed your words in the Brief. Planning the pages.</div><div class="t"><span class="dot"></span><b>Write</b> &#183; page 3 of 6 <span class="quiet" style="margin-left:8px">Stop</span></div><div class="t ask"><div class="who">Asawa Website asks</div>May the site go live for the first time, from this app's own server?<br><span class="btn">Yes, go live</span> <span class="btn q">Not yet</span></div><div class="t"><div class="who">Asawa Website</div>Live site v1 is live. <span class="btn" style="margin-top:2px">Open</span></div><div class="quiet">show the functions' exchanges</div></div><div class="foot"><div class="chips"><span class="rule">never say "operating system" on the first line</span></div><div class="box">Say it to Asawa Website<span>Send</span></div></div></div>
+<div class="panel"><h3>Chat = Board</h3><dl><dt>Purpose</dt><dd>everything the department said, asked and made, in one conversation; the person answers here.</dd><dt>80/20 shown</dt><dd>the department's own turns, asks as cards with buttons, the working line, the live line with Open, the person's rules under the box.</dd><dt>80/20 hidden</dt><dd>Root's relay lines (folded once answered), the functions' exchanges (one switch), the step rows.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> the turns, asks with Stamp and Refuse, "page n of m", the live line, rules as checks; <span class="c">TO CHANGE</span> the Board tab and the Human Sutra app fold into this switch; the department's name on its own turns.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 5 -->
+<div class="stepno">Step 5 &#183; Map</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa Website</div><div class="sub"><b>On</b> &#183; Live site v1</div></div><div class="gear">Stop</div></div><div class="tabs"><span>Chat</span><b>Map</b><span>Status</span><span>Work</span><span>Functions</span><span>Settings</span></div><div class="body"><div class="k">People</div><div class="line"><span class="e">You</span></div><div class="k">Functions</div><div class="line"><span class="e">Identity</span><span class="e">Adaptation</span><span class="e">Priority</span><span class="e">Coordination</span><span class="e">Audit</span></div><div class="k">Work</div><div class="line"><span class="a">Brief v1</span>&#8594;<span class="e">Plan</span>&#8594;<span class="a">Site plan v1</span>&#8594;<span class="e">Write</span>&#8594;<span class="a">Pages v1</span>&#8594;<span class="e">Check</span>&#8594;<span class="a">Build v1</span>&#8594;<span class="e">Publish</span>&#8594;<span class="a on">Live site v1</span></div><div class="k">Knows</div><div class="line"><span class="e">Template: Website</span><span class="e">Rules: 1</span><span class="e">Host: this app</span></div></div></div>
+<div class="panel"><h3>Map</h3><dl><dt>Purpose</dt><dd>the whole department in one look: who, which functions, the line of work with versions, what it knows. Click a thing to open it.</dd><dt>80/20 shown</dt><dd>the four rows.</dd><dt>80/20 hidden</dt><dd>the legend (colour carries it; a hover names a shape).</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> as drawn, with a 9-item legend (23-screens.js, 2.306.8); <span class="c">TO CHANGE</span> the legend goes; the crumb loses the word Root.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 6 -->
+<div class="stepno">Step 6 &#183; Status</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa Website</div><div class="sub"><b>On</b> &#183; nothing running &#183; next: when a new version lands</div></div><div class="gear">Stop</div></div><div class="tabs"><span>Chat</span><span>Map</span><b>Status</b><span>Work</span><span>Functions</span><span>Settings</span></div><div class="body"><div class="grid"><div class="card"><div class="k">Needs you</div><b>1</b> ask</div><div class="card"><div class="k">Waiting</div><b>0</b></div><div class="card"><div class="k">Running</div><b>0</b></div><div class="card"><div class="k">Escalated</div><b>0</b></div></div><div class="card"><div class="k">Checks</div><div class="row"><span><span class="m" style="background:var(--forest)"></span>Motor ticking</span><span class="quiet">ok</span></div><div class="row"><span><span class="m" style="background:var(--forest)"></span>Each slot ran once</span><span class="quiet">ok</span></div><div class="row"><span><span class="m" style="background:var(--gold)"></span>Front door: a request was lost at its bound</span><span class="quiet">see</span></div><div class="row"><span><span class="m" style="background:var(--forest)"></span>Inside every budget</span><span class="quiet">ok</span></div><div class="row"><span><span class="m" style="background:var(--forest)"></span>Done: the site is live</span><span class="quiet">ok</span></div></div></div></div>
+<div class="panel"><h3>Status = System status + Motor</h3><dl><dt>Purpose</dt><dd>is it well, and what needs me: four counts and the health checks.</dd><dt>80/20 shown</dt><dd>state, now, next in the header; the four counts; the checks with a mark each.</dd><dt>80/20 hidden</dt><dd>"it only reads", "what it does each tick" (help text, gone), the second Say box and Replies (the Chat has them).</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> both tabs and all eight checks; <span class="c">TO CHANGE</span> merged into one tab; the explanations removed.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 7 -->
+<div class="stepno">Step 7 &#183; Work: the line, an engine opened, a filed work opened</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa Website</div><div class="sub"><b>On</b> &#183; Live site v1</div></div><div class="gear">Stop</div></div><div class="tabs"><span>Chat</span><span>Map</span><span>Status</span><b>Work</b><span>Functions</span><span>Settings</span></div><div class="body"><div class="line"><span class="a">Brief v1</span>&#8594;<span class="e" style="outline:2px solid var(--gold)">Plan</span>&#8594;<span class="a">Site plan v1</span>&#8594;<span class="e">Write</span>&#8594;<span class="a">Pages v1</span>&#8594;<span class="e">Check</span>&#8594;<span class="a">Build v1</span>&#8594;<span class="e">Publish</span>&#8594;<span class="a">Live site v1</span></div>
+<div class="card"><div class="k">Plan &#183; engine</div><div class="kv"><span>Does</span><span>reads the brief and every ask in it, and plans the site's pages</span></div><div class="kv"><span>Template</span><span>Website &#183; Plan</span></div><div class="kv"><span>Starts</span><span>on a new Brief, unless a rule holds it, the budget is out, or the chain is at its limit</span></div><div class="kv"><span>Workflow</span><span>Read the brief &#8594; Propose the pages &#8594; Fit the page list &#8594; File the plan</span></div><div class="kv"><span>Skills</span><span>code &#183; a call with the prompt "plan a site from a brief" &#183; code &#183; code; each with its check</span></div><div class="kv"><span>Last run</span><span>19:23 &#183; passed &#183; 8 pages proposed</span></div><div class="quiet" style="margin-top:6px">Details: rungs, runs, every step's check</div></div>
+<div class="card"><div class="k">Site plan &#183; filed work, v1</div><div class="kv"><span>Template</span><span>Site plan (files: plan.md; checks: every page has a purpose and a title; written by Plan; counts after Check)</span></div><div class="kv"><span>Preview</span><span>Home &#183; What we build &#183; Who we are &#183; Contact &#183; ...</span></div><div class="quiet" style="margin-top:6px">Versions &#183; History</div></div></div></div>
+<div class="panel"><h3>Work</h3><dl><dt>Purpose</dt><dd>what the department makes and how: the line of filed works with the engines between them; open one to see the template it came from, the workflow it runs, the skills each step uses, and what it is for.</dd><dt>80/20 shown</dt><dd>the line; one engine card: does, template, starts, workflow, skills, last run; one filed work card: template, preview, version.</dd><dt>80/20 hidden</dt><dd>rungs and their bars, every run, every step's check text, the trace: behind Details.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> engines with steps, rungs, runs and starts-on (2.306.x); filed works with Preview, Versions, Trace; <span class="c">TO CHANGE</span> one Work tab instead of nine rows; the engine card says template, workflow and skills in those words; the filed work's markdown rendered.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 8 -->
+<div class="stepno">Step 8 &#183; Functions</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa Website</div><div class="sub"><b>On</b> &#183; Live site v1</div></div><div class="gear">Stop</div></div><div class="tabs"><span>Chat</span><span>Map</span><span>Status</span><span>Work</span><b>Functions</b><span>Settings</span></div><div class="body"><div class="grid"><div class="fn"><b>Identity</b>hears you, judges each thing against the goal, keeps the rules, gives verdicts<br><span class="quiet">template Product build &#183; last: filed your words, 20:11</span></div><div class="fn"><b>Priority</b>orders the queue, holds the budget: 30 calls, 6 USD a day<br><span class="quiet">template Product build &#183; last: admitted a row</span></div><div class="fn"><b>Coordination</b>keeps the timetable and the hand-offs; says who goes first<br><span class="quiet">template Product build &#183; last: a slot</span></div><div class="fn"><b>Adaptation</b>hears ideas, counts what repeated, proposes an engine<br><span class="quiet">template Product build &#183; last: nothing proposed</span></div><div class="fn"><b>Audit</b>reads the record and the pages against the brief, files what it found<br><span class="quiet">template Product build &#183; last: 12 things to confirm</span></div><div class="fn" style="border-style:dashed;color:var(--stone)">open a function: About &#183; Chat (steps folded) &#183; Settings</div></div></div></div>
+<div class="panel"><h3>Functions</h3><dl><dt>Purpose</dt><dd>the five that keep the department honest, each in one line: what it is for, which template, what it last did.</dd><dt>80/20 shown</dt><dd>five cards.</dd><dt>80/20 hidden</dt><dd>each function's chat with its steps folded to one line per turn; Settings: template, limits, ladder, starts, hears.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> each function with About, Chat and Settings tabs, its template and limits (2.306.4); <span class="c">TO CHANGE</span> five rows become one tab of cards; the step rows in a function's chat fold.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 9 -->
+<div class="stepno">Step 9 &#183; Settings</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa Website</div><div class="sub"><b>On</b> &#183; Live site v1</div></div><div class="gear">Stop</div></div><div class="tabs"><span>Chat</span><span>Map</span><span>Status</span><span>Work</span><span>Functions</span><b>Settings</b></div><div class="body"><div class="card"><div class="kv"><span>Template</span><span>Website &#183; Change</span></div><div class="kv"><span>Host</span><span>this app's own server &#183; Change</span></div><div class="kv"><span>Budget</span><span>30 calls, 6 USD a day &#183; Set</span></div><div class="kv"><span>People</span><span>Sankalp (you)</span></div><div class="kv"><span>Apps</span><span>none</span></div><div class="kv"><span>Rules</span><span>1 &#183; see the Chat</span></div></div></div></div>
+<div class="panel"><h3>Settings</h3><dl><dt>Purpose</dt><dd>the few things a person sets once.</dd><dt>80/20 shown</dt><dd>template, host, budget, people, apps, the count of rules.</dd><dt>80/20 hidden</dt><dd>each function's own settings (under Functions); the ladder numbers.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> template and host asks, Priority's limit, People and Apps rows; <span class="c">TO CHANGE</span> gathered on one tab; the handle becomes the person's name.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 10 -->
+<div class="stepno">Step 10 &#183; the organisation, grown</div>
+<div class="step">
+<div class="w"><div class="hd"><div><div class="name">Asawa</div><div class="sub">3 departments &#183; 1 thing needs you</div></div><div class="gear">Root settings</div></div><div class="body"><div class="you">start hiring: screen applicants every morning, put the good ones on my calendar</div><div class="t ask"><div class="who">Asawa asks</div>A new department, from the Hiring template: <b>Asawa Hiring</b>. Runs every morning; needs your mail and calendar connected.<br><span class="btn">Yes, start it</span> <span class="btn q">Not yet</span></div><div class="t"><div class="who">Asawa Website &#183; via Asawa</div>Live site v3 is live. <span class="btn s" style="margin-top:2px">Open</span></div></div><div class="foot"><div class="chips"><span class="on">Asawa Website</span><span class="on">Asawa Blog</span><span>Asawa Hiring &#183; starting</span><span class="add">+ department</span></div><div class="box">Say it to Asawa<span>Send</span></div></div></div>
+<div class="panel"><h3>Many departments, one chat</h3><dl><dt>Purpose</dt><dd>the organisation stays a chat; departments are chips; what a department did comes back here in one line; a new department is one more line.</dd><dt>80/20 shown</dt><dd>the chat, the chips, the ask for the next department.</dd><dt>80/20 hidden</dt><dd>each department's own screens (a chip opens them); Root's settings.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> answers come back onto Root's board with a department chip; a second department under one Root (Namrati run, 2026-09-28); <span class="c">TO BUILD</span> a second department template (Hiring, Blog); the connectors it needs.</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<!-- 11 -->
+<div class="stepno">Step 11 &#183; Now, with several organisations</div>
+<div class="step">
+<div class="w"><div class="hd"><div class="name">Good morning, Sankalp.</div><div class="gear">Settings</div></div><div class="body"><div class="card"><div class="row"><span><span class="m" style="background:var(--clay)"></span><b>Asawa</b> &#183; Hiring asks: connect your calendar</span><span class="btn s" style="margin:0;padding:4px 10px">Connect</span></div><div class="row"><span><span class="m" style="background:var(--forest)"></span><b>Sharma Tailors</b> &#183; Live site v2 is live</span><span class="quiet">12 min ago</span></div><div class="row"><span><span class="m" style="background:var(--faint)"></span><b>City Care Hospital</b> &#183; all clear</span><span class="quiet"></span></div></div></div><div class="foot"><div class="box">Say it to any organisation&#8230;<span>Send</span></div></div></div>
+<div class="panel"><h3>Now: what needs me, across organisations</h3><dl><dt>Purpose</dt><dd>one open of the app a day: what needs me first, then what happened, then all clear.</dd><dt>80/20 shown</dt><dd>one row per organisation with the department that speaks; the ask with its button.</dd><dt>80/20 hidden</dt><dd>everything else; a row opens the organisation's chat.</dd><dt>Exists today</dt><dd><span class="b">BUILT</span> the Now screen with status mark, All clear and FYI 24 h (2.305.0); <span class="c">TO BUILD</span> rows fed from every organisation's Root (ledger row N-021, a claim with its test).</dd></dl><div class="note">Your note:</div></div>
+</div>
+
+<h2>The evolution, in one table</h2>
+<table><tr><th>Step</th><th>Screen</th><th>The person does</th><th>The person sees</th><th>Exists today</th></tr>
+<tr><td>1</td><td>first open</td><td>names an organisation</td><td>one box</td><td>the box; founding is behind a menu</td></tr>
+<tr><td>2</td><td>the organisation</td><td>speaks with it</td><td>a chat, Root's settings button</td><td>Root's chat; two rows instead of one</td></tr>
+<tr><td>3</td><td>a department, born</td><td>says what he wants</td><td>an ask card with the template</td><td>the ask; not as a card</td></tr>
+<tr><td>4</td><td>Chat = Board</td><td>answers asks, gives rules</td><td>the department's own voice</td><td>three views of one conversation</td></tr>
+<tr><td>5-9</td><td>Map, Status, Work, Functions, Settings</td><td>looks when he wants</td><td>one tab each; the rest behind Details</td><td>22 rows</td></tr>
+<tr><td>10</td><td>the organisation, grown</td><td>adds departments by asking</td><td>chips, one chat</td><td>one template only</td></tr>
+<tr><td>11</td><td>Now</td><td>opens the app once a day</td><td>what needs him, across organisations</td><td>Now for the app; not across organisations</td></tr></table>
+<div class="key">Give feedback on any step by its number. Each note becomes a change on this page, and the page is the spec the build follows.</div>
+
+<h2>Sources</h2>
+<p>Captures of today's screens: <a href="department-screen.html">the department screens, cleaned up</a>. The templates named: <code>sutra-ui/engine_defs/website.json</code> (the engines and their steps, each step born on code or a call with a check), <code>function-templates/</code> (Default, Product build, Money movement per function), <code>artifact-templates/</code> (Brief, Site plan, Pages, Build, Live site: files, checks, written by, counts after). Skin: <a href="../../design-system.html">Design System</a>. High level: <a href="platform-journeys.html">Platform journeys</a>; the first use case: <a href="consumer-product.html">a website for my organisation</a>.</p>
+<p style="font-size:11.5px;color:#9ca3af">Provenance &#183; author: claude (2026-09-29) for the founder's direction of the same day (the experience as a chat with the organisation; a department screen by screen; engines showing template, workflow and skills; chat and board as one; purpose on the right; 80/20; an HTML file first; then, mid-turn, the whole design as one person's journey) &#183; review: none by a second model &#183; confidence: high on "exists today" rows (each names its build or capture); the Hiring and Blog templates in step 10 are examples, not built.</p>
+</details>
+</div></div></body></html>

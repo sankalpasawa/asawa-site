@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Billu — Design v0.1 (first design, unratified)</title>
+<link rel="stylesheet" href="../native/preview/tokens.css">
+<style>
+  /* layout only — visuals come from tokens.css (DS UI v2.0, LOCKED 2026-08-05) */
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#e9e6e0;padding:20px}
+  .window{width:1300px;max-width:100%;height:780px;background:var(--bg);border:1px solid #ddd8cf;border-radius:14px;box-shadow:0 22px 64px rgba(12,10,8,.18);overflow:hidden;display:flex;position:relative}
+  .tag{position:absolute;top:12px;right:16px;font-size:10px;letter-spacing:.14em;color:var(--gold);z-index:20}
+  .rail{width:230px;border-right:1px solid var(--line);background:var(--panel);padding:18px 12px;display:flex;flex-direction:column}
+  .brand{font-family:var(--font-display);font-size:20px;margin:0 0 4px 8px}
+  .brandsub{font-size:10px;color:var(--stone);margin:0 0 16px 8px}
+  .th{padding:8px 10px;border-radius:10px;font-size:12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+  .th:hover{background:var(--cream)}
+  .th.on{background:var(--cream);border:1px solid var(--gold);font-weight:600}
+  .th .n{font-size:9px;color:var(--faint)}
+  .railfoot{margin-top:auto;font-size:10px;color:var(--faint);padding:0 8px;line-height:1.5}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .statusbar{display:flex;align-items:center;gap:9px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--panel);font-size:11.5px}
+  .statusbar .sm{font-size:10px;color:var(--faint)}
+  .feed{flex:1;padding:16px 22px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+  .mu{align-self:flex-end;max-width:70%;background:#f0ede5;border:1px solid var(--line);border-radius:11px 11px 3px 11px;padding:8px 12px;font-size:12.5px}
+  .ma{align-self:flex-start;max-width:84%;background:var(--panel);border:1px solid var(--line);border-radius:11px 11px 11px 3px;padding:10px 13px;font-size:12.5px}
+  .ma .lbl{font-size:9px;letter-spacing:.1em;color:var(--faint);margin-bottom:4px}
+  .ma table{border-collapse:collapse;font-size:11.5px;margin-top:6px}
+  .ma td{padding:3px 10px 3px 0;color:var(--ink)}
+  .ma td.s{color:var(--stone)}
+  .composerwrap{padding:0 18px 16px}
+  .side{width:270px;border-left:1px solid var(--line);background:#fbfaf7;padding:14px;overflow:auto}
+  .sc{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:12px}
+  .sc .k{font-size:var(--fs-label);letter-spacing:var(--ls-label);font-weight:700;color:var(--stone);text-transform:uppercase;margin-bottom:7px}
+  .sc .k .sm{font-weight:400;font-size:9px;color:var(--faint);letter-spacing:0}
+  .aid{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;padding:4px 0;cursor:pointer}
+  .aid .cb{width:13px;height:13px;border:1.5px solid var(--stone);border-radius:4px;flex-shrink:0;margin-top:1px}
+  .aid.done .cb{background:var(--done);border-color:var(--done)}
+  .aid.done .tx{text-decoration:line-through;color:var(--faint)}
+  .srow{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:3px 0}
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="tag">BILLU &middot; DESIGN v0.1 &middot; FIRST DESIGN &middot; UNRATIFIED &middot; 2026-08-07</div>
+
+  <nav class="rail">
+    <div class="brand">Billu</div>
+    <div class="brandsub">one conversation &middot; whole portfolio</div>
+    <div class="th on" data-th="default">default <span class="n">thread</span></div>
+    <div class="th" data-th="dayflow">company:dayflow <span class="n">thread</span></div>
+    <div class="th" data-th="maze">company:maze <span class="n">thread</span></div>
+    <div class="th" data-th="ppr">company:ppr <span class="n">thread</span></div>
+    <div class="th" data-th="sutra">company:sutra <span class="n">thread</span></div>
+    <div class="th" data-th="billu">company:billu <span class="n">thread</span></div>
+    <div class="railfoot">threads shown are the REAL thread model (default + company:*)<br>content below is sample &middot; daemon not installed on this Mac</div>
+  </nav>
+
+  <main class="main">
+    <div class="statusbar">
+      <span class="ds-dot warn"></span> daemon: not running on this Mac
+      <span class="sm">&middot; migration Phase 3 awaits go &middot; design shows the target experience</span>
+      <span class="ds-chip" style="margin-left:auto">P0 #1 CONVERSATIONAL LOOP</span>
+      <span class="ds-chip">P0 #6 STATUS ROLL-UP</span>
+    </div>
+
+    <div class="feed" id="feed">
+      <div class="ds-block deep" style="align-self:center;font-size:10.5px">SAMPLE EXCHANGE — illustrates P0 acceptance, not a live transcript</div>
+      <div class="mu">billu status</div>
+      <div class="ma">
+        <div class="lbl">PORTFOLIO ROLL-UP &middot; SAMPLE &middot; P0 #6: zero company sessions opened</div>
+        <table>
+          <tr><td>dayflow</td><td class="s">sample row — real rollup comes from daemon</td></tr>
+          <tr><td>maze</td><td class="s">sample row</td></tr>
+          <tr><td>ppr</td><td class="s">sample row</td></tr>
+          <tr><td>sutra</td><td class="s">sample row</td></tr>
+        </table>
+      </div>
+      <div class="mu">@maze what did we ship yesterday?</div>
+      <div class="ma">
+        <div class="lbl">ROUTED &rarr; company:maze &middot; SAMPLE &middot; P0 #3: founder never named a session</div>
+        Routing decision + rationale logged and replayable (PRD s7 trust mitigation).
+      </div>
+    </div>
+
+    <div class="composerwrap">
+      <div class="ds-composer"><span class="ph">Message Billu&hellip; @company routes the thread</span><span class="key">&#8629;</span></div>
+    </div>
+  </main>
+
+  <aside class="side">
+    <div class="sc"><div class="k">Action items <span class="sm">real rows &middot; from PRD s0</span></div>
+      <div class="aid" onclick="this.classList.toggle('done')"><span class="cb"></span><span class="tx">Billu migration Phase 3 — install on this Mac (unlocks CLI + live tab)</span></div>
+      <div class="aid" onclick="this.classList.toggle('done')"><span class="cb"></span><span class="tx">Q-1: execute or re-decide the Conductor/MCP pivot</span></div>
+    </div>
+    <div class="sc"><div class="k">Surfaces <span class="sm">from PRD s4</span></div>
+      <div class="srow"><span class="ds-dot ok"></span> CLI <span class="sm" style="font-size:9px;color:var(--faint)">built &middot; not installed</span></div>
+      <div class="srow"><span class="ds-dot warn"></span> Cockpit tab <span class="sm" style="font-size:9px;color:var(--faint)">mock &middot; gated T15</span></div>
+      <div class="srow"><span class="ds-dot warn"></span> MCP on Conductor <span class="sm" style="font-size:9px;color:var(--faint)">accepted &middot; unbuilt</span></div>
+    </div>
+    <div class="sc"><div class="k">Design notes</div>
+      <div style="font-size:11px;color:var(--stone);line-height:1.5">v0.1 register: thread rail left &middot; one feed center &middot; state right. Same DS as the cockpit (tokens.css). Ratify or redline &rarr; v0.2.</div>
+    </div>
+  </aside>
+</div>
+
+<script>
+  document.querySelectorAll('.th').forEach(el=>el.addEventListener('click',()=>{
+    document.querySelectorAll('.th').forEach(x=>x.classList.remove('on'));
+    el.classList.add('on');
+  }));
+</script>
+</body>
+</html>

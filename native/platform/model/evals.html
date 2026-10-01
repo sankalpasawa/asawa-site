@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- PAGE: platform-model-evals (v1, DRAFT). PRD subpage of platform-the-model.
+     Uniform skeleton s1-s7. Facts trace to sutra/os/decisions/ADR-031-eval-engine.md +
+     holding/plans/eval-program/ (GROUNDING/ARCHITECTURE/PRD + runs) only; gaps are bare TODO(founder). -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Evals (Eval Engine)</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px}
+h3{font-size:15.5px;margin:20px 0 2px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0}
+.planned{background:#fffbeb;border-left:3px solid #b45309;padding:10px 13px;font-size:13px;margin:14px 0}
+.lead{font-size:16px;color:#1f2937;margin:8px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:10px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px}
+.pill.DRAFT{background:#fffbeb;color:#b45309}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../../company-map.html">The company map</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../the-model.html">The Model</a> &rsaquo; Evals</div>
+<h1>ARCHIVED 2026-09-20 &#8212; Evals — the Eval Engine <span class="lvl">GLUE ENGINE · AUDIT TYPE</span></h1>
+<p class="lead">Every Work-Atom writes down its check before the work. The Eval Engine keeps those checks, re-runs all of them forever, and watches the score. <span class="pill DRAFT">DRAFT</span></p>
+<div id="ruled-2026-09-20" style="background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0"><b>On the department screen, ruled 2026-09-20.</b> Folded into Audit on the five functions page: a check is a check, never a score. This page is archived 2026-09-20 and kept for the eval program's record. Screen: <a href="https://sankalpasawa.github.io/asawa-site/native/locked/department-screen.html">the department screen</a> (<a href="https://sankalpasawa.github.io/asawa-site/native/locked/journeys-on-screen.html">journeys on it</a>) (locked 2026-09-20; decision sheet section 12) &#183; <a href="lifecycle.html">the life cycle of an engine and a department</a>.</div>
+
+<h2>s1. Purpose</h2>
+<p>Work is checked once, at close — then the check is never read again. So decay is invisible, changes are untested against the past, and the judges are unjudged. The Eval Engine makes four promises: nothing rots silently; change without fear; a quality number that moves; trustworthy judges. Ruled at <code>ADR-031</code> (Accepted 2026-08-07).</p>
+
+<h2>s2. How it works</h2>
+<table>
+<tr><th>Piece</th><th>What it is</th></tr>
+<tr><td>Case</td><td>a closed Work-Atom: its goal + its pre-declared runnable check</td></tr>
+<tr><td>Pack</td><td>curated set of cases, tagged: <code>decay-sensitive</code> (scored) · <code>frozen</code> (history) · <code>env-bound</code> · <code>sandbox-required</code> (excluded until sandboxed)</td></tr>
+<tr><td>Run</td><td>batch re-execution of every case's check against the system as it is NOW — through the shared <code>verify-runner</code>, the same semantics as atom close</td></tr>
+<tr><td>Scorecard</td><td>pass % + per-tag breakdown + a receipt per case; exclusions always printed</td></tr>
+<tr><td>Diff</td><td>run vs run: which cases flipped (regression / recovery / added / removed)</td></tr>
+<tr><td>Judge lane</td><td>an AI grader reads goal + check and grades whether the check genuinely tests the goal — grade plus written reasoning kept</td></tr>
+</table>
+<div class="key">The integration rule: eval replay and <code>sutra-atom close</code> run the same check the same way. One check executor, two callers.</div>
+
+<h2>s3. Product use cases</h2>
+<table>
+<tr><th>#</th><th>Actor</th><th>Scenario</th></tr>
+<tr><td>1</td><td>Founder</td><td>nightly eval section in the governance audit names each decayed atom, its check, and the day it flipped</td></tr>
+<tr><td>2</td><td>Claude session</td><td>before a workflow change ships, run the pack touching the same files; a regression stops the change</td></tr>
+<tr><td>3</td><td>Fleet company</td><td>their atoms accrue into their own pack; the same nightly score for their own work (post plugin ship)</td></tr>
+</table>
+
+<h2>s4. Operational scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Behavior</th></tr>
+<tr><td>Check fails at night</td><td>WARN decay row into findings; triaged next morning</td></tr>
+<tr><td>Runner itself crashes</td><td>single CRITICAL <code>eval-infra</code> row — infra never masquerades as decay</td></tr>
+<tr><td>Stale case</td><td>tagged <code>frozen</code> at curation; excluded from score, kept as history</td></tr>
+<tr><td>Kill-switch</td><td><code>~/.eval-nightly-disabled</code> stops nightly runs, nothing else</td></tr>
+</table>
+
+<h2>s5. Contract</h2>
+<ul>
+<li>Read-only: the engine reads records and repo state; it never mutates work engines.</li>
+<li>Same check: replay executes the atom's declared check via the shared verify-runner.</li>
+<li>Receipts: every score keeps per-case evidence; judge grades keep written reasoning.</li>
+<li>Honest score: excluded/frozen/skipped counts always print with the score.</li>
+</ul>
+
+<h2>s6. Implementation today</h2>
+<div class="note">Live 2026-08-07: exporter + packs + decay task (Inspect AI, <code>model none</code>) + nightly launchd job + normalized findings. First run: 187 cases packed, 132 scored, <b>122 pass / 10 real decay findings</b> (one deleted shipped artifact among them). Grader-lane spike (verify-quality judge): GO — 10/10 sampled checks graded WEAK with reasoning, so check-quality debt is now measurable. <code>verify-runner</code> promoted to the plugin at v2.72.0.</div>
+<div class="planned">Deferred, recorded: docker sandbox for <code>sandbox-required</code> cases (docker absent on host); judge calibration vs 20 founder-labeled cases; <code>sutra-atom close</code> wiring onto verify-runner (gated on atom test suite).</div>
+
+<h2>s7. Open questions</h2>
+<ul>
+<li>TODO(founder): decay severity ratchet — when does repeated WARN become CRITICAL?</li>
+<li>TODO(founder): fleet pack privacy — packs are per-company; is any aggregation ever allowed? (default: never)</li>
+<li>Judge calibration cadence after the initial labeled set.</li>
+</ul>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned"><span class="pill PROPOSED">PROPOSED</span> Status: illustrative, not binding. Persisted artifact first &#8212; one scorecard case-receipt row from a nightly run, pieces named by s2 (case / pack / run / scorecard / diff / judge lane):
+<pre>{"run":"nightly-2026-08-17","pack":"lending-core","case":"W-kyc-verify::a-4f21","check":"the atom's declared check via shared verify-runner","result":"pass","tags":["decay-sensitive"],"excluded":false,"receipt":"<decision_pending>shape unruled</decision_pending>","judge":{"grade":"WEAK","reasoning":"kept"}}</pre>
+A run-vs-run diff row flips a case: <code>{"case":"W-emi-reconcile::a-9b03","was":"pass","now":"fail","class":"regression"}</code>. Exact JSONL field names are <decision_pending>unruled</decision_pending> &#8212; s5 rules only read-only / same-check / receipts / honest-score.</div>
+<p>Operator surface: the nightly governance-audit findings section renders the scorecard &#8212; pass % + per-tag breakdown, exclusions always printed (s3 case 1, s4).</p>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting &#183; review: audit workflow wf_5c81f205.</p>
+
+</div></div></body></html>

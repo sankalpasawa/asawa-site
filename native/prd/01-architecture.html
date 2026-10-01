@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§1 — Architecture (multi-layer system) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+<strong>§1 — Architecture (multi-layer system)</strong> · <a href="02-cos.html">next: 02 cos</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§1 — Architecture (multi-layer system)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/HLD/01-system-overview.html">HLD/01 System Overview</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-1-architecture">
+<h2>§1 Architecture — multi-layer system <a href="../product-prd-native-v1.html#section-1-architecture" class="anchor">#</a></h2>
+<p class="callout"><strong>This section is the canonical operating model.</strong> Every later section (§2-§6) instantiates §1; nothing re-explains the system. If a fact about the system belongs anywhere, it belongs here first.</p>
+
+<h3 id="section-1-1-layers">§1.1 The five layers</h3>
+<pre>
+   ┌──────────────────────────────────────────────────────────────┐
+   │  §6  DISTRIBUTION  (business layer)                           │
+   │  ───────────────────────────────────                          │
+   │  Channels · pricing · onboarding · lifecycle                  │
+   │  How CoS reaches operators                                    │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ delivers
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  §2  CHIEF OF STAFF  (the first product · PRD)                │
+   │  ───────────────────────────────────────────                  │
+   │  Promise: implementation consultant for the operator         │
+   │  Surface: 5 pillars (B1-B5) · 24 needs · 4 actors · T0-T3     │
+   │  What the operator sees, says, asks of                        │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ rides on
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  §3  HOW METHODOLOGY  (epistemic core · doctrine)             │
+   │  ───────────────────────────────────────────                  │
+   │  6 HOW dimensions: approach · mindset · structure ·           │
+   │     detailing · decomposition · cascading                     │
+   │  Native exists to operationalize HOW (not as a feature)       │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ executed by
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  §4  NATIVE PLATFORM  (workforce-deployment substrate)        │
+   │  ───────────────────────────────────────────────              │
+   │  Primitives: Charters (fixed/flex) · Agents (on demand)       │
+   │              Method routing · Authority gates · Audit         │
+   │  Deploys + scopes + supervises a workforce of agents          │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ uses
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  §5  CONNECTOR  (transport layer)                             │
+   │  ───────────────────────────                                  │
+   │  Slack · email · web · browser · phone · 3rd-party tools      │
+   │  Talks to humans, services, peer Sutras (v2+)                 │
+   └──────────────────────────────────────────────────────────────┘
+
+   §7 OBSERVABILITY (cross-cutting): per-pillar metrics · drift signals · audit/replay
+</pre>
+
+<h3 id="section-1-2-boundary">§1.2 Layer boundary table</h3>
+<p>Per-section ownership. Disambiguates "is this CoS, HOW, Native, Connector, Distribution, or Observability?"</p>
+<table>
+<tr><th>Layer</th><th>Owns</th><th>Depends on</th><th>Does NOT own</th></tr>
+<tr><td><strong>§2 CoS Product</strong></td><td>Operator's 5 demands (B1-B5); 24 needs; task taxonomy; actor stage; per-pillar contracts; CX bar</td><td>§3 HOW Methodology; §4 Native primitives; §5 Connector transport</td><td>Workforce deployment runtime; charter execution; tool transport; pricing; epistemic methodology</td></tr>
+<tr><td><strong>§3 HOW Methodology</strong></td><td>6 HOW dimensions (approach · mindset · structure · detailing · decomposition · cascading); HOW selection flow; HOW manifest in state envelope</td><td>§2 task tier; §4 Native runtime (executes HOW choices); §7 Observability (measures HOW accuracy)</td><td>Execution (§4 runtime); operator surface (§2); transport (§5)</td></tr>
+<tr><td><strong>§4 Native Platform</strong></td><td>Charters · Agents · Method routing · Authority gates · State envelope · Audit substrate</td><td>§3 HOW choice (executed); §5 Connector for any out-of-process tool call</td><td>Operator surface; pillar UX; pricing; channels; epistemic doctrine</td></tr>
+<tr><td><strong>§5 Connector</strong></td><td>Slack/email/web/browser/phone transport; 3rd-party tool integration; inbound/outbound message handling</td><td>§4 Authority gate at every send</td><td>Decision logic; charter scope; what to say</td></tr>
+<tr><td><strong>§6 Distribution</strong></td><td>Channels (Sutra plugin · direct · cloud); pricing; onboarding; lifecycle</td><td>§2 product readiness; §4 platform stability</td><td>Product surface; runtime behavior</td></tr>
+<tr><td><strong>§7 Observability</strong></td><td>Per-pillar metrics; drift signals; operator satisfaction; audit replay surfaces</td><td>All layers (instruments cross-cuttingly)</td><td>Decision execution; transport</td></tr>
+</table>
+
+<h3 id="section-1-3-crosscuts">§1.3 Cross-cutting concerns (live in §9 Meta as overlays)</h3>
+<p>Concerns that touch every layer; they get overlay treatment in §9, not their own top-level section.</p>
+<ul>
+  <li><strong>Authority Model</strong> (§9 D.6) — default-go vs ask · 6 dimensions</li>
+  <li><strong>CX Bar</strong> (§9 D.7) — quality bar Native's experience must clear</li>
+  <li><strong>Operator-First Lens</strong> (§9 D.8) — loyalty to operator personally</li>
+  <li><strong>Scope anti-pattern</strong> (§9 D.9) — explicit "NOT" guardrails</li>
+  <li><strong>Charter Model</strong> (§9 D.10 + §3 primitive) — fixed/flexible scope</li>
+  <li><strong>Method Selection</strong> (§9 D.11 + §3 primitive) — per-task-tier intelligence routing</li>
+  <li><strong>Identity / Tenancy</strong> — implicit in D.6 by-domain; explicit cross-tenant default-deny in §2 B5</li>
+  <li><strong>Trust / Safety / Compliance</strong> — Authority gate + B5.c audit + incident handling</li>
+</ul>
+
+<a id="architecture-context"></a>
+<h3 id="section-1-4-hierarchy">§1.4 Product Hierarchy — Platform · Product · Module · Deployment</h3>
+<p>Native + CoS form one cell of a multi-level product hierarchy. Operator-visible child products (Daily Pulse, Feedback Engine, etc.) are <strong>Modules</strong>. Per-operator + per-Charter installs are <strong>Deployments</strong>.</p>
+<pre>
+   ┌──────────────────────────────────────────────────────────────┐
+   │  LAYER A · PLATFORM                                            │
+   │  Native — workforce-deployment substrate                       │
+   │  (Charters · Agents · Methods · Authority · Audit)             │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ hosts
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  LAYER B · PRODUCT                                             │
+   │  Chief of Staff (CoS) — first-party flagship                   │
+   │  (5 pillars · 24 needs · PRD-spec'd · §2)                      │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ composes
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  LAYER C · MODULE                                              │
+   │  Composed unit on top of CoS — independently deployable        │
+   │  (Daily Pulse §7.5 · Feedback Engine §6.6 · Audit Replay ·     │
+   │   Workforce Status · Charter Console · ...)                    │
+   └────────────────────────────┬─────────────────────────────────┘
+                                │ binds + runs as
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  LAYER D · DEPLOYMENT                                          │
+   │  Per-operator · per-Charter · per-tenant install               │
+   │  (e.g., "Daily Pulse for Sankalp's Paisa Charter")             │
+   └──────────────────────────────────────────────────────────────┘
+</pre>
+
+<h4>§1.4.1 Module eligibility — strict 4-test rule</h4>
+<p>A capability becomes a <strong>Module</strong> only if it satisfies ALL four:</p>
+<table>
+<tr><th>#</th><th>Test</th><th>What it means</th></tr>
+<tr><td>1</td><td>Independent lifecycle</td><td>Can be added / updated / retired without touching the host Product's release cycle</td></tr>
+<tr><td>2</td><td>Explicit configuration surface</td><td>Has per-Deployment binding config (not hardcoded into Product code)</td></tr>
+<tr><td>3</td><td>Own runtime state / observability</td><td>Produces its own audit rows, metrics, replay artifacts (not just inherits Product's)</td></tr>
+<tr><td>4</td><td>Possible reuse</td><td>Designed so a future second Product could compose it (cross-product reuse <strong>designed for, not guaranteed in v1</strong>)</td></tr>
+</table>
+<p class="callout">If a capability fails any test → it's a <em>feature of Product</em>, not a Module. Avoid Module-bloat (every feature inflated into a Module). Daily Pulse + Feedback Engine pass; small UI panels don't.</p>
+
+<h4>§1.4.2 Capability vs Module — distinct concepts</h4>
+<table>
+<tr><th>Concept</th><th>Definition</th><th>Examples</th></tr>
+<tr><td><strong>Capability (cap-NNN)</strong></td><td>Atomic platform/product primitive · single technical service · tracked in CSM (<a href="../product-prd-native-v1.html#section-3-native-platform">§4.8</a>)</td><td>cap-001 Input Routing · cap-002 Depth Estimation · cap-003 Blueprint · cap-007 SBOM</td></tr>
+<tr><td><strong>Module</strong></td><td>Packaged composition of multiple Capabilities + UX + policy + per-Deployment config + own runtime state</td><td>Daily Pulse (composes cap-Telemetry + cap-Audit + cap-CrossPortfolio-Priority) · Feedback Engine (composes cap-Connector-Slack + cap-Privacy-Sanitize + cap-Audit)</td></tr>
+</table>
+<p>Capabilities are building blocks. Modules are deployable units. CSM tracks both: capabilities flat-indexed; modules referenced as compositions.</p>
+
+<h4>§1.4.3 Deployment authority — Modules + Layer-B Products (v1 → v1.5 → v2)</h4>
+<p>Same authority phases apply to BOTH Modules (per <a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.1</a>) AND Layer-B Products (per <a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a> — CoS + future Senior Expert + Project Manager). Asawa/Sutra Forge originates both in v1; operator gets binding-only deployment at v1.5; third-party authoring opens at v2+.</p>
+<table>
+<tr><th>Phase</th><th>Who can deploy a Module</th><th>Who can deploy a Layer-B Product</th><th>Rationale</th></tr>
+<tr><td><strong>v1</strong></td><td>Native platform + Asawa Forge only</td><td>Asawa/Sutra Forge only (CoS is the first; Senior Expert + Project Manager future)</td><td>Strong governance; no ungoverned automation attached to operator workflows</td></tr>
+<tr><td><strong>v1.5</strong></td><td>Operator self-serve from <em>approved</em> Module catalog (binding-only, not spec-authoring)</td><td>Operator self-serve from <em>approved</em> Product catalog (binding-only — operator picks which Layer-B Product to deploy under a Charter; cannot author new Products)</td><td>Operator can bind pre-approved Modules + Products to Charters; cannot author new ones</td></tr>
+<tr><td><strong>v2+</strong></td><td>Third-party developers, gated by review + permissioning + audit</td><td>Third-party Layer-B Product developers (own pillars + capability surface), gated by review + permissioning + audit + canon-ADR authoring</td><td>Marketplace; only after Capability/Module/Product review pipeline matures</td></tr>
+</table>
+
+<h4>§1.4.4 Layer-B products on Native (current + planned)</h4>
+<p>Native (§1.4 Layer A) is a multi-product platform. CoS is one Layer-B product on it; future products sit at the same layer. Each Layer-B product specifies its own pillars + capability surface; all share the same Native Platform substrate + canon.</p>
+<table>
+<tr><th>#</th><th>Layer-B Product</th><th>Operator surface</th><th>Status</th></tr>
+<tr><td>1</td><td><strong>Chief of Staff (CoS)</strong></td><td>First-party flagship; operator (per <a href="../product-prd-native-v1.html#a2-persona">§A.2</a>). Implementation consultant; 5 pillars (§2.B B1-B5).</td><td>v1 in spec; PRD <a href="../product-prd-native-v1.html#section-2-cos">§2</a> defines</td></tr>
+<tr><td>2</td><td><strong>Senior Expert</strong></td><td>Project executor — autonomously runs an entire project end-to-end under operator-set Charter. Operator-grade decision-maker for a specific domain (legal · finance · engineering · product · etc.).</td><td>Future; spec TBD</td></tr>
+<tr><td>3</td><td><strong>Project Manager</strong></td><td>Operator-facing project orchestration — milestones, dependencies, stakeholder comms, status tracking across multi-week initiatives.</td><td>Future; spec TBD</td></tr>
+</table>
+<p class="callout"><strong>Audience model (B2B)</strong>: every Layer-B product surfaces to <em>users of our product</em> — operators who deploy Native within their org (per <a href="../product-prd-native-v1.html#a2-persona">§A.2</a>). No B2C / B2B2C surface in v1. Future products beyond CoS may serve operator's team members (peers · reports) but always under operator-Charter authority — never independent of operator.</p>
+
+<h4 id="section-1-4-5-activation">§1.4.5 Deferred capability activation paths</h4>
+<p>Capabilities tagged <span class="badge v2">v2+</span> throughout the doc each have a defined activation path — what must be true for the capability to graduate from deferred to live. This table is the canonical activation map (audit-clean: no v2+ tag without an activation gate).</p>
+<table>
+<tr><th>Capability</th><th>Where deferred</th><th>Activation gate</th><th>Affects (when live)</th></tr>
+<tr><td><strong>B2.c Peer Sutras</strong> (federated context read from other operators' Native instances)</td><td><a href="../product-prd-native-v1.html#b2c-peer-sutras">§2.B B2.c</a></td><td>(1) Federation protocol authored as canon ADR; (2) Trust + boundary model ratified per <a href="../product-prd-native-v1.html#d6-authority">§D.6</a>; (3) ≥3 T2/T3 operators opt in for prototype; (4) HS-3 tenant-boundary contract extended to cross-Native</td><td>B2 context-retrieval (new source row in §1.5 overlay); §D.6 Authority adds peer-Sutra dimension; §C.4 R3 cross-tenant risk model updates</td></tr>
+<tr><td><strong>F1 Semantic content-similarity retrieval</strong> (replaces v1 metadata-only B2 ranking)</td><td><a href="../product-prd-native-v1.html#a6-scope">§A.6 Scope</a></td><td>(1) Embedding pipeline ships; (2) Per-tenant vector store with HS-3 boundary; (3) Metadata-vs-semantic A/B ≥10pp accuracy delta on T2 dogfood; (4) Cost model fits §C.4 R8 budget</td><td>B2.a/B2.b ranking algorithm; §C.4 R8 cost model recalibrated</td></tr>
+<tr><td><strong>Full A2A transport</strong> (peer-Native agent-to-agent coordination, beyond v1 log-only stub)</td><td><a href="../product-prd-native-v1.html#pillar-b4">§2.B B4</a> · §5 Connector</td><td>(1) B2.c Peer Sutras LIVE (prerequisite); (2) A2A protocol authored as canon ADR; (3) Identity + auth model for cross-Native calls; (4) Audit trail extends to cross-Native DecisionProvenance</td><td>B4 transport adds peer-A2A channel; §C.4 R3 cross-tenant model + §C.4 R2 audit-log spec extend</td></tr>
+<tr><td><strong>Non-terminal surfaces</strong> (voice · web · mobile app per ratified Q2 + Q9)</td><td><a href="../product-prd-native-v1.html#c1-versions">§C.1 v3</a> · <a href="../product-prd-native-v1.html#a6-scope">§A.6 NG1</a></td><td>(1) v2 prototype tested with ≥5 T4 operators non-terminal; (2) v1 wedge N* mature ≥20 OHS/wk (per §C.1 v3 trigger); (3) Per-surface UX validated against zero-terminal post-onboarding rule (<a href="../product-prd-native-v1.html#a2-persona">§A.2.2</a>)</td><td>§A.2 persona broadens; §6 Distribution adds non-terminal channels; §6.3 Onboarding flow gets new install path; install/onboard tier matrix (<a href="../product-prd-native-v1.html#section-6-3-1-install-tier-matrix">§6.3.1</a>) extends</td></tr>
+<tr><td><strong>Senior Expert + Project Manager Layer-B Products</strong> (per <a href="../product-prd-native-v1.html#section-1-4-hierarchy">§1.4.4</a>)</td><td>This section</td><td>(1) ADR-020 Layer-B authoring template ratified; (2) Per-product PRD authored per ADR-020 contract; (3) Per-product codex+deepseek review; (4) Asawa Forge installs first instance for T1 dogfood</td><td>§1.4.4 enumeration grows; §6 Distribution + §6.3.1 install matrix get per-product rows; canon: new ADR-NNN-<product>-pattern.md + new block specs</td></tr>
+<tr><td><strong>Phone connector</strong> (voice call + SMS as Native transport — distinct from voice surface)</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1 Connector inventory</a></td><td>(1) Telephony provider chosen + integration tested (Twilio/Vonage candidate); (2) Per-call Authority gate spec (operator approves outbound voice; inbound voice consent + recording disclosure compliant); (3) Voice-data retention + PII-sanitization extends <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12</a>; (4) Cost model per minute fits §C.4 R8 budget</td><td>§5.1 inventory row promoted to Live; §D.6 Authority gains voice/SMS dimension; §C.4 R2 audit-log spec extends to call transcripts</td></tr>
+<tr><td><strong>Browser co-work connector</strong> (operator-driven browser session as a Native-observed surface)</td><td><a href="../product-prd-native-v1.html#section-5-1-inventory">§5.1</a> · Charter TODO-005</td><td>(1) Browser-driver choice ratified (Playwright/Chromium candidate per existing Sutra gstack pattern); (2) Operator-consent model — operator initiates session; Native attaches read-only by default + escalates to action via Authority gate; (3) Sandbox + identity isolation per HS-3 tenant-boundary; (4) Audit row captures every Native-issued action against operator's browser</td><td>§5.1 inventory row promoted from "Charter TODO-005" to Live; §D.6 Authority gains browser-action dimension; new connector spec under <code>sutra/marketplace/plugin/connectors/browser/</code></td></tr>
+<tr><td><strong>Cloud-hosted channel</strong> (managed-infra distribution — operator does not run own daemon)</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1 Channels</a></td><td>(1) Multi-tenant infra spec authored + HS-3 tenant-boundary contract extends to shared-host; (2) Per-tenant data-residency + key-isolation guarantees; (3) Pricing tier defined (operator-economics validated per §C.4 R8); (4) Onboarding flow (§6.3) gets cloud-managed install path matrix row</td><td>§6.1 Channels row promoted to Live; §6.3.1 install matrix gains "cloud" tier column; §6.4 lifecycle gets managed-update cadence; §C.4 R3 cross-tenant model + R8 cost model recalibrated</td></tr>
+<tr><td><strong>Partner-deployed channel</strong> (accelerator / cohort-program distribution)</td><td><a href="../product-prd-native-v1.html#section-6-1-channels">§6.1 Channels</a></td><td>(1) Partner contract framework ratified (revenue share + IP boundary + support model); (2) Partner-side onboarding tooling — partner Forge installs into cohort participant; (3) Partner-fleet observability (does partner see aggregate fleet health? per HS-3); (4) ≥1 partner pilot with ≥3 participants closed-loop</td><td>§6.1 row promoted to Live; §6.0 Asawa Client Taxonomy may add T5 partner-cohort tier; §6.3.1 install matrix gains partner-led row; new commercial protocols under <code>sutra/marketplace/plugin/distribution/partner/</code></td></tr>
+</table>
+<p class="callout"><strong>Activation gate discipline</strong>: each deferred capability MUST satisfy all gate rows before flipping live. Operator never wakes up to find a v2 capability live without it having cleared the gates above. Per <a href="../product-prd-native-v1.html#c4-risks">§C.4 R9</a> canon-drift discipline: activation is a versioned canon change, codex+deepseek reviewed, audit-trailed.</p>
+
+<h3 id="section-1-5-tech-parts">§1.5 Tech-parts cross-cut overlay</h3>
+<p>Four technical contract categories cut across every Layer-B product + every CoS pillar. PRD body surfaces what the operator <em>observes</em> (capability contract). Engine architecture — type signatures, state machines, invariants, lifecycle, storage — lives in canon (<code>sutra/os/native/**</code> + ADRs at <code>sutra/os/decisions/</code>). This overlay is the bridge: names what each category MEANS for the operator + where the deep spec lives.</p>
+<table>
+<tr><th>Category</th><th>What it is (operator-facing capability)</th><th>Canon location (engine-facing deep spec)</th></tr>
+<tr><td><strong>Domain Models</strong></td><td>Operator-visible accountability model — the entities the operator works with (Charters · Workflows · Artifacts · Decisions). Operator can name them, scope them, audit them.</td><td>Type signatures + invariants + lifecycle in <code>primitives/</code> (Domain · Charter · Workflow · DecisionProvenance) + <code>blocks/B10-typed-config.md</code>. PRD never duplicates schemas.</td></tr>
+<tr><td><strong>Hooks</strong></td><td>Safeguard + escalation behavior — system catches its own failures and escalates per Charter rules. Operator never debugs the system; the system tells the operator when something needs decision.</td><td>Hardstop catalog (HS-1 .. HS-8) in <code>hardstops/</code> + ADRs on failure semantics + recovery contracts. PRD never duplicates hook sets / thresholds / fail modes.</td></tr>
+<tr><td><strong>Governance Machinery</strong></td><td>Authority + audit + intervention contract — when system asks operator vs auto-executes (per <a href="../product-prd-native-v1.html#d6-authority">§D.6 Authority Model</a>); every decision carries a provenance row; cross-tenant default-deny (per <a href="../product-prd-native-v1.html#a6-scope">§A.6</a>).</td><td>State machine + event catalog + approval plumbing in <code>blocks/</code> + <code>primitives/</code> + ADRs 006 (tenant-isolation) · 007 (decision-provenance) · 009 (approval-gate) · 013 (telemetry-sink). PRD never duplicates state machines or audit plumbing.</td></tr>
+<tr><td><strong>Agentic-Systems Pattern</strong></td><td>Operator-in-loop on consequential decisions; deterministic guardrails around stochastic reasoning. System is autonomous on known paths, deferential on novel / risky / high-stakes paths.</td><td><code>sutra/os/decisions/ADR-018-agentic-systems-pattern.md</code> (anchored by P4 "product-pov-before-tech-pov" + P12 "deterministic-surface-stochastic-core"). PRD never duplicates agent-loop architecture or decision-threshold tuning.</td></tr>
+</table>
+<p class="callout"><strong>How to use this overlay</strong>: when reading any Layer-B product PRD section, these four categories define the SAME contract surface (one product's hooks behave the same way as another's). When changing engine substrate (canon), this overlay is the trace — a change to <code>primitives/</code> can ripple into operator-visible Domain Models surface. The full design ↔ product ↔ tech traceability table lives in <strong><code>sutra/os/decisions/ADR-019-design-product-tech-bridge.md</code></strong> (engineering audience; not gating reading material).</p>
+
+<h4 id="section-1-5-1-governance-machinery">§1.5.1 Governance machinery operator surface</h4>
+<p>The Governance Machinery row above lists ADRs + primitives. Below is the live <em>guard tooling</em> that enforces those contracts at action-time — what surfaces to the operator as a HARD/SOFT block. Added 2026-05-13 to close §10.10 (A) #1/2/5/6/7 (codex Lane A flagged this layer as previously invisible).</p>
+<table>
+<tr><th>Guard</th><th>Path</th><th>What it enforces</th><th>Enforcement</th></tr>
+<tr><td>Native canon write-lock</td><td><code>holding/hooks/native-canon-check.sh</code></td><td>Blocks forbidden Native canon edits at pretool time (per D54)</td><td>HARD</td></tr>
+<tr><td>Archive completeness verifier</td><td><code>holding/skills/verify-archive-completeness.sh</code></td><td>Verifies zero-loss archive mapping before canon edits</td><td>HARD audit gate</td></tr>
+<tr><td>Holding-layer hook dispatcher</td><td><code>holding/hooks/dispatcher-pretool.sh</code> + <code>dispatcher-posttool.sh</code></td><td>Routes governance checks before/after every Edit/Write at holding layer</td><td>HARD</td></tr>
+<tr><td>External-client repo firewall</td><td><code>holding/hooks/external-client-firewall.sh</code> + <code>.claude/settings.json</code> deny lists</td><td>Blocks cross-repo access from holding workspace into external client trees (per D33)</td><td>HARD</td></tr>
+<tr><td>Cascade check (D13)</td><td><code>sutra/marketplace/plugin/hooks/cascade-check.sh</code></td><td>Requires downstream-impact TODO row on every L0-L2 file change</td><td>HARD</td></tr>
+<tr><td>Build-Layer check (D38)</td><td><code>sutra/marketplace/plugin/hooks/build-layer-check.sh</code> + <code>holding/hooks/build-layer-check.sh</code></td><td>Enforces L0/L1/L2 declaration + promotion deadlines on plugin/holding paths</td><td>HARD on D38 paths</td></tr>
+<tr><td>Per-turn governance markers</td><td><code>sutra/marketplace/plugin/hooks/{depth-marker-pretool,blueprint-check,input-classification-gate}.sh</code></td><td>Every Edit/Write requires <code>.claude/{input-routed, blueprint-registered, depth-registered}</code> markers per-turn</td><td>HARD (SOFT→HARD flip 2026-05-10)</td></tr>
+<tr><td>Sutra-deploy depth-5 gate (D27)</td><td><code>holding/hooks/dispatcher-pretool.sh</code></td><td>Any edit to <code>sutra/**</code> requires <code>.claude/sutra-deploy-depth5</code> marker — cross-company deploys default to exhaustive depth</td><td>HARD</td></tr>
+<tr><td>Structural-move check</td><td><code>holding/hooks/structural-move-check.sh</code></td><td>Bash <code>mv</code> / <code>rm</code> / <code>git mv</code> / <code>find -delete</code> on HARD paths require the same Build-Layer authorization (PROTO-025 extends PROTO-021)</td><td>HARD</td></tr>
+<tr><td>God-mode (cross-company access)</td><td><code>holding/hooks/god-mode.sh</code></td><td>Time-boxed cross-company deployment access (CEO-of-Asawa only); 2h auto-deactivate; logged to <code>.enforcement/god-mode.log</code></td><td>Opt-in HARD scope</td></tr>
+</table>
+<p class="callout"><strong>Operator-visible behavior</strong>: when a guard fires HARD, the operator sees a boxed BLOCKED message with the rule cited + override path (typically <code>{D_TAG}_ACK=1 {D_TAG}_ACK_REASON='&lt;why&gt;' &lt;cmd&gt;</code>; honor-system at env-var level, audit-logged). When SOFT, operator sees an advisory but tool call proceeds. Full coverage table at <code>holding/DIRECTION-ENFORCEMENT.md</code>.</p>
+
+<h3 id="section-1-6-how-to-read">§1.6 How to read this document</h3>
+<ul>
+  <li>Read §1 first to understand the operating model + Product Hierarchy.</li>
+  <li>§2 is the CoS Product PRD — operator-facing demands.</li>
+  <li>§3-§7 describe other layers; each starts with <code>Purpose · Owns · Depends on · Does not own</code> header.</li>
+  <li>Modules (Daily Pulse §7.5 · Feedback Engine §6.6) reference back to §1.4 for hierarchy semantics.</li>
+  <li>§8 Roadmap + §9 Meta close the document.</li>
+  <li>Every diagram is ASCII (text-readable by AI assistants and humans).</li>
+  <li>Per-pillar 3-ring structure (Surface · Contract · Mechanism) lives inside §2 B-pillars.</li>
+</ul>
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/HLD/01-system-overview.html">HLD/01 System Overview</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

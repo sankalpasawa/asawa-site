@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - Second-Order: Orchestration</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:820px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:10px}
+  .banner{background:#fffbeb;border:1px solid #b45309;color:#92400e;padding:8px 12px;border-radius:8px;font-size:13px;margin:0 0 14px}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#0f766e}
+  .crumb a{color:#1d4ed8}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:26px 0 9px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  td a{color:#1d4ed8}
+  ol.gaps{margin:0;padding-left:20px;font-size:13.5px;color:#1f2937}
+  ol.gaps li{margin:7px 0}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:26px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="platform/orchestration.html" style="color:#bfdbfe">platform/orchestration.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native - Second-Order: Orchestration</h1>
+  <div class="sub">The &sect;1.0 <b>Orchestration</b> block, fully wired &middot; translate the request &middot; find the process</div>
+  <div class="banner"><b>WORKING DRAFT</b> &middot; 2026-06-11 &middot; Not locked - founder review pending</div>
+  <div class="crumb">First layer: Human &rarr; UI &rarr; Host &rarr; Daemon{ <b>Orchestration (here)</b> &rarr; System of Process } &rarr; SoR / External World &middot; back to <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+
+  <svg viewBox="0 0 780 990" role="img" aria-label="Orchestration block second-order, fully wired">
+    <defs>
+      <marker id="oah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- Authority + Tenancy wrap (gates every access; rendered as wrap, not a pipeline box) -->
+    <rect x="12" y="26" width="756" height="952" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="26" y="17" width="340" height="18" fill="#fff"/>
+    <text x="34" y="30" fill="#7c3aed" font-weight="700" font-size="12">AUTHORITY + TENANCY &#183; gates every access (&#167;1.0)</text>
+
+    <!-- EDGES (drawn first, under the boxes) -->
+    <!-- E1 Host -> Trigger intake (contract in) -->
+    <path d="M390,104 L390,198" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="398" y="128" font-size="9" fill="#475569">runs &#183; operator request (&#167;1.0 'runs' edge)</text>
+    <text x="398" y="141" font-size="9" fill="#475569">text &#183; Slack &#183; email &#183; scheduled (&#167;2.F.B.1)</text>
+
+    <!-- E2 Trigger intake -> Intent Layer -->
+    <path d="M390,260 L390,340" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="400" y="285" font-size="9" fill="#475569">enters same translate &#183; find-the-process path</text>
+
+    <!-- E3 Intent Layer -> Intent classifier -->
+    <path d="M390,408 L390,448" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="382" y="432" font-size="9" fill="#475569" text-anchor="end">typed intent + sub-intents (validated)</text>
+
+    <!-- E4 Context carry -> Intent classifier -->
+    <path d="M600,422 L478,448" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="560" y="438" font-size="9" fill="#475569">resolves references</text>
+
+    <!-- E5 Classifier -> Confidence gate -->
+    <path d="M390,510 L390,550" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="398" y="534" font-size="9" fill="#475569">intent type + confidence band</text>
+
+    <!-- E6 Confidence gate -> Fan-out router -->
+    <path d="M390,612 L390,652" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="398" y="636" font-size="9" fill="#475569">high / confirmed &#8594; proceed</text>
+
+    <!-- E7 Confidence gate -> Host (confirm-back, contract out) -->
+    <path d="M520,581 L732,581 L732,80 L490,80" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="540" y="70" font-size="9" fill="#475569">confirm-back / ASK BACK &#8594; operator answers</text>
+    <text x="540" y="94" font-size="9" fill="#475569">+ schema preview before execution (B1)</text>
+    <text x="540" y="107" font-size="8.5" fill="#9ca3af">(&#167;1.0 shows no upward edge &#8212; see gap 6)</text>
+
+    <!-- E8 Fan-out router -> Process finder -->
+    <path d="M390,716 L390,772" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="398" y="748" font-size="9" fill="#475569">typed intent on its journey</text>
+
+    <!-- E9 Process finder -> System of Process (contract out) -->
+    <path d="M390,834 L390,892" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#oah)"/>
+    <text x="398" y="868" font-size="9" fill="#475569">task = process (&#167;1.0)</text>
+    <text x="398" y="881" font-size="9" fill="#475569">intent vs pre-declared schema (B1)</text>
+
+    <!-- NEIGHBOR STUB: Host (top) -->
+    <rect x="290" y="56" width="200" height="48" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="390" y="76" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4b5563">Host</text>
+    <text x="390" y="92" text-anchor="middle" font-size="9" fill="#9ca3af">Claude CLI &#183; neighbor</text>
+
+    <!-- ORCHESTRATION block frame -->
+    <rect x="40" y="168" width="700" height="688" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+    <rect x="54" y="159" width="300" height="18" fill="#fff"/>
+    <text x="62" y="172" fill="#0f766e" font-weight="700" font-size="12">ORCHESTRATION &#183; second-order &#183; fully wired</text>
+
+    <!-- Trigger intake -->
+    <rect x="280" y="198" width="220" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="220" text-anchor="middle" font-size="12.5" font-weight="700">TRIGGER INTAKE</text>
+    <text x="390" y="236" text-anchor="middle" font-size="9" fill="#6b7280">utterance &#183; cadence (cron) &#183; event (&#167;4.1)</text>
+    <text x="390" y="248" text-anchor="middle" font-size="9" fill="#6b7280">daemon fires scheduled triggers (&#167;4.0)</text>
+
+    <!-- REQUEST TRANSLATOR group frame -->
+    <rect x="60" y="300" width="660" height="436" rx="10" fill="#fff" stroke="#334155" stroke-width="1.3"/>
+    <rect x="74" y="291" width="295" height="18" fill="#fff"/>
+    <text x="82" y="304" font-size="11" font-weight="700" fill="#334155">REQUEST TRANSLATOR &#183; 'translates the request' (&#167;1.0)</text>
+
+    <!-- Intent Layer -->
+    <rect x="260" y="340" width="260" height="68" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="390" y="361" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">INTENT LAYER</text>
+    <text x="390" y="376" text-anchor="middle" font-size="9" fill="#3b5bdb">utterance &#8594; typed intent + sub-intents</text>
+    <text x="390" y="388" text-anchor="middle" font-size="9" fill="#3b5bdb">schema pre-declared &#183; post-LLM validated</text>
+    <text x="390" y="400" text-anchor="middle" font-size="9" fill="#3b5bdb">show-by-example &#183; trusted names (B1)</text>
+
+    <!-- Multi-turn context carry -->
+    <rect x="545" y="336" width="165" height="86" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="627" y="358" text-anchor="middle" font-size="11" font-weight="700">MULTI-TURN CONTEXT</text>
+    <text x="627" y="375" text-anchor="middle" font-size="9" fill="#6b7280">recent intents &#183; entities</text>
+    <text x="627" y="388" text-anchor="middle" font-size="9" fill="#6b7280">active charter &#183; deferred</text>
+    <text x="627" y="401" text-anchor="middle" font-size="9" fill="#6b7280">follow-ups &#183; open questions</text>
+    <text x="627" y="414" text-anchor="middle" font-size="9" fill="#6b7280">(&#167;2.F.B.3)</text>
+
+    <!-- Intent classifier -->
+    <rect x="260" y="448" width="260" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="470" text-anchor="middle" font-size="12.5" font-weight="700">INTENT CLASSIFIER</text>
+    <text x="390" y="485" text-anchor="middle" font-size="9" fill="#6b7280">Task &#183; Query &#183; Directive &#183; Feedback &#183; New Idea</text>
+    <text x="390" y="497" text-anchor="middle" font-size="9" fill="#6b7280">each resolved by its 'tell' (&#167;2.F.B.2)</text>
+
+    <!-- Confidence gate -->
+    <rect x="260" y="550" width="260" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="572" text-anchor="middle" font-size="12.5" font-weight="700">CONFIDENCE GATE</text>
+    <text x="390" y="587" text-anchor="middle" font-size="9" fill="#6b7280">high &#8594; proceed &#183; medium &#8594; yes/no confirm</text>
+    <text x="390" y="599" text-anchor="middle" font-size="9" fill="#6b7280">low &#8594; 'read as task?' &#183; very low &#8594; act / answer / remember?</text>
+
+    <!-- Intent -> journey fan-out router -->
+    <rect x="215" y="652" width="350" height="64" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="674" text-anchor="middle" font-size="12" font-weight="700">INTENT &#8594; JOURNEY FAN-OUT</text>
+    <text x="390" y="689" text-anchor="middle" font-size="9" fill="#6b7280">TASK&#8594;&#167;C.1 &#183; QUERY&#8594;&#167;C.2 &#183; DIRECTIVE&#8594;&#167;C.3 &#183; FEEDBACK&#8594;&#167;C.4</text>
+    <text x="390" y="701" text-anchor="middle" font-size="9" fill="#6b7280">NEW IDEA&#8594;&#167;C.5 &#183; UNKNOWN&#8594;ASK BACK (&#167;2.F.B.5)</text>
+
+    <!-- Process finder -->
+    <rect x="260" y="772" width="260" height="62" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="794" text-anchor="middle" font-size="12.5" font-weight="700">PROCESS FINDER</text>
+    <text x="390" y="809" text-anchor="middle" font-size="9" fill="#6b7280">'finds the relevant process to run' (&#167;1.0)</text>
+    <text x="390" y="821" text-anchor="middle" font-size="9" fill="#6b7280">matching mechanism not named &#8212; gap 2</text>
+
+    <!-- NEIGHBOR STUB: System of Process (bottom) -->
+    <rect x="290" y="892" width="200" height="50" rx="9" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="390" y="912" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4b5563">System of Process</text>
+    <text x="390" y="928" text-anchor="middle" font-size="9" fill="#9ca3af">runs it as THE runtime &#183; neighbor</text>
+
+    <!-- Authority + Tenancy footnote inside the wrap -->
+    <text x="390" y="964" text-anchor="middle" font-size="9" fill="#7c3aed">Authority + Tenancy gates every access &#8212; no Orchestration-specific gate behavior detailed in the cited ranges (&#167;1.0)</text>
+  </svg>
+
+  <h2>Contracts &mdash; edges crossing the block boundary</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>Host</b></td><td>in</td>
+      <td>Operator request dispatched into the Daemon ("the request runs on the Host; inside the always-on Daemon, Orchestration translates the request"). Arrives as freeform utterance via Day-1 modalities &mdash; text chat, Slack mention, email forward, scheduled prompt (voice + screenshot future, per &sect;2.F.B.1). &sect;1.0 diagram edge Host&rarr;Daemon is labeled "runs".</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Host</b></td><td>out</td>
+      <td>Confirm-back / ASK BACK to the operator when confidence is below threshold (&sect;2.F.B.4&ndash;B.5): clarification question ("you mean the Paisa partner email, not the Testlify one?"), operator answers, flow resumes. B1 interaction strip also shows a schema preview returned before execution ({ metrics:[], sources:[], format:one-pager }).</td>
+      <td><a href="index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>System of Process</b></td><td>out</td>
+      <td>The selected process &mdash; &sect;1.0 edge label "task = process". Carried content per B1 acceptance: parsed intent_type + structured sub-intents (typed intent), against a pre-declared output schema. System of Process then runs it as THE runtime.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority + Tenancy</b></td><td>gates</td>
+      <td>"Authority + Tenancy gates every access" &mdash; the dashed wrap in the &sect;1.0 diagram encloses the whole stack including the Daemon's Orchestration box; no Orchestration-specific gate behavior is detailed in the cited ranges.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+  </table>
+
+  <h2>Internal parts</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>Request translator</b></td>
+      <td>First half of the block's stated job: "Orchestration translates the request" (&sect;1.0 prose; SVG sub-label "translate &middot; find the process"). Turns the operator's ask, as dispatched by the Host, into something the Daemon can act on. Rendered above as the group frame holding the intent machinery.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Process finder</b></td>
+      <td>Second half of the stated job: "finds the relevant process to run". Output edge to System of Process is labeled "task = process" in the &sect;1.0 diagram &mdash; the found process IS the task handed down.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Intent Layer (utterance parser)</b></td>
+      <td>Per B1 Ring 2 contract: parses freeform utterance into typed intent + sub-intents; pre-declared output schema shown before the LLM call; post-LLM output validated and rejected if non-conforming; returns parsed intent_type + structured sub-intents within one turn. Also: show-by-example (operator demonstrates once, Native re-runs) and trusted-names shortcut.</td>
+      <td><a href="index.html#pillar-b1">pillar-b1</a></td>
+    </tr>
+    <tr>
+      <td><b>Intent classifier (5 types)</b></td>
+      <td>Per &sect;2.F.B.2: every utterance resolves to one of five intent types &mdash; Task, Query, Directive, Feedback, New Idea &mdash; each distinguished by a 'tell' (e.g. "from now on" = Directive; references prior output = Feedback; "what if" = New Idea).</td>
+      <td><a href="index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Multi-turn context carry</b></td>
+      <td>Per &sect;2.F.B.3, five things persist across turns/sessions to resolve references: recent intent (last 3-5 asks), named entities, active charter (standing directives), deferred follow-ups (re-enter context at the right moment), and open questions Native asked but the operator hasn't answered.</td>
+      <td><a href="index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Confidence gate (confirm-back)</b></td>
+      <td>Per &sect;2.F.B.4, four confidence bands: High &rarr; proceed (confidence shown only on request); Medium (object ambiguous) &rarr; yes/no confirm then proceed; Low (intent unclear) &rarr; "I read this as a task &mdash; is that right?"; Very low &rarr; "act, answer, or remember?". Operator is never surprised by what Native thought they meant.</td>
+      <td><a href="index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Intent &rarr; journey fan-out router</b></td>
+      <td>Per &sect;2.F.B.5 diagram: INTENT READ &rarr; confidence check &rarr; fan-out of the typed intent to its journey (TASK&rarr;&sect;C.1, QUERY&rarr;&sect;C.2, DIRECTIVE&rarr;&sect;C.3, FEEDBACK&rarr;&sect;C.4, NEW IDEA&rarr;&sect;C.5, UNKNOWN&rarr;ASK BACK).</td>
+      <td><a href="index.html#section-2-f-2-input-intent">section-2-f-2-input-intent</a></td>
+    </tr>
+    <tr>
+      <td><b>Trigger intake (utterance &middot; cadence &middot; event)</b></td>
+      <td>Per &sect;4.1 Trigger primitive: what fires a Workflow is an operator utterance, cadence (cron), or event; &sect;4.0 daemon fires triggers on schedule and dispatches matching Workflows. Scheduled prompts are also a Day-1 input modality (&sect;2.F.B.1), so clocked input enters the same translate/find-the-process path.</td>
+      <td><a href="index.html#section-4-1-primitives">section-4-1-primitives</a></td>
+    </tr>
+  </table>
+
+  <h2>How a request moves through the block</h2>
+  <p style="font-size:13.5px;color:#1f2937">An operator request enters from the Host (freeform utterance arriving via the &sect;2.F.B.1 modalities, or a scheduled/cadence/event Trigger fired by the daemon). The Intent Layer parses the utterance into typed intent + sub-intents against a pre-declared output schema (post-LLM validated, non-conforming output rejected); the intent classifier resolves it to one of five types (Task/Query/Directive/Feedback/New Idea) using its 'tell', drawing on the multi-turn context carry (recent intents, named entities, active charter, deferred follow-ups, open questions) to resolve references like "do that again for the other client". The result hits the confidence gate: high confidence proceeds; medium/low/very-low loops a confirm-back question out through the Host to the operator before proceeding. The fan-out router then maps the typed intent to its journey, and the process finder selects the relevant process &mdash; handed down to System of Process on the "task = process" edge. Authority + Tenancy gates every access along the way.</p>
+
+  <h2>Open / gaps &mdash; questions for the founder</h2>
+  <ol class="gaps">
+    <li>Doc never explicitly assigns the B1 Intent Layer + &sect;2.F.B intent machinery to the Orchestration block &mdash; is &sect;1.0's "translates the request" exactly this machinery, or does part of intent parsing run on the Host? (B1 Ring 3 marks the Phase 2 intent-layer-design.md as pending, T-G3-01.)</li>
+    <li>"Finds the relevant process" has no named mechanism in the cited ranges &mdash; how is a typed intent matched to a process/Workflow (registry lookup? Trigger-spec match?), and how do the &sect;C.1&ndash;C.5 journeys of the B.5 fan-out map to processes?</li>
+    <li>Where does the B.3 multi-turn context persist &mdash; System of Record, the daemon's ~/.sutra-native/ user-kit, or a state envelope? The cited ranges don't locate it.</li>
+    <li>B1 Ring 3 says intake artifacts write to B5.a (active session) &mdash; does Orchestration write to System of Record directly, or does that write route through System of Process? (Working assumption from founder session: only SoP writes back to SoR &mdash; &sect;1.0 shows SoP writing output to SoR but states no exclusivity. Confirm and write down, or drop.)</li>
+    <li>Do cadence/cron + event Triggers route through Orchestration's translate/find step, or does the daemon dispatch matching Workflows straight to System of Process? &sect;4.0 only says the daemon "handles workflow dispatches + cadence ticks".</li>
+    <li>The &sect;1.0 diagram has no upward return edge from Orchestration to Host &mdash; the transport path for the B.4 confirm-back question is unspecified.</li>
+  </ol>
+
+  <div class="foot">Second-order of the &sect;1.0 Orchestration block &middot; content extracted from index.html (&sect;1.0 &middot; &sect;2.F.B &middot; B1 &middot; &sect;4.0&ndash;4.1) only &middot; every box wired, no invention &middot; working artifact. Sibling artifacts: _arch-review.html (platform) &middot; _consumer-product.html (UI).</div>
+</div>
+</body>
+</html>

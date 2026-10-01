@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§5 — Connector (transport layer) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="04-native-platform.html">prev: 04 native platform</a> · <strong>§5 — Connector (transport layer)</strong> · <a href="06-distribution.html">next: 06 distribution</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§5 — Connector (transport layer)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/HLD/04-interfaces.html">HLD/04 Interfaces + LLD/interfaces</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-4-connector">
+<h2>§5 Connector — transport layer <a href="../product-prd-native-v1.html#section-4-connector" class="anchor">#</a></h2>
+<table class="pillar-6block">
+<tr><td><strong>Purpose</strong></td><td>Move messages + tool calls between Native (§3) and the world outside (humans, services, peer Sutras).</td></tr>
+<tr><td><strong>Owns</strong></td><td>Slack · email · web · browser · phone · 3rd-party tool integrations · inbound/outbound message handling · retry semantics.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>§3 Authority gate (at every send); §6 Observability (for delivery health).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>What to say (B3); decision logic (B3); Charter scope (§3); audience selection (B4 + Authority).</td></tr>
+</table>
+
+<h3 id="section-5-1-inventory">§5.1 Connector inventory (v1)</h3>
+<table>
+<tr><th>Connector</th><th>Status v1</th><th>Direction</th><th>Notes</th></tr>
+<tr><td>Slack</td><td>Live (verified Testlify 2026-04-30)</td><td>in + out</td><td>xoxb token at <code>~/.sutra-connectors/oauth/slack.json</code></td></tr>
+<tr><td>Email (Resend)</td><td>Live</td><td>out</td><td>Daily pulse + notifications</td></tr>
+<tr><td>Web (fetch/search)</td><td>Live</td><td>out</td><td>For B2.b world's-best context</td></tr>
+<tr><td>Browser (co-work)</td><td>Charter TODO-005</td><td>in + out</td><td>Deferred to v1.x; spec pending</td></tr>
+<tr><td>Phone (voice + SMS)</td><td>Not planned v1</td><td>—</td><td>v2+</td></tr>
+<tr><td>3rd-party tools</td><td>Pluggable via Composio (Path B long-term)</td><td>out</td><td>Per-tool Charter scoping</td></tr>
+<tr><td>Peer-Native A2A</td><td>v1 log-only stub</td><td>—</td><td>Full transport v2+ (B2.c · B4 peer)</td></tr>
+</table>
+
+<h3 id="section-5-2-flow">§5.2 Inbound / outbound flow</h3>
+<pre>
+                   §3 Native Platform
+                          │
+              ┌───────────┴───────────┐
+              │                       │
+   outbound   ▼                       ▲   inbound
+   (B3 → B4)  │                       │   (B4 → B3)
+              │                       │
+   ┌──────────┴──────┐       ┌────────┴─────────┐
+   │  §4 CONNECTOR   │       │  §4 CONNECTOR    │
+   │  ─────────────  │       │  ─────────────   │
+   │  Authority gate │       │  Identity verify │
+   │  draft → typed  │       │  payload → typed │
+   │  envelope       │       │  envelope        │
+   │  retry logic    │       │  route to B3     │
+   └────────┬────────┘       └────────▲─────────┘
+            │                          │
+            ▼                          │
+   ┌───────────────────────────────────┴────────┐
+   │  THE WORLD (Slack · email · web · 3rd-pty) │
+   └────────────────────────────────────────────┘
+
+   Every send: Authority-gated · DecisionProvenance row · retry on transient fail.
+   Every receive: Identity-verified · typed-envelope · routed to B3 next action.
+</pre>
+
+<h3 id="section-5-3-acceptance">§5.3 Acceptance criteria (Connector v1)</h3>
+<ul>
+  <li>Every outbound call passes through Authority gate; default-deny on missing scope.</li>
+  <li>Inbound from unverified identity logs + drops, doesn't enter B3.</li>
+  <li>Transient failures retry; permanent failures surface to operator (no silent drop).</li>
+  <li>Per-tool scoping enforced via Charter (e.g. "Slack:#paisa-team only" not "Slack:*").</li>
+</ul>
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/HLD/04-interfaces.html">HLD/04 Interfaces + LLD/interfaces</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

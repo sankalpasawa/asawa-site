@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§2 — Chief of Staff (Product PRD) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="01-architecture.html">prev: 01 architecture</a> · <strong>§2 — Chief of Staff (Product PRD)</strong> · <a href="03-how-methodology.html">next: 03 how methodology</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§2 — Chief of Staff (Product PRD)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/LLD/pillars/B1-intent-layer.html">LLD/B1-B5 Pillar mechanisms</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-2-cos">
+<h2>§2 Chief of Staff — Product (PRD) <a href="../product-prd-native-v1.html#section-2-cos" class="anchor">#</a></h2>
+<table class="pillar-6block">
+<tr><td><strong>Purpose</strong></td><td>Specify the first product on the Native platform — an implementation consultant for the operator (person in the company).</td></tr>
+<tr><td><strong>Owns</strong></td><td>Operator's 5 demands (B1-B5); 24 needs; task taxonomy (T0-T3); actor taxonomy; per-pillar contracts; CX bar.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>§3 Native platform primitives (Charters · Agents · Methods · Authority · Audit); §4 Connector transport.</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Workforce deployment runtime; charter execution; tool transport; pricing; channels; observability instrumentation.</td></tr>
+</table>
+
+<section id="idea">
+<h2>§2.A Idea — CoS product <a href="../product-prd-native-v1.html#idea" class="anchor">#</a></h2>
+<p>The WHY for CoS specifically. Problem · persona · anti-persona · vision · differentiation · scope · task taxonomy · actors. Operator-first; org is the mission frame, not the principal.</p>
+
+<section id="a1-problem">
+<h3>A.1 Problem statement <a href="../product-prd-native-v1.html#a1-problem" class="anchor">#</a></h3>
+<p><em>Awaiting founder fill.</em> Working frame: operator juggles N streams of work with sub-linear team scaling; existing assistants are conversational or chore-based; nothing compounds across the founder's actual work.</p>
+</section>
+
+<section id="a2-persona">
+<h3>A.2 Persona <a href="../product-prd-native-v1.html#a2-persona" class="anchor">#</a></h3>
+<p>Primary persona per Q1 ratified answer.</p>
+<table>
+<tr><th>Attribute</th><th>Value</th></tr>
+<tr><td>Role</td><td>Operator running their company (single-company founder · multi-company founder · chief of staff · PM — see §A.2.1 for live examples)</td></tr>
+<tr><td>Surface</td><td>Terminal-fluent; design-particular</td></tr>
+<tr><td>Time profile</td><td>Time-poor; long-running cognitive context across days/weeks</td></tr>
+<tr><td>Org context</td><td>Founder is principal; org is the mission frame, not the master</td></tr>
+</table>
+
+<h4>A.2.1 Concrete customer types (live examples)</h4>
+<p>Beyond the abstract persona, CoS v1 serves 4 concrete customer types — each with own workflow, decision cadence, and skill mode mix (see <a href="../product-prd-native-v1.html#a9-skill-modes">§A.9 Customer Skill Modes</a>).</p>
+<table>
+<tr><th>Customer type</th><th>Example</th><th>Primary workflow</th><th>Dominant skill mode</th></tr>
+<tr><td>Multi-company founder</td><td>CEO of Testlify (B2B HRtech)</td><td>Multi-company strategic decisions · board prep · vendor management</td><td>SM2 with SM1 for novel strategic asks</td></tr>
+<tr><td>Chief of Staff</td><td>CoS at Dharmik (D2C consumer)</td><td>Operational orchestration · cross-functional comms · workshop facilitation</td><td>SM3 with SM2 for novel asks</td></tr>
+<tr><td>Product manager</td><td>PM at a healthtech company</td><td>Discovery + execution mix · stakeholder alignment · roadmap synthesis</td><td>Mix of SM1 (discovery) + SM2 (execution)</td></tr>
+<tr><td>Co-founder + head-of-sales</td><td>Head-of-sales co-founder at Neurics</td><td>Sales pipeline · strategic deal-making · co-founder operational load</td><td>SM2 for sales workflows · SM1 for strategic decisions</td></tr>
+</table>
+
+<h4>A.2.2 Zero-terminal product constraint (post-onboarding · v1 + onward)</h4>
+<p class="callout"><strong>Hard rule (post-onboarding)</strong>: after the one-time onboarding done by Asawa/Sutra Forge (per <a href="../product-prd-native-v1.html#section-5-distribution">§6 Distribution</a>), the operator never sees terminal commands, installation steps, or system internals during ongoing operation. Native is invisible during use. CoS surfaces only the operator's work (the 5 pillars). Any technical step (install · update · connect · authorize) is one-time setup done by Asawa/Sutra Forge or auto-onboarded via the Sutra plugin — not the operator. Operators don't type terminal commands. Operators don't read Sutra internals. CoS speaks the operator's domain language, not Native vocabulary. <strong>Scope clarification</strong>: v1 wedge requires terminal-fluent operator (per <a href="../product-prd-native-v1.html#a6-scope">§A.6</a> + ratified Q2/Q9) — meaning operator CAN handle the one-time onboarding via terminal if needed; post-onboarding the operator works in their domain language only, never the terminal.</p>
+</section>
+
+<section id="a3-anti-persona">
+<h3>A.3 Anti-persona <a href="../product-prd-native-v1.html#a3-anti-persona" class="anchor">#</a></h3>
+<p>Operator types Native v1 explicitly does not serve.</p>
+<table>
+<tr><th>#</th><th>Anti-persona</th><th>Why not v1</th></tr>
+<tr><td>AP1</td><td>Casual chatbot user</td><td>Workflow-shaped, not conversational; one-off sessions don't compound</td></tr>
+<tr><td>AP2</td><td>Full-autonomy seeker</td><td>Operator-in-loop is core; trust earned over time</td></tr>
+<tr><td>AP3</td><td>Non-terminal operator</td><td>v1 terminal-only per NG7 + Q9</td></tr>
+<tr><td>AP4</td><td>Single-tenant solo user (one company)</td><td>Multi-tenant boundary management = the value</td></tr>
+<tr><td>AP5</td><td>Compliance-mandated black-box buyer</td><td>v1 open-architecture + operator-managed</td></tr>
+</table>
+</section>
+
+<section id="a4-vision">
+<h3>A.4 Vision <a href="../product-prd-native-v1.html#a4-vision" class="anchor">#</a></h3>
+<p><strong>Native</strong> is a workforce-deployment platform — it scopes, deploys, and supervises a workforce of agents under Charters, with Method routing, Authority gates, and a full audit trail.</p>
+<p><strong>Chief of Staff</strong> is the first product deployed on Native. CoS frames the operator's work, executes end-to-end where the path is known, surfaces decisions where operator judgment is needed, and closes the loop by writing what was decided + what shipped back into the substrate so the next iteration starts further ahead. CoS is an implementation consultant for the operator — accountable through the loop, not a day-organizer.</p>
+<p>Every utterance + decision + outcome enters a compounding cognitive substrate. The operator's next ask is answered faster because the deployed CoS (running on Native) already knows the operator's patterns, charters, and history.</p>
+</section>
+
+<section id="a5-differentiation">
+<h3>A.5 Differentiation <a href="../product-prd-native-v1.html#a5-differentiation" class="anchor">#</a></h3>
+<table>
+<tr><th>Chief of Staff (this PRD) is NOT</th><th>Why the distinction matters</th></tr>
+<tr><td>A day-organizer / meeting-prep aide</td><td>CoS is an <strong>implementation consultant</strong> — takes work end-to-end to operationalized state, accountable through the loop</td></tr>
+<tr><td>A chatbot</td><td>Workflow-shaped substrate; conversational is one surface, not the product</td></tr>
+<tr><td>An autonomous agent</td><td>Operator-in-loop on risky steps; trust earned, not assumed</td></tr>
+<tr><td>A memory product (NG6)</td><td>Governance + multi-tenant + emergence + closed-loop reuse — memory is downstream</td></tr>
+<tr><td>A generic productivity tool</td><td>Substantive cognitive work for the operator; not calendar / todos</td></tr>
+</table>
+<p class="callout">CoS is the first product on the <strong>Native</strong> platform (see <a href="../product-prd-native-v1.html#architecture-context">Architecture context</a>). Native itself is NOT a product — it's the workforce-deployment substrate. Distinctions above apply to the CoS product specifically.</p>
+</section>
+
+<section id="a6-scope">
+<h3>A.6 Scope <a href="../product-prd-native-v1.html#a6-scope" class="anchor">#</a></h3>
+<table>
+<tr><th>In-scope (v1)</th><th>Out-of-scope (v2+ or NG)</th></tr>
+<tr><td>Terminal-only operator surface</td><td>GUI / web / mobile UI (NG1)</td></tr>
+<tr><td>Single-LLM-provider abstraction</td><td>Multi-LLM-provider abstraction (NG3)</td></tr>
+<tr><td>Connector layer (Slack / email / web)</td><td>Browser automation (NG5)</td></tr>
+<tr><td>Metadata-based retrieval via 7a</td><td>Semantic content-similarity retrieval (F1 v2+)</td></tr>
+<tr><td>Mac + Linux</td><td>Windows v1</td></tr>
+<tr><td>Multi-Human-Org tenancy</td><td>Peer-Sutra context federation (v2+)</td></tr>
+<tr><td>Person-Formation as opt-in</td><td>Required personalization</td></tr>
+<tr><td>Native-Native A2A v1 stub</td><td>Full A2A coordination protocol (v2+)</td></tr>
+<tr><td>Operator-in-loop on risky steps</td><td>Full autonomy without operator gates</td></tr>
+</table>
+</section>
+
+<section id="a7-task-taxonomy">
+<h3>A.7 Task Taxonomy <a href="../product-prd-native-v1.html#a7-task-taxonomy" class="anchor">#</a></h3>
+<p>Native handles four task tiers, each with different time horizon, decomposition shape, and pillar traversal. Founder's 4 canonical use cases anchor each tier.</p>
+<table>
+<tr><th>Tier</th><th>Name</th><th>Operator use case</th><th>Time horizon</th><th>Primary pillars</th></tr>
+<tr><td>T0</td><td>Atomic</td><td>"Do this small task — research / fetch info from the web"</td><td>seconds-minutes</td><td>B1 → B2 → B3c</td></tr>
+<tr><td>T1</td><td>Multi-action</td><td>"Fetch data from relevant tools, communicate to people, operationalize it"</td><td>minutes-hours</td><td>B1 → B2 → B3b → B4 → B5.a</td></tr>
+<tr><td>T2</td><td>Iterative</td><td>"Here are instructions — show me 1-minute iterations; keep going"</td><td>minutes (real-time loop)</td><td>B1 → B3a → B3c → B1 refinement loop</td></tr>
+<tr><td>T3</td><td>Charter</td><td>"I have an idea — bring it out. It has goals + objectives, multiple ways to meet, decisions involved, collaborative over time"</td><td>days-months</td><td>Charter materializes; all pillars in service of Charter goals</td></tr>
+</table>
+<p class="callout">Tiers feed downstream: T3 (Charter) decomposes into T0-T2 sub-tasks. Method selection (<a href="../product-prd-native-v1.html#d11-method-selection">D.11</a>) chooses different intelligence per tier; Charter Model (<a href="../product-prd-native-v1.html#d10-charter-model">D.10</a>) defines fixed-vs-flexible scope for T3.</p>
+</section>
+
+<section id="a8-actors">
+<h3>A.8 Actor Taxonomy <a href="../product-prd-native-v1.html#a8-actors" class="anchor">#</a></h3>
+<p>Who appears on the operator's stage when CoS is running. Hidden implementation actors (Native platform internals — agents, charters-as-runtime, tools, state machines) live in Phase 2 design.</p>
+<table>
+<tr><th>#</th><th>Actor</th><th>Role on operator's stage</th><th>First appears in</th></tr>
+<tr><td>AC1</td><td><strong>Operator (the founder)</strong></td><td>Asks, decides, reviews, approves. Principal of every Charter.</td><td>All pillars</td></tr>
+<tr><td>AC2</td><td><strong>CoS (Native-deployed)</strong></td><td>The implementation consultant. Frames work, executes end-to-end, surfaces decisions, closes the loop. Acts on operator's behalf within Charter bounds.</td><td>All pillars</td></tr>
+<tr><td>AC3</td><td><strong>External humans</strong></td><td>People CoS talks to on operator's behalf — board, team, vendor, customer, regulator. Audience-calibrated per <a href="../product-prd-native-v1.html#d7-cxbar">D.7</a>.</td><td>B4</td></tr>
+<tr><td>AC4</td><td><strong>Peer Sutras <span class="badge v2">v2+</span></strong></td><td>Other operators' deployed instances, federated under <a href="../product-prd-native-v1.html#d6-authority">Authority</a>.</td><td>B2.c (read) + B4 (peer-A2A v2+)</td></tr>
+</table>
+<p class="callout"><strong>Not on this stage</strong> — Native platform internals (agent processes, charter runtime, tool bindings, state envelopes) are deliberately hidden from the operator surface. They live in Phase 2 design + the separate Native platform PRD when written.</p>
+</section>
+
+<section id="a9-skill-modes">
+<h3>A.9 Customer Skill Modes — how CoS adapts surface to each operator <a href="../product-prd-native-v1.html#a9-skill-modes" class="anchor">#</a></h3>
+<p>Operators show up with different levels of clarity about what they want. CoS adapts its working mode per task (could be different across tasks for the same operator). Skill mode is detected from the operator's utterance, prior patterns (B5.d), and Charter scope.</p>
+<table>
+<tr><th>Skill mode</th><th>Customer state</th><th>CoS working mode</th><th>Authority default</th></tr>
+<tr><td><strong>SM1 — Idea only</strong></td><td>"I want X but I don't know the output shape or how to get there"</td><td>High-touch. CoS proposes output shape + asks for ratification + then auto-executes. B3a THINK heavy.</td><td>Conservative — ask before any external effect.</td></tr>
+<tr><td><strong>SM2 — Idea + output</strong></td><td>"I want X, should look like Y, don't know how"</td><td>Medium-touch. CoS pure auto-execute path + presents Y. B3b DO heavy.</td><td>Default Authority Model (D.6) thresholds.</td></tr>
+<tr><td><strong>SM3 — Idea + output + how</strong></td><td>"I want X, looks like Y, here's how — execute"</td><td>Low-touch. CoS pure execution + delivers. Operator's HOW manifest used directly.</td><td>Aggressive — operator's HOW signals trust.</td></tr>
+</table>
+<h4>Example customer mapping</h4>
+<ul>
+  <li><strong>Testlify CEO</strong> — primarily SM2 (knows desired output formats; relies on CoS for how). Sometimes SM1 for new strategic asks.</li>
+  <li><strong>Dharmik Chief of Staff</strong> — primarily SM3 (highly operational; defined workflows). Sometimes SM2 for novel asks.</li>
+  <li><strong>Healthtech PM</strong> — mix of SM1 and SM2 depending on whether discovery or execution.</li>
+  <li><strong>Neurics head-of-sales co-founder</strong> — primarily SM2 for sales workflows; SM1 for strategic decisions.</li>
+</ul>
+<p class="callout"><strong>Cross-references</strong> — Skill mode detection feeds HOW Engine (<a href="../product-prd-native-v1.html#section-3-how-methodology">§3</a>) detailing dimension. Authority gate (<a href="../product-prd-native-v1.html#d6-authority">D.6</a>) defaults per skill mode. Operator satisfaction signals (<a href="../product-prd-native-v1.html#section-6-observability">§7</a>) include "skill-mode misdetection rate" — when CoS reads SM2 but operator was actually SM1.</p>
+</section>
+
+</section>
+
+<section id="pillars">
+<h2>§2.B Pillars (5) — CoS operator surface <a href="../product-prd-native-v1.html#pillars" class="anchor">#</a></h2>
+<p>Five operator demands in the operator's own words. Each pillar absorbs needs and connects via the three views. Engineering detail lives in §3 Native Platform (primitives) and the Phase 2 design doc.</p>
+
+<h3>§2.B.0 Pillar grouping — how the 5 pillars form one system</h3>
+<p>Pillars are not 5 separate things; they form one cognitive cycle around the operator. Grouped by axis:</p>
+<pre>
+                       OPERATOR  (person in the company)
+                                 │
+       ┌─────────────────────────┴─────────────────────────┐
+       │                                                   │
+       ▼                                                   ▼
+   ┌────────────┐                                  ┌────────────────┐
+   │  INPUT     │   B1  "Ask my way"               │   OUTPUT       │
+   │  axis      │   intent capture                 │   axis         │
+   └─────┬──────┘                                  └────────┬───────┘
+         │                                                  ▲
+         ▼                                                  │
+   ┌────────────┐    ┌────────────┐    ┌─────────────┐      │
+   │  READ      │───▶│  ACTION    │───▶│  TALK       │──────┤  B4
+   │  axis      │    │  axis      │    │  axis       │      │  "Talk to my
+   │  B2        │    │  B3        │    │  B4         │      │   people"
+   │  "World's  │    │  THINK+DO  │    │  "Talk for  │      │
+   │   best"    │    │  +PRESENT  │    │   me"       │      │
+   └─────┬──────┘    └─────┬──────┘    └──────┬──────┘      │
+         │                 │                  │             │
+         └────────┬────────┴──────────────────┘             │
+                  ▼                                          │
+   ┌────────────────────────────────────────────────────────┴────┐
+   │  MEMORY axis  ·  B5  "Remember, keep mine"  ·  system-of-record│
+   │  Every other pillar writes here; B2 reads from here at intake.│
+   └────────────────────────────────────────────────────────────┘
+
+   Axes: Input (B1) · Read (B2) · Action (B3) · Output/Talk (B4) · Memory (B5)
+   Grouping: B1+B2 = receive · B3 = process · B4 = emit · B5 = persist
+</pre>
+<p class="callout">The 5 axes are not arbitrary slots — they're the operator's full cognitive loop. A complete CoS turn touches each axis once.</p>
+
+<table>
+<tr><th>Pillar</th><th>Operator demand</th><th>Axis</th></tr>
+<tr><td><span class="pillar-dot dot-b1"></span>B1</td><td>"Let me ask in my own words"</td><td>Input</td></tr>
+<tr><td><span class="pillar-dot dot-b2"></span>B2</td><td>"Bring me the world's best thinking, plus my own"</td><td>Context (read path)</td></tr>
+<tr><td><span class="pillar-dot dot-b3"></span>B3</td><td>"Think with me where I must; do the rest yourself, end-to-end"</td><td>Action (decide + execute + present)</td></tr>
+<tr><td><span class="pillar-dot dot-b4"></span>B4</td><td>"Talk to my people and the world for me"</td><td>External communication</td></tr>
+<tr><td><span class="pillar-dot dot-b5"></span>B5</td><td>"Remember, explain, and keep it mine"</td><td>Governance (write path · system-of-record)</td></tr>
+</table>
+
+<p class="callout"><strong>Per-pillar shape:</strong> every pillar carries the same 6-block table grouped into three rings —
+<strong>SURFACE</strong> (operator-voice: <code>Problem space</code> · <code>Need / outcome</code> · <code>Solution direction</code>)
+<strong>CONTRACT</strong> (CoS's commitments: <code>Product</code> · <code>Acceptance</code>)
+<strong>MECHANISM</strong> (how it's built on Native platform: <code>Connectedness</code> pointer to Phase 2 design).
+Founder fills SURFACE; Claude details CONTRACT + MECHANISM.</p>
+
+<h3>Ring Traversal — how a single turn flows through the pillars</h3>
+<p>One operator utterance traverses all 5 pillars in a typical T1 multi-action task. Refinement loops short-circuit (operator → B3a refinement, not fresh B1). T3 Charter tasks materialize sub-tasks that each traverse this same flow.</p>
+<pre>
+   OPERATOR utterance
+        │
+        ▼
+   ┌─────────────────┐     "Let me ask in my own words"
+   │  B1  Ask my way │     (CoS parses intent — typed intent + sub-intents)
+   └────────┬────────┘
+            │ intent_type
+            ▼
+   ┌─────────────────────────┐   "Bring me the world's best + mine"
+   │  B2  Context (read)     │   (CoS reads from B5 + world's best + peer Sutras v2+)
+   │   B2.a my own           │
+   │   B2.b world's best     │
+   │   B2.c peer Sutras v2+  │
+   └────────────┬────────────┘
+                │ context envelope
+                ▼
+   ┌──────────────────────────────────┐  "Think with me where I must; do the rest"
+   │  B3  Action (decide + execute)   │  (Authority gate via D.6; Method routing via D.11)
+   │   B3a THINK   B3b DO   B3c PRESENT│
+   └────┬──────────────────┬──────────┘
+        │ output            │ comms needed
+        │                   ▼
+        │             ┌─────────────────────────┐  "Talk to my people for me"
+        │             │  B4  External comms     │  (Connector layer; audience-calibrated)
+        │             └────────────┬────────────┘
+        │                          │ outbound + inbound responses
+        ▼                          ▼
+   ┌───────────────────────────────────────────────┐  "Remember, keep mine"
+   │  B5  Governance (write — system-of-record)    │  (Every step logged; replayable; per-Charter)
+   │   B5.a active  B5.b in-flight  B5.c audit     │
+   │   B5.d learned                                 │
+   └───────────────────────────────────────────────┘
+            │
+            └──→ feeds back into B2 future context (closes the loop)
+
+   Refinement loop: operator → B3a (not B1)
+   Retry loop:      B3 → B2 (more context needed)
+   T3 Charter:      sub-tasks materialize, each traverses B1→B5
+</pre>
+
+<section id="pillar-b1">
+<h3 class="pillar-head b1">B1 — "Let me ask in my own words" <a href="../product-prd-native-v1.html#pillar-b1" class="anchor">#</a></h3>
+<details class="crosscut">
+  <summary>Cross-cutting overlays applying to B1</summary>
+  <p><strong>Operator-First Lens (<a href="../product-prd-native-v1.html#d8-operator-lens">D.8</a>):</strong> Native parses for the operator's mental model, not a canonical form.</p>
+  <p><strong>CX Bar (<a href="../product-prd-native-v1.html#d7-cxbar">D.7</a>):</strong> input must feel like talking to a smart COS, not filling a form.</p>
+</details>
+<table class="pillar-6block b1">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-02</a></span></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-03</a></span></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-04</a></span></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>Intent Layer parses freeform utterance into typed intent + sub-intents. Show-by-example: operator demonstrates a task once, Native re-runs it. Trusted-names shortcut.</td></tr>
+<tr><td>Acceptance</td><td>Operator types freeform intent; Native returns parsed intent_type + structured sub-intents within one turn; pre-declared output schema shown before LLM call; post-LLM output validated and rejected if non-conforming.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Feeds B2 (intent triggers context gather) and B3 (intent enters decision pipeline). Writes intake artifacts to B5.a (active session). Phase 2 design: <code>intent-layer-design.md</code>. <span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g3">T-G3-01</a></span></td></tr>
+</table>
+<details class="crosscut"><summary>Interaction strip — B1 operator ↔ CoS</summary>
+<pre>
+  OPERATOR  ──▶ "Pull Q3 SOM numbers for Paisa, draft a one-pager"
+                                         │
+  CoS       ◀── intent: research+draft · sub: target, deliverable, scope
+                schema preview: { metrics:[], sources:[], format:one-pager }
+                                         │
+  OPERATOR  ──▶ "looks right; add competitor comparison"  (refinement, not fresh ASK)
+</pre>
+</details>
+</section>
+
+<section id="pillar-b2">
+<h3 class="pillar-head b2">B2 — "Bring me the world's best thinking, plus my own" <a href="../product-prd-native-v1.html#pillar-b2" class="anchor">#</a></h3>
+<details class="crosscut">
+  <summary>Cross-cutting overlays applying to B2</summary>
+  <p><strong>Authority Model (<a href="../product-prd-native-v1.html#d6-authority">D.6</a>):</strong> peer-Sutra reads (B2.c) governed by trust + boundary.</p>
+  <p><strong>Operator-First Lens:</strong> context ranked by what this operator needs, not generic relevance.</p>
+</details>
+<p>Read-only context retrieval. Internally decomposed by source breadth: my own (v1) · world's best public (v1) · peer Sutras (v2+).</p>
+<table class="pillar-6block b2">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-05</a></span></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-06</a></span></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-07</a></span></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>For each LLM call, Native assembles context from three concentric sources (a/b/c below) within the budget. v1 retrieval is metadata-driven; semantic similarity ships with F1 in v2+.</td></tr>
+<tr><td>Acceptance</td><td>Operator can ask "show me the context used" and receive a ranked artifact list — v1: ranked by Charter scope + recency + explicit operator tags; v2+: semantic relevance via F1. Context fits declared budget.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Feeds B3 (context fuels decide-and-act). Reads from B5 (memory feed at intake). B4 prior comms become B2 future context. Phase 2 design: <code>context-retrieval-design.md</code>. <span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g3">T-G3-02</a></span></td></tr>
+</table>
+<details class="crosscut"><summary>Interaction strip — B2 operator ↔ CoS</summary>
+<pre>
+  (no operator action — runs on B1 intent)
+                                         │
+  CoS       ◀── assembles ranked context: B2.a my-own (Paisa Charter, prior
+                Q1/Q2 SOM decks, founder strategy memo) + B2.b world's best
+                (RBI fintech market report, India SOM benchmarks)
+                "show me the context used?"
+                                         │
+  OPERATOR  ──▶ "drop the Q1 deck — it's stale; add the Q2 board doc"
+                (operator narrows context; CoS re-ranks + proceeds)
+</pre>
+</details>
+<section id="b2a-my-own">
+<h4 class="b2">B2.a — My own <span class="badge v1">v1</span> <a href="../product-prd-native-v1.html#b2a-my-own" class="anchor">#</a></h4>
+<p>My catalog · my Charters · my decisions · my history · my entities. Read from B5 (system-of-record).</p>
+</section>
+<section id="b2b-worlds-best">
+<h4 class="b2">B2.b — World's best <span class="badge v1">v1</span> <a href="../product-prd-native-v1.html#b2b-worlds-best" class="anchor">#</a></h4>
+<p>Market standards · best practices · industry expert frameworks · regulatory info · public knowledge. Fed by Research-on-the-fly (B6 block — see canon).</p>
+</section>
+<section id="b2c-peer-sutras" class="future-version">
+<h4 class="b2">B2.c — Peer Sutras <span class="badge v2">v2+</span> <a href="../product-prd-native-v1.html#b2c-peer-sutras" class="anchor">#</a></h4>
+<p><em>Deferred to v2+.</em> Other people's Native instances as context source — their knowledge · skills · methods · frameworks · thinking. Governed by federation protocol + trust + boundary. Phase 2 design: <code>sutra-federation-design.md</code>.</p>
+</section>
+</section>
+
+<section id="pillar-b3">
+<h3 class="pillar-head b3">B3 — "Think with me where I must; do the rest yourself, end-to-end" <a href="../product-prd-native-v1.html#pillar-b3" class="anchor">#</a></h3>
+<details class="crosscut">
+  <summary>Cross-cutting overlays applying to B3</summary>
+  <p><strong>Authority Model (<a href="../product-prd-native-v1.html#d6-authority">D.6</a>):</strong> default-go vs ask gated by 6 dimensions.</p>
+  <p><strong>CX Bar:</strong> brainstorm interruptions are rare; routine work doesn't interrupt; output is scannable.</p>
+  <p><strong>Operator-First Lens:</strong> "what matters now across my N companies" — exec triage.</p>
+</details>
+<p>The action axis. Internally decomposed into three modes — THINK (brainstorm partnership + iterative refinement), DO (auto-execute end-to-end), PRESENT (operator-facing output).</p>
+<table class="pillar-6block b3">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-08</a></span></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-09</a></span></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-10</a></span></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>Native judges where operator-thinking is needed; partners on brainstorm; auto-executes the rest end-to-end (idea → operationalized standing pattern). Smart escalation: auto when path is known, ask when material/risky/ambiguous, remember the answer, operationalize from that point.</td></tr>
+<tr><td>Acceptance</td><td>Every multi-step task progresses through Task Framework phases; operator can inspect current phase + factors[]; phase transitions recorded; trivial edits auto-apply, material edits gated by Authority Model.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Consumes B1 (intent) + B2 (context) + B5 (past-decisions). Triggers B4 when external comms needed. Writes to B5. Operator → B3 refinement loop (not a fresh B1 ASK). B3 → B2 retry loop. Phase 2 design: <code>action-engine-design.md</code>. <span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g3">T-G3-03</a></span></td></tr>
+</table>
+<details class="crosscut"><summary>Interaction strip — B3 operator ↔ CoS</summary>
+<pre>
+  (no operator action — runs on B1+B2)
+                                         │
+  CoS       ◀── B3a THINK: "3 angles for the one-pager — TAM/SAM/SOM
+                framing, competitive wedge, regulatory window. Brainstorm?"
+                                         │
+  OPERATOR  ──▶ "regulatory window is the angle"  (one-decision moment)
+                                         │
+  CoS       ◀── B3b DO: drafts one-pager · runs internal review · revises
+                B3c PRESENT: 1-page output, scannable, decision-ready
+                "ready to share — gate via D.6 says approve before send"
+                                         │
+  OPERATOR  ──▶ "send to board chair"  (Authority gate ratifies → B4)
+</pre>
+</details>
+<section id="b3a-think">
+<h4 class="b3">B3a — THINK <a href="../product-prd-native-v1.html#b3a-think" class="anchor">#</a></h4>
+<p>Brainstorm partnership; identifies "this is a brainstorm decision" moments; partners with operator on ideation. <strong>Iterative refinement</strong> is first-class: operator says "adjust this not that" — Native treats it as refinement on existing context, not a fresh ASK.</p>
+</section>
+<section id="b3b-do">
+<h4 class="b3">B3b — DO <a href="../product-prd-native-v1.html#b3b-do" class="anchor">#</a></h4>
+<p>Auto-execute end-to-end when path is known. Idea → plan → execute → standing pattern (operationalization). Method-routing: different problem classes get different solving strategies.</p>
+</section>
+<section id="b3c-present">
+<h4 class="b3">B3c — PRESENT <a href="../product-prd-native-v1.html#b3c-present" class="anchor">#</a></h4>
+<p>Operator-facing output rendered for decision-speed. Scannable. Actionable. Native's findings surfaced in a format that supports the operator's "make decision and move" mode.</p>
+</section>
+</section>
+
+<section id="pillar-b4">
+<h3 class="pillar-head b4">B4 — "Talk to my people and the world for me" <a href="../product-prd-native-v1.html#pillar-b4" class="anchor">#</a></h3>
+<details class="crosscut">
+  <summary>Cross-cutting overlays applying to B4</summary>
+  <p><strong>Authority Model:</strong> who can Native talk to on operator's behalf, at what level, with what constraints.</p>
+  <p><strong>CX Bar:</strong> audience-calibrated voice — board / founder / team / client / vendor each get different tone.</p>
+</details>
+<p>External communication execution. v1: actual transport via Connector layer (B17). v2+: peer-Native A2A transport for cross-Sutra coordination.</p>
+<table class="pillar-6block b4">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-11</a></span></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-12</a></span></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-13</a></span></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>Native sends typed messages on operator's behalf via Connectors (Slack / email / web); audience-calibrated voice; outbound logged in DecisionProvenance. v1 includes log-only A2A stub; full A2A transport v2+.</td></tr>
+<tr><td>Acceptance</td><td>Connector messages emit DecisionProvenance + Artifact rows; failure surfaces with retry, not silent loss; operator does not switch surfaces. Authority gated per stakeholder + tool + $-threshold.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Consumes B2 (who, what context) + B3 (what to say). Inbound responses re-enter via B3 (next action). Writes to B5. Prior comms become B2 future context. Phase 2 design: <code>connector-comms-design.md</code>. <span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g3">T-G3-04</a></span></td></tr>
+</table>
+<details class="crosscut"><summary>Interaction strip — B4 operator ↔ CoS</summary>
+<pre>
+  (no operator action — runs on B3 send-authorization)
+                                         │
+  CoS       ◀── audience-calibrated draft for board chair:
+                "Subject: Q3 SOM brief — regulatory wedge"
+                via Slack DM (operator-set channel) · logged to B5.c audit
+                                         │
+  CHAIR     ──▶ inbound: "got it; let's discuss Friday"
+                                         │
+  CoS       ◀── reroutes inbound to B3 (next action: schedule? + reply ack?)
+                logs DecisionProvenance: outbound + inbound + Authority verdict
+</pre>
+</details>
+</section>
+
+<section id="pillar-b5">
+<h3 class="pillar-head b5">B5 — "Remember, explain, and keep it mine" <a href="../product-prd-native-v1.html#pillar-b5" class="anchor">#</a></h3>
+<details class="crosscut">
+  <summary>Cross-cutting overlays applying to B5</summary>
+  <p><strong>Authority Model:</strong> whose data lives where + who can read across tenant boundaries.</p>
+  <p><strong>Operator-First Lens:</strong> the operator's portfolio is the boundary unit, not the company.</p>
+</details>
+<p>System-of-record + governance. Internally decomposed by time horizon — active session · portfolio in-flight · audit + replay · learned patterns.</p>
+<table class="pillar-6block b5">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-14</a></span></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-15</a></span></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em> <span class="marker marker-awaiting-founder-fill"><a href="../product-prd-native-v1.html#c7-g1">T-G1-16</a></span></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Native's commitments</td></tr>
+<tr><td>Product</td><td>Every step is recorded; every decision has a DecisionProvenance row; operator can replay any past run; multi-task state preserved across sessions; learned patterns shape future iterations.</td></tr>
+<tr><td>Acceptance</td><td>100% of decisions have a DecisionProvenance row (HS-4 fires on triple-channel write failure); operator can replay any task end-to-end within ≤30s for a single-day window; multi-task state survives session restart; cross-tenant queries default-deny.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Every pillar B1-B4 writes here. B2 reads from here at intake. B1 reads for shorthand interpretation. Operator can write standing prefs directly. Phase 2 design: <code>governance-substrate-design.md</code>. <span class="marker marker-pending-design"><a href="../product-prd-native-v1.html#c7-g3">T-G3-05</a></span></td></tr>
+</table>
+<details class="crosscut"><summary>Interaction strip — B5 operator ↔ CoS</summary>
+<pre>
+  OPERATOR  ──▶ "what did we decide on Paisa's regulatory wedge last week?"
+                                         │
+  CoS       ◀── replays B5.c audit + B5.d learned patterns:
+                "2026-05-05 board doc · approved regulatory-window wedge ·
+                rationale: RBI Q3 fintech window narrows by Q4 · next: 1-pager
+                shipped to chair 2026-05-12 — chair scheduled Friday"
+                                         │
+  OPERATOR  ──▶ "make 'regulatory wedge' a standing context tag for Paisa"
+                                         │
+  CoS       ◀── writes standing pref → B5.d learned · future B2 reads it
+                "tag added · will surface in next Paisa task automatically"
+</pre>
+</details>
+<section id="b5a-active">
+<h4 class="b5">B5.a — Active session <a href="../product-prd-native-v1.html#b5a-active" class="anchor">#</a></h4>
+<p>Minutes/hours. What's right-now in flight. Backs N22 session-continuity.</p>
+</section>
+<section id="b5b-portfolio">
+<h4 class="b5">B5.b — Portfolio in-flight <a href="../product-prd-native-v1.html#b5b-portfolio" class="anchor">#</a></h4>
+<p>Hours/days. Multi-task state for the 5 in-flight tasks across N companies. Backs N24. Engineering hard-problem (token budget allocation + multi-thread state machine) deferred to Phase 2 design.</p>
+</section>
+<section id="b5c-audit">
+<h4 class="b5">B5.c — Audit + replay <a href="../product-prd-native-v1.html#b5c-audit" class="anchor">#</a></h4>
+<p>Days/forever. DecisionProvenance + AUDIT surface. Backs N#8.</p>
+</section>
+<section id="b5d-learned">
+<h4 class="b5">B5.d — Learned patterns <a href="../product-prd-native-v1.html#b5d-learned" class="anchor">#</a></h4>
+<p>Months/forever. Person Formation + pattern emergence (k=4). Backs N#5.</p>
+</section>
+</section>
+
+</section>
+
+<section id="needs">
+<h2>§2.C Needs (24, clustered into 4 operator-stages) <a href="../product-prd-native-v1.html#needs" class="anchor">#</a></h2>
+<p>Eight original needs from PRD v2 §2 + sixteen new from COS framing + F1-F6 fixes + extension dimensions (peer-Sutra federation, multi-task context evolution). Each need phrased as the operator's own ask. Grouped into 4 operator-stage clusters that mirror the cognitive loop in <a href="../product-prd-native-v1.html#pillars">§2.B.0 Pillar grouping</a>.</p>
+
+<h3>§2.C.0 Need cluster map</h3>
+<pre>
+   ┌──────────────────────────────────────────────────────────────┐
+   │  CLUSTER 1  ·  CAPTURE   (B1 axis — say what I want)          │
+   │  ────────────────────────                                      │
+   │  N01 say without forms   ·   N07 use my existing tools         │
+   │  N09 trusted-names skip  ·   N17 feel like a smart CoS         │
+   └──────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  CLUSTER 2  ·  UNDERSTAND  (B2 + B5 axis — bring me what's    │
+   │                              relevant, plus what's mine)      │
+   │  ──────────────────────────                                    │
+   │  N02 find relevant context  ·  N05 learn how I work            │
+   │  N15 entire context bring   ·  N06 my data stays mine          │
+   │  N22 continue where left    ·  N23 peer Sutras (v2+)           │
+   └──────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  CLUSTER 3  ·  EXECUTE    (B3 axis — do the work; ask me on   │
+   │                            material moments)                  │
+   │  ──────────────────────                                        │
+   │  N03 do work, check yourself   ·   N04 pause on risky          │
+   │  N10 reduce work from plate    ·   N11 idea to operational    │
+   │  N12 auto/ask/remember         ·   N13 brainstorm moments      │
+   │  N16 pick best intelligence    ·   N20 what matters now        │
+   │  N21 adjust autonomy on fly                                    │
+   └──────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+   ┌──────────────────────────────────────────────────────────────┐
+   │  CLUSTER 4  ·  COORDINATE & CONTROL  (B4 + B5 axis — talk for │
+   │                                       me; explain everything) │
+   │  ─────────────────────────────────                             │
+   │  N14 communicate on behalf   ·   N08 show what happened+why    │
+   │  N18 substantive work only   ·   N19 solve for me not org      │
+   │  N24 5 in-flight straight                                      │
+   └──────────────────────────────────────────────────────────────┘
+
+   Loop closure: CLUSTER 4 outputs feed back into CLUSTER 2's substrate.
+</pre>
+<p class="callout">Each need phrased as <strong>"As the operator, I need to..."</strong>. Cluster names mirror the cognitive stage (capture intent → understand context → execute action → coordinate + control outcome).</p>
+<div class="table-scroll">
+<table>
+<tr><th style="width:48px">ID</th><th>Need (operator's voice)</th><th>Routes to</th><th>Scope</th></tr>
+<tr><td id="need-n01"><code>N01</code></td><td>"Say what I want without filling out forms"</td><td>B1</td><td>v1</td></tr>
+<tr><td id="need-n02"><code>N02</code></td><td>"Find me the relevant context — I shouldn't have to remember everything"</td><td>B2</td><td>v1</td></tr>
+<tr><td id="need-n03"><code>N03</code></td><td>"Do the work — and check yourself before showing me"</td><td>B3b + B3c</td><td>v1</td></tr>
+<tr><td id="need-n04"><code>N04</code></td><td>"Pause and ask me before doing anything risky"</td><td>B3 (Authority gate)</td><td>v1</td></tr>
+<tr><td id="need-n05"><code>N05</code></td><td>"Learn how I work; get better over time"</td><td>B5.d (write) + B2 (read)</td><td>v1</td></tr>
+<tr><td id="need-n06"><code>N06</code></td><td>"My data stays mine; companies don't bleed into each other"</td><td>B5</td><td>v1</td></tr>
+<tr><td id="need-n07"><code>N07</code></td><td>"Use my existing tools (Slack, email, web) — don't make me switch"</td><td>B1 (input) + B2 (context) + B4 (output)</td><td>v1</td></tr>
+<tr><td id="need-n08"><code>N08</code></td><td>"Show me what happened and why; let me replay anything"</td><td>B5.c</td><td>v1</td></tr>
+<tr><td id="need-n09"><code>N09</code></td><td>"I have tasks I know how to do — let me show you; I trust certain names"</td><td>B1 + B3 (skip gate)</td><td>v1</td></tr>
+<tr><td id="need-n10"><code>N10</code></td><td>"Reduce work from my plate — automate completely where you can"</td><td>B3b</td><td>v1</td></tr>
+<tr><td id="need-n11"><code>N11</code></td><td>"Run an idea to operationalizing it end-to-end"</td><td>B3b (lifecycle) + B5 (standing)</td><td>v1</td></tr>
+<tr><td id="need-n12"><code>N12</code></td><td>"Auto if you can; ask me where you must; remember my answer"</td><td>B3 (Authority + B5 mem)</td><td>v1</td></tr>
+<tr><td id="need-n13"><code>N13</code></td><td>"I only want to brainstorm — find me the moments where I'm needed"</td><td>B3a</td><td>v1</td></tr>
+<tr><td id="need-n14"><code>N14</code></td><td>"Communicate with other people on my behalf"</td><td>B4</td><td>v1</td></tr>
+<tr><td id="need-n15"><code>N15</code></td><td>"Bring me ENTIRE relevant context — market + best practices + history"</td><td>B2.b</td><td>v1</td></tr>
+<tr><td id="need-n16"><code>N16</code></td><td>"Pick the best intelligence for the kind of problem this is"</td><td>B3 (method-routing)</td><td>v1</td></tr>
+<tr><td id="need-n17"><code>N17</code></td><td>"CX must be good — feel like a smart COS"</td><td>D.7 CX bar</td><td>v1</td></tr>
+<tr><td id="need-n18"><code>N18</code></td><td>"Don't manage my day — substantive work only"</td><td>A.3 / D.9</td><td>v1</td></tr>
+<tr><td id="need-n19"><code>N19</code></td><td>"Solve for me, not the organization"</td><td>A.4 / D.8</td><td>v1</td></tr>
+<tr><td id="need-n20"><code>N20</code></td><td>"Know what matters now across my N companies"</td><td>B3 + B2</td><td>v1</td></tr>
+<tr><td id="need-n21"><code>N21</code></td><td>"Adjust your autonomy on the fly — dial up/down per domain"</td><td>B3 (trust-control)</td><td>v1</td></tr>
+<tr><td id="need-n22"><code>N22</code></td><td>"Continue where we left off"</td><td>B5.a</td><td>v1</td></tr>
+<tr><td id="need-n23"><code>N23</code></td><td>"Connect to other people's Sutras — pull their context"</td><td>B2.c + B4 (peer)</td><td>v2+</td></tr>
+<tr><td id="need-n24"><code>N24</code></td><td>"Keep my 5 in-flight tasks straight — don't lose my thread"</td><td>B5.b + B2 + B3</td><td>v1</td></tr>
+</table>
+</div>
+</section>
+
+<section id="views">
+<h2>§2.D Views — three angles on the CoS model <a href="../product-prd-native-v1.html#views" class="anchor">#</a></h2>
+<p>Same architecture, three viewpoints — Lifecycle Flow (temporal) + Need Cluster Map (assignment) + Connectedness Matrix (dependency).</p>
+
+<section id="view-a-lifecycle">
+<h3>View A — Lifecycle Flow <a href="../product-prd-native-v1.html#view-a-lifecycle" class="anchor">#</a></h3>
+<p>Temporal pillar traversal per operator turn. B5 is the gravity well; everything writes here, B2 reads from here.</p>
+<pre>
+              +-------------------------------+
+              |  OPERATOR (person in company) |
+              |  running 1-N companies        |
+              +-+---+---+---------------+-----+
+                |   |   |               ^
+      utterance |   |   | standing pref | sees outcome
+                |   |   v               |
+                |   | +-+-+              |
+                |   | |B5 |&lt;&lt;&lt;-direct write
+                |   | +-+-+              |
+                v   v   |                ^
+              +-+---+---+--+              |
+              | B1 ASK     |              |
+              +-+--+-------+              |
+                | ^                       |
+        intent  | | mem READ at intake    |
+                | |                       |
+                | +----+                  |
+                |      |                  |
+                |   +--+--+                |
+                |   | B5  |                |
+                |   | mem |                |
+                |   +--+--+                |
+                v      ^                   |
+              +-+------+-+                  |
+              | B2 CTX  |&lt;--mem feed       |
+              +-+----+--+                  |
+                |    ^                     |
+        context |    | B3 retry loop       |
+                v    |                     |
+              +-+----+-----------+          |
+              | B3 THINK/DO/     |--direct present-+
+              | PRESENT          |                 |
+              | + authority      |                 |
+              | + iterative      |                 |
+              |   refinement &lt;---+ refinement loop|
+              +-+----+-----------+                 |
+                |    | (when comms)                |
+                |    v                             |
+                |  +-+--------+                    |
+                |  | B4 TALK  |&lt;--inbound response-+
+                |  +-+--------+                    |
+                |    |                             |
+                |    v                             |
+                | +--+------+                      |
+                | |external|                       |
+                | | world  |                       |
+                | +--------+                       |
+                |                                  |
+                v                                  |
+              +-+--------+                         |
+              | B5 RECORD|                         |
+              | EVERY-   +-------------------------+
+              | THING    |
+              +----------+
+</pre>
+</section>
+
+<section id="view-b-cluster">
+<h3>View B — Need Cluster Map <a href="../product-prd-native-v1.html#view-b-cluster" class="anchor">#</a></h3>
+<p>Each pillar lists its absorbed needs. Need #07 splits across three pillars (input + context + output).</p>
+<ul class="needs-list">
+  <li><strong><span class="pillar-dot dot-b1"></span>B1 absorbs:</strong> <code>N01</code> · <code>N07a</code> · <code>N09</code></li>
+  <li><strong><span class="pillar-dot dot-b2"></span>B2 absorbs:</strong> <code>N02</code> · <code>N05</code> (read) · <code>N07b</code> · <code>N15</code> · <code>N20</code> · <code>N24</code> — plus v2+ slot <code>N23</code> in B2.c</li>
+  <li><strong><span class="pillar-dot dot-b3"></span>B3 absorbs:</strong> <code>N03</code> · <code>N04</code> · <code>N09</code> · <code>N10</code> · <code>N11</code> · <code>N12</code> · <code>N13</code> · <code>N16</code> · <code>N20</code> · <code>N21</code></li>
+  <li><strong><span class="pillar-dot dot-b4"></span>B4 absorbs:</strong> <code>N07c</code> · <code>N14</code> — plus v2+ peer-Native slot</li>
+  <li><strong><span class="pillar-dot dot-b5"></span>B5 absorbs:</strong> <code>N05</code> (write) · <code>N06</code> · <code>N08</code> · <code>N11</code> · <code>N22</code> · <code>N24</code> · <code>N20</code></li>
+  <li><strong>IDEA absorbs (principles):</strong> <code>N17</code> CX bar · <code>N18</code> scope anti · <code>N19</code> operator-first</li>
+</ul>
+</section>
+
+<section id="view-c-matrix">
+<h3>View C — Connectedness Matrix <a href="../product-prd-native-v1.html#view-c-matrix" class="anchor">#</a></h3>
+<p>5×5 grid showing what each pillar requires from others. Read across the row = "from this pillar"; read down the column = "to this pillar".</p>
+<div class="table-scroll">
+<table>
+<tr><th></th><th>→ B1</th><th>→ B2</th><th>→ B3</th><th>→ B4</th><th>→ B5</th></tr>
+<tr><th>B1 from</th><td>—</td><td>(no)</td><td>(no)</td><td>(no)</td><td>WRITE mem + READ mem</td></tr>
+<tr><th>B2 from</th><td>from B1</td><td>—</td><td>(no)</td><td>(no)</td><td>MEM FEED</td></tr>
+<tr><th>B3 from</th><td>from B1</td><td>from B2 + loop</td><td>—</td><td>TRIG when comms; direct to op</td><td>READ past + WRITE everything</td></tr>
+<tr><th>B4 from</th><td>(no)</td><td>WRITE back</td><td>TRIG back</td><td>—</td><td>RECORD WRITE</td></tr>
+<tr><th>B5 from</th><td colspan="5">direct write from operator (standing prefs); every other pillar writes here</td></tr>
+</table>
+</div>
+<p><strong>Legend:</strong> <code>from X</code> = consumes X's output · <code>TRIG</code> = triggers conditionally · <code>MEM</code> = bidirectional memory · <code>RECORD</code> = unidirectional write · <code>(no)</code> = no direct dependency · <code>—</code> = self.</p>
+</section>
+
+<section id="section-2-e-journey">
+<h2>§2.E User Journey Modes — 5 states the operator experiences <a href="../product-prd-native-v1.html#section-2-e-journey" class="anchor">#</a></h2>
+<p>CoS experience changes shape across 5 operator states. Same product, different surface emphasis per state. The system supports all 5 concurrently for one operator (they overlap in time across companies).</p>
+
+<h3>§2.E.1 The 5 states</h3>
+<table>
+<tr><th>State</th><th>What's happening</th><th>Dominant pillar emphasis</th><th>CoS posture</th></tr>
+<tr><td><strong>S1 Single task</strong></td><td>Operator asks one discrete thing; CoS completes one turn end-to-end.</td><td>B1 → B2 → B3 → (B4 if comms) → B5</td><td>Crisp · scannable output · low-touch</td></tr>
+<tr><td><strong>S2 Multi-task</strong></td><td>Operator has 3-5 in-flight tasks across N companies; CoS keeps each thread coherent.</td><td>B5.b portfolio in-flight heavy</td><td>Context-switching support · "what's now" surfacing · interruption safety</td></tr>
+<tr><td><strong>S3 Project</strong></td><td>One sustained effort over days/weeks (e.g., Paisa Q3 SOM positioning project).</td><td>T3 Charter materializes; cross-pillar coordination over time</td><td>Goal-tracking · milestone updates · adapting plan as info arrives</td></tr>
+<tr><td><strong>S4 Engagement</strong></td><td>Long-running working relationship between operator + CoS for one company or one domain (months).</td><td>B5.d learned patterns dominant · B5.a active session keeps continuity</td><td>Personalized · pre-empts operator · runs on operator's "voice"</td></tr>
+<tr><td><strong>S5 Whole-system running</strong></td><td>Operator's full portfolio: multiple engagements, multiple projects, multiple tasks concurrent across all companies. Native + CoS managing the workforce at scale.</td><td>All pillars active across all Charters · operator-facing workforce-health surface visible (§4 Native platform manages the supervisor process silently per <a href="../product-prd-native-v1.html#section-2-cos">§A.2.2</a> post-onboarding zero-terminal rule)</td><td>Daily Pulse · cross-portfolio priority surfacing · workforce health visible</td></tr>
+</table>
+
+<h3>§2.E.2 State transitions</h3>
+<pre>
+   S1 single task ──completes──▶ S2 multi-task (if 2+ tasks in flight)
+   S2 multi-task ──promotes──▶  S3 project (when task graduates to Charter)
+   S3 project ──concludes──▶    S2 multi-task OR S4 engagement (if recurring)
+   S4 engagement ──scales──▶    S5 whole-system (when across portfolio)
+   S5 ─────────────────────────▶ ALL OTHER STATES active concurrently
+
+   Native platform (§4) tracks state per Charter + per task.
+   CoS adapts surface per dominant state.
+</pre>
+
+<h3>§2.E.3 What's needed per state (acceptance)</h3>
+<ul>
+  <li><strong>S1</strong>: ≤1-turn parse + execute + present (per T0/T1 acceptance criteria).</li>
+  <li><strong>S2</strong>: zero lost-context on session restart · N24 "5 in-flight tasks straight" need satisfied.</li>
+  <li><strong>S3</strong>: Charter milestone gates emit progress updates · operator can replay plan-evolution.</li>
+  <li><strong>S4</strong>: B5.d learned patterns surface in B2 retrieval · operator's voice signal stays consistent across pillars (B4 audience-calibrated).</li>
+  <li><strong>S5</strong>: Daily Pulse aggregates · cross-portfolio priority view available · workforce health (Charter status across all companies) visible.</li>
+</ul>
+<p class="callout"><strong>Cross-references</strong> — State detection feeds <a href="../product-prd-native-v1.html#a9-skill-modes">§A.9 Skill Modes</a> default (S1 task often SM2; S3 project often SM1 in early phase, SM2 mid, SM3 late). <a href="../product-prd-native-v1.html#section-3-how-methodology">§3 HOW</a> selection adjusts per state (S5 whole-system uses bigger decomposition + cascading depth). <a href="../product-prd-native-v1.html#section-6-observability">§7 Observability</a> tracks per-state quality.</p>
+</section>
+
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/LLD/pillars/B1-intent-layer.html">LLD/B1-B5 Pillar mechanisms</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

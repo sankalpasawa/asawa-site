@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native — Second-Order: Pillar × Block Matrix</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:1100px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:14px}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#0f766e}
+  .crumb a{color:#0f766e}
+  .banner{background:#fffbeb;border:1.5px solid #b45309;border-radius:8px;padding:8px 14px;font-size:12.5px;color:#92400e;margin-bottom:22px}
+  .banner b{letter-spacing:.04em}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 10px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  a{color:#1d4ed8}
+  /* the grid */
+  table.grid{font-size:11px;table-layout:fixed}
+  table.grid th.pillarcol{width:148px}
+  table.grid td{padding:5px 6px;line-height:1.45}
+  table.grid td.rowhead{background:#f9fafb}
+  table.grid td.rowhead .demand{color:#0f766e;font-style:italic;font-size:10.5px;display:block;margin-top:2px}
+  table.grid td.rowhead .axis{color:#9ca3af;font-size:10px;display:block;margin-top:2px}
+  td.p{background:#bfdbfe;border:1px solid #93c5fd}
+  td.s{background:#f4f8ff}
+  td.none{background:#fff}
+  .tag{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.05em;color:#1e3a8a;border:1px solid #93c5fd;border-radius:3px;padding:0 3px;margin-bottom:2px;background:#fff}
+  td.s .tag{color:#6b7280;border-color:#d1d5db}
+  .legend{display:flex;gap:22px;align-items:center;font-size:12px;color:#4b5563;margin:10px 0 0}
+  .swatch{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+  .sw-p{background:#bfdbfe;border:1px solid #93c5fd}
+  .sw-s{background:#f4f8ff;border:1px solid #e5e7eb}
+  .sw-n{background:#fff;border:1px solid #e5e7eb}
+  ul.gaps{margin:0;padding-left:20px;font-size:13.5px;color:#1f2937}
+  ul.gaps li{margin:8px 0}
+  .svgnote{font-size:12px;color:#6b7280;margin:6px 0 0}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:28px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="products/cos/matrix.html" style="color:#bfdbfe">platform/matrix.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native — Second-Order: Pillar × Block Matrix</h1>
+  <div class="sub">The single grid: rows = the five operator demands (B1–B5) · columns = the eight first-layer platform blocks · 2026-06-11</div>
+  <div class="crumb">First layer: Human → UI → Host → Daemon{Orchestration → System of Process} → SoR / External World · <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+
+  <div class="banner"><b>WORKING DRAFT</b> · 2026-06-11 · Not locked — founder review pending</div>
+
+  <h2>The grid — pillar × block (which blocks each demand traverses)</h2>
+  <table class="grid">
+    <tr>
+      <th class="pillarcol">Pillar / demand</th>
+      <th>UI</th>
+      <th>Host</th>
+      <th>Orchestration</th>
+      <th>System of Process</th>
+      <th>System of Record</th>
+      <th>Authority + Tenancy</th>
+      <th>Compute</th>
+      <th>External World</th>
+    </tr>
+
+    <tr>
+      <td class="rowhead"><b>B1 · Ask in my own words</b><span class="demand">“Let me ask in my own words”</span><span class="axis">Input axis — intent capture</span></td>
+      <td class="p"><span class="tag">PRIMARY</span><br>Freeform utterance enters here; parsed intent + schema preview echo back on the same surface within one turn (B1 interaction strip).</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Intent parse is model work on the Host — schema shown before the LLM call, post-LLM output validated and rejected if non-conforming.</td>
+      <td class="p"><span class="tag">PRIMARY</span><br>Translates the freeform request into typed intent + sub-intents and finds the relevant process — the intent_type handoff.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Show-by-example re-runs and post-LLM schema validation execute inside the runtime, where verify lives.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Writes intake artifacts to B5.a (active session); reads B5 for shorthand interpretation.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Gates intake like every access; trusted-names shortcut (N09) skips the gate.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Entry request executes on Host + Daemon, which run on Compute; no B1-specific compute fact stated.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>N07: intent can arrive via operator's existing tools (Slack, email, web), not a dedicated surface.</td>
+    </tr>
+
+    <tr>
+      <td class="rowhead"><b>B2 · World's best thinking, plus my own</b><span class="demand">“Bring me the world's best thinking, plus my own”</span><span class="axis">Context — read path</span></td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>“Show me the context used” returns a ranked artifact list; narrowing (“drop the Q1 deck”) re-ranks from the same surface.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Context is assembled “for each LLM call” — the Host's model consumes B2's context envelope.</td>
+      <td class="none"></td>
+      <td class="p"><span class="tag">PRIMARY</span><br>Context-build lives inside SoP (§1.0): gathers + ranks the three concentric sources (my own / world's best / peer Sutras v2+) within declared budget.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>B2.a “my own” reads catalog, Charters, decisions, history, entities from B5 at intake.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>v1 ranking bounded by Charter scope; peer-Sutra reads (B2.c) governed by trust + boundary per D.6.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Retrieval runs inside the Daemon on Compute; no B2-specific compute fact stated.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>B2.b world's-best pulls market standards, regulatory info, public knowledge via Research-on-the-fly; B2.c peer Sutras (v2+).</td>
+    </tr>
+
+    <tr>
+      <td class="rowhead"><b>B3 · Think with me; do the rest</b><span class="demand">“Think with me where I must; do the rest yourself, end-to-end”</span><span class="axis">Action — decide + execute + present</span></td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>B3a brainstorm moments + B3c PRESENT (decision-ready output) face the operator; refinement returns to B3a, not a fresh B1 ask.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Decide/execute reasoning is model work; method-routing gives problem classes different solving strategies (N16).</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Hands “task = process” to the runtime — the process B3 executes is selected upstream.</td>
+      <td class="p"><span class="tag">PRIMARY</span><br>THE runtime for the action axis: THINK / DO / PRESENT end-to-end, self-checks before presenting (N03), idea-to-standing-pattern.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Consumes B5 past-decisions; writes output back to B5; every phase transition recorded.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>D.6 gate decides default-go vs ask across 6 dimensions; trivial edits auto-apply, material edits gated (N04).</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Execution runs inside the Daemon on Compute; no B3-specific compute fact stated.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Out-of-process tool calls during DO reach external services via Connector (§1.2); SoP↔External World arrow carries “context + effects”.</td>
+    </tr>
+
+    <tr>
+      <td class="rowhead"><b>B4 · Talk to my people</b><span class="demand">“Talk to my people and the world for me”</span><span class="axis">External communication</span></td>
+      <td class="none"></td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Audience-calibrated drafting (board / founder / team / client / vendor get different tone) is model work on the Host.</td>
+      <td class="none"></td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Connectors live inside SoP (§1.0); the running process drives each typed outbound send and routes inbound responses back into B3.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Every Connector message emits DecisionProvenance + Artifact rows; outbound + inbound + Authority verdict logged to B5.c audit.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Sends gated per stakeholder + tool + $-threshold — who Native may talk to on the operator's behalf, at what level.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Connector transport executes inside the Daemon on Compute; no B4-specific compute fact stated.</td>
+      <td class="p"><span class="tag">PRIMARY</span><br>Messages land with the operator's people + the world via Slack / email / web; replies re-enter via B3; peer-Native A2A v2+ (v1 log-only stub).</td>
+    </tr>
+
+    <tr>
+      <td class="rowhead"><b>B5 · Remember, keep it mine</b><span class="demand">“Remember, explain, and keep it mine”</span><span class="axis">Governance — write path / system-of-record</span></td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Replay/explain questions (“what did we decide last week?”) and standing prefs written directly from the surface.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Remember/explain/standing-pref asks run on the Host like any operator request (§1.0 entry path).</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Fresh replay or standing-pref utterances are translated and routed to a process like any other ask.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>SoP is the writer fulfilling B5's contract — writes every process output back to the System of Record (§1.0).</td>
+      <td class="p"><span class="tag">PRIMARY</span><br>B5 IS the system-of-record: every pillar B1–B4 writes here; DecisionProvenance, ≤30s replay, multi-task state, learned patterns (B5.a–B5.d).</td>
+      <td class="p"><span class="tag">PRIMARY</span><br>Governance axis: whose data lives where + who reads across tenant boundaries; cross-tenant queries default-deny; N06 “my data stays mine”.</td>
+      <td class="s"><span class="tag">SUPPORTING</span><br>Record-keeping runs inside the Daemon on Compute; no B5-specific compute fact stated.</td>
+      <td class="none"></td>
+    </tr>
+  </table>
+
+  <div class="legend">
+    <span><span class="swatch sw-p"></span><b>PRIMARY</b> — the pillar's home block(s)</span>
+    <span><span class="swatch sw-s"></span><b>SUPPORTING</b> — the pillar traverses or depends on this block</span>
+    <span><span class="swatch sw-n"></span>empty — no stated involvement in the doc</span>
+  </div>
+
+  <h2>Example traversal — B1 as a vertical slice through the horizontal blocks</h2>
+  <svg viewBox="0 0 780 545" role="img" aria-label="B1 example traversal across the eight platform blocks, fully wired">
+    <defs>
+      <marker id="mah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- Authority + Tenancy wrap (gate as boundary, never an inline box) -->
+    <rect x="150" y="36" width="616" height="420" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="158" y="28" width="514" height="16" fill="#fff"/>
+    <text x="166" y="40" fill="#7c3aed" font-weight="700" font-size="10.5">AUTHORITY + TENANCY &#183; gates intake like every access &#183; N09 trusted-names shortcut skips the gate</text>
+
+    <!-- EDGES (under boxes) -->
+    <!-- External World -> UI, crossing the gate boundary -->
+    <path d="M126,109 L180,109" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <path d="M153,103 L159,109 L153,115 L147,109 Z" fill="#7c3aed"/>
+    <text x="153" y="97" text-anchor="middle" font-size="8.5" fill="#7c3aed" font-weight="700">gate</text>
+    <text x="16" y="156" font-size="9" fill="#475569">intent via Slack / email / web (N07)</text>
+    <!-- UI -> Host -->
+    <path d="M320,96 L470,96" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="395" y="88" text-anchor="middle" font-size="9" fill="#475569">freeform utterance</text>
+    <!-- Host -> UI (echo) -->
+    <path d="M470,122 L320,122" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="395" y="136" text-anchor="middle" font-size="9" fill="#475569">parsed intent + schema preview</text>
+    <!-- Host -> Orchestration -->
+    <path d="M540,138 L540,172 L265,172 L265,210" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="402" y="166" text-anchor="middle" font-size="9" fill="#475569">intent parse &#8212; model work on Host</text>
+    <text x="402" y="186" text-anchor="middle" font-size="9" fill="#475569">(schema pre-declared before the LLM call)</text>
+    <!-- Orchestration -> SoP -->
+    <path d="M350,239 L470,239" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="410" y="226" text-anchor="middle" font-size="9" fill="#475569">typed intent + sub-intents</text>
+    <text x="410" y="254" text-anchor="middle" font-size="9" fill="#475569">task = process</text>
+    <!-- SoP -> SoR -->
+    <path d="M540,268 L540,340" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="532" y="296" text-anchor="end" font-size="9" fill="#475569">writes intake artifacts</text>
+    <text x="532" y="309" text-anchor="end" font-size="9" fill="#475569">to B5.a (active session)</text>
+    <!-- SoR -> SoP -->
+    <path d="M620,340 L620,268" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="628" y="296" font-size="9" fill="#475569">reads B5 for</text>
+    <text x="628" y="309" font-size="9" fill="#475569">shorthand interpretation</text>
+    <!-- Daemon container (Orchestration + SoP) -->
+    <rect x="168" y="198" width="540" height="88" rx="10" fill="none" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="700" y="194" text-anchor="end" font-size="9" font-weight="700" fill="#64748b">DAEMON</text>
+    <!-- Daemon container -> Compute -->
+    <path d="M265,286 L265,480" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="273" y="420" font-size="9" fill="#475569">Host + Daemon run on Compute</text>
+    <!-- Host -> Compute -->
+    <path d="M610,112 L744,112 L744,480" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#mah)"/>
+    <text x="738" y="300" text-anchor="end" font-size="9" fill="#475569">Host runs on Compute</text>
+
+    <!-- NODES -->
+    <!-- External World — neighbor stub (muted/dashed) -->
+    <rect x="16" y="80" width="110" height="58" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="71" y="104" text-anchor="middle" font-size="11.5" font-weight="600" fill="#4b5563">External World</text>
+    <text x="71" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">Slack &#183; email &#183; web</text>
+
+    <!-- UI — PRIMARY -->
+    <rect x="180" y="80" width="140" height="58" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.2"/>
+    <text x="250" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">UI</text>
+    <text x="250" y="120" text-anchor="middle" font-size="8.5" fill="#3b5bdb">B1 interaction strip</text>
+
+    <!-- Host -->
+    <rect x="470" y="80" width="140" height="58" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/>
+    <text x="540" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">Host</text>
+    <text x="540" y="120" text-anchor="middle" font-size="8.5" fill="#b45309">Claude CLI &#183; model work</text>
+
+    <!-- Orchestration — PRIMARY -->
+    <rect x="180" y="210" width="170" height="58" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.2"/>
+    <text x="265" y="232" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">Orchestration</text>
+    <text x="265" y="248" text-anchor="middle" font-size="8.5" fill="#3b5bdb">translate &#183; find the process</text>
+
+    <!-- System of Process -->
+    <rect x="470" y="210" width="220" height="58" rx="8" fill="#fff" stroke="#374151" stroke-width="1.5"/>
+    <text x="580" y="229" text-anchor="middle" font-size="12.5" font-weight="700">System of Process</text>
+    <text x="580" y="244" text-anchor="middle" font-size="8.5" fill="#6b7280">show-by-example re-runs &#183;</text>
+    <text x="580" y="257" text-anchor="middle" font-size="8.5" fill="#6b7280">post-LLM schema validation</text>
+
+    <!-- System of Record -->
+    <rect x="470" y="340" width="220" height="58" rx="8" fill="#fff" stroke="#374151" stroke-width="1.5"/>
+    <text x="580" y="363" text-anchor="middle" font-size="12.5" font-weight="700">System of Record</text>
+    <text x="580" y="380" text-anchor="middle" font-size="8.5" fill="#6b7280">B5.a active session &#183; B5 shorthand reads</text>
+
+    <!-- Compute — substrate (muted/dashed) -->
+    <rect x="16" y="480" width="750" height="50" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="391" y="501" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">COMPUTE &#183; host machine</text>
+    <text x="391" y="517" text-anchor="middle" font-size="8.5" fill="#9ca3af">where Host + Daemon execute &#183; no B1-specific compute fact stated in the doc</text>
+  </svg>
+  <div class="svgnote">One pillar = one vertical slice through the horizontal blocks. Strong blue boxes = B1 PRIMARY blocks (UI, Orchestration); solid boxes = supporting; dashed boxes = neighbor (External World) and substrate (Compute); the dashed gray container groups Orchestration + System of Process as the Daemon, and both the Daemon container and the Host carry their own runs-on edge to Compute; the dashed purple wrap is the Authority + Tenancy boundary — rendered as a gate on edges, never as a pipeline box. Wrap scope here intentionally differs from the <a href="index.html#section-1-0-runtime">§1.0 drawing</a>: §1.0 encloses the entire pipeline including External World and Compute inside the wrap; this traversal view draws External World and Compute outside it and marks the gate at the boundary-crossing edge instead.</div>
+
+  <h2>Per-pillar sources — where each row is grounded</h2>
+  <table>
+    <tr><th>Pillar</th><th>Demand</th><th>Primary block(s)</th><th>Sources cited by this row's cells</th></tr>
+    <tr>
+      <td><b>B1</b> · Ask in my own words (Input axis — intent capture)</td>
+      <td>“Let me ask in my own words”</td>
+      <td>UI · Orchestration</td>
+      <td><a href="index.html#pillar-b1">pillar-b1</a> · <a href="index.html#section-1-0-runtime">section-1-0-runtime</a> · <a href="index.html#b5a-active">b5a-active</a> · <a href="index.html#need-n09">need-n09</a> · <a href="index.html#need-n07">need-n07</a></td>
+    </tr>
+    <tr>
+      <td><b>B2</b> · World's best thinking, plus my own (Context — read path)</td>
+      <td>“Bring me the world's best thinking, plus my own”</td>
+      <td>System of Process</td>
+      <td><a href="index.html#pillar-b2">pillar-b2</a> · <a href="index.html#section-1-0-runtime">section-1-0-runtime</a> · <a href="index.html#b2a-my-own">b2a-my-own</a> · <a href="index.html#b2b-worlds-best">b2b-worlds-best</a></td>
+    </tr>
+    <tr>
+      <td><b>B3</b> · Think with me; do the rest (Action — decide + execute + present)</td>
+      <td>“Think with me where I must; do the rest yourself, end-to-end”</td>
+      <td>System of Process</td>
+      <td><a href="index.html#pillar-b3">pillar-b3</a> · <a href="index.html#b3b-do">b3b-do</a> · <a href="index.html#section-1-0-runtime">section-1-0-runtime</a> · <a href="index.html#section-1-2-boundary">section-1-2-boundary</a></td>
+    </tr>
+    <tr>
+      <td><b>B4</b> · Talk to my people (External communication)</td>
+      <td>“Talk to my people and the world for me”</td>
+      <td>External World</td>
+      <td><a href="index.html#pillar-b4">pillar-b4</a> · <a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>B5</b> · Remember, keep it mine (Governance — write path / system-of-record)</td>
+      <td>“Remember, explain, and keep it mine”</td>
+      <td>System of Record · Authority + Tenancy</td>
+      <td><a href="index.html#pillar-b5">pillar-b5</a> · <a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+  </table>
+
+  <h2>Open / gaps — questions for the founder</h2>
+  <ul class="gaps">
+    <li>All 5 pillars' Ring 1 Surface rows (Problem space / Need-outcome / Solution direction) are 'Awaiting founder fill' (T-G1-02..T-G1-16) — could founder voice shift any PRIMARY assignment once filled?</li>
+    <li>Sec.4.1 puts LLM calls inside Workflow Steps (Step = 'LLM call OR deterministic action... where work happens' — SoP runtime) and ADR-005 selects the host-LLM per workflow, yet B1's parse contract ('pre-declared output schema shown before LLM call') sits in Orchestration's translate step — which block issues B1's intent-parse LLM call?</li>
+    <li>Section 1.0 gives Compute no pillar-differentiated role — does B5 'keep it mine' imply local-compute data residency on the host machine, or is Compute a uniform substrate for all pillars?</li>
+    <li>B3b DO external effects: the section-1-0-runtime diagram labels the SoP-to-External-World edge 'context + effects', but B3's Connectedness routes external touches only via B4 — do non-comms tool effects bypass B4 or traverse it?</li>
+    <li>Inbound B4 responses 're-enter via B3 (next action)' — does re-entry traverse Orchestration as a fresh translate, or go straight into the running System of Process? Doc is silent.</li>
+    <li>B5 says 'operator can write standing prefs directly' — the write path (UI direct to System of Record vs routed through System of Process) is unspecified in the cited ranges.</li>
+  </ul>
+
+  <div class="foot">Working artifact · content sourced solely from index.html extraction (no invention) · 36 non-empty cells: 7 PRIMARY, 29 SUPPORTING, 4 empty · grid rows B1–B5, columns in pipeline order per <a href="index.html#section-1-0-runtime">sec.1.0</a>.</div>
+</div>
+</body>
+</html>

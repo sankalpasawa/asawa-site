@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Senior Expert — Layer-B Product PRD (draft, baseline)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #1a1a1a; background: #ffffff; }
+  code, pre, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  .content { max-width: 880px; margin: 0 auto; padding: 36px 40px 80px; }
+  h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px; line-height: 1.25; }
+  h2 { font-size: 22px; font-weight: 700; margin: 40px 0 12px; line-height: 1.3; padding-bottom: 6px; border-bottom: 1px solid #e4e7eb; }
+  h3 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; line-height: 1.3; padding: 8px 0 8px 14px; border-left: 4px solid #334155; }
+  h3.p1 { border-left-color: #1d4ed8; }
+  h3.p2 { border-left-color: #047857; }
+  h3.p3 { border-left-color: #6d28d9; }
+  h3.p4 { border-left-color: #b45309; }
+  h3.p5 { border-left-color: #be123c; }
+  h4 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; padding-left: 10px; border-left: 3px solid #d4d8dd; line-height: 1.3; }
+  p { margin: 8px 0 12px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 10px 0 16px; }
+  th, td { border: 1px solid #d4d8dd; padding: 6px 10px; vertical-align: top; text-align: left; }
+  th { background: #f4f5f7; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+  pre { background: #f7f8fa; border: 1px solid #e4e7eb; border-left: 3px solid #5b677a; padding: 12px 14px; font-size: 12px; line-height: 1.45; overflow-x: auto; margin: 12px 0; }
+  code { background: #f4f5f7; padding: 1px 5px; border-radius: 2px; font-size: 12.5px; }
+  .callout { border-left: 4px solid #5b677a; background: #f7f8fa; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+  .todo { background: #fff8e1; border-left-color: #f59e0b; }
+  .meta-strip { font-size: 12px; color: #5b677a; margin: 0 0 24px; padding-bottom: 12px; border-bottom: 1px solid #e4e7eb; }
+  ul, ol { margin: 6px 0 12px; padding-left: 22px; }
+  li { margin: 3px 0; }
+  table.pillar-6block td:first-child { width: 170px; font-weight: 600; background: #fcfdfe; }
+  tr.ring-band td { background: #f1f5f9; color: #475569; font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; }
+</style>
+</head>
+<body>
+<div class="content">
+
+<h1>Senior Expert — Layer-B Product on Native</h1>
+<p class="meta-strip"><strong>Status</strong>: DRAFT (baseline, pre-codex review) · <strong>Authored</strong>: 2026-05-13 · <strong>Authority</strong>: Asawa/Sutra Forge (v1) · <strong>Template</strong>: ADR-020 12-section contract · <strong>Parent</strong>: Native PRD v1 (Layer A platform) · <strong>Sibling</strong>: CoS PRD (first Layer-B) · <strong>Inherits</strong>: 14 pillars · 10 primitives · 26 EngineEvents · 6 surfaces · 8 hardstops (HS-1..HS-8) · ADR-018 · ADR-019.</p>
+
+<div class="callout"><strong>One-sentence product</strong>: Senior Expert is an autonomous domain expert that runs an entire project end-to-end under operator-set Charter — operator-grade decision-maker for a specific domain (legal · finance · engineering · product).</div>
+
+<div class="callout todo"><strong>Draft notice</strong>: this PRD is a baseline draft authored without the <code>prd-discipline</code> skill loaded. It exists to capture pre-skill author behavior for the skill-test baseline at <code>.enforcement/skill-tests/2026-05-13-prd-discipline-baseline.md</code>. Sections marked <em>"Awaiting founder fill"</em> in CoS PRD are similarly marked here; sections marked <em>TODO</em> are gaps the author flagged but did not resolve.</div>
+
+<h2 id="section-a-idea">§A Idea — Senior Expert product</h2>
+
+<section id="a1-problem">
+<h3 class="p1">A.1 Problem statement</h3>
+<p><em>Awaiting founder fill.</em> Working frame: the operator (portfolio CEO per CoS §A.2) needs domain-deep work delivered to operator-grade standard inside a narrow specialty (legal review · financial modeling · engineering architecture · product strategy) — but cannot hire a senior expert per company and cannot reach senior-expert quality through generalist CoS work alone. CoS frames + executes operator workflows; Senior Expert OWNS a project inside one domain and brings expert-grade judgment to it.</p>
+<p>The gap CoS does not fill: when a project requires sustained expert depth (not just execution), the operator either (a) does it themselves at the expense of other companies, (b) hires a contractor with overhead + onboarding cost, or (c) ships a sub-expert artifact and accepts the quality drop. Senior Expert is the autonomous-expert-on-tap that fills this gap inside Charter authority.</p>
+</section>
+
+<section id="a2-persona">
+<h3 class="p1">A.2 Persona</h3>
+<p>Primary persona inherits from Native §A.2 (portfolio CEO) but with a different ask shape — operator delegates an entire project, not individual tasks.</p>
+<table>
+<tr><th>Attribute</th><th>Value</th></tr>
+<tr><td>Role</td><td>Portfolio CEO operating 1-N companies (typical 2-7), inherited from CoS persona</td></tr>
+<tr><td>Surface</td><td>Terminal-fluent for one-time setup; zero-terminal during project execution (per Native §A.2.2)</td></tr>
+<tr><td>Ask shape</td><td>Project-scoped: "I have a [legal review · financial model · engineering RFC · product roadmap] project — own it end-to-end, ask me only on consequential decisions"</td></tr>
+<tr><td>Decision cadence</td><td>Lower than CoS — operator interacts on Charter shape + consequential-decision moments, not turn-by-turn</td></tr>
+<tr><td>Time horizon</td><td>Project-scale: days to weeks (T3 Charter tier per Native §A.7), not individual turns</td></tr>
+<tr><td>Trust profile</td><td>Higher autonomy than CoS for the operator-trusted domain; lower elsewhere (domain-scoped Authority gate)</td></tr>
+</table>
+
+<h4 class="p1">A.2.1 Concrete customer types — domain-specific examples</h4>
+<p>Senior Expert v1 ships <em>per-domain</em> — operator picks which domain instance to deploy under which Charter. Four canonical v1 domains anchor the product.</p>
+<table>
+<tr><th>Domain instance</th><th>Example use case</th><th>Operator persona who deploys</th><th>Project scope (typical)</th></tr>
+<tr><td><strong>Senior Expert — Legal</strong></td><td>Contract review across portfolio · regulatory filing prep · IP boundary review on T3 client work</td><td>Any portfolio CEO with active legal load</td><td>One contract or one regulatory cycle</td></tr>
+<tr><td><strong>Senior Expert — Finance</strong></td><td>Quarterly board financial model · scenario planning · CFO-grade cap table analysis</td><td>Portfolio CEO doing own CFO work</td><td>One quarter or one financing round</td></tr>
+<tr><td><strong>Senior Expert — Engineering</strong></td><td>Architecture RFC · technical due diligence · system migration plan · stack consolidation review</td><td>Tech-founder CEO doing own CTO work</td><td>One RFC or one migration</td></tr>
+<tr><td><strong>Senior Expert — Product</strong></td><td>Product strategy doc · roadmap synthesis · competitive teardown · multi-product hierarchy decisions</td><td>Product-leaning CEO doing own CPO work</td><td>One strategic doc or one cycle</td></tr>
+</table>
+
+<h4 class="p1">A.2.2 Project-scoped (not turn-scoped) constraint</h4>
+<p class="callout"><strong>Hard distinction from CoS</strong>: CoS works turn-by-turn — operator says a thing, CoS responds. Senior Expert works <em>project-by-project</em> — operator hands a Charter-scoped project at the start, then sees Senior Expert only at consequential-decision gates + the final deliverable. The operator-experience asymmetry is intentional: CoS is the implementation consultant who is always at the desk; Senior Expert is the contracted specialist who runs the project and reports out.</p>
+<p>TODO: working through what "consequential decision" means per domain — currently fabricated as legal=any-external-comms, finance=any-spend-commit, engineering=any-irreversible-architecture, product=any-positioning-shift. Founder ratification needed.</p>
+</section>
+
+<section id="a3-anti-persona">
+<h3 class="p1">A.3 Anti-persona</h3>
+<table>
+<tr><th>#</th><th>Anti-persona</th><th>Why not v1</th></tr>
+<tr><td>AP1</td><td>Operator who wants to <em>shadow</em> the Senior Expert turn-by-turn</td><td>That's CoS's job; Senior Expert's value is autonomous depth, not co-piloted depth</td></tr>
+<tr><td>AP2</td><td>Operator without a clear project boundary ("just help me think about legal stuff")</td><td>Senior Expert requires Charter-scoped projects with definable outputs; freeform exploration routes to CoS B3a THINK</td></tr>
+<tr><td>AP3</td><td>Operator who wants to delegate <em>all</em> decisions including consequential ones</td><td>Inherits Native operator-in-loop invariant (ADR-018) — consequential decisions always surface to operator</td></tr>
+<tr><td>AP4</td><td>Operator in a domain outside v1's 4 ratified domains</td><td>v1 ships legal · finance · engineering · product only; other domains (HR · marketing · ops) defer to v1.5/v2 catalog expansion</td></tr>
+<tr><td>AP5</td><td>Operator who needs licensed-professional sign-off (legal opinion · audited financials)</td><td>Senior Expert produces work product; licensed sign-off is out-of-scope; operator engages human professional for sign-off when domain demands it</td></tr>
+<tr><td>AP6</td><td>Multi-stakeholder collaborative project (e.g., a deal team with N humans)</td><td>v1 is operator+Senior-Expert dyad; multi-human collaboration deferred</td></tr>
+</table>
+</section>
+
+<section id="a4-vision">
+<h3 class="p1">A.4 Vision</h3>
+<p><strong>Senior Expert</strong> is the second Layer-B Product on Native. Where CoS is the always-on implementation consultant, Senior Expert is the contracted domain specialist — give it a project, it runs the project, surfaces decisions, returns deliverable. Same Charter model. Same operator-in-loop invariant. Different operator-experience shape: project-scoped, not turn-scoped.</p>
+<p>The operator's portfolio gains expert depth on demand. Need a contract reviewed? Deploy Senior Expert — Legal under a Charter scoped to that contract; it runs the review, asks operator only on material judgment, returns the redlined draft. Need a board financial model? Deploy Senior Expert — Finance; it builds the model, surfaces assumptions for operator ratification, returns the deck. The operator pays the cognitive cost only at consequential moments.</p>
+<p>Vision-state: the portfolio CEO has a CoS deployed continuously + a fleet of Senior Expert instances deployed per active project per domain. Project ends, that Senior Expert instance retires (B5.c audit + B5.d learned persist). New project, new instance (potentially same domain, fresh Charter).</p>
+</section>
+
+<section id="a5-differentiation">
+<h3 class="p1">A.5 Differentiation</h3>
+<table>
+<tr><th>Senior Expert is NOT</th><th>Why the distinction matters</th></tr>
+<tr><td>Another CoS instance scoped to a domain</td><td>CoS is turn-scoped + multi-domain across operator's portfolio; Senior Expert is project-scoped + single-domain-deep</td></tr>
+<tr><td>A consultant marketplace</td><td>Senior Expert is a deployable autonomous product, not a human-marketplace; operator does not hire + brief + manage humans</td></tr>
+<tr><td>A licensed-professional substitute</td><td>Produces work product; sign-off remains with licensed humans where the domain requires it</td></tr>
+<tr><td>A research agent</td><td>Senior Expert delivers operator-grade decisions + artifacts; research is one input mode, not the product</td></tr>
+<tr><td>A multi-agent system the operator orchestrates</td><td>One instance per project; internal decomposition (sub-agents, sub-workflows) is Native platform concern, not operator surface</td></tr>
+</table>
+<p class="callout">Senior Expert is a sibling of CoS on the Native platform — same primitives, same governance, same audit. Different operator-surface shape (project-scoped vs turn-scoped). Different Authority defaults (higher autonomy inside domain, lower outside).</p>
+</section>
+
+<section id="a6-scope">
+<h3 class="p1">A.6 Scope</h3>
+<table>
+<tr><th>In-scope (v1)</th><th>Out-of-scope (v2+ or deferred)</th></tr>
+<tr><td>Terminal-only operator surface (one-time setup); zero-terminal during execution</td><td>GUI / web / mobile UI</td></tr>
+<tr><td>Four domain instances (legal · finance · engineering · product)</td><td>Other domains (HR · marketing · ops · sales-strategy · regulatory-specific)</td></tr>
+<tr><td>Single-LLM-provider abstraction (inherited from Native)</td><td>Multi-LLM per domain</td></tr>
+<tr><td>Connector layer (Slack · email · web) for external comms during project</td><td>Browser automation for active research (defer to Native Browser Co-Work connector when shipped)</td></tr>
+<tr><td>Project-scoped Charter (T3 tier per Native §A.7)</td><td>Multi-project Charter binding to one Senior Expert instance</td></tr>
+<tr><td>Operator + Senior Expert dyad</td><td>Multi-human team collaborating with Senior Expert</td></tr>
+<tr><td>Domain-specific Authority defaults</td><td>Operator-customizable Authority per consequential-decision category (v1.5)</td></tr>
+<tr><td>Final-deliverable handback to operator</td><td>Direct-to-third-party handoff — gated through operator</td></tr>
+<tr><td>Cross-project audit + learned-pattern compounding (B5.c + B5.d) per domain</td><td>Cross-operator learned pattern federation (analog of CoS B2.c peer Sutras)</td></tr>
+</table>
+</section>
+
+<section id="a7-task-taxonomy">
+<h3 class="p1">A.7 Task Taxonomy — how Senior Expert maps to Native's T0-T3 tiers</h3>
+<p>Senior Expert primarily inhabits Native's T3 (Charter) tier — every project deployment IS a Charter materialization. Internally, the Senior Expert decomposes T3 Charter into T0-T2 sub-tasks (which look like CoS turns) but those are platform-internal, not operator-visible.</p>
+<table>
+<tr><th>Tier</th><th>Senior Expert's relationship</th><th>Operator-visible?</th></tr>
+<tr><td>T0 Atomic</td><td>Sub-task internal to project (e.g., "fetch precedent case")</td><td>No — runs inside the project</td></tr>
+<tr><td>T1 Multi-action</td><td>Sub-task internal to project (e.g., "compare 3 contract variants, summarize")</td><td>No — runs inside the project</td></tr>
+<tr><td>T2 Iterative</td><td>Operator-feedback loops at consequential-decision gates (e.g., "rework section 4 with this constraint")</td><td>Yes — at decision-gate iteration only</td></tr>
+<tr><td>T3 Charter</td><td>The project ITSELF — Senior Expert IS a Charter materialization</td><td>Yes — Charter shape + final deliverable</td></tr>
+</table>
+<p class="callout">Where CoS's primary tier is T1 (multi-action turns), Senior Expert's primary tier is T3 (Charter). Both products use Native's same T0-T3 substrate; the difference is which tier dominates the operator-visible interface.</p>
+</section>
+
+<section id="a8-actors">
+<h3 class="p1">A.8 Actor Taxonomy</h3>
+<table>
+<tr><th>#</th><th>Actor</th><th>Role on operator's stage</th><th>First appears in</th></tr>
+<tr><td>AC1</td><td><strong>Operator (the founder)</strong></td><td>Defines Charter + ratifies consequential decisions + receives deliverable. Principal of project Charter.</td><td>All pillars</td></tr>
+<tr><td>AC2</td><td><strong>Senior Expert instance (domain-bound)</strong></td><td>Autonomous expert for the project. Runs end-to-end. Asks operator only on consequential decisions. Produces final deliverable.</td><td>All pillars</td></tr>
+<tr><td>AC3</td><td><strong>External humans</strong></td><td>Counterparties · subject-matter sources · regulators · vendor reps. Senior Expert may engage with them under Charter Authority — gated through operator handoff in v1.</td><td>P4 external comms</td></tr>
+<tr><td>AC4</td><td><strong>CoS (sibling Native-deployed)</strong></td><td>When operator has BOTH CoS + Senior Expert running, CoS handles cross-portfolio turn-by-turn work; Senior Expert handles project-deep work. Inter-product handoff via DecisionProvenance trail.</td><td>Inter-product handoff</td></tr>
+<tr><td>AC5</td><td><strong>Licensed-professional human</strong> (legal / audit / etc.)</td><td>Domain-specific human signs off Senior Expert's work product where law/standard requires it. Senior Expert produces; human signs.</td><td>Final deliverable handoff (domain-conditional)</td></tr>
+</table>
+<p class="callout"><strong>Not on this stage</strong> — Native platform internals (agent processes, charter runtime, tool bindings) are hidden, same as CoS PRD §A.8 callout.</p>
+</section>
+
+<section id="a9-skill-modes">
+<h3 class="p1">A.9 Customer Skill Modes — how Senior Expert adapts to operator clarity</h3>
+<p>Inherits CoS's three-mode skill ladder (SM1 idea-only · SM2 idea+output · SM3 idea+output+how) but recasts them for project-scope instead of turn-scope.</p>
+<table>
+<tr><th>Skill mode</th><th>Operator state at Charter intake</th><th>Senior Expert working mode</th><th>Authority default</th></tr>
+<tr><td><strong>SM1 — Project-idea only</strong></td><td>"I have a legal review project but I don't know what the output should look like"</td><td>High-touch intake. Senior Expert proposes deliverable shape + Charter scope + consequential-decision list; operator ratifies.</td><td>Conservative — every consequential decision gates back to operator.</td></tr>
+<tr><td><strong>SM2 — Project-idea + output</strong></td><td>"I want a legal review producing a redlined contract + risk memo; don't know how to get there"</td><td>Medium-touch intake. Senior Expert agrees on output + Charter scope; executes; gates on consequential per domain default.</td><td>Domain-default Authority.</td></tr>
+<tr><td><strong>SM3 — Project-idea + output + how</strong></td><td>"I want a legal review on this contract, using this specific approach, producing this exact memo format"</td><td>Low-touch intake. Operator's specified approach used directly; Senior Expert executes + delivers.</td><td>Aggressive — operator's specificity signals trust; consequential gates narrower.</td></tr>
+</table>
+
+<h4 class="p1">A.9.1 Domain instance × Skill mode mapping</h4>
+<p>TODO: founder ratification needed on which skill mode is dominant per domain. Working hypothesis (fabricated):</p>
+<ul>
+  <li><strong>Senior Expert — Legal</strong> — primarily SM2 (operators know they want redlines + risk memo, don't know review approach)</li>
+  <li><strong>Senior Expert — Finance</strong> — primarily SM2 with SM3 spikes (operators with CFO past run SM3; first-time CFO-work operators run SM2)</li>
+  <li><strong>Senior Expert — Engineering</strong> — primarily SM3 (tech-founders bring strong opinions on RFC shape + architecture preferences)</li>
+  <li><strong>Senior Expert — Product</strong> — primarily SM1 (operators often want a product strategy doc but don't know the shape; high-touch intake is the value)</li>
+</ul>
+</section>
+
+<h2 id="section-b-pillars">§B Pillars — Senior Expert operator surface (5 pillars · P1-P5)</h2>
+<p>Five operator demands in operator's own words for the Senior Expert experience. Numbered P1-P5 (Senior-Expert-local) to distinguish from CoS's B1-B5. Each pillar inherits Native's primitive substrate (Charter · Workflow · Step · Authority · Audit) — see §Layer-B claims.</p>
+
+<h3 id="p0-grouping">§B.0 Pillar grouping — project-scope cognitive cycle</h3>
+<pre>
+                       OPERATOR
+                           |
+                           | "I have a project — own it"
+                           v
+                   +-----------------+
+                   |  P1 SCOPE       |  Charter intake
+                   |  the project    |  output shape + decision list
+                   +-------+---------+
+                           | ratified Charter
+                           v
+                   +-----------------+
+                   |  P2 KNOW        |  Domain context assembly
+                   |  the domain     |  precedent · standards · prior work
+                   +-------+---------+
+                           | context envelope
+                           v
+                   +-----------------+
+                   |  P3 EXECUTE     |  Autonomous run
+                   |  the project    |  multi-day · multi-step · expert-grade
+                   +---+-------+-----+
+                       |       | consequential decision?
+                       |       +------------+
+                       |                    v
+                       |            +---------------+
+                       |            | P4 ESCALATE   |  Operator gate
+                       |            | on judgment   |  audience-calibrated ask
+                       |            +-------+-------+
+                       |                    | ratified
+                       |&lt;-------------------+
+                       v
+                   +-----------------+
+                   |  P5 DELIVER     |  Final handback
+                   |  the artifact   |  + audit trail + learned pattern
+                   +-----------------+
+
+   P1 = define · P2 = read · P3 = act · P4 = ask · P5 = deliver
+   Audit (B5.c) writes throughout; learned pattern (B5.d) writes on P5.
+</pre>
+<p class="callout">The 5 pillars are the project-lifecycle (define -&gt; read -&gt; act -&gt; ask -&gt; deliver). Compare CoS's 5 pillars (ask -&gt; read -&gt; act -&gt; talk -&gt; remember) which are turn-lifecycle. Same cognitive shape, different time-scale.</p>
+
+<table>
+<tr><th>Pillar</th><th>Operator demand</th><th>Stage</th></tr>
+<tr><td>P1</td><td>"Scope the project — propose what you'll deliver and where you'll need me"</td><td>Charter intake</td></tr>
+<tr><td>P2</td><td>"Know the domain — bring expert-grade context, not generalist"</td><td>Context assembly</td></tr>
+<tr><td>P3</td><td>"Execute end-to-end — run the project autonomously inside the Charter"</td><td>Autonomous execution</td></tr>
+<tr><td>P4</td><td>"Escalate only on judgment — ask me where my judgment is needed, nowhere else"</td><td>Operator-gate</td></tr>
+<tr><td>P5</td><td>"Deliver the artifact — return a complete, operator-grade deliverable"</td><td>Final handback</td></tr>
+</table>
+
+<p class="callout"><strong>Per-pillar shape</strong>: each pillar carries the same 6-block table as CoS PRD §2.B — three rings (Surface · Contract · Mechanism). Surface = operator voice (founder fills). Contract = Senior Expert's commitments (this draft fills). Mechanism = how it's built on Native platform (Phase 2 design link).</p>
+
+<section id="pillar-p1">
+<h3 class="p1">P1 — "Scope the project" — Charter intake</h3>
+<p>Operator hands a project. Senior Expert proposes Charter shape (output + Authority defaults + consequential-decision list) and asks operator to ratify before any execution.</p>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Senior Expert's commitments</td></tr>
+<tr><td>Product</td><td>Senior Expert produces a Charter proposal within 1 turn of project intake: (a) deliverable shape (e.g., "redlined contract + 1-page risk memo"), (b) consequential-decision list (named decisions that will gate to operator), (c) Authority defaults per decision category, (d) projected timeline + cost. Operator ratifies or revises before P3 begins.</td></tr>
+<tr><td>Acceptance</td><td>(i) Charter proposal returned &lt;= 1 turn after intake; (ii) consequential-decision list non-empty + domain-justified; (iii) Authority defaults match domain pattern (per ADR-NNN-senior-expert-pattern); (iv) operator can revise list before ratification; (v) ratified Charter written to B5.a active session as immutable record.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Consumes operator intake utterance. Reads B5.d learned for prior projects in same domain (calibrate Charter shape). Writes Charter to B5.a + ChartersBuiltSoFar to B5.d. Phase 2 design: <code>senior-expert-charter-intake-design.md</code>.</td></tr>
+</table>
+</section>
+
+<section id="pillar-p2">
+<h3 class="p2">P2 — "Know the domain" — context assembly</h3>
+<p>Domain-depth context retrieval. Where CoS's B2 reads operator-context + world's-best generic context, Senior Expert's P2 reads operator-context + domain-expert-grade context (precedent · standards · regulatory · prior expert work).</p>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Senior Expert's commitments</td></tr>
+<tr><td>Product</td><td>P2 assembles domain-grade context from 3 sources: (a) operator-own context (prior projects in this domain · operator-stated constraints · Charter scope), (b) domain-canonical sources (precedent law · GAAP/IFRS · IEEE/RFC standards · industry-canonical product frameworks depending on domain instance), (c) Charter-scope-specific external research (counterparty's prior public filings · vendor's published architecture · competitor's product positioning). Returned as ranked context envelope.</td></tr>
+<tr><td>Acceptance</td><td>(i) Domain-canonical source list is non-empty + domain-appropriate; (ii) operator can request "show me the context used" + receive ranked artifact list; (iii) per-source confidence tag (high/moderate/low/unknown); (iv) gaps surfaced explicitly when context is thin (not silent gap-filling); (v) context fits declared budget per Charter cost limit.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Reads from B5 (memory feed). Consumes Charter scope from P1. Feeds P3 execution. Phase 2 design: <code>senior-expert-domain-context-design.md</code>.</td></tr>
+</table>
+<p class="callout">TODO: domain-canonical source lists per domain instance — currently fabricated. Founder + per-domain expert ratification needed before any v1 ship.</p>
+</section>
+
+<section id="pillar-p3">
+<h3 class="p3">P3 — "Execute end-to-end" — autonomous run</h3>
+<p>The autonomous-execution core. Senior Expert runs the project inside Charter bounds, multi-day, multi-step, producing intermediate artifacts (drafts · models · memos) without operator gating <em>unless</em> a consequential decision surfaces (then P4 fires).</p>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Senior Expert's commitments</td></tr>
+<tr><td>Product</td><td>Senior Expert executes the project through (a) plan decomposition into expert-grade sub-tasks, (b) auto-execution of non-consequential sub-tasks, (c) self-review against domain quality standard before any intermediate artifact is produced, (d) audit-row + DecisionProvenance for every sub-decision (per HS-4 ADR-013), (e) progress-surface available on operator query ("what's status?") without interrupting execution. Inherits ADR-018 deterministic-surface-stochastic-core invariant — sub-task selection + quality gates are deterministic; the expert reasoning inside each sub-task is stochastic.</td></tr>
+<tr><td>Acceptance</td><td>(i) Project plan decomposed into &lt;N sub-tasks per Charter scope; (ii) each sub-task produces an audit row; (iii) self-review gate fires before each intermediate artifact (rejects own work below domain-quality threshold + retries); (iv) operator can query progress mid-run + receive status without halting execution; (v) execution halts cleanly on Charter-budget exceed (no silent over-run); (vi) HS-6 fires if &gt;3 governance-hook failures within the project.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Consumes ratified Charter from P1 + context envelope from P2. Triggers P4 on consequential-decision surface. Writes to B5 throughout. Triggers P5 on completion. Phase 2 design: <code>senior-expert-execution-design.md</code>.</td></tr>
+</table>
+</section>
+
+<section id="pillar-p4">
+<h3 class="p4">P4 — "Escalate only on judgment" — operator-gate</h3>
+<p>Operator-in-loop on consequential decisions, inherited from ADR-018. P4 is the surface where Senior Expert pauses, formats the decision for operator-grade understanding, and waits for ratification.</p>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Senior Expert's commitments</td></tr>
+<tr><td>Product</td><td>When P3 surfaces a consequential decision (per Charter list or per ADR-NNN-senior-expert-pattern domain rules), Senior Expert: (a) names the decision in operator's language, (b) presents 2-4 viable options with expert-grade tradeoff analysis, (c) cites which context (from P2) informed each option, (d) declares confidence level + rationale, (e) recommends one option + reasoning, (f) waits for operator ratification (no time-out auto-execute). Audience-calibrated to operator's domain fluency (D.7 CX Bar).</td></tr>
+<tr><td>Acceptance</td><td>(i) Consequential-decision surface arrives with &gt;= 2 options + recommendation; (ii) tradeoff analysis cites P2 context sources; (iii) confidence tag per option (high/moderate/low/unknown); (iv) operator can ratify · revise · cancel · ask follow-up without losing P3 state; (v) ratified decision writes DecisionProvenance + becomes immutable; (vi) every consequential decision in the project has a P4 row in audit.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Triggered by P3. Consumes Charter decision-list. Writes DecisionProvenance. Resumes P3 on ratification. Phase 2 design: <code>senior-expert-escalation-design.md</code>.</td></tr>
+</table>
+</section>
+
+<section id="pillar-p5">
+<h3 class="p5">P5 — "Deliver the artifact" — final handback</h3>
+<p>End of project. Senior Expert returns the complete deliverable + audit trail + learned-pattern write to B5.d for future project compounding.</p>
+<table class="pillar-6block">
+<tr class="ring-band"><td>Ring 1</td><td>Surface — operator voice</td></tr>
+<tr><td>Problem space</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Need / outcome</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr><td>Solution direction</td><td><em>Awaiting founder fill.</em></td></tr>
+<tr class="ring-band"><td>Ring 2</td><td>Contract — Senior Expert's commitments</td></tr>
+<tr><td>Product</td><td>P5 produces (a) the operator-grade final deliverable in the shape ratified at P1, (b) a "what I did + why" summary (audit-replay snapshot), (c) the consequential-decision log (every P4 with options + ratified choice + outcome), (d) cost + time actual vs Charter projection, (e) learned-pattern entry written to B5.d (this pattern is what I learned for next project in this domain). Operator receives deliverable + can request audit replay at any time post-handback.</td></tr>
+<tr><td>Acceptance</td><td>(i) Deliverable matches ratified Charter shape; (ii) operator can request "audit replay" + receive end-to-end execution log; (iii) consequential-decision log lists every P4 row; (iv) learned-pattern entry exists in B5.d + is scoped to this domain instance; (v) project Charter marked CLOSED in B5.a; (vi) post-handback queries on the project still resolvable via audit replay.</td></tr>
+<tr class="ring-band"><td>Ring 3</td><td>Mechanism — how it's built (Phase 2)</td></tr>
+<tr><td>Connectedness</td><td>Consumes execution output from P3. Writes deliverable to operator surface. Writes learned-pattern to B5.d. Closes Charter in B5.a. Phase 2 design: <code>senior-expert-delivery-design.md</code>.</td></tr>
+</table>
+</section>
+
+<h2 id="section-b-needs">§B Needs cluster — Senior Expert operator needs (15 needs, project-lifecycle clustered)</h2>
+<p>Operator's voice — what the operator needs from Senior Expert specifically. Clustered by project-lifecycle stage rather than turn-cycle (which is CoS's clustering shape). 15 needs total; smaller than CoS's 24 because Senior Expert is a narrower product (project-scoped, single-domain).</p>
+
+<h3>§B-needs.0 Need cluster map</h3>
+<pre>
+   +--------------------------------------------------------------+
+   |  CLUSTER 1  ·  HAND OFF THE PROJECT  (P1 — Charter intake)    |
+   |  SN01 hand off a project · SN02 know what's coming back        |
+   |  SN03 set my decision-gate appetite                            |
+   +--------------------------------------------------------------+
+                                |
+                                v
+   +--------------------------------------------------------------+
+   |  CLUSTER 2  ·  TRUST THE DOMAIN DEPTH  (P2 — context)         |
+   |  SN04 expert-grade not generalist · SN05 cite sources          |
+   |  SN06 surface gaps explicitly                                  |
+   +--------------------------------------------------------------+
+                                |
+                                v
+   +--------------------------------------------------------------+
+   |  CLUSTER 3  ·  LET IT RUN  (P3 — autonomous execution)        |
+   |  SN07 don't interrupt for routine · SN08 self-review           |
+   |  SN09 progress on demand · SN10 stop on budget exceed          |
+   +--------------------------------------------------------------+
+                                |
+                                v
+   +--------------------------------------------------------------+
+   |  CLUSTER 4  ·  ASK WHERE IT MATTERS  (P4 — operator gate)     |
+   |  SN11 named decisions only · SN12 options + recommendation     |
+   |  SN13 audience-calibrated to my fluency                        |
+   +--------------------------------------------------------------+
+                                |
+                                v
+   +--------------------------------------------------------------+
+   |  CLUSTER 5  ·  HAND BACK CLEAN  (P5 — delivery)               |
+   |  SN14 operator-grade deliverable · SN15 keep what was learned |
+   +--------------------------------------------------------------+
+
+   Loop closure: SN15 learned patterns feed future P1 Charter intakes.
+</pre>
+
+<table>
+<tr><th style="width:48px">ID</th><th>Need (operator's voice)</th><th>Routes to</th><th>Scope</th></tr>
+<tr><td><code>SN01</code></td><td>"Let me hand off a project — not a turn, not a question"</td><td>P1</td><td>v1</td></tr>
+<tr><td><code>SN02</code></td><td>"Tell me up front what's coming back + when"</td><td>P1</td><td>v1</td></tr>
+<tr><td><code>SN03</code></td><td>"Let me set my decision-gate appetite per project (more gates · fewer gates)"</td><td>P1 + P4</td><td>v1</td></tr>
+<tr><td><code>SN04</code></td><td>"Bring expert-grade domain context, not generalist context"</td><td>P2</td><td>v1</td></tr>
+<tr><td><code>SN05</code></td><td>"Cite sources for every domain claim — I want to verify"</td><td>P2 + P5</td><td>v1</td></tr>
+<tr><td><code>SN06</code></td><td>"Surface gaps explicitly — tell me when you don't know, don't paper over"</td><td>P2 + P3</td><td>v1</td></tr>
+<tr><td><code>SN07</code></td><td>"Don't interrupt me for routine sub-tasks — only consequential decisions"</td><td>P3 + P4</td><td>v1</td></tr>
+<tr><td><code>SN08</code></td><td>"Self-review before showing me anything"</td><td>P3</td><td>v1</td></tr>
+<tr><td><code>SN09</code></td><td>"Let me query progress without halting execution"</td><td>P3</td><td>v1</td></tr>
+<tr><td><code>SN10</code></td><td>"Stop on Charter budget exceed — don't silently over-run"</td><td>P3 (Authority gate)</td><td>v1</td></tr>
+<tr><td><code>SN11</code></td><td>"Ask me on named decisions only — no surprise asks"</td><td>P4</td><td>v1</td></tr>
+<tr><td><code>SN12</code></td><td>"Give me options + your recommendation — don't just ask"</td><td>P4</td><td>v1</td></tr>
+<tr><td><code>SN13</code></td><td>"Calibrate to my domain fluency — explain enough but don't lecture"</td><td>P4 (D.7 CX Bar)</td><td>v1</td></tr>
+<tr><td><code>SN14</code></td><td>"Deliver operator-grade work — not assistant-grade"</td><td>P5</td><td>v1</td></tr>
+<tr><td><code>SN15</code></td><td>"Keep what you learned for next project in this domain"</td><td>P5 + B5.d</td><td>v1</td></tr>
+</table>
+
+<p class="callout"><strong>Cross-product overlap with CoS needs</strong>: SN04/SN05 partially overlap CoS N15 (entire context bring); SN07/SN11 overlap CoS N04 (pause on risky); SN14 overlaps CoS N03 (do work, check yourself). Senior Expert recasts these for project-scope; the Native primitives are the same.</p>
+
+<h2 id="section-operator-surface">§Operator surface contract — capability bullets per pillar</h2>
+<p>What the operator OBSERVES per pillar (Cagan WHAT, not HOW). Engine architecture lives in canon — see §Layer-B claims for the substrate citations.</p>
+
+<h3 class="p1">P1 Operator surface — Charter intake</h3>
+<ul>
+  <li>Operator types a project intake utterance (terminal-fluent, one-time setup; zero-terminal during execution per Native §A.2.2).</li>
+  <li>Senior Expert returns a 1-page Charter proposal within &lt;= 1 turn — deliverable shape · consequential-decision list · Authority defaults · projected timeline + cost.</li>
+  <li>Operator ratifies / revises / cancels via a single response.</li>
+  <li>Ratified Charter is the contract — Senior Expert binds to it until P5 (or operator-initiated cancel).</li>
+</ul>
+
+<h3 class="p2">P2 Operator surface — context assembly</h3>
+<ul>
+  <li>Operator does not see context assembly happen by default.</li>
+  <li>On query "show me the context used" — operator receives a ranked artifact list with per-source confidence tags.</li>
+  <li>Gaps in context are surfaced explicitly (e.g., "no precedent case found for this clause shape") — not silent gap-filling.</li>
+</ul>
+
+<h3 class="p3">P3 Operator surface — autonomous execution</h3>
+<ul>
+  <li>Operator does not see sub-task execution by default — only consequential-decision asks (P4) and progress on query.</li>
+  <li>On query "what's status?" — operator receives a one-paragraph status summary without halting execution.</li>
+  <li>Budget exceed -&gt; execution halts cleanly + operator notified with cost + state-of-progress.</li>
+  <li>Self-review failures (Senior Expert rejects own output below domain-quality threshold) are logged but not surfaced to operator unless retry exhaustion.</li>
+</ul>
+
+<h3 class="p4">P4 Operator surface — operator gate</h3>
+<ul>
+  <li>Operator receives a structured consequential-decision ask — named decision · options · recommendation · confidence · supporting context references.</li>
+  <li>Operator ratifies via a single response; can revise · cancel · ask follow-up without losing project state.</li>
+  <li>No time-out auto-execute — Senior Expert waits indefinitely (project Charter dictates retention) for operator response.</li>
+</ul>
+
+<h3 class="p5">P5 Operator surface — delivery</h3>
+<ul>
+  <li>Operator receives final deliverable in ratified Charter shape.</li>
+  <li>Plus: "what I did + why" summary, consequential-decision log, cost + time actual vs Charter projection.</li>
+  <li>Audit replay available at any time post-handback (B5.c).</li>
+  <li>Operator does NOT receive: internal sub-task list, Native primitive details, learned-pattern write content (B5.d is system-of-record, not operator-visible by default).</li>
+</ul>
+
+<h2 id="section-acceptance">§Acceptance criteria</h2>
+<p>Per-pillar acceptance (rolls up from §B Pillars Ring 2) + product-level acceptance + falsification tests.</p>
+
+<h3>Per-pillar acceptance (summary)</h3>
+<table>
+<tr><th>Pillar</th><th>Acceptance signal</th><th>Falsification (what makes this FAIL)</th></tr>
+<tr><td>P1</td><td>Charter proposal returned &lt;= 1 turn; consequential-decision list non-empty; operator can revise before ratification</td><td>Charter proposal missing decision list · Charter proposal lacks Authority defaults · operator cannot revise · Senior Expert starts execution before ratification</td></tr>
+<tr><td>P2</td><td>Domain-canonical sources cited; ranked artifact list returnable on operator query; gaps surfaced explicitly</td><td>Generalist context (no domain-canonical source) · silent gap-filling · context envelope not retrievable on operator query</td></tr>
+<tr><td>P3</td><td>Every sub-task has audit row; self-review fires before artifact; operator-progress query non-halting; budget halt clean</td><td>Sub-task missing audit row · self-review skipped · operator query halts execution · silent budget over-run</td></tr>
+<tr><td>P4</td><td>&gt;= 2 options + recommendation; confidence tag per option; operator can revise · cancel · follow-up without state loss</td><td>Single-option ask · no recommendation · no confidence · state loss on cancel</td></tr>
+<tr><td>P5</td><td>Deliverable matches ratified Charter; audit replay available; learned-pattern entry in B5.d; project marked CLOSED</td><td>Deliverable mismatch · audit replay missing · no learned-pattern write · project state ambiguous post-handback</td></tr>
+</table>
+
+<h3>Product-level acceptance</h3>
+<ol>
+  <li>Operator can hand off a domain-instance project and receive an operator-grade deliverable without intervening turn-by-turn.</li>
+  <li>Operator interacts only at P1 (Charter ratification) + P4 (consequential decisions) + P5 (handback receive) — never at P2/P3 except on explicit progress query.</li>
+  <li>Consequential-decision count per project &lt;= Charter-projected count (within +- 20% tolerance — TODO ratification).</li>
+  <li>Operator-grade quality bar — operator does not need to redo the work to ship it (operator-satisfaction signal per §Observability).</li>
+  <li>Cross-project compounding — second project in same domain runs faster + cheaper + with better Charter shape than first (B5.d learned-pattern effect; TODO measurable threshold).</li>
+  <li>Hardstop inheritance — all 8 HS-1..HS-8 fire correctly for Senior Expert flows (per §Resilience contract).</li>
+</ol>
+
+<h3>Falsification tests (product-level)</h3>
+<ol>
+  <li><strong>Turn-by-turn shadowing test</strong>: if operator can shadow Senior Expert turn-by-turn during P3 (vs only at P4 gates), the project-scope distinction from CoS is broken — FAIL.</li>
+  <li><strong>Generalist test</strong>: if Senior Expert can be deployed without a domain-canonical source list, the "expert" claim is hollow — FAIL.</li>
+  <li><strong>Silent over-run test</strong>: if a project exceeds Charter budget without halt + operator notification, autonomy contract is broken — FAIL.</li>
+  <li><strong>Audit-replay test</strong>: if post-handback the operator cannot reconstruct what happened end-to-end via B5.c replay, decision-provenance is broken — FAIL.</li>
+  <li><strong>Compounding test</strong>: if second-project in domain runs at same cost + same Charter quality as first, learned-pattern effect (SN15) is absent — FAIL (acceptable for v1 first deploys; required by v1.5).</li>
+</ol>
+
+<h2 id="section-how-preferences">§HOW preferences — Senior Expert per-product defaults</h2>
+<p>Per Native §3 HOW Methodology, every Layer-B Product can specialize HOW dimensions. Senior Expert specializes 6 dimensions away from CoS's defaults, given project-scope vs turn-scope shape.</p>
+
+<table>
+<tr><th>HOW dimension</th><th>CoS default</th><th>Senior Expert default</th><th>Why specialized</th></tr>
+<tr><td>Detailing depth</td><td>Match operator's detail-cue per turn</td><td><strong>Higher floor</strong> — Senior Expert always works at operator-grade detail (domain demands it) even when operator's intake utterance is brief</td><td>SM1 intake is common (operator hands a project without specifying detail level); Senior Expert calibrates upward to domain standard</td></tr>
+<tr><td>Cascading length</td><td>Per-turn cascade up to N steps</td><td><strong>Longer cascading</strong> — multi-day projects need multi-step planning + state preservation across cascading depth</td><td>Project-scope requires Senior Expert to maintain coherent plan over many sub-task layers; CoS rarely needs &gt;3 cascade depth in one turn</td></tr>
+<tr><td>Operator-interrupt frequency</td><td>Authority-gate per turn material edit (D.6 thresholds)</td><td><strong>Lower frequency</strong> — only at named consequential decisions from Charter list; routine sub-decisions auto-execute</td><td>Project-scope value is exactly "don't interrupt me for routine" (SN07); CoS turn-scope expects more frequent operator presence</td></tr>
+<tr><td>Citation density</td><td>Cite at operator request</td><td><strong>Citation-by-default</strong> — every domain claim carries source citation in P5 deliverable + per-context-source confidence tag in P2</td><td>Operator-grade domain work requires verifiability (SN05); without citation operator cannot trust expert-grade depth claims</td></tr>
+<tr><td>Self-review depth</td><td>One self-review pass before output</td><td><strong>Domain-quality-gate review</strong> — multiple self-review passes against domain-canonical standard until threshold met or retry exhausted</td><td>Operator-grade quality bar is non-negotiable for Senior Expert; CoS turn-grade is "good for moving on", Senior Expert is "ship-ready"</td></tr>
+<tr><td>Iteration loop</td><td>Operator-led refinement</td><td><strong>Self-driven inside Charter</strong> — Senior Expert iterates internally without operator until consequential gate or completion</td><td>Project-scope autonomy expects internal iteration; operator-led iteration is P4 gate only</td></tr>
+</table>
+
+<p class="callout"><strong>Domain-instance HOW variation</strong>: within Senior Expert, individual domain instances may further specialize. TODO: per-domain HOW tables (legal vs finance vs engineering vs product). Working hypothesis (fabricated): legal needs highest citation density · finance needs longest cascading · engineering needs deepest self-review · product needs widest options-at-P4. Founder + per-domain ratification needed.</p>
+
+<h2 id="section-layer-b-claims">§Layer-B claims on Native — what Senior Expert uses, what it does NOT use, what it requires NEW</h2>
+
+<p>Per ADR-020 §What's SHARED, Senior Expert inherits the 14 pillars · 10 primitives · 26 EngineEvents · 6 surfaces · 8 hardstops · ADR-018 + ADR-019 unchanged. This section names which specific Native substrate Senior Expert binds to + what (if anything) requires new Native capability.</p>
+
+<h3>Native primitives Senior Expert binds to</h3>
+<table>
+<tr><th>Primitive</th><th>How Senior Expert uses it</th><th>Citation</th></tr>
+<tr><td><strong>Domain</strong></td><td>One Domain per Senior Expert instance — the domain-specialty boundary (legal · finance · engineering · product). Inherits ADR-006 tenant-isolation.</td><td>Native PRD §4.1 + ADR-006</td></tr>
+<tr><td><strong>Charter</strong></td><td>The project IS a Charter (T3 tier). Senior Expert's P1 produces it; operator ratifies; Senior Expert binds to it through P5.</td><td>Native PRD §4.1 Charter primitive</td></tr>
+<tr><td><strong>Workflow</strong></td><td>Senior Expert composes a project-Workflow from sub-Workflows during P3 execution. Workflow primitive provides the deterministic-surface around stochastic sub-task reasoning (ADR-018).</td><td>Native PRD §4.1 Workflow primitive + ADR-018</td></tr>
+<tr><td><strong>Step</strong></td><td>Each sub-task inside P3 is a Step. Step boundaries are where DecisionProvenance writes happen.</td><td>Native PRD §4.1 Step primitive</td></tr>
+<tr><td><strong>Trigger</strong></td><td>Senior Expert listens for (a) operator-utterance Trigger at P1 + P4 ratification, (b) self-Trigger at consequential-decision detection (P3-&gt;P4 transition).</td><td>Native PRD §4.1 Trigger primitive</td></tr>
+<tr><td><strong>ExecutionResult</strong></td><td>Every Step emits an ExecutionResult; Charter-level rollup at P5 produces the project-result handed to operator.</td><td>Native PRD §4.1</td></tr>
+<tr><td><strong>EngineEvent</strong></td><td>26 events fire as usual; specific events of interest: <code>charter_intake</code> (P1), <code>consequential_decision_surface</code> (P3-&gt;P4), <code>charter_close</code> (P5). TODO: confirm event names against canon.</td><td>Native PRD §4.1 EngineEvent</td></tr>
+<tr><td><strong>Tenant</strong></td><td>Project scoped to Tenant boundary (per ADR-006). Senior Expert instance never crosses Tenant unless explicit <code>delegates_to</code> edge (HS-3).</td><td>Native PRD §4.1 Tenant + ADR-006 + HS-3</td></tr>
+<tr><td><strong>Approval</strong></td><td>Every P4 gate produces an Approval primitive — operator's ratification recorded as an immutable Approval record.</td><td>Native PRD §4.1 Approval + ADR-009</td></tr>
+<tr><td><strong>DecisionProvenance</strong></td><td>Every consequential decision + every self-review fail + every Charter ratification writes a DecisionProvenance row.</td><td>Native PRD §4.1 DecisionProvenance + ADR-007</td></tr>
+</table>
+
+<h3>Native surfaces Senior Expert exposes through</h3>
+<table>
+<tr><th>Surface</th><th>How Senior Expert exposes it</th></tr>
+<tr><td><strong>ROUTE</strong></td><td>P1 intake routes operator's project utterance to the correct domain-instance Senior Expert</td></tr>
+<tr><td><strong>RUN</strong></td><td>P3 autonomous execution surface</td></tr>
+<tr><td><strong>GATE</strong></td><td>P4 consequential-decision surface (Approval primitive flows through GATE)</td></tr>
+<tr><td><strong>EMERGE</strong></td><td>P5 learned-pattern write (B5.d) emerges new project-shape patterns over time per domain</td></tr>
+<tr><td><strong>AUDIT</strong></td><td>P5 audit replay + every Step's DecisionProvenance row accessible through AUDIT surface</td></tr>
+<tr><td><strong>TENANT</strong></td><td>Cross-Tenant boundary enforced per HS-3 — Senior Expert cannot read across Tenants without explicit delegates_to edge</td></tr>
+</table>
+
+<h3>Native hardstops Senior Expert specializes</h3>
+<p>All 8 HS-1..HS-8 inherit unchanged in operator-visible surface (per ADR-020 SHARED). Senior Expert specializes the <em>trigger context</em> for a few — specifically:</p>
+<table>
+<tr><th>Hardstop</th><th>Senior-Expert-specific trigger context</th><th>Operator-visible behavior (same as Native)</th></tr>
+<tr><td><strong>HS-2 governance-overhead</strong></td><td>Per-Step governance overhead inside P3 + per-project Charter-budget exceed</td><td>Same — Step aborts; project Charter remains active for next Step</td></tr>
+<tr><td><strong>HS-3 tenant-boundary</strong></td><td>Senior Expert attempts cross-Tenant context read at P2 (e.g., legal precedent from another operator's matter)</td><td>Same — DENIED, operator sees "would touch &lt;other-tenant&gt;; delegates_to authorization required"</td></tr>
+<tr><td><strong>HS-4 audit-unwritable</strong></td><td>DecisionProvenance fails on a Step or P4 Approval</td><td>Same — STOP the affected Step; project Charter halts until audit recovers</td></tr>
+<tr><td><strong>HS-6 governance-hooks-fail</strong></td><td>3+ hook failures within a single project Charter (not single turn)</td><td>Same — SESSION SUSPENDED scope adapts to project Charter</td></tr>
+</table>
+
+<p>HS-1 reflexive-check · HS-5 cutover-rollback · HS-7 codex-queue-stale · HS-8 canary-regression apply unchanged with no Senior-Expert specialization.</p>
+
+<h3>Senior-Expert-specific hardstop (if any)</h3>
+<table>
+<tr><th>Hardstop</th><th>Trigger</th><th>Operator-visible behavior</th></tr>
+<tr><td><strong>HS-SE-1 domain-quality-gate-exhausted</strong> (proposed, Senior-Expert-specific)</td><td>Self-review against domain-canonical standard fails N retries (default N=3) on the same Step</td><td>Step halts; operator gets P4-style ask "this sub-task is failing domain-quality gate after 3 retries — options: (a) accept current draft with caveats noted, (b) revise scope, (c) cancel project"</td></tr>
+</table>
+<p class="callout">TODO: is HS-SE-1 a new hardstop, or a sub-case of HS-6 (governance-hooks-fail)? Inclined to call it new because the failure mode is domain-quality-specific (not governance-hook-specific). Codex review should ratify whether this earns its own HS row in the catalog.</p>
+
+<h3>NEW Native capabilities Senior Expert requires (if any)</h3>
+<p class="callout">In an ideal Layer-B claim, Senior Expert requires no new Native capability — same primitives, same events, same surfaces. Reality check: a few items may need new capability. Captured as <em>required</em> (blockers) or <em>desired</em> (enhancements).</p>
+<ul>
+  <li><strong>Required v1</strong>: per-domain context-source registry (so Senior Expert — Legal knows which precedent corpora to read; Senior Expert — Finance knows which standards to apply). Could live inside Domain primitive as a <code>context_sources</code> field. TODO: spec.</li>
+  <li><strong>Required v1</strong>: domain-quality-gate evaluator (so self-review can score against domain-canonical standard). Could compose with ADR-018's deterministic-guardrail layer. TODO: spec.</li>
+  <li><strong>Desired v1.5</strong>: cross-Senior-Expert handoff (Senior Expert — Engineering produces an RFC; Senior Expert — Legal reviews it for IP boundary). Inter-product A2A via DecisionProvenance + delegates_to edge. Defer to v1.5.</li>
+  <li><strong>Desired v2</strong>: domain-instance marketplace — third-party operators publishing Senior Expert — &lt;new domain&gt; instances. Hooks into v2+ third-party authority per Native §1.4.3.</li>
+</ul>
+
+<h2 id="section-distribution">§Distribution + onboarding — Senior Expert specifics</h2>
+
+<p>Per Native §6 Distribution, channels = Sutra plugin · direct install · cloud (deferred). Senior Expert inherits all three. Per §6.3.1 install matrix, install responsibility varies per tier. This section adds Senior-Expert-specific rows + onboarding journey.</p>
+
+<h3>Install + onboard responsibility per tier (Senior Expert specifics)</h3>
+<table>
+<tr><th>Tier</th><th>Install responsibility</th><th>Onboard journey</th><th>Operator one-time setup</th></tr>
+<tr><td><strong>T1 Asawa</strong></td><td>Founder self-install via Sutra plugin (already installed; Senior Expert is a Layer-B Product binding under existing Native)</td><td>Operator picks domain instance + creates Charter</td><td>None beyond domain-instance binding</td></tr>
+<tr><td><strong>T2 Owned (DayFlow · Billu · Paisa · PPR · Maze)</strong></td><td>Asawa/Sutra Forge binds Senior Expert per T2 company need (e.g., Paisa Senior Expert — Finance for board financial work)</td><td>Forge-led intake; T2 founder operator inherits</td><td>None — Forge handles all setup</td></tr>
+<tr><td><strong>T3 Projects (Testlify · Dharmik)</strong></td><td>Asawa Forge binds Senior Expert into client environment (e.g., Testlify Senior Expert — Legal for vendor contracts)</td><td>Forge-led intake + handoff to client operator</td><td>None post-handoff</td></tr>
+<tr><td><strong>T4 Fleet (external Sutra plugin adopters)</strong></td><td>Operator self-installs via Sutra plugin marketplace; Senior Expert is a binding operator selects from approved catalog (v1.5+)</td><td>Plugin auto-onboarding for Senior Expert binding; per-domain Charter intake via P1</td><td>Sutra plugin install (one-time terminal) + Senior Expert domain-instance binding</td></tr>
+</table>
+
+<p class="callout"><strong>v1 deployment authority</strong>: per Native §1.4.3, Layer-B Products at v1 ship only via Asawa/Sutra Forge. Operator T4 binding to Senior Expert opens at v1.5 (binding-only from approved catalog) per §1.4.3 phase model. Third-party Senior Expert domain instances open at v2+.</p>
+
+<h3>Operator onboarding journey — Senior Expert first project</h3>
+<table>
+<tr><th>Phase</th><th>Operator experience</th><th>Time horizon</th><th>What happens behind the scenes</th></tr>
+<tr><td>1. Domain-instance binding</td><td>Operator picks "Senior Expert — Legal" (or Finance · Engineering · Product) from approved catalog</td><td>Minutes</td><td>Native binds domain-instance Charter template to operator's Tenant</td></tr>
+<tr><td>2. First project intake (P1)</td><td>Operator types project utterance; receives Charter proposal in &lt;= 1 turn; ratifies</td><td>One turn</td><td>P1 runs; Charter written to B5.a; consequential-decision list seeded</td></tr>
+<tr><td>3. Execution (P3 + P4)</td><td>Operator sees nothing until first consequential-decision gate (could be hours, could be a day)</td><td>Hours-days</td><td>P2 context assembly + P3 sub-task execution + DecisionProvenance writes</td></tr>
+<tr><td>4. Decision gate (P4)</td><td>Operator receives named-decision ask with options + recommendation; ratifies</td><td>Minutes per gate</td><td>Approval primitive recorded; P3 resumes</td></tr>
+<tr><td>5. Delivery (P5)</td><td>Operator receives final deliverable + audit summary + cost actual vs projected</td><td>One turn</td><td>Charter marked CLOSED; learned-pattern written to B5.d; instance retains via B5.c audit</td></tr>
+<tr><td>6. Second project in same domain</td><td>Operator hands off second project; Charter proposal at P1 is sharper (B5.d learned-pattern effect)</td><td>One turn</td><td>P1 reads B5.d before proposing Charter</td></tr>
+</table>
+
+<h3>Onboarding asymmetry vs CoS</h3>
+<p>CoS onboarding is continuous — operator starts using CoS the moment plugin is installed. Senior Expert onboarding is project-driven — operator binds a domain instance + creates first project. The "first session" with Senior Expert is the first Charter intake, not the first plugin command. TODO: onboarding-flow spec needs founder ratification on what minimum-viable first-project experience looks like.</p>
+
+<h2 id="section-observability">§Observability — Senior Expert metrics</h2>
+
+<p>Per Native §7 Observability, metrics live in 3 categories: per-pillar metrics · accuracy KPI · operator-satisfaction signals. Senior Expert specializes.</p>
+
+<h3>Per-pillar metrics</h3>
+<table>
+<tr><th>Pillar</th><th>Metric</th><th>Target (v1)</th><th>Why this metric</th></tr>
+<tr><td>P1</td><td>Charter ratification rate (operator ratifies vs revises vs cancels)</td><td>&gt;= 70% ratified-as-proposed</td><td>If &lt;70%, Charter shape proposals are off — P1 quality gap</td></tr>
+<tr><td>P1</td><td>Charter proposal latency (intake utterance -&gt; proposal returned)</td><td>&lt;= 1 turn (definitional)</td><td>Cannot ship if &gt;1 turn — contract violation</td></tr>
+<tr><td>P2</td><td>Domain-canonical source coverage (% of project's domain claims with cited source)</td><td>&gt;= 90%</td><td>Operator-grade domain depth requires citation density</td></tr>
+<tr><td>P2</td><td>Gap-surface rate (gaps surfaced explicitly vs silently gap-filled — measured by audit)</td><td>100% (no silent gaps)</td><td>SN06 acceptance threshold</td></tr>
+<tr><td>P3</td><td>Self-review pass rate per Step before artifact production</td><td>TODO — domain-specific threshold</td><td>Quality gate effectiveness</td></tr>
+<tr><td>P3</td><td>Audit-row coverage (% of Steps with DecisionProvenance row)</td><td>100% (HS-4 fires below)</td><td>Inherits from Native</td></tr>
+<tr><td>P3</td><td>Operator progress-query latency (operator query -&gt; status returned)</td><td>&lt;= 1 turn without execution halt</td><td>SN09 acceptance</td></tr>
+<tr><td>P4</td><td>Consequential-decision count vs Charter-projected</td><td>Within +- 20% (TODO ratification)</td><td>If actual &gt;&gt; projected, P1 Charter shape is under-decomposed</td></tr>
+<tr><td>P4</td><td>Operator-ratification latency (P4 ask -&gt; operator response)</td><td>Per Charter retention — operator-paced, not system-paced</td><td>Observation, not optimization target</td></tr>
+<tr><td>P5</td><td>Deliverable acceptance rate (operator accepts vs revises vs rejects)</td><td>&gt;= 80% accepted-as-delivered</td><td>Operator-grade quality bar</td></tr>
+<tr><td>P5</td><td>Audit-replay latency (operator request -&gt; replay artifact returned)</td><td>&lt;= 30s for full project (analog of CoS B5 acceptance)</td><td>Operator can verify what happened</td></tr>
+</table>
+
+<h3>Accuracy KPI — domain-grade quality</h3>
+<p>Senior Expert's accuracy KPI specializes Native §7.1.A. Where CoS measures "operator-acceptable accuracy on routine work", Senior Expert measures "operator-grade domain accuracy" — meaning operator does not need to redo the work to ship it.</p>
+<table>
+<tr><th>Accuracy dimension</th><th>Measure</th><th>v1 target</th></tr>
+<tr><td>Operator-accept-without-revise rate (P5)</td><td>% of deliverables operator ships unmodified</td><td>&gt;= 50% v1 · &gt;= 70% v1.5 · &gt;= 85% v2</td></tr>
+<tr><td>Domain-claim-verifiability rate (P2/P5)</td><td>% of cited claims operator can verify via cited source</td><td>&gt;= 95%</td></tr>
+<tr><td>Consequential-decision quality (P4)</td><td>Operator-rated quality of options + recommendation (high · moderate · low scale)</td><td>&gt;= 70% high</td></tr>
+<tr><td>Self-correction rate (P3 self-review)</td><td>% of self-review fails that, when retried, pass on retry-2 (vs needing operator intervention)</td><td>&gt;= 60%</td></tr>
+</table>
+
+<h3>Operator-satisfaction signals</h3>
+<ul>
+  <li><strong>Project-completion satisfaction</strong>: operator-tagged Excellent · Acceptable · Below-bar at P5 handback</li>
+  <li><strong>Interrupt-frequency satisfaction</strong>: operator-tagged "too many gates" · "right" · "too few gates" — informs P1 Charter shape calibration</li>
+  <li><strong>Domain-fluency satisfaction</strong>: operator-tagged "explained too little" · "right" · "lectured too much" — informs P4 D.7 CX Bar calibration</li>
+  <li><strong>Compounding satisfaction</strong>: between-project survey — did second project feel faster / sharper than first? (SN15 effectiveness)</li>
+  <li><strong>Skill-mode detection accuracy</strong>: operator-rated whether Senior Expert correctly identified SM1 vs SM2 vs SM3 at intake</li>
+</ul>
+
+<h3>Fleet-level observability (Daily Pulse Module integration)</h3>
+<p>Senior Expert plugs into the Daily Pulse Module (Native §7.5). Fleet-aggregate metrics surface as a Senior Expert row in Daily Pulse — per-domain-instance project counts · accept rates · cost actual vs projected. TODO: Daily Pulse Module needs new chart-row type for Layer-B-Product-specific aggregates.</p>
+
+<h2 id="section-open-questions">§Open questions — Senior Expert (FSE1-FSE7)</h2>
+
+<p>Open questions specific to Senior Expert. Pattern follows Native PRD §C.6 FQ1-FQ3 + ADR-020 OQ-020-N for cross-Layer-B questions.</p>
+
+<dl>
+  <dt><strong>FSE1 — What exactly counts as "consequential" per domain?</strong></dt>
+  <dd>Working hypothesis (fabricated): legal = any external-counterparty contact · finance = any spend commit &gt; threshold (operator-set) · engineering = any irreversible architecture commit · product = any external-positioning shift. Needs founder + per-domain expert ratification. Without this list, P4 trigger logic is ambiguous.</dd>
+
+  <dt><strong>FSE2 — Single Charter per project, or multi-project Charter?</strong></dt>
+  <dd>v1 = one Charter per project (per A.6 scope). Multi-project Charter (e.g., "review every legal contract Paisa signs in 2026") deferred. Question: when operator wants ongoing-domain-coverage, do they create 1 long-running Charter or N short Charters? Defer ratification to first multi-project operator request.</dd>
+
+  <dt><strong>FSE3 — How does Senior Expert handle out-of-domain questions during a project?</strong></dt>
+  <dd>If Senior Expert — Legal during a contract review hits a finance-domain question (e.g., "is this clause's working-capital impact material?"), does it (a) refuse + escalate to operator, (b) delegate to Senior Expert — Finance via DecisionProvenance handoff, (c) attempt + caveat with low-confidence tag? v1 inclines toward (a). Option (b) needs A2A primitive that doesn't fully exist in v1.</dd>
+
+  <dt><strong>FSE4 — When does Senior Expert hand off to a licensed-human professional?</strong></dt>
+  <dd>Per A.3 AP5, Senior Expert produces work-product but licensed sign-off belongs to humans (legal opinion · audit · stamped engineering plan). At what step does the handoff happen? At P5 deliverable handback? Earlier? Operator-decision per Charter or domain-rule? TODO: domain-by-domain handoff protocol spec.</dd>
+
+  <dt><strong>FSE5 — Cross-Senior-Expert handoff in v1?</strong></dt>
+  <dd>If a project plausibly spans two domains (e.g., M&amp;A involves legal + finance simultaneously), does v1 require operator to deploy two Senior Expert instances and bridge manually, or does v1 ship cross-instance handoff? Inclined toward v1 = manual operator bridge; v1.5 = automated handoff. Cross-references FSE3.</dd>
+
+  <dt><strong>FSE6 — Does Senior Expert get its own Daily Pulse Module integration, or share CoS's?</strong></dt>
+  <dd>Daily Pulse aggregates operator-facing metrics. Operator with both CoS + Senior Expert running — single Daily Pulse or per-product Pulse? Inclined toward single Daily Pulse with per-product rows. TODO: Pulse chart-type spec for Layer-B-Product aggregates.</dd>
+
+  <dt><strong>FSE7 — What's the v1 cost ceiling per project?</strong></dt>
+  <dd>Multi-day autonomous execution can rack up significant LLM cost. Operator-set Charter budget is the contract (per A.6 + P3 budget halt). But what's the v1 default ceiling per domain instance to prevent first-time-operator runaway? Inclined toward "operator must set explicit budget at P1; no default ceiling". TODO ratification.</dd>
+</dl>
+
+<h3>Cross-references to canon-level open questions (ADR-020 OQ)</h3>
+<ul>
+  <li><strong>OQ-020-1</strong> (cross-product Charter sharing) — Senior Expert + CoS Charter overlap: defer to first concrete dual-deploy. Cross-references FSE5.</li>
+  <li><strong>OQ-020-2</strong> (HOW preference inheritance) — Senior Expert specializes from CoS base HOW (per §HOW preferences above) rather than composing from scratch. Ratified inclination.</li>
+  <li><strong>OQ-020-3</strong> (operator switching between products) — for Senior Expert, the project-scope model naturally limits switching context (operator is in "project mode" until handback). Less acute than CoS&lt;-&gt;Senior-Expert turn-by-turn switching.</li>
+</ul>
+
+<h2 id="section-resilience">§Resilience contract — operator-visible failure behavior</h2>
+
+<p>Per ADR-020 §SHARED, all 8 HS-1..HS-8 inherit unchanged in operator-visible behavior. This section names per-Senior-Expert specialization of trigger contexts + the one proposed product-specific hardstop (HS-SE-1 per §Layer-B claims above).</p>
+
+<h3>Shared hardstop catalog (HS-1..HS-8) — Senior Expert trigger contexts</h3>
+<table>
+<tr><th>Hardstop</th><th>Senior-Expert trigger context</th><th>Operator-visible recovery</th></tr>
+<tr><td><strong>HS-1 reflexive-check</strong></td><td>Project Workflow attempts to modify Native canon (extremely rare in product use; would indicate compromised execution)</td><td>Native blocks; operator sees same HS-1 message; project Charter paused pending operator + Sutra-canon-authority ratification</td></tr>
+<tr><td><strong>HS-2 governance-overhead</strong></td><td>Per-Step governance overhead exceeds 25% token budget</td><td>That Step aborts; project Charter continues with next Step on next turn (rate-limit absorbed at Step granularity, not project granularity)</td></tr>
+<tr><td><strong>HS-3 tenant-boundary</strong></td><td>Senior Expert — Legal attempts to read precedent from another operator's matter without delegates_to (likely innocent — P2 source registry over-broad)</td><td>Same — DENIED; operator gets cross-tenant prompt; can grant delegates_to or proceed without that source</td></tr>
+<tr><td><strong>HS-4 audit-unwritable</strong></td><td>DecisionProvenance fails on Step or P4 Approval write</td><td>Same — STOP affected Step; project Charter halts until 3-channel audit recovers</td></tr>
+<tr><td><strong>HS-5 cutover-rollback-fails</strong></td><td>Charter version-cutover (operator revises Charter mid-project) rollback fails</td><td>Same — Charter paused; operator + Sutra-Forge into HITL</td></tr>
+<tr><td><strong>HS-6 governance-hooks-fail</strong></td><td>3+ hook failures inside a single Charter (not single turn — adapts scope)</td><td>Project Charter SUSPENDED; resume requires hook investigation; partial deliverable from B5.a accessible</td></tr>
+<tr><td><strong>HS-7 codex-queue-stale</strong></td><td>Inherits unchanged — codex-review queue saturated affects new Sutra/Asawa Forge work, not operator-Senior-Expert runtime</td><td>Same — Forge shipments paused; operator-deployed Senior Expert runtime continues</td></tr>
+<tr><td><strong>HS-8 canary-regression</strong></td><td>Inherits unchanged — production canary on new Senior Expert version detects regression against behavior_invariants</td><td>Same — auto-ROLLBACK; founder notified</td></tr>
+</table>
+
+<h3>Senior-Expert-specific hardstop (proposed)</h3>
+<table>
+<tr><th>Hardstop</th><th>Trigger</th><th>Operator-visible behavior</th><th>Status</th></tr>
+<tr><td><strong>HS-SE-1 domain-quality-gate-exhausted</strong></td><td>P3 self-review against domain-canonical standard fails N retries (default N=3) on same Step</td><td>Step halts; operator gets P4-style ask: (a) accept current draft with caveats noted, (b) revise scope · adjust Charter, (c) cancel project</td><td>PROPOSED — needs codex review to ratify whether this is a new HS or sub-case of HS-6</td></tr>
+</table>
+
+<h3>Per-pillar resilience recovery</h3>
+<table>
+<tr><th>Pillar</th><th>Recovery contract</th></tr>
+<tr><td>P1</td><td>If Charter proposal fails to return &lt;= 1 turn — operator gets timeout message + can retry or escalate; no silent stall</td></tr>
+<tr><td>P2</td><td>If domain-canonical source registry returns nothing or all sources are degraded — operator gets explicit "domain context unavailable for this project" + can proceed without (Senior Expert tags every claim low-confidence) or cancel</td></tr>
+<tr><td>P3</td><td>Step-level halts on HS-4 / HS-6 / HS-SE-1; project Charter remains active; operator can resume after recovery</td></tr>
+<tr><td>P4</td><td>Operator non-response is NOT a failure mode — operator-paced (per Charter retention); Senior Expert waits</td></tr>
+<tr><td>P5</td><td>Deliverable fail at handback (e.g., quality-gate-exhausted before completion) -&gt; operator gets partial-deliverable + audit summary; project Charter marked INCOMPLETE not CLOSED</td></tr>
+</table>
+
+<h3>Escalation contract</h3>
+<p>Two-level escalation in v1:</p>
+<ol>
+  <li><strong>Operator escalation</strong> — every consequential decision · every hardstop trigger · every domain-quality-gate exhaustion routes to operator first via P4 surface or HS-N message format.</li>
+  <li><strong>Sutra/Asawa Forge escalation</strong> — operator can escalate to Forge support on (a) HS-1 reflexive-check (canon-modification attempts), (b) HS-5 cutover-rollback-fails, (c) HS-6 governance-hooks-fail repeated occurrences within a single project.</li>
+</ol>
+
+<h2 id="section-activation">§Activation + versioning — Senior Expert v1 / v1.5 / v2</h2>
+
+<p>Per Native §1.4.5 deferred-capability activation paths, every v2+ feature in a PRD declares gates for activation. Senior Expert versioning aligns with Native's v1 / v1.5 / v2 phase model (per §1.4.3 deployment authority).</p>
+
+<h3>Version scope per phase</h3>
+<table>
+<tr><th>Phase</th><th>Senior Expert scope</th><th>Operator authority</th><th>Activation gate</th></tr>
+<tr><td><strong>v1</strong></td><td>4 domain instances (legal · finance · engineering · product), Asawa/Sutra-Forge-deployed only · single-operator dyad · operator+Senior-Expert handback model</td><td>Operator binds via Forge-led install (T1/T2/T3); T4 binding via plugin install + operator chooses domain instance from approved catalog (v1 Forge-curated catalog)</td><td>(1) ADR-020 ratified; (2) per-domain ADR-NNN-senior-expert-pattern.md authored + codex+deepseek reviewed; (3) per-domain context-source registry seeded (4 domain instances); (4) Asawa Forge dogfood — first Senior Expert deployment under a T1 Charter</td></tr>
+<tr><td><strong>v1.5</strong></td><td>v1 + (a) cross-Senior-Expert handoff (FSE5), (b) Layer-B-Product-aggregate Daily Pulse row, (c) operator-customizable Authority per consequential category, (d) approved-catalog binding for T4 operators</td><td>Operator self-serve binding from approved Product catalog (per Native §1.4.3 v1.5)</td><td>(1) v1 fleet measurement — &gt;= 3 T2 + &gt;= 5 T4 operators with completed first-project; (2) operator-accept-without-revise rate &gt;= 50% (v1 target met); (3) approved-catalog gating process defined per Native §1.4.3; (4) cross-Senior-Expert A2A spec authored + reviewed</td></tr>
+<tr><td><strong>v2+</strong></td><td>v1.5 + third-party Senior Expert &lt;new domain&gt; instances; domain-instance marketplace; multi-human + Senior Expert collaboration</td><td>Third-party developers publish Senior Expert &lt;domain&gt; instances per Native §1.4.3 v2+ gates</td><td>(1) v1.5 fleet measurement — &gt;= 85% operator-accept-without-revise; (2) Marketplace review pipeline matured per Native §1.4.3 v2+; (3) ADR-NNN-senior-expert-pattern boundary refined enough for third-party authoring without canon collision</td></tr>
+</table>
+
+<h3>Per-feature deferred-capability activation gates (v2+ items in this PRD)</h3>
+<table>
+<tr><th>Deferred capability</th><th>v1 stub</th><th>v2+ activation gate</th></tr>
+<tr><td>Cross-Senior-Expert handoff (FSE5)</td><td>Operator manually bridges two instances via P5 deliverable -&gt; P1 intake of second instance</td><td>(1) A2A primitive spec ratified at Native canon (currently NG per Native §A.6); (2) Inter-Senior-Expert DecisionProvenance handoff format authored; (3) &gt;= 2 domain-pair dogfood runs (legal&lt;-&gt;finance · engineering&lt;-&gt;product)</td></tr>
+<tr><td>Multi-human + Senior Expert collaboration</td><td>Operator-Senior-Expert dyad only (per A.3 AP6)</td><td>(1) Multi-stakeholder Charter model authored; (2) Per-human Authority subset within shared Charter; (3) &gt;= 1 deal-team or M&amp;A dogfood</td></tr>
+<tr><td>Third-party domain instance marketplace</td><td>Forge-curated 4-instance catalog only (v1)</td><td>(1) Native §1.4.3 v2+ third-party gate met; (2) ADR-NNN-senior-expert-pattern boundary stable; (3) Per-third-party-instance codex+deepseek review process operational</td></tr>
+<tr><td>Operator-customizable Authority per consequential-decision category</td><td>Domain-default Authority per category (v1)</td><td>(1) Per-operator Authority preference UI authored (terminal-fluent v1; non-terminal post v3); (2) Authority-override audit trail extends DecisionProvenance schema</td></tr>
+</table>
+
+<h3>Cutover plan v1 -&gt; v1.5</h3>
+<ol>
+  <li>Fleet measurement gate (&gt;= 3 T2 + &gt;= 5 T4 operators with first-project complete; &gt;= 50% accept-without-revise)</li>
+  <li>v1.5 features shipped behind feature-flag (operator opt-in per binding)</li>
+  <li>Canary v1.5 vs v1 via HS-8 canary-regression (no regression in v1 acceptance rate)</li>
+  <li>v1.5 graduation announcement; v1 binding mode deprecated within 90 days post-graduation</li>
+  <li>Approved-catalog gating opens to T4 operators per Native §1.4.3</li>
+</ol>
+
+<h3>Cutover plan v1.5 -&gt; v2</h3>
+<ol>
+  <li>v1.5 fleet measurement gate (&gt;= 85% accept-without-revise; cross-Senior-Expert handoff used in &gt;= 10 projects)</li>
+  <li>Marketplace review pipeline maturity check (per Native §1.4.3)</li>
+  <li>Pattern-ADR boundary audit — confirm ADR-NNN-senior-expert-pattern.md stable enough for third-party authoring</li>
+  <li>Third-party Senior Expert &lt;domain&gt; submission process opens; first third-party instance gates through codex+deepseek + canon-ADR review</li>
+  <li>v1.5 binding mode remains available; v2 adds new instance types incrementally</li>
+</ol>
+
+<h2 id="section-canon-additions">§Canon additions (per ADR-020 §Required canon additions)</h2>
+
+<p>Per ADR-020, every new Layer-B Product PRD specifies the canon files it adds. Senior Expert canon additions:</p>
+
+<table>
+<tr><th>#</th><th>Canon path</th><th>Content</th><th>Status</th></tr>
+<tr><td>1</td><td><code>sutra/os/decisions/ADR-NNN-senior-expert-pattern.md</code></td><td>Per-product specialization of ADR-018: (a) consequential decisions for Senior Expert (per domain), (b) deterministic guardrails added beyond ADR-018 baseline (domain-quality-gate evaluator), (c) HOW preferences specialized</td><td>TODO — to be authored after this PRD codex+deepseek review</td></tr>
+<tr><td>2a</td><td><code>sutra/os/native/blocks/senior-expert-p1-charter-intake.md</code></td><td>L8 Feature spec for P1 pillar</td><td>TODO</td></tr>
+<tr><td>2b</td><td><code>sutra/os/native/blocks/senior-expert-p2-domain-context.md</code></td><td>L8 Feature spec for P2 pillar</td><td>TODO</td></tr>
+<tr><td>2c</td><td><code>sutra/os/native/blocks/senior-expert-p3-execution.md</code></td><td>L8 Feature spec for P3 pillar</td><td>TODO</td></tr>
+<tr><td>2d</td><td><code>sutra/os/native/blocks/senior-expert-p4-escalation.md</code></td><td>L8 Feature spec for P4 pillar</td><td>TODO</td></tr>
+<tr><td>2e</td><td><code>sutra/os/native/blocks/senior-expert-p5-delivery.md</code></td><td>L8 Feature spec for P5 pillar</td><td>TODO</td></tr>
+<tr><td>3a</td><td><code>sutra/os/native/blocks/senior-expert-domain-legal.md</code></td><td>Domain-instance spec — legal context sources · consequential decisions · quality gates</td><td>TODO</td></tr>
+<tr><td>3b</td><td><code>sutra/os/native/blocks/senior-expert-domain-finance.md</code></td><td>Domain-instance spec — finance</td><td>TODO</td></tr>
+<tr><td>3c</td><td><code>sutra/os/native/blocks/senior-expert-domain-engineering.md</code></td><td>Domain-instance spec — engineering</td><td>TODO</td></tr>
+<tr><td>3d</td><td><code>sutra/os/native/blocks/senior-expert-domain-product.md</code></td><td>Domain-instance spec — product</td><td>TODO</td></tr>
+<tr><td>4a</td><td><code>sutra/os/native/open-questions/Q-SE-1.md</code></td><td>FSE1 — consequential definition per domain</td><td>TODO</td></tr>
+<tr><td>4b</td><td><code>sutra/os/native/open-questions/Q-SE-2..7.md</code></td><td>FSE2-FSE7 individual question files</td><td>TODO</td></tr>
+<tr><td>5</td><td><code>sutra/os/native/hardstops/HS-SE-1-domain-quality-gate-exhausted.md</code></td><td>Senior-Expert-specific hardstop spec (if codex review confirms it earns its own HS row vs being sub-case of HS-6)</td><td>TODO — codex ratification needed first</td></tr>
+</table>
+
+<p class="callout">Senior Expert does NOT add new canonical pillars beyond P1-P14 — Senior Expert's pillars are <em>product-local</em> (P1-P5 in this PRD) and bind to the 14 platform-canonical pillars via Native primitives. Per ADR-020 §Required canon additions row 4, new canonical-pillar files would be created only if a Product introduces canon-level doctrine not yet in P1-P14; Senior Expert does not.</p>
+
+<h2 id="section-summary">§Summary — Senior Expert PRD shape</h2>
+
+<p>This PRD specifies Senior Expert as the second Layer-B Product on Native, sibling to CoS. Where CoS is turn-scoped + portfolio-wide, Senior Expert is project-scoped + single-domain-deep. Same Native substrate (14 pillars · 10 primitives · 26 events · 6 surfaces · 8 hardstops · ADR-018 · ADR-019). Per-product specialization in 5 pillars (P1-P5), 15 needs (SN01-SN15), per-domain instance (legal · finance · engineering · product), HOW preferences specialized in 6 dimensions, one proposed product-specific hardstop (HS-SE-1).</p>
+
+<p>Authored to ADR-020 12-section template:</p>
+<ol>
+  <li>§A Idea — problem · persona · anti-persona · vision · differentiation · scope · task taxonomy · actors · skill modes</li>
+  <li>§B Pillars — P1-P5 with 6-block (Surface · Contract · Mechanism) per pillar</li>
+  <li>§B Needs cluster — 15 needs in 5 clusters mirroring project-lifecycle</li>
+  <li>§Operator surface contract — capability bullets per pillar</li>
+  <li>§Acceptance criteria — per-pillar + product-level + 5 falsification tests</li>
+  <li>§HOW preferences — 6 specialized dimensions vs CoS defaults</li>
+  <li>§Layer-B claims on Native — primitives bound · surfaces used · hardstops specialized · new capability required (2 v1 items)</li>
+  <li>§Distribution + onboarding — install matrix per tier + onboarding journey</li>
+  <li>§Observability — per-pillar metrics + accuracy KPI + 5 satisfaction signals + Daily Pulse integration</li>
+  <li>§Open questions — FSE1-FSE7 + cross-references to ADR-020 OQ</li>
+  <li>§Resilience contract — HS-1..HS-8 specialization + HS-SE-1 proposed + per-pillar recovery</li>
+  <li>§Activation + versioning — v1 / v1.5 / v2 scope + cutover plans</li>
+</ol>
+
+<p class="callout">Plus §Canon additions enumerating the ADR + block + open-question + hardstop files to be authored post-PRD review.</p>
+
+<p><strong>Next steps (TODO)</strong>:</p>
+<ol>
+  <li>Codex review of this PRD against ADR-020 contract</li>
+  <li>Deepseek review of this PRD against ADR-020 contract</li>
+  <li>Founder review — fill 15 "Awaiting founder fill" Surface rings (3 per pillar x 5 pillars)</li>
+  <li>Founder ratification of TODO items: consequential-decision definitions per domain (FSE1), skill-mode dominance per domain (A.9.1), domain-canonical source lists (P2), per-domain HOW variation tables, HS-SE-1 status decision, v1 cost ceiling (FSE7)</li>
+  <li>Per-domain expert ratification on domain-canonical sources + quality-gate threshold (per domain instance)</li>
+  <li>Author ADR-NNN-senior-expert-pattern.md per ADR-020 §Pattern ADR layering</li>
+  <li>Author 5 pillar block specs + 4 domain-instance block specs (9 block files)</li>
+  <li>Author Q-SE-1..7 open-question files</li>
+  <li>Asawa Forge dogfood — first Senior Expert deployment under T1 Charter</li>
+</ol>
+
+<hr>
+<p class="meta-strip"><strong>Authored</strong>: 2026-05-13 (baseline draft, pre-codex review) · <strong>Author</strong>: Claude (Opus 4.7) without <code>prd-discipline</code> skill loaded · <strong>Purpose</strong>: baseline for prd-discipline skill test at <code>.enforcement/skill-tests/2026-05-13-prd-discipline-baseline.md</code>.</p>
+
+</div>
+</body>
+</html>

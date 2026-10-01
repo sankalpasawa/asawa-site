@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sutra v2 -- System Audit: What Connects Where</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'SF Mono',monospace;background:#0a0a0a;color:#ccc;padding:32px 40px}
+h1{font-size:22px;color:#fff;margin-bottom:4px}
+.sub{color:#555;font-size:11px;margin-bottom:32px}
+h2{font-size:16px;color:#fff;margin:32px 0 12px;padding-top:24px;border-top:1px solid #1a1a1a}
+h3{font-size:13px;color:#999;margin:20px 0 8px}
+
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:24px}
+th{text-align:left;padding:8px 10px;background:#111;color:#888;border-bottom:1px solid #222;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:6px 10px;border-bottom:1px solid #151515;vertical-align:top}
+tr:hover{background:#0d0d0d}
+
+.file{color:#ddd;font-weight:500}
+.phase{font-weight:600;font-size:10px;padding:2px 6px;border-radius:3px;display:inline-block;margin-right:4px}
+.p0{background:#1a1a1a;color:#999}
+.p1{background:#0d0d18;color:#7c7cff}
+.p2{background:#100d18;color:#a78bfa}
+.p3{background:#140a0a;color:#ef4444}
+.p4{background:#18140a;color:#f59e0b}
+.p5{background:#0a1816;color:#2dd4bf}
+.p6{background:#18140a;color:#f59e0b}
+.p7{background:#0a1418;color:#06b6d4}
+.p8{background:#111;color:#888}
+.p9{background:#0a1418;color:#06b6d4}
+
+.status{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px}
+.s-used{background:#0a1a0a;color:#22c55e;border:1px solid #1a3a1a}
+.s-bg{background:#0a0a1a;color:#7c7cff;border:1px solid #1a1a3a}
+.s-orphan{background:#1a0a0a;color:#ef4444;border:1px solid #3a1a1a}
+.s-sched{background:#1a1a0a;color:#f59e0b;border:1px solid #3a3a1a}
+
+.detail{color:#666;line-height:1.4}
+.arrow{color:#444;font-size:10px}
+
+/* Summary boxes */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.summary-box{border:1px solid #222;border-radius:8px;padding:14px;background:#111;text-align:center}
+.summary-num{font-size:28px;font-weight:700;margin-bottom:2px}
+.summary-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px}
+.n-used{color:#22c55e}
+.n-bg{color:#7c7cff}
+.n-orphan{color:#ef4444}
+.n-sched{color:#f59e0b}
+
+/* Flow mapping */
+.flow-map{margin:16px 0 24px;padding:16px;background:#111;border:1px solid #222;border-radius:8px}
+.flow-phase{margin-bottom:12px}
+.flow-phase-title{font-size:11px;font-weight:600;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.flow-files{display:flex;flex-wrap:wrap;gap:6px;margin-left:20px}
+.flow-file{font-size:9px;padding:3px 8px;border-radius:4px;background:#0a0a0a;border:1px solid #222;color:#aaa}
+.flow-file:hover{border-color:#555;color:#ddd}
+.flow-arrow{color:#333;font-size:10px;margin-left:20px;padding:2px 0}
+</style>
+</head>
+<body>
+
+<h1>Sutra v2 -- System Audit</h1>
+<p class="sub">Every Asawa + Sutra file. Where it activates in the v2 flow. What's orphaned. What's background. What's actually used.</p>
+
+<!-- Summary -->
+<div class="summary">
+  <div class="summary-box"><div class="summary-num n-used">22</div><div class="summary-label">Used in Flow</div></div>
+  <div class="summary-box"><div class="summary-num n-bg">28</div><div class="summary-label">Background / Boot</div></div>
+  <div class="summary-box"><div class="summary-num n-orphan">12</div><div class="summary-label">Orphaned</div></div>
+  <div class="summary-box"><div class="summary-num n-sched">6</div><div class="summary-label">Separate Flow Needed</div></div>
+</div>
+
+<!-- =============================== -->
+<!-- VISUAL: Flow with files mapped -->
+<!-- =============================== -->
+
+<h2>The Flow -- With Every File Mapped to Its Activation Point</h2>
+
+<div class="flow-map">
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p0">BOOT</span> Session Start (before any problem)</div>
+  <div class="flow-files">
+    <div class="flow-file">CLAUDE.md</div>
+    <div class="flow-file">holding/TODO.md (lines 1-15)</div>
+    <div class="flow-file">sutra/CURRENT-VERSION.md</div>
+    <div class="flow-file">holding/PRINCIPLES.md</div>
+    <div class="flow-file">holding/HIERARCHY.md</div>
+    <div class="flow-file">holding/SESSION-ISOLATION.md</div>
+    <div class="flow-file">holding/HUMAN-AI-INTERACTION.md</div>
+    <div class="flow-file">holding/ENFORCEMENT-FRAMEWORK.md</div>
+    <div class="flow-file">sutra/l2/DEFAULTS-ARCHITECTURE.md</div>
+    <div class="flow-file">sutra/l2/PERMISSIONS-TEMPLATE.md</div>
+    <div class="flow-file">sutra/START-HERE.md</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| human speaks |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p1">P1</span> Input Routing (classify TYPE)</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#7c7cff">sutra/l2/c-human-agent-interface/HUMAN-AGENT-INTERFACE.md</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| routes by type |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p2">P2</span> Type-Specific Protocols</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#a78bfa">holding/FOUNDER-DIRECTIONS.md (if direction)</div>
+    <div class="flow-file" style="border-color:#a78bfa">holding/NEW-THING-PROTOCOL.md (if new concept)</div>
+    <div class="flow-file" style="border-color:#a78bfa">holding/CHANGE-INTEGRATION.md (if new thing)</div>
+    <div class="flow-file" style="border-color:#a78bfa">holding/SYSTEM-MAP.md (if creating structure)</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| if task/question, continue |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p3">P3</span> Pre-Scoring Gates (enforcement)</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#ef4444">sutra/l2/ENFORCEMENT.md</div>
+    <div class="flow-file" style="border-color:#ef4444">sutra/l2/PROTOCOLS.md (PROTO-001,003,004,005,006,011)</div>
+    <div class="flow-file" style="border-color:#ef4444">.claude/hooks/enforce-boundaries.sh</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| gates set floors |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p4">P4</span> Domain Gate + Estimation</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/d-engines/ADAPTIVE-PROTOCOL.md (Cynefin + 10 params, repurposed)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/d-engines/ESTIMATION-ENGINE.md (task-level estimate)</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| domain selects pattern |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p5">P5</span> Pattern Execution</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#2dd4bf">sutra/l2/TASK-LIFECYCLE.md (all lifecycle phases)</div>
+    <div class="flow-file" style="border-color:#2dd4bf">sutra/l2/PROTOCOLS.md (protocol store for Clear/Encode)</div>
+    <div class="flow-file" style="border-color:#2dd4bf">sutra/l2/a-company-architecture/processes/INCIDENT-RESPONSE.md (Chaotic)</div>
+    <div class="flow-file" style="border-color:#2dd4bf">sutra/l2/a-company-architecture/ROUTING.md (cross-practice routing)</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| for Complicated, enters node loop |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p6">P6</span> Inside Node (per-node loop)</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/d-engines/ESTIMATION-ENGINE.md (per-node estimate)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/b-agent-architecture/SKILL-CATALOG.md (which skill to invoke)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/b-agent-architecture/GSTACK-INTEGRATION.md (gstack skill mapping)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l4/PRINCIPLES-BY-FUNCTION.md (domain principles for precision)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/layer3-modules/ (product-type context)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/templates/HLD-TEMPLATE.md (if system-level node)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/templates/ADR-TEMPLATE.md (if irreversible decision)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/templates/RESEARCH-GATE-TEMPLATE.md (if research node)</div>
+    <div class="flow-file" style="border-color:#f59e0b">sutra/l2/templates/BUG-FIX-TEMPLATE.md (if bug fix)</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| terminal check passes |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p7">P7</span> Output Readability Gate</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#06b6d4">sutra/l2/READABILITY-STANDARD.md</div>
+    <div class="flow-file" style="border-color:#06b6d4">sutra/l2/c-human-agent-interface/HUMAN-AGENT-INTERFACE.md (sovereignty)</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| output shown to human |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p8">P8</span> Measure</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#888">sutra/l2/d-engines/MEASUREMENT-PROTOCOL.md</div>
+    <div class="flow-file" style="border-color:#888">sutra/l2/d-engines/SUTRA-KPI.md</div>
+    <div class="flow-file" style="border-color:#888">sutra/l2/ENFORCEMENT.md (compliance check)</div>
+    <div class="flow-file" style="border-color:#888">ESTIMATION-LOG.jsonl</div>
+  </div>
+</div>
+
+<div class="flow-arrow">| feed forward |</div>
+
+<div class="flow-phase">
+  <div class="flow-phase-title"><span class="phase p9">P9</span> Learn</div>
+  <div class="flow-files">
+    <div class="flow-file" style="border-color:#06b6d4">sutra/l2/PROTOCOLS.md (protocol extraction)</div>
+    <div class="flow-file" style="border-color:#06b6d4">sutra/l2/a-company-architecture/CONTINUOUS-IMPROVEMENT.md</div>
+  </div>
+</div>
+
+</div>
+
+<!-- =============================== -->
+<!-- ORPHANED FILES -->
+<!-- =============================== -->
+
+<h2>Orphaned Files (no activation point in v2 problem flow)</h2>
+
+<h3>Superseded -- can archive</h3>
+<table>
+<tr><th>File</th><th>Replaced By</th><th>Action</th></tr>
+<tr><td class="file">sutra/l2/OPERATING-MODEL.md</td><td class="detail">TASK-LIFECYCLE.md (TASK-LIFECYCLE.md itself says this)</td><td><span class="status s-orphan">ARCHIVE</span></td></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/processes/FEATURE-LIFECYCLE.md</td><td class="detail">TASK-LIFECYCLE.md (marked superseded in file)</td><td><span class="status s-orphan">ARCHIVE</span></td></tr>
+<tr><td class="file">holding/PROCESS-GENERATION.md</td><td class="detail">v2 Disorder pattern + Learn phase production rules</td><td><span class="status s-orphan">ARCHIVE</span></td></tr>
+<tr><td class="file">holding/CONFIDENCE.md</td><td class="detail">READABILITY-STANDARD.md + DAILY-PULSE.md</td><td><span class="status s-orphan">ARCHIVE</span></td></tr>
+<tr><td class="file">holding/DAILY-PULSE.md</td><td class="detail">Stale snapshot from 2026-04-05. Generated artifact, not a flow component.</td><td><span class="status s-orphan">ARCHIVE</span></td></tr>
+<tr><td class="file">holding/TEST-IN-PRODUCTION.md</td><td class="detail">Intent captured by v2 Learn phase (production rules need 10+ uses, 90%+ accuracy)</td><td><span class="status s-orphan">MERGE into PROTOCOLS</span></td></tr>
+<tr><td class="file">holding/DIRECTION-ENFORCEMENT.md</td><td class="detail">Enforcement now via Domain Gate + Terminal Check + ENFORCEMENT.md</td><td><span class="status s-orphan">MERGE into ENFORCEMENT</span></td></tr>
+</table>
+
+<h3>Multi-Agent Infra -- not activated in single-agent v2</h3>
+<table>
+<tr><th>File</th><th>Why Orphaned</th><th>Action</th></tr>
+<tr><td class="file">sutra/l2/b-agent-architecture/AGENT-PROTOCOLS.md</td><td class="detail">v2 flow is single-agent, single-problem. No multi-agent coordination.</td><td><span class="status s-orphan">HOLD for multi-agent v3</span></td></tr>
+<tr><td class="file">sutra/l2/b-agent-architecture/COMPLIANCE-AGENT.md</td><td class="detail">References old lifecycle phases, not v2 domain/pattern. Needs rewrite.</td><td><span class="status s-orphan">REWRITE for v2</span></td></tr>
+<tr><td class="file">sutra/l2/PARALLELIZATION-ARCHITECTURE.md</td><td class="detail">BSP model for parallel agents. v2 problem flow is single-path.</td><td><span class="status s-orphan">HOLD for multi-agent v3</span></td></tr>
+<tr><td class="file">holding/AGENT-INCENTIVES.md</td><td class="detail">Agent tension/incentive model. Future multi-agent only.</td><td><span class="status s-orphan">HOLD for multi-agent v3</span></td></tr>
+<tr><td class="file">sutra/l2/b-agent-architecture/AB-TEST-FRAMEWORK.md</td><td class="detail">Meta-evaluation: does Sutra help? Not a problem flow component.</td><td><span class="status s-orphan">HOLD for meta-eval</span></td></tr>
+</table>
+
+<h3>Scheduling/Cadence -- need their own flow diagram</h3>
+<table>
+<tr><th>File</th><th>What It Is</th><th>Action</th></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/processes/WEEKLY-PLANNING.md</td><td class="detail">Weekly cadence -- not triggered by a problem arriving</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/processes/DAILY-STANDUP.md</td><td class="detail">Daily heartbeat -- not triggered by a problem arriving</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/processes/ROADMAP-MEETING.md</td><td class="detail">OKR-driven cadence -- not triggered by a problem arriving</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/CHARTERS.md</td><td class="detail">Strategy cascade (Vision > Mission > Goals) -- planning framework</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/processes/DECISION-MAKING.md</td><td class="detail">Decision categories -- governance reference for sovereignty</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/a-company-architecture/SYSTEM-HEALTH.md</td><td class="detail">Growth protocols (refactoring, pruning) -- maintenance ops</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+</table>
+
+<h3>Company Lifecycle -- separate from problem solving</h3>
+<table>
+<tr><th>File</th><th>What It Is</th><th>Action</th></tr>
+<tr><td class="file">sutra/l2/CLIENT-ONBOARDING.md</td><td class="detail">8-phase onboarding process -- triggered by new company, not by problem</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/DEPLOYMENT-MODEL.md</td><td class="detail">5-layer deployment ladder -- about deploying OS to companies</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+<tr><td class="file">sutra/l2/MANIFEST-v1.7.md</td><td class="detail">Deployment checklist -- verification tool for OS deploy</td><td><span class="status s-sched">SEPARATE FLOW</span></td></tr>
+</table>
+
+<h3>Theoretical -- reference only, never activate</h3>
+<table>
+<tr><th>File</th><th>What It Is</th><th>Action</th></tr>
+<tr><td class="file">holding/ABSTRACTION-ARCHITECTURE.md</td><td class="detail">Shearing layers theory -- informative, not operational</td><td><span class="status s-bg">KEEP as reference</span></td></tr>
+</table>
+
+<!-- =============================== -->
+<!-- BACKGROUND FILES -->
+<!-- =============================== -->
+
+<h2>Background Files (loaded at boot, constrain all phases)</h2>
+
+<table>
+<tr><th>File</th><th>When Loaded</th><th>What It Constrains</th></tr>
+<tr><td class="file">CLAUDE.md</td><td>Session start</td><td class="detail">Identity, boot sequence, input routing format, estimation block format</td></tr>
+<tr><td class="file">holding/PRINCIPLES.md</td><td>Session start</td><td class="detail">P1-P11 behavioral constraints across all phases</td></tr>
+<tr><td class="file">holding/HIERARCHY.md</td><td>Session start</td><td class="detail">6-level cascade rules -- governs where changes land</td></tr>
+<tr><td class="file">holding/SESSION-ISOLATION.md</td><td>Session start</td><td class="detail">5 isolation levels -- constrains file access</td></tr>
+<tr><td class="file">holding/HUMAN-AI-INTERACTION.md</td><td>Session start</td><td class="detail">WHAT/HOW/WHEN contract, P1-P10 -- constrains all agent behavior</td></tr>
+<tr><td class="file">holding/ENFORCEMENT-FRAMEWORK.md</td><td>Session start</td><td class="detail">Hard/Soft/Audit gate mechanism -- how enforcement works</td></tr>
+<tr><td class="file">holding/OVERRIDE-RULES.md</td><td>On-demand</td><td class="detail">LOCKED/ADOPTABLE/OVERRIDABLE hierarchy -- when founder can override</td></tr>
+<tr><td class="file">holding/ENTITY-MAP.md</td><td>Session start</td><td class="detail">What Asawa/Sutra/companies ARE -- identity layer</td></tr>
+<tr><td class="file">holding/FUNCTIONS.md</td><td>Session start</td><td class="detail">Three Asawa functions (governance/portfolio/infrastructure)</td></tr>
+<tr><td class="file">holding/VISION.md</td><td>Session start</td><td class="detail">Mission/vision -- identity anchor</td></tr>
+<tr><td class="file">holding/INFRASTRUCTURE-ARCHITECTURE.md</td><td>Session start</td><td class="detail">Shared infra inheritance model</td></tr>
+<tr><td class="file">sutra/l2/DEFAULTS-ARCHITECTURE.md</td><td>Session start</td><td class="detail">Immutable invariants, controlled parameters</td></tr>
+<tr><td class="file">sutra/l2/PERMISSIONS-TEMPLATE.md</td><td>Session start</td><td class="detail">Three permission tiers for settings.json</td></tr>
+<tr><td class="file">All Layer 1 research (4 files)</td><td>Never (reference)</td><td class="detail">Theoretical foundation -- informs design decisions, not operational</td></tr>
+<tr><td class="file">sutra/VISION.md, PRODUCT-VISION.md, OKRs.md</td><td>On-demand</td><td class="detail">Strategic context -- not operational</td></tr>
+<tr><td class="file">sutra/RELEASES.md, sutra/CURRENT-VERSION.md</td><td>Session start</td><td class="detail">Version management</td></tr>
+<tr><td class="file">holding/REFERENCES.md</td><td>On-demand</td><td class="detail">External references -- loaded for research nodes</td></tr>
+<tr><td class="file">holding/ASAWA-AS-CLIENT.md</td><td>On-demand</td><td class="detail">Governance model -- Asawa's relationship with Sutra</td></tr>
+<tr><td class="file">holding/SESSION-CHECKPOINTS.md</td><td>Session end</td><td class="detail">Checkpoint JSON spec -- activates at session END, not during flow</td></tr>
+<tr><td class="file">holding/TODO.md</td><td>Session start (lines 1-15)</td><td class="detail">Backlog quick reference</td></tr>
+<tr><td class="file">holding/FOUNDER-DIRECTIONS.md</td><td>On-demand per CLAUDE.md</td><td class="detail">D1-D35+ direction log -- loaded when task involves directions/governance</td></tr>
+<tr><td class="file">holding/OKRs.md</td><td>On-demand</td><td class="detail">Q2 strategic priorities</td></tr>
+<tr><td class="file">sutra/l2/d-engines/SUTRA-KPI-HISTORY.md</td><td>On-demand</td><td class="detail">Historical KPI baselines</td></tr>
+</table>
+
+<!-- =============================== -->
+<!-- KEY INSIGHT -->
+<!-- =============================== -->
+
+<h2>Key Insight: Three Types of System Files</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px">
+  <div style="border:1px solid #1a3a1a;border-radius:8px;padding:16px;background:#0a140a">
+    <div style="font-size:14px;font-weight:600;color:#22c55e;margin-bottom:8px">Flow Files (22)</div>
+    <div style="font-size:11px;color:#888;line-height:1.6">
+      Directly activate during problem solving. Have a specific trigger point in the v2 flow (Phase 1-9). If removed, a step in the flow breaks.
+      <br><br>
+      <b>These are the operational core.</b>
+    </div>
+  </div>
+  <div style="border:1px solid #1a1a3a;border-radius:8px;padding:16px;background:#0a0a14">
+    <div style="font-size:14px;font-weight:600;color:#7c7cff;margin-bottom:8px">Governance Files (28)</div>
+    <div style="font-size:11px;color:#888;line-height:1.6">
+      Loaded at session start or on-demand. Constrain agent behavior across ALL phases. Don't activate at a specific step -- they're the constitution the flow operates within.
+      <br><br>
+      <b>These are the constraints. Remove one and behavior drifts.</b>
+    </div>
+  </div>
+  <div style="border:1px solid #3a1a1a;border-radius:8px;padding:16px;background:#140a0a">
+    <div style="font-size:14px;font-weight:600;color:#ef4444;margin-bottom:8px">Orphaned Files (18)</div>
+    <div style="font-size:11px;color:#888;line-height:1.6">
+      No activation in the problem flow AND not governance constraints. Either superseded, future-only (multi-agent), or belong to a different flow (scheduling, onboarding, deployment).
+      <br><br>
+      <b>7 to archive. 5 to hold for v3. 6 need their own flow diagram.</b>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px;padding:16px;border:1px solid #222;border-radius:8px;background:#111">
+  <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:8px">What's Actually Missing From the v2 Flow</div>
+  <div style="font-size:11px;color:#888;line-height:1.8">
+    1. <b>Scheduling flow</b> -- WEEKLY-PLANNING, DAILY-STANDUP, ROADMAP-MEETING have no home. They need a separate "Cadence Flow" diagram.<br>
+    2. <b>Company lifecycle flow</b> -- CLIENT-ONBOARDING, DEPLOYMENT-MODEL, MANIFEST need a "New Company Flow" diagram.<br>
+    3. <b>Compliance Agent</b> -- exists but references old lifecycle. Needs v2 rewrite to work with Domain Gate + Terminal Check.<br>
+    4. <b>Multi-agent coordination</b> -- AGENT-PROTOCOLS, PARALLELIZATION-ARCHITECTURE, AGENT-INCENTIVES are designed but have no activation. Need v3 multi-agent flow.<br>
+    5. <b>Direction enforcement at runtime</b> -- DIRECTION-ENFORCEMENT.md encodes D1-D10 as TRIGGER/CHECK but nothing in v2 flow actually runs these checks per-node. The enforcement is implicit (loaded at boot) not explicit (checked during execution).
+  </div>
+</div>
+
+</body>
+</html>
