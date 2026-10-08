@@ -1,0 +1,214 @@
+<!doctype html>
+<!-- Market map at H2: a subpage of Human and Agent, split from the long page of 2026-10-07 by the split script. Sidebar injected by _sidebar.py --apply. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Market map at H2</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 8px}
+h3{font-size:17px;margin:14px 0 6px;letter-spacing:-.01em}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul,ol{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:10px;overflow-x:auto;background:#fff}
+figure.map svg{min-width:640px}
+figure.lanes svg{min-width:760px}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+details.why .body b{color:#111827}
+/* the five hues of the AO pages, light only (the Native site is light) */
+:root{--c-models:#5a56d6;--c-models-t:#e4e3f9;--c-harness:#0a9c96;--c-harness-t:#d6f1ef;--c-ao:#c9512e;--c-ao-t:#f9e1d8;--c-market:#8a3fb4;--c-market-t:#eddff5;--c-people:#3a7d2c;--c-people-t:#dcefd6;--c-hw:#5b6471;--c-hw-t:#e6e8ec;--c-gray:#8a919b;--c-gray-t:#e6e8ec;--s1:#fbe6dd;--s2:#f3b99f;--s3:#e58a63;--s4:#c9512e}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:#6b7280;align-items:center;margin:6px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}.legend i.line{height:3px;width:18px;border-radius:0}
+.tag{display:inline-block;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid #e5e7eb;border-radius:2px;margin-right:4px;font-weight:700}
+.tag.today{border-color:var(--c-harness);color:var(--c-harness)}.tag.proj{border-color:var(--c-ao);color:var(--c-ao)}.tag.dec{background:var(--c-people-t);border-color:var(--c-people)}.tag.inf{border-color:var(--c-models);color:var(--c-models)}
+.means{border-left:4px solid var(--c-people);padding:7px 12px;background:var(--c-people-t);font-size:13.5px;margin:10px 0}
+.means.ao{border-left-color:var(--c-ao);background:var(--c-ao-t)}
+.futures{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 4px}
+.future{border:1px solid #e5e7eb;border-top:4px solid #9ca3af;padding:10px 12px;font-size:13px}
+.future.f1{border-top-color:var(--c-harness)}.future.f2{border-top-color:var(--c-people)}.future.f3{border-top-color:var(--c-models)}
+.future b{display:block;font-size:14px;margin-bottom:3px}.future .trig{color:#6b7280}
+.bar{display:inline-block;height:10px;vertical-align:middle;margin-right:6px;border-radius:2px;background:var(--s3)}
+.bar.s1{background:var(--s1);border:1px solid var(--s2)}.bar.s2{background:var(--s2)}.bar.s3{background:var(--s3)}.bar.s4{background:var(--s4)}
+.who{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px}.who.p{background:var(--c-people)}.who.a{background:var(--c-ao)}.who.h{background:var(--c-hw)}.who.m{background:var(--c-market)}
+td.P{background:var(--c-people-t)}td.A{background:var(--c-ao-t)}td.B{background:linear-gradient(90deg,var(--c-ao-t),var(--c-people-t))}
+.answers{display:grid;gap:6px;margin:8px 0}
+.ans{display:grid;grid-template-columns:30px 1fr;gap:10px;border:1px solid #e5e7eb;padding:8px 10px;font-size:13.5px;align-items:start}
+.ans .k{color:#fff;border-radius:3px;text-align:center;font-weight:700;padding:3px 0}
+.steps{display:grid;gap:5px;margin:8px 0 4px}
+.step{display:grid;grid-template-columns:1fr 1fr;border:1px solid #e5e7eb;font-size:13px}
+.step .from{color:#6b7280;padding:6px 10px;border-left:4px solid var(--c-ao)}.step .to{padding:6px 10px;border-left:4px solid var(--c-people)}
+.toc{columns:2;font-size:13px;margin:8px 0 4px}.toc li{break-inside:avoid}
+@media (max-width:640px){.step{grid-template-columns:1fr}.toc{columns:1}}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+figure.wide svg{min-width:720px}
+.assume{border:1px solid #c9512e;border-left:5px solid #c9512e;background:#fff7f3;padding:7px 12px;font-size:13px;margin:10px 0}
+.assume b{color:#c9512e}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a class="sb-cur" href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &#8250; Business &#8250; <a href="../human-and-agent.html">Human and Agent</a> &#8250; Market map at H2</div>
+<h1>Market map at H2 <span class="lvl">HUMAN AND AGENT</span></h1>
+<p class="lede" style="font-size:17px;line-height:1.45;max-width:62ch;margin:10px 0 14px">One rash, one morning: eleven parties, two of them people. Six other industries on the same star. The numbers, sourced to 2030, projected to H2.</p>
+<section id="map">
+<h2>Market map at H2: one rash, one morning</h2>
+<p>The abstract chapters say what happens to every industry. This draws one: health, and inside it one aspect, a skin condition treated. Asha, 34, finds a rash on her arm at 7 am. By 9 am the medicine is at her door. Eleven parties touched it; two were people.</p>
+<div class="legend"><b style="color:#111827">Flows:</b><span><i class="line" style="background:var(--c-models)"></i>data</span><span><i class="line" style="background:var(--c-market)"></i>money</span><span><i class="line" style="background:var(--c-hw)"></i>goods</span><span><i class="line" style="background:var(--c-people)"></i>a human's stamp</span></div>
+<figure class="map">
+<svg viewBox="0 0 900 650" role="img" aria-label="A map of a skin condition treated in H2: Asha and her AO in the centre; hardware left; clinic top right; lab bottom left; pharmacy, logistics and pharma maker right; the insurer's AO top left; models and compute top; the market registry bottom; nine numbered flows.">
+<defs>
+<marker id="m-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--c-models)"/></marker>
+<marker id="m-money" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--c-market)"/></marker>
+<marker id="m-goods" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--c-hw)"/></marker>
+<marker id="m-stamp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--c-people)"/></marker>
+</defs>
+<g font-size="12" fill="#111827">
+<rect x="330" y="16" width="240" height="54" rx="6" fill="var(--c-models-t)" stroke="var(--c-models)" stroke-width="2"/><text x="450" y="38" text-anchor="middle" font-weight="600">MODELS AND COMPUTE</text><text x="450" y="56" text-anchor="middle" font-size="11">intelligence by the call, to every AO below</text>
+<rect x="30" y="100" width="210" height="64" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="2"/><text x="135" y="124" text-anchor="middle" font-weight="600">THE INSURER'S AO</text><text x="135" y="142" text-anchor="middle" font-size="11">reads the signed diagnosis, pays the same hour</text><text x="135" y="156" text-anchor="middle" font-size="10.5">a person signs off disputes only</text>
+<rect x="650" y="100" width="230" height="120" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="765" y="124" text-anchor="middle" font-weight="600">THE CLINIC</text><text x="765" y="142" text-anchor="middle" font-size="11">Dr. Rao, dermatologist: 6 minutes, signs</text>
+<rect x="665" y="156" width="200" height="50" rx="5" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="2"/><text x="765" y="176" text-anchor="middle" font-size="11" font-weight="600">the clinic's AO</text><text x="765" y="192" text-anchor="middle" font-size="10.5">triage, draft plan, notes, billing</text>
+<rect x="30" y="250" width="210" height="86" rx="6" fill="var(--c-hw-t)" stroke="var(--c-hw)" stroke-width="2"/><text x="135" y="274" text-anchor="middle" font-weight="600">HARDWARE AT HOME</text><text x="135" y="292" text-anchor="middle" font-size="11">phone camera, a clip-on dermatoscope</text><text x="135" y="308" text-anchor="middle" font-size="11">about 40 USD, bought once</text><text x="135" y="324" text-anchor="middle" font-size="10.5">made by another industry: devices</text>
+<rect x="360" y="235" width="180" height="56" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2.5"/><text x="450" y="258" text-anchor="middle" font-weight="600">ASHA, 34</text><text x="450" y="276" text-anchor="middle" font-size="11">a rash on her arm, 7 am</text>
+<rect x="360" y="305" width="180" height="56" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="2.5"/><text x="450" y="328" text-anchor="middle" font-weight="600">HER AO</text><text x="450" y="346" text-anchor="middle" font-size="11">her health department: holds her record</text>
+<line x1="450" y1="293" x2="450" y2="303" stroke="#334155" stroke-width="1.5"/>
+<rect x="30" y="420" width="210" height="86" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="135" y="444" text-anchor="middle" font-weight="600">THE LAB</text><text x="135" y="462" text-anchor="middle" font-size="11">analyzer (hardware) and a pathologist</text>
+<rect x="45" y="472" width="180" height="26" rx="4" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="135" y="489" text-anchor="middle" font-size="10.5">the lab's AO: queue, result, invoice</text>
+<rect x="650" y="300" width="230" height="80" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="2"/><text x="765" y="324" text-anchor="middle" font-weight="600">THE PHARMACY'S AO</text><text x="765" y="342" text-anchor="middle" font-size="11">checks the prescription, stock, interactions</text>
+<rect x="665" y="350" width="200" height="22" rx="4" fill="var(--c-hw-t)" stroke="var(--c-hw)" stroke-width="1.5"/><text x="765" y="365" text-anchor="middle" font-size="10.5">dispensing robot (hardware)</text>
+<rect x="650" y="410" width="230" height="60" rx="6" fill="var(--c-hw-t)" stroke="var(--c-hw)" stroke-width="2"/><text x="765" y="434" text-anchor="middle" font-weight="600">LOGISTICS</text><text x="765" y="452" text-anchor="middle" font-size="11">a drone or a rider; a courier company's AO routes it</text>
+<rect x="650" y="500" width="230" height="60" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="765" y="524" text-anchor="middle" font-weight="600">THE PHARMA MAKER</text><text x="765" y="542" text-anchor="middle" font-size="11">another industry; its AO sells to the pharmacy's AO</text>
+<rect x="300" y="560" width="300" height="70" rx="6" fill="var(--c-market-t)" stroke="var(--c-market)" stroke-width="2"/><text x="450" y="584" text-anchor="middle" font-weight="600">THE MARKET BETWEEN AOs</text><text x="450" y="602" text-anchor="middle" font-size="11">registry, prices, promises with a time, disputes</text><text x="450" y="618" text-anchor="middle" font-size="10.5">the regulator reads it; every AO above is registered here</text>
+<line x1="242" y1="300" x2="358" y2="325" stroke="var(--c-models)" stroke-width="2" marker-end="url(#m-data)"/><circle cx="290" cy="300" r="9" fill="var(--c-models)"/><text x="290" y="304" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">1</text><text x="300" y="296" font-size="10.5">the photo, 7:02</text>
+<line x1="542" y1="320" x2="663" y2="206" stroke="var(--c-models)" stroke-width="2" marker-end="url(#m-data)"/><circle cx="590" cy="275" r="9" fill="var(--c-models)"/><text x="590" y="279" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">2</text><text x="600" y="268" font-size="10.5">case + consent, 7:03</text>
+<line x1="648" y1="150" x2="520" y2="305" stroke="var(--c-people)" stroke-width="2" marker-end="url(#m-stamp)"/><circle cx="600" cy="208" r="9" fill="var(--c-people)"/><text x="600" y="212" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">3</text><text x="520" y="214" font-size="10.5" text-anchor="end">signed diagnosis, 7:41</text>
+<line x1="358" y1="350" x2="242" y2="440" stroke="var(--c-hw)" stroke-width="2.5" marker-end="url(#m-goods)"/><circle cx="300" cy="395" r="9" fill="var(--c-hw)"/><text x="300" y="399" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">4</text><text x="312" y="412" font-size="10.5">sample, if the doctor asks</text>
+<line x1="542" y1="340" x2="648" y2="340" stroke="var(--c-models)" stroke-width="2" marker-end="url(#m-data)"/><circle cx="595" cy="340" r="9" fill="var(--c-models)"/><text x="595" y="344" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">5</text><text x="595" y="360" text-anchor="middle" font-size="10.5">prescription, 7:42</text>
+<line x1="765" y1="382" x2="765" y2="408" stroke="var(--c-hw)" stroke-width="2.5" marker-end="url(#m-goods)"/>
+<path d="M648,440 C560,440 470,420 455,293" fill="none" stroke="var(--c-hw)" stroke-width="2.5" marker-end="url(#m-goods)"/><circle cx="560" cy="432" r="9" fill="var(--c-hw)"/><text x="560" y="436" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">6</text><text x="560" y="456" text-anchor="middle" font-size="10.5">medicine at the door, 8:40</text>
+<line x1="765" y1="498" x2="765" y2="472" stroke="var(--c-hw)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#m-goods)"/>
+<line x1="242" y1="150" x2="380" y2="303" stroke="var(--c-market)" stroke-width="2" marker-end="url(#m-money)"/><circle cx="300" cy="215" r="9" fill="var(--c-market)"/><text x="300" y="219" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">7</text><text x="312" y="212" font-size="10.5">claim read, paid 7:50</text>
+<line x1="420" y1="233" x2="420" y2="72" stroke="var(--c-market)" stroke-width="2" marker-end="url(#m-money)"/><circle cx="420" cy="150" r="9" fill="var(--c-market)"/><text x="420" y="154" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">8</text><text x="432" y="154" font-size="10.5">tokens: under 1 USD for the morning</text>
+<line x1="450" y1="363" x2="450" y2="558" stroke="var(--c-market)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m-money)"/><circle cx="450" cy="470" r="9" fill="var(--c-market)"/><text x="450" y="474" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">9</text><text x="462" y="474" font-size="10.5">every AO is registered, priced, held to its promise</text>
+<line x1="240" y1="490" x2="298" y2="580" stroke="var(--c-market)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/><line x1="650" y1="440" x2="602" y2="580" stroke="var(--c-market)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
+</g></svg>
+<p class="figcap">Nine flows, four kinds. Two humans act: Dr. Rao signs the diagnosis (3) and Asha opens the door (6). Times are the projection for H2 in a city with the drone corridor open.</p>
+</figure>
+<details class="why"><summary>Why this picture: a star around the person's AO, one market under everything</summary><div class="body">
+<ul><li><b>Claim.</b> In H2 every exchange in an episode of care goes through the person's own AO, two humans act, and every AO on the map is registered in one market.</li>
+<li><b>Why the star.</b> Consent and the record sit with the person; the clinic, the lab and the pharmacy each get only the slice they need, through her AO. The alternative, the clinic's AO at the centre, is today's shape with the hospital holding the record.</li>
+<li><b>Why two humans.</b> The three sorting questions (3.4): only the signed diagnosis needs someone liable, and only the door needs a body. The pathologist and the insurer's reviewer act on exception.</li>
+<li><b>Why the market at the bottom.</b> Promises between AOs (a result by evening, medicine by 8:40) are worthless unless something holds them. The registry is where prices and kept promises are recorded; the regulator reads it instead of inspecting each party.</li>
+<li><b>Why health, why a rash.</b> The dermatology case was walked in run 3 on Sutra (section 9 is that run); a rash is small enough to draw and touches hardware, logistics, pharma and insurance.</li>
+<li><b>What would change it.</b> Clinics refusing cases from personal AOs (then the clinic's AO is the hub and the star flips), or no drone corridor (then step 6 is a rider and the time is 9:30, the shape unchanged).</li></ul></div></details>
+<table>
+<tr><th>#</th><th>Step</th><th>Who acts</th><th>What moves</th><th>today</th><th>H2</th></tr>
+<tr><td>1</td><td>The photo</td><td><span class="who h"></span>phone + dermatoscope</td><td>data</td><td>no image; a visit booked for day 3</td><td>7:02, a 40 USD clip-on, once</td></tr>
+<tr><td>2</td><td>The case goes to the clinic</td><td><span class="who a"></span>her AO, the clinic's AO</td><td>data: case + consent</td><td>a receptionist, a form, 15 min</td><td>one second; her AO chose the clinic by price and promise time</td></tr>
+<tr><td>3</td><td>Diagnosis</td><td><span class="who p"></span>Dr. Rao, with the clinic AO's draft</td><td>a human's stamp</td><td>a 20-min visit, 60 USD, day 3</td><td>6 min of the doctor's time, 20 USD, 7:41</td></tr>
+<tr><td>4</td><td>A sample, if asked</td><td><span class="who h"></span>courier, analyzer; <span class="who p"></span>a pathologist signs</td><td>goods, then data</td><td>day 5, a second visit</td><td>same morning pickup, result by evening</td></tr>
+<tr><td>5</td><td>Prescription</td><td><span class="who a"></span>her AO, the pharmacy's AO</td><td>data</td><td>a paper slip, a queue</td><td>checked for stock and interactions in a second</td></tr>
+<tr><td>6</td><td>Medicine to the door</td><td><span class="who h"></span>robot, drone or rider</td><td>goods</td><td>a walk to the chemist, 25 USD</td><td>8:40, 22 USD + 2 USD delivery</td></tr>
+<tr><td>7</td><td>Paid</td><td><span class="who a"></span>the insurer's AO</td><td>money</td><td>a claim form, 3 weeks</td><td>read the signed diagnosis, paid at 7:50</td></tr>
+<tr><td>8</td><td>Tokens</td><td><span class="who m"></span>models and compute</td><td>money</td><td>none</td><td>under 1 USD for the whole morning</td></tr>
+<tr><td>9</td><td>Registered</td><td><span class="who m"></span>the market</td><td>a promise with a time, a price</td><td>none</td><td>every AO above is listed, priced, rated on kept promises</td></tr>
+</table>
+<h3>The same star, six other industries</h3>
+<table>
+<tr><th>Industry, aspect</th><th>Hardware</th><th>Logistics</th><th>AO part</th><th>Human seat</th><th>Market</th></tr>
+<tr><td>Food: a weekly organic box (Kriti Organics)</td><td>soil and cold-chain sensors, a packing robot</td><td>a route company's AO fills the van; drones for the last 2 km</td><td>the farm's AO prices, lists, takes orders, bills, keeps the buyers</td><td>the grower decides what to plant; the buyer tastes</td><td>farm AOs sell to shop AOs by promise date</td></tr>
+<tr><td>Clothing: a suit to measure (Sharma Tailors)</td><td>a phone scan, a cutting machine</td><td>cloth from the mill's AO, the suit by rider</td><td>the shop's AO runs the site, orders, fittings diary, the mill order</td><td>the tailor's hands and eye; the customer's taste</td><td>shop AOs buy cloth by the metre with a delivery promise</td></tr>
+<tr><td>Money: a small loan to a shopkeeper (Paisa)</td><td>the till, the phone</td><td>none; money moves as data</td><td>the lender's AO reads the shop's books with consent, prices the loan, files the paperwork</td><td>the credit officer signs; the regulator audits</td><td>lender AOs bid; the shop's AO picks by rate and promise</td></tr>
+<tr><td>Learning: a child learning fractions</td><td>a tablet; a classroom display</td><td>none</td><td>a tutor AO per child: pace, practice, the record for the teacher</td><td>the teacher in the room; the parent</td><td>tutor AOs priced per month, rated on kept progress promises</td></tr>
+<tr><td>Building: a room added to a house</td><td>the crew's tools; a scanner for the as-built drawing</td><td>cement, steel, fittings ordered to the day</td><td>drawings, permits, orders, the schedule, the bill</td><td>the mason, the engineer who signs, the owner</td><td>contractor AOs bid; supplier AOs promise delivery days</td></tr>
+<tr><td>Travel: three days in Hampi (run 5 rerun)</td><td>the phone; the car; the hotel lock</td><td>trains, cabs, rooms, each with its own AO</td><td>her AO plans, books, re-books when the train is late</td><td>the traveller; the guide; the host</td><td>hotel and cab AOs priced by promise; her AO holds them to it</td></tr>
+</table>
+<h3>The numbers</h3>
+<table>
+<tr><th>Measure</th><th>Latest (sourced)</th><th>2030 (sourced forecast)</th><th>H2 (projection)</th><th>Source</th></tr>
+<tr><td>Teledermatology market, world</td><td>15 bn USD (2024)</td><td>41 to 67 bn USD</td><td>150 to 250 bn USD</td><td><a href="https://m.giikorea.co.kr/report/go1799210-teledermatology.html">GII</a>, <a href="https://www.biospace.com/teledermatology-market-size-to-hit-us-67-43-bn-by-2030">Precedence</a>, <a href="https://www.globenewswire.com/de/news-release/2022/11/21/2559958/0/en/Teledermatology-Market-Size-to-Surpass-USD-65-64-Billion-by-2030-at-20-8-CAGR-Report-by-Market-Research-Future-MRFR.html">MRFR</a></td></tr>
+<tr><td>Medical drones, world</td><td>0.30 bn USD (2024)</td><td>0.59 bn USD</td><td>3 to 5 bn USD</td><td><a href="https://m.giikorea.co.kr/report/go1739354-medical-drones.html">GII</a></td></tr>
+<tr><td>Drone package delivery, world</td><td>0.69 bn USD (2024)</td><td>4.7 bn USD</td><td>30 to 50 bn USD</td><td><a href="https://prnewswire.co.uk/news-releases/drone-package-delivery-market-worth-4-666-million-by-2030---exclusive-report-by-marketsandmarkets-302189895.html">MarketsandMarkets</a></td></tr>
+<tr><td>Administration as a share of health spend, US</td><td>8 to 14%</td><td>rising, per CMS</td><td>3 to 5%</td><td><a href="https://www.americanprogress.org/?p=50436">CAP</a>, <a href="https://www.healthaffairs.org/content/forefront/nhe-projections-through-2034-growth-assumptions-policy-consequences">Health Affairs</a></td></tr>
+<tr><td>Health spend, OECD, share of GDP</td><td>8.8% (2018)</td><td>10.2%</td><td>about the same share; the mix moves to hardware and medicine</td><td><a href="https://www.thepharmaletter.com/generics/health-spending-set-to-outpace-gdp-growth-to-2030-says-oecd">OECD via Pharma Letter</a></td></tr>
+</table>
+<details class="why"><summary>Why these numbers, and how the H2 column was made</summary><div class="body">
+<ul><li><b>What is sourced.</b> The latest and 2030 columns are published forecasts from named houses; where they disagree (teledermatology 41 to 67 bn) the range is shown, not a pick.</li>
+<li><b>How H2 was projected.</b> Each sourced 2030 figure extended at a slowing rate: teledermatology from about 18% a year to about 12%; drones kept near 25% because the corridors open late; administration cut by the sorting rule in 3.4 (claims, booking and billing are checkable, bodiless, low-liability).</li>
+<li><b>Why these five measures.</b> They are the five flows on the map that have a market behind them: the consult (teledermatology), the delivery (drones), the paperwork (administration), the whole (health spend), and the device (inside teledermatology's product segment).</li>
+<li><b>What would change them.</b> A regulator that bars AI triage from billing (teledermatology slows), or a city that bans drone corridors (drones stay a rider's job; the map's times move, its shape does not).</li></ul></div></details>
+<figure>
+<svg viewBox="0 0 760 230" role="img" aria-label="Two horizontal stacked bars: one skin episode in 2026 indexed to 100 and in H2 indexed to 68, split by who is paid.">
+<g font-size="12" fill="#111827">
+<text x="20" y="30" font-weight="600">One episode, today: index 100</text>
+<rect x="20" y="40" width="252" height="30" fill="var(--c-people)"/><rect x="274" y="40" width="65" height="30" fill="var(--c-hw)" opacity="0.55"/><rect x="341" y="40" width="54" height="30" fill="var(--c-hw)"/><rect x="397" y="40" width="138" height="30" fill="var(--c-harness)"/><rect x="537" y="40" width="26" height="30" fill="var(--c-hw)" opacity="0.8"/><rect x="565" y="40" width="15" height="30" fill="var(--c-market)"/>
+<text x="146" y="60" text-anchor="middle" fill="#fff" font-size="11">clinician 45</text><text x="306" y="60" text-anchor="middle" fill="#fff" font-size="11">admin 12</text><text x="368" y="60" text-anchor="middle" fill="#fff" font-size="10">tests 10</text><text x="466" y="60" text-anchor="middle" fill="#fff" font-size="11">medicine 25</text>
+<text x="20" y="92" font-size="11" fill="#6b7280">then logistics 5, insurer admin 3</text>
+<text x="20" y="130" font-weight="600">One episode, H2: index 68</text>
+<rect x="20" y="140" width="84" height="30" fill="var(--c-people)"/><rect x="106" y="140" width="33" height="30" fill="var(--c-ao)"/><rect x="141" y="140" width="78" height="30" fill="var(--c-hw)"/><rect x="221" y="140" width="134" height="30" fill="var(--c-harness)"/><rect x="357" y="140" width="33" height="30" fill="var(--c-hw)" opacity="0.8"/><rect x="392" y="140" width="17" height="30" fill="var(--c-market)"/>
+<text x="62" y="160" text-anchor="middle" fill="#fff" font-size="11">clinician 15</text><text x="122" y="160" text-anchor="middle" fill="#fff" font-size="10">AO 6</text><text x="180" y="160" text-anchor="middle" fill="#fff" font-size="11">hardware 14</text><text x="288" y="160" text-anchor="middle" fill="#fff" font-size="11">medicine 24</text>
+<text x="20" y="192" font-size="11" fill="#6b7280">then logistics 6, market and insurer 3. Medicine (teal) barely moves; people fall from 45 to 15; hardware rises; the AO and its tokens are 6.</text>
+<text x="20" y="214" font-size="11" fill="#9ca3af">Projection: the structure of spend, not a price. Index 100 = one episode's cost in 2026.</text>
+</g></svg>
+<p class="figcap">Where the money goes in one episode. The share that moves is the clinician's time and the administration; the share that grows is hardware; medicine holds.</p>
+</figure>
+<details class="why"><summary>Why this picture: why 100 becomes 68, segment by segment</summary><div class="body">
+<ul><li><b>Clinician 45 to 15.</b> The visit shrinks from 20 minutes to 6 because the clinic's AO drafts the plan and the person's AO brings the record and the image. The signature stays; the reading time goes.</li>
+<li><b>Admin 12 to AO 6.</b> Booking, notes, claims and billing are the first things the sorting rule gives to AOs; what remains is the AO's own cost: tokens and a share of the harness.</li>
+<li><b>Tests 10 to hardware 14.</b> A device bought once at home plus the lab's analyzer. Hardware grows because it replaces a visit, not because it gets dearer.</li>
+<li><b>Medicine 25 to 24.</b> Molecules do not get cheaper because an AO ordered them. This is the segment that holds, so its share of the smaller total rises.</li>
+<li><b>Evidence.</b> The 2026 split is a typical Indian city visit from the goal files; the H2 split follows the step table above. Both are indexes, not prices.</li>
+<li><b>What would change it.</b> A drug price fall (medicine shrinks), or hardware subsidised by insurers (hardware moves into the insurer's line).</li></ul></div></details>
+<p class="means"><span class="tag proj">Projection</span> The H2 health market around this aspect: people about a fifth of the spend, down from half; hardware makers a fifth, up; medicine a third, steady; logistics and the market a tenth; the AOs and their tokens a tenth, new. The AO layer is small in money and large in control: it chooses, drafts and routes everything.</p>
+</section>
+<p class="figcap">Terms, labels, colours and the full source list are on the <a href="../human-and-agent.html">hub</a>. <span class="pill DRAFT">DRAFT</span> until the founder marks it.</p>
+</div></div></body></html>

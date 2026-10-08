@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native - Second-Order: Host (Claude CLI)</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:820px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:10px}
+  .draft{background:#fef2f2;border:1px solid #dc2626;border-radius:8px;color:#b91c1c;font-size:12.5px;padding:8px 12px;margin:0 0 14px}
+  .draft b{letter-spacing:.04em}
+  .crumb{font-size:12px;color:#9ca3af;margin-bottom:16px}
+  .crumb b{color:#b45309}
+  .crumb a,.draft a{color:#1d4ed8;text-decoration:none}
+  .crumb a:hover,.draft a:hover,td a:hover{text-decoration:underline}
+  svg{width:100%;height:auto;display:block}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:26px 0 9px}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280}
+  td a{color:#1d4ed8;text-decoration:none;font-size:12px}
+  p.flow{font-size:13.5px;color:#1f2937;margin:0}
+  ul.gaps{margin:0;padding-left:20px;font-size:13.5px;color:#1f2937}
+  ul.gaps li{margin:7px 0}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:26px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div style="background:#1e3a8a;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>FOLDED 2026-06-12 (IA migration P2).</b> This standalone draft's content now lives at <a href="platform/host.html" style="color:#bfdbfe">platform/host.html</a>; this file is an unedited archive.</div>
+<div class="page">
+  <h1>Native - Second-Order: Host (Claude CLI)</h1>
+  <div class="sub">The §1.0 <b>Host</b> block, fully wired · every part connected to what it actually touches</div>
+  <div class="draft"><b>WORKING DRAFT</b> · date: 2026-06-11 · Not locked - founder review pending · &larr; <a href="index.html#section-1-0-runtime">first-layer schema (sec.1.0)</a></div>
+  <div class="crumb">First layer: Human &rarr; UI &rarr; <b>Host (here)</b> &rarr; Daemon{Orchestration &rarr; System of Process} &rarr; SoR / External World</div>
+
+  <svg viewBox="0 0 780 690" role="img" aria-label="Host (Claude CLI) second-order block diagram, fully wired">
+    <defs>
+      <marker id="hah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker>
+      <marker id="hahs" markerWidth="9" markerHeight="9" refX="0" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M7,0 L0,3.5 L7,7 Z" fill="#334155"/></marker>
+    </defs>
+
+    <!-- Authority + Tenancy wrap (gate as border, never an inline box) -->
+    <rect x="12" y="26" width="756" height="640" rx="16" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <rect x="26" y="17" width="346" height="18" fill="#fff"/>
+    <text x="34" y="30" fill="#7c3aed" font-weight="700" font-size="12">AUTHORITY + TENANCY &#183; gates every access (&#167;1.0)</text>
+
+    <!-- EDGES (under boxes) -->
+    <!-- UI -> Agent runtime -->
+    <path d="M220,102 L220,188" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hah)"/>
+    <text x="228" y="140" font-size="9" fill="#475569">operator request</text>
+    <!-- Agent runtime <-> Model (fused) -->
+    <path d="M330,221 L450,221" stroke="#334155" stroke-width="1.8" fill="none" marker-start="url(#hahs)" marker-end="url(#hah)"/>
+    <text x="390" y="215" text-anchor="middle" font-size="9" fill="#475569">one unit</text>
+    <text x="390" y="176" text-anchor="middle" font-size="9.5" fill="#b45309">fused &#8212; &#8220;agent runtime + model in one&#8221; (&#167;1.0)</text>
+    <!-- Slot -> Model (selection) -->
+    <path d="M480,298 L540,254" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hah)"/>
+    <text x="548" y="284" font-size="9" fill="#475569">selected host LLM</text>
+    <!-- Agent runtime -> Daemon ("runs") -->
+    <path d="M180,254 L180,468" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hah)"/>
+    <text x="188" y="430" font-size="9" fill="#475569">&#8220;runs&#8221; &#8212; request handoff</text>
+    <text x="188" y="442" font-size="9" fill="#475569">(fused with run-relationship, &#167;1.0)</text>
+    <!-- Host -> Daemon (lifecycle) -->
+    <path d="M390,412 L390,468" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hah)"/>
+    <text x="398" y="432" font-size="9" fill="#475569">daemon lifecycle via Sutra plugin (&#167;4.0):</text>
+    <text x="398" y="444" font-size="9" fill="#475569">boot-start &#183; stop &#183; re-exec, no state loss</text>
+    <text x="398" y="456" font-size="9" fill="#475569">(plugin = Host-resident layer &#8212; ADR-021; gap #4 closed)</text>
+    <!-- System of Process -> Slot (host-LLM invocation) -->
+    <path d="M450,540 L612,540 L612,338 L530,338" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hah)"/>
+    <text x="618" y="420" font-size="9" fill="#475569">host-LLM invocation</text>
+    <text x="618" y="433" font-size="9" fill="#475569">per workflow &#183; ADR-005</text>
+    <!-- Host -> Compute (runs on) -->
+    <path d="M100,412 L100,606" stroke="#334155" stroke-width="1.8" fill="none" marker-end="url(#hah)"/>
+    <text x="106" y="598" font-size="9" fill="#475569">runs on &#183; base layer, no data payload</text>
+
+    <!-- NEIGHBOR STUB: UI -->
+    <rect x="130" y="56" width="180" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="220" y="76" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4b5563">UI</text>
+    <text x="220" y="92" text-anchor="middle" font-size="9" fill="#9ca3af">neighbor &#183; operator side (&#167;1.0)</text>
+
+    <!-- HOST FRAME -->
+    <rect x="70" y="150" width="640" height="262" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="2"/>
+    <rect x="372" y="141" width="312" height="17" fill="#fff"/>
+    <text x="380" y="154" fill="#92400e" font-weight="700" font-size="11.5">HOST &#183; CLAUDE CLI &#8212; second-order &#183; fully wired</text>
+
+    <!-- INTERNAL: Agent runtime -->
+    <rect x="110" y="188" width="220" height="66" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="220" y="212" text-anchor="middle" font-size="12.5" font-weight="700">AGENT RUNTIME</text>
+    <text x="220" y="228" text-anchor="middle" font-size="9" fill="#6b7280">agent-execution half of Claude CLI</text>
+    <text x="220" y="240" text-anchor="middle" font-size="9" fill="#9ca3af">no deeper sub-decomposition cited</text>
+
+    <!-- INTERNAL: Model -->
+    <rect x="450" y="188" width="220" height="66" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="560" y="212" text-anchor="middle" font-size="12.5" font-weight="700">MODEL</text>
+    <text x="560" y="228" text-anchor="middle" font-size="9" fill="#6b7280">the LLM &#183; fused into the Host block</text>
+    <text x="560" y="240" text-anchor="middle" font-size="9" fill="#9ca3af">no separate LLM box in &#167;1.0</text>
+
+    <!-- INTERNAL: Per-workflow host-LLM slot -->
+    <rect x="250" y="298" width="280" height="74" rx="8" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+    <text x="390" y="320" text-anchor="middle" font-size="12" font-weight="700">PER-WORKFLOW HOST-LLM SLOT</text>
+    <text x="390" y="336" text-anchor="middle" font-size="9.5" fill="#6b7280">ADR-005 (ratified) &#183; claude &#183; codex &#183; deepseek</text>
+    <text x="390" y="350" text-anchor="middle" font-size="9" fill="#9ca3af">Host position is selectable, not hardwired to Claude</text>
+
+    <!-- NEIGHBOR STUB: Daemon (with System of Process inside) -->
+    <rect x="140" y="468" width="330" height="112" rx="10" fill="#f8fafc" stroke="#0f766e" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="156" y="488" font-size="10.5" font-weight="700" fill="#0f766e">DAEMON &#183; always-on &#183; neighbor</text>
+    <text x="156" y="502" font-size="9" fill="#6b7280">Orchestration translates &#183; finds the process</text>
+    <rect x="270" y="514" width="180" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="360" y="535" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">System of Process</text>
+    <text x="360" y="550" text-anchor="middle" font-size="8.5" fill="#3b5bdb">neighbor &#183; runs the process</text>
+
+    <!-- NEIGHBOR STUB: Compute -->
+    <rect x="70" y="606" width="640" height="46" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="390" y="628" text-anchor="middle" font-size="12" font-weight="700" fill="#4b5563">COMPUTE &#183; host machine</text>
+    <text x="390" y="642" text-anchor="middle" font-size="9" fill="#9ca3af">neighbor (base layer) &#183; where the Host + daemon execute (&#167;1.0)</text>
+  </svg>
+
+  <h2>Internal flow</h2>
+  <p class="flow">The operator request enters from the UI into the Host's agent runtime; runtime and model are one fused unit (single block, no internal edge to a separate LLM box &mdash; the doc explicitly collapses them: &ldquo;Claude CLI &mdash; agent runtime + model in one&rdquo;). The Host then carries the request downward into the Daemon on the edge labeled &ldquo;runs&rdquo;, where Orchestration translates it and selects the process. Daemon lifecycle (session-boot start or explicit <code>sutra native start</code>, &sect;4.0) is attributed by &sect;4.0 to the Sutra plugin (&ldquo;managed by plugin&rdquo;), now placed Host-resident per ADR-021 (gap #4 closed) &mdash; the lifecycle edge is drawn from the Host only on the partial support of &sect;1.0's &ldquo;runs&rdquo; label. A return edge comes back up from System of Process: when a process runs, it invokes a host LLM selected per workflow among claude/codex/deepseek (ADR-005) &mdash; so the Host slot is entered from below as well as above. Everything sits inside the Authority + Tenancy gate wrap and stands on the Compute base layer.</p>
+
+  <h2>Contracts &mdash; neighbor edges</h2>
+  <table>
+    <tr><th>Neighbor</th><th>Direction</th><th>Payload</th><th>Source</th></tr>
+    <tr>
+      <td><b>UI</b></td><td>in</td>
+      <td>Operator request. &sect;1.0 prose: &ldquo;The operator asks through the UI; the request runs on the Host&rdquo;. Diagram edge UI &rarr; Host (unlabeled arrow).</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Daemon (Orchestration)</b></td><td>out</td>
+      <td>Request handoff into the always-on Daemon, where Orchestration &ldquo;translates the request and finds the relevant process to run&rdquo;. NOTE: the &sect;1.0 diagram edge Host &rarr; Daemon is labeled &ldquo;runs&rdquo; (Host runs the Daemon), not &ldquo;forwards&rdquo; &mdash; the doc fuses request-flow and run-relationship on one edge.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Daemon (lifecycle)</b></td><td>out</td>
+      <td>Daemon start/stop: &ldquo;Started by Sutra plugin at session boot OR by explicit sutra native start. Re-exec across plugin updates without state loss.&rdquo; Lifecycle: START &rarr; RUNNING &rarr; STOP &rarr; RESTART (state restored from user-kit + decision-provenance log).</td>
+      <td><a href="index.html#section-4-0-daemon">section-4-0-daemon</a></td>
+    </tr>
+    <tr>
+      <td><b>System of Process</b></td><td>in</td>
+      <td>Host-LLM invocation per workflow. ADR-005 (ratified): &ldquo;Per-workflow host LLM selection (claude &#183; codex &#183; deepseek)&rdquo; &mdash; the running process calls back into a host LLM chosen per workflow. &sect;4.0 canon link cites &ldquo;ADR-005 host-LLM selection&rdquo; as part of the shipped daemon runtime at sutra/marketplace/native/.</td>
+      <td><a href="index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+    <tr>
+      <td><b>Authority + Tenancy</b></td><td>gates</td>
+      <td>&ldquo;Authority + Tenancy gates every access&rdquo; &mdash; cross-cutting wrap drawn as the dashed outer rect around the entire runtime diagram, Host included.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Compute</b></td><td>out</td>
+      <td>Runs-on relationship: &ldquo;Host + daemon run on the Compute (host machine)&rdquo;. Diagram footer: &ldquo;COMPUTE &#183; host machine &mdash; where the Host + daemon execute&rdquo;. Base layer, no data payload.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+  </table>
+
+  <h2>Internal parts</h2>
+  <table>
+    <tr><th>Part</th><th>What</th><th>Doc home</th></tr>
+    <tr>
+      <td><b>Agent runtime</b></td>
+      <td>The agent-execution half of Claude CLI. &sect;1.0 prose: &ldquo;the request runs on the Host (Claude CLI &mdash; agent runtime + model in one)&rdquo;. The doc gives no further sub-decomposition (no tool loop, session, or context-window detail in the cited ranges).</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Model</b></td>
+      <td>The LLM, fused into the same block as the runtime &mdash; &ldquo;agent runtime + model in one&rdquo;. The locked schema and the &sect;1.0 diagram show NO separate LLM box; the Host rect carries only the labels &ldquo;Host&rdquo; / &ldquo;Claude CLI&rdquo;.</td>
+      <td><a href="index.html#section-1-0-runtime">section-1-0-runtime</a></td>
+    </tr>
+    <tr>
+      <td><b>Per-workflow host-LLM slot (ADR-005)</b></td>
+      <td>The Host position is a selectable slot, not hardwired to Claude: ADR-005 &ldquo;host-llm-host-selection&rdquo; (ratified) &mdash; &ldquo;Per-workflow host LLM selection (claude &#183; codex &#183; deepseek)&rdquo;. &sect;4.0 canon-link callout cites ADR-005 as part of the shipped daemon runtime.</td>
+      <td><a href="index.html#section-12-1-adr-table">section-12-1-adr-table</a></td>
+    </tr>
+  </table>
+
+  <h2>Open / gaps &mdash; questions for the founder</h2>
+  <ul class="gaps">
+    <li>Working assumption carried from founder session (also echoed in sibling drafts _matrix.html / _block-orchestration.html, which are not source of truth): only System of Process calls the LLM/Host. This exclusivity appears nowhere in index.html &mdash; &sect;1.0 states no such rule, and ADR-005 only says host-LLM selection is per-workflow. Confirm and write it down (&sect;1.0 or an ADR), or drop it.</li>
+    <li>ADR-005 allows codex/deepseek as host-LLMs, yet &sect;1.0 labels the Host box &ldquo;Claude CLI&rdquo; singular &mdash; is Claude CLI the fixed operator-facing host while per-workflow LLM calls may route to a different host, or can the top-of-stack Host itself be swapped? Cited ranges do not reconcile this.</li>
+    <li>&sect;1.0's Host &rarr; Daemon edge label &ldquo;runs&rdquo; conflates lifecycle (Host runs the Daemon) with request flow (request reaches Orchestration) &mdash; which transport carries the request (CLI invocation, IPC, file)? Not specified in cited ranges.</li>
+    <li><s>Where does the Sutra plugin live in the block diagram? &sect;4.0 says the daemon is &ldquo;Started by Sutra plugin at session boot&rdquo; / &ldquo;managed by plugin&rdquo;, but the plugin is not placed inside Host, Daemon, or any &sect;1.0 block.</s><br><strong>DECIDED 2026-06-12</strong> &mdash; Sutra plugin is <strong>HOST-RESIDENT</strong>: hooks = Host lifecycle interceptors &middot; skills = Host-invokable bundles &middot; per-turn blocks = Host-emitted discipline; daemon-side analogs live in Orchestration/SoP. <code>sutra/os/decisions/ADR-021-sutra-plugin-host-residency.md</code> (Accepted) + index.html &sect;4.12.4.</li>
+    <li>Host is per-session while Daemon is &ldquo;always-on&rdquo; &mdash; what happens to an in-flight operator request if the Host (Claude CLI session) exits while the Daemon is still RUNNING? Cited ranges cover daemon restart but not Host-absence semantics.</li>
+    <li>No internal decomposition of the Host beyond &ldquo;agent runtime + model in one&rdquo; exists anywhere in the cited ranges &mdash; is second-order detail for the Host block (session state, tool loop, context window) intentionally deferred to the UI/_consumer-product detailing pass?</li>
+  </ul>
+
+  <div class="foot">Second-order of the &sect;1.0 Host block &middot; content drawn only from cited ranges of <a href="index.html#section-1-0-runtime" style="color:#9ca3af">index.html</a> &middot; working draft, not locked &middot; sibling artifacts: _arch-review.html (platform) &middot; _consumer-product.html (UI).</div>
+</div>
+</body>
+</html>

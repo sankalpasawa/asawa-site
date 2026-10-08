@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asawa Inc. — Sutra Blueprint v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; background: #09090b; color: #e0e0e8; }
+
+  /* Navigation */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #09090bdd; backdrop-filter: blur(12px); border-bottom: 1px solid #1a1a2e; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #6366f1; }
+  nav .tabs { display: flex; gap: 3px; flex-wrap: wrap; }
+  nav .tab { padding: 5px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; color: #555; transition: all 0.2s; border: none; background: none; font-family: inherit; }
+  nav .tab:hover { color: #aaa; background: #1a1a2e; }
+  nav .tab.active { color: #fff; background: #1e1e3a; }
+
+  /* Sections */
+  .section { display: none; padding: 72px 28px 48px; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
+  .section.visible { display: block; }
+
+  /* Detail panel */
+  .detail-panel { position: fixed; right: -440px; top: 0; bottom: 0; width: 440px; background: #111118; border-left: 1px solid #1e1e2e; z-index: 200; transition: right 0.3s ease; overflow-y: auto; padding: 24px; }
+  .detail-panel.open { right: 0; }
+  .detail-close { position: absolute; top: 12px; right: 12px; background: none; border: none; color: #666; font-size: 18px; cursor: pointer; font-family: inherit; }
+  .detail-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .detail-subtitle { font-size: 11px; color: #666; margin-bottom: 16px; }
+  .detail-body { font-size: 12px; color: #999; line-height: 1.7; }
+  .detail-body h4 { color: #ccc; margin: 14px 0 6px; font-size: 12px; }
+  .detail-body ul { padding-left: 16px; margin: 6px 0; }
+  .detail-body li { margin: 3px 0; }
+  .detail-body code { background: #1a1a2e; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #818cf8; }
+  .detail-body table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 11px; }
+  .detail-body th { text-align: left; color: #888; border-bottom: 1px solid #1e1e2e; padding: 4px 6px; font-weight: 600; }
+  .detail-body td { padding: 4px 6px; border-bottom: 1px solid #0e0e16; color: #777; }
+  .detail-tag { display: inline-block; font-size: 9px; padding: 2px 7px; border-radius: 10px; margin-right: 4px; }
+  .tag-live { background: #0a2a0a; color: #4ade80; }
+  .tag-partial { background: #2a2a0a; color: #facc15; }
+  .tag-vision { background: #1a1a2e; color: #818cf8; }
+  .tag-new { background: #2a0a1a; color: #ec4899; }
+  .overlay { display: none; position: fixed; inset: 0; background: #00000066; z-index: 150; }
+  .overlay.open { display: block; }
+
+  /* SVG diagram styles */
+  svg text { font-family: 'SF Mono', 'Fira Code', monospace; }
+  .node { cursor: pointer; transition: opacity 0.2s; }
+  .node:hover { opacity: 0.85; }
+  .conn { stroke-dasharray: 4 4; animation: dash 20s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -200; } }
+  .conn-solid { stroke-dasharray: none; }
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+  /* Section titles */
+  .sec-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .sec-sub { font-size: 12px; color: #555; margin-bottom: 28px; }
+
+  /* Legend */
+  .legend { display: flex; gap: 14px; margin-bottom: 20px; font-size: 10px; color: #555; flex-wrap: wrap; }
+  .legend-dot { width: 9px; height: 9px; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 3px; }
+
+  /* Flow section (journey) */
+  .flow-track { display: flex; align-items: center; gap: 0; margin: 28px 0; position: relative; }
+  .flow-step { flex: 1; text-align: center; position: relative; }
+  .flow-circle { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; font-size: 15px; font-weight: 700; position: relative; z-index: 2; }
+  .flow-label { font-size: 11px; color: #888; }
+  .flow-desc { font-size: 9px; color: #444; margin-top: 3px; max-width: 110px; margin-left: auto; margin-right: auto; }
+  .flow-line { position: absolute; top: 22px; left: 50%; right: -50%; height: 2px; background: #1e1e2e; z-index: 1; }
+  .flow-step:last-child .flow-line { display: none; }
+  .fc-done { background: #0a2a0a; border: 2px solid #4ade80; color: #4ade80; }
+  .fc-current { background: #2a2a0a; border: 2px solid #facc15; color: #facc15; box-shadow: 0 0 12px #facc1533; }
+  .fc-future { background: #12121a; border: 2px solid #333; color: #555; }
+
+  /* Info cards */
+  .info-card { background: #0a0a12; border: 1px solid #1e1e2e; border-radius: 6px; padding: 10px; margin: 6px 0; }
+  .info-card-title { font-size: 11px; color: #aaa; font-weight: 600; margin-bottom: 3px; }
+  .info-card-body { font-size: 10px; color: #666; }
+
+  /* File map tables */
+  .file-table { width: 100%; border-collapse: collapse; margin: 12px 0 28px; font-size: 11px; }
+  .file-table th { text-align: left; color: #888; border-bottom: 1px solid #1e1e2e; padding: 6px 8px; font-weight: 600; background: #0a0a12; }
+  .file-table td { padding: 5px 8px; border-bottom: 1px solid #0e0e16; color: #777; }
+  .file-table tr:hover td { background: #0e0e16; }
+  .file-section-title { font-size: 14px; font-weight: 600; color: #ccc; margin: 24px 0 8px; }
+  .file-section-count { font-size: 12px; color: #555; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">ASAWA INC. / SUTRA v2</span>
+  <div class="tabs">
+    <button class="tab active" onclick="showSection('exec', this)" style="background:#1e1e3a; color:#fbbf24;">★ For Executives</button>
+    <button class="tab" onclick="showSection('overview', this)">How It Connects</button>
+    <button class="tab" onclick="showSection('sutra', this)">Inside Sutra</button>
+    <button class="tab" onclick="showSection('flow', this)">Problem Flow</button>
+    <button class="tab" onclick="showSection('node', this)">Inside a Node</button>
+    <button class="tab" onclick="showSection('files', this)">File Map</button>
+    <button class="tab" onclick="showSection('journey', this)">Path to Product</button>
+  </div>
+</nav>
+
+<div class="overlay" onclick="closeDetail()"></div>
+<div class="detail-panel" id="detailPanel">
+  <button class="detail-close" onclick="closeDetail()">&times;</button>
+  <div id="detailContent"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 0: FOR EXECUTIVES (plain-English explainer)              -->
+<!-- ============================================================ -->
+<div class="section" id="sec-exec">
+  <div style="max-width: 900px;">
+    <div style="display:inline-block; padding:4px 10px; background:#1e1e3a; color:#fbbf24; font-size:10px; letter-spacing:.15em; border-radius:99px; margin-bottom:16px;">★ NON-TECHNICAL · 5-MIN READ</div>
+    <h1 style="font-size:36px; font-weight:700; color:#fff; line-height:1.1; margin-bottom:14px; letter-spacing:-0.02em; font-family: -apple-system, sans-serif;">Sutra in plain English.</h1>
+    <p style="font-size:16px; color:#9999aa; line-height:1.7; margin-bottom:32px; max-width: 720px; font-family: -apple-system, sans-serif;">If you're a CEO, investor, or operator who doesn't write code, this is the page for you. The other tabs go deep into protocols and file maps — useful for builders, noisy for everyone else. Here's what Sutra actually is, in language a board member would expect.</p>
+
+    <!-- ONE-LINE -->
+    <div style="background: linear-gradient(135deg, #1e1e3a, #0f0f1e); border-left: 3px solid #fbbf24; padding: 24px 28px; border-radius: 8px; margin-bottom: 36px;">
+      <div style="font-size:10px; color:#fbbf24; letter-spacing:.18em; font-weight:600; margin-bottom:10px;">THE ONE-LINE VERSION</div>
+      <div style="font-size:22px; color:#fff; line-height:1.4; font-weight:500; font-family: -apple-system, sans-serif;">Sutra is the operating manual that turns a single founder + AI agents into a multi-company holding group — without the work falling apart as it scales.</div>
+    </div>
+
+    <!-- THE PROBLEM -->
+    <h2 style="font-size:18px; color:#fff; font-weight:600; margin: 28px 0 12px; font-family: -apple-system, sans-serif;">The problem it solves</h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:28px;">
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:18px;">
+        <div style="font-size:11px; color:#ec4899; font-weight:600; letter-spacing:.12em; margin-bottom:8px;">WITHOUT SUTRA</div>
+        <div style="font-size:13px; color:#bbb; line-height:1.65; font-family: -apple-system, sans-serif;">A founder using AI agents gets uneven results. Sometimes the agent over-engineers a one-line fix. Sometimes it ships a broken architecture without thinking. There's no consistency, no audit trail, no way to know what process was followed. Trust erodes. Speed slows.</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #4ade8033; border-radius:8px; padding:18px;">
+        <div style="font-size:11px; color:#4ade80; font-weight:600; letter-spacing:.12em; margin-bottom:8px;">WITH SUTRA</div>
+        <div style="font-size:13px; color:#bbb; line-height:1.65; font-family: -apple-system, sans-serif;">Every task — from a typo fix to a 90-day go-to-market plan — runs through the same operating procedure, scaled to the size of the work. The founder always knows what was done, why, and at what depth. Quality compounds across companies because every lesson is captured.</div>
+      </div>
+    </div>
+
+    <!-- THE BUSINESS ANALOGY -->
+    <h2 style="font-size:18px; color:#fff; font-weight:600; margin: 32px 0 12px; font-family: -apple-system, sans-serif;">The closest business analogy</h2>
+    <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:20px 22px; margin-bottom:28px;">
+      <div style="font-size:14px; color:#ddd; line-height:1.7; font-family: -apple-system, sans-serif;">
+        Think of Sutra as an <strong style="color:#fbbf24;">ISO 9001 quality system</strong>, but instead of a manufacturing line, it governs a founder's collaboration with AI agents.
+        Every "production run" — meaning every task — must pass through the same gates: classify the request, scale the effort, run the lifecycle, log every step, format the output for the human. The result is repeatable quality at any scale.
+      </div>
+    </div>
+
+    <!-- THE 5-STEP FLOW (no jargon) -->
+    <h2 style="font-size:18px; color:#fff; font-weight:600; margin: 32px 0 12px; font-family: -apple-system, sans-serif;">How it works in 5 steps</h2>
+    <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 8px;">
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:14px; position:relative;">
+        <div style="font-size:18px; font-weight:700; color:#6366f1; margin-bottom:4px;">1</div>
+        <div style="font-size:12px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Listen carefully</div>
+        <div style="font-size:11px; color:#999; line-height:1.55; font-family: -apple-system, sans-serif;">Before doing anything, the agent classifies what the founder said. Is this a bug? A direction? A new idea? Where does it already fit in the company?</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:14px;">
+        <div style="font-size:18px; font-weight:700; color:#6366f1; margin-bottom:4px;">2</div>
+        <div style="font-size:12px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Right-size the effort</div>
+        <div style="font-size:11px; color:#999; line-height:1.55; font-family: -apple-system, sans-serif;">A typo fix gets 30 seconds. A new feature gets a plan. An architecture change gets full peer review. The depth dial (1-5) makes sure energy matches stakes.</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:14px;">
+        <div style="font-size:18px; font-weight:700; color:#6366f1; margin-bottom:4px;">3</div>
+        <div style="font-size:12px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Run the playbook</div>
+        <div style="font-size:11px; color:#999; line-height:1.55; font-family: -apple-system, sans-serif;">Every task moves through the same 7 phases: set the goal, observe what's there, shape the approach, plan the steps, execute, measure the result, learn for next time.</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:14px;">
+        <div style="font-size:18px; font-weight:700; color:#6366f1; margin-bottom:4px;">4</div>
+        <div style="font-size:12px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Show the work</div>
+        <div style="font-size:11px; color:#999; line-height:1.55; font-family: -apple-system, sans-serif;">Every step is logged. The founder can see exactly which gates passed, which were skipped, and why. Nothing happens in a black box.</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:14px;">
+        <div style="font-size:18px; font-weight:700; color:#6366f1; margin-bottom:4px;">5</div>
+        <div style="font-size:12px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Format for humans</div>
+        <div style="font-size:11px; color:#999; line-height:1.55; font-family: -apple-system, sans-serif;">Output is shaped for a busy reader. Decisions get boxed. Status uses tables. Scores use bars. The founder doesn't read essays — they read what matters.</div>
+      </div>
+    </div>
+
+    <!-- WHAT MAKES IT NEW -->
+    <h2 style="font-size:18px; color:#fff; font-weight:600; margin: 32px 0 12px; font-family: -apple-system, sans-serif;">What's different from "just using ChatGPT"</h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-bottom:28px;">
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">⊙</div>
+        <div style="font-size:13px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Two AIs check each other</div>
+        <div style="font-size:12px; color:#999; line-height:1.6; font-family: -apple-system, sans-serif;">For high-stakes work, a second AI (from a different company) reviews the first one's output in parallel. It's like having two doctors examine the same patient.</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">⌘</div>
+        <div style="font-size:13px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Memory between sessions</div>
+        <div style="font-size:12px; color:#999; line-height:1.6; font-family: -apple-system, sans-serif;">Corrections you give today are remembered next week. The AI doesn't repeat its mistakes. Quality compounds — every interaction makes it sharper.</div>
+      </div>
+      <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">★</div>
+        <div style="font-size:13px; color:#fff; font-weight:600; margin-bottom:6px; font-family: -apple-system, sans-serif;">Founder always wins</div>
+        <div style="font-size:12px; color:#999; line-height:1.6; font-family: -apple-system, sans-serif;">"Just do it" overrides any process. "Go deep on this" forces full review. The system serves the founder; the founder doesn't serve the system.</div>
+      </div>
+    </div>
+
+    <!-- A REAL EXAMPLE -->
+    <h2 style="font-size:18px; color:#fff; font-weight:600; margin: 32px 0 12px; font-family: -apple-system, sans-serif;">A real example, today</h2>
+    <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:20px 22px; margin-bottom:28px;">
+      <div style="font-size:13px; color:#9999aa; line-height:1.7; font-family: -apple-system, sans-serif;">
+        <div style="color:#fbbf24; font-size:11px; font-weight:600; letter-spacing:.12em; margin-bottom:10px;">CASE · GO-TO-MARKET STRATEGY FOR DAYFLOW (PRODUCT IN PORTFOLIO)</div>
+        Founder asked for a complete GTM plan at maximum depth, with parallel AI peer review at every step.
+        <br/><br/>
+        Sutra ran the cascade: 4 independent OpenAI Codex consults fired in parallel while the primary AI built an 11-page deck. Codex found that the original $14/mo price wouldn't survive comparison to free alternatives, that ProductHunt was the wrong launch channel for this audience, and that the App Store's own search is a bigger lever than any social channel.
+        <br/><br/>
+        All three findings were adopted into the deck before it reached the founder. Wall-clock time: <strong style="color:#4ade80;">~5 minutes</strong>. Cost: <strong style="color:#4ade80;">~$8</strong>. Without Sutra, the same review would take a marketing consultant a week and cost $5-10K.
+      </div>
+    </div>
+
+    <!-- THE BET -->
+    <h2 style="font-size:18px; color:#fff; font-weight:600; margin: 32px 0 12px; font-family: -apple-system, sans-serif;">The bet</h2>
+    <div style="background:#0a0a12; border:1px solid #1e1e2e; border-radius:8px; padding:20px 22px;">
+      <div style="font-size:14px; color:#ddd; line-height:1.7; font-family: -apple-system, sans-serif;">
+        Asawa Inc. is a holding company. The thesis is that one founder, equipped with AI agents <em>governed by Sutra</em>, can build and run multiple software companies simultaneously — with the discipline of a 50-person team and the speed of a one-person team.
+        <br/><br/>
+        Sutra is the governance layer that makes that possible. It's the difference between "AI as a tool" and "AI as an employee with a job description, a process manual, and a performance review."
+      </div>
+    </div>
+
+    <div style="margin-top:36px; padding-top:18px; border-top:1px dashed #1e1e2e; font-size:11px; color:#555; font-family: 'SF Mono', monospace;">
+      Want the technical view? Click any other tab above. → Want to share this page only? Save the URL with <code style="background:#1a1a2e; padding:1px 5px; border-radius:3px; color:#818cf8;">#exec</code> appended (or just send a screenshot of this section).
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 1: HOW IT CONNECTS (Overview)                            -->
+<!-- ============================================================ -->
+<div class="section visible" id="sec-overview">
+  <div class="sec-title">How Everything Connects</div>
+  <div class="sec-sub">Asawa is the holding company. Sutra is the OS. Companies run on the OS. Click any node for details.</div>
+
+  <div class="legend">
+    <span><span class="legend-dot" style="background:#6366f1;"></span> Asawa (Governance)</span>
+    <span><span class="legend-dot" style="background:#4ade80;"></span> Sutra (Operating System)</span>
+    <span><span class="legend-dot" style="background:#f97316;"></span> Companies (Products)</span>
+    <span><span class="legend-dot" style="background:#06b6d4;"></span> Engines</span>
+    <span><span class="legend-dot" style="background:#22c55e;"></span> Terminal Check</span>
+    <span><span class="legend-dot" style="background:#818cf8;"></span> Future (Not Built)</span>
+  </div>
+
+  <svg viewBox="0 0 1000 780" width="100%" style="max-height: 82vh;">
+    <!-- CONNECTIONS -->
+    <!-- Asawa -> Sutra -->
+    <line x1="500" y1="72" x2="500" y2="168" stroke="#3730a3" stroke-width="2" class="conn-solid"/>
+    <text x="508" y="130" fill="#3730a3" font-size="8">principles, directions, governance</text>
+
+    <!-- Sutra -> Engines -->
+    <line x1="360" y1="230" x2="140" y2="350" stroke="#0e7490" stroke-width="1.5" class="conn-solid"/>
+    <line x1="430" y1="230" x2="340" y2="350" stroke="#0e7490" stroke-width="1.5" class="conn-solid"/>
+    <line x1="570" y1="230" x2="540" y2="350" stroke="#0e7490" stroke-width="1.5" class="conn-solid"/>
+    <line x1="640" y1="230" x2="740" y2="350" stroke="#0e7490" stroke-width="1.5" class="conn-solid"/>
+
+    <!-- Engines -> Terminal Check -->
+    <line x1="140" y1="410" x2="500" y2="460" stroke="#0e749055" stroke-width="1" class="conn"/>
+    <line x1="340" y1="410" x2="500" y2="460" stroke="#0e749055" stroke-width="1" class="conn"/>
+    <line x1="540" y1="410" x2="500" y2="460" stroke="#0e749055" stroke-width="1" class="conn"/>
+    <line x1="740" y1="410" x2="500" y2="460" stroke="#0e749055" stroke-width="1" class="conn"/>
+
+    <!-- Terminal Check -> Companies -->
+    <line x1="420" y1="510" x2="195" y2="570" stroke="#22c55e55" stroke-width="1" class="conn"/>
+    <line x1="460" y1="510" x2="400" y2="570" stroke="#22c55e55" stroke-width="1" class="conn"/>
+    <line x1="540" y1="510" x2="605" y2="570" stroke="#22c55e55" stroke-width="1" class="conn"/>
+    <line x1="580" y1="510" x2="810" y2="570" stroke="#22c55e55" stroke-width="1" class="conn"/>
+
+    <!-- Companies -> Feedback back to Sutra -->
+    <path d="M 195 630 Q 40 430 380 240" fill="none" stroke="#f9731633" stroke-width="1.5" class="conn"/>
+    <path d="M 400 630 Q 30 460 400 240" fill="none" stroke="#f9731633" stroke-width="1.5" class="conn"/>
+    <path d="M 605 630 Q 970 460 600 240" fill="none" stroke="#f9731633" stroke-width="1.5" class="conn"/>
+    <path d="M 810 630 Q 980 430 620 240" fill="none" stroke="#f9731633" stroke-width="1.5" class="conn"/>
+    <text x="50" y="430" fill="#f9731644" font-size="8" transform="rotate(-50, 50, 430)">feedback flows back</text>
+
+    <!-- ASAWA NODE -->
+    <g class="node" onclick="showDetail('asawa')">
+      <rect x="350" y="28" width="300" height="48" rx="10" fill="#1a1a2e" stroke="#6366f1" stroke-width="2"/>
+      <text x="500" y="49" text-anchor="middle" fill="#6366f1" font-size="11" font-weight="700" letter-spacing="2">ASAWA INC.</text>
+      <text x="500" y="64" text-anchor="middle" fill="#555" font-size="8">Holding Company -- Governance + IP. 26 Directions. 16 Protocols.</text>
+    </g>
+
+    <!-- SUTRA NODE -->
+    <g class="node" onclick="showDetail('sutra')">
+      <rect x="320" y="170" width="360" height="65" rx="10" fill="#0a1a0a" stroke="#4ade80" stroke-width="2"/>
+      <text x="500" y="194" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="700">SUTRA OS v2</text>
+      <text x="500" y="208" text-anchor="middle" fill="#666" font-size="9">4 Layers. Domain-First Problem Solving.</text>
+      <text x="500" y="222" text-anchor="middle" fill="#555" font-size="8">Protocols, Engines, Skills, Onboarding</text>
+    </g>
+
+    <!-- ENGINE NODES -->
+    <g class="node" onclick="showDetail('domain-gate')">
+      <rect x="65" y="350" width="150" height="55" rx="8" fill="#0a1520" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="140" y="372" text-anchor="middle" fill="#06b6d4" font-size="10" font-weight="600">DOMAIN GATE</text>
+      <text x="140" y="386" text-anchor="middle" fill="#555" font-size="8">Cynefin + 10-param scoring</text>
+      <text x="140" y="398" text-anchor="middle" fill="#4ade80" font-size="7">LIVE</text>
+    </g>
+
+    <g class="node" onclick="showDetail('estimation-engine')">
+      <rect x="265" y="350" width="150" height="55" rx="8" fill="#0a1520" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="340" y="372" text-anchor="middle" fill="#06b6d4" font-size="10" font-weight="600">ESTIMATION</text>
+      <text x="340" y="386" text-anchor="middle" fill="#555" font-size="8">Self-improving</text>
+      <text x="340" y="398" text-anchor="middle" fill="#4ade80" font-size="7">LIVE</text>
+    </g>
+
+    <g class="node" onclick="showDetail('measurement')">
+      <rect x="465" y="350" width="150" height="55" rx="8" fill="#0a1520" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="540" y="372" text-anchor="middle" fill="#06b6d4" font-size="10" font-weight="600">MEASUREMENT</text>
+      <text x="540" y="386" text-anchor="middle" fill="#555" font-size="8">KPIs + Metrics</text>
+      <text x="540" y="398" text-anchor="middle" fill="#4ade80" font-size="7">LIVE</text>
+    </g>
+
+    <g class="node" onclick="showDetail('context-engine')">
+      <rect x="665" y="350" width="150" height="55" rx="8" fill="#12121e" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="740" y="372" text-anchor="middle" fill="#818cf8" font-size="10" font-weight="600">CONTEXT ENGINE</text>
+      <text x="740" y="386" text-anchor="middle" fill="#555" font-size="8">Graph + Scoring</text>
+      <text x="740" y="398" text-anchor="middle" fill="#818cf8" font-size="7">NOT BUILT</text>
+    </g>
+
+    <!-- TERMINAL CHECK NODE (new) -->
+    <g class="node" onclick="showDetail('terminal-check')">
+      <rect x="390" y="460" width="220" height="48" rx="8" fill="#0a1a0a" stroke="#22c55e" stroke-width="2"/>
+      <text x="500" y="482" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="600">TERMINAL CHECK</text>
+      <text x="500" y="496" text-anchor="middle" fill="#555" font-size="8">9-layer convergence gate</text>
+    </g>
+
+    <!-- COMPANY NODES -->
+    <g class="node" onclick="showDetail('dayflow')">
+      <rect x="115" y="570" width="155" height="55" rx="8" fill="#1a1008" stroke="#f97316" stroke-width="1.5"/>
+      <text x="193" y="592" text-anchor="middle" fill="#f97316" font-size="10" font-weight="600">DAYFLOW</text>
+      <text x="193" y="606" text-anchor="middle" fill="#666" font-size="8">iOS Productivity</text>
+      <text x="193" y="618" text-anchor="middle" fill="#4ade80" font-size="7">ACTIVE</text>
+    </g>
+
+    <g class="node" onclick="showDetail('maze')">
+      <rect x="320" y="570" width="155" height="55" rx="8" fill="#1a1008" stroke="#f97316" stroke-width="1.5"/>
+      <text x="398" y="592" text-anchor="middle" fill="#f97316" font-size="10" font-weight="600">MAZE</text>
+      <text x="398" y="606" text-anchor="middle" fill="#666" font-size="8">Humor Feed</text>
+      <text x="398" y="618" text-anchor="middle" fill="#555" font-size="7">DEPRIORITIZED</text>
+    </g>
+
+    <g class="node" onclick="showDetail('ppr')">
+      <rect x="525" y="570" width="155" height="55" rx="8" fill="#1a1008" stroke="#f97316" stroke-width="1.5"/>
+      <text x="603" y="592" text-anchor="middle" fill="#f97316" font-size="10" font-weight="600">PPR</text>
+      <text x="603" y="606" text-anchor="middle" fill="#666" font-size="8">Wedding Cmd Center</text>
+      <text x="603" y="618" text-anchor="middle" fill="#555" font-size="7">DEPRIORITIZED</text>
+    </g>
+
+    <g class="node" onclick="showDetail('paisa')">
+      <rect x="730" y="570" width="155" height="55" rx="8" fill="#1a1008" stroke="#f97316" stroke-width="1.5"/>
+      <text x="808" y="592" text-anchor="middle" fill="#f97316" font-size="10" font-weight="600">PAISA</text>
+      <text x="808" y="606" text-anchor="middle" fill="#666" font-size="8">Digital Loans India</text>
+      <text x="808" y="618" text-anchor="middle" fill="#555" font-size="7">DEPRIORITIZED</text>
+    </g>
+
+    <!-- FUTURE: External customers -->
+    <g class="node" onclick="showDetail('external')">
+      <rect x="280" y="690" width="440" height="48" rx="10" fill="#12121e" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="500" y="710" text-anchor="middle" fill="#818cf8" font-size="10" font-weight="600">EXTERNAL COMPANIES (FUTURE)</text>
+      <text x="500" y="724" text-anchor="middle" fill="#555" font-size="8">Friend's company (Apr) | 10 target users (June) | CoS agents (2027)</text>
+    </g>
+    <line x1="500" y1="625" x2="500" y2="690" stroke="#818cf833" stroke-width="1" stroke-dasharray="4 2"/>
+
+    <!-- Side annotations -->
+    <g class="node" onclick="showDetail('directions')">
+      <rect x="720" y="55" width="140" height="38" rx="6" fill="#1a1018" stroke="#6366f166" stroke-width="1"/>
+      <text x="790" y="72" text-anchor="middle" fill="#666" font-size="8" font-weight="500">26 Founder Directions</text>
+      <text x="790" y="84" text-anchor="middle" fill="#555" font-size="7">16 Protocols</text>
+    </g>
+    <line x1="650" y1="52" x2="720" y2="68" stroke="#6366f133" stroke-width="1"/>
+
+    <g class="node" onclick="showDetail('practices')">
+      <rect x="140" y="55" width="140" height="38" rx="6" fill="#1a1018" stroke="#6366f166" stroke-width="1"/>
+      <text x="210" y="72" text-anchor="middle" fill="#666" font-size="8" font-weight="500">100+ Principles</text>
+      <text x="210" y="84" text-anchor="middle" fill="#555" font-size="7">7-Phase Onboarding</text>
+    </g>
+    <line x1="350" y1="52" x2="280" y2="68" stroke="#6366f133" stroke-width="1"/>
+
+    <!-- Formula -->
+    <g class="node" onclick="showDetail('formula')">
+      <rect x="300" y="270" width="400" height="28" rx="14" fill="#1e1e3a" stroke="#818cf8" stroke-width="1"/>
+      <text x="500" y="289" text-anchor="middle" fill="#818cf8" font-size="9" font-weight="600">Solution = f( Domain(problem), Pattern(domain), Context(node), Skill(node) )</text>
+    </g>
+  </svg>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 2: INSIDE SUTRA (Layers)                                 -->
+<!-- ============================================================ -->
+<div class="section" id="sec-sutra">
+  <div class="sec-title">Inside Sutra OS</div>
+  <div class="sec-sub">Four layers, each building on the one below. Click any layer for details.</div>
+
+  <div class="legend">
+    <span><span class="legend-dot" style="background:#818cf8;"></span> Layer 1: Theory</span>
+    <span><span class="legend-dot" style="background:#4ade80;"></span> Layer 2: Operating System</span>
+    <span><span class="legend-dot" style="background:#facc15;"></span> Layer 3: Product Modules</span>
+    <span><span class="legend-dot" style="background:#f472b6;"></span> Layer 4: Domain Practices</span>
+  </div>
+
+  <svg viewBox="0 0 1000 650" width="100%" style="max-height: 80vh;">
+    <!-- Layer connections -->
+    <line x1="500" y1="95" x2="500" y2="145" stroke="#333" stroke-width="1.5"/>
+    <line x1="500" y1="335" x2="500" y2="385" stroke="#333" stroke-width="1.5"/>
+    <line x1="500" y1="490" x2="500" y2="540" stroke="#333" stroke-width="1.5"/>
+
+    <!-- LAYER 1 -->
+    <g class="node" onclick="showDetail('layer1')">
+      <rect x="250" y="20" width="500" height="75" rx="10" fill="#12121e" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="500" y="46" text-anchor="middle" fill="#818cf8" font-size="13" font-weight="700">LAYER 1 -- ABSTRACTION</text>
+      <text x="500" y="62" text-anchor="middle" fill="#666" font-size="10">Research synthesis, cross-functional ops theory, phase analysis</text>
+      <text x="500" y="78" text-anchor="middle" fill="#555" font-size="9">4 files | Foundation layer | Informs all OS decisions</text>
+    </g>
+
+    <!-- LAYER 2 (big) -->
+    <g class="node" onclick="showDetail('layer2')">
+      <rect x="100" y="145" width="800" height="190" rx="10" fill="#0a1a0a" stroke="#4ade80" stroke-width="2"/>
+      <text x="500" y="172" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="700">LAYER 2 -- OPERATING SYSTEM</text>
+    </g>
+
+    <!-- L2 sub-boxes -->
+    <g class="node" onclick="showDetail('l2-company')">
+      <rect x="120" y="190" width="170" height="60" rx="6" fill="#0a150a" stroke="#4ade8044" stroke-width="1"/>
+      <text x="205" y="210" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">a/ Company Arch</text>
+      <text x="205" y="224" text-anchor="middle" fill="#555" font-size="9">Routing, Charters</text>
+      <text x="205" y="238" text-anchor="middle" fill="#555" font-size="8">6 Processes</text>
+    </g>
+    <g class="node" onclick="showDetail('l2-agent')">
+      <rect x="310" y="190" width="170" height="60" rx="6" fill="#0a150a" stroke="#4ade8044" stroke-width="1"/>
+      <text x="395" y="210" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">b/ Agent Arch</text>
+      <text x="395" y="224" text-anchor="middle" fill="#555" font-size="9">Skills, Protocols</text>
+      <text x="395" y="238" text-anchor="middle" fill="#555" font-size="8">Compliance Agent</text>
+    </g>
+    <g class="node" onclick="showDetail('l2-human')">
+      <rect x="500" y="190" width="170" height="60" rx="6" fill="#0a150a" stroke="#4ade8044" stroke-width="1"/>
+      <text x="585" y="210" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">c/ Human-Agent</text>
+      <text x="585" y="224" text-anchor="middle" fill="#555" font-size="9">Interface Model</text>
+      <text x="585" y="238" text-anchor="middle" fill="#555" font-size="8">Interaction Rules</text>
+    </g>
+    <g class="node" onclick="showDetail('l2-engines')">
+      <rect x="690" y="190" width="190" height="60" rx="6" fill="#0a1520" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="785" y="210" text-anchor="middle" fill="#06b6d4" font-size="10" font-weight="600">d/ Engines</text>
+      <text x="785" y="224" text-anchor="middle" fill="#555" font-size="9">Domain Gate, Estimation</text>
+      <text x="785" y="238" text-anchor="middle" fill="#555" font-size="8">Measurement, KPIs</text>
+    </g>
+
+    <!-- L2 protocols row -->
+    <g class="node" onclick="showDetail('l2-protocols')">
+      <rect x="120" y="265" width="365" height="45" rx="6" fill="#0a150a" stroke="#4ade8033" stroke-width="1"/>
+      <text x="302" y="285" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Protocols</text>
+      <text x="302" y="299" text-anchor="middle" fill="#555" font-size="9">Onboarding | Enforcement | Task Lifecycle | Deployment | Permissions</text>
+    </g>
+    <g class="node" onclick="showDetail('l2-templates')">
+      <rect x="505" y="265" width="375" height="45" rx="6" fill="#0a150a" stroke="#4ade8033" stroke-width="1"/>
+      <text x="692" y="285" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">Templates + Standards</text>
+      <text x="692" y="299" text-anchor="middle" fill="#555" font-size="9">HLD | Bug Fix | ADR | Research Gate | Readability Standard</text>
+    </g>
+
+    <!-- LAYER 3 -->
+    <g class="node" onclick="showDetail('layer3')">
+      <rect x="200" y="385" width="600" height="105" rx="10" fill="#1a1508" stroke="#facc15" stroke-width="1.5"/>
+      <text x="500" y="412" text-anchor="middle" fill="#facc15" font-size="13" font-weight="700">LAYER 3 -- PRODUCT MODULES</text>
+    </g>
+    <g class="node" onclick="showDetail('l3-b2c')">
+      <rect x="220" y="425" width="270" height="50" rx="6" fill="#1a150a" stroke="#facc1544" stroke-width="1"/>
+      <text x="355" y="445" text-anchor="middle" fill="#facc15" font-size="10" font-weight="600">B2C Consumer App</text>
+      <text x="355" y="460" text-anchor="middle" fill="#555" font-size="9">8 departments | Stage-1 Pre-launch</text>
+    </g>
+    <g class="node" onclick="showDetail('l3-agent')">
+      <rect x="510" y="425" width="270" height="50" rx="6" fill="#1a150a" stroke="#facc1544" stroke-width="1"/>
+      <text x="645" y="445" text-anchor="middle" fill="#facc15" font-size="10" font-weight="600">B2C AI Agent</text>
+      <text x="645" y="460" text-anchor="middle" fill="#555" font-size="9">8 departments | Stage-1 Pre-launch</text>
+    </g>
+
+    <!-- LAYER 4 -->
+    <g class="node" onclick="showDetail('layer4')">
+      <rect x="250" y="540" width="500" height="75" rx="10" fill="#1a0a18" stroke="#f472b6" stroke-width="1.5"/>
+      <text x="500" y="566" text-anchor="middle" fill="#f472b6" font-size="13" font-weight="700">LAYER 4 -- PRACTICES (Skills)</text>
+      <text x="500" y="582" text-anchor="middle" fill="#666" font-size="10">100+ principles across 17 domains</text>
+      <text x="500" y="596" text-anchor="middle" fill="#555" font-size="9">Engineering | Design | Product | Quality | Security | Content | Ops | Growth | Data</text>
+    </g>
+
+    <!-- Side annotations -->
+    <text x="80" y="130" fill="#33333366" font-size="9" font-weight="500" transform="rotate(-90, 80, 130)">THEORY INFORMS</text>
+    <text x="80" y="370" fill="#33333366" font-size="9" font-weight="500" transform="rotate(-90, 80, 370)">OS SHAPES MODULES</text>
+    <text x="80" y="530" fill="#33333366" font-size="9" font-weight="500" transform="rotate(-90, 80, 530)">MODULES USE SKILLS</text>
+  </svg>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 3: PROBLEM FLOW (NEW)                                    -->
+<!-- ============================================================ -->
+<div class="section" id="sec-flow">
+  <div class="sec-title">Problem Flow</div>
+  <div class="sec-sub">Every problem follows this path. Phase 0 to Phase 9. Click any phase for details.</div>
+
+  <div class="legend">
+    <span><span class="legend-dot" style="background:#6366f1;"></span> Input/Classify</span>
+    <span><span class="legend-dot" style="background:#f59e0b;"></span> Gates</span>
+    <span><span class="legend-dot" style="background:#06b6d4;"></span> Domain Gate</span>
+    <span><span class="legend-dot" style="background:#ec4899;"></span> Patterns</span>
+    <span><span class="legend-dot" style="background:#22c55e;"></span> Node Loop</span>
+    <span><span class="legend-dot" style="background:#818cf8;"></span> Output/Learn</span>
+  </div>
+
+  <svg viewBox="0 0 1000 2050" width="100%" style="max-height: none;">
+    <!-- Phase 0: Human Speaks -->
+    <g class="node" onclick="showDetail('phase0')">
+      <rect x="340" y="20" width="320" height="50" rx="10" fill="#1a1a2e" stroke="#6366f1" stroke-width="2"/>
+      <text x="500" y="42" text-anchor="middle" fill="#6366f1" font-size="12" font-weight="700">PHASE 0: Human Speaks</text>
+      <text x="500" y="58" text-anchor="middle" fill="#555" font-size="9">Raw input -- unclassified, unscored</text>
+    </g>
+
+    <!-- Arrow -->
+    <line x1="500" y1="70" x2="500" y2="100" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,98 505,98 500,105" fill="#333"/>
+
+    <!-- Phase 1: Input Routing -->
+    <g class="node" onclick="showDetail('phase1')">
+      <rect x="280" y="105" width="440" height="65" rx="10" fill="#1a1a2e" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="500" y="128" text-anchor="middle" fill="#6366f1" font-size="11" font-weight="700">PHASE 1: Input Routing</text>
+      <text x="500" y="143" text-anchor="middle" fill="#888" font-size="9">Classify TYPE: direction | task | feedback | new concept | question</text>
+      <text x="500" y="157" text-anchor="middle" fill="#555" font-size="8">Files: HUMAN-AGENT-INTERFACE.md, PROTO-006</text>
+    </g>
+
+    <line x1="500" y1="170" x2="500" y2="200" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,198 505,198 500,205" fill="#333"/>
+
+    <!-- Phase 2: Type-Specific Protocols -->
+    <g class="node" onclick="showDetail('phase2')">
+      <rect x="130" y="205" width="740" height="80" rx="10" fill="#12121e" stroke="#6366f1" stroke-width="1"/>
+      <text x="500" y="226" text-anchor="middle" fill="#6366f1" font-size="11" font-weight="700">PHASE 2: Type-Specific Protocols</text>
+    </g>
+    <!-- 4 branches -->
+    <rect x="145" y="238" width="160" height="36" rx="6" fill="#1a1a2e" stroke="#6366f144" stroke-width="1"/>
+    <text x="225" y="254" text-anchor="middle" fill="#888" font-size="8" font-weight="600">Direction</text>
+    <text x="225" y="266" text-anchor="middle" fill="#555" font-size="7">FOUNDER-DIRECTIONS.md</text>
+
+    <rect x="320" y="238" width="160" height="36" rx="6" fill="#1a1a2e" stroke="#6366f144" stroke-width="1"/>
+    <text x="400" y="254" text-anchor="middle" fill="#888" font-size="8" font-weight="600">New Concept</text>
+    <text x="400" y="266" text-anchor="middle" fill="#555" font-size="7">NEW-THING-PROTOCOL.md</text>
+
+    <rect x="495" y="238" width="160" height="36" rx="6" fill="#1a1a2e" stroke="#6366f144" stroke-width="1"/>
+    <text x="575" y="254" text-anchor="middle" fill="#888" font-size="8" font-weight="600">Feedback</text>
+    <text x="575" y="266" text-anchor="middle" fill="#555" font-size="7">PROTO-016</text>
+
+    <rect x="670" y="238" width="185" height="36" rx="6" fill="#1a1a2e" stroke="#4ade8044" stroke-width="1"/>
+    <text x="763" y="254" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="600">Task / Question</text>
+    <text x="763" y="266" text-anchor="middle" fill="#555" font-size="7">continue to Phase 3</text>
+
+    <line x1="500" y1="285" x2="500" y2="315" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,313 505,313 500,320" fill="#333"/>
+
+    <!-- Phase 3: Pre-Scoring Gates -->
+    <g class="node" onclick="showDetail('phase3')">
+      <rect x="130" y="320" width="740" height="80" rx="10" fill="#1a1508" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="500" y="340" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">PHASE 3: Pre-Scoring Gates</text>
+    </g>
+    <!-- 4 gate boxes -->
+    <rect x="145" y="350" width="160" height="36" rx="6" fill="#1a1a08" stroke="#f59e0b44" stroke-width="1"/>
+    <text x="225" y="365" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="600">Boundary</text>
+    <text x="225" y="377" text-anchor="middle" fill="#555" font-size="7">PROTO-011</text>
+
+    <rect x="320" y="350" width="160" height="36" rx="6" fill="#1a1a08" stroke="#f59e0b44" stroke-width="1"/>
+    <text x="400" y="365" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="600">Sensitivity</text>
+    <text x="400" y="377" text-anchor="middle" fill="#555" font-size="7">ENFORCEMENT.md</text>
+
+    <rect x="495" y="350" width="160" height="36" rx="6" fill="#1a1a08" stroke="#f59e0b44" stroke-width="1"/>
+    <text x="575" y="365" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="600">Architecture</text>
+    <text x="575" y="377" text-anchor="middle" fill="#555" font-size="7">PROTO-001 + PROTO-005</text>
+
+    <rect x="670" y="350" width="185" height="36" rx="6" fill="#1a1a08" stroke="#f59e0b44" stroke-width="1"/>
+    <text x="763" y="365" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="600">Cost</text>
+    <text x="763" y="377" text-anchor="middle" fill="#555" font-size="7">PROTO-003 + PROTO-004</text>
+
+    <line x1="500" y1="400" x2="500" y2="430" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,428 505,428 500,435" fill="#333"/>
+
+    <!-- Phase 4: Domain Gate -->
+    <g class="node" onclick="showDetail('domain-gate')">
+      <rect x="200" y="435" width="600" height="110" rx="10" fill="#0a1520" stroke="#06b6d4" stroke-width="2"/>
+      <text x="500" y="458" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="700">PHASE 4: Domain Gate</text>
+      <text x="500" y="475" text-anchor="middle" fill="#888" font-size="9">Cynefin classify | OODA tempo cap (&lt;30s) | Rumsfeld fallback | ESI resource score</text>
+      <text x="500" y="490" text-anchor="middle" fill="#666" font-size="9">10-parameter scoring (repurposed from depth system)</text>
+      <text x="500" y="508" text-anchor="middle" fill="#555" font-size="8">Files: ADAPTIVE-PROTOCOL.md, ESTIMATION-ENGINE.md</text>
+      <rect x="330" y="518" width="340" height="20" rx="4" fill="#06b6d411" stroke="#06b6d444" stroke-width="1"/>
+      <text x="500" y="532" text-anchor="middle" fill="#06b6d4" font-size="8" font-weight="600">Output: DOMAIN + RESOURCE + PATTERN + APPETITE</text>
+    </g>
+
+    <line x1="500" y1="545" x2="500" y2="575" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,573 505,573 500,580" fill="#333"/>
+
+    <!-- Phase 5: Five Patterns -->
+    <g class="node" onclick="showDetail('phase5')">
+      <rect x="60" y="580" width="880" height="85" rx="10" fill="#12121e" stroke="#818cf8" stroke-width="1"/>
+      <text x="500" y="600" text-anchor="middle" fill="#ccc" font-size="11" font-weight="700">PHASE 5: Five Patterns</text>
+    </g>
+    <!-- 5 pattern boxes -->
+    <g class="node" onclick="showDetail('clear-encode')">
+      <rect x="80" y="610" width="148" height="42" rx="6" fill="#0a1a1a" stroke="#2dd4bf" stroke-width="1.5"/>
+      <text x="154" y="628" text-anchor="middle" fill="#2dd4bf" font-size="9" font-weight="700">Clear / ENCODE</text>
+      <text x="154" y="642" text-anchor="middle" fill="#555" font-size="7">Known answer, encode it</text>
+    </g>
+    <g class="node" onclick="showDetail('complicated-traverse')">
+      <rect x="243" y="610" width="148" height="42" rx="6" fill="#1a1508" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="317" y="628" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="700">Complicated / TRAVERSE</text>
+      <text x="317" y="642" text-anchor="middle" fill="#555" font-size="7">Expert analysis needed</text>
+    </g>
+    <g class="node" onclick="showDetail('probe-artifact')">
+      <rect x="406" y="610" width="148" height="42" rx="6" fill="#1a0a18" stroke="#ec4899" stroke-width="1.5"/>
+      <text x="480" y="628" text-anchor="middle" fill="#ec4899" font-size="9" font-weight="700">Complex / PROBE</text>
+      <text x="480" y="642" text-anchor="middle" fill="#555" font-size="7">Probe + sense-make</text>
+    </g>
+    <g class="node" onclick="showDetail('chaotic-stabilize')">
+      <rect x="569" y="610" width="148" height="42" rx="6" fill="#1a0a0a" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="643" y="628" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="700">Chaotic / STABILIZE</text>
+      <text x="643" y="642" text-anchor="middle" fill="#555" font-size="7">Act first, then sense</text>
+    </g>
+    <g class="node" onclick="showDetail('disorder-decompose')">
+      <rect x="732" y="610" width="188" height="42" rx="6" fill="#12121e" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="826" y="628" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">Disorder / DECOMPOSE</text>
+      <text x="826" y="642" text-anchor="middle" fill="#555" font-size="7">Split until classifiable</text>
+    </g>
+
+    <line x1="500" y1="665" x2="500" y2="695" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,693 505,693 500,700" fill="#333"/>
+
+    <!-- Phase 6: Node Loop -->
+    <g class="node" onclick="showDetail('phase6')">
+      <rect x="160" y="700" width="680" height="120" rx="10" fill="#0a1a0a" stroke="#22c55e" stroke-width="2" stroke-dasharray="6 3"/>
+      <text x="500" y="722" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">PHASE 6: Node Loop</text>
+      <text x="500" y="738" text-anchor="middle" fill="#555" font-size="8">repeat until terminal</text>
+    </g>
+    <!-- 6 sub-steps -->
+    <rect x="178" y="748" width="95" height="30" rx="4" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="226" y="766" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="600">Observe</text>
+
+    <text x="280" y="766" fill="#333" font-size="10">-></text>
+
+    <rect x="293" y="748" width="95" height="30" rx="4" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="341" y="766" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="600">Shape</text>
+
+    <text x="395" y="766" fill="#333" font-size="10">-></text>
+
+    <rect x="408" y="748" width="80" height="30" rx="4" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="448" y="766" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="600">Plan</text>
+
+    <text x="496" y="766" fill="#333" font-size="10">-></text>
+
+    <rect x="509" y="748" width="90" height="30" rx="4" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="554" y="766" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="600">Execute</text>
+
+    <text x="607" y="766" fill="#333" font-size="10">-></text>
+
+    <rect x="620" y="748" width="95" height="30" rx="4" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="668" y="766" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="600">Precision</text>
+
+    <text x="722" y="766" fill="#333" font-size="10">-></text>
+
+    <rect x="735" y="748" width="88" height="30" rx="4" fill="#0a150a" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="779" y="766" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="700">Terminal</text>
+
+    <!-- Loop arrow back -->
+    <path d="M 779 780 Q 779 800 500 800 Q 226 800 226 780" fill="none" stroke="#22c55e33" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="500" y="796" text-anchor="middle" fill="#22c55e44" font-size="7">loop if not terminal</text>
+
+    <line x1="500" y1="820" x2="500" y2="850" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,848 505,848 500,855" fill="#333"/>
+
+    <!-- Phase 7: Output Readability Gate -->
+    <g class="node" onclick="showDetail('phase7')">
+      <rect x="280" y="855" width="440" height="60" rx="10" fill="#12121e" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="500" y="878" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700">PHASE 7: Output Readability Gate</text>
+      <text x="500" y="895" text-anchor="middle" fill="#555" font-size="8">READABILITY-STANDARD.md | 3-signal constraint | Format before display</text>
+    </g>
+
+    <line x1="500" y1="915" x2="500" y2="945" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,943 505,943 500,950" fill="#333"/>
+
+    <!-- Phase 8: Measure -->
+    <g class="node" onclick="showDetail('phase8')">
+      <rect x="280" y="950" width="440" height="60" rx="10" fill="#12121e" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="500" y="973" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700">PHASE 8: Measure</text>
+      <text x="500" y="990" text-anchor="middle" fill="#555" font-size="8">MEASUREMENT-PROTOCOL.md | Extended TRIAGE | Compliance logging</text>
+    </g>
+
+    <line x1="500" y1="1010" x2="500" y2="1040" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,1038 505,1038 500,1045" fill="#333"/>
+
+    <!-- Phase 9: Learn -->
+    <g class="node" onclick="showDetail('phase9')">
+      <rect x="220" y="1045" width="560" height="75" rx="10" fill="#12121e" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="500" y="1068" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700">PHASE 9: Learn</text>
+      <text x="500" y="1085" text-anchor="middle" fill="#666" font-size="9">Protocol extraction | RL on depth | Exemplar library</text>
+      <text x="500" y="1100" text-anchor="middle" fill="#555" font-size="8">Production rules | Calibration | Feedback to Sutra</text>
+    </g>
+  </svg>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 4: INSIDE A NODE (NEW)                                   -->
+<!-- ============================================================ -->
+<div class="section" id="sec-node">
+  <div class="sec-title">Inside a Node</div>
+  <div class="sec-sub">Detail view of what happens inside each Complicated node. Six steps + 9-layer Terminal Check.</div>
+
+  <div class="legend">
+    <span><span class="legend-dot" style="background:#06b6d4;"></span> Observe/Shape</span>
+    <span><span class="legend-dot" style="background:#4ade80;"></span> Plan/Execute</span>
+    <span><span class="legend-dot" style="background:#f59e0b;"></span> Precision</span>
+    <span><span class="legend-dot" style="background:#22c55e;"></span> Terminal Check</span>
+  </div>
+
+  <svg viewBox="0 0 1000 1150" width="100%" style="max-height: none;">
+    <!-- Step A: Observe -->
+    <g class="node" onclick="showDetail('step-observe')">
+      <rect x="250" y="20" width="500" height="70" rx="10" fill="#0a1520" stroke="#06b6d4" stroke-width="2"/>
+      <text x="500" y="44" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="700">STEP A: Observe</text>
+      <text x="500" y="62" text-anchor="middle" fill="#888" font-size="9">Load 2-3 hops of context graph</text>
+      <text x="500" y="76" text-anchor="middle" fill="#555" font-size="8">Bloom's classifier: remember | understand | apply | analyze | evaluate | create</text>
+    </g>
+
+    <line x1="500" y1="90" x2="500" y2="120" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,118 505,118 500,125" fill="#333"/>
+
+    <!-- Step B: Shape -->
+    <g class="node" onclick="showDetail('step-shape')">
+      <rect x="250" y="125" width="500" height="70" rx="10" fill="#0a1520" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="500" y="149" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="700">STEP B: Shape</text>
+      <text x="500" y="167" text-anchor="middle" fill="#888" font-size="9">Socratic question | MCTS estimate | Pick ONE branch</text>
+      <text x="500" y="181" text-anchor="middle" fill="#555" font-size="8">Narrows from multiple possibilities to a single path forward</text>
+    </g>
+
+    <line x1="500" y1="195" x2="500" y2="225" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,223 505,223 500,230" fill="#333"/>
+
+    <!-- Step C: Plan -->
+    <g class="node" onclick="showDetail('step-plan')">
+      <rect x="250" y="230" width="500" height="70" rx="10" fill="#0a1a0a" stroke="#4ade80" stroke-width="1.5"/>
+      <text x="500" y="254" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="700">STEP C: Plan</text>
+      <text x="500" y="272" text-anchor="middle" fill="#888" font-size="9">Per-node estimation | Cumulative budget tracking</text>
+      <text x="500" y="286" text-anchor="middle" fill="#555" font-size="8">How much time/tokens/files does THIS node cost? Are we over budget?</text>
+    </g>
+
+    <line x1="500" y1="300" x2="500" y2="330" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,328 505,328 500,335" fill="#333"/>
+
+    <!-- Step D: Execute -->
+    <g class="node" onclick="showDetail('step-execute')">
+      <rect x="250" y="335" width="500" height="70" rx="10" fill="#0a1a0a" stroke="#4ade80" stroke-width="2"/>
+      <text x="500" y="359" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="700">STEP D: Execute</text>
+      <text x="500" y="377" text-anchor="middle" fill="#888" font-size="9">ONE artifact per node | Working paper output</text>
+      <text x="500" y="391" text-anchor="middle" fill="#555" font-size="8">Single deliverable: code, design, analysis, document, config</text>
+    </g>
+
+    <line x1="500" y1="405" x2="500" y2="435" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,433 505,433 500,440" fill="#333"/>
+
+    <!-- Step E: Precision -->
+    <g class="node" onclick="showDetail('step-precision')">
+      <rect x="250" y="440" width="500" height="70" rx="10" fill="#1a1508" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="500" y="464" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="700">STEP E: Precision</text>
+      <text x="500" y="482" text-anchor="middle" fill="#888" font-size="9">14 mechanisms, matched to failure mode</text>
+      <text x="500" y="496" text-anchor="middle" fill="#555" font-size="8">Each mechanism targets a specific class of error. Not all fire every time.</text>
+    </g>
+
+    <line x1="500" y1="510" x2="500" y2="540" stroke="#333" stroke-width="1.5"/>
+    <polygon points="495,538 505,538 500,545" fill="#333"/>
+
+    <!-- Step F: Terminal Check — 9 layers -->
+    <g class="node" onclick="showDetail('terminal-check')">
+      <rect x="130" y="545" width="740" height="350" rx="10" fill="#0a1a0a" stroke="#22c55e" stroke-width="2"/>
+      <text x="500" y="572" text-anchor="middle" fill="#22c55e" font-size="13" font-weight="700">STEP F: Terminal Check -- 9 Layers</text>
+    </g>
+
+    <!-- Free tier label -->
+    <text x="160" y="600" fill="#22c55e" font-size="10" font-weight="600">FREE (always run)</text>
+
+    <!-- Layer 1 -->
+    <rect x="160" y="610" width="210" height="38" rx="6" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="265" y="627" text-anchor="middle" fill="#22c55e" font-size="9" font-weight="600">1. Output Type</text>
+    <text x="265" y="641" text-anchor="middle" fill="#555" font-size="7">Match format to request type</text>
+
+    <!-- Layer 2 -->
+    <rect x="390" y="610" width="210" height="38" rx="6" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="495" y="627" text-anchor="middle" fill="#22c55e" font-size="9" font-weight="600">2. Who Does This</text>
+    <text x="495" y="641" text-anchor="middle" fill="#555" font-size="7">Verify authority/capability</text>
+
+    <!-- Layer 3 -->
+    <rect x="620" y="610" width="230" height="38" rx="6" fill="#0a150a" stroke="#22c55e44" stroke-width="1"/>
+    <text x="735" y="627" text-anchor="middle" fill="#22c55e" font-size="9" font-weight="600">3. Convergence Detection</text>
+    <text x="735" y="641" text-anchor="middle" fill="#555" font-size="7">Are we going in circles?</text>
+
+    <!-- Layer 4 (NEW) -->
+    <rect x="160" y="660" width="210" height="38" rx="6" fill="#0a150a" stroke="#22c55e" stroke-width="1"/>
+    <text x="265" y="677" text-anchor="middle" fill="#22c55e" font-size="9" font-weight="600">4. Specificity Threshold</text>
+    <text x="218" y="691" fill="#ec4899" font-size="7">NEW</text>
+    <text x="300" y="691" fill="#555" font-size="7">Concrete enough to act on?</text>
+
+    <!-- Layer 5 (NEW) -->
+    <rect x="390" y="660" width="210" height="38" rx="6" fill="#0a150a" stroke="#22c55e" stroke-width="1"/>
+    <text x="495" y="677" text-anchor="middle" fill="#22c55e" font-size="9" font-weight="600">5. Output Inversion</text>
+    <text x="448" y="691" fill="#ec4899" font-size="7">NEW</text>
+    <text x="530" y="691" fill="#555" font-size="7">Would opposite be better?</text>
+
+    <!-- Layer 6 (NEW) -->
+    <rect x="620" y="660" width="230" height="38" rx="6" fill="#0a150a" stroke="#22c55e" stroke-width="1"/>
+    <text x="735" y="677" text-anchor="middle" fill="#22c55e" font-size="9" font-weight="600">6. Schema Fill</text>
+    <text x="678" y="691" fill="#ec4899" font-size="7">NEW</text>
+    <text x="770" y="691" fill="#555" font-size="7">All required fields populated?</text>
+
+    <!-- Conditional tier label -->
+    <text x="160" y="725" fill="#f59e0b" font-size="10" font-weight="600">CONDITIONAL (fire when triggered)</text>
+
+    <!-- Layer 7 (NEW) -->
+    <rect x="160" y="738" width="210" height="38" rx="6" fill="#1a1508" stroke="#f59e0b" stroke-width="1"/>
+    <text x="265" y="755" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="600">7. Beam Search</text>
+    <text x="218" y="769" fill="#ec4899" font-size="7">NEW</text>
+    <text x="300" y="769" fill="#555" font-size="7">Explore N alternatives</text>
+
+    <!-- Layer 8 (NEW) -->
+    <rect x="390" y="738" width="210" height="38" rx="6" fill="#1a1508" stroke="#f59e0b" stroke-width="1"/>
+    <text x="495" y="755" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="600">8. Adversarial Check</text>
+    <text x="448" y="769" fill="#ec4899" font-size="7">NEW</text>
+    <text x="530" y="769" fill="#555" font-size="7">Red team the output</text>
+
+    <!-- Layer 9 (NEW) -->
+    <rect x="620" y="738" width="230" height="38" rx="6" fill="#1a1508" stroke="#f59e0b" stroke-width="1"/>
+    <text x="735" y="755" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="600">9. Exemplar Compare</text>
+    <text x="678" y="769" fill="#ec4899" font-size="7">NEW</text>
+    <text x="770" y="769" fill="#555" font-size="7">Match against known-good</text>
+
+    <!-- Result boxes -->
+    <rect x="250" y="810" width="200" height="35" rx="6" fill="#0a2a0a" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="350" y="832" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700">TERMINAL</text>
+
+    <rect x="550" y="810" width="200" height="35" rx="6" fill="#1a0a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="650" y="832" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700">LOOP BACK</text>
+
+    <text x="470" y="830" fill="#555" font-size="10">or</text>
+
+    <!-- Arrow from Terminal to output -->
+    <line x1="350" y1="845" x2="350" y2="880" stroke="#22c55e55" stroke-width="1.5"/>
+    <text x="350" y="900" text-anchor="middle" fill="#22c55e" font-size="9">Proceed to Phase 7: Output Gate</text>
+
+    <!-- Arrow from Loop Back -->
+    <path d="M 650 845 Q 650 870 850 870 Q 920 870 920 600 Q 920 400 750 400 Q 600 400 500 400" fill="none" stroke="#ef444444" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="920" y="640" fill="#ef444444" font-size="7" transform="rotate(90, 920, 640)">back to Step A</text>
+  </svg>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 5: FILE MAP (NEW)                                        -->
+<!-- ============================================================ -->
+<div class="section" id="sec-files">
+  <div class="sec-title">File Map</div>
+  <div class="sec-sub">Every file in the system. Where it activates, what it does, and what's orphaned.</div>
+
+  <div class="file-section-title">Used Files <span class="file-section-count">(22)</span></div>
+  <table class="file-table">
+    <thead><tr><th>File</th><th>Activates At</th><th>What It Does</th></tr></thead>
+    <tbody>
+      <tr><td>CLAUDE.md</td><td>Phase 0 (boot)</td><td>Entry point, identity, session config, boot context</td></tr>
+      <tr><td>HUMAN-AGENT-INTERFACE.md</td><td>Phase 1</td><td>Defines interaction types, authority hierarchy</td></tr>
+      <tr><td>PROTO-006 (Input Routing)</td><td>Phase 1</td><td>Classification rules for all input types</td></tr>
+      <tr><td>FOUNDER-DIRECTIONS.md</td><td>Phase 2</td><td>26 directions, loaded when TYPE=direction</td></tr>
+      <tr><td>NEW-THING-PROTOCOL.md</td><td>Phase 2</td><td>Handles new concepts, prevents premature builds</td></tr>
+      <tr><td>PROTO-016 (Feedback)</td><td>Phase 2</td><td>Routes feedback to correct destination</td></tr>
+      <tr><td>PROTO-011 (Boundaries)</td><td>Phase 3</td><td>Session isolation, edit scope enforcement</td></tr>
+      <tr><td>ENFORCEMENT.md</td><td>Phase 3</td><td>Sensitivity checks, compliance rules</td></tr>
+      <tr><td>PROTO-001 (Architecture)</td><td>Phase 3</td><td>Structural awareness before changes</td></tr>
+      <tr><td>PROTO-005 (Architecture)</td><td>Phase 3</td><td>Architecture decision protocol</td></tr>
+      <tr><td>PROTO-003 (Cost)</td><td>Phase 3</td><td>Cost estimation and budget awareness</td></tr>
+      <tr><td>PROTO-004 (Cost)</td><td>Phase 3</td><td>Resource allocation rules</td></tr>
+      <tr><td>ADAPTIVE-PROTOCOL.md</td><td>Phase 4</td><td>Domain Gate: Cynefin + 10-param scoring</td></tr>
+      <tr><td>ESTIMATION-ENGINE.md</td><td>Phase 4</td><td>Self-improving task estimation (4 dims)</td></tr>
+      <tr><td>TASK-LIFECYCLE.md</td><td>Phase 6</td><td>Node loop: observe/shape/plan/execute/check</td></tr>
+      <tr><td>READABILITY-STANDARD.md</td><td>Phase 7</td><td>Output formatting gate, 3-signal constraint</td></tr>
+      <tr><td>MEASUREMENT-PROTOCOL.md</td><td>Phase 8</td><td>KPI tracking, extended TRIAGE logging</td></tr>
+      <tr><td>SUTRA-KPI.md</td><td>Phase 8</td><td>Active KPI definitions</td></tr>
+      <tr><td>SUTRA-KPI-HISTORY.md</td><td>Phase 8</td><td>Historical KPI data</td></tr>
+      <tr><td>SYSTEM-MAP.md</td><td>On demand</td><td>Full file/directory map, "does this exist?"</td></tr>
+      <tr><td>TODO.md</td><td>Boot (lines 1-15)</td><td>Quick reference table, backlog</td></tr>
+      <tr><td>MANIFEST-v1.7.md</td><td>Deployment</td><td>File manifest for OS deployment to companies</td></tr>
+    </tbody>
+  </table>
+
+  <div class="file-section-title">Governance Files <span class="file-section-count">(28)</span></div>
+  <table class="file-table">
+    <thead><tr><th>File</th><th>When Loaded</th><th>What It Constrains</th></tr></thead>
+    <tbody>
+      <tr><td>FOUNDING-DOCTRINE.md</td><td>Structural changes</td><td>5 tests: Dynamic, Flexible, Scalable, Simple, Nuanced</td></tr>
+      <tr><td>FOUNDER-DIRECTIONS.md (D1-D26)</td><td>Direction input</td><td>Permanent behavioral forces across all systems</td></tr>
+      <tr><td>PROTO-000 through PROTO-016</td><td>Per protocol trigger</td><td>16 protocols covering lifecycle, enforcement, routing</td></tr>
+      <tr><td>ENFORCEMENT.md</td><td>Phase 3</td><td>Sensitivity, compliance, boundary enforcement</td></tr>
+      <tr><td>PERMISSIONS-TEMPLATE.md</td><td>New company onboard</td><td>Role-based access control template</td></tr>
+      <tr><td>CLIENT-ONBOARDING.md</td><td>New company onboard</td><td>7-phase onboarding process</td></tr>
+      <tr><td>DEPLOYMENT-MODEL.md</td><td>OS deployment</td><td>How files deploy from Sutra to companies</td></tr>
+      <tr><td>ASAWA-AS-CLIENT.md</td><td>Holding co decisions</td><td>Asawa's relationship to Sutra as a client</td></tr>
+      <tr><td>god-mode.sh</td><td>Cross-company edits</td><td>Password-gated 2h session for portfolio changes</td></tr>
+      <tr><td>enforce-boundaries.sh</td><td>Every edit</td><td>Session isolation enforcement via hooks</td></tr>
+      <tr><td>dispatcher-pretool.sh</td><td>Every tool call</td><td>Master hook dispatcher, fires all enforcement hooks</td></tr>
+    </tbody>
+  </table>
+
+  <div class="file-section-title">Orphaned Files <span class="file-section-count">(18)</span></div>
+  <table class="file-table">
+    <thead><tr><th>File</th><th>Why Orphaned</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>PRINCIPLES-BY-FUNCTION.md</td><td>Not connected to depth/domain system</td><td>HOLD -- restructure in Q3</td></tr>
+      <tr><td>RESEARCH-CHARTER.md</td><td>No trigger in problem flow</td><td>HOLD -- bi-weekly cadence</td></tr>
+      <tr><td>COMPANY-HEALTH.md</td><td>Superseded by KPI system</td><td>ARCHIVE</td></tr>
+      <tr><td>AB-TEST-FRAMEWORK.md</td><td>No company uses A/B testing yet</td><td>HOLD -- activate when needed</td></tr>
+      <tr><td>SKILL-CATALOG.md</td><td>Skills are runtime (GStack), not catalog</td><td>ARCHIVE</td></tr>
+      <tr><td>CONTINUOUS-IMPROVEMENT.md</td><td>Absorbed into Phase 9 Learn</td><td>ARCHIVE</td></tr>
+      <tr><td>AGENT-COMMUNICATION.md</td><td>Single agent, no inter-agent protocol</td><td>HOLD -- activate for operators</td></tr>
+      <tr><td>INCIDENT-RESPONSE.md</td><td>Never triggered, no incidents</td><td>HOLD</td></tr>
+      <tr><td>WEEKLY-PLANNING.md</td><td>Replaced by roadmap/TODO</td><td>ARCHIVE</td></tr>
+      <tr><td>DAILY-STANDUP.md</td><td>Replaced by /asawa pulse</td><td>ARCHIVE</td></tr>
+      <tr><td>FEATURE-LIFECYCLE.md</td><td>Absorbed into TASK-LIFECYCLE.md</td><td>ARCHIVE</td></tr>
+      <tr><td>DECISION-MAKING.md</td><td>Not referenced in problem flow</td><td>HOLD -- separate flow</td></tr>
+      <tr><td>ROADMAP-MEETING.md</td><td>Ad-hoc, not scheduled process</td><td>ARCHIVE</td></tr>
+      <tr><td>B2C-CONSUMER-TEMPLATE.md</td><td>Template exists but no active module</td><td>HOLD</td></tr>
+      <tr><td>B2C-AGENT-TEMPLATE.md</td><td>Template exists but no active module</td><td>HOLD</td></tr>
+      <tr><td>GROWTH-METRICS.md</td><td>No company at growth stage</td><td>HOLD</td></tr>
+      <tr><td>SECURITY-AUDIT.md</td><td>No audit cadence established</td><td>HOLD</td></tr>
+      <tr><td>CONTENT-STRATEGY.md</td><td>No content production active</td><td>HOLD</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 6: PATH TO PRODUCT (Updated)                             -->
+<!-- ============================================================ -->
+<div class="section" id="sec-journey">
+  <div class="sec-title">Path to Autonomous CoS</div>
+  <div class="sec-sub">From where we are today to where we're going. Each step builds on the last.</div>
+
+  <div class="flow-track">
+    <div class="flow-step">
+      <div class="flow-line" style="background: #4ade80;"></div>
+      <div class="flow-circle fc-done">1</div>
+      <div class="flow-label" style="color: #4ade80;">Internal OS</div>
+      <div class="flow-desc">Running on 4 companies. Domain gate, estimation, feedback loops.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line" style="background: linear-gradient(to right, #4ade80, #facc15);"></div>
+      <div class="flow-circle fc-current">2</div>
+      <div class="flow-label" style="color: #facc15;">Template Repo</div>
+      <div class="flow-desc">Package as .md files. Deploy to friend. Prove it works without you.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"></div>
+      <div class="flow-circle fc-future">3</div>
+      <div class="flow-label">MCP / Managed Agents</div>
+      <div class="flow-desc">4 tools: assess_domain, estimate, classify, log_outcome. Any AI can connect.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"></div>
+      <div class="flow-circle fc-future">4</div>
+      <div class="flow-label">Context Engine</div>
+      <div class="flow-desc">Graph-based retrieval. ACT-R scoring. Budget-constrained assembly.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"></div>
+      <div class="flow-circle fc-future">5</div>
+      <div class="flow-label">DAG Engine</div>
+      <div class="flow-desc">Skills as executable process graphs. Domain-controlled expansion.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"></div>
+      <div class="flow-circle fc-future">6</div>
+      <div class="flow-label">Operators</div>
+      <div class="flow-desc">Role-scoped agents. Context per role. Skill per role.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-circle fc-future" style="border-color: #818cf8; color: #818cf8;">7</div>
+      <div class="flow-label" style="color: #818cf8;">Autonomous CoS</div>
+      <div class="flow-desc">Every person gets a Chief of Staff. CoS agents coordinate.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <svg viewBox="0 0 1000 420" width="100%">
+      <!-- Step labels on left -->
+      <text x="40" y="50" fill="#4ade80" font-size="11" font-weight="600">Today (Step 1-2)</text>
+      <text x="40" y="165" fill="#facc15" font-size="11" font-weight="600">Build (Steps 3-5)</text>
+      <text x="40" y="315" fill="#818cf8" font-size="11" font-weight="600">Product (Steps 6-7)</text>
+
+      <!-- Today nodes -->
+      <rect x="200" y="30" width="120" height="35" rx="6" fill="#0a2a0a" stroke="#4ade80" stroke-width="1"/>
+      <text x="260" y="52" text-anchor="middle" fill="#4ade80" font-size="9">Domain Gate</text>
+
+      <rect x="340" y="30" width="120" height="35" rx="6" fill="#0a2a0a" stroke="#4ade80" stroke-width="1"/>
+      <text x="400" y="52" text-anchor="middle" fill="#4ade80" font-size="9">Estimation</text>
+
+      <rect x="480" y="30" width="120" height="35" rx="6" fill="#0a2a0a" stroke="#4ade80" stroke-width="1"/>
+      <text x="540" y="52" text-anchor="middle" fill="#4ade80" font-size="9">Feedback Loop</text>
+
+      <rect x="620" y="30" width="120" height="35" rx="6" fill="#0a2a0a" stroke="#4ade80" stroke-width="1"/>
+      <text x="680" y="52" text-anchor="middle" fill="#4ade80" font-size="9">Onboarding</text>
+
+      <rect x="760" y="30" width="120" height="35" rx="6" fill="#0a2a0a" stroke="#4ade80" stroke-width="1"/>
+      <text x="820" y="52" text-anchor="middle" fill="#4ade80" font-size="9">Terminal Check</text>
+
+      <!-- Build nodes -->
+      <rect x="220" y="145" width="160" height="35" rx="6" fill="#1a1a08" stroke="#facc15" stroke-width="1"/>
+      <text x="300" y="167" text-anchor="middle" fill="#facc15" font-size="9">MCP / Managed Agents</text>
+
+      <rect x="420" y="145" width="160" height="35" rx="6" fill="#1a1a08" stroke="#facc15" stroke-width="1"/>
+      <text x="500" y="167" text-anchor="middle" fill="#facc15" font-size="9">Context Engine</text>
+
+      <rect x="620" y="145" width="160" height="35" rx="6" fill="#1a1a08" stroke="#facc15" stroke-width="1"/>
+      <text x="700" y="167" text-anchor="middle" fill="#facc15" font-size="9">DAG Engine</text>
+
+      <!-- Connections: today -> build -->
+      <line x1="260" y1="65" x2="300" y2="145" stroke="#33333366" stroke-width="1"/>
+      <line x1="400" y1="65" x2="300" y2="145" stroke="#33333366" stroke-width="1"/>
+      <line x1="400" y1="65" x2="500" y2="145" stroke="#33333366" stroke-width="1"/>
+      <line x1="540" y1="65" x2="500" y2="145" stroke="#33333366" stroke-width="1"/>
+      <line x1="540" y1="65" x2="700" y2="145" stroke="#33333366" stroke-width="1"/>
+      <line x1="680" y1="65" x2="700" y2="145" stroke="#33333366" stroke-width="1"/>
+      <line x1="820" y1="65" x2="300" y2="145" stroke="#33333366" stroke-width="1"/>
+
+      <text x="160" y="110" fill="#33333388" font-size="8" transform="rotate(-25, 160, 110)">enables</text>
+
+      <!-- Build -> Product convergence -->
+      <line x1="300" y1="180" x2="420" y2="240" stroke="#33333366" stroke-width="1"/>
+      <line x1="500" y1="180" x2="500" y2="240" stroke="#33333366" stroke-width="1"/>
+      <line x1="700" y1="180" x2="580" y2="240" stroke="#33333366" stroke-width="1"/>
+
+      <!-- Operator node -->
+      <rect x="380" y="240" width="240" height="40" rx="8" fill="#12121e" stroke="#818cf844" stroke-width="1.5"/>
+      <text x="500" y="265" text-anchor="middle" fill="#888" font-size="11" font-weight="600">OPERATOR ARCHITECTURE</text>
+
+      <!-- Operator -> CoS -->
+      <line x1="500" y1="280" x2="500" y2="310" stroke="#818cf844" stroke-width="1.5"/>
+
+      <!-- CoS node -->
+      <rect x="310" y="310" width="380" height="50" rx="10" fill="#1a1a2e" stroke="#818cf8" stroke-width="2"/>
+      <text x="500" y="332" text-anchor="middle" fill="#818cf8" font-size="13" font-weight="700">AUTONOMOUS CoS AGENT</text>
+      <text x="500" y="348" text-anchor="middle" fill="#555" font-size="8">Per-person | Inter-agent protocol | Org learning | Autonomy slider</text>
+
+      <!-- Two business models -->
+      <line x1="420" y1="360" x2="320" y2="390" stroke="#818cf844" stroke-width="1"/>
+      <line x1="580" y1="360" x2="680" y2="390" stroke="#818cf844" stroke-width="1"/>
+      <text x="320" y="403" text-anchor="middle" fill="#666" font-size="9">Model A: Autonomous Org</text>
+      <text x="320" y="415" text-anchor="middle" fill="#444" font-size="8">"Employees for hire"</text>
+      <text x="680" y="403" text-anchor="middle" fill="#666" font-size="9">Model B: Human-Augmented</text>
+      <text x="680" y="415" text-anchor="middle" fill="#444" font-size="8">"20 people perform like 60"</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- DETAIL PANEL CONTENT + JAVASCRIPT                            -->
+<!-- ============================================================ -->
+
+<script>
+const details = {
+  asawa: {
+    title: 'Asawa Inc.',
+    subtitle: 'Holding Company -- Governance + IP',
+    tag: 'live',
+    body: `
+      <h4>What It Is</h4>
+      <p>The holding company that owns everything. Full authority across the portfolio. Sutra is a subsidiary. DayFlow, Maze, PPR, Paisa are portfolio companies.</p>
+      <h4>What It Does</h4>
+      <ul>
+        <li><strong>Governance</strong> -- 26 founder directions (D1-D26), 16 protocols, enforcement framework</li>
+        <li><strong>Enforcement</strong> -- Hooks controlling boundaries, versioning, input classification, session isolation</li>
+        <li><strong>Research</strong> -- 14 research docs (adaptive protocol, human-AI interaction, estimation, holding company models)</li>
+        <li><strong>IP Ownership</strong> -- Context Engine, weight distribution engine, domain system are Asawa IP</li>
+      </ul>
+      <h4>Key Files</h4>
+      <div class="info-card">
+        <div class="info-card-title">FOUNDER-DIRECTIONS.md</div>
+        <div class="info-card-body">26 permanent behavioral changes. Every direction is a living force.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">SUTRA-VISION-2026-04.md</div>
+        <div class="info-card-body">Full product vision: CoS agents, Context Engine, two business models.</div>
+      </div>
+    `
+  },
+  sutra: {
+    title: 'Sutra OS v2',
+    subtitle: 'Operating System -- Domain-First Problem Solving',
+    tag: 'live',
+    body: `
+      <h4>What It Is</h4>
+      <p>An operating system for AI-agent-led companies. Four layers: abstraction, OS protocols, product modules, domain practices. v2 replaces "depth" with domain-first classification.</p>
+      <h4>The Formula</h4>
+      <div class="info-card">
+        <div class="info-card-title">Solution = f( Domain(problem), Pattern(domain), Context(node), Skill(node) )</div>
+        <div class="info-card-body">Classify the domain first. Select the pattern (Cynefin). Assemble context per node. Apply skills per node.</div>
+      </div>
+      <h4>4 Engines</h4>
+      <ul>
+        <li><strong>Domain Gate</strong> -- Cynefin + 10-param scoring. Replaces "Depth Engine". <span class="detail-tag tag-live">LIVE</span></li>
+        <li><strong>Estimation</strong> -- Self-improving task estimation. <span class="detail-tag tag-live">LIVE</span></li>
+        <li><strong>Measurement</strong> -- KPI tracking and metrics. <span class="detail-tag tag-live">LIVE</span></li>
+        <li><strong>Context Engine</strong> -- Graph + ACT-R scoring + budget assembly. <span class="detail-tag tag-vision">NOT BUILT</span></li>
+      </ul>
+      <h4>Deployed To</h4>
+      <p>DayFlow (active), Maze (deprioritized), PPR (deprioritized), Paisa (deprioritized).</p>
+    `
+  },
+  'domain-gate': {
+    title: 'Domain Gate Engine',
+    subtitle: 'Cynefin-First Classification -- LIVE',
+    tag: 'live',
+    body: `
+      <h4>What Changed from v1</h4>
+      <p>Renamed from "Depth Engine." The core insight: classify the DOMAIN first (Clear/Complicated/Complex/Chaotic/Disorder), then select the PATTERN, then determine resource allocation. Depth is an output, not an input.</p>
+      <h4>Classification Flow</h4>
+      <ol>
+        <li><strong>Cynefin classify</strong> -- Which domain is this problem in?</li>
+        <li><strong>OODA tempo cap</strong> -- Classification must complete in &lt;30 seconds</li>
+        <li><strong>Rumsfeld fallback</strong> -- If uncertain, treat unknown-unknowns as Complex</li>
+        <li><strong>ESI resource score</strong> -- How much resource does this warrant?</li>
+        <li><strong>10-param scoring</strong> -- Blast radius, sensitivity, causal clarity, irreversibility, precedent, coupling depth, data sensitivity, interaction frequency, area sensitivity, past incidents</li>
+      </ol>
+      <h4>Output</h4>
+      <div class="info-card">
+        <div class="info-card-title">DOMAIN + RESOURCE + PATTERN + APPETITE</div>
+        <div class="info-card-body">Domain tells you what kind of problem. Resource tells you how much to spend. Pattern tells you which process. Appetite constrains scope.</div>
+      </div>
+      <h4>Research Basis</h4>
+      <p>Cynefin framework (Snowden), OODA loop (Boyd), Rumsfeld matrix, ESI triage (Emergency Severity Index), Toyota Kata, Legal proportional process.</p>
+    `
+  },
+  'terminal-check': {
+    title: 'Terminal Check',
+    subtitle: '9-Layer Convergence Gate',
+    tag: 'live',
+    body: `
+      <h4>What It Does</h4>
+      <p>Sits between engines and company output. Every node's output passes through this gate. 6 free layers always fire. 3 conditional layers fire when triggered by complexity or risk.</p>
+      <h4>Free Layers (Always Run)</h4>
+      <ol>
+        <li><strong>Output Type</strong> -- Does the output format match what was requested?</li>
+        <li><strong>Who Does This</strong> -- Is the agent authorized to produce this output?</li>
+        <li><strong>Convergence Detection</strong> -- Are we going in circles? Detect loop patterns.</li>
+        <li><strong>Specificity Threshold</strong> <span class="detail-tag tag-new">NEW</span> -- Is the output concrete enough to act on? No vague recommendations.</li>
+        <li><strong>Output Inversion</strong> <span class="detail-tag tag-new">NEW</span> -- Would the opposite answer be better? Prevents convergence bias.</li>
+        <li><strong>Schema Fill</strong> <span class="detail-tag tag-new">NEW</span> -- Are all required fields populated? No partial outputs.</li>
+      </ol>
+      <h4>Conditional Layers (Fire When Triggered)</h4>
+      <ol start="7">
+        <li><strong>Beam Search</strong> <span class="detail-tag tag-new">NEW</span> -- Generate N alternative answers, compare quality. Fires at high complexity.</li>
+        <li><strong>Adversarial Check</strong> <span class="detail-tag tag-new">NEW</span> -- Red team the output. What could go wrong? Fires at high sensitivity.</li>
+        <li><strong>Exemplar Compare</strong> <span class="detail-tag tag-new">NEW</span> -- Compare against known-good outputs from exemplar library. Fires when exemplars exist.</li>
+      </ol>
+      <h4>Result</h4>
+      <p>Either TERMINAL (proceed to output) or LOOP BACK (return to Step A with new context loaded).</p>
+    `
+  },
+  'probe-artifact': {
+    title: 'Complex / PROBE Pattern',
+    subtitle: 'Probe + Sense-Make for Unknown Territory',
+    tag: 'live',
+    body: `
+      <h4>When It Activates</h4>
+      <p>Domain Gate classifies problem as Complex (Cynefin). Cause and effect only visible in retrospect. Multiple valid approaches exist. No single "right" answer.</p>
+      <h4>The Pattern: PROBE</h4>
+      <ol>
+        <li><strong>PROBE</strong> -- Create a small, safe-to-fail experiment. Write a PROBE document describing hypothesis, bounds, success/failure criteria.</li>
+        <li><strong>SENSE</strong> -- Execute the probe. Observe results. Don't interpret too early.</li>
+        <li><strong>RESPOND</strong> -- Based on what you observed, amplify what works, dampen what doesn't.</li>
+      </ol>
+      <h4>Artifact: PROBE-RESULT</h4>
+      <p>Every probe produces a PROBE-RESULT document: what we hypothesized, what we observed, what we learned, what we'll do next. This feeds the exemplar library (Phase 9: Learn).</p>
+      <h4>Key Constraint</h4>
+      <p>Never commit to a full solution from Complex domain. Always probe first. The probe budget is capped by the Domain Gate's APPETITE output.</p>
+    `
+  },
+  'clear-encode': {
+    title: 'Clear / ENCODE Pattern',
+    subtitle: 'Known Answer, Encode It',
+    tag: 'live',
+    body: `
+      <h4>When It Activates</h4>
+      <p>Domain Gate classifies problem as Clear (Cynefin). Cause and effect obvious. Best practice exists. Answer is known.</p>
+      <h4>The Pattern: ENCODE</h4>
+      <ol>
+        <li><strong>SENSE</strong> -- Identify the category (this is a typo, this is a config change, this is a known pattern)</li>
+        <li><strong>CATEGORIZE</strong> -- Match to existing procedure/template</li>
+        <li><strong>RESPOND</strong> -- Apply the procedure. No deliberation needed.</li>
+      </ol>
+      <h4>Why "ENCODE"</h4>
+      <p>Clear problems should be encoded as reusable procedures. Every time you solve a Clear problem, check: does a procedure exist? If not, create one. If yes, follow it. The goal is to make Clear problems zero-cost over time.</p>
+      <h4>Resource Allocation</h4>
+      <p>Minimal. 1-2 nodes max. No research, no alternatives. Execute and move on. If you find yourself deliberating, the problem isn't Clear -- reclassify.</p>
+    `
+  },
+  convergence: {
+    title: 'Convergence Bias Prevention',
+    subtitle: 'How the System Prevents Itself from Agreeing Too Fast',
+    tag: 'live',
+    body: `
+      <h4>The Problem</h4>
+      <p>LLMs converge on plausible-sounding answers quickly. Without checks, the system will "agree with itself" -- generating an answer that looks good but hasn't been stress-tested.</p>
+      <h4>Three Mechanisms</h4>
+      <ol>
+        <li><strong>Output Inversion (Terminal Layer 5)</strong> -- Before accepting an answer, ask "would the opposite be better?" If the opposite is equally plausible, the answer isn't converged enough.</li>
+        <li><strong>Beam Search (Terminal Layer 7)</strong> -- Generate N alternatives. If the top alternative is within 20% quality of the primary, flag for human decision.</li>
+        <li><strong>Exemplar Compare (Terminal Layer 9)</strong> -- Compare against known-good outputs. If the current output diverges significantly from exemplars without justification, flag it.</li>
+      </ol>
+      <h4>When It Matters Most</h4>
+      <p>Complex and Complicated domains. Clear problems don't need convergence checks (the answer is known). Chaotic problems need action, not deliberation. Convergence prevention is for the middle ground where analysis quality determines outcome quality.</p>
+    `
+  },
+  orphaned: {
+    title: 'Orphaned Files',
+    subtitle: '18 files not in the active problem flow',
+    tag: 'partial',
+    body: `
+      <h4>What "Orphaned" Means</h4>
+      <p>A file is orphaned when no phase in the Problem Flow (Phase 0-9) activates it. It exists but never fires. This doesn't mean the file is bad -- it might be: (a) waiting for a future capability, (b) superseded by another file, or (c) genuinely dead.</p>
+      <h4>Three Categories</h4>
+      <ul>
+        <li><strong>ARCHIVE</strong> (7 files) -- Superseded. Should be moved to an archive directory. Examples: DAILY-STANDUP.md, WEEKLY-PLANNING.md, FEATURE-LIFECYCLE.md.</li>
+        <li><strong>HOLD</strong> (9 files) -- Not needed now, will be needed later. Examples: AGENT-COMMUNICATION.md (needed for operators), AB-TEST-FRAMEWORK.md (needed at scale).</li>
+        <li><strong>SEPARATE FLOW</strong> (2 files) -- Active but not part of the main problem flow. Examples: DECISION-MAKING.md, RESEARCH-CHARTER.md -- these are governance processes, not problem-solving.</li>
+      </ul>
+      <h4>Goal</h4>
+      <p>Zero orphaned files. Every file either activates during a phase, belongs to a separate flow, or gets archived. Audit quarterly.</p>
+    `
+  },
+  'context-engine': {
+    title: 'Context Engine',
+    subtitle: 'Core IP -- NOT BUILT',
+    tag: 'vision',
+    body: `
+      <h4>What It Will Be</h4>
+      <p>A graph-based context assembly engine that scores knowledge nodes and optimizes what fits in the LLM context window.</p>
+      <h4>Three Scoring Dimensions</h4>
+      <ul>
+        <li><strong>Recency</strong> -- exponential time decay</li>
+        <li><strong>Domain adjacency</strong> -- relevance to current task</li>
+        <li><strong>Practice depth</strong> -- how far into domain knowledge</li>
+      </ul>
+      <h4>Five Interfaces</h4>
+      <ul>
+        <li><code>store.put(node)</code> -- add knowledge</li>
+        <li><code>store.query(signals)</code> -- find candidates</li>
+        <li><code>ranker.score(node, task)</code> -- multi-dimensional scoring</li>
+        <li><code>builder.assemble(budget)</code> -- knapsack optimization</li>
+        <li><code>creator.extract(output)</code> -- learn from AI output</li>
+      </ul>
+      <h4>What Nobody Has Built</h4>
+      <p>Graph store + multi-dimensional scoring + budget-constrained assembly + continuous learning. No one has composed the full system.</p>
+    `
+  },
+  'estimation-engine': {
+    title: 'Estimation Engine',
+    subtitle: 'Self-Improving -- LIVE',
+    tag: 'live',
+    body: `
+      <h4>What It Does</h4>
+      <p>Estimates every task before execution: Impact, Confidence, Cost (tokens + files + infra), Time. After completion, compares estimate vs actual.</p>
+      <h4>Calibration</h4>
+      <p>ESTIMATION-LOG.jsonl tracks accuracy. By entry 10, standard tasks hit 100% accuracy. Learned multipliers: Android visual = 2.5x, migrations = 3x.</p>
+    `
+  },
+  measurement: {
+    title: 'Measurement Protocol',
+    subtitle: 'KPI Tracking -- LIVE',
+    tag: 'live',
+    body: `
+      <h4>What It Does</h4>
+      <p>Defines KPIs, tracks history, connects estimation output to organizational learning. SUTRA-KPI.md + SUTRA-KPI-HISTORY.md.</p>
+    `
+  },
+  formula: {
+    title: 'The Sutra v2 Algorithm',
+    subtitle: 'Solution = f( Domain(problem), Pattern(domain), Context(node), Skill(node) )',
+    tag: 'live',
+    body: `
+      <h4>End-to-End Flow</h4>
+      <ol>
+        <li>Input arrives (Phase 0)</li>
+        <li>Classify input type (Phase 1)</li>
+        <li>Route to type-specific protocol (Phase 2)</li>
+        <li>Pass pre-scoring gates (Phase 3)</li>
+        <li>Domain Gate: classify domain, select pattern, allocate resources (Phase 4)</li>
+        <li>Select pattern: ENCODE / TRAVERSE / PROBE / STABILIZE / DECOMPOSE (Phase 5)</li>
+        <li>Node loop: observe/shape/plan/execute/precision/terminal (Phase 6)</li>
+        <li>Output readability gate (Phase 7)</li>
+        <li>Measure and log (Phase 8)</li>
+        <li>Learn and calibrate (Phase 9)</li>
+      </ol>
+      <h4>v1 vs v2</h4>
+      <p>v1: Depth is the input. Score 1-5, then execute.<br>v2: Domain is the input. Classify the problem type, then select the pattern that matches, then determine resource allocation. Depth becomes an OUTPUT of the domain classification, not an input.</p>
+    `
+  },
+  external: {
+    title: 'External Companies',
+    subtitle: 'Future -- Starting April 2026',
+    tag: 'vision',
+    body: `
+      <h4>Distribution Path</h4>
+      <ol>
+        <li><strong>.md files</strong> -- Template repo, deploy to friend (April)</li>
+        <li><strong>MCP / Managed Agents</strong> -- 4 tools, any AI can connect (May)</li>
+        <li><strong>SDK/API</strong> -- Python/TypeScript library (Future)</li>
+        <li><strong>Hosted platform</strong> -- Full SaaS (Future)</li>
+      </ol>
+      <h4>Two Business Models</h4>
+      <ul>
+        <li><strong>Model A: Autonomous Org</strong> -- "Employees for hire." Full operator teams, 24/7.</li>
+        <li><strong>Model B: Human-Augmented</strong> -- "CoS per person." 20 people perform like 60.</li>
+      </ul>
+    `
+  },
+  directions: {
+    title: '26 Founder Directions + 16 Protocols',
+    subtitle: 'Living forces that shape all behavior',
+    tag: 'live',
+    body: `
+      <h4>Directions (D1-D26)</h4>
+      <p>Permanent behavioral changes. Each is modeled with TRIGGER/CHECK/ENFORCEMENT. Key ones:</p>
+      <ul>
+        <li>D1: Simplicity through human confidence</li>
+        <li>D2: Thoroughness scales with the change</li>
+        <li>D3: Every task has a Sutra path</li>
+        <li>D15: 70/20/10 -- Products first</li>
+        <li>D26: Depth = decomposition granularity</li>
+      </ul>
+      <h4>Protocols (PROTO-000 to PROTO-016)</h4>
+      <p>16 protocols covering: implementation standard (000), architecture (001, 005), cost (003, 004), input routing (006), boundaries (011), feedback (016), and more.</p>
+    `
+  },
+  practices: {
+    title: 'Practices (Layer 4)',
+    subtitle: '100+ principles, 17 domains',
+    tag: 'live',
+    body: `
+      <h4>Domains</h4>
+      <p>Engineering, Design, Product, Quality, Security, Content, Ops, Growth, Data, and more. Each domain has principles that activate based on task type.</p>
+      <h4>Status</h4>
+      <p>Exists as 1 file (PRINCIPLES-BY-FUNCTION.md). Needs restructuring -- not yet connected to domain gate system. Listed as orphaned until restructured.</p>
+    `
+  },
+  dayflow: { title: 'DayFlow', subtitle: 'iOS Productivity -- ACTIVE', tag: 'live', body: '<h4>Status</h4><p>Live iOS app (Expo). OS files deployed, v1.7. Only active product company in Q2. Full: CLAUDE.md, engines, features, feedback channels, design QA, security, testing.</p>' },
+  maze: { title: 'Maze', subtitle: 'Humor Feed -- DEPRIORITIZED', tag: 'partial', body: '<h4>Status</h4><p>Live on Vercel (Next.js). OS files deployed. Evidence that OS improved output vs raw LLM. Deprioritized Q2.</p>' },
+  ppr: { title: 'PPR', subtitle: 'Wedding Command Center -- DEPRIORITIZED', tag: 'partial', body: '<h4>Status</h4><p>Live (Next.js). OS files deployed. Personal project. Deprioritized Q2.</p>' },
+  paisa: { title: 'Paisa', subtitle: 'Digital Loans India -- DEPRIORITIZED', tag: 'partial', body: '<h4>Status</h4><p>Onboarded 2026-04-05. Founder: Benzy. Deprioritized Q2.</p>' },
+  hooks: { title: 'Enforcement Hooks', subtitle: 'Bash scripts in holding/hooks/', tag: 'live', body: '<h4>What They Do</h4><p>Fire on every Edit/Write via dispatcher-pretool.sh. Enforce: boundaries, versioning, input classification, architecture awareness, session isolation, god mode.</p>' },
+  onboarding: { title: '7-Phase Onboarding', subtitle: '4 companies completed', tag: 'live', body: '<p>INTAKE > SHAPE > SPEC > BUILD > VERIFY > LEARN > DEPLOY. Produces 12-20 OS files per company. Conversational intake.</p>' },
+  layer1: { title: 'Layer 1 -- Abstraction', subtitle: 'Research & Theory', tag: 'live', body: '<p>4 files. Research synthesis, cross-functional operations theory. Answers "why do we structure things this way?"</p>' },
+  layer2: { title: 'Layer 2 -- Operating System', subtitle: 'Core OS -- 30+ files', tag: 'live', body: '<p>Company arch (routing, charters), Agent arch (skills, protocols), Human-Agent interface, Engines (domain gate, estimation, measurement), Protocols (onboarding, enforcement, lifecycle), Templates.</p>' },
+  layer3: { title: 'Layer 3 -- Product Modules', subtitle: 'Product type templates', tag: 'partial', body: '<p>B2C Consumer App and B2C AI Agent. 8 departments each. Companies pick a module during onboarding.</p>' },
+  layer4: { title: 'Layer 4 -- Practices', subtitle: '100+ principles', tag: 'partial', body: '<p>Domain-specific principles. 17 domains. Currently in one file. Needs restructuring to connect to domain gate.</p>' },
+  'l2-company': { title: 'Company Architecture', subtitle: 'a/ -- Routing, Charters, Processes', tag: 'live', body: '<p>10 files. Task routing logic, department charters, system health metrics, 6 processes.</p>' },
+  'l2-agent': { title: 'Agent Architecture', subtitle: 'b/ -- Skills, Protocols, Compliance', tag: 'live', body: '<p>5 files. Agent communication, skill catalog, GStack integration, compliance agent.</p>' },
+  'l2-human': { title: 'Human-Agent Interface', subtitle: 'c/ -- Interaction Model', tag: 'live', body: '<p>1 file. Defines how humans interact with AI agents. Authority hierarchy, session continuity, process enforcement.</p>' },
+  'l2-engines': { title: 'Engines', subtitle: 'd/ -- Domain Gate, Estimation, Measurement', tag: 'live', body: '<p>5 files. Domain Gate (Adaptive Protocol), Estimation Engine, Measurement Protocol, SUTRA-KPI + history.</p>' },
+  'l2-protocols': { title: 'Protocols', subtitle: 'Onboarding, Enforcement, Lifecycle', tag: 'live', body: '<p>CLIENT-ONBOARDING.md (7 phases), ENFORCEMENT.md, TASK-LIFECYCLE.md, DEPLOYMENT-MODEL.md, PERMISSIONS-TEMPLATE.md, MANIFEST-v1.7.md.</p>' },
+  'l2-templates': { title: 'Templates & Standards', subtitle: 'HLD, Bug Fix, ADR, Readability', tag: 'live', body: '<p>4 templates: High-Level Design, Bug Fix, ADR, Research Gate. Plus READABILITY-STANDARD.md.</p>' },
+  'l3-b2c': { title: 'B2C Consumer App Module', subtitle: '8 departments', tag: 'partial', body: '<p>Pre-built structure for consumer apps. 8 departments. Stage-1 pre-launch template.</p>' },
+  'l3-agent': { title: 'B2C AI Agent Module', subtitle: '8 departments', tag: 'partial', body: '<p>Pre-built structure for AI agent products. 8 departments. Stage-1 pre-launch template.</p>' },
+
+  // Problem Flow phase details
+  phase0: { title: 'Phase 0: Human Speaks', subtitle: 'Raw input enters the system', tag: 'live', body: '<p>Unclassified, unscored human input. Could be anything: a direction, a task, feedback, a new concept, or a question. The system does not act until classification completes in Phase 1.</p>' },
+  phase1: { title: 'Phase 1: Input Routing', subtitle: 'PROTO-006 + HUMAN-AGENT-INTERFACE.md', tag: 'live', body: '<h4>Classification Block</h4><p>Every input is classified before any action:</p><ul><li><strong>INPUT:</strong> what the human said</li><li><strong>TYPE:</strong> direction | task | feedback | new concept | question</li><li><strong>EXISTING HOME:</strong> where this already lives</li><li><strong>ROUTE:</strong> which protocol handles it</li><li><strong>FIT CHECK:</strong> what changes</li><li><strong>ACTION:</strong> proposed next step</li></ul><p>Whitelisted (skip classification): memory files, checkpoints, TODO checkboxes, git operations.</p>' },
+  phase2: { title: 'Phase 2: Type-Specific Protocols', subtitle: 'Four branches based on input type', tag: 'live', body: '<h4>Branches</h4><ul><li><strong>Direction</strong> -> FOUNDER-DIRECTIONS.md. Model implications, add to living directions.</li><li><strong>New Concept</strong> -> NEW-THING-PROTOCOL.md. Prevent premature builds. Check "does this already exist?"</li><li><strong>Feedback</strong> -> PROTO-016. Route to correct destination (Sutra, company, or holding).</li><li><strong>Task / Question</strong> -> Continue to Phase 3 (no special routing needed).</li></ul>' },
+  phase3: { title: 'Phase 3: Pre-Scoring Gates', subtitle: 'Four gates before Domain Gate', tag: 'live', body: '<h4>Gates</h4><ul><li><strong>Boundary (PROTO-011)</strong> -- Is this agent authorized to act on this? Session isolation check.</li><li><strong>Sensitivity (ENFORCEMENT.md)</strong> -- Does this touch sensitive data, finances, or credentials?</li><li><strong>Architecture (PROTO-001 + PROTO-005)</strong> -- Does this change system structure? Load architecture awareness.</li><li><strong>Cost (PROTO-003 + PROTO-004)</strong> -- What will this cost? Budget check before proceeding.</li></ul><p>Any gate can HALT the flow and request human decision.</p>' },
+  phase5: { title: 'Phase 5: Five Patterns', subtitle: 'Cynefin-derived execution patterns', tag: 'live', body: '<h4>Patterns</h4><ul><li><strong>Clear / ENCODE</strong> -- Known answer. Sense-categorize-respond. Encode as procedure.</li><li><strong>Complicated / TRAVERSE</strong> -- Expert analysis. Multiple valid approaches, one "right" answer discoverable through analysis.</li><li><strong>Complex / PROBE</strong> -- Unknown territory. Probe, sense, respond. Safe-to-fail experiments.</li><li><strong>Chaotic / STABILIZE</strong> -- Crisis. Act first to stabilize, then sense, then respond. Speed over analysis.</li><li><strong>Disorder / DECOMPOSE</strong> -- Can\'t classify. Split the problem into sub-problems until each sub-problem is classifiable.</li></ul>' },
+  phase6: { title: 'Phase 6: Node Loop', subtitle: 'Repeat until terminal', tag: 'live', body: '<h4>Six Steps Per Node</h4><ol><li><strong>Observe</strong> -- Load 2-3 hops of context. Bloom\'s classifier.</li><li><strong>Shape</strong> -- Socratic question. MCTS estimate. Pick ONE branch.</li><li><strong>Plan</strong> -- Per-node estimation. Cumulative budget.</li><li><strong>Execute</strong> -- ONE artifact. Working paper.</li><li><strong>Precision</strong> -- 14 mechanisms matched to failure mode.</li><li><strong>Terminal Check</strong> -- 9-layer convergence gate.</li></ol><p>If Terminal Check says LOOP BACK, return to Observe with new context loaded. Budget decrements each loop. If budget exhausted, force terminal.</p>' },
+  phase7: { title: 'Phase 7: Output Readability Gate', subtitle: 'READABILITY-STANDARD.md', tag: 'live', body: '<h4>The Gate</h4><p>Before presenting ANY output to the human, apply the readability protocol:</p><ul><li>Pick the correct output type (status board, estimation, decision request, etc.)</li><li>Apply format rules (structure, max length, numbers over prose)</li><li>Apply terminal style (headline first, 25-line budget, progress bars, decision boxes)</li><li>If output exceeds line budget, compress or use progressive disclosure</li></ul><h4>3-Signal Constraint</h4><p>Every output must answer exactly 3 questions: What happened? What does it mean? What should we do next?</p>' },
+  phase8: { title: 'Phase 8: Measure', subtitle: 'MEASUREMENT-PROTOCOL.md', tag: 'live', body: '<h4>Extended TRIAGE</h4><p>Every task logs:</p><ul><li>domain_selected, domain_correct, class (correct/over/under)</li><li>pattern_selected, pattern_correct</li><li>nodes_estimated vs nodes_actual</li><li>time_estimated vs time_actual</li><li>compliance: did every gate fire?</li></ul><p>This data feeds Phase 9 (Learn) and the estimation calibration system.</p>' },
+  phase9: { title: 'Phase 9: Learn', subtitle: 'System self-improvement', tag: 'live', body: '<h4>Five Learning Mechanisms</h4><ol><li><strong>Protocol extraction</strong> -- If a task created a new procedure, encode it as a reusable protocol.</li><li><strong>RL on depth</strong> -- Calibrate domain-to-resource mapping based on actual vs estimated.</li><li><strong>Exemplar library</strong> -- Store high-quality outputs as reference exemplars for Terminal Layer 9.</li><li><strong>Production rules</strong> -- Extract IF/THEN rules from successful complex problem solves.</li><li><strong>Calibration</strong> -- Update estimation multipliers, gate thresholds, and pattern selection weights.</li></ol>' },
+
+  // Inside a Node step details
+  'step-observe': { title: 'Step A: Observe', subtitle: 'Load context, classify cognitive level', tag: 'live', body: '<h4>What Happens</h4><p>Load 2-3 hops of the context graph centered on the current problem. Use Bloom\'s taxonomy to classify what cognitive level is needed:</p><ul><li>Remember -- recall facts</li><li>Understand -- explain concepts</li><li>Apply -- use in new situation</li><li>Analyze -- break into parts</li><li>Evaluate -- judge quality</li><li>Create -- produce new work</li></ul><p>The cognitive level determines how much context to load and which skills to activate.</p>' },
+  'step-shape': { title: 'Step B: Shape', subtitle: 'Narrow to one branch', tag: 'live', body: '<h4>What Happens</h4><p>From the observed context, multiple paths are possible. Shape narrows to one:</p><ol><li><strong>Socratic question</strong> -- What is the REAL question here? (not the surface question)</li><li><strong>MCTS estimate</strong> -- Monte Carlo Tree Search-inspired: estimate value of each branch</li><li><strong>Pick ONE</strong> -- Commit to a single branch. No hedging. If wrong, the loop will catch it.</li></ol>' },
+  'step-plan': { title: 'Step C: Plan', subtitle: 'Estimate this node\'s cost', tag: 'live', body: '<p>Per-node estimation: how many tokens, how many file edits, how long? Track cumulative budget across all nodes in this problem. If cumulative exceeds appetite (from Domain Gate), either compress remaining work or force terminal.</p>' },
+  'step-execute': { title: 'Step D: Execute', subtitle: 'One artifact per node', tag: 'live', body: '<p>Produce exactly ONE artifact: code change, design document, analysis, configuration, or decision. Working paper format -- not polished, not final. The output gate (Phase 7) handles presentation. Execute focuses on substance.</p>' },
+  'step-precision': { title: 'Step E: Precision', subtitle: '14 mechanisms matched to failure mode', tag: 'live', body: '<h4>Mechanism Categories</h4><ul><li><strong>Correctness</strong> -- Type check, test run, grep verify</li><li><strong>Completeness</strong> -- Schema fill, dependency check, edge cases</li><li><strong>Consistency</strong> -- Style match, naming convention, architecture alignment</li><li><strong>Safety</strong> -- Secrets scan, boundary check, rollback plan</li></ul><p>Not all 14 fire every time. The Domain Gate output determines which subset is relevant.</p>' },
+
+  // Pattern details
+  'complicated-traverse': { title: 'Complicated / TRAVERSE', subtitle: 'Expert Analysis Pattern', tag: 'live', body: '<h4>When It Activates</h4><p>Domain Gate classifies as Complicated. There IS a right answer, but it requires expert analysis to find. Multiple valid approaches, one best path.</p><h4>The Pattern</h4><ol><li><strong>SENSE</strong> -- Gather expert-level context. Load domain practices.</li><li><strong>ANALYZE</strong> -- Apply frameworks, compare approaches, evaluate tradeoffs.</li><li><strong>RESPOND</strong> -- Select the best approach with justification.</li></ol><p>This is the most common pattern for engineering tasks. Most feature work, bug fixes, and refactoring live here.</p>' },
+  'chaotic-stabilize': { title: 'Chaotic / STABILIZE', subtitle: 'Crisis Response Pattern', tag: 'live', body: '<h4>When It Activates</h4><p>Domain Gate classifies as Chaotic. No cause-effect relationships visible. System is in crisis or completely novel territory.</p><h4>The Pattern</h4><ol><li><strong>ACT</strong> -- Do something immediately to stabilize. Speed over analysis.</li><li><strong>SENSE</strong> -- Once stable, observe what happened.</li><li><strong>RESPOND</strong> -- Move from Chaotic to Complex through stabilization.</li></ol><p>Key rule: Do NOT try to analyze a Chaotic situation. Act first. Analysis comes after stability.</p>' },
+  'disorder-decompose': { title: 'Disorder / DECOMPOSE', subtitle: 'Split Until Classifiable', tag: 'live', body: '<h4>When It Activates</h4><p>Domain Gate cannot classify the problem. It doesn\'t fit neatly into Clear, Complicated, Complex, or Chaotic. This is Disorder.</p><h4>The Pattern</h4><ol><li><strong>DECOMPOSE</strong> -- Split the problem into 2-5 sub-problems.</li><li><strong>CLASSIFY</strong> -- Run each sub-problem through the Domain Gate independently.</li><li><strong>ROUTE</strong> -- Each sub-problem gets its own pattern.</li></ol><p>Disorder is the meta-pattern. It exists because real problems often contain elements from multiple domains.</p>' },
+};
+
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.getElementById('sec-' + id).classList.add('visible');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  closeDetail();
+}
+
+function showDetail(id) {
+  const d = details[id];
+  if (!d) return;
+  const tagClass = d.tag === 'live' ? 'tag-live' : d.tag === 'partial' ? 'tag-partial' : d.tag === 'new' ? 'tag-new' : 'tag-vision';
+  const tagLabel = d.tag === 'live' ? 'LIVE' : d.tag === 'partial' ? 'PARTIAL' : d.tag === 'new' ? 'NEW' : 'VISION';
+  document.getElementById('detailContent').innerHTML = `
+    <div class="detail-title">${d.title}</div>
+    <div class="detail-subtitle">${d.subtitle} <span class="detail-tag ${tagClass}">${tagLabel}</span></div>
+    <div class="detail-body">${d.body}</div>
+  `;
+  document.getElementById('detailPanel').classList.add('open');
+  document.querySelector('.overlay').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detailPanel').classList.remove('open');
+  document.querySelector('.overlay').classList.remove('open');
+}
+</script>
+
+</body>
+</html>

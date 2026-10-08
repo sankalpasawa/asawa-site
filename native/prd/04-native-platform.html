@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§4 — Native Platform (workforce substrate) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="03-how-methodology.html">prev: 03 how methodology</a> · <strong>§4 — Native Platform (workforce substrate)</strong> · <a href="05-connector.html">next: 05 connector</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§4 — Native Platform (workforce substrate)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/HLD/02-data-model.html">HLD/02 Data Model + HLD/03 Control Flow</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-3-native-platform">
+<h2>§4 Native Platform — workforce-deployment substrate <a href="../product-prd-native-v1.html#section-3-native-platform" class="anchor">#</a></h2>
+<table class="pillar-6block">
+<tr><td><strong>Purpose</strong></td><td>The substrate that scopes, deploys, and supervises a workforce of agents. CoS (and future products) ride on it.</td></tr>
+<tr><td><strong>Owns</strong></td><td>Charters (fixed/flex) · Agents (on-demand materialization) · Method routing per task tier · Authority gates · State envelope between pillars · Audit substrate (DecisionProvenance).</td></tr>
+<tr><td><strong>Depends on</strong></td><td>§4 Connector layer (for any out-of-process tool call); §6 Observability (instruments platform health).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Operator surface; pillar UX; pricing; channels.</td></tr>
+</table>
+<p class="callout">Native is the engine room. Operators don't see Native directly — they see CoS (§2). Native shows up only when CoS asks Native for a Charter scope, an agent, a method route, or an authority decision. Detailed primitive definitions live in §9 D.10 (Charter Model) and §9 D.11 (Method Selection); §3 surfaces the runtime behavior + state.</p>
+
+<h3 id="section-4-0-daemon">§4.0 Runtime daemon — where Native lives + runs</h3>
+<p>Native runs as a per-operator local daemon. The operator doesn't see it (per <a href="../product-prd-native-v1.html#a2-persona">§A.2.2</a> post-onboarding zero-terminal); the daemon manages workforce deployment, audit-log writes, hook firing, and cadence scheduling silently in the background.</p>
+<table>
+<tr><th>Aspect</th><th>What</th><th>Operator-visible?</th></tr>
+<tr><td><strong>Home directory</strong></td><td><code>~/.sutra-native/</code> — per-operator daemon root containing user-kit (charters, domains, triggers, workflows), <code>decision-provenance.jsonl</code>, <code>native.log</code></td><td>No (filesystem internal)</td></tr>
+<tr><td><strong>Process model</strong></td><td>Single background daemon process per operator. Started by Sutra plugin at session boot OR by explicit <code>sutra native start</code>. Re-exec across plugin updates without state loss.</td><td>No (managed by plugin)</td></tr>
+<tr><td><strong>Lifecycle</strong></td><td>START (plugin launch / cron / cold boot) → RUNNING (handles workflow dispatches + hook firings + cadence ticks + audit writes) → STOP (plugin shutdown / explicit stop) → RESTART (state restored from user-kit + decision-provenance log)</td><td>Only via Daily Pulse health row (per <a href="../product-prd-native-v1.html#section-6-observability">§7</a>)</td></tr>
+<tr><td><strong>State persistence</strong></td><td>3-channel audit (DecisionProvenance JSONL + stderr beacon + tmp fallback per <a href="../product-prd-native-v1.html#section-4-10-resilience">§4.10 HS-4</a> + ADR-013); user-kit markdown files for Charter / Domain / Workflow specs (per ADR-008 markdown-vs-code authoritative state)</td><td>Operator can request audit replay (B5.c); never sees the JSONL directly</td></tr>
+<tr><td><strong>Cadence (cron)</strong></td><td>Per-Workflow trigger spec with <code>cadence</code> field (per ADR-017 cron-daemon-cadence-tick); daemon fires triggers on schedule and dispatches matching Workflows</td><td>Operator sees the SCHEDULED OUTPUT (daily pulse, weekly synthesis, etc.); not the cron firing</td></tr>
+<tr><td><strong>Boundary</strong></td><td>Per-Tenant isolated (per HS-3 + ADR-006); cross-tenant calls require explicit <code>delegates_to</code> edge; default-deny on cross-tenant data flow</td><td>Only visible if HS-3 fires on attempted boundary cross — operator sees "this would touch <other-company>"</td></tr>
+</table>
+<p class="callout"><strong>Canon link</strong>: full daemon runtime ships at <code>sutra/marketplace/native/bin/sutra-native</code> (CLI launcher) + <code>sutra/marketplace/native/src/</code> (runtime code · engine · cli · types · runtime · persistence) + ADR-005 host-LLM selection + ADR-013 telemetry-sink-fsync-jsonl + ADR-017 cron-daemon-cadence-tick. <em>Path corrected 2026-05-13 per §10.10 P1 #5 (codex Lane A C #3) — shipped runtime lives under <code>sutra/marketplace/native/</code>, not <code>sutra/marketplace/plugin/</code>.</em> Operator-visible health surface lives in <a href="../product-prd-native-v1.html#section-6-observability">§7 Observability</a>.</p>
+
+<h3 id="section-4-1-primitives">§4.1 Primitives (10 canon — operator-facing capability + canon link)</h3>
+<p>Native runtime uses 10 typed primitives (per canon at <code>sutra/os/native/primitives/</code>). PRD body describes the operator-facing capability of each; engine type signatures + invariants + lifecycle live in canon.</p>
+<table>
+<tr><th>Primitive</th><th>Operator-facing capability</th><th>Canon link</th></tr>
+<tr><td><strong>Domain</strong></td><td>Operator-named scope of work (one company / function / project). Each Domain has typed config (principles + guidelines + decisions) — operator declares + edits.</td><td><code>primitives/domain.md</code> · <code>blocks/B10-typed-config.md</code></td></tr>
+<tr><td><strong>Charter</strong></td><td>Operator-set behavioral contract scoping deployed workforce over time. Fixed (rules locked) or flexible (rules adapt with operator approval). Charter is what operator authorizes; everything Native does is under some Charter.</td><td><code>primitives/charter.md</code> · <a href="../product-prd-native-v1.html#d10-charter-model">§9 D.10 Charter Model</a></td></tr>
+<tr><td><strong>Workflow</strong></td><td>Multi-step task spec: ordered Steps + Trigger + on-failure policy. Operator declares Workflows; Native dispatches them on Trigger fire.</td><td><code>primitives/workflow.md</code></td></tr>
+<tr><td><strong>Step</strong></td><td>Atomic unit of a Workflow — pre-declared expected output + LLM call OR deterministic action + post-call check (per P2 pre/post-LLM-validation). Step is where work happens.</td><td><code>primitives/step.md</code> · ADR-012 PNC typed parser</td></tr>
+<tr><td><strong>Trigger</strong></td><td>What fires a Workflow — operator utterance, cadence (cron), or event. Trigger spec lives in Workflow file.</td><td><code>primitives/trigger.md</code> · ADR-017 cron cadence</td></tr>
+<tr><td><strong>ExecutionResult</strong></td><td>What a Workflow produced — typed output artifact, status (success / failure / partial / paused), audit row references. Operator-readable summary; system-readable for next iteration (per P1 artifact-first).</td><td><code>primitives/execution-result.md</code></td></tr>
+<tr><td><strong>EngineEvent</strong></td><td>Typed event in 26-event catalog (workflow_started · step_complete · approval_requested · etc.). Emitted by daemon during workflow run; consumed by observers + audit.</td><td><code>primitives/engine-event.md</code> · 26 event files at <code>events/</code></td></tr>
+<tr><td><strong>Tenant</strong></td><td>Isolation boundary (per company / Charter scope). Every Domain owned by exactly one Tenant. Cross-tenant operations require explicit delegates_to edge (per HS-3 + ADR-006).</td><td><code>primitives/tenant.md</code> · ADR-006 tenant-isolation</td></tr>
+<tr><td><strong>Approval</strong></td><td>Gate primitive — when Workflow Step requires operator decision (per Authority Model D.6 ESCALATE class), Approval primitive captures the pending state + operator's verdict + audit row.</td><td><code>primitives/approval.md</code> · ADR-009 approval-gate · <a href="../product-prd-native-v1.html#d6-authority">§9 D.6 Authority</a></td></tr>
+<tr><td><strong>DecisionProvenance</strong></td><td>Every consequential decision produces one DecisionProvenance row. JSONL audit log + 3-channel fallback per ADR-013. Operator can replay any decision end-to-end via B5.c.</td><td><code>primitives/decision-provenance.md</code> · ADR-007 schema · ADR-013 telemetry-sink</td></tr>
+</table>
+<p class="callout"><strong>What's NOT a primitive (older PRD had these)</strong>: "Agent" (no longer a typed primitive — agent behavior is composed from Workflow + Step + Charter scope + Authority gate). "Method routing" (handled per-Step config + HOW Engine in §3). "Audit substrate" (replaced by DecisionProvenance primitive + 3-channel ADR-013).</p>
+
+<h3 id="section-4-2-state-machine">§4.2 Workforce deployment state machine</h3>
+<pre>
+   ┌─────────────────┐    operator
+   │   PROPOSED      │◀───── adds Charter
+   └────────┬────────┘
+            │ approves
+            ▼
+   ┌─────────────────┐    new task ─┐
+   │   ACTIVE        │──────────────┤  (T0/T1/T2/T3)
+   │   (Charter live)│              │
+   └────────┬────────┘              │
+            │                       ▼
+            │              ┌─────────────────────┐
+            │              │  agent materializes │
+            │              │  (scoped to Charter)│
+            │              └──────────┬──────────┘
+            │                         │ task completes
+            │                         ▼
+            │              ┌─────────────────┐
+            │              │   PERSISTED     │ (output → B5.a/b/c/d)
+            │              │   (artifact +   │
+            │              │    audit row)   │
+            │              └─────────────────┘
+            │
+            │ operator revokes / scope-expires / supersedes
+            ▼
+   ┌─────────────────┐
+   │   RETIRED       │ (Charter inactive · audit replayable forever)
+   └─────────────────┘
+</pre>
+
+<h3 id="section-4-3-state-envelope">§4.3 State envelope — what flows between pillars</h3>
+<p>Pillar-to-pillar handoffs carry a typed envelope. CoS's 5 pillars (§2.B) consume + produce envelope fragments; Native enforces shape + authority.</p>
+<pre>
+   { turn_id,
+     operator_id,
+     charter_ref,                   // which Charter scopes this turn
+     task_tier,                     // T0/T1/T2/T3
+     intent: { type, sub_intents }, // from B1
+     context_envelope: {            // from B2
+       my_own:[…],
+       worlds_best:[…],
+       peer_sutras_v2:[…]
+     },
+     decision_trail: [              // from B3
+       { phase, factors, authority_verdict, output_ref }
+     ],
+     outbound: [                    // from B4 (if comms triggered)
+       { audience, channel, draft, sent_status, inbound_responses }
+     ],
+     b5_writes: {                   // to B5
+       active_session_ref,
+       provenance_row_ref,
+       learned_pattern_updates
+     }
+   }
+</pre>
+
+<h3 id="section-4-4-acceptance">§4.4 Acceptance criteria (Native platform v1)</h3>
+<ul>
+  <li>Charter create/update/retire is operator-only; agent materialization is Native-internal.</li>
+  <li>Authority gate fires at every external-effect call (send · write · delete · pay).</li>
+  <li>State envelope round-trips with zero data loss across pillar handoffs (HS-4 fires if it doesn't).</li>
+  <li>Audit substrate writes 100% of decisions to triple-channel (gate-log + provenance + artifact); cross-tenant queries default-deny.</li>
+</ul>
+
+<h3 id="section-4-5-test-before-conclude">§4.5 Test-before-conclude gate (accuracy primitive)</h3>
+<p>Native does NOT mark a task done before testing the output. Accuracy is a per-workflow KPI. Test happens BEFORE concluding, not after. Output is rejected back to B3 retry if test fails.</p>
+<table>
+<tr><th>Step</th><th>What happens</th></tr>
+<tr><td>1 · Pre-declare test</td><td>For each task tier, Native pre-declares the verification criteria BEFORE running. For T0 (atomic): grep / file-exists / contract-match. For T1 (multi-action): step-by-step verify + final integration check. For T2 (iterative): operator-visible 1-min iteration verification. For T3 (Charter): milestone-gate verification at goal-transition points.</td></tr>
+<tr><td>2 · Generate output</td><td>B3 produces output (auto-execute path).</td></tr>
+<tr><td>3 · Run test</td><td>Native runs the pre-declared test against produced output. Determinism: same input + same Charter → same expected output shape.</td></tr>
+<tr><td>4 · Conditional conclude</td><td>If test passes → conclude + write audit row + present to operator. If test fails → loop to B3 retry (max N retries per Charter); after N failures → escalate to operator (Authority gate).</td></tr>
+<tr><td>5 · Post-conclude</td><td>Operator's feedback (drop / accept / refine) becomes test signal for B5.d learned patterns. Test thresholds adapt over time per workflow.</td></tr>
+</table>
+<p class="callout"><strong>Why before-conclude, not after</strong> — testing AFTER means the operator sees a failure and has to ask CoS to redo. Testing BEFORE means CoS catches its own failures and retries silently. Accuracy KPI in <a href="../product-prd-native-v1.html#section-6-observability">§7 Observability</a> measures: % of CoS outputs that passed first-time-test vs needed retry.</p>
+
+<h3 id="section-4-6-how-bridge">§4.6 HOW Methodology bridge (cross-reference)</h3>
+<p>Every Native primitive (§4.1) embeds a HOW choice from <a href="../product-prd-native-v1.html#section-3-how-methodology">§3 HOW Methodology</a>. Charters declare HOW preferences at creation; agents materialize with HOW context inherited; method routing (D.11) implements HOW-tier mapping; authority gate (D.6) defers to HOW's escalation logic. Native runtime is the executor; §3 HOW is the doctrine.</p>
+
+<h3 id="section-4-7-workforce-outputs">§4.7 Workforce outputs as deliverables</h3>
+<p>Native's workforce doesn't only produce text/decisions — it produces <strong>software + agentic systems</strong> that can become operator-owned artifacts. These outputs have three delivery destinations:</p>
+<table>
+<tr><th>Delivery destination</th><th>What it is</th><th>Example</th><th>Ownership</th></tr>
+<tr><td><strong>D1 · Shipped to client</strong></td><td>Native builds a custom tool/dashboard/script for operator's company → delivered as that company's asset.</td><td>Paisa Q3 SOM tracker dashboard built by Native, hosted in Paisa's own infra.</td><td>Client (Paisa) owns; Native deletes its copy post-handoff.</td></tr>
+<tr><td><strong>D2 · Shipped back to Sutra-org</strong></td><td>Native builds a tool/connector/skill that's reusable across operators → ratified into Sutra plugin or platform.</td><td>Native builds a useful Slack bot pattern → Sutra adopts as a new connector for fleet use.</td><td>Sutra-org owns; rolls into next plugin release per <a href="../product-prd-native-v1.html#section-5-distribution">§6 Distribution</a> lifecycle.</td></tr>
+<tr><td><strong>D3 · Operator-internal use</strong></td><td>Native builds a one-off script/agent for operator's own portfolio use across companies → operator keeps as internal tool.</td><td>Operator's cross-portfolio analytics aggregator script built by Native, used per session.</td><td>Operator owns; stays in operator's Native workspace.</td></tr>
+</table>
+<p class="callout"><strong>Delivery pipeline owned by <a href="../product-prd-native-v1.html#section-5-distribution">§6 Distribution</a></strong>. §4.7 declares the platform CAPABILITY (workforce can produce deliverable software/agents); §6 owns the delivery modes (how the artifact gets to its destination, packaging, lifecycle). All deliverables emit DecisionProvenance + Artifact Governance metadata (<a href="../product-prd-native-v1.html#d12-artifact-governance">D.12</a>): version, owner, source-Charter, audit trail.</p>
+
+<h3 id="section-4-8-csm">§4.8 Capability Surface Map (CSM) — feature lifecycle visible to operators</h3>
+<p>Native + CoS ship features through an explicit lifecycle. CSM is the source-of-truth for what's stable vs proposed. Operators see CSM via <code>sutra-capability</code> skill on demand and via SessionStart banner.</p>
+<table>
+<tr><th>State</th><th>What it means</th><th>Operator-visible signal</th></tr>
+<tr><td><strong>cap-NNN PROPOSED</strong></td><td>Capability idea logged in CAPABILITY-MAP.md; design pending</td><td>Shown as "proposed for next version" in capability digest; not invocable</td></tr>
+<tr><td><strong>CANDIDATE</strong></td><td>Designed; under codex/deepseek review; not implemented</td><td>"In review" tag; operator can pre-test if interested</td></tr>
+<tr><td><strong>DESIGNED</strong></td><td>Architecture + acceptance criteria ratified; implementation queued</td><td>"Designed; building" tag with target version</td></tr>
+<tr><td><strong>BUILT</strong></td><td>Implementation merged; under verification (per <a href="../product-prd-native-v1.html#section-3-native-platform">§4.5 Test-before-conclude</a>)</td><td>Visible in plugin but flagged "Built; verifying"</td></tr>
+<tr><td><strong>SHIPPING</strong></td><td>Verified; rolling out to fleet tiers per <a href="../product-prd-native-v1.html#section-5-distribution">§6.0</a> (T1 → T2 → T3 → T4 cadence)</td><td>Operator gets release-note callout; CSM banner shows in active capabilities</td></tr>
+<tr><td><strong>LIVE / STABLE</strong></td><td>Shipped across all targeted tiers · part of plugin core</td><td>No special tag; default-on capability</td></tr>
+<tr><td><strong>DEPRECATED</strong></td><td>Sunset path declared per <a href="../product-prd-native-v1.html#section-5-distribution">§6.4 Lifecycle</a></td><td>Deprecation notice in plugin update changelog</td></tr>
+</table>
+<h4>Capability tiering across the fleet</h4>
+<ul>
+  <li><strong>L0 fleet-shipped</strong> — capability ships to all T2-T4 via plugin marketplace</li>
+  <li><strong>L1 cohort-staged</strong> — capability live for selected cohort with promotion deadline (per <a href="../product-prd-native-v1.html#a8-actors">§B.0 Build-Layer</a>-style discipline)</li>
+  <li><strong>L2 instance-local</strong> — capability stays in T1 Asawa only (governance / experimental)</li>
+</ul>
+<p class="callout"><strong>Sources</strong>: <code>holding/CAPABILITY-MAP.md</code> · <code>holding/state/capability-map-audit.jsonl</code> · <code>sutra-capability</code> skill at <code>sutra/marketplace/plugin/skills/sutra-capability/</code> · D34/D38 founder directions. <strong>Note</strong>: capabilities are atomic primitives; Modules (§1.4) are packaged compositions OF capabilities. CSM tracks both at different granularity.</p>
+</section>
+
+<section id="section-4-9-module-deployment">
+<h3>§4.9 Module deployment model — 3-artifact contract</h3>
+<p>A <strong>Module</strong> (per <a href="../product-prd-native-v1.html#section-1-architecture">§1.4 Product Hierarchy</a>) deploys via 3 artifacts. This is a conceptual contract first; filesystem layout below is one canonical implementation.</p>
+<table>
+<tr><th>Artifact</th><th>What it contains</th><th>Where it lives (v1 default)</th><th>Per-tenant or shared?</th></tr>
+<tr><td><strong>SPEC</strong></td><td>Module code + manifest + JSON schema for binding + dependencies on platform Capabilities</td><td><code>sutra/marketplace/plugin/modules/&lt;name&gt;/</code></td><td>Shared single-source-of-truth</td></tr>
+<tr><td><strong>BINDING</strong></td><td>Per-Deployment config: which Charter scope · what audience · what authority thresholds · operator-set parameters</td><td><code>~/.sutra/instances/&lt;operator&gt;/&lt;company&gt;/modules/&lt;name&gt;.json</code></td><td>Per-Deployment overlay</td></tr>
+<tr><td><strong>RUNTIME STATE</strong></td><td>Executions · snapshots · logs · caches · audit rows · learned patterns specific to this Deployment</td><td><code>holding/state/modules/&lt;name&gt;/&lt;tenant-id&gt;/</code></td><td>Per-Deployment isolated</td></tr>
+</table>
+
+<h4>§4.9.1 Deployment flow</h4>
+<pre>
+   Module SPEC (in plugin)
+        │
+        ▼ operator installs
+   ┌─────────────────────────────────────┐
+   │  BINDING created                     │
+   │  for this operator + Charter         │
+   │  (Authority gate fires on first run) │
+   └────────────────┬────────────────────┘
+                    │ Module runs
+                    ▼
+   ┌─────────────────────────────────────┐
+   │  RUNTIME STATE accumulates           │
+   │  (per-tenant subtree; isolated)      │
+   │  audit rows → §2.B B5.c              │
+   │  metrics → §7 Observability          │
+   └─────────────────────────────────────┘
+</pre>
+
+<h4>§4.9.2 Acceptance criteria (Module deployment v1)</h4>
+<ul>
+  <li>SPEC update is operator-invisible (rolls in via plugin update per §6.4 Lifecycle).</li>
+  <li>BINDING is operator-editable (within §1.4.3 deployment authority phases) and Charter-scoped.</li>
+  <li>RUNTIME STATE per-tenant isolated; cross-tenant access default-denied (HS-2 fires on violation).</li>
+  <li>Module retire/decommission: SPEC pinned, BINDING archived, RUNTIME STATE preserved for replay window then trimmed per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12 Artifact Governance</a>.</li>
+</ul>
+
+<h3 id="section-4-10-resilience">§4.10 Resilience contract — operator-visible failure behavior</h3>
+<p>Native's hardstop catalog (HS-1..HS-8) defines what the system does when it cannot continue safely. The full engine spec lives at <code>sutra/os/native/hardstops/HS-*.md</code>; this section is the OPERATOR-VISIBLE summary — what each hardstop looks like in operator surface terms. The operator never debugs the system; the system tells the operator what happened, what's safe to do next, and what needs operator decision.</p>
+<h4 id="section-4-10-1-hardstops">§4.10.1 Hardstop catalog (operator-visible behavior)</h4>
+<table>
+<tr><th>Hardstop</th><th>Trigger (engineering, full spec in canon)</th><th>Operator-visible behavior</th></tr>
+<tr><td><strong>HS-1 reflexive-check</strong></td><td>Workflow attempted to modify Sutra core primitives without reflexive_check Constraint cleared</td><td>System REFUSES to self-modify; surfaces "this change touches Sutra's own rules — please ratify directly" — operator can authorize or cancel</td></tr>
+<tr><td><strong>HS-2 governance-overhead</strong></td><td>Per-turn governance overhead exceeds 25% of token budget</td><td>System aborts the current turn; operator sees "turn aborted (governance overhead exceeded budget)"; next turn proceeds normally per canon</td></tr>
+<tr><td><strong>HS-3 tenant-boundary</strong></td><td>Execution attempts cross-tenant access without explicit delegates_to edge</td><td>Cross-company action DENIED per canon; operator gets a "this action would touch <other-company>; explicit delegates_to authorization required" prompt</td></tr>
+<tr><td><strong>HS-4 audit-unwritable</strong></td><td>DecisionProvenance log unwritable across all 3 fallback channels</td><td>System STOPS per canon; surfaces "cannot record this decision; halting until audit recovers" — no silent unaudited execution</td></tr>
+<tr><td><strong>HS-5 cutover-rollback-fails</strong></td><td>Cutover rollback path itself fails to restore prior state</td><td>Cutover PAUSED per canon; operator + Tenant owner brought into HITL (human-in-the-loop) for the decision; no automated retry</td></tr>
+<tr><td><strong>HS-6 governance-hooks-fail</strong></td><td>3+ distinct governance hooks fail within the same turn</td><td>SESSION SUSPENDED per canon; resume requires manual investigation of the failing hooks before re-engagement</td></tr>
+<tr><td><strong>HS-7 codex-queue-stale</strong></td><td>Codex review queue exceeds 20 items OR any item more than 7 days stale</td><td>Shipment broadly BLOCKED per canon until queue drains; operator sees "review queue saturated — shipments paused"</td></tr>
+<tr><td><strong>HS-8 canary-regression</strong></td><td>Production canary observes regression against cutover behavior_invariants</td><td>Auto-ROLLBACK to prior version per canon; founder notified</td></tr>
+</table>
+<p class="callout"><strong>Hardstop UX contract</strong>: every hardstop produces (a) a 1-2 sentence operator-facing message stating WHAT happened, (b) a recommended NEXT ACTION (decide / authorize / wait / investigate), (c) a link to the audit row for the event. Operator never has to read engineer-level stack traces; the system translates.</p>
+<p class="callout"><strong>MECHANISM-PENDING (added 2026-05-13 per <a href="../product-prd-native-v1.html#section-10-10-impl-vs-docs-audit">§10.10 row 1</a> · codex Lane A R12 P1)</strong>: HS-4 · HS-5 · HS-6 · HS-7 · HS-8 are documented as canonical hardstops above, but the impl-vs-docs audit confirmed live detectors/executors do NOT yet exist in the shipped Native runtime — those rows are <strong>doctrine, mechanism pending</strong>. HS-1, HS-2, HS-3 have at least partial enforcement via existing plugin hooks. Resolution path per §10.10 P0 #1: either ship the missing detectors OR downgrade canon entries to "doctrine, mechanism pending" status. This callout is a place-holder hedge so the doc cannot self-contradict §10.10.</p>
+
+<h4 id="section-4-10-2-failure-states">§4.10.2 Failure states (extension of §4.2 workforce state machine)</h4>
+<p>The state machine in <a href="../product-prd-native-v1.html#section-3-native-platform">§4.2</a> shows happy-path lifecycle (PROPOSED → ACTIVE → PERSISTED → RETIRED). Failure states extend this — these are the runtime states the workforce can enter when something doesn't go right:</p>
+<table>
+<tr><th>Failure state</th><th>Entry condition</th><th>Operator visibility</th><th>Exit path</th></tr>
+<tr><td><strong>PAUSED</strong></td><td>Hardstop fires (HS-N); OR Charter Authority requires explicit operator decision (per <a href="../product-prd-native-v1.html#d6-authority">§D.6</a>)</td><td>Operator sees "task paused at step X — decision needed" with context + recommended next action</td><td>Operator decides → ACTIVE (resume) OR RETIRED (cancel)</td></tr>
+<tr><td><strong>ESCALATED</strong></td><td>B3 retry budget exhausted (per <a href="../product-prd-native-v1.html#section-4-5">§4.5 Test-before-conclude</a>); OR Authority gate triggers ESCALATE class (per ADR-018 contract 1)</td><td>Operator sees "auto-retry exhausted; your judgment needed" with B3a THINK 3-angle brainstorm + recommended angle</td><td>Operator confirms direction → ACTIVE (B3b auto-executes the chosen path) OR RETIRED</td></tr>
+<tr><td><strong>DEGRADED</strong></td><td>Connector half-fails (e.g., send succeeded but audit write missed); OR partial side-effect (draft created but send failed)</td><td>Operator sees "step partially completed — message X sent but audit row missed; reconciliation needed" with compensation options</td><td>Reconciliation step (idempotent retry OR manual log-write) → ACTIVE (workflow continues) OR PAUSED (operator handles)</td></tr>
+</table>
+
+<h4 id="section-4-10-3-risk-owners">§4.10.3 §C.4 Risk → owning section map</h4>
+<p>Each R1-R9 in <a href="../product-prd-native-v1.html#c4-risks">§C.4 Risks + mitigations</a> maps to the section that owns its mitigation. Audit-clean: no risk is a one-line floating mitigation; every risk has a section answering "where is this controlled":</p>
+<table>
+<tr><th>Risk</th><th>Owner section</th></tr>
+<tr><td>R1 Pattern-emergence false positives</td><td><a href="../product-prd-native-v1.html#section-2-cos">§2.B B5.d learned patterns</a> (k=4 threshold) + <a href="../product-prd-native-v1.html#section-3-how-methodology">§3</a> HOW selection</td></tr>
+<tr><td>R2 Audit log unwritable</td><td><a href="../product-prd-native-v1.html#section-4-10-resilience">§4.10 HS-4</a> + ADR-013 telemetry-sink-fsync-jsonl</td></tr>
+<tr><td>R3 Cross-tenant leakage</td><td><a href="../product-prd-native-v1.html#section-4-10-resilience">§4.10 HS-3</a> + ADR-006 tenant-isolation-domain-field</td></tr>
+<tr><td>R4 Operator review fatigue</td><td><a href="../product-prd-native-v1.html#d6-authority">§D.6 Authority Model</a> trust signal + ADR-018 agentic-systems-pattern contract 1 (AUTO/GATE/ESCALATE classification)</td></tr>
+<tr><td>R5 Pricing model wrong</td><td><a href="../product-prd-native-v1.html#c1-versions">§C.1 v1 → v2 pricing experiment</a> + §6.2 Pricing + packaging</td></tr>
+<tr><td>R6 v1 wedge too narrow</td><td><a href="../product-prd-native-v1.html#a5-differentiation">§A.5 Differentiation</a> + <a href="../product-prd-native-v1.html#a6-scope">§A.6 Scope</a> — wedge validates personalization + governance + audit before TAM expansion (v2)</td></tr>
+<tr><td>R7 Person-formation overfits</td><td><a href="../product-prd-native-v1.html#section-2-cos">§2.B B5.d</a> long baseline window + operator opt-in ratings (per <a href="../product-prd-native-v1.html#a6-scope">§A.6</a> C7 constraint)</td></tr>
+<tr><td>R8 Multi-agent cost spikes</td><td><a href="../product-prd-native-v1.html#section-3-how-methodology">§3</a> HOW cascade dimension budget + ADR-018 contract 3 (per-Charter complexity budget)</td></tr>
+<tr><td>R9 Canon drift</td><td>D54 canon-only memory + <a href="../product-prd-native-v1.html#section-4-5">§4.5 Test-before-conclude</a> + PROTO-019 codex + deepseek per-change review</td></tr>
+</table>
+
+<h3 id="section-4-11-runtime-catalog">§4.11 Runtime feature catalog (reference index)</h3>
+<p>One-line index of every runtime feature Native ships. Each feature has full spec in canon (<code>sutra/os/native/**</code>) + (where applicable) operator-visible surface in this PRD. This index exists so engineering + product can answer "where's everything" in one glance.</p>
+<table>
+<tr><th>Layer</th><th>Features</th><th>Canon location</th><th>PRD-body surface</th></tr>
+<tr><td><strong>Runtime</strong></td><td>Native daemon (1) — process · home dir · lifecycle</td><td>code: <code>sutra/marketplace/plugin/{bin,lib}/native/</code> · ADRs 005/013/017</td><td><a href="../product-prd-native-v1.html#section-4-0-daemon">§4.0 Runtime daemon</a></td></tr>
+<tr><td><strong>Primitives</strong> (10)</td><td>Domain · Charter · Workflow · Step · Trigger · ExecutionResult · EngineEvent · Tenant · Approval · DecisionProvenance</td><td><code>primitives/*.md</code> (10 files)</td><td><a href="../product-prd-native-v1.html#section-4-1-primitives">§4.1 Primitives</a></td></tr>
+<tr><td><strong>EngineEvents</strong> (26)</td><td>26 typed events emitted by the daemon during workflow execution. Canonical enum lives in <code>primitives/engine-event.md</code>; per-event specs (schema · emitter · consumer · ordering invariant) at <code>events/*.md</code>. PRD body does not duplicate the event names — readers should consult canon for the exhaustive list.</td><td><code>primitives/engine-event.md</code> + <code>events/*.md</code> (26 files)</td><td>Surfaced via §7 Observability + §2.B B5.c audit replay</td></tr>
+<tr><td><strong>Surfaces</strong> (6)</td><td>ROUTE · RUN · GATE · EMERGE · AUDIT · TENANT — runtime interfaces between daemon + workflows + operator</td><td><code>surfaces/*.md</code> (6 files)</td><td>Operator-visible via §2.B pillars (B1→B3 → ROUTE+RUN+GATE; B5 → AUDIT; multi-company → TENANT)</td></tr>
+<tr><td><strong>Hardstops</strong> (8)</td><td>HS-1 reflexive-check · HS-2 governance-overhead · HS-3 tenant-boundary · HS-4 audit-unwritable · HS-5 cutover-rollback-fails · HS-6 governance-hooks-fail · HS-7 codex-queue-stale · HS-8 canary-regression</td><td><code>hardstops/HS-*.md</code> (8 files)</td><td><a href="../product-prd-native-v1.html#section-4-10-resilience">§4.10 Resilience contract</a> (operator-visible HS-N behaviors)</td></tr>
+<tr><td><strong>Pillars</strong> (14 doctrine)</td><td>P1 artifact-first · P2 pre/post-LLM-validation · P3 all-blocks-in-v1 · P4 product-pov-before-tech-pov · P5 MECE-domains · P6 operator-controls-explanation · P7 native-grows-with-operator · P8 lifecycle-is-unit-of-value · P9 closed-loop-artifact · P10 typed-config-every-layer · P11 constrained-problem-construction · P12 deterministic-surface-stochastic-core · P13 multi-human-org-native · P14 outcomes-drive-design</td><td><code>pillars/P*.md</code> (14 files)</td><td>Doctrine layer — not directly operator-facing; surfaces indirectly via every other section</td></tr>
+<tr><td><strong>Product blocks</strong> (25)</td><td>B1-B18 (CoS pillars) + sub-blocks 7a-7e + F1 — L8 Feature Specs for CoS v1 shippable features</td><td><code>blocks/B*.md</code> (25 files)</td><td>Operator-facing throughout <a href="../product-prd-native-v1.html#section-2-cos">§2 CoS Product</a> §2.B pillar sections</td></tr>
+<tr><td><strong>ADRs</strong> (20)</td><td>ADR-001 H-Sutra · ADR-002 out-direct-3check · ADR-003 permissions-MCP · ADR-004 registry-effector-split · ADR-005 host-LLM-selection · ADR-006 tenant-isolation · ADR-007 decision-provenance-schema · ADR-008 markdown-vs-code · ADR-009 approval-gate · ADR-010 organic-emergence · ADR-011 on-failure-policy-five-set · ADR-012 PNC-typed-parser · ADR-013 telemetry-sink-fsync-jsonl · ADR-014 depth-router · ADR-015 H-Sutra-in-native · ADR-016 replica-isolated-user-kit · ADR-017 cron-daemon-cadence · ADR-018 agentic-systems-pattern (R8) · ADR-019 design-product-tech-bridge (R8) · ADR-020 Layer-B-product-authoring-template (R10)</td><td><code>sutra/os/decisions/ADR-*.md</code></td><td>Cross-cuts; specific ADRs cited in <a href="../product-prd-native-v1.html#section-1-5-tech-parts">§1.5 Tech-parts overlay</a> + <a href="../product-prd-native-v1.html#section-4-10-resilience">§4.10 Resilience</a> + per-primitive citations in §4.1</td></tr>
+<tr><td><strong>Doc layers</strong> (8)</td><td>L1 Philosophy · L2 Vision · L3 Mission · L4 Strategy · L6 PRD · L7 PR-FAQ · L11 OKRs · L14 Comms</td><td><code>doc-layers/L*.md</code></td><td>This PRD is the L6 instance for CoS Layer-B Product</td></tr>
+<tr><td><strong>Implementation phases</strong> (5)</td><td>Phase A PRD docs · Phase B L8 Feature specs · Phase C implementation · Phase D codex/deepseek review · Phase E ship + iterate</td><td><code>impl-phases/phase-*.md</code></td><td><a href="../product-prd-native-v1.html#c2-phases">§C.2 Implementation phases</a></td></tr>
+<tr><td><strong>North Star metric</strong> (1)</td><td>OHS/wk — Operator-Hours-Saved per Week</td><td><code>metrics/north-star-ohs-per-week.md</code></td><td><a href="../product-prd-native-v1.html#section-6-observability">§7.1 Per-pillar metrics</a> aggregates to OHS/wk</td></tr>
+</table>
+<p class="callout"><strong>Cross-reference discipline</strong>: when adding a NEW feature (primitive · event · surface · hardstop · ADR · block) to canon, this catalog gets an updated row OR a new line. ADR-019 (design ↔ product ↔ tech bridge) is the deeper traceability table; §4.11 is the compact "where's everything" reference. Per <a href="../product-prd-native-v1.html#c4-risks">§C.4 R9</a> canon-drift discipline.</p>
+
+<h3 id="section-4-11-a-registry">§4.11.A Feature registry — per-item drilldown</h3>
+<p>§4.11 gives the count per category; §4.11.A drills down to each item with canon path + one-line role. Expand a category to see its full inventory. Total: 134 named items across 11 canon families (snapshot 2026-05-13).</p>
+
+<details>
+<summary><strong>Primitives</strong> (10 typed runtime objects · <code>sutra/os/native/primitives/</code>)</summary>
+<table>
+<tr><th>Name</th><th>Canon path</th><th>One-line role</th></tr>
+<tr><td>Domain</td><td><code>primitives/domain.md</code></td><td>Tenant-scoped namespace — every artifact + event tagged to a Domain for isolation (ADR-006).</td></tr>
+<tr><td>Charter</td><td><code>primitives/charter.md</code></td><td>Operator-set scope + authority gate per company — bounds what workflows can do.</td></tr>
+<tr><td>Workflow</td><td><code>primitives/workflow.md</code></td><td>Typed unit of work — Steps + state machine + EngineEvent emission contract.</td></tr>
+<tr><td>Step</td><td><code>primitives/step.md</code></td><td>Atomic node within a Workflow — pre/post check + compensation contract.</td></tr>
+<tr><td>Trigger</td><td><code>primitives/trigger.md</code></td><td>How a Workflow starts — operator utterance · cron · event · inbound.</td></tr>
+<tr><td>ExecutionResult</td><td><code>primitives/execution-result.md</code></td><td>Typed outcome of a Workflow run — passed/failed/escalated + provenance link.</td></tr>
+<tr><td>EngineEvent</td><td><code>primitives/engine-event.md</code></td><td>Canonical 26-row enum of daemon-emitted events (see EngineEvents family).</td></tr>
+<tr><td>Tenant</td><td><code>primitives/tenant.md</code></td><td>Top-level isolation boundary (HS-3 default-deny across tenants).</td></tr>
+<tr><td>Approval</td><td><code>primitives/approval.md</code></td><td>Authority-gated decision request + verdict + audit row (ADR-009).</td></tr>
+<tr><td>DecisionProvenance</td><td><code>primitives/decision-provenance.md</code></td><td>Schema for every decision row — factors · authority · output · audit chain (ADR-007).</td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>EngineEvents</strong> (26 typed daemon-emitted events · <code>sutra/os/native/events/</code>)</summary>
+<table>
+<tr><th>Name</th><th>Family</th></tr>
+<tr><td>approval_requested · approval_granted · approval_denied · approval_already_handled</td><td>Approval gate (4 events)</td></tr>
+<tr><td>artifact_registered</td><td>Artifact lifecycle</td></tr>
+<tr><td>commitment_broken</td><td>Contract violation</td></tr>
+<tr><td>pattern_proposed · proposal_approved · proposal_rejected</td><td>Organic-emergence (3 events, ADR-010)</td></tr>
+<tr><td>policy_decision · routing_decision</td><td>Policy/routing audit (2 events)</td></tr>
+<tr><td>precondition_check · postcondition_check</td><td>Step pre/post-validation (P2)</td></tr>
+<tr><td>step_started · step_completed · step_paused · step_compensated · step_compensation_failed</td><td>Step lifecycle (5 events)</td></tr>
+<tr><td>tenant_boundary_violation</td><td>HS-3 trip</td></tr>
+<tr><td>workflow_started · workflow_completed · workflow_failed · workflow_escalated</td><td>Workflow lifecycle (4 events)</td></tr>
+<tr><td>workflow_rollback_started · workflow_rollback_partial · workflow_rollback_complete</td><td>Rollback (3 events)</td></tr>
+</table>
+<p><em>Each event has full spec (schema · emitter · consumer · ordering invariant) at <code>events/&lt;event-name&gt;.md</code>.</em></p>
+</details>
+
+<details>
+<summary><strong>Surfaces</strong> (6 runtime interfaces · <code>sutra/os/native/surfaces/</code>)</summary>
+<table>
+<tr><th>Name</th><th>Canon path</th><th>Role</th></tr>
+<tr><td>ROUTE</td><td><code>surfaces/route.md</code></td><td>Inbound — operator utterance → Workflow selection (B1 mapped here).</td></tr>
+<tr><td>RUN</td><td><code>surfaces/run.md</code></td><td>Workflow execution surface — step machine + retry semantics.</td></tr>
+<tr><td>GATE</td><td><code>surfaces/gate.md</code></td><td>Authority + Approval surface — per-decision operator-visibility.</td></tr>
+<tr><td>EMERGE</td><td><code>surfaces/emerge.md</code></td><td>Organic-emergence surface — pattern propose/approve (ADR-010).</td></tr>
+<tr><td>AUDIT</td><td><code>surfaces/audit.md</code></td><td>DecisionProvenance + EngineEvent durable sink (ADR-013).</td></tr>
+<tr><td>TENANT</td><td><code>surfaces/tenant.md</code></td><td>Cross-tenant boundary (default-deny per ADR-006 + HS-3).</td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Hardstops</strong> (8 operator-visible failure behaviors · <code>sutra/os/native/hardstops/</code>)</summary>
+<table>
+<tr><th>HS</th><th>Canon path</th><th>Operator-visible behavior</th></tr>
+<tr><td>HS-1</td><td><code>hardstops/HS-1-reflexive-check.md</code></td><td>Reflexive-check — pre-action validation against Charter; deny if mismatch.</td></tr>
+<tr><td>HS-2</td><td><code>hardstops/HS-2-governance-overhead.md</code></td><td>Governance overhead — abort turn when overhead exceeds budget; next turn proceeds.</td></tr>
+<tr><td>HS-3</td><td><code>hardstops/HS-3-tenant-boundary.md</code></td><td>Tenant-boundary — default-deny cross-tenant reads/writes; surface to operator.</td></tr>
+<tr><td>HS-4</td><td><code>hardstops/HS-4-audit-unwritable.md</code></td><td>Audit unwritable — refuse action if DecisionProvenance sink unhealthy.</td></tr>
+<tr><td>HS-5</td><td><code>hardstops/HS-5-cutover-rollback-fails.md</code></td><td>Cutover rollback fails — pause cutover; founder + Tenant owner HITL.</td></tr>
+<tr><td>HS-6</td><td><code>hardstops/HS-6-governance-hooks-fail.md</code></td><td>Governance hooks fail — session suspension; no further tool calls until repaired.</td></tr>
+<tr><td>HS-7</td><td><code>hardstops/HS-7-codex-queue-stale.md</code></td><td>Codex queue stale — peer-review backlog beyond threshold blocks new ships.</td></tr>
+<tr><td>HS-8</td><td><code>hardstops/HS-8-canary-regression.md</code></td><td>Canary regression — auto-rollback + operator alert on post-deploy regression.</td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Pillars</strong> (14 canon doctrine · <code>sutra/os/native/pillars/</code>)</summary>
+<table>
+<tr><th>#</th><th>Name</th><th>Canon path</th></tr>
+<tr><td>P1</td><td>artifact-first</td><td><code>pillars/P1-artifact-first.md</code></td></tr>
+<tr><td>P2</td><td>pre-post-llm-validation</td><td><code>pillars/P2-pre-post-llm-validation.md</code></td></tr>
+<tr><td>P3</td><td>all-blocks-in-v1</td><td><code>pillars/P3-all-blocks-in-v1.md</code></td></tr>
+<tr><td>P4</td><td>product-pov-before-tech-pov</td><td><code>pillars/P4-product-pov-before-tech-pov.md</code></td></tr>
+<tr><td>P5</td><td>mece-domains</td><td><code>pillars/P5-mece-domains.md</code></td></tr>
+<tr><td>P6</td><td>operator-controls-explanation</td><td><code>pillars/P6-operator-controls-explanation.md</code></td></tr>
+<tr><td>P7</td><td>native-grows-with-operator</td><td><code>pillars/P7-native-grows-with-operator.md</code></td></tr>
+<tr><td>P8</td><td>lifecycle-is-unit-of-value</td><td><code>pillars/P8-lifecycle-is-unit-of-value.md</code></td></tr>
+<tr><td>P9</td><td>closed-loop-artifact</td><td><code>pillars/P9-closed-loop-artifact.md</code></td></tr>
+<tr><td>P10</td><td>typed-config-every-layer</td><td><code>pillars/P10-typed-config-every-layer.md</code></td></tr>
+<tr><td>P11</td><td>constrained-problem-construction</td><td><code>pillars/P11-constrained-problem-construction.md</code></td></tr>
+<tr><td>P12</td><td>deterministic-surface-stochastic-core</td><td><code>pillars/P12-deterministic-surface-stochastic-core.md</code></td></tr>
+<tr><td>P13</td><td>multi-human-org-native</td><td><code>pillars/P13-multi-human-org-native.md</code></td></tr>
+<tr><td>P14</td><td>outcomes-drive-design</td><td><code>pillars/P14-outcomes-drive-design.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Product blocks</strong> (25 L8 Feature specs · <code>sutra/os/native/blocks/</code>)</summary>
+<table>
+<tr><th>Block</th><th>Name</th><th>Canon path</th></tr>
+<tr><td>B1</td><td>intent-layer</td><td><code>blocks/B1-intent-layer.md</code></td></tr>
+<tr><td>B2</td><td>decomposition</td><td><code>blocks/B2-decomposition.md</code></td></tr>
+<tr><td>B3</td><td>domain-hierarchy-mece</td><td><code>blocks/B3-domain-hierarchy-mece.md</code></td></tr>
+<tr><td>B4</td><td>charter-context</td><td><code>blocks/B4-charter-context.md</code></td></tr>
+<tr><td>B5</td><td>explanation-surface</td><td><code>blocks/B5-explanation-surface.md</code></td></tr>
+<tr><td>B6</td><td>research-on-fly</td><td><code>blocks/B6-research-on-fly.md</code></td></tr>
+<tr><td>B7</td><td>pre-post-validation</td><td><code>blocks/B7-pre-post-validation.md</code></td></tr>
+<tr><td>B7a-e</td><td>context-structuring · localized-intelligence · block-by-block-mode · lifecycle-orchestrator · mid-exec-mutation</td><td><code>blocks/7a..7e-*.md</code></td></tr>
+<tr><td>B8</td><td>task-framework-factors</td><td><code>blocks/B8-task-framework-factors.md</code></td></tr>
+<tr><td>B9</td><td>closed-loop-artifact</td><td><code>blocks/B9-closed-loop-artifact.md</code></td></tr>
+<tr><td>B10</td><td>typed-config</td><td><code>blocks/B10-typed-config.md</code></td></tr>
+<tr><td>B11</td><td>promptbuilder</td><td><code>blocks/B11-promptbuilder.md</code></td></tr>
+<tr><td>B12</td><td>e2e-testing</td><td><code>blocks/B12-e2e-testing.md</code></td></tr>
+<tr><td>B13</td><td>multi-runtime-concurrency</td><td><code>blocks/B13-multi-runtime-concurrency.md</code></td></tr>
+<tr><td>B14</td><td>multi-human-org</td><td><code>blocks/B14-multi-human-org.md</code></td></tr>
+<tr><td>B15</td><td>local-org-artifacts</td><td><code>blocks/B15-local-org-artifacts.md</code></td></tr>
+<tr><td>B16</td><td>native-native-a2a</td><td><code>blocks/B16-native-native-a2a.md</code></td></tr>
+<tr><td>B17</td><td>external-tools-connectors</td><td><code>blocks/B17-external-tools-connectors.md</code></td></tr>
+<tr><td>B18</td><td>person-formation</td><td><code>blocks/B18-person-formation.md</code></td></tr>
+<tr><td>F1</td><td>indexing</td><td><code>blocks/F1-indexing.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>ADRs</strong> (20 ratified architecture decisions · <code>sutra/os/decisions/</code>)</summary>
+<table>
+<tr><th>#</th><th>Topic</th><th>Canon path</th></tr>
+<tr><td>ADR-001</td><td>H-Sutra 9-cell grid</td><td><code>decisions/ADR-001-h-sutra-9cell-grid.md</code></td></tr>
+<tr><td>ADR-002</td><td>Out-direct 3-check</td><td><code>decisions/ADR-002-out-direct-3check.md</code></td></tr>
+<tr><td>ADR-003</td><td>Permissions MCP + first-time-edit</td><td><code>decisions/ADR-003-permissions-mcp-and-first-time-edit.md</code></td></tr>
+<tr><td>ADR-004</td><td>Registry + Effector split</td><td><code>decisions/ADR-004-registry-and-effector-split.md</code></td></tr>
+<tr><td>ADR-005</td><td>Host-LLM host selection</td><td><code>decisions/ADR-005-host-llm-host-selection.md</code></td></tr>
+<tr><td>ADR-006</td><td>Tenant isolation domain field</td><td><code>decisions/ADR-006-tenant-isolation-domain-field.md</code></td></tr>
+<tr><td>ADR-007</td><td>Decision-provenance schema</td><td><code>decisions/ADR-007-decision-provenance-schema.md</code></td></tr>
+<tr><td>ADR-008</td><td>Markdown-vs-code authoritative state</td><td><code>decisions/ADR-008-markdown-vs-code-authoritative-state.md</code></td></tr>
+<tr><td>ADR-009</td><td>Approval-gate primitive</td><td><code>decisions/ADR-009-approval-gate-primitive.md</code></td></tr>
+<tr><td>ADR-010</td><td>Organic-emergence propose/approve</td><td><code>decisions/ADR-010-organic-emergence-propose-approve.md</code></td></tr>
+<tr><td>ADR-011</td><td>On-failure policy 5-set</td><td><code>decisions/ADR-011-on-failure-policy-five-set.md</code></td></tr>
+<tr><td>ADR-012</td><td>PNC typed parser over prose</td><td><code>decisions/ADR-012-pnc-typed-parser-over-prose.md</code></td></tr>
+<tr><td>ADR-013</td><td>Telemetry sink fsync JSONL</td><td><code>decisions/ADR-013-telemetry-sink-fsync-jsonl.md</code></td></tr>
+<tr><td>ADR-014</td><td>Depth router via Workflow</td><td><code>decisions/ADR-014-depth-router-via-workflow.md</code></td></tr>
+<tr><td>ADR-015</td><td>Standalone H-Sutra in Native</td><td><code>decisions/ADR-015-standalone-h-sutra-in-native.md</code></td></tr>
+<tr><td>ADR-016</td><td>Replica as isolated user-kit</td><td><code>decisions/ADR-016-replica-as-isolated-user-kit.md</code></td></tr>
+<tr><td>ADR-017</td><td>Cron daemon cadence tick</td><td><code>decisions/ADR-017-cron-daemon-cadence-tick.md</code></td></tr>
+<tr><td>ADR-018</td><td>Agentic-systems pattern</td><td><code>decisions/ADR-018-agentic-systems-pattern.md</code></td></tr>
+<tr><td>ADR-019</td><td>Design ↔ Product ↔ Tech bridge</td><td><code>decisions/ADR-019-design-product-tech-bridge.md</code></td></tr>
+<tr><td>ADR-020</td><td>Layer-B Product authoring template</td><td><code>decisions/ADR-020-layer-b-product-authoring-template.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Doc layers</strong> (8 abstraction levels · <code>sutra/os/native/doc-layers/</code>)</summary>
+<table>
+<tr><th>L#</th><th>Name</th><th>Canon path</th></tr>
+<tr><td>L1</td><td>Philosophy</td><td><code>doc-layers/L1-philosophy.md</code></td></tr>
+<tr><td>L2</td><td>Vision</td><td><code>doc-layers/L2-vision.md</code></td></tr>
+<tr><td>L3</td><td>Mission</td><td><code>doc-layers/L3-mission.md</code></td></tr>
+<tr><td>L4</td><td>Strategy</td><td><code>doc-layers/L4-strategy.md</code></td></tr>
+<tr><td>L6</td><td>PRD</td><td><code>doc-layers/L6-prd.md</code></td></tr>
+<tr><td>L7</td><td>PR-FAQ</td><td><code>doc-layers/L7-prfaq.md</code></td></tr>
+<tr><td>L11</td><td>OKRs</td><td><code>doc-layers/L11-okrs.md</code></td></tr>
+<tr><td>L14</td><td>Comms</td><td><code>doc-layers/L14-comms.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Implementation phases</strong> (5 · <code>sutra/os/native/impl-phases/</code>)</summary>
+<table>
+<tr><th>Phase</th><th>Name</th><th>Canon path</th></tr>
+<tr><td>A</td><td>PRD docs</td><td><code>impl-phases/phase-A-prd-docs.md</code></td></tr>
+<tr><td>B</td><td>Feature specs</td><td><code>impl-phases/phase-B-feature-specs.md</code></td></tr>
+<tr><td>C</td><td>Implementation</td><td><code>impl-phases/phase-C-impl.md</code></td></tr>
+<tr><td>D</td><td>Codex review</td><td><code>impl-phases/phase-D-codex-review.md</code></td></tr>
+<tr><td>E</td><td>Ship + iterate</td><td><code>impl-phases/phase-E-ship-iterate.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Open questions</strong> (11 canonical · <code>sutra/os/native/open-questions/</code>)</summary>
+<table>
+<tr><th>Q#</th><th>Topic</th><th>Canon path</th></tr>
+<tr><td>Q1</td><td>Persona</td><td><code>open-questions/Q1-persona.md</code></td></tr>
+<tr><td>Q2</td><td>NG7 non-tech</td><td><code>open-questions/Q2-ng7-non-tech.md</code></td></tr>
+<tr><td>Q3</td><td>NG6 memory</td><td><code>open-questions/Q3-ng6-memory.md</code></td></tr>
+<tr><td>Q4</td><td>Pattern emergence k</td><td><code>open-questions/Q4-pattern-emergence-k.md</code></td></tr>
+<tr><td>Q5</td><td>Approval scope</td><td><code>open-questions/Q5-approval-scope.md</code></td></tr>
+<tr><td>Q6</td><td>Pricing</td><td><code>open-questions/Q6-pricing.md</code></td></tr>
+<tr><td>Q7</td><td>v2 trigger</td><td><code>open-questions/Q7-v2-trigger.md</code></td></tr>
+<tr><td>Q8</td><td>Founder checkpoints</td><td><code>open-questions/Q8-founder-checkpoints.md</code></td></tr>
+<tr><td>Q9</td><td>Terminal-only</td><td><code>open-questions/Q9-terminal-only.md</code></td></tr>
+<tr><td>Q10</td><td>Founder portfolio</td><td><code>open-questions/Q10-founder-portfolio.md</code></td></tr>
+<tr><td>Q11</td><td>Truncated bullet</td><td><code>open-questions/Q11-truncated-bullet.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>North Star metric</strong> (1 · <code>sutra/os/native/metrics/</code>)</summary>
+<table>
+<tr><th>Metric</th><th>Canon path</th></tr>
+<tr><td>OHS/wk — Operator-Hours-Saved per Week</td><td><code>metrics/north-star-ohs-per-week.md</code></td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Plugin skills</strong> (21 shipped · <code>sutra/marketplace/plugin/skills/</code>)</summary>
+<table>
+<tr><th>Skill</th><th>One-line role</th></tr>
+<tr><td>anti-glaze-tone</td><td>Founder-facing tone discipline — verify own work · negative conclusions OK · explicit confidence levels</td></tr>
+<tr><td>architect</td><td>System architecture authoring per 6-discipline method (Situation/Sovereignty/Invariants/Semantics/Structure/Proof)</td></tr>
+<tr><td>blueprint</td><td>Pre-action BLUEPRINT V2.1 emission — Doing/Steps/Verify/Output/Scale/Stops</td></tr>
+<tr><td>caveman</td><td>Ultra-compressed prose mode (~75% token reduction) — Asawa/Sutra prose default</td></tr>
+<tr><td>codex-sutra</td><td>OpenAI Codex CLI wrapper — Review · Challenge · Consult modes (peer-review lane)</td></tr>
+<tr><td>deepseek</td><td>DeepSeek API peer-reviewer wrapper — Review · Challenge · Consult · Design-review (second AI lane)</td></tr>
+<tr><td>depth-estimation</td><td>Per-turn Depth+Estimation block — DEPTH 1-5 · EFFORT · COST · IMPACT + TRIAGE/ESTIMATE/ACTUAL post-completion</td></tr>
+<tr><td>deterministic-testing</td><td>Test-strategy companion for deterministic verification of stochastic LLM outputs</td></tr>
+<tr><td>founder-360-review</td><td>Founder retrospective skill — 8-angle evidence-anchored review · time-windowed</td></tr>
+<tr><td>human-sutra</td><td>H-Sutra header emission — 9-cell × 3-tag classification per response (ADR-001)</td></tr>
+<tr><td>incremental-architect</td><td>Migration planner — MIGRATION-PLAN.md for live-state transitions (strangler fig · branch by abstraction · parallel-run)</td></tr>
+<tr><td>input-routing</td><td>Per-turn 5-line routing block (TYPE/HOME/ROUTE/FIT/ACTION)</td></tr>
+<tr><td>native-author-part</td><td>Adds a new Native canon part-file (primitives · events · hardstops · ADRs · blocks)</td></tr>
+<tr><td>output-trace</td><td>End-of-response one-line OS trace (route &gt; domain &gt; nodes &gt; terminal · 3 verbosity levels)</td></tr>
+<tr><td>prd-discipline</td><td>Product-document writing discipline — 5 invariants (STRUCTURED · VISUAL FIRST · RESTRUCTURE-ON-BULK · CONNECTED · GAP-SURFACING); composes with ADR-020 (v2.39.3)</td></tr>
+<tr><td>readability-gate</td><td>Output-time formatter — tables &gt; prose · numbers &gt; adjectives · ASCII-boxed decisions</td></tr>
+<tr><td>skill-explain</td><td>First-use skill card (WHAT/WHY/EXPECT/ASKS) before every Skill invocation</td></tr>
+<tr><td>sutra-capability</td><td>Capability Surface Map (CSM) query + digest — client-shippable / Asawa-only / Sutra-internal lifecycle</td></tr>
+<tr><td>sutra-learn</td><td>Lesson retrieval + capture for cross-session learnings</td></tr>
+<tr><td>test-strategy</td><td>Generative test-strategy authoring — what to test / boundary / risks per task tier</td></tr>
+<tr><td>workflow</td><td>Workflow primitive authoring + 3-layer verification stack reference</td></tr>
+</table>
+</details>
+
+<details>
+<summary><strong>Plugin hooks</strong> (75+ shipped · <code>sutra/marketplace/plugin/hooks/</code>)</summary>
+<table>
+<tr><th>Family</th><th>Hooks</th><th>What they enforce</th></tr>
+<tr><td><strong>Per-turn discipline</strong></td><td>depth-marker-pretool · blueprint-check · input-classification-gate · reset-turn-markers · per-turn-discipline-prompt · h-sutra-enforce · narration-not-artifact · estimation-collector · estimation-enforcement · estimation-stop</td><td>Markers required per turn before Edit/Write (SOFT→HARD flip 2026-05-10)</td></tr>
+<tr><td><strong>Governance gates</strong></td><td>cascade-check (D13) · build-layer-check (D38) · structural-move-check (PROTO-025) · enforce-boundaries · permission-gate · self-assess-before-foundational · lifecycle-check · process-fix-check · onboarding-self-check · governance-live-banner</td><td>HARD gates on path-classified edits + tier checks</td></tr>
+<tr><td><strong>Peer-review</strong></td><td>codex-directive-detect · codex-directive-gate · codex-directive-sweep · codex-review-gate · check-graduation · phase-exit-audit · agent-completion-check · completion-protocol-check · operationalization-check · test-in-production-check</td><td>Codex/peer-review queue management + completion/operationalization gates</td></tr>
+<tr><td><strong>Telemetry + tracking</strong></td><td>emit-metric · kpi-tracker · latency-collector · session-token-snapshot · measurement-logger · session-logger · log-skill-feedback · log-triage · time-allocation-tracker · triage-collector · session-checkpoint · session-start-rotate · sessionstart-auto-activate · session-rotate · rotate-logs · flush-telemetry · posttool-counter · compliance-tracker</td><td>Aggregates + emits observability signals</td></tr>
+<tr><td><strong>CSM (capability surface)</strong></td><td>csm-cap118-lint · csm-classification-pretooluse · csm-sessionstart-banner</td><td>Capability Surface Map enforcement + operator visibility</td></tr>
+<tr><td><strong>Feedback engine</strong></td><td>feedback-auto-override · feedback-auto-correction · feedback-auto-abandonment · feedback-channel-guard · feedback-routing-rule</td><td>Feedback canonical channel + auto-correction loops</td></tr>
+<tr><td><strong>Resilience + safety</strong></td><td>resilience · hook-health-sensor · tripwire-hook-sizes · keys-in-env-vars · sessionstart-privacy-notice · context-budget-check · auto-push · bash-summary-pretool · output-behavior-lint · policy-coverage-gate · policy-only-sensor · new-path-detector · inbox-display · update-banner · subagent-dispatch-brief · posttool-mcp-compress · rtk-auto-rewrite · artifact-check · structure-first-reminder</td><td>Failure detection + supply-chain + token-budget + structural defaults</td></tr>
+</table>
+<p><em>Full enumeration: 75+ executable hooks. Hook dispatch registry at <code>sutra/marketplace/plugin/hooks/hooks.json</code>. Shared library at <code>sutra/marketplace/plugin/hooks/lib/</code>.</em></p>
+</details>
+
+<details>
+<summary><strong>Plugin commands</strong> (10 · <code>sutra/marketplace/plugin/commands/</code>)</summary>
+<table>
+<tr><th>Command</th><th>Purpose</th></tr>
+<tr><td><code>/core:start</code></td><td>The one command — onboards project · telemetry opt-in · activates governance · writes depth marker</td></tr>
+<tr><td><code>/core:status</code></td><td>Show Sutra plugin state — project IDs · queue depth · opt-in flag · last flush</td></tr>
+<tr><td><code>/core:update</code></td><td>Update plugin to latest marketplace version</td></tr>
+<tr><td><code>/core:depth-check</code></td><td>Verify current depth marker + estimation log</td></tr>
+<tr><td><code>/core:permissions</code></td><td>Show/audit current permission grants</td></tr>
+<tr><td><code>/core:workflow</code></td><td>Workflow primitive authoring entry-point</td></tr>
+<tr><td><code>/core:learn</code></td><td>Cross-session learnings capture + retrieval</td></tr>
+<tr><td><code>/core:feedback</code></td><td>Capture feedback (local by default · <code>--public</code> opts into GitHub issue)</td></tr>
+<tr><td><code>/core:sbom</code></td><td>Generate Software Bill of Materials (SHA256 per shipped file)</td></tr>
+<tr><td><code>/core:uninstall</code></td><td>Full plugin uninstall + cleanup</td></tr>
+</table>
+</details>
+
+<p class="callout"><strong>Registry-vs-catalog</strong>: §4.11 is the compact one-row-per-category index (count + canon dir + PRD-body surface); §4.11.A is the per-item drilldown (one row per individual canon file or plugin artifact). When canon or plugin adds/removes a file, both update together. Future v1.x: hyperlink each canon path to its rendered file once canon-renderer ships. <em>Plugin-skills/hooks/commands families added 2026-05-13 per §10.10 P2 #4 + P2 #7 (codex Lane A A #12 + deepseek Lane A A #7).</em></p>
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/HLD/02-data-model.html">HLD/02 Data Model + HLD/03 Control Flow</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>

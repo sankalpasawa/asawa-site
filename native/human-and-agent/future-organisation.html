@@ -1,0 +1,245 @@
+<!doctype html>
+<!-- The future organisation: a subpage of Human and Agent, split from the long page of 2026-10-07 by the split script. Sidebar injected by _sidebar.py --apply. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — The future organisation</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 8px}
+h3{font-size:17px;margin:14px 0 6px;letter-spacing:-.01em}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul,ol{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:10px;overflow-x:auto;background:#fff}
+figure.map svg{min-width:640px}
+figure.lanes svg{min-width:760px}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+details.why .body b{color:#111827}
+/* the five hues of the AO pages, light only (the Native site is light) */
+:root{--c-models:#5a56d6;--c-models-t:#e4e3f9;--c-harness:#0a9c96;--c-harness-t:#d6f1ef;--c-ao:#c9512e;--c-ao-t:#f9e1d8;--c-market:#8a3fb4;--c-market-t:#eddff5;--c-people:#3a7d2c;--c-people-t:#dcefd6;--c-hw:#5b6471;--c-hw-t:#e6e8ec;--c-gray:#8a919b;--c-gray-t:#e6e8ec;--s1:#fbe6dd;--s2:#f3b99f;--s3:#e58a63;--s4:#c9512e}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:#6b7280;align-items:center;margin:6px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}.legend i.line{height:3px;width:18px;border-radius:0}
+.tag{display:inline-block;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid #e5e7eb;border-radius:2px;margin-right:4px;font-weight:700}
+.tag.today{border-color:var(--c-harness);color:var(--c-harness)}.tag.proj{border-color:var(--c-ao);color:var(--c-ao)}.tag.dec{background:var(--c-people-t);border-color:var(--c-people)}.tag.inf{border-color:var(--c-models);color:var(--c-models)}
+.means{border-left:4px solid var(--c-people);padding:7px 12px;background:var(--c-people-t);font-size:13.5px;margin:10px 0}
+.means.ao{border-left-color:var(--c-ao);background:var(--c-ao-t)}
+.futures{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 4px}
+.future{border:1px solid #e5e7eb;border-top:4px solid #9ca3af;padding:10px 12px;font-size:13px}
+.future.f1{border-top-color:var(--c-harness)}.future.f2{border-top-color:var(--c-people)}.future.f3{border-top-color:var(--c-models)}
+.future b{display:block;font-size:14px;margin-bottom:3px}.future .trig{color:#6b7280}
+.bar{display:inline-block;height:10px;vertical-align:middle;margin-right:6px;border-radius:2px;background:var(--s3)}
+.bar.s1{background:var(--s1);border:1px solid var(--s2)}.bar.s2{background:var(--s2)}.bar.s3{background:var(--s3)}.bar.s4{background:var(--s4)}
+.who{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px}.who.p{background:var(--c-people)}.who.a{background:var(--c-ao)}.who.h{background:var(--c-hw)}.who.m{background:var(--c-market)}
+td.P{background:var(--c-people-t)}td.A{background:var(--c-ao-t)}td.B{background:linear-gradient(90deg,var(--c-ao-t),var(--c-people-t))}
+.answers{display:grid;gap:6px;margin:8px 0}
+.ans{display:grid;grid-template-columns:30px 1fr;gap:10px;border:1px solid #e5e7eb;padding:8px 10px;font-size:13.5px;align-items:start}
+.ans .k{color:#fff;border-radius:3px;text-align:center;font-weight:700;padding:3px 0}
+.steps{display:grid;gap:5px;margin:8px 0 4px}
+.step{display:grid;grid-template-columns:1fr 1fr;border:1px solid #e5e7eb;font-size:13px}
+.step .from{color:#6b7280;padding:6px 10px;border-left:4px solid var(--c-ao)}.step .to{padding:6px 10px;border-left:4px solid var(--c-people)}
+.toc{columns:2;font-size:13px;margin:8px 0 4px}.toc li{break-inside:avoid}
+@media (max-width:640px){.step{grid-template-columns:1fr}.toc{columns:1}}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+figure.wide svg{min-width:720px}
+.assume{border:1px solid #c9512e;border-left:5px solid #c9512e;background:#fff7f3;padding:7px 12px;font-size:13px;margin:10px 0}
+.assume b{color:#c9512e}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a class="sb-cur" href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &#8250; Business &#8250; <a href="../human-and-agent.html">Human and Agent</a> &#8250; The future organisation</div>
+<h1>The future organisation <span class="lvl">HUMAN AND AGENT</span></h1>
+<p class="lede" style="font-size:17px;line-height:1.45;max-width:62ch;margin:10px 0 14px">Every person with an agent org, the work moving in three waves, and the frame under it: six levels, the wants loop, where memory and understanding live.</p>
+<figure class="wide" id="future-org">
+<svg viewBox="0 0 900 430" role="img" aria-label="Three panels: today, people hold the work under one manager; the shift from today to H1, each person gets an agent org and the work moves to it in three waves, paperwork first, then who-does-what, then dealing with other organisations; H1, people are seats above their agent orgs, which trade with each other in a market.">
+<defs><marker id="fo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
+<marker id="fo-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c9512e"/></marker></defs>
+<g font-size="11.5" fill="#111827">
+<text x="140" y="22" text-anchor="middle" font-weight="700" font-size="13">TODAY</text>
+<text x="450" y="22" text-anchor="middle" font-weight="700" font-size="13">THE SHIFT, today to H1</text>
+<text x="760" y="22" text-anchor="middle" font-weight="700" font-size="13">H1</text>
+<line x1="295" y1="30" x2="295" y2="380" stroke="#e5e7eb"/><line x1="605" y1="30" x2="605" y2="380" stroke="#e5e7eb"/>
+<circle cx="140" cy="60" r="12" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><text x="140" y="90" text-anchor="middle" font-size="10.5">the manager</text>
+<text x="140" y="103" text-anchor="middle" font-size="9.5" fill="#6b7280">decides who does what, when</text>
+<g stroke="#9ca3af" stroke-width="1.2"><line x1="140" y1="72" x2="60" y2="130"/><line x1="140" y1="72" x2="100" y2="130"/><line x1="140" y1="72" x2="140" y2="130"/><line x1="140" y1="72" x2="180" y2="130"/><line x1="140" y1="72" x2="220" y2="130"/></g>
+<g>
+<circle cx="60" cy="142" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="48" y="160" width="24" height="60" fill="#e6e8ec" stroke="#8a919b"/>
+<circle cx="100" cy="142" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="88" y="160" width="24" height="72" fill="#e6e8ec" stroke="#8a919b"/>
+<circle cx="140" cy="142" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="128" y="160" width="24" height="54" fill="#e6e8ec" stroke="#8a919b"/>
+<circle cx="180" cy="142" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="168" y="160" width="24" height="66" fill="#e6e8ec" stroke="#8a919b"/>
+<circle cx="220" cy="142" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="208" y="160" width="24" height="58" fill="#e6e8ec" stroke="#8a919b"/>
+</g>
+<text x="140" y="256" text-anchor="middle" font-size="10.5">people hold the work (grey)</text>
+<text x="140" y="270" text-anchor="middle" font-size="10" fill="#6b7280">the company is the size of its payroll</text>
+<g>
+<circle cx="350" cy="60" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="338" y="78" width="24" height="34" fill="#e6e8ec" stroke="#8a919b"/>
+<rect x="330" y="150" width="40" height="46" rx="4" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><rect x="338" y="160" width="24" height="30" fill="#e6e8ec" stroke="#8a919b"/>
+<line x1="350" y1="114" x2="350" y2="146" stroke="#c9512e" stroke-width="2" marker-end="url(#fo-o)"/>
+<circle cx="410" cy="60" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="398" y="78" width="24" height="26" fill="#e6e8ec" stroke="#8a919b"/>
+<rect x="390" y="150" width="40" height="46" rx="4" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><rect x="398" y="156" width="24" height="38" fill="#e6e8ec" stroke="#8a919b"/>
+<line x1="410" y1="106" x2="410" y2="146" stroke="#c9512e" stroke-width="2" marker-end="url(#fo-o)"/>
+<circle cx="470" cy="60" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="458" y="78" width="24" height="18" fill="#e6e8ec" stroke="#8a919b"/>
+<rect x="450" y="150" width="40" height="46" rx="4" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><rect x="458" y="154" width="24" height="42" fill="#e6e8ec" stroke="#8a919b"/>
+<line x1="470" y1="98" x2="470" y2="146" stroke="#c9512e" stroke-width="2" marker-end="url(#fo-o)"/>
+<circle cx="530" cy="60" r="11" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><rect x="518" y="78" width="24" height="12" fill="#e6e8ec" stroke="#8a919b"/>
+<rect x="510" y="150" width="40" height="46" rx="4" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><rect x="518" y="152" width="24" height="44" fill="#e6e8ec" stroke="#8a919b"/>
+<line x1="530" y1="92" x2="530" y2="146" stroke="#c9512e" stroke-width="2" marker-end="url(#fo-o)"/>
+</g>
+<text x="440" y="214" text-anchor="middle" font-size="10.5">each person gets an agent org (orange); the work moves down to it</text>
+<rect x="318" y="232" width="264" height="18" fill="#f9e1d8"/><text x="450" y="245" text-anchor="middle" font-size="10">wave 1: paperwork, search, drafting, booking</text>
+<rect x="318" y="254" width="264" height="18" fill="#f3b99f"/><text x="450" y="267" text-anchor="middle" font-size="10">wave 2: who does what, when: the manager's work</text>
+<rect x="318" y="276" width="264" height="18" fill="#eddff5" stroke="#8a3fb4" stroke-width="1"/><text x="450" y="289" text-anchor="middle" font-size="10">wave 3: dealing with other organisations</text>
+<text x="450" y="312" text-anchor="middle" font-size="10" fill="#6b7280">the manager's box empties first; the person's does not empty</text>
+<g>
+<rect x="650" y="52" width="36" height="16" rx="3" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><text x="668" y="46" text-anchor="middle" font-size="9.5">seat</text>
+<rect x="700" y="52" width="36" height="16" rx="3" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><text x="718" y="46" text-anchor="middle" font-size="9.5">seat</text>
+<rect x="750" y="52" width="36" height="16" rx="3" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><text x="768" y="46" text-anchor="middle" font-size="9.5">seat</text>
+<rect x="800" y="52" width="36" height="16" rx="3" fill="#dcefd6" stroke="#3a7d2c" stroke-width="2"/><text x="818" y="46" text-anchor="middle" font-size="9.5">seat</text>
+<rect x="644" y="90" width="48" height="110" rx="5" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><text x="668" y="150" text-anchor="middle" font-size="9.5">AO</text>
+<rect x="694" y="90" width="48" height="110" rx="5" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><text x="718" y="150" text-anchor="middle" font-size="9.5">AO</text>
+<rect x="744" y="90" width="48" height="110" rx="5" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><text x="768" y="150" text-anchor="middle" font-size="9.5">AO</text>
+<rect x="794" y="90" width="48" height="110" rx="5" fill="#f9e1d8" stroke="#c9512e" stroke-width="2"/><text x="818" y="150" text-anchor="middle" font-size="9.5">AO</text>
+<g stroke="#3a7d2c" stroke-width="1.8"><line x1="668" y1="68" x2="668" y2="88"/><line x1="718" y1="68" x2="718" y2="88"/><line x1="768" y1="68" x2="768" y2="88"/><line x1="818" y1="68" x2="818" y2="88"/></g>
+<text x="743" y="80" text-anchor="middle" font-size="9" fill="#3a7d2c">want, stamp, rule</text>
+<rect x="640" y="222" width="206" height="26" rx="4" fill="#eddff5" stroke="#8a3fb4" stroke-width="2"/><text x="743" y="239" text-anchor="middle" font-size="10">the market: who may call whom, prices, promises</text>
+<g stroke="#8a3fb4" stroke-width="1.5" stroke-dasharray="4 3"><line x1="668" y1="200" x2="668" y2="222"/><line x1="718" y1="200" x2="718" y2="222"/><line x1="768" y1="200" x2="768" y2="222"/><line x1="818" y1="200" x2="818" y2="222"/></g>
+<line x1="692" y1="145" x2="744" y2="145" stroke="#8a3fb4" stroke-width="1.5" marker-end="url(#fo)"/><line x1="792" y1="165" x2="742" y2="165" stroke="#8a3fb4" stroke-width="1.5" marker-end="url(#fo)"/>
+</g>
+<text x="743" y="272" text-anchor="middle" font-size="10.5">people are seats; the AOs hold the work and trade</text>
+<text x="743" y="286" text-anchor="middle" font-size="10" fill="#6b7280">the company is the size of its stamps per day</text>
+<rect x="20" y="340" width="860" height="1" fill="#9ca3af"/>
+<text x="140" y="362" text-anchor="middle" font-size="10" fill="#6b7280">today</text>
+<text x="330" y="362" text-anchor="middle" font-size="10" fill="#6b7280">wave 1</text>
+<text x="450" y="362" text-anchor="middle" font-size="10" fill="#6b7280">wave 2</text>
+<text x="570" y="362" text-anchor="middle" font-size="10" fill="#6b7280">wave 3</text>
+<text x="760" y="362" text-anchor="middle" font-size="10" fill="#6b7280">H1</text>
+<text x="20" y="395" font-size="10" fill="#6b7280">green = a person; orange = that person's agent org; grey = work; purple = the market between agent orgs</text>
+<text x="20" y="410" font-size="10" fill="#9ca3af">Projection. The waves follow the order the work becomes checkable by a machine; see the dropdown.</text>
+</g></svg>
+<p class="figcap">The future of the organisation: from people holding the work, through the shift, to people as seats above their agent orgs.</p>
+</figure>
+<details class="why"><summary>Why this picture: three waves, in this order, and why the person's box never empties</summary><div class="body">
+<ul><li><b>Claim.</b> Work leaves people for their agent orgs in a fixed order, and what never leaves is the seat: the want, the stamp, the rule, the liability.</li>
+<li><b>Why wave 1 is paperwork.</b> Search, drafting, booking and billing are the work a machine can check against a closed list. On Sutra that is what engines already do: a site from words in 4 minutes, a web search filed with its sources (Human Simulation runs 3 and 5, 2026-09-29/30).</li>
+<li><b>Why wave 2 is the manager.</b> Deciding who does what and when is the work Adaptation and Priority already do in a department: a line of engines shaped from the owner's words, reordered by one sentence. The manager's box empties before the maker's.</li>
+<li><b>Why wave 3 is other organisations.</b> One agent org asking another for a filing needs a market: who may call whom, a price, a promise with a time. That has not run yet; it is rung 3 of <a href="experiment-and-seat.html">the experiment</a>.</li>
+<li><b>Why the person's box does not empty.</b> Three questions sort every piece of work: can a machine check it, does it need a body, must someone be liable. The want, the taste and the signature fail the first and third, so they stay.</li>
+<li><b>What would change it.</b> Law that lets an agent org carry liability (the seat shrinks further), or a run where an engine's work has to be finished by hand (wave 1 is slower than drawn).</li></ul></div></details>
+<section id="frame">
+<h2>The frame</h2>
+<h3>Six levels, three kinds of problem</h3>
+<figure>
+<svg viewBox="0 0 760 300" role="img" aria-label="Native's six levels stacked from atom to meta-AO, with three kinds of problem placed on them.">
+<g font-size="12" fill="#111827">
+<rect x="40" y="250" width="300" height="32" rx="5" fill="var(--c-harness-t)" stroke="var(--c-harness)" stroke-width="1.5"/><text x="190" y="271" text-anchor="middle">atom: one step, verified</text>
+<rect x="40" y="212" width="300" height="32" rx="5" fill="var(--c-harness-t)" stroke="var(--c-harness)" stroke-width="1.5"/><text x="190" y="233" text-anchor="middle">workflow: steps in order</text>
+<rect x="40" y="174" width="300" height="32" rx="5" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="190" y="195" text-anchor="middle">engine: a worker with a brief and a line</text>
+<rect x="40" y="136" width="300" height="32" rx="5" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="190" y="157" text-anchor="middle">function: a role that owns engines</text>
+<rect x="40" y="98" width="300" height="32" rx="5" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="190" y="119" text-anchor="middle">department: one goal, one owner, rules, library</text>
+<rect x="40" y="60" width="300" height="32" rx="5" fill="var(--c-market-t)" stroke="var(--c-market)" stroke-width="1.5"/><text x="190" y="81" text-anchor="middle">AO: departments under one human</text>
+<rect x="40" y="22" width="300" height="32" rx="5" fill="var(--c-market-t)" stroke="var(--c-market)" stroke-width="1.5"/><text x="190" y="43" text-anchor="middle">meta-AO: AOs that need each other</text>
+<path d="M360,266 L360,228" stroke="var(--c-harness)" stroke-width="3"/><text x="372" y="251" font-size="11.5" font-weight="700">skill-level problem: do this well</text><text x="372" y="266" font-size="11">solved today</text>
+<path d="M360,190 L360,114" stroke="var(--c-ao)" stroke-width="3"/><text x="372" y="146" font-size="11.5" font-weight="700">management-level problem: who does what, when, first</text><text x="372" y="161" font-size="11">solved today: Human Simulation runs 1 to 5</text>
+<path d="M360,76 L360,38" stroke="var(--c-market)" stroke-width="3"/><text x="372" y="52" font-size="11.5" font-weight="700">economic problem: who pays, who trusts, who owns</text><text x="372" y="67" font-size="11">not solved: this page's subject</text>
+</g></svg>
+<p class="figcap">Native's six levels (<a href="../platform/structure.html">the structure</a>), bottom to top, and the three kinds of problem placed on them.</p>
+</figure>
+<details class="why"><summary>Why this picture: the levels are Native's own; the problems sit where the runs put them</summary><div class="body">
+<ul><li><b>Claim.</b> Everything up to the department is built and solves the founder's two named problem kinds; the economic kind starts one level higher.</li>
+<li><b>Evidence.</b> The six levels are the ones on <a href="../platform/structure.html">the structure page</a>. Skill-level work is what engines verify against closed lists (run 1 onward). Management-level work, who does what and when, is what Adaptation and Priority did in runs 3 and 5 (a line shaped from words, one stamp).</li>
+<li><b>Why the top is unplaced.</b> No run has had two owners. Paying, trusting and owning only appear when a second human's AO is on the other side.</li>
+<li><b>What would change it.</b> A run where one department fakes or hand-bridges what another should file: then the economic problem is not at the AO level but inside the department.</li></ul></div></details>
+
+<h3>The wants loop</h3>
+<figure>
+<svg viewBox="0 0 760 250" role="img" aria-label="Human needs set the direction for human wants; wants go to an AO; the AO returns outcomes and has wants of its own, solved by vendors, the human seat and other AOs.">
+<defs><marker id="wl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker></defs>
+<g font-size="11.5" fill="#111827">
+<rect x="20" y="30" width="150" height="50" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="1.5"/><text x="95" y="51" text-anchor="middle" font-weight="700">human needs</text><text x="95" y="67" text-anchor="middle" font-size="10.5">food, safety, belonging, meaning</text>
+<rect x="220" y="30" width="150" height="50" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="1.5"/><text x="295" y="51" text-anchor="middle" font-weight="700">human wants</text><text x="295" y="67" text-anchor="middle" font-size="10.5">a site, a sale, a diagnosis, a trip</text>
+<rect x="420" y="30" width="150" height="50" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="495" y="51" text-anchor="middle" font-weight="700">an AO</text><text x="495" y="67" text-anchor="middle" font-size="10.5">departments + engines</text>
+<rect x="420" y="130" width="150" height="60" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5" stroke-dasharray="5 3"/><text x="495" y="151" text-anchor="middle" font-weight="700">AO wants</text><text x="495" y="166" text-anchor="middle" font-size="10.5">compute, data, access, judgement,</text><text x="495" y="180" text-anchor="middle" font-size="10.5">money, another AO's work</text>
+<rect x="600" y="30" width="140" height="50" rx="6" fill="var(--c-models-t)" stroke="var(--c-models)" stroke-width="1.5"/><text x="670" y="51" text-anchor="middle" font-weight="700">vendors</text><text x="670" y="67" text-anchor="middle" font-size="10.5">model, cloud, APIs</text>
+<rect x="600" y="135" width="140" height="50" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="1.5"/><text x="670" y="156" text-anchor="middle" font-weight="700">the human seat</text><text x="670" y="172" text-anchor="middle" font-size="10.5">judgement, taste, stamps, trust</text>
+<rect x="220" y="135" width="150" height="50" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="295" y="156" text-anchor="middle" font-weight="700">another AO</text><text x="295" y="172" text-anchor="middle" font-size="10.5">filings, prices, promises</text>
+<path d="M172,55 L218,55" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/><text x="195" y="48" text-anchor="middle" font-size="10">set the direction</text>
+<path d="M372,50 L418,50" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/><text x="395" y="43" text-anchor="middle" font-size="10">words, one stamp</text>
+<path d="M418,66 L372,66" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/><text x="395" y="80" text-anchor="middle" font-size="10">outcomes</text>
+<path d="M495,82 L495,128" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/><text x="505" y="108" font-size="10">has wants of its own</text>
+<path d="M572,145 L600,70" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/><text x="600" y="110" font-size="10">compute, data</text>
+<path d="M572,160 L598,160" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/>
+<path d="M418,160 L372,160" stroke="#334155" stroke-width="1.5" marker-end="url(#wl)"/><text x="395" y="153" text-anchor="middle" font-size="10">work it cannot do</text>
+<path d="M330,133 L460,82" stroke="#334155" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#wl)"/><text x="372" y="112" font-size="10">filings, prices back</text>
+<path d="M670,133 L560,82" stroke="#334155" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#wl)"/><text x="612" y="118" font-size="10" text-anchor="middle">rules, money</text>
+</g></svg>
+<p class="figcap">The founder's frame drawn: needs set direction, wants get solved, solving them gives the AO wants of its own. Section 9 is this loop run once, for real.</p>
+</figure>
+<details class="why"><summary>Why this picture: one hop is seen, the second is the experiment</summary><div class="body">
+<ul><li><b>Claim.</b> An AO that solves a human want acquires wants of its own, and those go to three places: vendors, the human, other AOs.</li>
+<li><b>Evidence.</b> Run 3: Identity asked for the internet, the owner stamped, Adaptation shaped a Source Reader engine. That is "AO wants, then the human seat", one hop, observed (section 9, steps 3 to 5). Run 5: a site from words with one stamp is "human wants, then AO, then outcomes".</li>
+<li><b>Why the dashed edges.</b> "Another AO" and "filings, prices back" have never run. They are drawn dashed because they are the claim, not the record.</li>
+<li><b>What would change it.</b> If an AO's wants can always be met by vendors alone, the other-AO edge disappears and the civilization is a market of vendors, not of AOs.</li></ul></div></details>
+
+<h3>AO money and the meta-AO</h3>
+<p>An AO spends four stocks (tokens and compute; data and access; human time as stamps and answers; other AOs' work) and sells one thing: an outcome a human wanted, kept alive. Native already names the stock as the Resource primitive. The <b>meta-AO</b> is nothing new in kind: the EDGE family (who may call whom) and the RESOURCE family (price) lifted one level, plus a promise with a date (TIME) and a dispute path (GOVERN).</p>
+<table>
+<tr><th>Meta-AO part</th><th>Native family it already is</th><th>What changes at the AO level</th></tr>
+<tr><td>Who may call whom</td><td>EDGE</td><td>Across owners, not across functions</td></tr>
+<tr><td>Prices</td><td>RESOURCE</td><td>A price stated to another owner, accepted or declined</td></tr>
+<tr><td>Promises with a date</td><td>TIME</td><td>Held by a third party, the meta-AO</td></tr>
+<tr><td>Disputes</td><td>GOVERN</td><td>New: a path when a promise fails between owners</td></tr>
+</table>
+<p class="figcap"><span class="tag today">Today</span> Numbers we hold: a web-search engine run about 2 USD (ledger N-025); a site from words in 4 min with one stamp (N-028, run 5); four searches ran where one was asked (N-025).</p>
+</section>
+<p class="figcap">Terms, labels, colours and the full source list are on the <a href="../human-and-agent.html">hub</a>. <span class="pill DRAFT">DRAFT</span> until the founder marks it.</p>
+</div></div></body></html>

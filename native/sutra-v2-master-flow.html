@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sutra v2 -- Master Flow Diagram</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'SF Mono',monospace;background:#080808;color:#ccc;padding:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;background:#0a0a0a;border-bottom:1px solid #1a1a1a;padding:8px 24px;z-index:100;display:flex;gap:16px;align-items:center}
+nav a{color:#666;font-size:10px;text-decoration:none;padding:4px 8px;border-radius:4px}
+nav a:hover{color:#fff;background:#1a1a1a}
+nav a.active{color:#fff;background:#1a1a2e}
+nav .title{color:#fff;font-size:12px;font-weight:600;margin-right:16px}
+
+/* CONTENT */
+.page{display:none;padding:60px 32px 40px}
+.page.active{display:block}
+.page-title{font-size:20px;color:#fff;margin-bottom:4px}
+.page-sub{font-size:11px;color:#555;margin-bottom:32px}
+
+/* FLOW ELEMENTS */
+.flow{max-width:1100px;margin:0 auto;position:relative}
+
+/* Main block */
+.block{border:1px solid #222;border-radius:8px;padding:14px 16px;background:#0e0e0e;margin-bottom:0;position:relative}
+.block-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.block-num{font-size:10px;font-weight:700;color:#555;background:#111;border:1px solid #222;width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center}
+.block-name{font-size:13px;font-weight:600;color:#fff}
+.block-desc{font-size:10px;color:#666;margin-bottom:8px;line-height:1.5}
+
+/* Files inside block */
+.files{display:flex;flex-wrap:wrap;gap:4px}
+.f{font-size:9px;padding:3px 7px;border-radius:3px;border:1px solid #222;background:#0a0a0a;color:#888;cursor:default}
+.f:hover{border-color:#444;color:#ccc}
+.f-used{border-color:#1a3a1a;color:#22c55e;background:#0a140a}
+.f-proto{border-color:#201a30;color:#a78bfa;background:#100a1a}
+.f-gov{border-color:#1a1a3a;color:#7c7cff;background:#0a0a14}
+.f-new{border-color:#3a3a1a;color:#f59e0b;background:#1a1a0a}
+.f-engine{border-color:#1a2a2a;color:#06b6d4;background:#0a1214}
+
+/* Arrow connector */
+.arrow{display:flex;flex-direction:column;align-items:center;padding:6px 0;color:#333}
+.arrow-line{width:2px;height:20px;background:#222}
+.arrow-label{font-size:9px;color:#444;padding:2px 0}
+.arrow-head{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #333}
+
+/* Branch */
+.branch{display:flex;gap:8px;margin-bottom:0}
+.branch > .block{flex:1}
+
+/* Sub-flow inside a block */
+.sub-flow{margin-top:8px;padding-top:8px;border-top:1px solid #1a1a1a}
+.sub-step{display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}
+.sub-num{color:#444;font-size:9px;min-width:14px}
+.sub-text{font-size:10px;color:#999;line-height:1.4}
+.sub-text b{color:#ccc;font-weight:500}
+
+/* Loop box */
+.loop{border:1px dashed #2a2a2a;border-radius:8px;padding:16px;position:relative;margin-bottom:0}
+.loop-label{position:absolute;top:-9px;left:14px;background:#080808;padding:0 6px;font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px}
+
+/* Terminal check grid */
+.check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.check{border:1px solid #1a2a1a;border-radius:5px;padding:6px 8px;background:#0a100a}
+.check-name{font-size:9px;font-weight:600;color:#22c55e;margin-bottom:2px}
+.check-desc{font-size:8px;color:#666;line-height:1.3}
+.check.fail{border-color:#2a1a1a;background:#100a0a}
+.check.fail .check-name{color:#ef4444}
+.check.new .check-name{color:#f59e0b}
+.check.new{border-color:#2a2a1a;background:#10100a}
+
+/* Color bars */
+.cb-input{border-left:3px solid #666}
+.cb-route{border-left:3px solid #7c7cff}
+.cb-proto{border-left:3px solid #a78bfa}
+.cb-enforce{border-left:3px solid #ef4444}
+.cb-domain{border-left:3px solid #f59e0b}
+.cb-clear{border-left:3px solid #2dd4bf}
+.cb-comp{border-left:3px solid #f59e0b}
+.cb-complex{border-left:3px solid #ec4899}
+.cb-chaotic{border-left:3px solid #ef4444}
+.cb-disorder{border-left:3px solid #a78bfa}
+.cb-term{border-left:3px solid #22c55e}
+.cb-output{border-left:3px solid #06b6d4}
+.cb-measure{border-left:3px solid #888}
+.cb-learn{border-left:3px solid #06b6d4}
+
+/* Governance sidebar */
+.gov-bar{background:#0a0a10;border:1px solid #1a1a2a;border-radius:8px;padding:14px;margin-bottom:16px}
+.gov-title{font-size:11px;font-weight:600;color:#7c7cff;margin-bottom:6px}
+.gov-list{font-size:9px;color:#666;line-height:1.8}
+
+/* Orphan section */
+.orphan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.orphan-card{border:1px solid #1a1a1a;border-radius:6px;padding:10px;background:#0c0c0c}
+.orphan-card h4{font-size:10px;color:#ef4444;margin-bottom:4px}
+.orphan-card p{font-size:9px;color:#555;line-height:1.4}
+.orphan-card .action{font-size:8px;color:#f59e0b;margin-top:4px;text-transform:uppercase}
+
+/* Legend */
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:9px;color:#888}
+.legend-dot{width:10px;height:10px;border-radius:2px}
+</style>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector(`nav a[onclick*="${id}"]`).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <span class="title">Sutra v2</span>
+  <a class="active" onclick="showPage('main')">Main Flow</a>
+  <a onclick="showPage('node')">Inside a Node</a>
+  <a onclick="showPage('terminal')">Terminal Check</a>
+  <a onclick="showPage('patterns')">Five Patterns</a>
+  <a onclick="showPage('governance')">Governance Layer</a>
+  <a onclick="showPage('orphans')">Orphaned Files</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: MAIN FLOW -->
+<!-- ============================================================ -->
+<div id="main" class="page active">
+<div class="flow">
+<p class="page-title">Main Flow: Human Input to Output</p>
+<p class="page-sub">The complete path. Click sub-pages in nav for detail on each block.</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div>Used file</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div>Protocol</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#06b6d4"></div>Engine</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>New in v2</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#7c7cff"></div>Governance</div>
+</div>
+
+<!-- P0: INPUT -->
+<div class="block cb-input">
+  <div class="block-head"><div class="block-num">0</div><div class="block-name">Human Speaks</div></div>
+  <div class="block-desc">Founder says something. Raw input. Unclassified.</div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">mandatory before any action</div><div class="arrow-head"></div></div>
+
+<!-- P1: INPUT ROUTING -->
+<div class="block cb-route">
+  <div class="block-head"><div class="block-num">1</div><div class="block-name">Input Routing</div></div>
+  <div class="block-desc">Classify input TYPE before doing anything. Determines which protocols fire and which path to take.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">a.</span><span class="sub-text">Classify TYPE: <b>direction</b> | <b>task</b> | <b>feedback</b> | <b>new concept</b> | <b>question</b></span></div>
+    <div class="sub-step"><span class="sub-num">b.</span><span class="sub-text">Find EXISTING HOME (check SYSTEM-MAP, protocols, files). If "none" = new concept.</span></div>
+    <div class="sub-step"><span class="sub-num">c.</span><span class="sub-text">Output: INPUT / TYPE / EXISTING HOME / ROUTE / FIT CHECK / ACTION</span></div>
+  </div>
+  <div class="files" style="margin-top:8px">
+    <div class="f f-used">HUMAN-AGENT-INTERFACE.md</div>
+    <div class="f f-proto">PROTO-006 (process discipline)</div>
+    <div class="f f-gov">CLAUDE.md (routing format)</div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">routes by TYPE</div><div class="arrow-head"></div></div>
+
+<!-- P2: TYPE-SPECIFIC PROTOCOLS -->
+<div class="block cb-proto">
+  <div class="block-head"><div class="block-num">2</div><div class="block-name">Type-Specific Protocols</div></div>
+  <div class="block-desc">Based on input type, specific protocols activate BEFORE domain gate or task execution.</div>
+  <div class="branch" style="margin-top:8px">
+    <div style="flex:1;border:1px solid #201a30;border-radius:6px;padding:8px;background:#0c0a12">
+      <div style="font-size:9px;color:#a78bfa;font-weight:600;margin-bottom:4px">If DIRECTION</div>
+      <div style="font-size:9px;color:#666;line-height:1.5">Add to FOUNDER-DIRECTIONS.md. Model implications. Encode TRIGGER/CHECK/ENFORCEMENT. Cascade (D13).</div>
+      <div class="files" style="margin-top:4px"><div class="f f-proto">FOUNDER-DIRECTIONS.md</div><div class="f f-proto">D4, D6, D13</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #201a30;border-radius:6px;padding:8px;background:#0c0a12">
+      <div style="font-size:9px;color:#a78bfa;font-weight:600;margin-bottom:4px">If NEW CONCEPT</div>
+      <div style="font-size:9px;color:#666;line-height:1.5">ENCOUNTER > CLASSIFY > RESPOND > INTEGRATE > VERIFY. Generate process on the fly.</div>
+      <div class="files" style="margin-top:4px"><div class="f f-proto">NEW-THING-PROTOCOL.md</div><div class="f f-proto">CHANGE-INTEGRATION.md</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #201a30;border-radius:6px;padding:8px;background:#0c0a12">
+      <div style="font-size:9px;color:#a78bfa;font-weight:600;margin-bottom:4px">If FEEDBACK</div>
+      <div style="font-size:9px;color:#666;line-height:1.5">Fix instance. Root cause (D11). Update protocol. Regression test.</div>
+      <div class="files" style="margin-top:4px"><div class="f f-proto">PROTO-016</div><div class="f f-proto">D11</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #201a30;border-radius:6px;padding:8px;background:#0c0a12">
+      <div style="font-size:9px;color:#a78bfa;font-weight:600;margin-bottom:4px">If TASK / QUESTION</div>
+      <div style="font-size:9px;color:#666;line-height:1.5">Proceed to Domain Gate (next block).</div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">if task or question, continues</div><div class="arrow-head"></div></div>
+
+<!-- P3: PRE-SCORING GATES -->
+<div class="block cb-enforce">
+  <div class="block-head"><div class="block-num">3</div><div class="block-name">Pre-Scoring Gates</div></div>
+  <div class="block-desc">Hard enforcement checks. Set FLOORS that cannot be lowered. Fire before domain classification.</div>
+  <div class="branch" style="margin-top:8px">
+    <div style="flex:1;border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#100a0a">
+      <div style="font-size:9px;color:#ef4444;font-weight:600;margin-bottom:2px">Boundary</div>
+      <div style="font-size:8px;color:#666">Right session? Within company boundary? God mode?</div>
+      <div class="files" style="margin-top:4px"><div class="f f-proto">PROTO-011</div><div class="f f-used">enforce-boundaries.sh</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#100a0a">
+      <div style="font-size:9px;color:#ef4444;font-weight:600;margin-bottom:2px">Sensitivity</div>
+      <div style="font-size:8px;color:#666">Auth / PII / Payments / Legal? Set verification floor.</div>
+      <div class="files" style="margin-top:4px"><div class="f f-used">ENFORCEMENT.md</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#100a0a">
+      <div style="font-size:9px;color:#ef4444;font-weight:600;margin-bottom:2px">Architecture</div>
+      <div style="font-size:8px;color:#666">Creating new structure? Check SYSTEM-MAP. Foundational? Self-assess.</div>
+      <div class="files" style="margin-top:4px"><div class="f f-proto">PROTO-001</div><div class="f f-proto">PROTO-005</div><div class="f f-proto">D12</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #2a1a1a;border-radius:6px;padding:8px;background:#100a0a">
+      <div style="font-size:9px;color:#ef4444;font-weight:600;margin-bottom:2px">Cost</div>
+      <div style="font-size:8px;color:#666">Free tier first. Keys in env vars. Resource sovereignty.</div>
+      <div class="files" style="margin-top:4px"><div class="f f-proto">PROTO-003</div><div class="f f-proto">PROTO-004</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">gates set floors, then classify</div><div class="arrow-head"></div></div>
+
+<!-- P4: DOMAIN GATE -->
+<div class="block cb-domain">
+  <div class="block-head"><div class="block-num">4</div><div class="block-name">Domain Gate + Estimation</div></div>
+  <div class="block-desc">THE gate. Determines response PATTERN, not depth. One question: is cause-effect known, discoverable, emergent, absent, or unclear?</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">a.</span><span class="sub-text"><b>Cynefin classify</b>: Clear / Complicated / Complex / Chaotic / Disorder</span></div>
+    <div class="sub-step"><span class="sub-num">b.</span><span class="sub-text"><b>OODA tempo cap</b>: must classify in &lt;30s or default Disorder <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+    <div class="sub-step"><span class="sub-num">c.</span><span class="sub-text"><b>Rumsfeld fallback</b>: if ambiguous, use Known/Unknown/Unknown-Unknown <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+    <div class="sub-step"><span class="sub-num">d.</span><span class="sub-text"><b>ESI resource score</b>: how many systems/people/dependencies (1-5) <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+    <div class="sub-step"><span class="sub-num">e.</span><span class="sub-text"><b>10-param scoring</b>: still runs. Feeds appetite, verification intensity, routing breadth.</span></div>
+    <div class="sub-step"><span class="sub-num">f.</span><span class="sub-text"><b>Estimation table</b>: impact, confidence, cost, time. Cost thresholds fire alerts.</span></div>
+  </div>
+  <div class="files" style="margin-top:8px">
+    <div class="f f-engine">ADAPTIVE-PROTOCOL.md (Cynefin promoted, scoring repurposed)</div>
+    <div class="f f-engine">ESTIMATION-ENGINE.md</div>
+    <div class="f f-new">OODA cap</div>
+    <div class="f f-new">Rumsfeld fallback</div>
+    <div class="f f-new">ESI resource score</div>
+  </div>
+  <div style="margin-top:8px;font-size:10px;color:#f59e0b">Output: DOMAIN + RESOURCE(1-5) + PATTERN + APPETITE($X / Ymin)</div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">domain selects one of five patterns (see "Five Patterns" tab)</div><div class="arrow-head"></div></div>
+
+<!-- P5: PATTERN EXECUTION -->
+<div class="block cb-comp">
+  <div class="block-head"><div class="block-num">5</div><div class="block-name">Pattern Execution</div></div>
+  <div class="block-desc">Each domain gets a different execution shape. See "Five Patterns" tab for full detail.</div>
+  <div class="branch" style="margin-top:8px">
+    <div style="flex:1;border:1px solid #1a3a36;border-radius:6px;padding:6px;background:#0a1412;text-align:center">
+      <div style="font-size:10px;color:#2dd4bf;font-weight:600">Clear</div>
+      <div style="font-size:8px;color:#666">ENCODE</div>
+      <div class="files" style="margin-top:4px;justify-content:center"><div class="f f-used">PROTOCOLS.md</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #3a2a0a;border-radius:6px;padding:6px;background:#141008;text-align:center">
+      <div style="font-size:10px;color:#f59e0b;font-weight:600">Complicated</div>
+      <div style="font-size:8px;color:#666">TRAVERSE</div>
+      <div class="files" style="margin-top:4px;justify-content:center"><div class="f f-used">TASK-LIFECYCLE.md</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #3a1a2a;border-radius:6px;padding:6px;background:#140a10;text-align:center">
+      <div style="font-size:10px;color:#ec4899;font-weight:600">Complex</div>
+      <div style="font-size:8px;color:#666">PROBE</div>
+      <div class="files" style="margin-top:4px;justify-content:center"><div class="f f-new">PROBE artifact</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #3a1a1a;border-radius:6px;padding:6px;background:#140a0a;text-align:center">
+      <div style="font-size:10px;color:#ef4444;font-weight:600">Chaotic</div>
+      <div style="font-size:8px;color:#666">STABILIZE</div>
+      <div class="files" style="margin-top:4px;justify-content:center"><div class="f f-used">INCIDENT-RESPONSE.md</div></div>
+    </div>
+    <div style="flex:1;border:1px solid #2a1a3a;border-radius:6px;padding:6px;background:#100a14;text-align:center">
+      <div style="font-size:10px;color:#a78bfa;font-weight:600">Disorder</div>
+      <div style="font-size:8px;color:#666">DECOMPOSE</div>
+      <div class="files" style="margin-top:4px;justify-content:center"><div class="f f-proto">NEW-THING-PROTOCOL.md</div></div>
+    </div>
+  </div>
+  <div class="files" style="margin-top:8px">
+    <div class="f f-used">ROUTING.md (cross-practice)</div>
+    <div class="f f-proto">PROTO-002 (wait for parallel)</div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">for Complicated: enters node loop (see "Inside a Node" tab)</div><div class="arrow-head"></div></div>
+
+<!-- P6: NODE LOOP (summary) -->
+<div class="loop" style="border-color:#f59e0b">
+  <div class="loop-label" style="color:#f59e0b">Per-Node Loop (Complicated pattern)</div>
+  <div class="block cb-comp" style="margin-bottom:0">
+    <div class="block-head"><div class="block-num">6</div><div class="block-name">Each Node: Observe > Shape > Plan > Execute > Precision > Terminal Check</div></div>
+    <div class="block-desc">Full detail on "Inside a Node" tab. Summary: load 2-3 hops context, Socratic question, pick ONE branch, produce ONE artifact, enforce precision, check terminal.</div>
+    <div class="files">
+      <div class="f f-engine">ESTIMATION-ENGINE.md (per-node)</div>
+      <div class="f f-used">SKILL-CATALOG.md</div>
+      <div class="f f-used">GSTACK-INTEGRATION.md</div>
+      <div class="f f-used">PRINCIPLES-BY-FUNCTION.md</div>
+      <div class="f f-used">Layer 3 modules</div>
+      <div class="f f-used">HLD-TEMPLATE.md</div>
+      <div class="f f-used">ADR-TEMPLATE.md</div>
+      <div class="f f-used">RESEARCH-GATE-TEMPLATE.md</div>
+      <div class="f f-used">BUG-FIX-TEMPLATE.md</div>
+      <div class="f f-proto">PROTO-009 (artifact not narration)</div>
+      <div class="f f-proto">PROTO-007 (one metric)</div>
+      <div class="f f-proto">PROTO-015 (verify before commit)</div>
+      <div class="f f-new">Socratic questioning</div>
+      <div class="f f-new">MCTS branch estimate</div>
+      <div class="f f-new">Bloom's classifier</div>
+      <div class="f f-new">Working paper (anytime)</div>
+      <div class="f f-new">14-mechanism precision catalog</div>
+    </div>
+    <div style="margin-top:8px;font-size:10px">
+      <span style="color:#22c55e">Terminal? YES > exit loop</span> &nbsp;|&nbsp;
+      <span style="color:#ef4444">NO > next node (loop)</span> &nbsp;|&nbsp;
+      <span style="color:#f59e0b">Budget exhausted > surface partial + flag</span>
+    </div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">terminal reached (see "Terminal Check" tab for 9-layer detail)</div><div class="arrow-head"></div></div>
+
+<!-- P7: OUTPUT GATE -->
+<div class="block cb-output">
+  <div class="block-head"><div class="block-num">7</div><div class="block-name">Output Readability Gate</div></div>
+  <div class="block-desc">Before the human sees ANYTHING. Mirror of input routing. Format selection + 3-signal constraint + decision highlighting.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">a.</span><span class="sub-text"><b>Format</b>: status board / table / decision box / tech spec / HTML dashboard / alert</span></div>
+    <div class="sub-step"><span class="sub-num">b.</span><span class="sub-text"><b>3 signals</b>: SHIPPED (what's done) + NEXT (one item) + BROKEN (blockers, omit if none)</span></div>
+    <div class="sub-step"><span class="sub-num">c.</span><span class="sub-text"><b>Decisions</b>: visually highlighted, recommendation first, max 4 options, impossible to miss</span></div>
+    <div class="sub-step"><span class="sub-num">d.</span><span class="sub-text"><b>If HTML/exec doc</b>: write file + run <code>open</code> immediately</span></div>
+  </div>
+  <div class="files" style="margin-top:8px">
+    <div class="f f-used">READABILITY-STANDARD.md</div>
+    <div class="f f-used">HUMAN-AGENT-INTERFACE.md (sovereignty)</div>
+    <div class="f f-proto">D1 (simplicity)</div>
+    <div class="f f-proto">D13 (human readability)</div>
+    <div class="f f-proto">D14 (HTML for exec docs)</div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">output shown to human</div><div class="arrow-head"></div></div>
+
+<!-- P8: MEASURE -->
+<div class="block cb-measure">
+  <div class="block-head"><div class="block-num">8</div><div class="block-name">Measure</div></div>
+  <div class="block-desc">Capture actuals. Compare to estimates. Log solution accuracy. Compliance check.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">a.</span><span class="sub-text"><b>Estimation accuracy</b>: tokens, cost, time, files. MAPE formula. Append ESTIMATION-LOG.jsonl.</span></div>
+    <div class="sub-step"><span class="sub-num">b.</span><span class="sub-text"><b>Extended TRIAGE</b>: domain_selected, nodes_traversed, terminal_reached, convergence_detected, solution.hypothesis, solution.observe_by</span></div>
+    <div class="sub-step"><span class="sub-num">c.</span><span class="sub-text"><b>Compliance</b>: correct pattern? metrics logged? directions violated? boundaries respected?</span></div>
+  </div>
+  <div class="files" style="margin-top:8px">
+    <div class="f f-engine">MEASUREMENT-PROTOCOL.md</div>
+    <div class="f f-engine">SUTRA-KPI.md</div>
+    <div class="f f-used">ENFORCEMENT.md</div>
+    <div class="f f-engine">ESTIMATION-LOG.jsonl</div>
+    <div class="f f-new">Solution accuracy (pending verification queue)</div>
+  </div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label">feed forward</div><div class="arrow-head"></div></div>
+
+<!-- P9: LEARN -->
+<div class="block cb-learn">
+  <div class="block-head"><div class="block-num">9</div><div class="block-name">Learn</div></div>
+  <div class="block-desc">System gets smarter. Six mechanisms that make Sutra faster and more accurate over time.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">A.</span><span class="sub-text"><b>Protocol extraction</b>: recurring task > extract trigger/process/verify > store in os/protocols/ (0>3>10 uses = candidate>proven>locked)</span></div>
+    <div class="sub-step"><span class="sub-num">B.</span><span class="sub-text"><b>RL on depth</b>: after 10+ tasks in category, auto-predict node count. "SEO = 5 nodes." <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+    <div class="sub-step"><span class="sub-num">C.</span><span class="sub-text"><b>Exemplar library</b>: terminal+accurate > positive exemplar. convergence_detected > negative exemplar. <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+    <div class="sub-step"><span class="sub-num">D.</span><span class="sub-text"><b>Production rules</b>: locked Clear protocols (10+ uses, 90%+ accuracy) > convert to rule-based. LLM exits. <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+    <div class="sub-step"><span class="sub-num">E.</span><span class="sub-text"><b>Calibration</b>: LLM confidence vs actual accuracy. Auto-adjust precision enforcement. Compress estimation for well-calibrated categories.</span></div>
+    <div class="sub-step"><span class="sub-num">F.</span><span class="sub-text"><b>Output shape capture</b>: store terminal output FORMAT per problem type. <span class="f f-new" style="display:inline;padding:1px 4px">NEW</span></span></div>
+  </div>
+  <div class="files" style="margin-top:8px">
+    <div class="f f-used">PROTOCOLS.md (protocol store)</div>
+    <div class="f f-used">CONTINUOUS-IMPROVEMENT.md</div>
+    <div class="f f-engine">ESTIMATION-ENGINE.md (calibration)</div>
+    <div class="f f-proto">D7 (expand then contract)</div>
+    <div class="f f-proto">D9, D23 (recursive estimation)</div>
+  </div>
+</div>
+
+<div style="margin-top:16px;padding:12px;border:1px solid #1a1a1a;border-radius:6px;font-size:10px;color:#555;text-align:center">
+  Loop complete. System waits for next human input. Governance files remain loaded. Protocol store is updated. Exemplar library grows.
+</div>
+
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2: INSIDE A NODE -->
+<!-- ============================================================ -->
+<div id="node" class="page">
+<div class="flow">
+<p class="page-title">Inside a Complicated Node</p>
+<p class="page-sub">Each node in the DAG traversal runs this micro-process. Repeats until terminal or budget exhausted.</p>
+
+<div class="block cb-comp">
+  <div class="block-head"><div class="block-num">A</div><div class="block-name">Observe -- Load Context for THIS Node</div></div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">Load 2-3 hops of context specific to THIS node's question (not front-loaded)</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">Classify THIS node's domain (may differ from parent problem)</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">Bloom's classifier: Apply? Analyze? Evaluate? Create? (determines precision method)</span></div>
+    <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">If node is Clear: may switch to Encode pattern for this node only</span></div>
+  </div>
+  <div class="files"><div class="f f-used">Layer 3 modules (product context)</div><div class="f f-used">PRINCIPLES-BY-FUNCTION.md</div><div class="f f-used">RESEARCH-GATE-TEMPLATE.md</div><div class="f f-new">Bloom's classifier</div></div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+<div class="block cb-comp">
+  <div class="block-head"><div class="block-num">B</div><div class="block-name">Shape -- Pick ONE Branch</div></div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text"><b>Socratic</b>: "What is the ONE thing I need to know to make this terminal?"</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text"><b>MCTS estimate</b>: "If I follow this branch, what's the likely terminal?" (1 sentence)</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">Score branches by (leverage x confidence). Pick highest.</span></div>
+    <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">Park all other branches in holding/TODO.md as "not followed" (breadth control)</span></div>
+  </div>
+  <div class="files"><div class="f f-new">Socratic questioning</div><div class="f f-new">MCTS branch estimate</div><div class="f f-used">ROUTING.md (if cross-practice signal)</div></div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+<div class="block cb-comp">
+  <div class="block-head"><div class="block-num">C</div><div class="block-name">Plan -- Node Estimate</div></div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">Lightweight: ~tokens, ~$cost, ~minutes for this node</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">Cumulative tracking: total across all nodes so far</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">Budget check: remaining appetite. If exhausted: surface working paper, flag incomplete.</span></div>
+  </div>
+  <div class="files"><div class="f f-engine">ESTIMATION-ENGINE.md</div></div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+<div class="block cb-comp">
+  <div class="block-head"><div class="block-num">D</div><div class="block-name">Execute -- Produce ONE Artifact</div></div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">One conclusion, one spec, one code change. NOT a list.</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">If output is multiple things: split into sub-nodes, don't collapse.</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">Write to working paper (anytime artifact -- interruptible at any point)</span></div>
+    <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">Use appropriate template (HLD for system-level, ADR for irreversible, BUG-FIX for bugs)</span></div>
+  </div>
+  <div class="files"><div class="f f-used">SKILL-CATALOG.md</div><div class="f f-used">GSTACK-INTEGRATION.md</div><div class="f f-used">HLD-TEMPLATE.md</div><div class="f f-used">ADR-TEMPLATE.md</div><div class="f f-used">BUG-FIX-TEMPLATE.md</div><div class="f f-proto">PROTO-009</div><div class="f f-proto">PROTO-007</div></div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+<div class="block" style="border-left:3px solid #f97316">
+  <div class="block-head"><div class="block-num">E</div><div class="block-name">Precision Enforcement</div></div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">Assess failure mode risk for this node's output</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text"><b>Calculation risk</b>: external tool + temp=0 + boundary assertions</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text"><b>Drift risk</b>: constraint pre-declaration + working paper cross-check</span></div>
+    <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text"><b>Confabulation risk</b>: citation grounding (every claim cites source)</span></div>
+    <div class="sub-step"><span class="sub-num">5.</span><span class="sub-text"><b>Ambiguity risk</b>: confidence gating (low = escalate, don't fake)</span></div>
+  </div>
+  <div class="files"><div class="f f-new">14-mechanism precision catalog</div><div class="f f-proto">PROTO-015 (verify before commit)</div><div class="f f-used">ENFORCEMENT.md</div></div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+<div class="block cb-term">
+  <div class="block-head"><div class="block-num">F</div><div class="block-name">Terminal Check (see "Terminal Check" tab for full detail)</div></div>
+  <div class="block-desc">9-layer gate. 6 free checks + 3 conditional. ALL PASS = terminal. ANY FAIL = next node.</div>
+  <div style="margin-top:8px;display:flex;gap:16px">
+    <span style="color:#22c55e;font-size:10px;font-weight:600">PASS > exit loop > Phase 7 Output Gate</span>
+    <span style="color:#ef4444;font-size:10px;font-weight:600">FAIL > output becomes input for next node > back to Step A</span>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3: TERMINAL CHECK -->
+<!-- ============================================================ -->
+<div id="terminal" class="page">
+<div class="flow">
+<p class="page-title">Terminal Check -- 9-Layer Gate</p>
+<p class="page-sub">Runs at every node boundary. Layers 1-6 are free. Layers 7-9 fire only on failure.</p>
+
+<div style="font-size:11px;color:#22c55e;font-weight:600;margin-bottom:8px">Free Checks (always run)</div>
+<div class="check-grid">
+  <div class="check"><div class="check-name">1. Output Type Declaration</div><div class="check-desc">Must declare: Decision / Artifact / Probe / Decomposition / Action Items / Intermediate. Action Items BLOCKED unless task = planning task.</div></div>
+  <div class="check"><div class="check-name">2. "Who Does This Next?"</div><div class="check-desc">Who takes this output and acts? Do they need to think/analyze/decide before acting? YES = not terminal. NO = terminal.</div></div>
+  <div class="check"><div class="check-name">3. Convergence Detection</div><div class="check-desc">3+ items, verb-led (investigate, analyze, review...), no specific values? Convergence signal fired.</div></div>
+  <div class="check new"><div class="check-name">4. Specificity Threshold (NEW)</div><div class="check-desc">Count concrete nouns: file paths, numbers, names, dates, URLs, commands. Must have 3+. Below = too abstract.</div></div>
+  <div class="check new"><div class="check-name">5. Output Inversion (NEW)</div><div class="check-desc">Can output be expressed as delta? before>after, old>new, current>changed. If not, may be too abstract to be terminal.</div></div>
+  <div class="check new"><div class="check-name">6. Schema Fill (NEW)</div><div class="check-desc">Can output fill domain-specific schema? Code={file,line,old,new}. Decision={choice,rationale,reversal}. Probe={hypothesis,method,signal}.</div></div>
+</div>
+
+<div class="arrow"><div class="arrow-line"></div><div class="arrow-label" style="color:#ef4444">any of 1-6 fail?</div><div class="arrow-head"></div></div>
+
+<div style="font-size:11px;color:#ef4444;font-weight:600;margin-bottom:8px">Conditional Checks (fire only on failure above)</div>
+<div class="check-grid">
+  <div class="check fail"><div class="check-name">7. Beam Search (NEW)</div><div class="check-desc">Branch into 2-3 alternative continuations. Pick the one that reaches terminal. 2-3x cost for this node only.</div></div>
+  <div class="check fail"><div class="check-name">8. Adversarial Check (NEW)</div><div class="check-desc">"Try to prove this output is NOT terminal. Find what the next person would need to figure out." 2x cost for this node only.</div></div>
+  <div class="check fail"><div class="check-name">9. Exemplar Compare (NEW)</div><div class="check-desc">Compare against known terminal outputs for this problem type from TRIAGE history. Available after 10+ solved tasks in category.</div></div>
+</div>
+
+<div style="margin-top:16px;padding:12px;border:1px solid #222;border-radius:6px;display:flex;gap:24px;justify-content:center">
+  <span style="color:#22c55e;font-size:11px;font-weight:600">ALL PASS > TERMINAL. Exit node loop. Enter Phase 7 (Output Gate).</span>
+  <span style="color:#ef4444;font-size:11px;font-weight:600">ANY FAIL > NOT TERMINAL. Output becomes input for next node.</span>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4: FIVE PATTERNS -->
+<!-- ============================================================ -->
+<div id="patterns" class="page">
+<div class="flow">
+<p class="page-title">Five Response Patterns</p>
+<p class="page-sub">Each Cynefin domain gets a fundamentally different execution shape.</p>
+
+<div class="block cb-clear" style="margin-bottom:16px">
+  <div class="block-head"><div class="block-num">A</div><div class="block-name">Clear > ENCODE</div></div>
+  <div class="block-desc">Cause-effect known. Pattern exists. LLM encodes into mechanism. Mechanism runs.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">Load existing pattern from protocol store (os/protocols/)</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">Pick mechanism: code / SQL / spreadsheet / checklist / direct execution</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">LLM designs mechanism (function + tests + assertions)</span></div>
+    <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">Mechanism runs. LLM NOT in execution loop.</span></div>
+    <div class="sub-step"><span class="sub-num">5.</span><span class="sub-text">Verify: test pass/fail, schema validation (immediate)</span></div>
+    <div class="sub-step"><span class="sub-num">6.</span><span class="sub-text">If domain shifts mid-execution (node needs judgment): pause, reclassify as Complicated, resolve, re-enter</span></div>
+  </div>
+  <div class="files"><div class="f f-used">PROTOCOLS.md</div><div class="f f-used">TASK-LIFECYCLE.md (D1 fast-path)</div><div class="f f-new">Encoding mechanism selection</div></div>
+</div>
+
+<div class="block cb-comp" style="margin-bottom:16px">
+  <div class="block-head"><div class="block-num">B</div><div class="block-name">Complicated > TRAVERSE (DAG)</div></div>
+  <div class="block-desc">Cause-effect discoverable. Node-by-node traversal. See "Inside a Node" tab for full detail.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num"></span><span class="sub-text">Per-node loop: Observe > Shape > Plan > Execute > Precision > Terminal Check</span></div>
+    <div class="sub-step"><span class="sub-num"></span><span class="sub-text">Context per node (2-3 hops). Socratic questioning. One branch per node. Working paper.</span></div>
+    <div class="sub-step"><span class="sub-num"></span><span class="sub-text">Depth = node count, discovered retrospectively in TRIAGE.</span></div>
+  </div>
+  <div class="files"><div class="f f-used">TASK-LIFECYCLE.md</div><div class="f f-engine">ESTIMATION-ENGINE.md</div><div class="f f-used">All templates</div><div class="f f-new">Socratic + MCTS + Bloom's + Working paper + Precision catalog</div></div>
+</div>
+
+<div class="block cb-complex" style="margin-bottom:16px">
+  <div class="block-head"><div class="block-num">C</div><div class="block-name">Complex > PROBE</div></div>
+  <div class="block-desc">Cause-effect emergent. No analysis will find the answer. Design probe. Human runs it. Interpret signal.</div>
+  <div class="sub-flow">
+    <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">Frame what is UNKNOWN (not what to build)</span></div>
+    <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">Design PROBE: hypothesis / method / signal / cost / reversal / observe-by</span></div>
+    <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">HANDOFF to human (LLM cannot run probes). Clear instructions.</span></div>
+    <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">Signal returns > interpret PROBE-RESULT: signal_observed / hypothesis_confirmed / inference / next_action</span></div>
+    <div class="sub-step"><span class="sub-num">5.</span><span class="sub-text">Terminal = decision with reversal conditions. NEVER a confident answer.</span></div>
+    <div class="sub-step"><span class="sub-num">6.</span><span class="sub-text">Not terminal? Design next probe. Loop.</span></div>
+  </div>
+  <div class="files"><div class="f f-new">PROBE artifact</div><div class="f f-new">PROBE-RESULT artifact</div><div class="f f-used">HUMAN-AGENT-INTERFACE.md (handoff)</div></div>
+</div>
+
+<div class="branch">
+  <div class="block cb-chaotic" style="margin-bottom:16px">
+    <div class="block-head"><div class="block-num">D</div><div class="block-name">Chaotic > STABILIZE</div></div>
+    <div class="sub-flow">
+      <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">ACT first. Don't analyze. Pick most contained action.</span></div>
+      <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">OBSERVE state after stabilization.</span></div>
+      <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">RE-CLASSIFY via domain gate (mandatory).</span></div>
+      <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">Route to appropriate pattern.</span></div>
+    </div>
+    <div class="files"><div class="f f-used">INCIDENT-RESPONSE.md</div><div class="f f-new">Mandatory re-classification</div></div>
+  </div>
+
+  <div class="block cb-disorder" style="margin-bottom:16px">
+    <div class="block-head"><div class="block-num">E</div><div class="block-name">Disorder > DECOMPOSE</div></div>
+    <div class="sub-flow">
+      <div class="sub-step"><span class="sub-num">1.</span><span class="sub-text">Break into sub-problems</span></div>
+      <div class="sub-step"><span class="sub-num">2.</span><span class="sub-text">Each sub-problem > domain gate independently</span></div>
+      <div class="sub-step"><span class="sub-num">3.</span><span class="sub-text">If child re-enters Disorder: bad decomposition</span></div>
+      <div class="sub-step"><span class="sub-num">4.</span><span class="sub-text">Track decomposition quality over time</span></div>
+    </div>
+    <div class="files"><div class="f f-proto">NEW-THING-PROTOCOL.md</div><div class="f f-new">Decomposition quality tracking</div></div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 5: GOVERNANCE LAYER -->
+<!-- ============================================================ -->
+<div id="governance" class="page">
+<div class="flow">
+<p class="page-title">Governance Layer (loaded at boot, constrains all phases)</p>
+<p class="page-sub">These files don't activate at a specific flow step. They constrain ALL agent behavior across ALL phases. Remove one and behavior drifts.</p>
+
+<div class="gov-bar">
+  <div class="gov-title">Identity + Structure (who we are)</div>
+  <div class="gov-list">
+    CLAUDE.md -- entry point, boot sequence, input routing format, estimation format<br>
+    holding/ENTITY-MAP.md -- what Asawa/Sutra/companies ARE<br>
+    holding/FUNCTIONS.md -- three Asawa functions (governance/portfolio/infrastructure)<br>
+    holding/VISION.md -- mission/vision<br>
+    holding/HIERARCHY.md -- 6-level abstraction cascade<br>
+    sutra/VISION.md, PRODUCT-VISION.md -- what Sutra is<br>
+    sutra/START-HERE.md -- orientation for new sessions
+  </div>
+</div>
+
+<div class="gov-bar">
+  <div class="gov-title">Behavioral Constraints (how we behave)</div>
+  <div class="gov-list">
+    holding/PRINCIPLES.md -- P1-P11 behavioral rules across all phases<br>
+    holding/HUMAN-AI-INTERACTION.md -- WHAT/HOW/WHEN contract, P1-P10<br>
+    holding/SESSION-ISOLATION.md -- 5 isolation levels, constrains file access<br>
+    holding/OVERRIDE-RULES.md -- LOCKED/ADOPTABLE/OVERRIDABLE hierarchy<br>
+    holding/ENFORCEMENT-FRAMEWORK.md -- Hard/Soft/Audit gate mechanism<br>
+    sutra/l2/DEFAULTS-ARCHITECTURE.md -- immutable invariants, controlled params<br>
+    sutra/l2/PERMISSIONS-TEMPLATE.md -- three permission tiers
+  </div>
+</div>
+
+<div class="gov-bar">
+  <div class="gov-title">Strategic Context (loaded on-demand)</div>
+  <div class="gov-list">
+    holding/FOUNDER-DIRECTIONS.md -- D1-D35+ direction log (when task involves directions/governance)<br>
+    holding/OKRs.md -- Q2 strategic priorities<br>
+    holding/SYSTEM-MAP.md -- file index (before creating new files)<br>
+    holding/REFERENCES.md -- external references (for research nodes)<br>
+    holding/ASAWA-AS-CLIENT.md -- governance model<br>
+    holding/INFRASTRUCTURE-ARCHITECTURE.md -- shared infra inheritance<br>
+    sutra/OKRs.md -- Sutra strategic priorities
+  </div>
+</div>
+
+<div class="gov-bar">
+  <div class="gov-title">Version + Session Management</div>
+  <div class="gov-list">
+    sutra/CURRENT-VERSION.md -- version check at session start<br>
+    sutra/RELEASES.md -- release history (on-demand)<br>
+    sutra/l2/d-engines/SUTRA-KPI-HISTORY.md -- historical baselines (on-demand)<br>
+    holding/TODO.md -- backlog quick reference (lines 1-15 at boot)<br>
+    holding/SESSION-CHECKPOINTS.md -- checkpoint JSON spec (at session end)
+  </div>
+</div>
+
+<div class="gov-bar">
+  <div class="gov-title">Research Foundation (never activate, inform design)</div>
+  <div class="gov-list">
+    sutra/layer1-abstraction/RESEARCH-PHASE1-SUMMARY.md<br>
+    sutra/layer1-abstraction/RESEARCH-SYNTHESIS.md<br>
+    sutra/layer1-abstraction/PHASE2-SYNTHESIS.md<br>
+    sutra/layer1-abstraction/CROSS-FUNCTIONAL-OPS-RESEARCH.md
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 6: ORPHANED FILES -->
+<!-- ============================================================ -->
+<div id="orphans" class="page">
+<div class="flow">
+<p class="page-title">Orphaned Files (no activation in v2 problem flow)</p>
+<p class="page-sub">18 files with no trigger point. Grouped by recommended action.</p>
+
+<h3 style="font-size:12px;color:#ef4444;margin:20px 0 8px">Archive (superseded, 7 files)</h3>
+<div class="orphan-grid">
+  <div class="orphan-card"><h4>OPERATING-MODEL.md</h4><p>Old 6-stage model. TASK-LIFECYCLE.md says "this replaces OPERATING-MODEL.md"</p><div class="action">Archive</div></div>
+  <div class="orphan-card"><h4>FEATURE-LIFECYCLE.md</h4><p>Marked "superseded by TASK-LIFECYCLE.md" in the file itself</p><div class="action">Archive</div></div>
+  <div class="orphan-card"><h4>PROCESS-GENERATION.md</h4><p>Subsumed by v2 Disorder pattern + Learn production rules</p><div class="action">Archive</div></div>
+  <div class="orphan-card"><h4>CONFIDENCE.md</h4><p>Replaced by READABILITY-STANDARD.md + DAILY-PULSE</p><div class="action">Archive</div></div>
+  <div class="orphan-card"><h4>DAILY-PULSE.md</h4><p>Stale snapshot from 2026-04-05. Generated artifact, not a component.</p><div class="action">Archive</div></div>
+  <div class="orphan-card"><h4>TEST-IN-PRODUCTION.md</h4><p>Intent captured by Learn phase (production rules need 10+ uses)</p><div class="action">Merge into PROTOCOLS</div></div>
+  <div class="orphan-card"><h4>DIRECTION-ENFORCEMENT.md</h4><p>Enforcement now via Domain Gate + Terminal Check</p><div class="action">Merge into ENFORCEMENT</div></div>
+</div>
+
+<h3 style="font-size:12px;color:#f59e0b;margin:20px 0 8px">Hold for v3 Multi-Agent (5 files)</h3>
+<div class="orphan-grid">
+  <div class="orphan-card"><h4>AGENT-PROTOCOLS.md</h4><p>Multi-agent coordination rules. v2 is single-agent.</p><div class="action">Hold for v3</div></div>
+  <div class="orphan-card"><h4>COMPLIANCE-AGENT.md</h4><p>References old lifecycle phases. Needs rewrite for v2 domain model.</p><div class="action">Rewrite for v2</div></div>
+  <div class="orphan-card"><h4>PARALLELIZATION-ARCHITECTURE.md</h4><p>BSP model for parallel agents. v2 problem flow is single-path.</p><div class="action">Hold for v3</div></div>
+  <div class="orphan-card"><h4>AGENT-INCENTIVES.md</h4><p>Agent tension/incentive model. Future multi-agent only.</p><div class="action">Hold for v3</div></div>
+  <div class="orphan-card"><h4>AB-TEST-FRAMEWORK.md</h4><p>Meta-evaluation: does Sutra help? Not a problem flow component.</p><div class="action">Hold for meta-eval</div></div>
+</div>
+
+<h3 style="font-size:12px;color:#06b6d4;margin:20px 0 8px">Separate Flow Needed (6 files)</h3>
+<div class="orphan-grid">
+  <div class="orphan-card"><h4>WEEKLY-PLANNING.md</h4><p>Weekly cadence. Not triggered by a problem arriving.</p><div class="action">Cadence Flow diagram</div></div>
+  <div class="orphan-card"><h4>DAILY-STANDUP.md</h4><p>Daily heartbeat. Not triggered by a problem arriving.</p><div class="action">Cadence Flow diagram</div></div>
+  <div class="orphan-card"><h4>ROADMAP-MEETING.md</h4><p>OKR-driven cadence. Not triggered by a problem arriving.</p><div class="action">Cadence Flow diagram</div></div>
+  <div class="orphan-card"><h4>CLIENT-ONBOARDING.md</h4><p>8-phase onboarding. Triggered by new company, not problem.</p><div class="action">Company Lifecycle Flow</div></div>
+  <div class="orphan-card"><h4>DEPLOYMENT-MODEL.md</h4><p>5-layer deploy ladder. About deploying OS to companies.</p><div class="action">Company Lifecycle Flow</div></div>
+  <div class="orphan-card"><h4>MANIFEST-v1.7.md</h4><p>Deployment checklist. Verification tool for OS deploy.</p><div class="action">Company Lifecycle Flow</div></div>
+</div>
+
+<h3 style="font-size:12px;color:#888;margin:20px 0 8px">Also not in flow but governance-adjacent</h3>
+<div class="orphan-grid">
+  <div class="orphan-card"><h4>CHARTERS.md</h4><p>Strategy cascade (Vision > Mission > Goals). Planning framework.</p><div class="action">Cadence Flow</div></div>
+  <div class="orphan-card"><h4>DECISION-MAKING.md</h4><p>Decision categories. Governance reference for sovereignty model.</p><div class="action">Merge into HUMAN-AGENT-INTERFACE</div></div>
+  <div class="orphan-card"><h4>SYSTEM-HEALTH.md</h4><p>Growth protocols (refactoring, pruning). Maintenance ops.</p><div class="action">Cadence Flow</div></div>
+  <div class="orphan-card"><h4>ABSTRACTION-ARCHITECTURE.md</h4><p>Shearing layers theory. Informative, not operational.</p><div class="action">Keep as reference</div></div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

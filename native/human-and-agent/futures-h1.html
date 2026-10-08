@@ -1,0 +1,289 @@
+<!doctype html>
+<!-- Futures at H1: a subpage of Human and Agent, split from the long page of 2026-10-07 by the split script. Sidebar injected by _sidebar.py --apply. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Futures at H1</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 8px}
+h3{font-size:17px;margin:14px 0 6px;letter-spacing:-.01em}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul,ol{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:10px;overflow-x:auto;background:#fff}
+figure.map svg{min-width:640px}
+figure.lanes svg{min-width:760px}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+details.why .body b{color:#111827}
+/* the five hues of the AO pages, light only (the Native site is light) */
+:root{--c-models:#5a56d6;--c-models-t:#e4e3f9;--c-harness:#0a9c96;--c-harness-t:#d6f1ef;--c-ao:#c9512e;--c-ao-t:#f9e1d8;--c-market:#8a3fb4;--c-market-t:#eddff5;--c-people:#3a7d2c;--c-people-t:#dcefd6;--c-hw:#5b6471;--c-hw-t:#e6e8ec;--c-gray:#8a919b;--c-gray-t:#e6e8ec;--s1:#fbe6dd;--s2:#f3b99f;--s3:#e58a63;--s4:#c9512e}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:#6b7280;align-items:center;margin:6px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}.legend i.line{height:3px;width:18px;border-radius:0}
+.tag{display:inline-block;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid #e5e7eb;border-radius:2px;margin-right:4px;font-weight:700}
+.tag.today{border-color:var(--c-harness);color:var(--c-harness)}.tag.proj{border-color:var(--c-ao);color:var(--c-ao)}.tag.dec{background:var(--c-people-t);border-color:var(--c-people)}.tag.inf{border-color:var(--c-models);color:var(--c-models)}
+.means{border-left:4px solid var(--c-people);padding:7px 12px;background:var(--c-people-t);font-size:13.5px;margin:10px 0}
+.means.ao{border-left-color:var(--c-ao);background:var(--c-ao-t)}
+.futures{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 4px}
+.future{border:1px solid #e5e7eb;border-top:4px solid #9ca3af;padding:10px 12px;font-size:13px}
+.future.f1{border-top-color:var(--c-harness)}.future.f2{border-top-color:var(--c-people)}.future.f3{border-top-color:var(--c-models)}
+.future b{display:block;font-size:14px;margin-bottom:3px}.future .trig{color:#6b7280}
+.bar{display:inline-block;height:10px;vertical-align:middle;margin-right:6px;border-radius:2px;background:var(--s3)}
+.bar.s1{background:var(--s1);border:1px solid var(--s2)}.bar.s2{background:var(--s2)}.bar.s3{background:var(--s3)}.bar.s4{background:var(--s4)}
+.who{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px}.who.p{background:var(--c-people)}.who.a{background:var(--c-ao)}.who.h{background:var(--c-hw)}.who.m{background:var(--c-market)}
+td.P{background:var(--c-people-t)}td.A{background:var(--c-ao-t)}td.B{background:linear-gradient(90deg,var(--c-ao-t),var(--c-people-t))}
+.answers{display:grid;gap:6px;margin:8px 0}
+.ans{display:grid;grid-template-columns:30px 1fr;gap:10px;border:1px solid #e5e7eb;padding:8px 10px;font-size:13.5px;align-items:start}
+.ans .k{color:#fff;border-radius:3px;text-align:center;font-weight:700;padding:3px 0}
+.steps{display:grid;gap:5px;margin:8px 0 4px}
+.step{display:grid;grid-template-columns:1fr 1fr;border:1px solid #e5e7eb;font-size:13px}
+.step .from{color:#6b7280;padding:6px 10px;border-left:4px solid var(--c-ao)}.step .to{padding:6px 10px;border-left:4px solid var(--c-people)}
+.toc{columns:2;font-size:13px;margin:8px 0 4px}.toc li{break-inside:avoid}
+@media (max-width:640px){.step{grid-template-columns:1fr}.toc{columns:1}}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+figure.wide svg{min-width:720px}
+.assume{border:1px solid #c9512e;border-left:5px solid #c9512e;background:#fff7f3;padding:7px 12px;font-size:13px;margin:10px 0}
+.assume b{color:#c9512e}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a class="sb-cur" href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &#8250; Business &#8250; <a href="../human-and-agent.html">Human and Agent</a> &#8250; Futures at H1</div>
+<h1>Futures at H1 <span class="lvl">HUMAN AND AGENT</span></h1>
+<p class="lede" style="font-size:17px;line-height:1.45;max-width:62ch;margin:10px 0 14px">Five chapters: the industry, the economy, needs by industry, the share agent orgs take, the next wants. Three futures with the event that picks each.</p>
+<section id="futures">
+<h2>Futures at H1: five chapters</h2>
+<div class="answers">
+<div class="ans"><div class="k" style="background:var(--c-models)">1</div><div><b>The industry.</b> Four layers form: models, harnesses, AOs, and markets between AOs. Three or four model vendors, a handful of harnesses, millions of AOs. Sutra lives in the harness layer and sells the human seat.</div></div>
+<div class="ans"><div class="k" style="background:var(--c-market)">2</div><div><b>The economy.</b> Thinking work gets cheap and gets demanded more. What stays expensive is what needs a body, a signature, or trust. Payroll turns into a token bill plus a seat.</div></div>
+<div class="ans"><div class="k" style="background:var(--c-ao)">3</div><div><b>Human needs by industry.</b> Every need keeps its industry; inside each, the paperwork, the search, the drafting and the coordination go to AOs, the touch and the liability stay with people.</div></div>
+<div class="ans"><div class="k" style="background:var(--c-people)">4</div><div><b>The share.</b> AOs take most of the checkable, bodiless, low-liability work by H1. Human orgs remain as seat holders, liability carriers and relationship owners: smaller, flatter, more owners and fewer managers.</div></div>
+<div class="ans"><div class="k" style="background:var(--c-harness)">5</div><div><b>The next wants.</b> Each solved want makes a new one: provenance, curation, trust between AOs, fair trade, ownership of one's context, and the human-made premium. Those are where humans and AOs work together next.</div></div>
+</div>
+<p class="figcap">Method: scenario planning (three futures with triggers, not one forecast); Max-Neef's nine needs; Baumol (what cannot be automated gets relatively dearer); Jevons (when a thing gets cheaper, more of it is used).</p>
+
+<h3>3.1 The industry: four layers form</h3>
+<figure>
+<svg viewBox="0 0 760 340" role="img" aria-label="Four layers stacked: models, harnesses, AOs, markets between AOs; people own the AOs from the side.">
+<defs><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker></defs>
+<g font-size="13" fill="#111827">
+<rect x="40" y="16" width="520" height="56" rx="6" fill="var(--c-models-t)" stroke="var(--c-models)" stroke-width="2"/><text x="58" y="40" font-weight="600">MODELS</text><text x="58" y="60" font-size="11.5">sell intelligence by the token</text><text x="542" y="50" text-anchor="end" font-size="12">3 to 5 vendors</text>
+<line x1="300" y1="74" x2="300" y2="96" stroke="#334155" stroke-width="1.5" marker-end="url(#ar1)"/>
+<rect x="40" y="98" width="520" height="56" rx="6" fill="var(--c-harness-t)" stroke="var(--c-harness)" stroke-width="2"/><text x="58" y="122" font-weight="600">HARNESSES</text><text x="58" y="142" font-size="11.5">turn a model into departments, rules, stamps, memory. Sutra is here.</text><text x="542" y="132" text-anchor="end" font-size="12">a handful survive</text>
+<line x1="300" y1="156" x2="300" y2="178" stroke="#334155" stroke-width="1.5" marker-end="url(#ar1)"/>
+<rect x="40" y="180" width="520" height="56" rx="6" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="2"/><text x="58" y="204" font-weight="600">AOs</text><text x="58" y="224" font-size="11.5">one per business, then one per person</text><text x="542" y="214" text-anchor="end" font-size="12">millions</text>
+<line x1="300" y1="238" x2="300" y2="260" stroke="#334155" stroke-width="1.5" marker-end="url(#ar1)"/>
+<rect x="40" y="262" width="520" height="56" rx="6" fill="var(--c-market-t)" stroke="var(--c-market)" stroke-width="2"/><text x="58" y="286" font-weight="600">MARKETS BETWEEN AOs</text><text x="58" y="306" font-size="11.5">who may call whom, prices, promises, disputes</text><text x="542" y="296" text-anchor="end" font-size="12">late in the shift</text>
+<rect x="610" y="170" width="130" height="76" rx="6" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="675" y="200" text-anchor="middle" font-weight="600">PEOPLE</text><text x="675" y="220" text-anchor="middle" font-size="11.5">taste, money, liability</text>
+<line x1="610" y1="208" x2="562" y2="208" stroke="#334155" stroke-width="1.5" marker-end="url(#ar1)"/><text x="586" y="200" text-anchor="middle" font-size="11">own</text>
+</g></svg>
+<p class="figcap">The stack as it settles. Counts are the projection; the layers already exist in Sutra as model, runtime, department and the Library.</p>
+</figure>
+<details class="why"><summary>Why this picture: four layers, because four different bills</summary><div class="body">
+<ul><li><b>Claim.</b> The industry settles into four layers with very different counts.</li>
+<li><b>Why four.</b> Each layer has its own buyer and its own bill: models sell tokens, harnesses sell the department and the seat, AOs sell outcomes, markets sell trust between AOs. A layer that does not have its own bill folds into the one above.</li>
+<li><b>Why the counts.</b> Models consolidate on capital (training cost), so a few. Harnesses consolidate on trust and distribution, so a handful. AOs are one per owner by definition, so millions. Markets form only after many AOs exist, so late.</li>
+<li><b>Evidence.</b> Gartner's 40% of enterprise apps with agents by end 2026 and the agent market near 50 bn USD by 2030 are the layer below AOs growing. No analyst counts AOs yet.</li>
+<li><b>What would change it.</b> The third future: a model vendor ships org-grade departments and billing in-product. Then the harness layer collapses into the model layer and the picture has three bands.</li></ul></div></details>
+<table>
+<tr><th>What we know today</th><th>Number</th><th>Source</th></tr>
+<tr><td>Enterprise apps with task-specific agents, end of 2026 (from under 5% in 2025)</td><td>40%</td><td><a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025.">Gartner, Aug 2025</a></td></tr>
+<tr><td>AI agents market, 2025 to 2030</td><td>about 5 to 8 bn USD, then about 50 bn USD</td><td><a href="https://www.prnewswire.co.uk/news-releases/ai-agents-market-size-to-hit-50-31-billion-by-2030-at-cagr-45-8---grand-view-research-inc-302447061.html">Grand View</a>, <a href="https://www.marketsandmarkets.com/Market-Reports/ai-agent-market-15761548.html">MarketsandMarkets</a>, <a href="https://www.bccresearch.com/market-research/artificial-intelligence-technology/ai-agent-market.html">BCC</a></td></tr>
+<tr><td>Share of enterprise application software revenue driven by agents, 2035</td><td>about 30%, over 450 bn USD</td><td>Gartner, same release</td></tr>
+</table>
+<div class="futures">
+<div class="future f1"><b>Teams for hire</b>AOs are sold as teams that run a business function end to end. Harness vendors win; the human seat is the product.<div class="trig">Trigger: an AO-run business beats a human-run one on a public number.</div></div>
+<div class="future f2"><b>One per person</b>Every person gets a chief of staff. Consumer platforms win; businesses are a sum of personal AOs.<div class="trig">Trigger: a phone operating system ships an AO by default.</div></div>
+<div class="future f3"><b>Model vendors own it all</b>The model vendor ships departments, memory, billing and stamps inside the model product. Harnesses are squeezed.<div class="trig">Trigger: a model vendor ships org-grade departments with their own billing, used by a well-known company.</div></div>
+</div>
+<details class="why"><summary>Why three futures, and why these triggers</summary><div class="body">
+<ul><li><b>Why not one forecast.</b> Scenario planning (Schwartz) says: name the few worlds that differ in what you should do, and the one public event that tells you which you are in. One forecast hides the decision; three with triggers make it.</li>
+<li><b>Why these three.</b> They differ on the one thing that matters to Sutra: who owns the seat. The harness (future 1), the consumer platform (future 2), or the model vendor (future 3).</li>
+<li><b>Why these triggers.</b> Each is observable by anyone: a public number beaten, a phone OS release, a model vendor's product launch used by a known company. A trigger you cannot see is not a trigger.</li>
+<li><b>Evidence.</b> April 2026's two business models (employees for hire; a CoS per person) are futures 1 and 2 under older names.</li></ul></div></details>
+<p class="means"><span class="tag proj">Projection</span> Sutra is safe in the first two futures and squeezed in the third unless the thing it sells is not the harness but the seat: the one place the human stamps, pays and is liable.</p>
+
+<h3>3.2 The economy: thinking gets cheap, the body and trust get dearer</h3>
+<figure>
+<svg viewBox="0 0 760 330" role="img" aria-label="Two stacked bars: in 2026 a business pays mostly payroll; in H1 it pays a seat, a token bill, trade with other AOs, and bodies and trust.">
+<g font-size="13" fill="#111827">
+<text x="110" y="28" text-anchor="middle" font-weight="600">today: a business</text>
+<rect x="50" y="100" width="120" height="150" fill="var(--c-gray-t)" stroke="var(--c-gray)" stroke-width="2"/><text x="110" y="170" text-anchor="middle" font-size="12">payroll</text><text x="110" y="188" text-anchor="middle" font-size="11">people think and do</text>
+<rect x="50" y="252" width="120" height="28" fill="var(--c-gray-t)" stroke="var(--c-gray)" stroke-width="2"/><text x="110" y="271" text-anchor="middle" font-size="11">tools: a small line</text>
+<text x="450" y="28" text-anchor="middle" font-weight="600">H1: a business as an AO</text>
+<rect x="390" y="60" width="120" height="40" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="520" y="85" font-size="12">the seat: one or a few people, taste, money, liability</text>
+<rect x="390" y="102" width="120" height="92" fill="var(--c-models-t)" stroke="var(--c-models)" stroke-width="2"/><text x="520" y="152" font-size="12">token bill: a utility like power</text>
+<rect x="390" y="196" width="120" height="30" fill="var(--c-market-t)" stroke="var(--c-market)" stroke-width="2"/><text x="520" y="216" font-size="12">trade with other AOs: a new line</text>
+<rect x="390" y="228" width="120" height="52" fill="none" stroke="var(--c-people)" stroke-width="2" stroke-dasharray="5 4"/><text x="520" y="258" font-size="12">bodies and trust: the part that stays dear</text>
+<line x1="40" y1="282" x2="740" y2="282" stroke="#9ca3af" stroke-width="1"/>
+<text x="110" y="304" text-anchor="middle" font-size="11.5">what the business pays for</text><text x="450" y="304" text-anchor="middle" font-size="11.5">taller stack: more output, cheaper each</text>
+<text x="280" y="175" text-anchor="middle" font-size="24" fill="#9ca3af">&#8594;</text><text x="280" y="198" text-anchor="middle" font-size="11">five years</text>
+</g></svg>
+<p class="figcap">Payroll turns into a token bill plus a seat. The scarce input moves from headcount to the person willing to stamp and be liable.</p>
+</figure>
+<details class="why"><summary>Why this picture: two old laws, one new line</summary><div class="body">
+<ul><li><b>Claim.</b> The cost structure of a business inverts: the big block (payroll) becomes small, a new utility bill (tokens) appears, and the part that resists automation is what is left to pay for.</li>
+<li><b>Baumol.</b> When some work gets cheap, the work that cannot be automated gets relatively dearer. That is the dashed box: bodies and trust.</li>
+<li><b>Jevons.</b> When thinking gets cheaper, more of it is bought. That is why the H1 stack is taller, not shorter: more output, cheaper each.</li>
+<li><b>Why the seat is a thin box.</b> Its hours are few (one stamp per line in the runs) but its price per hour is high: it carries liability.</li>
+<li><b>Evidence.</b> McKinsey: 29.5% of US work hours automatable by 2030 with generative AI. Run 5: a web search at about 2 USD, a site in 4 minutes.</li>
+<li><b>What would change it.</b> Law that lets an AO carry liability itself. Then the seat shrinks further and the dashed box moves into the AO's bill.</li></ul></div></details>
+<table>
+<tr><th>Shift</th><th>2026</th><th>H1</th><th>Why</th></tr>
+<tr><td>Who gets paid</td><td>people, by the month</td><td>models by the token, people by the seat and the outcome</td><td>Baumol</td></tr>
+<tr><td>What is priced</td><td>hours</td><td>outcomes, stamps, filings bought from other AOs</td><td>a search already costs about 2 USD (N-025)</td></tr>
+<tr><td>How much is made</td><td>limited by headcount</td><td>limited by budget and by the human's stamps per day</td><td>Jevons</td></tr>
+<tr><td>What is scarce</td><td>skilled people</td><td>trust, liability, bodies, taste, compute at peak</td><td>the four stocks an AO spends</td></tr>
+</table>
+<p class="figcap"><span class="tag today">Today</span> McKinsey: with generative AI, work accounting for about 29.5% of US hours could be automated by 2030, up from 21.5% without it (<a href="https://www.foxbusiness.com/economy/accelerated-adoption-ai-automate-30-americans-work-hours-mckinsey">report</a>). <span class="tag proj">Projection</span> The number that matters for an AO economy is stamps per human per day: a person running five departments on ten minutes each is five businesses, not one job.</p>
+
+<h3>3.3 Human needs by industry: the middle disappears, the need does not</h3>
+<figure>
+<svg viewBox="0 0 760 370" role="img" aria-label="Nine human needs as split bars: the orange part goes to AOs by H1, the green part stays with people.">
+<g font-size="12" fill="#111827">
+<rect x="170" y="14" width="12" height="12" fill="var(--c-ao)"/><text x="188" y="25">goes to AOs by H1</text><rect x="330" y="14" width="12" height="12" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="348" y="25">stays with people</text>
+<text x="160" y="60" text-anchor="end">food, shelter</text><rect x="170" y="46" width="84" height="22" fill="var(--c-ao)"/><rect x="256" y="46" width="474" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="262" y="61" font-size="11">growing, cooking, building</text>
+<text x="160" y="94" text-anchor="end">health, safety</text><rect x="170" y="80" width="140" height="22" fill="var(--c-ao)"/><rect x="312" y="80" width="418" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="318" y="95" font-size="11">examination, treatment, the signed diagnosis</text>
+<text x="160" y="128" text-anchor="end">care, affection</text><rect x="170" y="114" width="45" height="22" fill="var(--c-ao)"/><rect x="217" y="114" width="513" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="223" y="129" font-size="11">presence; this one barely moves</text>
+<text x="160" y="162" text-anchor="end">understanding</text><rect x="170" y="148" width="252" height="22" fill="var(--c-ao)"/><rect x="424" y="148" width="306" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="430" y="163" font-size="11">teaching in a room; what is true enough</text>
+<text x="160" y="196" text-anchor="end">participation, work</text><rect x="170" y="182" width="308" height="22" fill="var(--c-ao)"/><rect x="480" y="182" width="250" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="486" y="197" font-size="11">the seat; the vote</text>
+<text x="160" y="230" text-anchor="end">leisure</text><rect x="170" y="216" width="280" height="22" fill="var(--c-ao)"/><rect x="452" y="216" width="278" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="458" y="231" font-size="11">the trip, the game, the show</text>
+<text x="160" y="264" text-anchor="end">creation</text><rect x="170" y="250" width="336" height="22" fill="var(--c-ao)"/><rect x="508" y="250" width="222" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="514" y="265" font-size="11">the hand-made thing; taste</text>
+<text x="160" y="298" text-anchor="end">identity, belonging</text><rect x="170" y="284" width="168" height="22" fill="var(--c-ao)"/><rect x="340" y="284" width="390" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="346" y="299" font-size="11">the belonging itself</text>
+<text x="160" y="332" text-anchor="end">freedom, money</text><rect x="170" y="318" width="280" height="22" fill="var(--c-ao)"/><rect x="452" y="318" width="278" height="22" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="458" y="333" font-size="11">the credit decision; the regulator</text>
+<text x="170" y="362" font-size="11" fill="#6b7280">bar widths are the projection, mid-points of the ranges in 3.4</text>
+</g></svg>
+<p class="figcap">Max-Neef's nine needs. The AO takes the part a machine can check; the person keeps the part someone must answer for.</p>
+</figure>
+<details class="why"><summary>Why this picture: nine needs, and why the bars are the widths they are</summary><div class="body">
+<ul><li><b>Why Max-Neef's nine.</b> A closed list of fundamental needs that does not change with technology, so no need is skipped and no industry is invented. Maslow ranks; Max-Neef lists, which is what a market map wants.</li>
+<li><b>Why the widths.</b> Each bar is the mid-point of the range in 3.4, which comes from the three sorting questions: can a machine check it, does it need a body, must someone be liable.</li>
+<li><b>Why care barely moves.</b> Presence is a body in a place. Nothing in the three questions lets an AO take it.</li>
+<li><b>Why creation is widest.</b> Words and code are checkable, bodiless, and low in liability. Run 5 made a site from words with one stamp.</li>
+<li><b>Evidence.</b> Six of the nine rows have a Human Simulation goal file or a portfolio company behind them (right column of the table below).</li>
+<li><b>What would change it.</b> A row measured in rung 5 of the experiment. The bars are the only projection on this page drawn with a ruler; they are still a projection.</li></ul></div></details>
+<table>
+<tr><th>Need</th><th>Industry today</th><th>What the AO does by H1</th><th>What stays human</th><th>Already walked on Sutra</th></tr>
+<tr><td>Food, shelter</td><td>farming, grocery, housing</td><td>sourcing, pricing, orders, listings, the farm's records and buyers</td><td>growing, cooking, building, the landlord's decision</td><td>Kriti Organics (run 2)</td></tr>
+<tr><td>Health, safety</td><td>hospitals, clinics, insurance, police</td><td>triage, appointments, records, claims, follow-ups, finding the right doctor</td><td>examination, treatment, the diagnosis someone signs</td><td>Parasthi Hospital, dermatologists Bangalore (run 3; section 9)</td></tr>
+<tr><td>Care, affection</td><td>families, elder care, childcare</td><td>logistics, reminders, the family's shared memory</td><td>presence; this one barely moves</td><td>none</td></tr>
+<tr><td>Understanding</td><td>schools, news, research</td><td>a tutor per child, a reader per person, research done to order</td><td>teaching in a room, deciding what is true enough to print</td><td>this page</td></tr>
+<tr><td>Participation, work</td><td>employers, platforms, government</td><td>the department itself: hiring the work instead of the person</td><td>the seat; civic choice; the vote</td><td>every run</td></tr>
+<tr><td>Leisure</td><td>travel, sport, entertainment</td><td>plans, bookings, the trip kept alive while it happens</td><td>the trip, the game, the show</td><td>Hampi Trip Planner (run 5 rerun)</td></tr>
+<tr><td>Creation</td><td>tailors, makers, studios, software</td><td>the site, the orders, the drafts, the first version of anything made of words or code</td><td>the hand-made thing, the taste that picks</td><td>Sharma Tailors, website from words (run 5)</td></tr>
+<tr><td>Identity, belonging</td><td>brands, communities, religion</td><td>the brand's voice kept consistent, the community's record</td><td>the belonging itself</td><td>Namrati</td></tr>
+<tr><td>Freedom, money</td><td>banks, brokers, lenders</td><td>statements, matching, the paperwork of a loan, the broking screen</td><td>the credit decision someone is liable for, the regulator</td><td>Paisa, PPR (portfolio)</td></tr>
+</table>
+
+<h3>3.4 The share: three questions sort every piece of work</h3>
+<figure>
+<svg viewBox="0 0 760 290" role="img" aria-label="Three yes-or-no questions sort a piece of work into: human org keeps it, human org keeps it with the AO scheduling, AO does it with a human stamp, or AO alone.">
+<defs><marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker></defs>
+<g font-size="12" fill="#111827">
+<text x="20" y="24" font-weight="600" font-size="13">a piece of work enters here</text>
+<line x1="20" y1="34" x2="20" y2="70" stroke="#334155" stroke-width="1.5"/><line x1="20" y1="70" x2="44" y2="70" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/>
+<polygon points="110,40 170,75 110,110 50,75" fill="var(--c-harness-t)" stroke="var(--c-harness)" stroke-width="2"/><text x="110" y="71" text-anchor="middle" font-size="11">can a machine</text><text x="110" y="85" text-anchor="middle" font-size="11">check it?</text>
+<line x1="172" y1="75" x2="268" y2="75" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/><text x="220" y="68" text-anchor="middle" font-size="11">yes</text>
+<line x1="110" y1="112" x2="110" y2="188" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/><text x="122" y="150" font-size="11">no</text>
+<polygon points="330,40 390,75 330,110 270,75" fill="var(--c-harness-t)" stroke="var(--c-harness)" stroke-width="2"/><text x="330" y="71" text-anchor="middle" font-size="11">needs a body</text><text x="330" y="85" text-anchor="middle" font-size="11">in a place?</text>
+<line x1="392" y1="75" x2="488" y2="75" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/><text x="440" y="68" text-anchor="middle" font-size="11">no</text>
+<line x1="330" y1="112" x2="330" y2="188" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/><text x="342" y="150" font-size="11">yes</text>
+<polygon points="550,40 610,75 550,110 490,75" fill="var(--c-harness-t)" stroke="var(--c-harness)" stroke-width="2"/><text x="550" y="71" text-anchor="middle" font-size="11">must someone</text><text x="550" y="85" text-anchor="middle" font-size="11">be liable?</text>
+<line x1="612" y1="75" x2="648" y2="75" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/><text x="630" y="68" text-anchor="middle" font-size="11">no</text>
+<line x1="550" y1="112" x2="550" y2="188" stroke="#334155" stroke-width="1.5" marker-end="url(#ar4)"/><text x="562" y="150" font-size="11">yes</text>
+<rect x="650" y="48" width="100" height="54" rx="5" fill="var(--c-ao)"/><text x="700" y="72" text-anchor="middle" fill="#fff" font-weight="600" font-size="11.5">AO alone</text><text x="700" y="88" text-anchor="middle" fill="#fff" font-size="10.5">most of the work</text>
+<rect x="20" y="192" width="180" height="60" rx="5" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="110" y="216" text-anchor="middle" font-weight="600" font-size="11.5">human org keeps it</text><text x="110" y="234" text-anchor="middle" font-size="10.5">taste, judgement</text>
+<rect x="240" y="192" width="180" height="60" rx="5" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="2"/><text x="330" y="216" text-anchor="middle" font-weight="600" font-size="11.5">human org keeps it</text><text x="330" y="234" text-anchor="middle" font-size="10.5">the AO schedules it</text>
+<rect x="460" y="192" width="180" height="60" rx="5" fill="var(--c-ao-t)" stroke="var(--c-people)" stroke-width="3"/><text x="550" y="216" text-anchor="middle" font-weight="600" font-size="11.5">AO does it, a human stamps</text><text x="550" y="234" text-anchor="middle" font-size="10.5">the seat</text>
+<text x="20" y="278" font-size="11" fill="#6b7280">orange = the AO's work; green = the person's; orange with a green edge = both, at the seat</text>
+</g></svg>
+<p class="figcap">The runs show the first and third already: engines check closed lists; the owner stamps what goes out.</p>
+</figure>
+<details class="why"><summary>Why this picture: three questions, in this order</summary><div class="body">
+<ul><li><b>Claim.</b> Three questions are enough to sort any piece of work between an AO and a human org, and their order matters.</li>
+<li><b>Why these three.</b> They are the three things the runtime already enforces or cannot do: engines check against closed lists (checkability); nothing in the app has a body (place); the owner stamps what goes out (liability).</li>
+<li><b>Why this order.</b> Work a machine cannot check never leaves a human, whatever else is true, so that question comes first. A body is a hard limit, so second. Liability is the softest: it can be shared at the seat, so last.</li>
+<li><b>Why the sorting is not a share.</b> It sorts pieces of work, not jobs. A dermatologist's day has pieces in all four boxes. The table under it turns the sort into a range per industry; that step is the projection.</li>
+<li><b>What would change it.</b> Robots that put a body in a place cheaply (the second question flips), or law that lets an AO be liable (the third question flips).</li></ul></div></details>
+<table>
+<tr><th>Industry</th><th>AO share of the work, H1 (projection)</th><th>What the human org becomes</th></tr>
+<tr><td>Websites, software, content</td><td><span class="bar s4" style="width:70%"></span>60 to 80%</td><td>owners with taste; a few engineers per hundred AOs</td></tr>
+<tr><td>Back office: finance ops, admin, HR paperwork</td><td><span class="bar s4" style="width:60%"></span>50 to 70%</td><td>a controller who signs; auditors</td></tr>
+<tr><td>Marketing, sales outreach</td><td><span class="bar s4" style="width:60%"></span>50 to 70%</td><td>the relationship owner; the brand's taste</td></tr>
+<tr><td>Customer support</td><td><span class="bar s3" style="width:50%"></span>40 to 60%</td><td>escalation and the apology that counts</td></tr>
+<tr><td>Law, accounting, consulting</td><td><span class="bar s3" style="width:40%"></span>30 to 50%</td><td>the signature and the court; fewer juniors</td></tr>
+<tr><td>Education</td><td><span class="bar s2" style="width:35%"></span>content 40 to 60%, teaching 10 to 20%</td><td>the teacher in the room; the school as a community</td></tr>
+<tr><td>Healthcare</td><td><span class="bar s2" style="width:25%"></span>admin 30 to 50%, care 5 to 10%</td><td>clinicians; the hospital as bodies and liability</td></tr>
+<tr><td>Construction, logistics, farming, food</td><td><span class="bar s1" style="width:10%"></span>5 to 15% (the office part)</td><td>unchanged on the ground; the AO runs the office</td></tr>
+</table>
+<p class="means"><span class="tag proj">Projection</span> How human orgs remain: smaller, flatter, with more owners and fewer managers. The manager role, deciding who does what and when, is the role the AO takes first, because it is the one the runs already do. No row is measured yet; rung 5 of the experiment is the first measurement.</p>
+
+<h3>3.5 The next wants: each solved want creates the next</h3>
+<div class="steps">
+<div class="step"><div class="from">Solved: anything made of words or code is cheap.</div><div class="to"><b>Provenance.</b> Who made this, a person or an AO? Humans decide what counts; AOs verify and sign.</div></div>
+<div class="step"><div class="from">Solved: there is more output than anyone can read.</div><div class="to"><b>Curation.</b> Taste becomes a paid service. Human curators choose; AOs rank and filter.</div></div>
+<div class="step"><div class="from">Solved: many AOs act for me.</div><div class="to"><b>Trust and identity of AOs.</b> Which AO speaks for whom? A registry and a reputation. Law sets it; the meta-AO runs it.</div></div>
+<div class="step"><div class="from">Solved: my AO deals with yours.</div><div class="to"><b>Fair trade and disputes.</b> Escrow, arbitration, a ledger. Courts and insurers with AOs doing the bookkeeping.</div></div>
+<div class="step"><div class="from">Solved: my context is everywhere.</div><div class="to"><b>My context as mine.</b> Portability, privacy, the right to take my AO elsewhere. Standards set by people, enforced by AOs.</div></div>
+<div class="step"><div class="from">Solved: hours are freed.</div><div class="to"><b>Meaning and the human-made premium.</b> Craft, community, presence. Mostly human; AOs do the logistics around it.</div></div>
+<div class="step"><div class="from">Solved: everyone has an AO.</div><div class="to"><b>A better AO than others.</b> Speed, compute, data. The AO's want for compute is the human's new bill, and a status race.</div></div>
+<div class="step"><div class="from">Solved: AOs act in the world.</div><div class="to"><b>Safety from AOs.</b> Liability products, insurance, kill switches. Insurers and regulators with AOs doing the audit.</div></div>
+</div>
+<details class="why"><summary>Why this ladder: each solved want creates the next, and two rungs are already visible</summary><div class="body">
+<ul><li><b>The rule.</b> A solved want removes a scarcity and creates a new one next to it. Cheap output makes attention scarce (curation); many agents make identity scarce (trust); freed hours make meaning scarce. Jevons at the level of wants.</li>
+<li><b>Why the pairs.</b> Each next want has a human part (set the rule, choose, decide what counts) and an AO part (verify, rank, keep the ledger). That pairing is the founder's "AIs also have wants which other AIs plus humans are solving".</li>
+<li><b>Evidence.</b> Provenance already appeared as a stamped rule in run 3 ("Nothing goes on the site without a source line under it", finding 45; section 9, step 11). The AO's want for compute and the internet appeared as Identity's engine ask (N-024; section 9, step 3).</li>
+<li><b>What would change it.</b> If provenance is solved by the model vendors at the token level (signed outputs), the first rung moves from the AO layer to the model layer and the first next want is curation.</li></ul></div></details>
+<p class="figcap"><span class="tag proj">Projection</span> Every next want needs a human to set the rule and an AO to keep the ledger. That pair is the civilization.</p>
+</section>
+<p class="figcap">Terms, labels, colours and the full source list are on the <a href="../human-and-agent.html">hub</a>. <span class="pill DRAFT">DRAFT</span> until the founder marks it.</p>
+</div></div></body></html>

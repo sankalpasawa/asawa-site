@@ -1,0 +1,243 @@
+<!doctype html>
+<!-- Lifecycle and transition: a subpage of Human and Agent. Three questions of the founder (2026-10-08): the AI types across the lifecycle and where to cut; the pockets of AO markets; the transition and its second- and third-order effects. Sidebar injected by _sidebar.py --apply. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Lifecycle and transition</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 8px}
+h3{font-size:17px;margin:14px 0 6px;letter-spacing:-.01em}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul,ol{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:10px;overflow-x:auto;background:#fff}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+details.why .body b{color:#111827}
+:root{--c-models:#5a56d6;--c-models-t:#e4e3f9;--c-harness:#0a9c96;--c-harness-t:#d6f1ef;--c-ao:#c9512e;--c-ao-t:#f9e1d8;--c-market:#8a3fb4;--c-market-t:#eddff5;--c-people:#3a7d2c;--c-people-t:#dcefd6;--c-hw:#5b6471;--c-hw-t:#e6e8ec}
+.lede{font-size:17px;line-height:1.45;max-width:62ch;margin:10px 0 14px}
+.assume{border:1px solid var(--c-ao);border-left:5px solid var(--c-ao);background:#fff7f3;padding:7px 12px;font-size:13px;margin:10px 0}
+.assume b{color:var(--c-ao)}
+.tag{display:inline-block;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid #e5e7eb;border-radius:2px;margin-right:4px;font-weight:700}
+.tag.today{border-color:var(--c-harness);color:var(--c-harness)}.tag.proj{border-color:var(--c-ao);color:var(--c-ao)}.tag.inf{border-color:var(--c-models);color:var(--c-models)}
+.sowhat{border-left:4px solid var(--c-people);padding:7px 12px;background:var(--c-people-t);font-size:13.5px;margin:10px 0}
+td.yes{background:var(--c-ao-t)}td.no{background:var(--c-people-t)}td.next{background:var(--c-market-t)}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a class="sb-cur" href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &#8250; Business &#8250; <a href="../human-and-agent.html">Human and Agent</a> &#8250; Lifecycle and transition</div>
+<h1>Lifecycle and transition <span class="lvl">HUMAN AND AGENT &#183; how it moves</span></h1>
+<p class="lede">Three questions in one place: what kinds of AI get made along the lifecycle, from small to large, and where to cut that lifecycle; the small markets of agent orgs that make agent orgs; and how the economy gets from here to there, with the second- and third-order effects.</p>
+
+<h2>1. The AI lifecycle, and where to cut it</h2>
+<h3>Cut by size and by stage; industry is the instance, not a cut</h3>
+<p>Every AI unit on Sutra lives one life: it is <b>shaped</b> from words, it <b>runs</b> a line of checked steps, it <b>files</b> what it made, it is <b>judged</b> against the brief and the rules, it <b>grows</b> (is promoted, generalised, reused) or is retired. That is Native's loop. The unit comes in six sizes, the <a href="../platform/structure.html">six levels</a>: atom, workflow, engine, department, agent org, meta-AO.</p>
+<p>The founder's question was where to cut the problem so that the types can be defined. Three candidate lines were tested for the MECE property:</p>
+<table>
+<tr><th>Candidate cut</th><th>Mutually exclusive?</th><th>Collectively exhaustive?</th><th>Verdict</th></tr>
+<tr><td>By size (the six levels)</td><td>yes: a unit has one level</td><td>yes: nothing sits outside the six</td><td>keep</td></tr>
+<tr><td>By lifecycle stage (shape, run, file, judge, grow)</td><td>yes: a unit is at one stage at a time; a type does one stage's work</td><td>yes: the loop has no other stage</td><td>keep</td></tr>
+<tr><td>By industry scenario (health, food, clothing, ...)</td><td>no: the same type appears in every industry</td><td>no: industries overlap and multiply</td><td>not a cut; the instance dimension</td></tr>
+</table>
+<figure>
+<svg viewBox="0 0 760 330" role="img" aria-label="A grid of AI types: six sizes down the side from atom to meta-AO, five lifecycle stages across the top from shape to grow; cells filled where a Sutra function already does that work, marked next where the type is the next to build, and marked person where a human must stay.">
+<g font-size="11" fill="#111827">
+<text x="20" y="22" font-weight="700" font-size="12">AI types = size x stage</text>
+<g font-size="10.5" font-weight="700" fill="#374151">
+<text x="190" y="48" text-anchor="middle">SHAPE</text><text x="300" y="48" text-anchor="middle">RUN</text><text x="410" y="48" text-anchor="middle">FILE</text><text x="520" y="48" text-anchor="middle">JUDGE</text><text x="630" y="48" text-anchor="middle">GROW</text>
+</g>
+<g font-size="10.5" font-weight="700" fill="#374151">
+<text x="130" y="78" text-anchor="end">meta-AO</text><text x="130" y="118" text-anchor="end">agent org</text><text x="130" y="158" text-anchor="end">department</text><text x="130" y="198" text-anchor="end">engine</text><text x="130" y="238" text-anchor="end">workflow</text><text x="130" y="278" text-anchor="end">atom</text>
+</g>
+<!-- rows: y = 60,100,140,180,220,260 ; cols x = 140,250,360,470,580 ; w=100 h=34 -->
+<!-- meta-AO -->
+<rect x="140" y="60" width="100" height="34" fill="var(--c-market-t)" stroke="var(--c-market)"/><text x="190" y="81" text-anchor="middle" font-size="9.5">registry: next</text>
+<rect x="250" y="60" width="100" height="34" fill="var(--c-market-t)" stroke="var(--c-market)"/><text x="300" y="81" text-anchor="middle" font-size="9.5">trade: next</text>
+<rect x="360" y="60" width="100" height="34" fill="var(--c-market-t)" stroke="var(--c-market)"/><text x="410" y="81" text-anchor="middle" font-size="9.5">ledger: next</text>
+<rect x="470" y="60" width="100" height="34" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="520" y="81" text-anchor="middle" font-size="9.5">disputes: person</text>
+<rect x="580" y="60" width="100" height="34" fill="#fff" stroke="#e5e7eb"/><text x="630" y="81" text-anchor="middle" font-size="9.5" fill="#9ca3af">open</text>
+<!-- agent org -->
+<rect x="140" y="100" width="100" height="34" fill="var(--c-market-t)" stroke="var(--c-market)"/><text x="190" y="121" text-anchor="middle" font-size="9.5">org setup: next</text>
+<rect x="250" y="100" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="300" y="121" text-anchor="middle" font-size="9.5">one screen</text>
+<rect x="360" y="100" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="410" y="121" text-anchor="middle" font-size="9.5">the org record</text>
+<rect x="470" y="100" width="100" height="34" fill="var(--c-people-t)" stroke="var(--c-people)"/><text x="520" y="121" text-anchor="middle" font-size="9.5">the seat: person</text>
+<rect x="580" y="100" width="100" height="34" fill="var(--c-market-t)" stroke="var(--c-market)"/><text x="630" y="121" text-anchor="middle" font-size="9.5">add a dept: next</text>
+<!-- department -->
+<rect x="140" y="140" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="190" y="161" text-anchor="middle" font-size="9.5">Identity + Adaptation</text>
+<rect x="250" y="140" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="300" y="161" text-anchor="middle" font-size="9.5">Coordination</text>
+<rect x="360" y="140" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="410" y="161" text-anchor="middle" font-size="9.5">the Record</text>
+<rect x="470" y="140" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="520" y="161" text-anchor="middle" font-size="9.5">Audit</text>
+<rect x="580" y="140" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="630" y="161" text-anchor="middle" font-size="9.5">Priority + Library</text>
+<!-- engine -->
+<rect x="140" y="180" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="190" y="201" text-anchor="middle" font-size="9.5">born from words</text>
+<rect x="250" y="180" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="300" y="201" text-anchor="middle" font-size="9.5">a line of steps</text>
+<rect x="360" y="180" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="410" y="201" text-anchor="middle" font-size="9.5">a filing, versioned</text>
+<rect x="470" y="180" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="520" y="201" text-anchor="middle" font-size="9.5">closed-list checks</text>
+<rect x="580" y="180" width="100" height="34" fill="var(--c-ao-t)" stroke="var(--c-ao)"/><text x="630" y="201" text-anchor="middle" font-size="9.5">reused across depts</text>
+<!-- workflow -->
+<rect x="140" y="220" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="190" y="241" text-anchor="middle" font-size="9.5">written</text>
+<rect x="250" y="220" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="300" y="241" text-anchor="middle" font-size="9.5">run in order</text>
+<rect x="360" y="220" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="410" y="241" text-anchor="middle" font-size="9.5">execution row</text>
+<rect x="470" y="220" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="520" y="241" text-anchor="middle" font-size="9.5">verify at close</text>
+<rect x="580" y="220" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="630" y="241" text-anchor="middle" font-size="9.5">grown into an engine</text>
+<!-- atom -->
+<rect x="140" y="260" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="190" y="281" text-anchor="middle" font-size="9.5">goal + verify</text>
+<rect x="250" y="260" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="300" y="281" text-anchor="middle" font-size="9.5">dispatch</text>
+<rect x="360" y="260" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="410" y="281" text-anchor="middle" font-size="9.5">the ledger row</text>
+<rect x="470" y="260" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="520" y="281" text-anchor="middle" font-size="9.5">the check</text>
+<rect x="580" y="260" width="100" height="34" fill="var(--c-harness-t)" stroke="var(--c-harness)"/><text x="630" y="281" text-anchor="middle" font-size="9.5">evidence to GROW</text>
+<text x="140" y="318" font-size="10" fill="#6b7280">teal and orange = a type that exists on Sutra today; purple = the next to build; green = a person stays; white = open</text>
+</g></svg>
+<p class="figcap">The cut: thirty cells, each an AI type. The bottom four rows are built; the top two rows are the agent org and the market, where the next types live. Two cells stay human by the three sorting questions.</p>
+</figure>
+<details class="why"><summary>Why this grid: why size times stage, and why industry is not a line</summary><div class="body">
+<ul><li><b>Claim.</b> Every AI type is one cell of size times stage; industries are where the cells are instantiated, not a third axis.</li>
+<li><b>Working.</b> The MECE test in the table above: industry fails both halves (the same Audit type appears in a clinic and a tailor; industries overlap). Size and stage each pass, and their product covers every unit on Sutra with no cell shared.</li>
+<li><b>Evidence.</b> The bottom four rows are read off the running system: the five functions, the Record, the Library, engines born from words (run 5), closed-list checks (every run). The top rows are the next-to-build list of <a href="../platform/the-model.html">the model</a> and <a href="experiment-and-seat.html">the experiment</a>'s rungs 3 to 5.</li>
+<li><b>Where not.</b> The seat cell and the disputes cell: judgement at the agent org and above needs someone liable, so no AI type is built there.</li>
+<li><b>What would change it.</b> A unit that does not fit a cell (a type that spans two stages by design): then the stage axis needs a sixth column, not a new axis.</li></ul></div></details>
+
+<h2>2. Pockets: markets of agent orgs that make agent orgs</h2>
+<h3>A pocket is one cell sold to every agent org that needs it</h3>
+<p>The founder's idea: small pockets of agent-org markets, the "SaaS of AO", agent orgs whose product is making or serving other agent orgs, deployed to all of them, combining pairwise as the market needs. In the grid above a pocket is a cell offered as a service: an Adaptation pocket shapes lines for departments that have none; an Audit pocket judges filings for departments that want a second reader; a Source Reader pocket reaches the web for any department; a Publisher pocket puts anything on a host.</p>
+<figure>
+<svg viewBox="0 0 760 260" role="img" aria-label="Four pocket boxes on the left, each plugged into several agent orgs on the right through a market line; a small table of pairwise combination counts.">
+<defs><marker id="pk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a3fb4"/></marker></defs>
+<g font-size="11" fill="#111827">
+<text x="20" y="22" font-weight="700" font-size="12">pockets</text>
+<rect x="20" y="36" width="150" height="34" rx="4" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="95" y="57" text-anchor="middle" font-size="10.5">shape a line (Adaptation)</text>
+<rect x="20" y="80" width="150" height="34" rx="4" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="95" y="101" text-anchor="middle" font-size="10.5">read the web (Source Reader)</text>
+<rect x="20" y="124" width="150" height="34" rx="4" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="95" y="145" text-anchor="middle" font-size="10.5">judge a filing (Audit)</text>
+<rect x="20" y="168" width="150" height="34" rx="4" fill="var(--c-ao-t)" stroke="var(--c-ao)" stroke-width="1.5"/><text x="95" y="189" text-anchor="middle" font-size="10.5">put it on a host (Publisher)</text>
+<rect x="220" y="30" width="18" height="180" rx="3" fill="var(--c-market-t)" stroke="var(--c-market)" stroke-width="1.5"/><text x="229" y="226" text-anchor="middle" font-size="9.5" fill="#8a3fb4">the market</text>
+<g stroke="var(--c-market)" stroke-width="1.3"><line x1="170" y1="53" x2="220" y2="60"/><line x1="170" y1="97" x2="220" y2="100"/><line x1="170" y1="141" x2="220" y2="140"/><line x1="170" y1="185" x2="220" y2="180"/></g>
+<text x="330" y="22" font-weight="700" font-size="12">agent orgs</text>
+<rect x="290" y="36" width="130" height="40" rx="4" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="1.5"/><text x="355" y="52" text-anchor="middle" font-size="10">a tailor's AO</text><text x="355" y="66" text-anchor="middle" font-size="9.5" fill="#6b7280">uses shape + publish</text>
+<rect x="290" y="92" width="130" height="40" rx="4" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="1.5"/><text x="355" y="108" text-anchor="middle" font-size="10">a clinic's AO</text><text x="355" y="122" text-anchor="middle" font-size="9.5" fill="#6b7280">uses read + judge</text>
+<rect x="290" y="148" width="130" height="40" rx="4" fill="var(--c-people-t)" stroke="var(--c-people)" stroke-width="1.5"/><text x="355" y="164" text-anchor="middle" font-size="10">a lender's AO</text><text x="355" y="178" text-anchor="middle" font-size="9.5" fill="#6b7280">uses read + judge + publish</text>
+<g stroke="var(--c-market)" stroke-width="1.3" marker-end="url(#pk)"><line x1="238" y1="56" x2="288" y2="56"/><line x1="238" y1="112" x2="288" y2="112"/><line x1="238" y1="168" x2="288" y2="168"/></g>
+<text x="470" y="22" font-weight="700" font-size="12">pairs the market can price</text>
+<g font-size="10.5">
+<text x="470" y="48">pockets N</text><text x="600" y="48">pairs N(N-1)/2</text>
+<line x1="470" y1="54" x2="720" y2="54" stroke="#e5e7eb"/>
+<text x="470" y="72">4</text><text x="600" y="72">6</text>
+<text x="470" y="92">10</text><text x="600" y="92">45</text>
+<text x="470" y="112">50</text><text x="600" y="112">1,225</text>
+<text x="470" y="132">200</text><text x="600" y="132">19,900</text>
+</g>
+<text x="470" y="160" font-size="10" fill="#6b7280">most pairs are worthless; the market,</text><text x="470" y="174" font-size="10" fill="#6b7280">not the designer, finds the ones that pay</text>
+<text x="20" y="250" font-size="10" fill="#9ca3af">Projection. The four pockets are cells of the grid above that run today inside one department; the market between agent orgs is rung 4 of the experiment.</text>
+</g></svg>
+<p class="figcap">Pockets plug into agent orgs through the market. The count of pairs grows as the square of the count of pockets; the market's job is to price the few pairs that matter.</p>
+</figure>
+<details class="why"><summary>Why this picture: why pockets are cells, and why the pair count is the point</summary><div class="body">
+<ul><li><b>Claim.</b> The "SaaS of AO" is a cell of the lifecycle grid sold across agent orgs; the pairings between pockets are too many to design and must be priced by a market.</li>
+<li><b>Why cells.</b> A pocket that spans stages is a department, not a pocket; a pocket that spans sizes is a platform. The grid keeps a pocket to one job, which is what makes it sellable to many buyers.</li>
+<li><b>Why the pair count.</b> N pockets give N(N-1)/2 pairs: 45 at ten, 19,900 at two hundred. No designer enumerates them; the registry (the meta-AO) records which pairs were bought and kept, and that is the pricing.</li>
+<li><b>Evidence.</b> Run 3: a Source Reader engine shaped for one department; run 5: a line of engines born on the fly. Both are pockets in waiting. Nothing yet sold across departments: rung 3.</li>
+<li><b>What would change it.</b> If pockets are cheaper to re-make than to buy (tokens cheaper than trust), there is no pocket market and every agent org makes its own.</li></ul></div></details>
+
+<h2>3. The transition: from here to the settled state</h2>
+<h3>The founder's assumptions, held</h3>
+<div class="assume"><b>T1. The market structure does not change.</b> The same industries serve the same needs; what changes is who does the hours inside them. Held as an assumption, not a finding.</div>
+<div class="assume"><b>T2. Human needs do not change significantly.</b> The nine needs of <a href="futures-h1.html">the futures page</a> hold through H2; wants change, needs do not.</div>
+<div class="assume"><b>T3. Markets speed up on existing technology.</b> The first effect is speed in the markets that exist, not new markets.</div>
+<div class="assume"><b>T4. Industries with many humans and high cost get rejigged.</b> Where the payroll is large and the work is checkable, the rejig is largest and earliest.</div>
+<h3>Four diffusion shapes, by the two things that set the pace</h3>
+<p>Two things set how an industry moves: whether its work is checkable by a machine (the sorting rule), and whether software already worked there. Subjective, non-deterministic work kept software out of many industries; agent orgs handle that subjectivity, so those industries do not slide, they leap.</p>
+<table>
+<tr><th>Shape</th><th>Industry class</th><th>Why that shape</th><th>Examples</th><th>What it feels like</th></tr>
+<tr><td><b>Leap</b></td><td>software never worked: the work was subjective, the firm informal</td><td>no incumbent system to replace; the agent org is the first office</td><td>tailors, small clinics, local services, farms</td><td>a jump straight to agent-org-native, with little chaos because there was nothing to unlearn</td></tr>
+<tr><td><b>Slide</b></td><td>already on software, work checkable</td><td>agent orgs replace the software's operator, system by system</td><td>finance operations, e-commerce, logistics offices</td><td>steady, year on year, low drama</td></tr>
+<tr><td><b>Jerk</b></td><td>many humans, high cost, work checkable</td><td>the payroll is the product; wave 1 and wave 2 hit at once</td><td>BPO, back office, customer support, content</td><td>fast and painful: the chaos of incumbents trying to find the seat</td></tr>
+<tr><td><b>Stall</b></td><td>body and liability bound</td><td>the sorting questions keep the hours human; only the office around them moves</td><td>construction, nursing, cooking, driving until robots</td><td>the office changes, the floor does not</td></tr>
+</table>
+<figure>
+<svg viewBox="0 0 760 300" role="img" aria-label="Four curves over the evolution frame from today through H1 to H2: leap rises early and steeply; jerk rises steeply around H1 with a wobble; slide rises steadily; stall stays low. The frame is marked today, first products, the jerk, settling, settled.">
+<defs><marker id="df" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker></defs>
+<g font-size="11" fill="#111827">
+<line x1="60" y1="230" x2="720" y2="230" stroke="#9ca3af" marker-end="url(#df)"/><line x1="60" y1="230" x2="60" y2="30" stroke="#9ca3af" marker-end="url(#df)"/>
+<text x="50" y="40" text-anchor="end" font-size="10" fill="#6b7280">share of hours</text><text x="50" y="52" text-anchor="end" font-size="10" fill="#6b7280">moved to AOs</text>
+<g font-size="10" fill="#6b7280"><text x="60" y="250" text-anchor="middle">today</text><text x="200" y="250" text-anchor="middle">first products</text><text x="360" y="250" text-anchor="middle">the jerk</text><text x="520" y="250" text-anchor="middle">settling</text><text x="690" y="250" text-anchor="middle">settled</text></g>
+<g font-size="10.5" font-weight="700"><text x="360" y="272" text-anchor="middle" fill="#c9512e">H1: the shift</text><text x="690" y="272" text-anchor="middle" fill="#8a3fb4">H2: the settled state</text></g>
+<line x1="360" y1="230" x2="360" y2="40" stroke="#c9512e" stroke-dasharray="4 3" opacity="0.6"/><line x1="690" y1="230" x2="690" y2="40" stroke="#8a3fb4" stroke-dasharray="4 3" opacity="0.6"/>
+<path d="M60,225 C140,210 180,120 260,80 S400,55 700,50" fill="none" stroke="var(--c-people)" stroke-width="2.5"/><text x="300" y="70" font-size="10.5" fill="var(--c-people)" font-weight="700">leap</text>
+<path d="M60,226 C200,222 280,215 330,150 S350,80 380,120 S420,70 700,62" fill="none" stroke="var(--c-ao)" stroke-width="2.5"/><text x="400" y="100" font-size="10.5" fill="var(--c-ao)" font-weight="700">jerk</text>
+<path d="M60,226 C250,210 450,150 700,95" fill="none" stroke="var(--c-models)" stroke-width="2.5"/><text x="560" y="128" font-size="10.5" fill="var(--c-models)" font-weight="700">slide</text>
+<path d="M60,227 C300,222 500,205 700,195" fill="none" stroke="var(--c-hw)" stroke-width="2.5"/><text x="600" y="190" font-size="10.5" fill="var(--c-hw)" font-weight="700">stall</text>
+<text x="60" y="292" font-size="10" fill="#9ca3af">Projection. The frame is the evolution, not a calendar: H1 is where the jerk peaks, H2 where the curves flatten; the years are whatever the shocks make them.</text>
+</g></svg>
+<p class="figcap">Four shapes over one frame. The leap is the India story; the jerk is the BPO story; the slide is the finance-office story; the stall is the floor.</p>
+</figure>
+<details class="why"><summary>Why these curves: two causes, four shapes, and why H1 sits at the jerk</summary><div class="body">
+<ul><li><b>Claim.</b> Diffusion is not one curve. Two causes, checkability and whether software already worked, give four shapes, and the horizons are read off the shapes, not off a calendar.</li>
+<li><b>Why the leap is first.</b> No incumbent system, no org chart to unlearn, and the agent org handles the subjectivity that kept software out. The Human Simulation runs are all leaps: a tailor, a farm, a clinic listing, a trip.</li>
+<li><b>Why the jerk wobbles.</b> Incumbents move in a rush, find that the technical part is easy and the organisational part (who holds the seat, what the manager does now) is not, and stall before they settle. That is the chaos the founder named.</li>
+<li><b>Why H1 and H2.</b> Calendar years date a page the first time a shock moves the curve. H1 is defined as the jerk's peak, H2 as the flattening; the hub says what they mean in years today.</li>
+<li><b>What would change it.</b> Regulation that freezes the jerk industries (then jerk becomes stall), or robots that free the stall (then stall becomes a late slide).</li></ul></div></details>
+<h3>Second- and third-order effects, and where each is handled</h3>
+<table>
+<tr><th>Effect</th><th>Order</th><th>Who feels it</th><th>When</th><th>Where it is handled</th></tr>
+<tr><td>Wages compress in checkable work; the seat is paid for liability, not hours</td><td>second</td><td>people in jerk industries</td><td>H1</td><td><a href="futures-h1.html">Futures, the economy</a></td></tr>
+<tr><td>Provenance, curation and trust become paid markets</td><td>second</td><td>everyone who reads or buys</td><td>H1 to H2</td><td><a href="futures-h1.html">Futures, the next wants</a></td></tr>
+<tr><td>A token bill on every P&amp;L; compute at peak is scarce</td><td>second</td><td>every firm with an agent org</td><td>H1</td><td><a href="futures-h1.html">Futures, the economy</a></td></tr>
+<tr><td>Pockets and a market between agent orgs</td><td>second</td><td>agent orgs</td><td>H1 to H2</td><td>section 2 above; <a href="experiment-and-seat.html">rungs 3 and 4</a></td></tr>
+<tr><td>Liability law for agent orgs; insurance against them</td><td>third</td><td>regulators, insurers, courts</td><td>H2</td><td><a href="futures-h1.html">Futures, the next wants</a>; open</td></tr>
+<tr><td>Education moves from skills to seat-skills: taste, judgement, the rule</td><td>third</td><td>schools, parents</td><td>H2</td><td><a href="futures-h1.html">Futures, needs by industry</a>; open</td></tr>
+<tr><td>The geography of exported office work shifts (India's BPO line)</td><td>third</td><td>India, the US clients</td><td>H1 to H2</td><td><a href="automation-and-india.html">Automation and India</a>, market 3</td></tr>
+<tr><td>The manager role disappears before the maker's</td><td>second</td><td>middle management</td><td>H1</td><td><a href="future-organisation.html">The future organisation</a>, wave 2</td></tr>
+</table>
+<p class="sowhat"><span class="tag proj">Projection</span> So what: the transition is four different stories told at once. The jerk is where the pain and the headlines are; the leap is where the first agent orgs are sold; the stall is where nothing much happens for a decade. Sutra's niche, the website department, sits in the leap.</p>
+<p class="figcap">Terms, labels, colours and the full source list are on the <a href="../human-and-agent.html">hub</a>. Written 2026-10-08, session b215028c, atom a-b215028c-11, on the founder's questions of that day. <span class="pill DRAFT">DRAFT</span> until the founder marks it.</p>
+</div></div></body></html>

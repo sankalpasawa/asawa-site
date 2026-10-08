@@ -1,0 +1,713 @@
+<!doctype html>
+<!-- governance/index.html — authored 2026-06-12 (P2 wave) from master governance slices; template header replaced post-verify -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native &#8212; How a Unit Runs</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.SEED{background:#f3f4f6;color:#4b5563}.DRAFT{background:#fef2f2;color:#b91c1c}.VERIFIED{background:#fffbeb;color:#92400e}.LOCKED{background:#ecfdf5;color:#047857}.SHIPPED{background:#eff6ff;color:#1d4ed8}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:24px 0 8px}
+.gap{background:#fef2f2;border-left:3px solid #b91c1c;padding:8px 12px;font-size:13px;margin:8px 0}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+/* HERE highlight — replace with your box id */
+#map-governance{stroke-width:3.5;stroke:#b45309}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}.sb-cur{font-weight:800;color:#b45309 !important}.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}svg a rect{cursor:pointer;pointer-events:all}svg text{pointer-events:none}</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a class="sb-cur" href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<h1>How a unit runs: one engine shape <span class="pill DRAFT">BUILT BEHIND A SWITCH &#183; NOT RELEASED &#183; DECISIONS PROPOSED &#183; v3</span></h1>
+<p>Every unit that runs in a department is an engine: the four that make the work, and the five functions that keep the department true to its charter. An engine is a skeleton of code around steps, and each step runs on the rung its record has earned, from a person, to a model, to code. This page is the engineering design that makes three ruled pages real in Core. Nothing on it is built.</p>
+<p class="note">The documents: <code>holding/plans/engine-runtime/PRD.md</code> (what the owner observes), <code>HLD.md</code> (the architecture, its twenty-one decisions, and the component that makes every engine the same), <code>LLD.md</code> (schemas, algorithms, twenty edge cases, and section 13, as built), <code>ADHERENCE.md</code> (every founder message with a check that can fail), <code>RESEARCH-agent-communication.md</code> (published practice, with sources). What runs today is on <a href="first-build.html#built">the first build</a>.</p>
+<h2 id="said">1 &#183; What the founder said, and where it stands</h2>
+<p>The direction of 2026-09-28, in the founder's words. Most of it restates canon that is already ruled; the first build did not follow that canon in three places. The last column is the engine runtime: built, behind a switch, and walked from source.</p>
+<table><tr><th>In the founder's words</th><th>Means</th><th>Canon</th><th>In 2.306.0, released</th><th>On the engine runtime, not released</th></tr><tr><td>&#8220;even the five functions have a shape of engines&#8221;</td><td>one skeleton for the work engines and the five functions</td><td>ruled: <a href="../platform/model/internal-system.html">the five functions</a> (glue engines are engines too)</td><td>no: five checks inside one function</td><td>built: nine engines, one skeleton</td></tr><tr><td>&#8220;scaffolding can be around code, like start and all the other parts of the engine&#8221;</td><td>the skeleton is code: start, stop, reads, writes, rows, checkpoint, envelope</td><td>designed: <a href="department.html#motor">the motor</a></td><td>partly: start, rows and envelope are code; no checkpoint inside an engine</td><td>built: a row per step; a cut run resumes at its first unfinished step</td></tr><tr><td>&#8220;inside them, they can be from code to code, plus LLM, plus completely LLM&#8221;</td><td>the inside is steps, each on a rung</td><td>ruled: <a href="../platform/crystallization.html">crystallization</a>, the five rungs</td><td>no: each engine is fixed as model or code</td><td>built: the rung is on the record and moves by evidence and a stamp</td></tr><tr><td>&#8220;if complete codification has been done, LLM is bypassed, and only the code has run&#8221;</td><td>a step on the code rung makes no model call</td><td>ruled: the code rung</td><td>yes for the website template's two transform engines, by construction, not by evidence</td><td>built; in the walk no step had enough runs to climb, so the climb is proved in the suite only</td></tr><tr><td>&#8220;engines are autonomous in themselves; they are given compute power&#8221;</td><td>each engine has its envelope and starts its own runs in its slot</td><td>designed: <a href="department.html#who-starts">who starts what</a></td><td>yes: envelope per engine, the slot rule</td><td>kept; an engine also has its own agent card</td></tr><tr><td>&#8220;when two functions have to speak to each other, if they are dynamic, then they cannot be coded&#8221;</td><td>answered in section 5: the order of a conversation is code, its content is made by a step</td><td>proposed: typed edges held by Coordination (sheet A15)</td><td>no: functions exchange nothing</td><td>built: one board, bounded threads</td></tr><tr><td>&#8220;should we have a message board kind of structure? ... each engine is run by an agent&#8221;</td><td>one board per department; an agent for each engine</td><td>recorded 2026-09-20 (NAT-THREAD-1)</td><td>no</td><td>built, and on the department's screen</td></tr><tr><td>&#8220;Can we take standardized practice from the internet&#8221;</td><td>the acts and the states come from published standards</td><td>none</td><td>no</td><td>built: ten acts, seven thread states</td></tr><tr><td>&#8220;Make sure that everything has verifiable checks.&#8221;</td><td>every step names a check that can fail</td><td>ruled: a work-atom carries its check</td><td>partly: a check per engine</td><td>built: a definition with a step that names no check is refused</td></tr><tr><td>&#8220;There should just be a way to import it, and then the system can recognize it on its own.&#8221;</td><td>one way in; Identity recognises the kind</td><td>ruled: <a href="../products/cos/design-journeys.html">the five journeys</a></td><td>no: a goal box and an ask box</td><td>built: one box; five of five recognised in the walk</td></tr><tr><td>&#8220;How is it possible to do the work fast&#8221;</td><td>the items of one step run side by side</td><td>none</td><td>no: one call for every page</td><td>built: four at a time</td></tr><tr><td>&#8220;No need to release it right now. We can just first make sure it runs.&#8221;</td><td>behind a switch; run from source</td><td>none</td><td>not applicable</td><td>held: no tag, no release</td></tr></table>
+<div class="key"><strong>Where the first build left the ruling:</strong> it fixed each engine as model or code. The ruling of 2026-09-19 says no step is fixed; the rung is read from the record. The engine runtime puts the rung on the step and lets it move.</div>
+<h2 id="shape">2 &#183; One engine shape</h2>
+<svg viewBox="0 0 920 270" role="img" aria-label="Figure: one engine. A skeleton of code around steps, each on its own rung" style="width:100%;max-width:920px;background:#fff;border:1px solid #e5e7eb;border-radius:8px">
+<rect x="20" y="20" width="880" height="230" rx="10" fill="#f9fafb" stroke="#111827" stroke-width="1.5"/>
+<text x="36" y="44" font-size="13" font-weight="700" fill="#111827">The skeleton, in code</text>
+<text x="36" y="62" font-size="11.5" fill="#4b5563">start in its slot &#183; reads &#183; writes &#183; a row per step &#183; checkpoint &#183; envelope &#183; stop</text>
+<rect x="40" y="92" width="150" height="84" rx="8" fill="#fff" stroke="#047857" stroke-width="2"/>
+<text x="52" y="116" font-size="12.5" font-weight="600" fill="#111827">read the plan</text>
+<text x="52" y="134" font-size="11" fill="#6b7280">transform</text>
+<rect x="52" y="146" width="34" height="18" rx="9" fill="#047857"/><text x="69" y="159" font-size="11" fill="#fff" text-anchor="middle">C2</text>
+<line x1="190" y1="134" x2="210" y2="134" stroke="#9ca3af" stroke-width="1.5"/><polygon points="210,130 217,134 210,138" fill="#9ca3af"/>
+<rect x="216" y="92" width="150" height="84" rx="8" fill="#fff" stroke="#d97706" stroke-width="2"/>
+<text x="228" y="116" font-size="12.5" font-weight="600" fill="#111827">write a page</text>
+<text x="228" y="134" font-size="11" fill="#6b7280">make</text>
+<rect x="228" y="146" width="34" height="18" rx="9" fill="#d97706"/><text x="245" y="159" font-size="11" fill="#fff" text-anchor="middle">C0</text>
+<line x1="366" y1="134" x2="386" y2="134" stroke="#9ca3af" stroke-width="1.5"/><polygon points="386,130 393,134 386,138" fill="#9ca3af"/>
+<rect x="392" y="92" width="150" height="84" rx="8" fill="#fff" stroke="#d97706" stroke-width="2"/>
+<text x="404" y="116" font-size="12.5" font-weight="600" fill="#111827">write a page</text>
+<text x="404" y="134" font-size="11" fill="#6b7280">make</text>
+<rect x="404" y="146" width="34" height="18" rx="9" fill="#d97706"/><text x="421" y="159" font-size="11" fill="#fff" text-anchor="middle">C0</text>
+<line x1="542" y1="134" x2="562" y2="134" stroke="#9ca3af" stroke-width="1.5"/><polygon points="562,130 569,134 562,138" fill="#9ca3af"/>
+<rect x="568" y="92" width="150" height="84" rx="8" fill="#fff" stroke="#047857" stroke-width="2"/>
+<text x="580" y="116" font-size="12.5" font-weight="600" fill="#111827">assemble</text>
+<text x="580" y="134" font-size="11" fill="#6b7280">transform</text>
+<rect x="580" y="146" width="34" height="18" rx="9" fill="#047857"/><text x="597" y="159" font-size="11" fill="#fff" text-anchor="middle">C2</text>
+<line x1="718" y1="134" x2="738" y2="134" stroke="#9ca3af" stroke-width="1.5"/><polygon points="738,130 745,134 738,138" fill="#9ca3af"/>
+<rect x="744" y="92" width="150" height="84" rx="8" fill="#fff" stroke="#047857" stroke-width="2"/>
+<text x="756" y="116" font-size="12.5" font-weight="600" fill="#111827">check</text>
+<text x="756" y="134" font-size="11" fill="#6b7280">check</text>
+<rect x="756" y="146" width="34" height="18" rx="9" fill="#047857"/><text x="773" y="159" font-size="11" fill="#fff" text-anchor="middle">C2</text>
+<text x="36" y="206" font-size="11.5" fill="#4b5563">Each step: declared inputs, a closed output, a check, a rung. A step on C2 makes no model call.</text>
+<text x="36" y="226" font-size="11.5" fill="#4b5563">A miss on a rung sends that run one rung down. A run never climbs by itself.</text>
+<rect x="510" y="32" width="30" height="16" rx="8" fill="#6b7280"/><text x="525" y="44" font-size="10.5" fill="#fff" text-anchor="middle">P</text><text x="544" y="44" font-size="10.5" fill="#4b5563">Person</text>
+<rect x="604" y="32" width="30" height="16" rx="8" fill="#d97706"/><text x="619" y="44" font-size="10.5" fill="#fff" text-anchor="middle">C0</text><text x="638" y="44" font-size="10.5" fill="#4b5563">call</text>
+<rect x="682" y="32" width="30" height="16" rx="8" fill="#1d4ed8"/><text x="697" y="44" font-size="10.5" fill="#fff" text-anchor="middle">C1</text><text x="716" y="44" font-size="10.5" fill="#4b5563">checklist</text>
+<rect x="800" y="32" width="30" height="16" rx="8" fill="#047857"/><text x="815" y="44" font-size="10.5" fill="#fff" text-anchor="middle">C2</text><text x="834" y="44" font-size="10.5" fill="#4b5563">code</text>
+</svg>
+<p>The skeleton is the same for every engine and is always code: it starts the run in its slot, reads what the engine names, writes a new version, keeps a row per step, resumes at the first unfinished step, and stays inside the envelope. What differs from engine to engine is the list of steps.</p>
+<p>Three forms a step can take. The difference is who owns the loop. No engine is an agent: the skeleton is code and owns the loop; a step inside may use a model call, or an agent where it must look things up.</p>
+<table><tr><th>Form</th><th>What it is</th><th>Who owns the loop</th></tr><tr><td><b>Code</b></td><td>a function, or a table the runtime reads</td><td>the skeleton</td></tr><tr><td><b>Model call</b></td><td>one prompt in, one closed answer out, no tools</td><td>the skeleton</td></tr><tr><td><b>Agent</b></td><td>a model session with tools that works in several moves</td><td>the agent, inside a bound; it must end in one closed answer</td></tr></table>
+<table><tr><th>Unit</th><th>Code does</th><th>A model call does</th><th>An agent</th></tr><tr><td><b>a work engine that makes something</b> (a plan, a page, a report; shaped by Adaptation or offered by a template)</td><td>reads its input, fits and checks the result, files it</td><td>makes the thing</td><td>none now; later, when it must read outside the record</td></tr><tr><td><b>a work engine that only transforms</b> (assembles, copies, sends out)</td><td>everything</td><td>nothing</td><td>none</td></tr><tr><td><b>Identity</b></td><td>the rule gate; routes an ask</td><td>judges a request against the goal</td><td>its chat with the owner</td></tr><tr><td><b>Priority</b></td><td>the envelope arithmetic</td><td>ranks due work; answers a proposal</td><td>its chat</td></tr><tr><td><b>Coordination</b></td><td>slot, lock, chain, who may post to whom</td><td>nothing</td><td>its chat</td></tr><tr><td><b>Adaptation</b></td><td>counts from the rows; keeps the ladder</td><td>writes one proposal</td><td>reading outside the record; its chat</td></tr><tr><td><b>Audit</b></td><td>picks the sample; mechanical checks</td><td>judges a page against the brief</td><td>looking into a finding; its chat</td></tr></table>
+<h2 id="start">2b &#183; How an engine starts</h2>
+<p>The founder, 2026-09-28: &#8220;start is just a button&#8221;; an engine &#8220;needs a trigger to start. Either the trigger is external or internal&#8221;, and starts &#8220;unless it has a blocker&#8221;; once started each has &#8220;their own internal agency to do things. That's the definition of autonomous systems.&#8221; The rule by which one engine starts is its <b>activation</b>. It is the same for the four work engines and the five internal systems. A word on words, ruled the same day: inside, in documents and code, the five are internal systems; on the screen, for users, they are functions. Published practice has the same shape under other names: an event-condition-action rule; in BPMN, a start event of kind timer, message, signal or condition.</p>
+<svg viewBox="0 0 920 300" role="img" aria-label="Figure: one engine and its start. Triggers on the left; inside, activation, then its own steps; on the right, the three services every engine is given" style="width:100%;max-width:920px;background:#fff;border:1px solid #e5e7eb;border-radius:8px">
+<text x="24" y="34" font-size="12" font-weight="700" fill="#374151">TRIGGERS</text>
+<rect x="24" y="52" width="170" height="30" rx="15" fill="#fff" stroke="#9ca3af"/><text x="109" y="72" font-size="12" fill="#111827" text-anchor="middle">a new version</text>
+<line x1="194" y1="67" x2="246" y2="67" stroke="#9ca3af" stroke-width="1.5"/><polygon points="246,63 253,67 246,71" fill="#9ca3af"/>
+<rect x="24" y="96" width="170" height="30" rx="15" fill="#fff" stroke="#9ca3af"/><text x="109" y="116" font-size="12" fill="#111827" text-anchor="middle">a post addressed to it</text>
+<line x1="194" y1="111" x2="246" y2="111" stroke="#9ca3af" stroke-width="1.5"/><polygon points="246,107 253,111 246,115" fill="#9ca3af"/>
+<rect x="24" y="140" width="170" height="30" rx="15" fill="#fff" stroke="#9ca3af"/><text x="109" y="160" font-size="12" fill="#111827" text-anchor="middle">a time</text>
+<line x1="194" y1="155" x2="246" y2="155" stroke="#9ca3af" stroke-width="1.5"/><polygon points="246,151 253,155 246,159" fill="#9ca3af"/>
+<rect x="24" y="184" width="170" height="30" rx="15" fill="#fff" stroke="#9ca3af"/><text x="109" y="204" font-size="12" fill="#111827" text-anchor="middle">START</text>
+<line x1="194" y1="199" x2="246" y2="199" stroke="#9ca3af" stroke-width="1.5"/><polygon points="246,195 253,199 246,203" fill="#9ca3af"/>
+<rect x="256" y="24" width="640" height="212" rx="10" fill="#f9fafb" stroke="#111827" stroke-width="1.5"/>
+<text x="272" y="48" font-size="13" font-weight="700" fill="#111827">One engine, or one internal system</text>
+<rect x="272" y="66" width="190" height="150" rx="8" fill="#fff" stroke="#d97706" stroke-width="2"/>
+<text x="286" y="92" font-size="13" font-weight="700" fill="#111827">Activation</text>
+<text x="286" y="118" font-size="12" fill="#374151">on: its triggers</text><text x="286" y="138" font-size="12" fill="#374151">unless: its blockers</text>
+<rect x="482" y="66" width="170" height="150" rx="8" fill="#fff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="496" y="92" font-size="13" font-weight="700" fill="#111827">Its own steps</text>
+<text x="496" y="118" font-size="12" fill="#374151">each on its rung,</text><text x="496" y="138" font-size="12" fill="#374151">each with its check</text>
+<line x1="462" y1="141" x2="476" y2="141" stroke="#9ca3af" stroke-width="1.5"/><polygon points="476,137 482,141 476,145" fill="#9ca3af"/>
+<rect x="672" y="66" width="208" height="150" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+<text x="686" y="92" font-size="13" font-weight="700" fill="#065f46">Services, given to all</text>
+<text x="686" y="120" font-size="12" fill="#065f46">Record: its rows</text>
+<text x="686" y="144" font-size="12" fill="#065f46">Versions: what it made</text>
+<text x="686" y="168" font-size="12" fill="#065f46">Runtime: start, stop, a timer</text>
+<text x="24" y="262" font-size="12" fill="#4b5563">Start is a signal to all nine. Each looks to its own triggers. One with a live trigger and no blocker runs.</text>
+<text x="24" y="282" font-size="12" fill="#4b5563">What it files is the next one's trigger. Nothing above an engine tells it to run. Stop is the same signal, off.</text>
+</svg>
+<table><tr><th>Word</th><th>Means</th><th>In the founder's words</th><th>Here</th></tr><tr><td><b>Trigger</b></td><td>what makes an engine want to run</td><td>&#8220;external or internal&#8221;</td><td>a new version of what it reads; a post addressed to it; a time</td></tr><tr><td><b>Blocker</b></td><td>what holds a start</td><td>&#8220;unless it has a blocker&#8221;</td><td>a gate of an internal system, named by the engine</td></tr><tr><td><b>Run</b></td><td>its own steps</td><td>&#8220;they just work and go about it&#8221;</td><td>section 3</td></tr></table>
+<p>The nine, each by its own start. This table is the definitions file, read out; no line of code holds it.</p>
+<table><tr><th>Engine</th><th>Starts on</th><th>Unless</th></tr><tr><td><b>a work engine</b></td><td>a new version of what it reads; where it sends out, a version that passed its check</td><td>Identity's gate, Priority's envelope, Coordination's chain limit</td></tr><tr><td><b>Identity</b></td><td>a post addressed to it</td><td>nothing</td></tr><tr><td><b>Priority</b></td><td>a post addressed to it</td><td>nothing</td></tr><tr><td><b>Coordination</b></td><td>a post addressed to it</td><td>nothing</td></tr><tr><td><b>Adaptation</b></td><td>a post addressed to it; a new version of the kind's last artifact that passed its check</td><td>nothing</td></tr><tr><td><b>Audit</b></td><td>a new version of the kind's last artifact that passed its check</td><td>nothing</td></tr></table>
+<div class="key"><strong>Start and Stop are one button.</strong> It sits at the top of the department's Map, beside On or Off. Stop holds every engine, whatever its trigger; a run already going finishes. Start lets each look to its own triggers again.</div>
+<h3 style="font-size:15px;margin:18px 0 4px">What engines share is Coordination's</h3>
+<p>Coordination tells no engine to start. It keeps only what two engines can collide on, as its own steps on the code rung, each decision a row. Its table, who goes first and who may post to whom, is written at the department's birth and kept on the department's record.</p>
+<table><tr><th>Coordination's rule</th><th>Decides</th></tr><tr><td><b>Keep one run at a time</b></td><td>admit, or wait</td></tr><tr><td><b>Say who goes first, when several are ready</b></td><td>an engine, by its table</td></tr><tr><td><b>Say who may post what to whom</b></td><td>admit, or refuse, by its table</td></tr><tr><td><b>Ask an internal system for its verdict</b></td><td>a post</td></tr><tr><td><b>Stop a chain at its limit</b></td><td>admit, or wait</td></tr><tr><td><b>Close a thread at its bound</b></td><td>the outcome the thread named</td></tr><tr><td><b>Raise an alarm for a run past its window</b></td><td>a post to Identity, and an ask</td></tr></table>
+<h3 style="font-size:15px;margin:18px 0 4px">What every engine is given</h3>
+<table><tr><th>Service</th><th>Gives the engine</th><th>State</th></tr><tr><td><b>Record</b></td><td>a row for every step and every decision</td><td>built</td></tr><tr><td><b>Versions</b></td><td>each thing it makes, as a new version, with what it was made from</td><td>built</td></tr><tr><td><b>Runtime</b></td><td>start and stop, its triggers, its blockers, a timer from the system clock</td><td>built; the three are one module still</td></tr></table>
+<h3 style="font-size:15px;margin:18px 0 4px">How every engine comes to start the same way</h3>
+<table><tr><th>Means</th><th>Effect</th></tr><tr><td><b>One definition format</b></td><td>each engine states its triggers and blockers as data</td></tr><tr><td><b>Refusal at load</b></td><td>an engine with no start, a trigger of no known kind, or a blocker that is no gate refuses the whole definition</td></tr><tr><td><b>One piece of code</b></td><td>the same check reads every start; a test fails if an engine's name appears in it</td></tr><tr><td><b>One test over every engine</b></td><td>a new engine cannot skip it</td></tr></table>
+<p class="note">No engine waits on a clock. A post, a finished run and the button wake the app at once. Measured from source with the model off, 2026-09-28: goal to the first ask 0.07 s over four runs; Start to a new live version 0.16 s over seven; while stopped, a request sat 4 s and nothing started. The tick remains, every 3 s, as the system clock for timers and as the way a trigger written by another process is found.</p>
+<h2 id="inside">3 &#183; The inside: steps on rungs</h2>
+<p>The rungs are canon's, from <a href="../platform/crystallization.html">crystallization</a>. The fifth, product part, moves by release and is not a run-time rung.</p>
+<table><tr><th>Rung</th><th>Name</th><th>Who does the step</th><th>At run time</th></tr><tr><td><span style="display:inline-block;padding:0 6px;border-radius:9px;font-size:11px;color:#fff;background:#6b7280">P</span></td><td><b>Person</b></td><td>a person, by hand</td><td>files an ask and waits</td></tr><tr><td><span style="display:inline-block;padding:0 6px;border-radius:9px;font-size:11px;color:#fff;background:#d97706">C0</span></td><td><b>Improvised call</b></td><td>a model, given the goal and the inputs</td><td>one model call; the answer must fit the step's schema</td></tr><tr><td><span style="display:inline-block;padding:0 6px;border-radius:9px;font-size:11px;color:#fff;background:#1d4ed8">C1</span></td><td><b>Checklist</b></td><td>a model, given a written procedure from earlier runs</td><td>one model call, with the checklist</td></tr><tr><td><span style="display:inline-block;padding:0 6px;border-radius:9px;font-size:11px;color:#fff;background:#047857">C2</span></td><td><b>Code</b></td><td>a program; no model</td><td>a table the runtime reads, or a function that ships with the app</td></tr></table>
+<p>How far a step can climb depends on its nature.</p>
+<table><tr><th>Nature</th><th>What it does</th><th>Born on</th><th>Can reach</th></tr><tr><td><b>transform</b></td><td>same in, same out by construction: parse, assemble, copy</td><td>C2</td><td>C2</td></tr><tr><td><b>check</b></td><td>tests an output against a rule</td><td>C2 when mechanical, C0 when a judgment</td><td>C2; a judgment stays soft</td></tr><tr><td><b>decide</b></td><td>picks one of a closed set: route, rank, gate</td><td>C0, or C2 when a rule exists</td><td>C2, as a table</td></tr><tr><td><b>make</b></td><td>writes something new: a plan, a page, a proposal</td><td>C0</td><td>C1; it fails the determinism gate by nature</td></tr></table>
+<h2 id="box">3a &#183; The box: a covering of code, an inside of AI <span style="font-size:11px;color:#166534">RULED 2026-09-30 (S-22, S-23)</span></h2>
+<p>The founder's shape for crystallization, ruled 2026-09-30: every engine, and every function (a function is an engine), is a black box. The covering is code and does the bookkeeping; the inside is AI and does the thinking. The same shape holds at two levels: an engine is a box whose inside is a row of step boxes. At the start every inside is AI only; a box climbs the ladder to code one step at a time, as its rows earn it. Sections 3 and 4 below are read through this: a rung is the inside of one step box; a gate is covering, never an inside.</p>
+<svg viewBox="0 0 920 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The box at two levels: an engine box whose inside is a row of step boxes; coverings are code, insides are AI">
+<style>.bx{font:11px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;fill:#111827}.bh{font:12px -apple-system,sans-serif;fill:#111827;font-weight:700}.bm{font:10px -apple-system,sans-serif;fill:#6b7280}.bc{font:10px -apple-system,sans-serif;fill:#047857;font-weight:700}.ba{font:10px -apple-system,sans-serif;fill:#d97706;font-weight:700}</style>
+<defs><marker id="bxah" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111827"/></marker></defs>
+<rect x="60" y="20" width="800" height="290" rx="10" fill="#f9fafb" stroke="#111827" stroke-width="1.4"/>
+<text class="bh" x="76" y="42">ENGINE BOX (an engine Adaptation shaped, or Identity)</text>
+<rect x="76" y="52" width="768" height="46" rx="6" fill="#ecfdf5" stroke="#047857"/>
+<text class="bc" x="88" y="70">COVERING, code</text>
+<text class="bx" x="88" y="88">trigger (a new version it reads, a post, a timer) &#183; blockers (the gates) &#183; the input, typed</text>
+<text class="bm" x="76" y="122">INSIDE = the workflow: step boxes in a row (S-11: a workflow with many runs is an engine)</text>
+<g>
+<rect x="76" y="132" width="176" height="96" rx="6" fill="#fff" stroke="#111827"/><rect x="82" y="138" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="88" y="150">cover: read input, code</text>
+<rect x="82" y="160" width="164" height="38" rx="3" fill="#fffbeb"/><text class="ba" x="88" y="175">inside: F, AI with a prompt</text><text class="bm" x="88" y="190">born here (S-22)</text>
+<rect x="82" y="204" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="88" y="216">cover: check, row, hand on</text>
+<text class="bm" x="76" y="244">read</text>
+</g>
+<line x1="252" y1="180" x2="270" y2="180" stroke="#111827" marker-end="url(#bxah)"/>
+<g>
+<rect x="272" y="132" width="176" height="96" rx="6" fill="#fff" stroke="#111827"/><rect x="278" y="138" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="284" y="150">cover: read input, code</text>
+<rect x="278" y="160" width="164" height="38" rx="3" fill="#fffbeb"/><text class="ba" x="284" y="175">inside: F, AI with a prompt</text><text class="bm" x="284" y="190">born here</text>
+<rect x="278" y="204" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="284" y="216">cover: check, row, hand on</text>
+<text class="bm" x="272" y="244">make</text>
+</g>
+<line x1="448" y1="180" x2="466" y2="180" stroke="#111827" marker-end="url(#bxah)"/>
+<g>
+<rect x="468" y="132" width="176" height="96" rx="6" fill="#fff" stroke="#111827"/><rect x="474" y="138" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="480" y="150">cover: read input, code</text>
+<rect x="474" y="160" width="164" height="38" rx="3" fill="#fffbeb"/><text class="ba" x="480" y="175">inside: A, AI with the code</text><text class="bm" x="480" y="190">later, when rows earn it</text>
+<rect x="474" y="204" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="480" y="216">cover: check, row, hand on</text>
+<text class="bm" x="468" y="244">fit</text>
+</g>
+<line x1="644" y1="180" x2="662" y2="180" stroke="#111827" marker-end="url(#bxah)"/>
+<g>
+<rect x="664" y="132" width="176" height="96" rx="6" fill="#fff" stroke="#111827"/><rect x="670" y="138" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="676" y="150">cover: read input, code</text>
+<rect x="670" y="160" width="164" height="38" rx="3" fill="#ecfdf5"/><text class="bc" x="676" y="175">inside: C, code we wrote</text><text class="bm" x="676" y="190">the top of the ladder</text>
+<rect x="670" y="204" width="164" height="16" rx="3" fill="#ecfdf5"/><text class="bc" x="676" y="216">cover: check, row, hand on</text>
+<text class="bm" x="664" y="244">file</text>
+</g>
+<rect x="76" y="256" width="768" height="42" rx="6" fill="#ecfdf5" stroke="#047857"/>
+<text class="bc" x="88" y="273">COVERING, code</text>
+<text class="bx" x="88" y="290">the check on what it made &#183; the version it files &#183; the run row (which insides ran, cost, deviations) &#183; the tell</text>
+<text class="bm" x="60" y="325">a person enters only through the covering: a failed check, or a rule that says ask (S-18)</text>
+</svg>
+<p class="figcap">The box at two levels. Green is code, the covering; amber is AI, the inside. The four step boxes show the ladder: F (AI with a prompt, where every step is born), A (AI holding the box's code, later), C (code, the top).</p>
+<table><tr><th></th><th>Engine box</th><th>Step box</th></tr>
+<tr><td>input</td><td>what it reads (an artifact version, a post), its trigger and blockers</td><td>what the step before handed it, typed</td></tr>
+<tr><td>inside</td><td>the row of step boxes: the workflow</td><td>one of F (AI with a prompt), A (AI with the code), C (code)</td></tr>
+<tr><td>output</td><td>the version it files, with the check</td><td>the value handed to the next step</td></tr>
+<tr><td>check</td><td>the artifact's check, from its template</td><td>the step's own check (fits, names a ref, the list is complete)</td></tr>
+<tr><td>row</td><td>the run row</td><td>the step row</td></tr>
+<tr><td>setting</td><td>who may change the workflow (add, swap, drop a step): FIXED for what the covering needs, Adaptation for the rest</td><td>the inside F / A / C, and who may move it</td></tr>
+<tr><td>first and last</td><td>always code (read, file): founder 2026-09-28</td><td>the covering is code by definition</td></tr></table>
+<h3 id="box-rules">The five rules</h3>
+<table><tr><th>#</th><th>Rule</th><th>Why</th></tr>
+<tr><td>1</td><td>The covering never changes hands: input typing, the check and the row are code, whoever runs the inside.</td><td>the record's invariants hold whatever the inside does</td></tr>
+<tr><td>2</td><td>Each step box has a setting: its inside (F / A / C) and who may move it. The setting is data on the skeleton, not code.</td><td>the setting is the crystallization</td></tr>
+<tr><td>3</td><td>Born AI only: every step box starts F. Nothing deterministic lives in an inside; the gates, the spend count, the sample pick, the checks, the filing and the triggers are covering.</td><td>S-09, S-22</td></tr>
+<tr><td>4</td><td>The ladder goes F to A to C, never skipping: F runs repeat and pass, Adaptation drafts the code, A trials it (the model may still deviate and says why), when deviations stop the box goes C; a failed check moves it back one.</td><td>crystallization is earned by rows, not declared</td></tr>
+<tr><td>5</td><td>A person enters only through the covering: a failed check, or a rule tagged ask.</td><td>S-18</td></tr></table>
+<h3 id="box-organic">What organic starts with</h3>
+<table><tr><th>Now (the MVP, the organic kind)</th><th>Later</th></tr>
+<tr><td>every step box is F; the covering as built (first and last step by code, the check, the row); the setting written on the skeleton</td><td>the A inside: the model holding the box's code</td></tr>
+<tr><td>the coverings hold everything deterministic: gates, money counting, sampling, the record's writes, transport</td><td>Adaptation drafting code for a box, the F to A move</td></tr>
+<tr><td>the row records which inside ran</td><td>confidence on the row and its threshold (S-17)</td></tr></table>
+<p class="note">Against sections 3 and 4 below: the rung C1 (checklist) folds into F, a prompt is a prompt (founder 2026-09-30); the "code from birth" expectations in section 4's table are coverings under this design, not insides; the three inputs of section 4 (determinism, frequency, stringency) stay the test for a move up the ladder. The component in six parts: type = a step with a covering and an inside; contract = rule 1; growth law = rule 4; record = the row and the setting; surface = the step on the function's first tab with its F / A / C mark; proof = a box whose inside is swapped F to C gives the same output on the same input, and a malformed inside is refused by the covering.</p>
+
+<h2 id="when">4 &#183; When a step becomes code</h2>
+<p>Never the function; a step of it. Three things must hold, which are canon's three inputs. When all three hold, the next rung runs beside the current one as a trial, Adaptation proposes the move with the numbers, and the owner stamps it. When variance rises again, the step moves down one rung with no stamp.</p>
+<table><tr><th>Input</th><th>Holds when</th><th>Read from</th></tr><tr><td><b>Determinism, the gate</b></td><td>the answer is one of a closed set, and the same input gave the same answer</td><td>step rows: outputs that differ, per input</td></tr><tr><td><b>Frequency, the trigger</b></td><td>it runs often enough that a call each time costs more than hardening it</td><td>step rows: count, cost</td></tr><tr><td><b>Stringency, the care</b></td><td>the proof the charter asks for at that step's risk is in hand</td><td>the charter; the trial's agreement</td></tr></table>
+<p>The five functions, read by the nature of their steps. These are expectations; canon says where a step lands is read off the record.</p>
+<table><tr><th>Function</th><th>Its gate steps</th><th>Its slot steps</th><th>Expected</th></tr><tr><td><b>Coordination</b></td><td>in progress, lock, chain, who may post to whom</td><td>carry an alarm</td><td>code from birth</td></tr><tr><td><b>Priority</b></td><td>the envelope</td><td>rank the due slots; answer a proposal</td><td>code, except ranking and the bargain, which harden into a table</td></tr><tr><td><b>Identity</b></td><td>the rules: go, ask, refuse</td><td>judge a request against the goal; close an exchange sent to it</td><td>the gate is code; judging starts soft and hardens as the same asks return</td></tr><tr><td><b>Adaptation</b></td><td>none</td><td>count from the rows; keep the ladder; write one proposal</td><td>counting and the ladder are code; writing a proposal stays soft</td></tr><tr><td><b>Audit</b></td><td>none</td><td>pick what to sample; mechanical checks; judge a page against the brief</td><td>picking and mechanical checks are code; judgment stays soft</td></tr></table>
+<p class="note">A gate is asked on every admission, inside the motor's tick, so it must be on the code rung. A gate that is not answers &#8220;wait&#8221; and runs in a slot of its own. A model call never sits inside a tick.</p>
+<h2 id="talk">5 &#183; How two functions speak</h2>
+<p>The founder's open question, and his answer to it: a message board. One board per department, kept as a record. It is the shared thread recorded on 2026-09-20 (NAT-THREAD-1), not a group chat: a post names who it is for and wakes only them; nothing is broadcast. Each engine has its own agent, its soft side, and agents never speak to each other directly.</p>
+<table><tr><th>Question</th><th>Answer</th></tr><tr><td><b>Where do engines speak?</b></td><td>on the department's one board, an append-only record; an inbox is the posts addressed to one engine</td></tr><tr><td><b>Does each engine have its own agent?</b></td><td>yes, one each: a card that says who it is, its skills, the department's rules and, for a function, the template it runs; a code step does not use it</td></tr><tr><td><b>Do agents talk to each other directly?</b></td><td>never: an engine posts, the post names who it is for, only that engine is woken</td></tr><tr><td><b>What does the woken engine do?</b></td><td>runs one step: code if it has a rule for that kind of post, its agent if not; then posts its answer in the same thread</td></tr><tr><td><b>What stops a runaway?</b></td><td>four hops, a time limit, a spend limit, one decider per thread, and the outcome that holds when a limit is hit</td></tr><tr><td><b>Where is the owner?</b></td><td>reads the whole board; speaks through the one box; stamps and refuses; the owner's posts always pass. Pause and mute are not built</td></tr></table>
+<p>An exchange has three parts, and only one of them is dynamic.</p>
+<table><tr><th>Part</th><th>What it is</th><th>Coded</th></tr><tr><td><b>The wiring</b></td><td>who may post what to whom</td><td>yes: a table Coordination holds</td></tr><tr><td><b>The envelope</b></td><td>kind, from, to, about what, round, deadline</td><td>yes: a schema the runtime fills</td></tr><tr><td><b>The content</b></td><td>what is proposed, answered, found</td><td>by the step that makes it, on whatever rung it has</td></tr></table>
+<svg viewBox="0 0 920 250" role="img" aria-label="Figure: two functions speak. Each posts a message into the other's inbox; the motor wakes the reader; the exchange is bounded" style="width:100%;max-width:920px;background:#fff;border:1px solid #e5e7eb;border-radius:8px">
+<rect x="40" y="40" width="240" height="120" rx="10" fill="#f9fafb" stroke="#111827" stroke-width="1.5"/>
+<text x="56" y="66" font-size="13" font-weight="700" fill="#111827">Adaptation</text>
+<text x="56" y="86" font-size="11.5" fill="#4b5563">writes a proposal</text>
+<rect x="56" y="104" width="208" height="40" rx="6" fill="#fff" stroke="#9ca3af"/><text x="68" y="129" font-size="11.5" fill="#374151">its agent, for a soft step only</text>
+<rect x="640" y="40" width="240" height="120" rx="10" fill="#f9fafb" stroke="#111827" stroke-width="1.5"/>
+<text x="656" y="66" font-size="13" font-weight="700" fill="#111827">Priority</text>
+<text x="656" y="86" font-size="11.5" fill="#4b5563">answers: grant, refuse, counter</text>
+<rect x="656" y="104" width="208" height="40" rx="6" fill="#fff" stroke="#9ca3af"/><text x="668" y="129" font-size="11.5" fill="#374151">its agent, for a soft step only</text>
+<rect x="320" y="30" width="280" height="140" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="336" y="54" font-size="13" font-weight="700" fill="#1e3a8a">The board, one per department</text>
+<text x="336" y="78" font-size="11.5" fill="#1d4ed8">1  Adaptation to Priority: proposal</text>
+<text x="336" y="98" font-size="11.5" fill="#047857">2  Priority to Adaptation: counter</text>
+<text x="336" y="118" font-size="11.5" fill="#1d4ed8">3  Adaptation to Priority: accept</text>
+<text x="336" y="138" font-size="11.5" fill="#047857">4  Priority to Adaptation: grant</text>
+<line x1="280" y1="100" x2="320" y2="100" stroke="#1d4ed8" stroke-width="1.5"/><polygon points="320,100 312,96 312,104" fill="#1d4ed8"/>
+<line x1="640" y1="100" x2="600" y2="100" stroke="#047857" stroke-width="1.5"/><polygon points="600,100 608,96 608,104" fill="#047857"/>
+<rect x="320" y="184" width="280" height="52" rx="8" fill="#fffbeb" stroke="#d97706"/>
+<text x="334" y="205" font-size="12" font-weight="600" fill="#92400e">The thread, bounded</text>
+<text x="334" y="224" font-size="11.5" fill="#92400e">4 hops &#183; 15 minutes &#183; its spend &#183; default: refuse</text>
+<text x="40" y="198" font-size="11.5" fill="#4b5563">No engine calls another.</text>
+<text x="40" y="216" font-size="11.5" fill="#4b5563">A post wakes only those it names.</text>
+<text x="640" y="198" font-size="11.5" fill="#4b5563">The owner reads the whole board,</text>
+<text x="640" y="216" font-size="11.5" fill="#4b5563">and speaks through one box.</text>
+</svg>
+<table><tr><th>Message</th><th>From, to</th><th>In 2.306.0</th><th>On the engine runtime</th></tr><tr><td><b>request</b></td><td>the owner to Identity</td><td>yes, as the goal and the ask</td><td>built</td></tr><tr><td><b>verdict</b></td><td>Identity to anyone</td><td>as a check in code</td><td>built</td></tr><tr><td><b>ask, stamp</b></td><td>Identity to the owner, and back</td><td>yes</td><td>built: a stamp is a post in the ask's own thread</td></tr><tr><td><b>proposal</b></td><td>Adaptation to Priority or Identity</td><td>no</td><td>built</td></tr><tr><td><b>grant, refuse, counter</b></td><td>Priority to Adaptation or an engine</td><td>no</td><td>built</td></tr><tr><td><b>finding</b></td><td>Audit to Identity</td><td>no</td><td>built; walked: two findings caught</td></tr><tr><td><b>alarm</b></td><td>any engine to Identity, carried by Coordination</td><td>the window is recorded; nothing fires</td><td>built</td></tr><tr><td><b>hand-off</b></td><td>Coordination to an engine</td><td>as the slot rule</td><td>kept as the slot rule</td></tr></table>
+<div class="key"><strong>An edge hardens like a step.</strong> An exchange that ends the same way each time becomes a default, then a row in a table with no exchange at all. Canon names the four kinds of edge (observed, suggested, default, hardwired); that sheet is proposed, not ruled.</div>
+<h3 style="font-size:15px;margin:18px 0 4px">Standard practice, and what the board takes from it</h3>
+<p>The founder asked to use what others have published. Read on 2026-09-28; the full table, with what is not taken and why, is <code>holding/plans/engine-runtime/RESEARCH-agent-communication.md</code>.</p>
+<table><tr><th>Taken</th><th>From</th><th>Becomes</th></tr><tr><td><b>The acts of a message</b></td><td><a href="https://www.fipa.org/specs/fipa00029/XC00029G.html">FIPA</a></td><td>ten acts: request, agree, refuse, propose, accept-proposal, reject-proposal, inform, failure, not-understood, cancel</td></tr><tr><td><b>A conversation is a protocol</b></td><td><a href="http://www.fipa.org/specs/fipa00036/SC00036H.html">FIPA</a></td><td>a thread names its protocol: request, propose, or contract net; each is a small state machine</td></tr><tr><td><b>The states of a task</b></td><td><a href="https://a2a-protocol.org/latest/specification/">A2A 1.0.0</a></td><td>a thread is submitted, working, input-required, completed, failed, canceled or rejected</td></tr><tr><td><b>A card that says what an agent can do</b></td><td><a href="https://a2a-protocol.org/latest/specification/">A2A 1.0.0</a></td><td>an engine's definition carries a name, a description and its skills</td></tr><tr><td><b>Board, sources, control unit</b></td><td><a href="https://arxiv.org/abs/2507.01701">blackboard architecture</a></td><td>the board; the engines; the motor with Coordination's table</td></tr><tr><td><b>One owner of the transcript and of the ending</b></td><td><a href="https://www.agentpatternscatalog.org/patterns/group-chat-manager/">group-chat manager</a></td><td>the runtime owns the board; a thread ends by a hop cap, a time cap, a spend cap or a closing act</td></tr><tr><td><b>What a request must carry; references, not copies</b></td><td><a href="https://www.anthropic.com/engineering/multi-agent-research-system">Anthropic</a></td><td>objective, output format, what may be read, boundaries; a post points at a version and never carries the work</td></tr></table>
+<div class="key"><strong>Why a dynamic exchange can be coded:</strong> a conversation is a protocol, a fixed order of acts. Request: request, then agree or refuse, then inform or failure. Propose: propose, then accept or reject. The content of each act is made by a step, on whatever rung it has; the order is code.</div>
+<h2 id="person">5b &#183; How a person speaks to a department</h2>
+<p>One box. The owner never sorts his own words: Identity's first soft step recognises which of the <a href="../products/cos/design-journeys.html">five journeys</a> they are, and each journey has its own steps after that. A new goal is a directive on the goal line. Words that are none of the five go back to the owner as one question. Besides the box, a person has four more acts, all on the department's screen: stamp or refuse an ask, hold a step on its rung, stop or resume the department, and read the Board.</p>
+<table><tr><th>Journey</th><th>The words typed in the walk</th><th>What the department did</th><th>What came back</th></tr><tr><td><b>Task</b></td><td>&#8220;Add a Careers page for nurses and doctors who want to join the hospital.&#8221;</td><td>judged against the goal; filed in the Brief; the line ran</td><td>live at its fourth version, 177 s after the words; no stamp</td></tr><tr><td><b>Query</b></td><td>&#8220;Which page tells a patient how to book a visit?&#8221;</td><td>answered from the record; nothing filed</td><td>The &#8220;Book a Visit&#8221; page, 48 s</td></tr><tr><td><b>Directive</b></td><td>&#8220;From now on, every page must end with a line telling readers to call the front desk to confirm details.&#8221;</td><td>restated as a tagged rule and put back; kept only on a stamp</td><td>the rule as understood, 36 s; stamped; all seven pages obey it</td></tr><tr><td><b>Feedback</b></td><td>&#8220;The Careers page is too long. Make it shorter and plainer.&#8221;</td><td>a correction now; a mark against the step that made the page; one ask whether it should hold from now on</td><td>Careers went from 236 words to 120; the carry-forward was refused, and no rule was added</td></tr><tr><td><b>New idea</b></td><td>&#8220;What if patients could see their test results online someday?&#8221;</td><td>Identity to Adaptation; shaped, and parked; nothing built</td><td>the idea reflected back, one question, three shapes, 40 s</td></tr></table>
+<div class="key"><strong>Why a directive and lasting feedback are always put back:</strong> a wrong recognition would send words down the wrong path. What would change how the department works from now on is restated in the department's own words and kept only on a stamp.</div>
+<h2 id="edges">6 &#183; The edge cases</h2>
+<p>Ten of the twenty in the low-level design, each with the test that exists in <code>test_engine_runtime.py</code>. Seven of the twenty have no test yet; the low-level design names them.</p>
+<table><tr><th>Case</th><th>What happens</th><th>Test</th></tr><tr><td><b>The model is away</b></td><td>soft steps wait, then ask the owner; code steps keep running</td><td>test_11</td></tr><tr><td><b>A code step has no rule for the input</b></td><td>that run goes down one rung; the miss is counted; nothing is guessed</td><td>test_23</td></tr><tr><td><b>The app closes in the middle of a step</b></td><td>that step runs again; finished steps do not</td><td>test_08</td></tr><tr><td><b>Two functions each wait for the other</b></td><td>the time bound closes the thread with its default outcome</td><td>test_17</td></tr><tr><td><b>Messages bounce</b></td><td>the hop bound closes the thread</td><td>test_16</td></tr><tr><td><b>A gate has stepped down</b></td><td>admissions wait; past the autonomy window, an alarm; the owner may hold the gate on code</td><td>test_27, test_31</td></tr><tr><td><b>A table is changed by hand</b></td><td>its hash no longer matches; the step runs a rung lower</td><td>test_24</td></tr><tr><td><b>The record names a function this app does not have</b></td><td>the whole definition is refused before anything runs</td><td>test_01</td></tr><tr><td><b>A stamp arrives after the evidence changed</b></td><td>designed: the stamp names the evidence; a mismatch proposes again</td><td>no test yet</td></tr><tr><td><b>One item of a fan-out fails</b></td><td>the others keep their rows; only the failed item runs again</td><td>test_10</td></tr></table>
+<h2 id="gap">7 &#183; Built, against this design</h2>
+<p>Two columns of built code. The first is in the released app. The second is on <code>main</code> behind a switch that no released launcher sets: a department runs on it only if it was founded while the app was started with the switch on.</p>
+<table><tr><th>This design</th><th>In 2.306.0, released</th><th>On the engine runtime, not released</th></tr><tr><td><b>One skeleton for all nine engines</b></td><td>four work engines share one path; the five functions are checks in one function</td><td>built (test_03)</td></tr><tr><td><b>Steps inside an engine</b></td><td>an engine is one call</td><td>built (test_04)</td></tr><tr><td><b>A rung on each step, none fixed</b></td><td>model or code, fixed per engine</td><td>built (test_04, test_32); on the screen as four pips and the rung's name</td></tr><tr><td><b>A row per step run</b></td><td>a row per engine run</td><td>built (test_04)</td></tr><tr><td><b>Resume at the first unfinished step</b></td><td>a cut run runs again whole</td><td>built (test_08)</td></tr><tr><td><b>Promotion by evidence and a stamp; step-down without one</b></td><td>nothing moves</td><td>built (test_20 to test_26); not seen in the walk</td></tr><tr><td><b>One board, posts, bounded threads</b></td><td>none; the five function chats exist, each alone</td><td>built (test_13 to test_19); on the screen as Board</td></tr><tr><td><b>Every step names a check</b></td><td>a check per engine</td><td>built (test_01, test_02)</td></tr><tr><td><b>One way in; five journeys</b></td><td>a goal box and an ask box</td><td>built (test_34 to test_43); walked, five of five</td></tr><tr><td><b>Items of a step side by side</b></td><td>one call for every page</td><td>built (test_09)</td></tr><tr><td><b>Adaptation and Audit running</b></td><td>shown paused, by the pause on growth</td><td>built, and awake in a runtime department only; the pause on growth is the founder's to lift</td></tr><tr><td><b>Every engine names its start; one piece of code reads it</b></td><td>the start of each engine is inside one function</td><td>built (test_44, test_45); on each card as Starts</td></tr><tr><td><b>Start and Stop, one button</b></td><td>Stop and Resume, low on the screen</td><td>built (test_46); at the top of the Map</td></tr><tr><td><b>What engines share is Coordination's, with its table on the record</b></td><td>in code</td><td>built (test_48, test_49); on Coordination's card</td></tr><tr><td><b>A trigger delivered when it happens</b></td><td>a look every 3 s</td><td>built (test_51); measured 0.07 s</td></tr><tr><td><b>A time as a trigger</b></td><td>none</td><td>built (test_50); no engine uses one yet</td></tr><tr><td><b>A step that looks things up, as a bounded agent</b></td><td>none</td><td>designed only</td></tr><tr><td><b>Pause and mute on the Board; a Model line in Health; the Trace down to a step</b></td><td>none</td><td>not built</td></tr><tr><td><b>Envelope, chain brake, one run per slot, one motor per home</b></td><td>built</td><td>kept; the first build's suites are unchanged</td></tr></table>
+<h2 id="walk">8 &#183; What the walk showed</h2>
+<p>Walked from source on a throwaway record with the real model, 2026-09-28, 03:20 to 04:27 IST. The walk of record, step by step, is <code>holding/plans/website-department/WALK.md</code> section 6.</p>
+<table><tr><th>Measure</th><th>Reading</th></tr><tr><td><b>Goal to the first ask</b></td><td>112 s; Plan, Write and Check ran alone; Write wrote six pages side by side</td></tr><tr><td><b>Stamps asked for</b></td><td>one to publish; later versions went live by rule</td></tr><tr><td><b>What Audit caught</b></td><td>opening hours nobody gave, twice, on the Emergency page; each was put to the owner with the page it is on</td></tr><tr><td><b>After the writer was told to state no fact nobody gave</b></td><td>Audit judged the third and the sixth live versions and found nothing; two judged versions are not proof</td></tr><tr><td><b>Journeys recognised</b></td><td>five of five</td></tr><tr><td><b>Model calls</b></td><td>58; median 37.9 s; nine in ten under 50.2 s; two took 267 s and 301 s</td></tr><tr><td><b>Spend</b></td><td>8.81 USD for 54 runs; about 0.14 USD a call; Write spent 5.85 of its 6.00 USD a day</td></tr><tr><td><b>Reads</b></td><td>Map 8 ms, Board 2 ms, an engine's steps 3 to 5 ms, with 255 step rows on the record</td></tr><tr><td><b>A rung that moved</b></td><td>none: Write a page reached 39 of the 40 runs it needs</td></tr></table>
+<h3 style="font-size:15px;margin:18px 0 4px">The six slices, as they were built</h3>
+<p>All six are built, in one unit, behind the switch. A department of the first build runs on the built path, unchanged. The hours were estimates made before the build.</p>
+<table><tr><th>#</th><th>Slice</th><th>Impact (who, what changes)</th><th>Effort</th><th>Ends if</th></tr><tr><td>1</td><td><b>Step rows and resume for the four work engines; Write per page</b></td><td>the owner loses one page, not ten, to a closed app; evidence starts</td><td>3 h, 3 files</td><td>a resumed run repeats a finished step</td></tr><tr><td>2</td><td><b>Definitions as data; a rung on each step; the engine card shows steps</b></td><td>the owner sees what each engine is made of</td><td>3 h, 4 files</td><td>a card shows a rung the row did not run on</td></tr><tr><td>3</td><td><b>The five functions as engines, gate mode</b></td><td>builders get one skeleton</td><td>3 h, 3 files</td><td>any of the 29 named tests changes</td></tr><tr><td>4</td><td><b>The board, posts, bounded threads; also slices 1 and 2 of NAT-THREAD-1</b></td><td>functions can disagree in the open; the owner watches one board</td><td>4 h, 4 files</td><td>a thread open past its bound, or a post that woke an engine it did not name</td></tr><tr><td>5</td><td><b>The ladder keeper, the trial, the table interpreter</b></td><td>steps harden and soften by evidence</td><td>6 h, 5 files</td><td>a promotion with no trial behind it</td></tr><tr><td>6</td><td><b>Adaptation's and Audit's first slot steps</b></td><td>the department proposes and checks itself</td><td>4 h, 4 files</td><td>needs the founder to lift the pause on growth</td></tr></table>
+<p class="note">Measured on a throwaway record, 2026-09-28: an idle tick of the motor costs 4.0 ms at 10 departments and 42.7 ms at 100; one department's Map read stays at 2.7 ms.</p>
+<h2 id="harder">9 &#183; What this makes harder</h2>
+<table><tr><th>Harder</th><th>Why</th></tr><tr><td><b>Reading a department</b></td><td>nine engines and their steps where there were four engines</td></tr><tr><td><b>Cost</b></td><td>measured: Write is one call a page, about 1.00 USD a run of seven pages; a trial doubles a step's calls while it lasts</td></tr><tr><td><b>Speed of agreement</b></td><td>one message per tick; three rounds take 18 seconds at least</td></tr><tr><td><b>Two paths in the code</b></td><td>the first build's path and the runtime live side by side until the first is retired; a department cannot move from one to the other</td></tr><tr><td><b>Writing an engine</b></td><td>every step needs declared inputs, a closed output and a check</td></tr><tr><td><b>History</b></td><td>step rows are about five times the run rows</td></tr></table>
+<h2>Open for the founder</h2><ul><li>The three services as separate modules. Default: named, one module.</li><li>The money envelope of a runtime department: a model call cost about 0.14 USD in the walk, and Write spent 5.85 of its 6.00 USD a day. Default: unchanged; Priority stops Write and asks.</li><li>Whether Adaptation and Audit stay awake when the runtime is released: the pause on growth of 2026-09-27 has not been lifted in words. Default: the runtime stays behind its switch.</li><li>When to release, and whether the Windows pipeline runs the runtime's suite first. Default: not released.</li><li>Which model runs a soft step. Default: unchanged.</li><li>Does a model stay as the rung below every code step, or may a step be code with nothing below it?</li><li>The thresholds: forty runs and at most one differing output are suggested, not ruled.</li><li>May Identity's gates step down with no stamp, as canon says of every step?</li><li>The build order, and whether slice 6 waits for the pause on growth to lift.</li></ul>
+<h2>Sources</h2><ul><li><a href="../platform/crystallization.html">Crystallization</a>: the five rungs and the three inputs (ruling R-2026-09-19-01).</li><li><a href="../platform/model/internal-system.html">The five functions</a>: glue engines are engines too; the same four stores.</li><li><a href="../platform/model/workflow-engine.html">Workflow and engine</a>: the four stores; typed edges (sheet A15, proposed).</li><li><a href="department.html">One department, grown</a>: the motor, who starts what.</li><li><a href="first-build.html">The first build</a>: what runs today.</li><li>The code, read 2026-09-28: sutra-ui website_dept.py as released in Sutra Desktop 2.306.0.</li></ul>
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude, session 17842ce0, 2026-09-28, routed core:native (untested by choice), core:architect, core:native-builder &#183; v2 after the build and the walk of 2026-09-28 (sutra 5c97920a); v3 after the founder's words on how an engine starts (sutra fca58352) &#183; the founder's words are quoted from the session &#183; the built column is read from the code &#183; the expectations in section 4 are readings, not rulings &#183; built behind a switch, not released &#183; review: none by a second model.</p>
+
+<details style="margin-top:30px;border-top:1px solid #eef2f7;padding-top:12px"><summary style="cursor:pointer;font-size:13px;color:#6b7280">Folded here: the earlier engine page (the workflow engine, 2026-08), kept for reference under this line; nothing deleted</summary><h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px">Folded here</h2>
+<p style="font-size:13px;color:#6b7280">Pages on the same subject, kept whole under their own titles (the consolidation of 2026-09-29).</p>
+<details class="folded-from" id="folded-platform-model-workflow-engine-html" data-folded-from="platform/model/workflow-engine.html"><summary style="cursor:pointer;font-weight:700;margin:22px 0 6px">Workflow + Engine <span style="font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563;margin-left:6px">folded from platform/model/workflow-engine.html on 2026-09-29</span></summary>
+<div id="ruled-2026-09-20" style="background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0"><b>On the department screen, ruled 2026-09-20.</b> An engine is a workflow, its runs and its data. It is born written by the owner or proposed by Adaptation from the record (a repeated ask, a pattern, a feature's contract) and stamped. Four meters on every engine: Fit, Tick, Asks, Spend. Changes enter at a step and the steps below run again. Screen: <a href="https://sankalpasawa.github.io/asawa-site/native/locked/department-screen.html">the department screen</a> (<a href="https://sankalpasawa.github.io/asawa-site/native/locked/journeys-on-screen.html">journeys on it</a>) (locked 2026-09-20; decision sheet section 12) &#183; <a href="../platform/model/lifecycle.html">the life cycle of an engine and a department</a>. <b>Built 2.289.9</b>: Sutra Desktop carries the screen (sutra-ui 2.289.9, department-screen program, 2026-09-21); the program files: holding/plans/department-screen/.</div>
+
+<h2>Work-order header</h2>
+<table><tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>platform-model-workflow-engine</code></td><td>PLATFORM / <a href="../platform/the-model.html">platform-the-model</a></td><td><span class="pill DRAFT">DRAFT</span></td><td>v1</td><td>claude</td></tr></table>
+
+<h2 id="s1">Purpose</h2>
+<p>Workflow and Engine are one rung of the ruled ladder seen from its two columns. A <strong>Workflow</strong> is the WRITTEN blueprint — an authored, stateless artifact composing 1..n Work-Atoms with a pattern and a failure policy. An <strong>Engine</strong> is the GROWN form of that same workflow — the workflow plus everything it has accumulated by living: state envelope, record slice, learned patterns, and charter binding. The distinction exists because of two axioms ruled by the founder (2026-08-05/06): <strong>X1 no naked work</strong> — whatever is worked on always has a workflow, a single atom being a workflow of one — and <strong>X2 no stateless execution</strong> — every run executes inside an engine, born at its workflow's first run with an empty record slice. You author the written half; only the grown half runs. See <a href="../platform/the-model.html#workflow-engine">the hub diagram</a> for this rung in the full ladder.</p>
+
+<h2 id="s2">How it works</h2>
+<p>One object, two columns — never conflate them:</p>
+<table>
+<tr><th>Half</th><th>Column</th><th>Definition (RULED, A1 family)</th><th>State</th><th>Storage</th></tr>
+<tr><td>Workflow</td><td>WRITTEN</td><td>Stateless blueprint: 1..n atoms composed; steps, pattern, failure policy</td><td>none</td><td><code>Workflow</code> primitive — unchanged</td></tr>
+<tr><td>Engine</td><td>GROWN</td><td>Workflow + statefulness: the workflow plus its accumulated cross-run state</td><td>live, across runs</td><td>A NAME over 4 existing stores — no new storage</td></tr>
+</table>
+
+<h3>The written half: authoring and FOLLOW</h3>
+<ul>
+<li>A workflow composes 1..n <a href="../platform/the-model.html#work-atom">Work-Atoms</a>. Canonical owner of the atomicity rule (one goal, ONE verify): <a href="../platform/model/work-atom.html">Work-Atom</a> — this page depends on it for the split test.</li>
+<li>Workflows are reached through the loop's resolution edge: a matching workflow type is FOLLOWed; none found means CONSTRUCT builds the skeleton. Resolution is child-custody-wins (ADR-026).</li>
+<li>A workflow becomes FOLLOW-able through the <code>reuse_tag</code> C0→C1 promotion — the only crystallization step that is canon today. Paths earn the workflow-type noun by repetition.</li>
+<li>Per X1 the FOLLOW/CONSTRUCT spine is total: nothing dispatches outside a workflow.</li>
+</ul>
+
+<h3>The grown half: engine birth and the four state stores</h3>
+<p>An engine is <strong>born at its workflow's first run</strong>, with an empty record slice (X2). From run 1, every run writes to some engine's record slice. The engine's statefulness is exactly four stores — a name over things that already exist, never new storage:</p>
+<table>
+<tr><th>Store</th><th>Scope</th><th>Holds</th></tr>
+<tr><td>State envelope</td><td>within-run</td><td>the live run's working state</td></tr>
+<tr><td>Record slice</td><td>durable, cross-run</td><td>this workflow's slice of the record — history of runs, artifacts, corrections</td></tr>
+<tr><td>Learned patterns</td><td>behavioral (B5.d)</td><td>lessons that change how future runs behave</td></tr>
+<tr><td>Charter binding</td><td>policy</td><td>which charter's constraints and authority bind this engine's runs</td></tr>
+</table>
+<div class="key"><strong>Engine-Library rule (RULED, A1):</strong> an engine's statefulness must be EXPLICIT inputs from the record — never hidden internal state — or crystallization to C2 code breaks. State you cannot point at in the record is not engine state.</div>
+
+<h3>Run 50 differs from run 1</h3>
+<p>The real proof is <code>W-md-authoring</code> (decision sheet §8c). On 2026-08-05 the founder ruled that diagrams in md files use mermaid, not ASCII art. That correction landed once — in the Md-Authoring Engine's learned patterns — and changed every future doc. The engine is the workflow (outline → author → audit) plus its record slice (docs + founder corrections) plus learned patterns (mermaid-not-ASCII, tables-over-prose, hub-and-spoke) plus its charter binding. Run 50 ≠ run 1, provably — and the written workflow file never changed.</p>
+<p>Attempts are not objects at this level — canonical owner: <a href="../platform/model/work-atom.html#s5">Work-Atom s5</a> (attempt log = data field on the HOW particle); the retry budget reads that field.</p>
+
+<h2 id="s2b">How a workflow gets created — the resolution spine</h2>
+<p class="lead">Migrated from the v2 Flow page (its permanent home is now here). A workflow comes into play by exactly one of two doors, and an <strong>inner engine</strong> shapes every step regardless of the door.</p>
+<table>
+<tr><th>Stage</th><th>What happens</th><th>Lending example</th></tr>
+<tr><td>1 INTENT</td><td>an utterance, cadence tick, or event arrives (B1)</td><td>"run KYC for this applicant"</td></tr>
+<tr><td>2 CLASSIFY</td><td>Stage 0 types the input (task / question / direction / feedback / concept); below confidence &#8594; ask the operator (A4 RULED, 2026-08-17 sitting: 0.80 threshold day one; warm-start + N&gt;=100 retune advisories)</td><td>task</td></tr>
+<tr><td>3 RESOLVE</td><td>look for a reusable workflow type (<code>reuse_tag</code>): company-minted types first, platform types second — child custody wins (ADR-026)</td><td><code>W-kyc-verify</code> found &#8594; FOLLOW</td></tr>
+<tr><td>4a FOLLOW</td><td>the found type prescribes the mandatory outer skeleton</td><td>fetch-docs &#8594; bureau-check &#8594; verdict</td></tr>
+<tr><td>4b CONSTRUCT</td><td>no type matches &#8594; the inner engine builds the skeleton from scratch; if it repeats, it gets minted as a new type (how platform types are born)</td><td>first-ever "restructure a defaulted loan" request</td></tr>
+<tr><td>5 INNER ENGINE</td><td>ALWAYS runs, inside every step, both doors: factors auto-derive from the intent + a lens cuts the problem + certainty (Cynefin) picks the posture; the dials packaging is RULED to get its own ADR (B3, 2026-08-17 sitting)</td><td>Complicated &#8594; fixed sequence with LLM judgment per step</td></tr>
+<tr><td>6 RUN</td><td>the step_graph of atoms executes (see <a href="#s2">how it works</a>); the record fills; the engine grows</td><td>nightly the EMI engine learns variance</td></tr>
+</table>
+<div class="key"><strong>Founder correction preserved (2026-06-14):</strong> a matched workflow type adds a mandatory outer skeleton — it never switches the inner engine off. Guidance-first, inner-engine-always.</div>
+<svg viewBox="0 0 880 200" role="img" aria-label="Four Cynefin shapes plus workflow patterns">
+<defs><marker id="cy" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<text x="110" y="18" text-anchor="middle" font-size="9" font-weight="800">CLEAR &#8212; fixed sequence</text><text x="110" y="30" text-anchor="middle" font-size="7" fill="#6b7280">sense-categorize-respond (codeable)</text>
+<rect x="40" y="40" width="38" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="59" y="57" text-anchor="middle" font-size="8">A</text>
+<rect x="92" y="40" width="38" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="111" y="57" text-anchor="middle" font-size="8">B</text>
+<rect x="144" y="40" width="38" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="163" y="57" text-anchor="middle" font-size="8">C</text>
+<path d="M78,53 L92,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/><path d="M130,53 L144,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/>
+<text x="330" y="18" text-anchor="middle" font-size="9" font-weight="800">COMPLICATED &#8212; sequence + expertise</text><text x="330" y="30" text-anchor="middle" font-size="7" fill="#6b7280">sense-analyze-respond (LLM judgment/step)</text>
+<rect x="250" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="275" y="57" text-anchor="middle" font-size="8">A?</text>
+<rect x="320" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="345" y="57" text-anchor="middle" font-size="8">B?</text>
+<rect x="390" y="40" width="40" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="410" y="57" text-anchor="middle" font-size="8">C</text>
+<path d="M300,53 L320,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/><path d="M370,53 L390,53" stroke="#334155" stroke-width="1.2" marker-end="url(#cy)"/>
+<text x="560" y="18" text-anchor="middle" font-size="9" font-weight="800">COMPLEX &#8212; declarative</text><text x="560" y="30" text-anchor="middle" font-size="7" fill="#6b7280">probe-sense-respond (LLM-led, gated)</text>
+<rect x="500" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="525" y="57" text-anchor="middle" font-size="8">probe</text>
+<rect x="580" y="40" width="50" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="605" y="57" text-anchor="middle" font-size="8">sense</text>
+<path d="M550,49 L580,49" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M580,59 L550,59" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+<text x="790" y="18" text-anchor="middle" font-size="9" font-weight="800">CHAOTIC &#8212; act first</text><text x="790" y="30" text-anchor="middle" font-size="7" fill="#6b7280">act-sense-respond (escalate)</text>
+<rect x="720" y="40" width="50" height="26" rx="4" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.3"/><text x="745" y="57" text-anchor="middle" font-size="8">act</text>
+<rect x="800" y="40" width="58" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="829" y="57" text-anchor="middle" font-size="7.5">stabilize</text>
+<path d="M770,53 L800,53" stroke="#b91c1c" stroke-width="1.2" marker-end="url(#cy)"/>
+<text x="20" y="104" font-size="9" font-weight="800" fill="#334155">WORKFLOW PATTERNS (the step_graph shapes):</text>
+<text x="40" y="128" font-size="8.5" font-weight="700">parallel split + sync</text>
+<rect x="40" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="57" y="151" text-anchor="middle" font-size="7.5">A</text>
+<rect x="110" y="120" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="127" y="135" text-anchor="middle" font-size="7.5">B</text>
+<rect x="110" y="152" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="127" y="167" text-anchor="middle" font-size="7.5">C</text>
+<rect x="180" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="197" y="151" text-anchor="middle" font-size="7.5">D</text>
+<path d="M74,143 L110,131" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M74,151 L110,163" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+<path d="M144,131 L180,145" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M144,163 L180,151" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+<text x="320" y="128" font-size="8.5" font-weight="700">exclusive choice</text>
+<rect x="300" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="317" y="151" text-anchor="middle" font-size="7.5">A</text>
+<rect x="380" y="120" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="397" y="135" text-anchor="middle" font-size="7.5">B</text>
+<rect x="380" y="152" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="397" y="167" text-anchor="middle" font-size="7.5">C</text>
+<text x="350" y="151" font-size="9" fill="#b45309">?</text>
+<path d="M334,143 L380,131" stroke="#334155" stroke-width="1.1" stroke-dasharray="3 2" marker-end="url(#cy)"/><path d="M334,147 L380,163" stroke="#334155" stroke-width="1.1" stroke-dasharray="3 2" marker-end="url(#cy)"/>
+<text x="560" y="128" font-size="8.5" font-weight="700">multi-instance</text>
+<rect x="540" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="557" y="151" text-anchor="middle" font-size="7.5">A</text>
+<rect x="610" y="130" width="50" height="34" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1" stroke-dasharray="3 2"/><text x="635" y="150" text-anchor="middle" font-size="7">atom &#215;N</text>
+<rect x="690" y="136" width="34" height="22" rx="4" fill="#fff" stroke="#334155" stroke-width="1.1"/><text x="707" y="151" text-anchor="middle" font-size="7.5">D</text>
+<path d="M574,147 L610,147" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/><path d="M660,147 L690,147" stroke="#334155" stroke-width="1.1" marker-end="url(#cy)"/>
+</svg>
+<p class="figcap">The inner engine&#39;s certainty posture — four Cynefin shapes and the workflow patterns they pick.</p>
+
+<svg viewBox="0 0 880 470" role="img" aria-label="Master flow from operator intent down to artifacts and back">
+<defs><marker id="fl" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker><marker id="flg" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#047857"/></marker></defs>
+<rect x="300" y="14" width="280" height="42" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/><text x="440" y="32" text-anchor="middle" font-size="11" font-weight="800">OPERATOR INTENT &#8212; the WHOLE</text><text x="440" y="47" text-anchor="middle" font-size="8.5" fill="#6b7280">B1 goal &#183; "ship the onboarding redesign"</text>
+<rect x="280" y="86" width="320" height="48" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="440" y="105" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">METHOD &#8212; the verb on intent (HOW &#167;3)</text><text x="440" y="121" text-anchor="middle" font-size="8.5" fill="#6b7280">FRAME: pick the lens (history / product / technical) &#183; ADR-025</text>
+<rect x="270" y="164" width="340" height="50" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/><text x="440" y="184" text-anchor="middle" font-size="10.5" font-weight="800" fill="#047857">CHOSEN WORKFLOW &#8212; the SHAPE</text><text x="440" y="200" text-anchor="middle" font-size="8" fill="#475569">step_graph topology set by the 5 dials (&#167;D) &#183; B2 decompose along the frame</text>
+<rect x="80" y="248" width="200" height="46" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="180" y="266" text-anchor="middle" font-size="9.5" font-weight="700">ATOM &#183; goal = slice 1</text><text x="180" y="280" text-anchor="middle" font-size="7.5" fill="#6b7280">"audit current flow"</text>
+<rect x="340" y="248" width="200" height="46" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="440" y="266" text-anchor="middle" font-size="9.5" font-weight="700">ATOM &#183; goal = slice 2</text><text x="440" y="280" text-anchor="middle" font-size="7.5" fill="#6b7280">"draft new screens"</text>
+<rect x="600" y="248" width="200" height="46" rx="7" fill="#fff" stroke="#334155" stroke-width="1.5"/><text x="700" y="266" text-anchor="middle" font-size="9.5" font-weight="700">ATOM &#183; goal = slice n</text><text x="700" y="280" text-anchor="middle" font-size="7.5" fill="#6b7280">"wire + verify" &#8594; may call sub-WF</text>
+<rect x="80" y="324" width="720" height="50" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/><text x="94" y="342" font-size="9" font-weight="700" fill="#475569">each atom runs (one constrained LLM call, bracketed):</text><text x="440" y="344" text-anchor="middle" font-size="9" font-weight="700">construct (B11) &#8594; pre-check (B7) &#8594; DISPATCH LLM (host, ADR-005) &#8594; post-check (B7) &#8594; persist</text><text x="440" y="362" text-anchor="middle" font-size="8" fill="#6b7280">deterministic surface around a stochastic core (P12)</text>
+<rect x="300" y="404" width="280" height="42" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.7"/><text x="440" y="422" text-anchor="middle" font-size="10.5" font-weight="800" fill="#c2410c">ARTIFACTS &#8212; the RECORD (B9)</text><text x="440" y="437" text-anchor="middle" font-size="8.5" fill="#6b7280">typed; feed next atom + become EVIDENCE &#8594; GROW (next intent)</text>
+<path d="M440,56 L440,86" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#fl)"/>
+<path d="M440,134 L440,164" stroke="#b45309" stroke-width="1.5" fill="none" marker-end="url(#fl)"/>
+<path d="M440,214 L440,228 L180,228 L180,248" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#flg)"/><text x="300" y="226" font-size="8" fill="#475569">step_graph[] &#8212; each goal a slice of intent</text>
+<path d="M440,228 L440,248" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#flg)"/>
+<path d="M440,228 L700,228 L700,248" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#flg)"/>
+<path d="M180,294 L180,324" stroke="#334155" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#fl)"/><path d="M440,294 L440,324" stroke="#334155" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#fl)"/><path d="M700,294 L700,324" stroke="#334155" stroke-width="1.1" fill="none" stroke-dasharray="4 3" marker-end="url(#fl)"/>
+<path d="M440,374 L440,404" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#fl)"/>
+<path d="M580,425 L840,425 L840,35 L580,35" stroke="#9ca3af" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#fl)"/><text x="846" y="232" font-size="8" fill="#6b7280" transform="rotate(90 846 232)">LEARN &#8594; next OBJECTIVE (P8 loop)</text>
+</svg>
+<p class="figcap">The master flow, intent down to artifacts and back — labels updated to the ruled vocabulary (HOW).</p>
+
+<svg viewBox="0 0 880 500" role="img" aria-label="Complete spine: classify, resolve workflow type, follow-or-construct the steps, inner engine always runs within each step, run, close">
+<defs><marker id="sp" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<rect x="350" y="12" width="180" height="34" rx="7" fill="#fff" stroke="#334155" stroke-width="1.6"/><text x="440" y="33" text-anchor="middle" font-size="10" font-weight="800">INPUT &#8212; operator says anything</text>
+<rect x="285" y="62" width="310" height="48" rx="8" fill="#eef2ff" stroke="#3730a3" stroke-width="1.7"/><text x="440" y="80" text-anchor="middle" font-size="10" font-weight="800" fill="#3730a3">STAGE 0 &#183; CLASSIFY</text><text x="440" y="94" text-anchor="middle" font-size="7.5" fill="#475569">Input Routing TYPE + H-Sutra 9-cell</text><text x="440" y="105" text-anchor="middle" font-size="7.5" fill="#6b7280">query | direction | task | feedback | concept</text>
+<rect x="270" y="138" width="340" height="58" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="440" y="158" text-anchor="middle" font-size="10" font-weight="800" fill="#b45309">WORKFLOW TYPE for this work?</text><text x="440" y="173" text-anchor="middle" font-size="7.5" fill="#475569">a reusable Workflow (reuse_tag) &#183; check CHILD custody=tenant (L2)</text><text x="440" y="186" text-anchor="middle" font-size="7.5" fill="#475569">&#8594; then PLATFORM custody=null (L0)</text>
+<rect x="60" y="226" width="300" height="54" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.9"/><text x="210" y="248" text-anchor="middle" font-size="10" font-weight="800" fill="#047857">FOLLOW its steps</text><text x="210" y="264" text-anchor="middle" font-size="7.5" fill="#475569">the workflow type prescribes</text><text x="210" y="275" text-anchor="middle" font-size="7.5" fill="#6b7280">the mandatory skeleton (e.g. task &#8594; 8-phase)</text>
+<rect x="520" y="226" width="320" height="54" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.9"/><text x="680" y="248" text-anchor="middle" font-size="10" font-weight="800" fill="#c2410c">CONSTRUCT the steps</text><text x="680" y="264" text-anchor="middle" font-size="7.5" fill="#475569">no workflow type matches</text><text x="680" y="275" text-anchor="middle" font-size="7.5" fill="#6b7280">build the skeleton from the inner engine</text>
+<rect x="80" y="312" width="720" height="58" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/><text x="440" y="332" text-anchor="middle" font-size="10" font-weight="800" fill="#7c3aed">INNER ENGINE &#8212; ALWAYS, within every step</text><text x="440" y="348" text-anchor="middle" font-size="8" fill="#475569">factors (B8) + lens (Method, HOW &#167;3) + Cynefin + dials [B3: own ADR]</text><text x="440" y="362" text-anchor="middle" font-size="7.5" fill="#6b7280">runs whether the steps were FOLLOWED or CONSTRUCTED &#8212; guidance never replaces it</text>
+<rect x="285" y="400" width="310" height="42" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/><text x="440" y="418" text-anchor="middle" font-size="10" font-weight="800">RUN &#8212; step_graph of Work-Atoms</text><text x="440" y="432" text-anchor="middle" font-size="7.5" fill="#6b7280">construct &#8594; dispatch &#8594; verify &#8594; artifact (the RECORD)</text>
+<rect x="300" y="460" width="280" height="36" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/><text x="440" y="477" text-anchor="middle" font-size="9.5" font-weight="800" fill="#c2410c">CLOSE &#8212; MEASURE &#8594; OPERATIONALIZE &#8594; LEARN</text><text x="440" y="489" text-anchor="middle" font-size="7" fill="#6b7280">record &#8594; EVIDENCE &#8594; GROW (Evolution) &#8594; next input (P8)</text>
+<path d="M440,46 L440,62" stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#sp)"/>
+<path d="M440,110 L440,138" stroke="#3730a3" stroke-width="1.5" fill="none" marker-end="url(#sp)"/>
+<path d="M320,196 L210,226" stroke="#047857" stroke-width="1.4" fill="none" marker-end="url(#sp)"/><text x="216" y="216" font-size="8" font-weight="700" fill="#047857">type found</text>
+<path d="M560,196 L680,226" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#sp)"/><text x="606" y="216" font-size="8" font-weight="700" fill="#c2410c">none</text>
+<path d="M210,280 L210,312" stroke="#7c3aed" stroke-width="1.4" fill="none" marker-end="url(#sp)"/>
+<path d="M680,280 L680,312" stroke="#7c3aed" stroke-width="1.4" fill="none" marker-end="url(#sp)"/>
+<path d="M440,370 L440,400" stroke="#7c3aed" stroke-width="1.5" fill="none" marker-end="url(#sp)"/>
+<path d="M440,442 L440,460" stroke="#c2410c" stroke-width="1.4" fill="none" marker-end="url(#sp)"/>
+<path d="M580,478 L860,478 L860,29 L530,29" stroke="#9ca3af" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#sp)"/><text x="866" y="250" font-size="8" fill="#6b7280" transform="rotate(90 866 250)">LEARN &#8594; next input</text>
+</svg>
+<p class="figcap">The complete resolution spine — migrated from the v2 Flow page.</p>
+
+<h3>Recursion — when a step is itself a smaller problem</h3>
+<svg viewBox="0 0 880 330" role="img" aria-label="The Reflection meta-ladder M0 to M6 with reflexivity halt and climb-once amortization">
+<defs><marker id="ml" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="60" y="276" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="295" text-anchor="middle" font-size="8.5" font-weight="700">M0 &#183; instance &#8212; "do X"</text>
+<rect x="60" y="238" width="210" height="30" rx="5" fill="#ecfdf5" stroke="#047857" stroke-width="1.4"/><text x="165" y="257" text-anchor="middle" font-size="8.5" font-weight="700" fill="#047857">M1 &#183; axis &#8212; the how</text>
+<rect x="60" y="200" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="219" text-anchor="middle" font-size="8.5" font-weight="700">M2 &#183; meta-axis</text>
+<rect x="60" y="162" width="210" height="30" rx="5" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/><text x="165" y="181" text-anchor="middle" font-size="8.5" font-weight="700" fill="#c2410c">M3 &#183; method &#8212; how-of-how</text>
+<rect x="60" y="124" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="143" text-anchor="middle" font-size="8.5" font-weight="700">M4 &#183; framework</text>
+<rect x="60" y="86" width="210" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/><text x="165" y="105" text-anchor="middle" font-size="8.5" font-weight="700">M5 &#183; paradigm</text>
+<rect x="60" y="48" width="210" height="30" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/><text x="165" y="67" text-anchor="middle" font-size="8.5" font-weight="700" fill="#374151">M6 &#183; grammar (reflexive)</text>
+<text x="284" y="257" font-size="7.5" fill="#047857">&#9664; most work stops here (&#8594; atom)</text>
+<text x="284" y="181" font-size="7.5" fill="#c2410c">&#9664; how-of-how: mint a method</text>
+<text x="284" y="63" font-size="7.5" font-weight="700" fill="#6b7280">&#9664; describes itself &#8594; HALT</text>
+<path d="M40,300 L40,60" stroke="#9ca3af" stroke-width="1.3" fill="none" marker-end="url(#ml)"/><text x="34" y="185" font-size="7.5" fill="#6b7280" transform="rotate(90 34 185)">climb only as novelty forces</text>
+<rect x="560" y="150" width="290" height="64" rx="9" fill="#eef2ff" stroke="#3730a3" stroke-width="1.7"/><text x="705" y="170" text-anchor="middle" font-size="9" font-weight="800" fill="#3730a3">CLIMB ONCE &#8594; AMORTIZE</text><text x="705" y="186" text-anchor="middle" font-size="7.5" fill="#475569">mint method &#8594; reuse_tag &#8594; WORKFLOW TYPE</text><text x="705" y="200" text-anchor="middle" font-size="7.5" fill="#475569">future instances FOLLOW (ADR-026) &#8212; no re-climb</text>
+<path d="M270,177 L560,182" stroke="#3730a3" stroke-width="1.4" fill="none" marker-end="url(#ml)"/>
+</svg>
+<p class="figcap">The meta-ladder behind Mode 3 (design-forward, deferred with FQ1).</p>
+
+<svg viewBox="0 0 880 250" role="img" aria-label="A step resolves three ways: atom, sub-workflow, or how-of-how; inner engine runs at every block">
+<defs><marker id="rg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="330" y="10" width="220" height="38" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="440" y="28" text-anchor="middle" font-size="10" font-weight="800" fill="#b45309">reach a STEP &#8212; "how do I do this?"</text><text x="440" y="42" text-anchor="middle" font-size="7.5" fill="#6b7280">run the same spine on it (fractal)</text>
+<rect x="30" y="86" width="260" height="78" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6"/><text x="160" y="106" text-anchor="middle" font-size="9.5" font-weight="800">MODE 1 &#183; ATOM</text><text x="160" y="121" text-anchor="middle" font-size="7.5" fill="#475569">one-shot works</text><text x="160" y="134" text-anchor="middle" font-size="7.5" fill="#6b7280">GOAL/CONST/CTX &#8594; LLM | skill &#8594; verify</text><text x="160" y="150" text-anchor="middle" font-size="7.5" font-weight="700" fill="#047857">base case &#8212; terminal</text>
+<rect x="310" y="86" width="260" height="78" rx="9" fill="#ecfdf5" stroke="#047857" stroke-width="1.6"/><text x="440" y="106" text-anchor="middle" font-size="9.5" font-weight="800" fill="#047857">MODE 2 &#183; SUB-WORKFLOW</text><text x="440" y="121" text-anchor="middle" font-size="7.5" fill="#475569">know the how, too big for one-shot</text><text x="440" y="134" text-anchor="middle" font-size="7.5" fill="#6b7280">decompose &#8594; step_graph; each sub-step recurses</text><text x="440" y="150" text-anchor="middle" font-size="7.5" fill="#6b7280">canon: recursion edge (skill_ref &#8594; sub-WF)</text>
+<rect x="590" y="86" width="260" height="78" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.7"/><text x="720" y="106" text-anchor="middle" font-size="9.5" font-weight="800" fill="#c2410c">MODE 3 &#183; HOW-OF-HOW</text><text x="720" y="121" text-anchor="middle" font-size="7.5" fill="#475569">don't know the how</text><text x="720" y="134" text-anchor="middle" font-size="7.5" fill="#6b7280">run a workflow that DESIGNS the workflow</text><text x="720" y="150" text-anchor="middle" font-size="7.5" fill="#6b7280">output = a workflow &#8594; run it (NEW, design-forward)</text>
+<path d="M380,48 L160,86" stroke="#334155" stroke-width="1.3" marker-end="url(#rg)"/>
+<path d="M440,48 L440,86" stroke="#047857" stroke-width="1.3" marker-end="url(#rg)"/>
+<path d="M500,48 L720,86" stroke="#c2410c" stroke-width="1.3" marker-end="url(#rg)"/>
+<rect x="30" y="194" width="820" height="42" rx="9" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/><text x="440" y="212" text-anchor="middle" font-size="9.5" font-weight="800" fill="#7c3aed">INNER ENGINE &#8212; factors + lens + Cynefin + dials &#8212; runs at EVERY block, EVERY level</text><text x="440" y="227" text-anchor="middle" font-size="7.5" fill="#6b7280">the recursion carries the inner engine down with it</text>
+<path d="M160,164 L160,194" stroke="#7c3aed" stroke-width="1.2" marker-end="url(#rg)"/><path d="M440,164 L440,194" stroke="#7c3aed" stroke-width="1.2" marker-end="url(#rg)"/><path d="M720,164 L720,194" stroke="#7c3aed" stroke-width="1.2" marker-end="url(#rg)"/>
+</svg>
+<p class="figcap">A step resolves three ways — migrated from the v2 Flow page.</p>
+
+<table>
+<tr><th>Mode</th><th>When</th><th>What happens</th><th>Status</th></tr>
+<tr><td>1 ATOM</td><td>one-shot works</td><td>the step runs as a single atom — base case</td><td>RULED</td></tr>
+<tr><td>2 SUB-WORKFLOW</td><td>the how is known but too big for one shot</td><td>the step's HOW references a sub-workflow (the recursion edge); the spine runs again one level down</td><td>RULED (canon skill_ref)</td></tr>
+<tr><td>3 HOW-OF-HOW</td><td>the how itself is unknown</td><td>run a workflow that DESIGNS the workflow, then run its output</td><td>design-forward — deferred with FQ1 at runtime; bounded by per-task budgets (A10). Doctrine has a runnable form in the plugin since 2.304.0 (2026-09-25): the how ladder <code>core:finding-the-how</code> → <code>core:deriving-a-methodology</code> (this mode) → <code>core:synthesizing-a-methodology</code>, invoked by <code>core:native-builder</code>; the FQ1 stop conditions and learned-vs-overridden questions stay open</td></tr>
+</table>
+<h3>The two clocks — migrated from the v2 pages, unchanged</h3>
+<svg viewBox="0 0 880 170" role="img" aria-label="factors auto-derived from intent, inserted between SHAPE and PLAN, unweighted in v1">
+<defs><marker id="fc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect x="30" y="62" width="86" height="40" rx="6" fill="#fff7ed" stroke="#c2410c" stroke-width="1.4"/><text x="73" y="86" text-anchor="middle" font-size="9" font-weight="700">SHAPE</text>
+<rect x="300" y="34" width="280" height="104" rx="9" fill="#fff" stroke="#b45309" stroke-width="1.8"/><text x="440" y="52" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">factors[] &#8212; AUTO-DERIVED before PLAN</text>
+<text x="318" y="74" font-size="8" fill="#374151">&#8226; value-of-speed &#8212; <tspan fill="#6b7280">ship beats polish here</tspan></text>
+<text x="318" y="92" font-size="8" fill="#374151">&#8226; reversibility &#8212; <tspan fill="#6b7280">cheap to undo</tspan></text>
+<text x="318" y="110" font-size="8" fill="#374151">&#8226; blast-radius &#8212; <tspan fill="#6b7280">one surface only</tspan></text>
+<text x="440" y="130" text-anchor="middle" font-size="6.5" fill="#6b7280">each = {name, rationale} &#183; no weight (v1) &#183; derived from intent (B6/B2)</text>
+<rect x="760" y="62" width="90" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/><text x="805" y="86" text-anchor="middle" font-size="9" font-weight="700">PLAN</text>
+<path d="M116,82 L300,82" stroke="#334155" stroke-width="1.4" marker-end="url(#fc)"/><text x="150" y="76" font-size="7" fill="#475569">auto-derive from intent</text>
+<path d="M580,82 L760,82" stroke="#334155" stroke-width="1.4" marker-end="url(#fc)"/><text x="600" y="76" font-size="7" fill="#475569">B11 embeds &#183; B9 persists</text>
+</svg>
+<p class="figcap">Factors auto-derive between SHAPE and PLAN (unweighted in v1, per ruling).</p>
+
+<svg viewBox="0 0 880 170" role="img" aria-label="Workflow object states with the 8-phase task lifecycle nested inside ACTIVE">
+<defs><marker id="ck" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+<text x="20" y="16" font-size="9.5" font-weight="800" fill="#6b7280">WORKFLOW STATE MACHINE (governance ledger, &#167;4.2) &#8212; the OBJECT's approval state</text>
+<rect x="20" y="60" width="86" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="63" y="79" text-anchor="middle" font-size="8" font-weight="700">PROPOSED</text>
+<rect x="700" y="60" width="80" height="30" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/><text x="740" y="79" text-anchor="middle" font-size="7.5" font-weight="700">PERSISTED</text>
+<rect x="700" y="104" width="80" height="26" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.2"/><text x="740" y="121" text-anchor="middle" font-size="7.5" fill="#6b7280">RETIRED</text>
+<rect x="130" y="30" width="540" height="116" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/><text x="142" y="46" font-size="9" font-weight="800" fill="#047857">ACTIVE &#8212; the 8-phase task clock turns in here (D30a / 7d)</text>
+<rect x="142" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="173" y="74" text-anchor="middle" font-size="6.5" font-weight="700">OBJECTIVE</text>
+<rect x="208" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="239" y="74" text-anchor="middle" font-size="6.5" font-weight="700">OBSERVE</text>
+<rect x="274" y="58" width="62" height="26" rx="4" fill="#fff7ed" stroke="#c2410c" stroke-width="1.1"/><text x="305" y="74" text-anchor="middle" font-size="6.5" font-weight="700">SHAPE</text>
+<rect x="340" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="371" y="74" text-anchor="middle" font-size="6.5" font-weight="700">PLAN</text>
+<rect x="406" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="437" y="74" text-anchor="middle" font-size="6.5" font-weight="700">EXECUTE</text>
+<rect x="472" y="58" width="62" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="503" y="74" text-anchor="middle" font-size="6.5" font-weight="700">MEASURE</text>
+<rect x="538" y="58" width="62" height="26" rx="4" fill="#ecfdf5" stroke="#047857" stroke-width="1.1"/><text x="569" y="71" text-anchor="middle" font-size="5.6" font-weight="700" fill="#047857">OPERATION-</text><text x="569" y="79" text-anchor="middle" font-size="5.6" font-weight="700" fill="#047857">ALIZE</text>
+<rect x="604" y="58" width="58" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="1"/><text x="633" y="74" text-anchor="middle" font-size="6.5" font-weight="700">LEARN</text>
+<text x="305" y="100" text-anchor="middle" font-size="6.3" fill="#c2410c">factors[] (B8, auto-derived) inserted SHAPE &#8594; PLAN</text>
+<path d="M173,120 L173,132 L633,132 L633,84" stroke="#9ca3af" stroke-width="1" fill="none" stroke-dasharray="3 2" marker-end="url(#ck)"/><text x="400" y="129" text-anchor="middle" font-size="6.3" fill="#6b7280">LEARN &#8594; next OBJECTIVE (loop, P8)</text>
+<path d="M106,75 L130,75" stroke="#334155" stroke-width="1.2" marker-end="url(#ck)"/><text x="108" y="56" font-size="6.5" fill="#475569">approve</text>
+<path d="M670,75 L700,75" stroke="#334155" stroke-width="1.2" marker-end="url(#ck)"/>
+<path d="M740,90 L740,104" stroke="#6b7280" stroke-width="1.1" marker-end="url(#ck)"/><text x="746" y="100" font-size="6.5" fill="#475569">revoke</text>
+</svg>
+<p class="figcap">The two clocks drawn: the 8-phase task clock nested inside the workflow object&#39;s ACTIVE state. NOTE (audit-fix 2026-08-18): the object-ledger states drawn here predate the &#167;9c G4/G5 ruling (PERSISTED = 4th state with instance-level dormancy; explicit revoke + fence-at-supersession) — redraw pending.</p>
+
+<p>Every run turns an 8-phase task clock (OBJECTIVE &#8594; OBSERVE &#8594; SHAPE &#8594; PLAN &#8594; EXECUTE &#8594; MEASURE &#8594; OPERATIONALIZE &#8594; LEARN) INSIDE the workflow object's governance ledger (PROPOSED &#8594; ACTIVE &#8594; PERSISTED &#8594; RETIRED). The clock is the run; the ledger is the object. A workflow's whole running life happens inside its ACTIVE state.</p>
+
+<h2 id="s3">Product use cases</h2>
+<table>
+<tr><th>Actor</th><th>Wants</th><th>How Workflow/Engine serves it</th></tr>
+<tr><td>Lending ops manager (the digital lending company, sheet §8)</td><td>disbursal, KYC, and EMI reconcile to run the same way every time</td><td>FOLLOWs written workflows — <code>W-disburse-loan</code> (gate pattern), <code>W-kyc-verify</code> (sequence), <code>W-emi-reconcile</code> (cadence trigger); every run lands in that workflow's engine record slice</td></tr>
+<tr><td>Docs author (founder, sheet §8c)</td><td>docs that improve without re-teaching each session</td><td><code>W-md-authoring</code>: 3-atom sequence; its engine carries learned patterns, so a correction lands once and applies to all future docs</td></tr>
+<tr><td>Governance operator (sheet §8b R9)</td><td>silent failures surfaced within a day, not after 3 weeks</td><td>the daily governance audit is a real, running glue engine — findings on cadence, triage acts on them; the first existence proof for X3</td></tr>
+<tr><td>Any operator issuing an intent</td><td>reuse over reconstruction</td><td>RESOLVE finds a workflow type → FOLLOW; none found → CONSTRUCT; either way the run is engine-backed from run 1 (X1 + X2)</td></tr>
+</table>
+
+<h2 id="s4">Operational scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Path through the concept</th><th>Outcome</th></tr>
+<tr><td>Happy path — "Create a doc explaining the vocabulary ladder" (sheet §8c, executed 2026-08-06)</td><td>CLASSIFY task → FOLLOW <code>W-md-authoring</code> → 3 atoms in sequence → runs write the record → §6 checklist verify passes</td><td>PASS with 3 gaps (A8, A3, A4 bit during the walk); the layers composed with zero forcing</td></tr>
+<tr><td>Failure path — verify fails 3x (sheet §8 planted edge case)</td><td>loop canonical on <a href="../platform/model/work-atom.html#s5">Work-Atom s5 Lifecycle</a>; decision_trail persisted</td><td>a human rules; budget A8 RULED as REC (charter field <code>retry_budget</code>, default 3 — 2026-08-17 sitting)</td></tr>
+<tr><td>Growth path — mermaid ruling changes the doc medium (2026-08-05, sheet §8c layer 10)</td><td>founder correction → Md-Authoring Engine's learned patterns</td><td>run 50 differs from run 1: every later doc uses mermaid with no re-teaching</td></tr>
+<tr><td>Growth path — hot deterministic step (repayment-ledger-read, sheet §8)</td><td>C0→C1 <code>reuse_tag</code> promotion proposed, gated — never auto</td><td>the step crystallizes toward code; promotions are earned by run evidence (A9)</td></tr>
+</table>
+
+<div class="planned"><strong>Proposed scenario — decide-now under time pressure</strong> <span class="planned" style="padding:0 6px">PROPOSED</span> Source: sheet A19-DECIDE-NOW subdecision (2026-08-11) — not a shipped path; shown separately from the operational scenarios above by design.<br>
+2:00pm, the partner bank calls: "confirm the co-lending exposure split by 5pm or the deal moves." Q2 reads complex — but backward scheduling says probe time is gone (latest-start reached). W-decide would branch on Q4, the door: a <em>tranche-only</em> split (renegotiable next tranche) is a two-way door — <strong>ACT-AS-PROBE</strong>: take the split most like the last accepted deal (nearest pattern from the engine's learned patterns / connection-graph defaults), cap this tranche's volume (the pre-declared stop-loss), instrument the tranche — the run's record becomes the sense data that probe time never allowed. A <em>master-agreement</em> split binding all future tranches is a one-way door — <strong>ESCALATE-WITH-BRIEF</strong>: the escalation contract fires at 2:10, not 4:55, carrying the minimum context bundle plus a least-regret options framing; the human decides at 70% information while deciding is still possible. Door unclear would be treated as one-way. Both branches would write the decision's provenance row (decided-under-pressure, what was unknown, branch, stop-loss) — available for later gated pattern proposal, never auto-mined.</div>
+
+<h2 id="s5">Contract</h2>
+<h3>Data model</h3>
+<table>
+<tr><th>Field</th><th>Type-ish</th><th>Meaning</th><th>Source of truth</th></tr>
+<tr><td><code>workflow.step_graph</code></td><td>graph of steps/atoms</td><td>the 1..n atoms composed; RUN walks it</td><td>sheet §1 RUN block; canon type in <code>primitives/workflow.md</code> (15 fields per grounding §1)</td></tr>
+<tr><td><code>workflow.pattern</code></td><td>shape</td><td>composition shape — sequence, gate, cadence-triggered (sheet §8 examples)</td><td>sheet A1 ("steps, pattern, failure policy")</td></tr>
+<tr><td><code>workflow.failure_policy</code></td><td>policy</td><td>what happens when a step fails</td><td>sheet A1</td></tr>
+<tr><td><code>workflow.reuse_tag</code></td><td>tag</td><td>C0→C1 promotion marker; makes the workflow FOLLOW-able</td><td>sheet §3 (only reuse_tag C0→C1 is canon); A2</td></tr>
+<tr><td><code>workflow.skill_ref</code></td><td>ref</td><td>sub-workflow recursion (Modes 1/2)</td><td>sheet §1 block inventory</td></tr>
+<tr><td><code>workflow.extension_ref</code></td><td>ref</td><td>composition seam toward Assembly; mandated null v1.0</td><td>grounding §1 (Assembly row)</td></tr>
+<tr><td><code>workflow_id</code></td><td>stable id</td><td>would key engine state per workflow — no stable id exists anywhere today</td><td>grounding §5 move 3; TODO(founder):</td></tr>
+<tr><td><code>engine.envelope</code> · <code>record_slice</code> · <code>learned_patterns</code> · <code>charter_binding</code></td><td>the 4 stores</td><td>the engine's entire statefulness (see <a href="#s2">s2</a>); no new storage</td><td>sheet A1 (RULED)</td></tr>
+<tr><td><code>how.attempt_log</code></td><td>count + history (data field)</td><td>attempts on the atom's HOW particle — never an object; canonical owner: <a href="../platform/model/work-atom.html#s5">Work-Atom s5</a></td><td>sheet A1-FINAL-3 (RULED)</td></tr>
+<tr><td><code>charter.retry_budget</code></td><td>int (default 3)</td><td>max retries before ESCALATED</td><td>sheet A8 — RULED as REC, 2026-08-17 sitting (Quick eight; budgets = labeled v1 dials)</td></tr>
+</table>
+
+<p>Base/child split (A17, RULED — 2026-08-17 sitting): Workflow is the first object to get the base/child type split — see <a href="../platform/model/type-system.html">Type System</a>.</p>
+<h3>Invariants</h3>
+<ul>
+<li><strong>X1 no naked work</strong> — nothing dispatches outside a workflow; a single atom is a workflow of one.</li>
+<li><strong>X2 no stateless execution</strong> — every run executes inside an engine; the engine is born at the workflow's first run with an empty record slice; every run writes to some engine's record slice from run 1.</li>
+<li><strong>Engine-Library rule</strong> — engine state = explicit inputs from the record, never hidden internal state; violation breaks C2 crystallization.</li>
+<li><strong>No new storage</strong> — Engine is a name over the four existing stores.</li>
+<li><strong>The written half never mutates at run time</strong> — all accumulation lands on the engine; the workflow file stays a stateless template (A1-ext grid).</li>
+<li><strong>Distribution ships templates only</strong> — instances and state never leave the tenant (A1-ext consequence; D33 in one sentence).</li>
+<li><strong>One goal, ONE verify per atom</strong> — canonical owner: <a href="../platform/model/work-atom.html">Work-Atom</a> (A1-ext).</li>
+</ul>
+
+<h3>Lifecycle</h3>
+<table>
+<tr><th>Transition</th><th>Trigger</th><th>Source</th></tr>
+<tr><td>path → workflow type</td><td>repetition; C0→C1 <code>reuse_tag</code> promotion, proposed + gated</td><td>sheet A1-FINAL ("things earn their nouns"), §3</td></tr>
+<tr><td>workflow → engine</td><td>first run — engine born with empty record slice</td><td>X2 (RULED)</td></tr>
+<tr><td>run: verify-fail loop — canonical on <a href="../platform/model/work-atom.html#s5">Work-Atom s5 Lifecycle</a></td><td>verify failure against <code>retry_budget</code> (A8 RULED as REC, default 3)</td><td>sheet §2 VERIFY-loop edge; §8</td></tr>
+<tr><td>learned pattern → re-verification</td><td>environment change contradicting a learned pattern fires re-verify proposals on dependent engines</td><td>sheet §8b R4</td></tr>
+<tr><td>engine decay (T1→T4)</td><td>happens by default when unexamined; re-verification is the counter; audit glue flags green-never-consulted instruments</td><td>sheet §8b preamble + R10</td></tr>
+</table>
+
+<h3>Ownership</h3>
+<ul>
+<li>Engine state is owned by the record (SoR, ADR-013) and read as explicit inputs — the engine object itself is a name, canonized in a new ADR at S7 (number at mint, per C2).</li>
+<li>C-state lives on the atom's HOW particle; Workflow/Engine state is a derived aggregate, mixed states allowed; promotions earned by run evidence (A9, ruled by consequence).</li>
+<li>Charter holds rules, never work-state (A1-FINAL-2 + the open work-state-shelves proposal).</li>
+<li>Followable workflow templates: the FOLLOW catalog — home is the user-kit workflow files with <code>reuse_tag</code> plus one index spec (A2, RULED as REC — 2026-08-17 sitting, Quick eight).</li>
+</ul>
+
+<h3>Failure modes</h3>
+<table>
+<tr><th>Mode</th><th>Behavior</th><th>Source</th></tr>
+<tr><td>Verify fail</td><td>loop canonical on <a href="../platform/model/work-atom.html#s5">Work-Atom s5</a>; N = <code>retry_budget</code> (A8 RULED as REC, default 3)</td><td>sheet §2, §8</td></tr>
+<tr><td>Wrong FOLLOW match</td><td>routing per A4 (RULED 2026-08-17): 0.80 threshold day one, T1-T4 logged, registry-only verifies</td><td>sheet §2</td></tr>
+<tr><td>Audit/record channel unwritable</td><td>HS-4 → DEGRADED</td><td>sheet §2 (ATOM→RECORD edge)</td></tr>
+<tr><td>Environment change invalidates a learned pattern</td><td>re-verification proposals on engines whose constraints assumed the old behavior</td><td>sheet §8b R4</td></tr>
+</table>
+
+<h3>Observability + audit</h3>
+<ul>
+<li>Every run appends to the record — append-only (ATOM→RECORD edge, sheet §2).</li>
+<li>The VERIFY loop persists a <code>decision_trail</code>; escalation passes through Approval (sheet §2).</li>
+<li>Evidence — reads across runs (e.g. "which sections draw corrections", §8c layer 11) — schema RULED as REC, spec-only (A3, 2026-08-17 sitting, Quick eight); today nothing reads the record in-loop.</li>
+</ul>
+
+<h2 id="s6">Implementation today</h2>
+<table>
+<tr><th>What exists</th><th>File evidence</th><th>Fidelity</th><th>Gap</th></tr>
+<tr><td>Workflow canon type — rich, 15 fields, step_graph</td><td><code>primitives/workflow.md</code></td><td>type only</td><td><strong>zero runtime instances</strong></td></tr>
+<tr><td>Workflow runtime registry</td><td><code>~/.sutra-native/user-kit/</code> has NO <code>workflows/</code> dir</td><td>MISSING (runtime)</td><td>the 2 real W-files are loose plans; <code>W-md-authoring</code> steps have no verify, no atoms</td></tr>
+<tr><td>Engine</td><td><code>sutra/os/engines/*.md</code> + <code>placement_engine.py</code></td><td>MISSING</td><td>"engine" today = 7 mechanism docs + a library; no state keyed by workflow id (naming debt C10)</td></tr>
+<tr><td>X2 (runs write a ledger)</td><td><code>sutra-atom:361-388</code></td><td>PARTIAL</td><td>rows keyed by session+atom, never by workflow — <strong>no engine is ever born</strong></td></tr>
+<tr><td>Closest engine-slice store</td><td><code>.sutra/flow-ledger.jsonl</code> (21K / 21 rows)</td><td>closest — has unit/steps/atoms/close</td><td>lacks a stable workflow id; grounding §5 move 3 adds <code>workflow_id</code> (one field, one writer, ~1h) — the operational content of X2</td></tr>
+<tr><td>Learned patterns store</td><td>none — zero grep hits for any implementation</td><td>MISSING</td><td>the sheet's "all 4 stores exist" does not hold for this store on disk</td></tr>
+</table>
+<div class="note"><strong>Grounding fact (ruling landed):</strong> user-kit has 56 domains, 163 charters, 239 placements — and <strong>zero workflows</strong>. The ladder builds Engine, Assembly, and System on the one object with no runtime instances. RULED at the 2026-08-17 sitting: the registry build is FUNDED as the first v1 act, P1 at v1 start (Shelves/A11 + Host-rule/B1 rows); zero runtime workflows remains a build-status fact until it ships.</div>
+
+<h2 id="s7">Open questions</h2>
+<table>
+<tr><th>Question</th><th>State</th><th>Where it bit</th></tr>
+<tr><td>A8 — retry budget: charter field <code>retry_budget</code>, default 3 (a labeled v1 dial)</td><td>RULED as REC (2026-08-17 sitting, Quick eight)</td><td>sheet §8c layer 9 — bit on the first real walk</td></tr>
+<tr><td>A3 — evidence read-model schema</td><td>RULED as REC, spec-only (2026-08-17 sitting, Quick eight)</td><td>sheet §8c layer 11</td></tr>
+<tr><td>A4 — classifier + workflow-type matching procedure</td><td>RULED (2026-08-17 sitting): 0.80 threshold day one, warm-start + N&gt;=100 retune advisories, T1-T4 logged, registry-only verifies</td><td>sheet §8c layers 2-3; §2 edges</td></tr>
+<tr><td>A2 — FOLLOW catalog home (reuse_tag files ARE the catalog + one index spec)</td><td>RULED as REC (2026-08-17 sitting, Quick eight)</td><td>sheet §5</td></tr>
+<tr><td>Engine-state-as-typed-slice (consequence of A1; canonized at S7)</td><td>QUEUED for S7</td><td>sheet §8c gaps</td></tr>
+<tr><td>Workflow-registry timing</td><td>RULED — registry build FUNDED as the first v1 act, P1 at v1 start (2026-08-17 sitting)</td><td>sheet A1-FINAL-3 edge-case registry; grounding §6</td></tr>
+<tr><td>CONSTRAINT-PROPAGATION — how constraints flow system → engine → workflow → atom</td><td>DEFERRED (named)</td><td>sheet A1-FINAL</td></tr>
+<tr><td>Crystallization beyond C0→C1 (thresholds, de-opt, promotion policy)</td><td>DEFERRED — needs run data</td><td>sheet §9</td></tr>
+<tr><td>C10 — "engine" naming debt: doc titles + lens-engine predate Engine-as-ruled-word; disambiguation notes pending</td><td>OPEN (S4 elimination)</td><td>sheet §7 C10; grounding §5 move 3</td></tr>
+<tr><td>TODO(founder): <code>retry_budget</code> value and home</td><td>—</td><td>—</td></tr>
+<tr><td>TODO(founder): stable <code>workflow_id</code> scheme</td><td>—</td><td>—</td></tr>
+</table>
+
+<h3>Proposed features — 2026-08-07 sitting queue</h3>
+<p>Status refreshed against the 2026-08-17 sitting: A4, G4, G5 below were RULED; man pages + run-outcome enum are founder-DIRECTED (A14); the rest stay PROPOSED. The decision sheet remains the authority.</p>
+<table>
+<tr><th>Feature</th><th>What it requires</th><th>Status</th><th>Source</th></tr>
+<tr><td>A4 router procedure (card 1)</td><td><code>type_confidence</code> emitted + logged at CLASSIFY; 0.80 threshold day one with warm-start + N&gt;=100 retune advisories; T1-T4 logged; registry-only verifies; provisional genesis routing rows</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>A4 (2026-08-17 sitting)</td></tr>
+<tr><td>FOLLOW catalog gains <code>solves_style</code></td><td>each catalog entry would name the problem style it solves</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet card A12 (styles concept RULED 2026-08-17) · PROBLEM-STYLES.md (<code>holding/plans/native-sop-program/</code>; no on-site page)</td></tr>
+<tr><td>To-author workflow types homed on this rung</td><td><code>W-route-and-log</code>, <code>W-countersigned-verify</code>, <code>W-earn-autonomy</code>, <code>W-reuse-diff</code> would be authored here (others homed on their own pages: <code>W-crystallize</code> → particles; <code>W-tier-gates</code> + <code>W-attribute</code> → internal-system; <code>W-mint-shadow</code> → shadow-systems)</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet cards A4/G4/G5</td></tr>
+<tr><td>GROWN side: G4 engine retirement (card 5)</td><td>retirement is a derivative of the workflow ledger, gated, with the X2 seed carve-out; the record slice persists append-closed</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>&#167;9c G4 (2026-08-17 sitting)</td></tr>
+<tr><td>GROWN side: G5 ledger transition triggers (card 5)</td><td>PERSISTED is a 4th state with instance-level dormancy; explicit revoke + fence-at-supersession; the state-machine drawing in <a href="#s2b">s2b</a> predates the ruling — redraw pending</td><td><span class="pill" style="background:#ecfdf5;color:#047857">RULED</span></td><td>&#167;9c G5 (2026-08-17 sitting)</td></tr>
+<tr><td>MAN PAGES for registered workflows</td><td>every registered workflow carries a builder-generated man page (purpose / inputs / outputs / verify / example)</td><td><span class="pill" style="background:#eef2ff;color:#3730a3">DIRECTED</span></td><td>sheet A14 (founder-directed 2026-08-08; indexed DIRECTED)</td></tr>
+<tr><td>RUN-OUTCOME ENUM</td><td>every run stamps <code>pass</code> / <code>fail-retry</code> / <code>fail-escalate</code> / <code>blocked</code> uniformly (maps to ExecutionResult + failure states; does NOT rename the object state machine)</td><td><span class="pill" style="background:#eef2ff;color:#3730a3">DIRECTED</span></td><td>sheet A14 (founder-directed 2026-08-08; indexed DIRECTED)</td></tr>
+<tr><td>GROWN side: connection-graph feeds</td><td>a workflow's stored output would feed downstream workflows along typed edges (<code>observed</code>/<code>suggested</code>/<code>default</code>/<code>hardwired</code>) held in the coordination engine's slice</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet A15 (founder-minted 2026-08-08)</td></tr>
+<tr><td>decide-now branch in W-decide</td><td>when Q2=complex and probe time is gone (latest-start reached), Q4 would route: two-way door &#8594; act-as-probe (nearest pattern + pre-declared stop-loss, run record = sense data); one-way door &#8594; escalate-with-brief at latest-start (least-regret options on the pinned escalation contract); unclear = one-way; zero new objects</td><td><span class="planned" style="padding:0 6px">PROPOSED</span></td><td>sheet A19-DECIDE-NOW (2026-08-11)</td></tr>
+</table>
+
+<h3>Proposed — the goal cascade</h3>
+<div style="background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:10px 0"><b>Displaced 2026-09-20.</b> The cascade is not a Native engine. Births come from Adaptation's proposals and Identity's rules; Plan the goal was removed 2026-09-20 (ideas/20, 21).</div>
+<p><span class="planned" style="padding:0 6px">PROPOSED</span> Source: founder direction 2026-08-07 (in-session) &#183; sheet cards &#183; zero new objects — composes existing primitives only.</p>
+<svg viewBox="0 0 720 250" role="img" aria-label="Proposed goal cascade: a charter goal either resolves to one workflow or is cut into sub-goals that recurse">
+  <rect x="600" y="8" width="112" height="20" rx="4" fill="#fffbeb" stroke="#b45309"/>
+  <text x="656" y="22" text-anchor="middle" font-size="10" fill="#b45309">PROPOSED &#183; awaiting ruling</text>
+  <defs><marker id="gcarr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#475569"/></marker></defs>
+  <rect x="20" y="90" width="150" height="44" rx="6" fill="#f8fafc" stroke="#475569"/>
+  <text x="95" y="108" text-anchor="middle" font-size="12" fill="#0f172a">charter goal</text>
+  <text x="95" y="124" text-anchor="middle" font-size="10" fill="#475569">target + verify</text>
+  <rect x="220" y="86" width="170" height="52" rx="26" fill="#fffbeb" stroke="#b45309"/>
+  <text x="305" y="108" text-anchor="middle" font-size="11" fill="#0f172a">one workflow</text>
+  <text x="305" y="122" text-anchor="middle" font-size="11" fill="#0f172a">reaches it?</text>
+  <line x1="170" y1="112" x2="216" y2="112" stroke="#475569" marker-end="url(#gcarr)"/>
+  <rect x="470" y="46" width="150" height="40" rx="6" fill="#f0fdf4" stroke="#166534"/>
+  <text x="545" y="63" text-anchor="middle" font-size="11" fill="#0f172a">FOLLOW / CONSTRUCT</text>
+  <text x="545" y="78" text-anchor="middle" font-size="10" fill="#475569">workflow &#8594; atoms</text>
+  <line x1="390" y1="98" x2="466" y2="72" stroke="#166534" marker-end="url(#gcarr)"/>
+  <text x="425" y="76" font-size="10" fill="#166534">yes</text>
+  <rect x="470" y="150" width="150" height="40" rx="6" fill="#fef2f2" stroke="#991b1b"/>
+  <text x="545" y="167" text-anchor="middle" font-size="11" fill="#0f172a">cut into sub-goals</text>
+  <text x="545" y="182" text-anchor="middle" font-size="10" fill="#475569">each: goal + verify</text>
+  <line x1="390" y1="126" x2="466" y2="158" stroke="#991b1b" marker-end="url(#gcarr)"/>
+  <text x="420" y="152" font-size="10" fill="#991b1b">no</text>
+  <path d="M545,190 L545,220 L305,220 L305,142" fill="none" stroke="#475569" stroke-dasharray="4 3" marker-end="url(#gcarr)"/>
+  <text x="425" y="214" text-anchor="middle" font-size="10" fill="#475569">recurse per sub-goal</text>
+  <text x="95" y="160" font-size="10" fill="#475569">parent verify tests the</text>
+  <text x="95" y="173" font-size="10" fill="#475569">COMPOSITION, not just</text>
+  <text x="95" y="186" font-size="10" fill="#475569">children passing</text>
+</svg>
+<p>X1 guard: sub-goals would be planned goal+verify cuts that become atom goals or child-workflow goals — they dispatch ONLY through FOLLOW/CONSTRUCT; there are no naked sub-goals. Proposed cut condition: a sub-goal is cut only when no single workflow reaches the goal — the cascade halts where a workflow exists, so a richer FOLLOW catalog would mean shallower cascades.</p>
+<div class="note"><strong>Example (lending):</strong> the goal "top-up delinquency back to forecast" would cut into 3 sub-goals — tighten the eligibility rule &#183; collections outreach wave &#183; credit-policy memo — each closed by one workflow, with the parent verify checking the delinquency curve itself.</div>
+
+<h2 id="s-output">Output looks like</h2>
+<div class="planned"><span class="pill" style="background:#fffbeb;color:#b45309">PROPOSED</span> Status: illustrative, not binding. No workflow serialization schema is ruled and zero runtime instances exist (s6); the shape below composes only this page's s5 data-model fields; the man page follows the DIRECTED A14 skeleton. <code>&lt;decision_pending&gt;</code> marks unruled fields.
+<p>A registered written workflow — <code>W-kyc-verify</code>:</p>
+<pre style="background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">{
+  "workflow_id": "&lt;decision_pending — stable id scheme, s7&gt;",
+  "step_graph": [
+    {"step": "fetch-docs",   "atom_goal": "KYC docs fetched for applicant LN-2214"},
+    {"step": "bureau-check", "atom_goal": "bureau report fetched + score recorded"},
+    {"step": "verdict",      "atom_goal": "KYC verdict recorded with evidence refs"}
+  ],
+  "pattern": "sequence",
+  "failure_policy": "escalate",
+  "reuse_tag": true,
+  "skill_ref": null,
+  "extension_ref": null
+}</pre>
+<p>Its builder-generated man page (DIRECTED skeleton, A14):</p>
+<pre style="background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;font-size:12px;overflow-x:auto">W-kyc-verify(1)
+PURPOSE   verify a loan applicant's KYC end to end
+INPUTS    applicant id, KYC document refs
+OUTPUTS   verdict record + bureau report ref (append-only, engine record slice)
+VERIFY    one verify per atom; the workflow closes when the verdict atom's verify passes
+EXAMPLE   "run KYC for LN-2214" -&gt; FOLLOW W-kyc-verify -&gt; 3 atoms -&gt; verdict row</pre>
+</div>
+<p>The grown half persists no file of its own — an Engine is a NAME over 4 existing stores (<a href="#s2">s2</a>); its visible output is the record-slice rows its runs append. See <a href="../platform/model/work-atom.html#s-output">the atom ledger row on Work-Atom</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Rulings of record: <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> (A1 family)</li>
+<li>Build grounding: <code>holding/plans/native-sop-program/GROUNDING-MAP.md</code></li>
+<li>Hub: <a href="../platform/the-model.html">The Model</a> &#183; siblings: <a href="../platform/model/particles.html">Particles</a> &#183; <a href="../platform/model/work-atom.html">Work-Atom</a> &#183; <a href="../platform/model/assembly-system.html">Assembly + System</a> &#183; <a href="../platform/model/internal-system.html">Internal System</a> &#183; <a href="../platform/model/shadow-systems.html">Shadow Systems</a> &#183; <a href="../platform/model/properties.html">Properties (Charter · Domain · Tenancy)</a></li>
+</ul>
+
+<h2>Provenance</h2><p style="font-size:12px;color:#6b7280">author: claude (audit-fix 2026-08-18) &#183; refreshed against the 2026-08-17 sitting (WHAT-WE-DECIDED.md) &#183; review: audit workflow wf_5c81f205 &#183; earlier content: original page authors.</p>
+</details>
+
+<details class="folded-from" id="folded-platform-model-engine-formation-html" data-folded-from="platform/model/engine-formation.html"><summary style="cursor:pointer;font-weight:700;margin:22px 0 6px">Engine Formation + Declared Read Surface (A21) <span style="font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563;margin-left:6px">folded from platform/model/engine-formation.html on 2026-09-29</span></summary>
+<div id="ruled-2026-09-20" style="background:#ecfdf5;border-left:3px solid #047857;padding:10px 13px;font-size:13.5px;margin:14px 0"><b>On the department screen, ruled 2026-09-20.</b> Folded into Workflow + Engine (Born: written or proposed, three evidence kinds) and Adaptation. This stub is archived 2026-09-20. Screen: <a href="https://sankalpasawa.github.io/asawa-site/native/locked/department-screen.html">the department screen</a> (<a href="https://sankalpasawa.github.io/asawa-site/native/locked/journeys-on-screen.html">journeys on it</a>) (locked 2026-09-20; decision sheet section 12) &#183; <a href="../platform/model/lifecycle.html">the life cycle of an engine and a department</a>.</div>
+<p><span class="pill SEED">STUB</span> This page exists because BALLOT 2026-08-18 (B18-6) ruled that A21 gets a stub under L2. A21 — <b>Engine Formation + Declared Read Surface</b> — was PROPOSED 2026-08-10 (dual-AI folded) and <b>RULED at the SITTING</b> (convened 2026-08-11, concluded 2026-08-17).</p>
+
+<div class="note"><b>What this page will hold (when authored from the sitting record):</b> how an Engine forms around accumulating workflows, and the Declared Read Surface — what an engine states up front that it reads. Until then, the decision of record lives in <code>holding/plans/native-sop-program/DESIGN-DECISION-SHEET.md</code> &#167;11 SITTING RECORD (A21 row), and adjacent context on <a href="../platform/model/edge-system.html">The Edge System</a> and <a href="../platform/model/product-vertical.html">Inside the Product Vertical</a>.</div>
+
+<h2>Status</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Decision</td><td>A21 — RULED (SITTING 2026-08-11 &#8594; 2026-08-17)</td></tr>
+<tr><td>This page</td><td>STUB — placement only, per B18-6; full authoring queued behind the sitting&#8217;s ~14 granular ADRs (S7 canon wave)</td></tr>
+<tr><td>Record</td><td>DESIGN-DECISION-SHEET.md &#167;11 (repo, D54 canon rule applies)</td></tr></table>
+
+<p style="font-size:12px;color:#6b7280">author: claude (session bcb3d1c4) &#183; date: 2026-08-19 &#183; inputs: WHAT-WE-DECIDED.md B18-6 + DESIGN-DECISION-SHEET.md status line &#183; status: STUB by ruling &#183; supersedes: none.</p>
+</details>
+</details></div></div></body></html>

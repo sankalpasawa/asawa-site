@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§6 — Distribution (go-to-market) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="05-connector.html">prev: 05 connector</a> · <strong>§6 — Distribution (go-to-market)</strong> · <a href="07-observability.html">next: 07 observability</a> →
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§6 — Distribution (go-to-market)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/HLD/06-deployment.html">HLD/06 Deployment</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-5-distribution">
+<h2>§6 Distribution — go-to-market <a href="../product-prd-native-v1.html#section-5-distribution" class="anchor">#</a></h2>
+<table class="pillar-6block">
+<tr><td><strong>Purpose</strong></td><td>How CoS reaches operators. Business-layer concerns: channel, pricing, onboarding, lifecycle.</td></tr>
+<tr><td><strong>Owns</strong></td><td>Channels (Sutra plugin · direct install · cloud) · pricing tiers · onboarding flow · update/upgrade lifecycle · feedback loop.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>§2 CoS product readiness; §3 Native platform stability; §6 Observability (acquisition + activation metrics).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Product surface; runtime behavior; transport.</td></tr>
+</table>
+
+<h3 id="section-6-0-taxonomy">§6.0 Asawa Client Taxonomy — T1-T4 distribution tiers</h3>
+<p>Distribution depends on which tier of client Native is serving. Per founder direction (D34, 2026-04-24), 4 tiers exist with uniform governance but different identity / ownership / onboarding paths.</p>
+<table>
+<tr><th>Tier</th><th>Name</th><th>Who</th><th>Onboarding path</th><th>Plugin distribution</th></tr>
+<tr><td><strong>T1</strong></td><td>Asawa (the holding co)</td><td>Sankalp Asawa, founder · CEO of Asawa Inc.</td><td>Direct — Asawa runs Native on its own infrastructure; full authority access</td><td>Plugin embedded; auto-update</td></tr>
+<tr><td><strong>T2</strong></td><td>Owned portfolio</td><td>Asawa-owned products: DayFlow · Billu · Paisa · PPR · Maze</td><td>Sutra-onboard 8-phase playbook; founder is principal at each</td><td>Plugin auto-update; pinned per company</td></tr>
+<tr><td><strong>T3</strong></td><td>Projects (client-owned IP)</td><td>Asawa does the work but client owns IP: Testlify · Dharmik</td><td>Sutra-onboard playbook adapted; client retains commercial product; Asawa runs delivery</td><td>Plugin distributed; client may pin to specific version</td></tr>
+<tr><td><strong>T4</strong></td><td>Sutra Users (external)</td><td>Operators in the wider market who adopt the Sutra plugin themselves</td><td>Self-onboard via Sutra plugin; tracked via <code>holding/departments/analytics/fleet.sh</code></td><td>Plugin marketplace; opt-in updates</td></tr>
+</table>
+<p class="callout">Why this matters for Native: each tier has different governance scope (T1 full authority · T4 plugin-policy-only). Charter scope + Authority Model thresholds (<a href="../product-prd-native-v1.html#d6-authority">D.6</a>) default differently per tier. <strong>Source</strong>: <code>holding/ASAWA-AS-CLIENT.md</code> · <code>CLAUDE.md</code> identity section · founder direction D34.</p>
+
+<h3 id="section-6-1-channels">§6.1 Channels (v1)</h3>
+<table>
+<tr><th>Channel</th><th>Audience</th><th>Status v1</th></tr>
+<tr><td>Sutra plugin (T2 + T4 fleet)</td><td>Existing Sutra users / Asawa portfolio</td><td>Primary v1 channel</td></tr>
+<tr><td>Direct install (terminal-fluent)</td><td>Operator-types with own setup</td><td>v1</td></tr>
+<tr><td>Cloud (hosted)</td><td>Operator-types who don't want infra</td><td>v2+</td></tr>
+<tr><td>Partner-deployed (e.g. accelerators)</td><td>Operators in cohort programs</td><td>v2+</td></tr>
+</table>
+
+<h3 id="section-6-2-pricing">§6.2 Pricing + packaging (placeholder v1)</h3>
+<ul>
+  <li>Tier A — Solo founder (1-2 companies)</li>
+  <li>Tier B — Portfolio operator (3-7 companies)</li>
+  <li>Tier C — Enterprise / partner-deployed</li>
+  <li>Pricing TBD; placeholder pending operator-economics data.</li>
+</ul>
+
+<h3 id="section-6-3-onboarding">§6.3 Onboarding flow</h3>
+<p>Per the Sutra-onboard 8-phase playbook (intake → market → shape → decide → architect → configure → deploy → activate). New CoS operator goes through:</p>
+<pre>
+   STAGE 1  Install (Sutra plugin / direct)
+        │
+        ▼
+   STAGE 2  Charter setup (operator declares fixed Charters
+            for each company in portfolio)
+        │
+        ▼
+   STAGE 3  Connect (Slack · email · tools per Charter)
+        │
+        ▼
+   STAGE 4  First-turn — operator types intent; CoS responds;
+            Authority gate dialed conservative by default
+        │
+        ▼
+   STAGE 5  Ongoing — operator dials autonomy + feeds patterns;
+            B5.d learns; CoS becomes faster per company
+</pre>
+
+<h4 id="section-6-3-1-install-tier-matrix">§6.3.1 Install + onboard responsibility per tier</h4>
+<p>Per <a href="../product-prd-native-v1.html#section-1-architecture">§6.0 Asawa Client Taxonomy</a>, install/onboard responsibility differs per tier. The <a href="../product-prd-native-v1.html#a2-persona">§A.2.2 zero-terminal post-onboarding</a> rule means SOMEONE handles the one-time technical setup; this matrix names who, per tier.</p>
+<table>
+<tr><th>Tier</th><th>Who installs Native + CoS</th><th>Onboarding channel</th><th>Operator terminal exposure</th></tr>
+<tr><td><strong>T1 Asawa Inc.</strong></td><td>Asawa Forge self-installs (we are the platform)</td><td>Internal — Forge engineers + founder</td><td>Founder is terminal-fluent; uses terminal for governance + canon work</td></tr>
+<tr><td><strong>T2 Owned (DayFlow · Billu · Paisa · PPR · Maze)</strong></td><td>Asawa/Sutra Forge installs + maintains</td><td>Forge-led — Forge engineers set up per company; Charter created with company-specific context</td><td>None post-onboarding — operator (T2 founder) uses CoS surface only</td></tr>
+<tr><td><strong>T3 Projects (Testlify · Dharmik)</strong></td><td>Asawa Forge installs into client environment; client owns the deployment + IP</td><td>Forge-led intake → Sutra-onboard 8-phase playbook → handoff to client operator</td><td>None post-handoff — client operator uses CoS surface only</td></tr>
+<tr><td><strong>T4 Fleet (external Sutra plugin adopters)</strong></td><td>Operator self-installs via Sutra plugin marketplace (<code>claude plugin install sutra</code>)</td><td>Plugin auto-onboarding — <code>/core:start</code> command guides setup</td><td>One-time terminal use for plugin install; post-install CoS surface in their Claude Code session (zero terminal beyond install)</td></tr>
+</table>
+<p class="callout"><strong>Tier transition path</strong>: T4 adopters who want managed install (less terminal exposure) can graduate to T3 (Forge-led install) on request. T3 clients who internalize the platform can stay T3 or migrate to T2-owned with operator-led ongoing. Per <a href="../product-prd-native-v1.html#a2-persona">§A.2.2</a>: <em>regardless of tier, the operator never sees terminal commands during ongoing operation</em> — the matrix above names who handles the one-time setup that the constraint factors out.</p>
+
+<h3 id="section-6-4-lifecycle">§6.4 Lifecycle + updates</h3>
+<ul>
+  <li>Sutra plugin auto-update path; CoS-product updates ride the plugin channel for T2/T4.</li>
+  <li>Operator can pin a CoS version per company (Charter-scoped).</li>
+  <li>Breaking changes flagged in operator-facing changelog before push.</li>
+</ul>
+
+<h3 id="section-6-5-transformation">§6.5 Transformation Cycle — customer onboarding journey beyond install</h3>
+<p>New CoS operators come from existing organizational contexts. The transformation cycle is the structured path from "I have an existing workflow" to "CoS-on-Native runs my workflow." Workshops + sessions + co-working — not just install.</p>
+
+<h4>§6.5.1 Five-stage transformation cycle</h4>
+<pre>
+   ┌──────────────────────────────────────────────────────────┐
+   │  T1  DISCOVERY  (week 0)                                  │
+   │  ─────────────                                            │
+   │  · 1-on-1 session: founder/operator articulates portfolio │
+   │  · existing workflow inventory · pain-point mapping       │
+   │  · skill mode baseline detection                          │
+   │  · Charter sketch per company                             │
+   └────────────────────────┬─────────────────────────────────┘
+                            ▼
+   ┌──────────────────────────────────────────────────────────┐
+   │  T2  ARTICULATION  (week 1)                               │
+   │  ─────────────                                            │
+   │  · Workshop: founder + Asawa Forge writes ratified        │
+   │    Charters per company (fixed-vs-flexible scope)         │
+   │  · Connector setup per Charter (Slack/email/tools)        │
+   │  · First 5 trial tasks identified (low-risk T0/T1)        │
+   └────────────────────────┬─────────────────────────────────┘
+                            ▼
+   ┌──────────────────────────────────────────────────────────┐
+   │  T3  PILOT  (weeks 2-3)                                   │
+   │  ─────────────                                            │
+   │  · Operator runs 5 trial tasks · CoS executes ·           │
+   │    operator dials autonomy + feeds correction signals     │
+   │  · Daily Pulse surfaces what CoS got right + drifted on   │
+   │  · B5.d learned patterns seeded                           │
+   └────────────────────────┬─────────────────────────────────┘
+                            ▼
+   ┌──────────────────────────────────────────────────────────┐
+   │  T4  EXPANSION  (weeks 4-8)                               │
+   │  ─────────────                                            │
+   │  · Charter scope widens · more tasks routed to CoS ·      │
+   │    T2/T3 tasks introduced (iterative + Charter-tier)      │
+   │  · Autonomy thresholds tuned · skill mode mix refined     │
+   │  · Operator-facing CoS voice converges                    │
+   └────────────────────────┬─────────────────────────────────┘
+                            ▼
+   ┌──────────────────────────────────────────────────────────┐
+   │  T5  STEADY STATE  (week 9+)                              │
+   │  ─────────────                                            │
+   │  · S4 engagement state per company stabilizes             │
+   │  · Operator transitions to "I just type intent" mode      │
+   │  · Quarterly review: drift check · Charter audit ·        │
+   │    workforce health · re-onboard new domains as needed    │
+   └──────────────────────────────────────────────────────────┘
+</pre>
+
+<h4>§6.5.2 Delivery modes for §4.7 workforce-built deliverables</h4>
+<p>References <a href="../product-prd-native-v1.html#section-3-native-platform">§4.7 Workforce outputs as deliverables</a> — platform CAPABILITY lives there; §6 owns the delivery PIPELINE.</p>
+<table>
+<tr><th>Delivery mode</th><th>Trigger</th><th>Owner</th><th>Lifecycle</th></tr>
+<tr><td>D1 Client-ship</td><td>Native-built tool/script reaches usefulness threshold for a client company</td><td>Asawa Forge handover team</td><td>Build → handover ceremony → client owns + maintains; Native deletes copy</td></tr>
+<tr><td>D2 Sutra-ratify</td><td>Reusable pattern emerges across operators (k=4 instances)</td><td>Sutra plugin core team</td><td>Ratification review → roll into next plugin release → fleet distribution per <a href="../product-prd-native-v1.html#section-5-distribution">§6 channels</a></td></tr>
+<tr><td>D3 Operator-local</td><td>Operator's own portfolio-specific tool</td><td>Operator (in their own Native workspace)</td><td>Auto-maintained by Native; versioned per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12 Artifact Governance</a></td></tr>
+</table>
+
+<h4>§6.5.3 Acceptance criteria (Transformation Cycle v1)</h4>
+<ul>
+  <li>Discovery → Articulation in ≤1 week per operator.</li>
+  <li>Pilot tasks have explicit success/fail criteria (per §4.5 Test-before-conclude).</li>
+  <li>Steady-state target: operator confidence + CoS accuracy KPI both ≥80% by end of Expansion stage.</li>
+  <li>Quarterly review surfaces drift signals from §7 Observability; re-onboard triggered if drift &gt;15%.</li>
+</ul>
+
+<h3 id="section-6-6-feedback">§6.6 Feedback Engine — operator + customer voice loop</h3>
+<p>Per <code>FEEDBACK</code> charter + PROTO-024 Client→Team Fan-in. Closes the loop between operator/customer experience and product team decisions. Every channel sanitized for PII before fan-in.</p>
+
+<h4>§6.6.1 Feedback channels (v1)</h4>
+<table>
+<tr><th>Channel</th><th>Who uses it</th><th>Where it lands</th><th>How team consumes</th></tr>
+<tr><td><strong>/feedback</strong> command</td><td>Operators in-session</td><td>Local feedback inbox → fan-in to GitHub issues at <code>sankalpasawa/sutra</code></td><td>Product team triage; tagged by Charter scope</td></tr>
+<tr><td><strong>GitHub issues</strong></td><td>External T4 fleet · technical operators</td><td>Canonical channel: <code>github.com/sankalpasawa/sutra/issues</code></td><td>Local mirror at <code>sutra/marketplace/feedback-inbox/</code>; <code>sync-feedback-from-gh.sh</code> on demand</td></tr>
+<tr><td><strong>Daily Pulse signal</strong></td><td>Operator's own behavior (overrides, corrections, retries)</td><td>Auto-captured via <a href="../product-prd-native-v1.html#section-6-observability">§7 Observability</a> drift signals</td><td>B5.d learned patterns adapt; aggregated trend → product team</td></tr>
+<tr><td><strong>Workshop sessions</strong></td><td>T2/T3 operators during Transformation Cycle</td><td>1-on-1 sessions during §6.5 Articulation + quarterly review</td><td>Founder + Asawa Forge synthesize; manual product-team brief</td></tr>
+<tr><td><strong>founder-360-review</strong> skill</td><td>Founder retrospective (8-angle review)</td><td>Time-windowed evidence-anchored review</td><td>Founder feeds product priorities</td></tr>
+</table>
+
+<h4>§6.6.2 Fan-in flow (PROTO-024)</h4>
+<pre>
+   OPERATOR (T1-T4)
+        │
+        ▼  one of: /feedback · gh issue · Daily Pulse drift · workshop
+   ┌─────────────────────────────────────────────┐
+   │   §4 Native — feedback artifact created     │
+   │   ─────────────────────────                  │
+   │   privacy-sanitize.sh strips PII             │
+   │   tagged: Charter · tier · task tier · pillar│
+   │   audit-row written (B5.c)                   │
+   └────────────────────┬────────────────────────┘
+                        │ async fan-in
+                        ▼
+   ┌─────────────────────────────────────────────┐
+   │   ASAWA / SUTRA PRODUCT TEAM                 │
+   │   ─────────────────────────                  │
+   │   weekly triage → CSM cap-NNN updates        │
+   │   aggregated patterns → §3 HOW evolution     │
+   │   bug fixes → §4.5 test cases added          │
+   └────────────────────┬────────────────────────┘
+                        │
+                        ▼
+   ┌─────────────────────────────────────────────┐
+   │   FEEDBACK LOOP CLOSES                       │
+   │   ─────────────────────                      │
+   │   operator gets release-note in plugin       │
+   │   update; CSM banner shows feature shipped   │
+   │   that addresses their feedback              │
+   └─────────────────────────────────────────────┘
+</pre>
+
+<h4>§6.6.3 Acceptance criteria (Feedback Engine v1)</h4>
+<ul>
+  <li>Every feedback artifact emits DecisionProvenance row (per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12 Artifact Governance</a>).</li>
+  <li>PII-sanitization 100% before any cross-tenant fan-in (HS-2 fires on violation).</li>
+  <li>Operator can trace own feedback from submission → product decision → release (closed loop visible).</li>
+  <li>Weekly aggregate signal surfaces in Daily Pulse for founder.</li>
+</ul>
+<p class="callout"><strong>Sources</strong>: <code>sutra/os/charters/FEEDBACK.md</code> · <code>sutra/marketplace/plugin/commands/feedback.md</code> · <code>holding/scripts/sync-feedback-from-gh.sh</code> · PROTO-024 · founder-360-review skill. <strong>Hierarchy tag</strong>: Feedback Engine is a <strong>Module</strong> per <a href="../product-prd-native-v1.html#section-1-architecture">§1.4</a> — composes cap-Connector + cap-Privacy-Sanitize + cap-Audit; has independent lifecycle, per-Deployment binding, own runtime state.</p>
+</section>
+
+<section id="section-6-7-module-distribution">
+<h3>§6.7 Module distribution + lifecycle</h3>
+<p>How Modules (per <a href="../product-prd-native-v1.html#section-1-architecture">§1.4 Product Hierarchy</a>) reach operators. §6.0-§6.6 cover Product-level distribution; §6.7 covers Module-level distribution within an operator's existing CoS install.</p>
+
+<h4>§6.7.1 Module lifecycle (cradle to retire)</h4>
+<table>
+<tr><th>Stage</th><th>What happens</th><th>Authority</th></tr>
+<tr><td><strong>Proposed</strong></td><td>Capability already exists in CSM (cap-NNN); composing it into a Module candidate</td><td>Asawa Forge proposes</td></tr>
+<tr><td><strong>Designed</strong></td><td>Module SPEC drafted; binding schema declared; codex+deepseek review (per <a href="../product-prd-native-v1.html#section-3-native-platform">§4.5</a> test gate)</td><td>Asawa Forge designs; Sutra plugin core approves</td></tr>
+<tr><td><strong>Built + Shipped</strong></td><td>SPEC merged to plugin; auto-rolls to T1-T4 per §6.0 tier per §6.4 Lifecycle</td><td>Native platform release</td></tr>
+<tr><td><strong>Operator-installed</strong></td><td>Operator chooses Module from approved catalog (v1.5+); creates BINDING for a Charter</td><td>Operator (per §1.4.3 phase)</td></tr>
+<tr><td><strong>Active</strong></td><td>RUNTIME STATE accumulates; observability metrics tracked; drift detected</td><td>Native runtime</td></tr>
+<tr><td><strong>Deprecated</strong></td><td>Module marked end-of-life in CSM; sunset window announced; operators notified via feedback channel</td><td>Native platform + operator-affecting notification</td></tr>
+<tr><td><strong>Retired</strong></td><td>SPEC archived; existing BINDINGs frozen-readable; RUNTIME STATE preserved for replay window per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12</a></td><td>Native platform</td></tr>
+</table>
+
+<h4>§6.7.2 v1 distribution scope (per R7 reviewer convergence)</h4>
+<ul>
+  <li><strong>v1</strong> — Native platform + Asawa Forge author + ship Modules; operators consume passively (bound by Forge for them)</li>
+  <li><strong>v1.5</strong> — operator self-serve <em>binding</em> from approved Module catalog (still no author-new-Module privilege)</li>
+  <li><strong>v2+</strong> — third-party developers gated by review + permissioning + audit (marketplace concern)</li>
+</ul>
+
+<h4>§6.7.3 Acceptance criteria (Module distribution v1)</h4>
+<ul>
+  <li>Module catalog is operator-discoverable via <code>sutra-capability</code> skill (single source of truth: <a href="../product-prd-native-v1.html#section-3-native-platform">§4.8 CSM</a>).</li>
+  <li>Module retirement preserves replay capability for operator-held BINDINGs (per <a href="../product-prd-native-v1.html#d12-artifact-governance">D.12</a>).</li>
+  <li>Cross-Product Module reuse is <strong>designed for, not guaranteed in v1</strong> — interfaces stay clean enough to extract later when 2nd Product exists.</li>
+</ul>
+</section>
+
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/HLD/06-deployment.html">HLD/06 Deployment</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>
