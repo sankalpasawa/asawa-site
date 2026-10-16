@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>02 — Data Model — Native Tech Design</title><link rel="stylesheet" href="../shared.css"></head>
+<body>
+<div style="background:#7c2d12;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>SUPERSEDED 2026-06-13.</b> This scaffold stub is replaced by the engineering band's cross-cutting views + per-part pages. See <a href="../../engineering/index.html" style="color:#fed7aa">engineering/</a>. Archive retained for provenance.</div>
+<nav class="topnav"><a href="../index.html">← Tech Design Hub</a> · <a href="../../product-prd-native-v1.html">PRD</a> · Layer: <strong>HLD</strong> · Doc: <strong>02 — Data Model</strong></nav>
+<header><h1>02 — Data Model</h1><p class="subtitle">Schemas for the 10 canon primitives + DecisionProvenance audit trail + Artifact governance. Type signatures + invariants + lifecycle. Engineering reference for data design.</p></header>
+<div class="scaffold-banner"><span class="fill-me">SCAFFOLD</span> — skeleton landed 2026-05-20. Content fill-in pending. Canon at <code>sutra/os/native/primitives/</code> is authoritative.</div>
+<section><h2>Scope</h2><p>Type-level reference for every operator-visible entity Native works with. Engineers consult this when designing storage, serialization, or cross-component flows.</p></section>
+<div class="canon-pointer"><strong>Canon authority</strong>:<ul><li><a href="../../../../../sutra/os/native/primitives/"><code>sutra/os/native/primitives/</code></a> (10 primitive specs)</li><li><a href="../../../../../sutra/os/decisions/ADR-007-decision-provenance-schema.md">ADR-007 DecisionProvenance schema</a></li><li><a href="../../../../../sutra/os/decisions/ADR-008-markdown-vs-code-authoritative-state.md">ADR-008 markdown-vs-code state</a></li></ul></div>
+<section><h2>Planned sections</h2><div class="section-list"><ol><li>Domain — operator-visible accountability</li><li>Charter — fixed vs flexible scope</li><li>Workflow — typed step graph</li><li>Step — typed config + reuse_tag + return_contract</li><li>Trigger — event-driven workflow start</li><li>ExecutionResult — state machine output</li><li>EngineEvent — 26 typed events</li><li>Tenant — Human-Org boundary</li><li>Approval — Authority gate primitive</li><li>DecisionProvenance — 3-channel audit row</li><li>Cross-primitive relationships diagram</li><li>State lifecycle per primitive</li></ol></div></section>
+<section><h2>Back-references</h2><p>ADR-006 tenant-isolation · ADR-007 decision-provenance · PRD §4.3 state envelope</p></section>
+<footer>Scaffold 2026-05-20. <a href="../index.html">↑ Hub</a></footer>
+</body></html>

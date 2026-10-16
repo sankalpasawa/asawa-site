@@ -1,0 +1,255 @@
+<!doctype html>
+<!-- PROTOTYPE: preview/org.html (v5, 2026-09-29). The app's own treatment, nothing invented (founder: "I don't want to change any
+     kind of UI in chat. Keep the UI treatment of chat, map the same. Board: don't change them."):
+     - the app's stylesheet panel.css is loaded as is (copied beside this file), light theme;
+     - the chat is the app's markup: div.turn.wbturn > div.who.who-you / .who-ai + div.u.md / div.a with span.dpchk (kind · time);
+       the box is div.wbbox.wb with the app's chip, textarea and button.btn.wb.dpstamp; asks are the app's dpcard "Waiting for you"
+       with dpask rows and Stamp / Refuse; the working line is div.o2quiet.dpq.wbworking with i.wbbreath (22-website.js);
+     - the Board is the app's: wb2Turn markup and the "Say something on the board" box (23-screens.js);
+     - the Map is the app's own capture, static (the founder: Map is closed).
+     What the prototype adds is only the flow: Root's questions at birth, departments appearing on the left, the run, growth. -->
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asawa on Sutra</title>
+<link rel="stylesheet" href="panel.css">
+<style>
+/* the shell only (rail, tree, middle column, panes); everything inside a pane wears the app's own classes */
+html,body{height:100%}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.5 var(--sans)}
+.app{display:grid;grid-template-columns:64px 210px 1fr;height:100%;min-height:600px}
+.rail{border-right:1px solid var(--line);padding:16px 0;display:flex;flex-direction:column;align-items:center;gap:18px;font:400 9.5px/1.2 var(--sans);color:var(--muted)}
+.rail .on{color:var(--acc);font-weight:600;background:var(--acc-bg);border-radius:10px;padding:8px 10px}
+.tree{border-right:1px solid var(--line);padding:16px 10px;font:400 12.5px/1.5 var(--sans)}
+.tree .s{color:var(--faint);border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin-bottom:12px;background:var(--surface)}
+.tree .r{padding:4px 8px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}.tree .r:hover,.tree .r.sel{background:var(--acc-bg)}.tree .l1{padding-left:20px}.tree .l2{padding-left:34px}
+.tree .serif{font:500 13.5px/1.5 var(--serif)}.tree .r[hidden]{display:none}
+.grow{animation:grow .5s ease-out}@keyframes grow{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 20px;background:var(--acc-bg);border-bottom:1px solid var(--line);font:400 12px/1.4 var(--sans);color:var(--muted)}
+.steps{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}.steps span{font-size:10.5px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--faint);background:var(--surface)}.steps span.on{color:var(--ok);border-color:var(--ok)}.steps span.done{color:var(--muted)}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px 10px;border-bottom:1px solid var(--line);background:var(--surface)}
+.hd .name{font:500 20px/1.2 var(--serif);color:var(--ink)}.hd .sub{font-size:11.5px;color:var(--muted);margin-left:8px}
+.view{display:none;flex:1;min-height:0}.view.on{display:flex;flex-direction:column}
+.dept{display:grid;grid-template-columns:230px 1fr;flex:1;min-height:0}
+.mid{border-right:1px solid var(--line);padding:10px 8px;overflow:auto;font:400 12.5px/1.5 var(--sans)}
+.mid .k{font:400 10.5px/1.4 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin:12px 8px 4px}
+.mid .row{display:flex;justify-content:space-between;align-items:center;padding:5px 10px;border-radius:8px;cursor:pointer}.mid .row:hover,.mid .row.sel{background:var(--acc-bg)}
+.mid .st{font:400 10px/1.5 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}.mid .st.run{color:var(--ok)}.mid .v{font-size:11px;color:var(--faint)}
+.pane{display:flex;flex-direction:column;min-width:0}
+.ptitle{padding:8px 20px;border-bottom:1px solid var(--line);font:600 12.5px/1.4 var(--sans);background:var(--surface)}
+.p{display:none;flex:1;min-height:0;overflow:auto;padding:12px 20px}.p.on{display:flex;flex-direction:column;gap:10px}
+.p .fill{flex:1}
+.chatwrap{flex:1;overflow:auto}
+.shot{width:100%;display:block;border:1px solid var(--line);border-radius:8px}
+.quiet{font:400 12px/1.5 var(--sans);color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.grow{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="rail"><div>Now</div><div>Focus</div><div>Chats</div><div>Market</div><div class="on">Org</div></div>
+<div class="tree"><div class="s">Search</div>
+<div class="r serif"><span>Sutra</span></div>
+<div class="r l1 serif sel" data-node="org" id="treeOrg" tabindex="0"><span id="treeOrgName">New organisation</span></div>
+<div class="r l2" data-node="dept" id="treeWebsite" tabindex="0" hidden><span id="treeWebsiteName">Website</span><span class="st" id="treeWebsiteSt"></span></div>
+<div class="r l2" data-node="hiring" id="treeHiring" tabindex="0" hidden><span id="treeHiringName">Hiring</span></div>
+<div class="r l1 serif" data-node="other" tabindex="0"><span>City Care Hospital</span></div>
+</div>
+<div class="pane" style="min-height:0">
+<div class="bar"><span>Prototype, not the app. Type, or press Play to walk the journey.</span><button class="btn wb" id="play">Play</button><button class="btn wb" id="reset">Start over</button>
+<div class="steps"><span data-step="birth">1 name it</span><span data-step="ask">2 Root asks</span><span data-step="run">3 the first department</span><span data-step="change">4 a change</span><span data-step="grow">5 growth</span></div></div>
+
+<!-- the one chat: Root at birth, the organisation after; the app's own chat markup -->
+<section class="view on" id="v-org">
+<div class="hd"><div><span class="name" id="orgName">New organisation</span><span class="sub" id="orgSub">Sutra</span></div><div><button class="btn wb" id="rootBtn" hidden>Root settings</button></div></div>
+<div class="p on" id="p-orgchat"><div class="chatwrap"><div class="wbchat wb" id="orgTurns"></div><div id="orgAsks"></div></div>
+<div class="wbbox wb"><textarea id="orgSay" rows="2" placeholder="Name your organisation"></textarea><button type="button" class="btn wb dpstamp" id="orgSend">Send</button></div></div>
+<div class="p" id="p-root"><div class="dpcard"><h3>Root</h3><div class="dprow"><span class="dpdot"></span><span>the helper that makes departments<div class="dpchk">speaks only at birth</div></span></div><div class="dprow"><span class="dpdot"></span><span>Templates it may use<div class="dpchk">Website · Hiring · Blog (the Library)</div></span></div><div class="dprow"><span class="dpdot"></span><span>Rules every department inherits<div class="dpchk" id="rootRules">none yet</div></span></div><div class="dprow"><span class="dpdot"></span><span>Who may propose a department<div class="dpchk">you; any department's Adaptation</div></span></div><div class="dprow"><span class="dpdot"></span><span>Departments it has made<div class="dpchk" id="rootMade">none yet</div></span></div></div><div><button class="btn wb" id="rootBack">Back to the chat</button></div></div>
+</section>
+
+<!-- a department: today's structure; Chat, Map and Board exactly as the app draws them -->
+<section class="view" id="v-dept">
+<div class="hd"><div><span class="name" id="deptName">Website</span><span class="sub" id="deptSub">Root</span></div><div><button class="btn wb" id="stop">Stop</button></div></div>
+<div class="dept">
+<div class="mid" id="mid">
+<div class="row sel" data-row="chat">Chat</div><div class="row" data-row="map">Map</div><div class="row" data-row="board">Team</div>
+<div class="k">Functions</div><div class="row" data-row="fn">Identity</div><div class="row" data-row="fn">Adaptation</div><div class="row" data-row="fn">Priority</div><div class="row" data-row="fn">Coordination</div><div class="row" data-row="fn">Audit</div>
+<div class="k">Engines</div><div class="row" data-row="eng"><span>Plan</span><span class="st" id="e-plan">IDLE</span></div><div class="row" data-row="eng"><span>Write</span><span class="st" id="e-write">IDLE</span></div><div class="row" data-row="eng"><span>Check</span><span class="st" id="e-check">IDLE</span></div><div class="row" data-row="eng"><span>Publish</span><span class="st" id="e-publish">IDLE</span></div>
+<div class="k">Filed work</div><div class="row" data-row="asis"><span>Brief</span><span class="v" id="a-brief">&#8212;</span></div><div class="row" data-row="asis"><span>Site plan</span><span class="v" id="a-siteplan">&#8212;</span></div><div class="row" data-row="asis"><span>Pages</span><span class="v" id="a-pages">&#8212;</span></div><div class="row" data-row="asis"><span>Build</span><span class="v" id="a-build">&#8212;</span></div><div class="row" data-row="asis"><span>Live site</span><span class="v" id="a-live">&#8212;</span></div>
+<div class="k">People</div><div class="row" data-row="asis">SankalpAsawa</div>
+<div class="k">Apps</div><div class="row" data-row="asis">Human Sutra</div>
+</div>
+<div class="pane">
+<div class="ptitle" id="ptitle">Chat</div>
+<div class="p on" id="p-chat"><div class="chatwrap"><div class="wbchat wb" id="turns"></div><div id="asks"></div></div>
+<div class="wbbox wb"><button type="button" class="wbchip on wbto wb" id="chip">to Website &times;</button><textarea id="say" rows="2" placeholder="Say it to Website"></textarea><button type="button" class="btn wb dpstamp" id="send">Send</button></div></div>
+<div class="p" id="p-map"><div style="overflow:hidden;width:100%;aspect-ratio:850/565;border:1px solid var(--line);border-radius:8px"><img src="../assets/dept-02-map-2026-09-29.png" alt="the Map, as the app draws it" style="display:block;width:176.5%;max-width:none;margin-left:-72.4%;margin-top:-11.5%"></div><div class="quiet">The Map as the app draws it today (a capture; the founder: Map is closed). In the app it is live: the running engine has a halo, what waits for you is amber, a fault is red.</div></div>
+<div class="p" id="p-board"><div class="chatwrap"><div class="wbchat wb" id="board"></div></div><div class="o2quiet dpq">Team: what the functions and engines said, as the record holds it. Read only; you speak in Chat.</div></div>
+<div class="p" id="p-fn"><div class="dpcard"><h3 id="fnTitle">Identity</h3><div id="fnBody"></div></div><div class="dpcard"><h3>Settings</h3><div id="fnSet"></div></div><div class="quiet" id="fnNote">Today this function has three tabs: its own name (the steps on their rungs, starts, hears), Chat (its live chat with a step row after every turn), Settings (template, limit, the ladder's four numbers, starts, hears). This card is what a person needs from it; the rest sits behind Details.</div></div>
+<div class="p" id="p-eng"><div class="dpcard"><h3 id="engName">Plan</h3><div id="engBody"></div></div><div class="dpcard"><h3>With the five functions</h3><div id="engIx"></div></div><div class="quiet">As today otherwise: the Steps, Engine and Runs tabs stay. This card is where Motor's state, last run and health sit.</div></div>
+<div class="p" id="p-asis"><div class="o2quiet dpq" id="asisName">As today.</div></div>
+</div></div>
+</section>
+
+<section class="view" id="v-hiring"><div class="hd"><div><span class="name" id="hiringName">Hiring</span><span class="sub">Root</span></div></div><div class="p on"><div class="chatwrap"><div class="wbchat wb" id="hturns"></div></div><div class="wbbox wb"><textarea rows="2" placeholder="Say it to Hiring"></textarea><button type="button" class="btn wb dpstamp">Send</button></div></div></section>
+<section class="view" id="v-other"><div class="hd"><div><span class="name">City Care Hospital</span><span class="sub">Sutra</span></div></div><div class="p on"><div class="o2quiet dpq">Another organisation: the same chat, its own departments on the left. Not scripted here.</div></div></section>
+</div></div>
+
+<script>
+(function(){
+"use strict";
+const $ = s => document.querySelector(s);
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait = ms => new Promise(r => setTimeout(r, reduced ? Math.min(ms, 200) : ms));
+const now = () => new Date().toTimeString().slice(0, 5);
+const esc = s => String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const state = { org: "", dept: "", answers: {}, pending: null, playing: false, stopped: false, born: false, firstLive: false, grown: false, rules: [], calls: 0, lastRun: {}, v: { brief: 0, siteplan: 0, pages: 0, build: 0, live: 0 } };
+function step(name){ const order = ["birth", "ask", "run", "change", "grow"]; const b = order.indexOf(name); document.querySelectorAll(".steps span").forEach(s => { const a = order.indexOf(s.dataset.step); s.classList.toggle("on", a === b); s.classList.toggle("done", a < b); }); }
+function append(el, html){ el.insertAdjacentHTML("beforeend", html); const box = el.closest(".chatwrap") || el; box.scrollTop = box.scrollHeight; return el.lastElementChild; }
+
+// ---- the app's own turn markup (22-website.js wbChatTurn, 23-screens.js wb2Turn)
+const turnYou = (text, dept) => `<div class="turn wbturn"><div class="who who-you">${dept ? '<span class="wbchip">' + esc(dept) + '</span>' : ""}You</div><div class="u md">${esc(text)}</div></div>`;
+const turnAi = (who, text, kind, extra, dept) => `<div class="turn wbturn wbnew"><div class="who who-ai">${esc(who)}${dept ? '<span class="wbchip">' + esc(dept) + '</span>' : ""}</div><div class="a">${esc(text)}${extra || ""}<span class="dpchk">${kind} · ${now()}</span></div></div>`;
+const working = (engine, what) => `<div class="o2quiet dpq wbworking"><i class="wbbreath"></i>${esc(engine + " is working" + (what ? ": " + what : ""))}</div>`;
+const askCard = (id, text, where, opts) => `<div class="dpcard" data-ask="${id}"><h3>Waiting for you</h3><div class="dpask wb"><div class="dpasks">${text}</div><div class="dpaskd">${esc(where)} · ${now()}</div>${opts.map((o, i) => `<button type="button" class="btn wb${i ? "" : " dpstamp"}" data-opt="${i}">${esc(o)}</button>`).join("")}</div></div>`;
+
+// ---- views
+function showNode(n){ document.querySelectorAll(".tree .r[data-node]").forEach(r => r.classList.toggle("sel", r.dataset.node === n)); ["org", "dept", "hiring", "other"].forEach(k => $("#v-" + k).classList.toggle("on", k === n)); }
+document.querySelectorAll(".tree .r[data-node]").forEach(r => { r.addEventListener("click", () => showNode(r.dataset.node)); r.addEventListener("keydown", e => { if (e.key === "Enter") showNode(r.dataset.node); }); });
+const BOARD_LABEL = "Team";   /* the Board's name on the screen (founder, 2026-09-29); read only, no box */
+function showPane(name, label){ document.querySelectorAll("#v-dept .p").forEach(p => p.classList.toggle("on", p.id === "p-" + name)); $("#ptitle").textContent = name === "board" ? BOARD_LABEL : label; }
+document.querySelectorAll(".mid .row").forEach(r => r.addEventListener("click", () => { document.querySelectorAll(".mid .row").forEach(x => x.classList.remove("sel")); r.classList.add("sel");
+  const label = (r.firstElementChild ? r.firstElementChild.textContent : r.textContent).trim(), k = r.dataset.row;
+  if (k === "fn") showFn(label); else if (k === "eng") showEng(label); else if (k === "asis"){ $("#asisName").textContent = label + ": as today."; showPane("asis", label); } else showPane(k, label); }));
+$("#rootBtn").addEventListener("click", () => { $("#p-orgchat").classList.remove("on"); $("#p-root").classList.add("on"); });
+$("#rootBack").addEventListener("click", () => { $("#p-root").classList.remove("on"); $("#p-orgchat").classList.add("on"); });
+
+// ---- the one chat
+const orgTurns = $("#orgTurns"), turns = $("#turns"), board = $("#board");
+const oyou = t => append(orgTurns, turnYou(t));
+const root = (t, kind) => append(orgTurns, turnAi("Root", t, kind || "tells"));
+const org = (t, kind) => append(orgTurns, turnAi("Root", t, kind || "tells"));
+const echo = (t, kind) => append(orgTurns, turnAi("Root", t, kind || "tells", "", state.dept));
+const you = t => { append(turns, turnYou(t)); post("Owner", t, "asks"); };
+const say = (t, kind, extra) => { append(turns, turnAi("Root", t, kind || "tells", extra)); post("Identity", t, kind || "tells"); };
+state.lastFn = {};
+function post(src, text, kind){ if (src !== "Owner") state.lastFn[src.toLowerCase()] = text + " · " + now(); if (board.firstElementChild && board.firstElementChild.classList.contains("o2quiet")) board.firstElementChild.remove(); append(board, src === "Owner" ? `<div class="turn wbturn"><div class="who who-you">You</div><div class="u md">${esc(text)}<span class="dpchk">${kind} · ${now()}</span></div></div>` : turnAi(src, text, kind)); }
+
+// ---- an ask, as the app shows it: a card "Waiting for you" with Stamp / Refuse, in the department and on the organisation
+function ask(text, opts, where){ const id = "a" + Date.now();
+  const d = append($("#asks"), askCard(id, text, where || state.dept, opts)); const e = append($("#orgAsks"), askCard(id, text, where || state.dept, opts));
+  say(text.replace(/<[^>]+>/g, ""), "asks");
+  return new Promise(res => { let done = false; const settle = (i, v) => { if (done) return; done = true; state.pending = null; [d, e].forEach(x => x.remove()); you(v); res({ i, v }); };
+    [d, e].forEach(x => x.querySelectorAll("button").forEach(b => b.addEventListener("click", () => settle(+b.dataset.opt, opts[+b.dataset.opt])))); state.pending = { resolve: v => settle(-1, v) }; }); }
+function engine(name, on){ const el = $("#e-" + name.toLowerCase()); el.textContent = on ? "RUNNING" : "IDLE"; el.classList.toggle("run", on); $("#treeWebsiteSt").textContent = on ? "RUNNING" : ""; $("#treeWebsiteSt").classList.toggle("run", on); }
+async function run1(name, what, pages){ engine(name, true); post("Identity", name + " may start: the rules allow it", "tells");
+  const w = append(turns, working(name, what)); const wl = w;
+  if (pages){ for (let i = 0; i < pages; i++){ if (state.stopped) break; wl.innerHTML = '<i class="wbbreath"></i>' + esc(name + " is working: page " + (i + 1) + " of " + pages); state.calls++; await wait(700); } } else { state.calls++; await wait(1500); }
+  w.remove(); engine(name, false); state.lastRun[name.toLowerCase()] = now() + " · passed"; }
+function file(art){ state.v[art]++; const v = "v" + state.v[art]; $("#a-" + art).textContent = v; return v; }
+function rule(text){ state.rules.push(text); post("Identity", "sent a correction to the line", "tells"); }
+
+// ---- birth: Root asks, one at a time, in the same chat
+const Q = [ { k: "does", q: "What does it do, and for whom?", skip: "Skip" }, { k: "first", q: "What should it do first? A website, a blog, hiring, something else.", skip: null }, { k: "never", q: "What must never happen?", skip: "No rule yet" }, { k: "have", q: "What do you already have? A link, a listing, a brochure.", skip: "Nothing yet" }, { k: "spend", q: "How much may it spend a day?", skip: "Use the default: 30 calls, 6 USD" } ];
+let bi = -1;
+function bAsk(){ bi++; if (bi >= Q.length) return bLine(); const q = Q[bi]; step("ask"); root(q.q, "asks");
+  const card = q.skip ? append($("#orgAsks"), askCard("q" + bi, q.q, "Root", [q.skip])) : null;
+  if (card) card.querySelector("button").addEventListener("click", () => bAnswer(q.k, "to be confirmed", card));
+  state.pending = { resolve: v => bAnswer(q.k, v, card) }; $("#orgSay").placeholder = "Answer, in your words"; }
+function bAnswer(k, v, card){ state.pending = null; state.answers[k] = v; if (card) card.remove(); if (k === "never" && v !== "to be confirmed") state.rules.push(v); setTimeout(bAsk, 500); }
+function bLine(){ const a = state.answers, o = state.org; const kind = /blog/i.test(a.first) ? "Blog" : /hir/i.test(a.first) ? "Hiring" : "Website"; state.dept = o + " " + kind;
+  const line = o + " is for " + (a.does || "to be confirmed") + ". First it will " + a.first + ". Never " + (a.never || "to be confirmed") + ". Its first department will be " + state.dept + ", from the " + kind + " template; its functions run Product build. It may spend " + (a.spend || "the default") + ".";
+  root(line, "proposes");
+  const card = append($("#orgAsks"), askCard("line", esc(line), "Root", ["Yes, set it up", "Change something"]));
+  card.querySelectorAll("button")[0].addEventListener("click", () => { card.remove(); born(kind); }); card.querySelectorAll("button")[1].addEventListener("click", () => { card.remove(); oyou("Change something"); bi = -1; state.answers = {}; bAsk(); }); }
+async function born(kind){ oyou("Stamped"); const o = state.org;
+  const w = append(orgTurns, working("Root", "setting up " + o)); await wait(1200); w.remove(); root(o + " is set up.");
+  $("#treeOrgName").textContent = o; $("#treeOrg").classList.add("grow"); $("#orgName").textContent = o; await wait(800);
+  const w2 = append(orgTurns, working("Root", "setting up " + state.dept + ": the department, its charter, five functions on Product build, the " + kind + " engines")); await wait(1800); w2.remove();
+  $("#treeWebsiteName").textContent = state.dept; $("#treeWebsite").hidden = false; $("#treeWebsite").classList.add("grow"); $("#deptName").textContent = state.dept; $("#chip").innerHTML = "to " + esc(state.dept) + " &times;"; $("#say").placeholder = "Say it to " + state.dept; $("#treeHiringName").textContent = o + " Hiring"; $("#hiringName").textContent = o + " Hiring";
+  root(state.dept + " is set up, on the left. Say what the site should say.");
+  $("#rootBtn").hidden = false; $("#rootMade").textContent = state.dept; if (state.rules.length) $("#rootRules").textContent = state.rules.join("; ");
+  state.born = true; step("run"); $("#orgSay").placeholder = "Say it to Root, or name a department: " + state.dept; }
+
+// ---- the run, with the app's own lines (from the walks of 2026-09-28)
+async function run(){ if (state.playing) return; state.playing = true;
+  await wait(600); say("filed in the Brief"); file("brief"); await wait(800);
+  const a1 = await ask("say who you serve, in one line", ["That's all I know"]);
+  if (a1.i === -1){ say("filed in the Brief"); file("brief"); }
+  await run1("Plan", "planning the pages"); file("siteplan"); say("Planned 6 pages: Home, What we build, Who we are, Sutra, Contact, Careers. Say which to drop or add."); await wait(1000);
+  await run1("Write", "", 6); if (state.stopped){ say("stopped at your word"); state.playing = false; return; }
+  file("pages"); await run1("Check", "your rules, the template's checks"); post("Audit", "the page says 'Our phone number is to be confirmed'", "tells");
+  say("The site says it does not know 1 thing: on Contact, the page says 'Our phone number is to be confirmed'. Tell me here and I will put it in.");
+  const a2 = await ask("what is the phone number for Contact", ["No phone, use the email"]); say("filed in the Brief");
+  await run1("Write", "", 1); file("pages"); await run1("Check", "again"); file("build");
+  const a3 = await ask("say whether the site may go live for the first time, and where it is served from: this app's own server unless you say another", ["Stamp", "Refuse"]);
+  if (a3.i !== 1){ await run1("Publish", "putting it on the host"); const v = file("live"); state.firstLive = true; say("Live site " + v + " is live.", "tells", ' <button type="button" class="wbchip on wbto wb">Open the live site</button>'); echo("Live site " + v + " is live."); step("change"); }
+  else say("holding the Build");
+  state.playing = false; }
+async function grow(){ if (state.grown || state.playing) return; state.playing = true; step("grow"); const o = state.org;
+  post("Adaptation", "counted 4 asks about hiring in 2 days; they do not fit " + state.dept, "proposes"); post("Priority", "a Hiring department has room in the budget", "accepts");
+  const a = await ask("a Hiring department under " + o + ", from the Hiring template: it would screen applicants every morning and needs your calendar", ["Stamp", "Refuse"], "Root");
+  if (a.i !== 1){ const w = append(orgTurns, working("Root", "setting up " + o + " Hiring")); await wait(1800); w.remove(); root(o + " Hiring is set up, on the left."); $("#treeHiring").hidden = false; $("#treeHiring").classList.add("grow"); state.grown = true; $("#rootMade").textContent = state.dept + " · " + o + " Hiring";
+    append($("#hturns"), turnAi("Root", "I screen applicants every morning. First I need your calendar connected.", "asks")); }
+  else say("noted; not again this week");
+  state.playing = false; }
+async function heardDept(text){ you(text); if (state.pending){ state.pending.resolve(text); return; } await wait(600);
+  if (/never|always|don't|do not|from now on/i.test(text)){ rule(text); say("sent a correction to the line"); return; }
+  if (/hir/i.test(text) && state.firstLive && !state.grown){ say("noted"); await wait(600); grow(); return; }
+  if (state.v.pages){ await run1("Write", "", 1); file("pages"); await run1("Check", "your rules"); file("build");
+    if (state.firstLive){ await run1("Publish", "putting it on the host"); const v = file("live"); say("Live site " + v + " is live.", "tells", ' <button type="button" class="wbchip on wbto wb">Open the live site</button>'); echo("Live site " + v + " is live."); if (/first line/i.test(text)) rule(text); } else say("changed; it goes live when you say"); return; }
+  say("filed in the Brief"); file("brief"); if (!state.playing) run(); }
+async function heardOrg(text){ oyou(text);
+  if (state.pending){ state.pending.resolve(text); return; }
+  if (!state.org){ state.org = text; $("#orgName").textContent = text; $("#treeOrgName").textContent = text; root("I will set up " + text + ". A few questions first, one at a time."); bAsk(); return; }
+  await wait(500);
+  if (/^(hi|hello|namaste)/i.test(text)){ org("Say what you want done, or name a department."); return; }
+  org("handed to " + state.dept, "tells"); append(turns, turnYou(text)); post("Owner", text, "asks");
+  if (state.v.brief === 0){ if (!state.playing) run(); } else heardDept(text); }
+$("#send").addEventListener("click", () => { const t = $("#say").value.trim(); if (!t) return; $("#say").value = ""; heardDept(t); });
+$("#say").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); $("#send").click(); } });
+$("#orgSend").addEventListener("click", () => { const t = $("#orgSay").value.trim(); if (!t) return; $("#orgSay").value = ""; heardOrg(t); });
+$("#orgSay").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); $("#orgSend").click(); } });
+$("#stop").addEventListener("click", () => { state.stopped = true; say("stopping at your word"); });
+$("#reset").addEventListener("click", () => location.reload());
+
+// ---- functions and engines, one card each, in the app's card and row markup
+const FN = { identity: ["hears you and the other functions; judges each thing against the goal; keeps the rules; gives the verdicts", "gates every engine's start by rule; files what was decided; puts asks to you; holds the first publish until you stamp"],
+  adaptation: ["watches what repeats and what fails; moves steps up and down the ladder; proposes new engines and departments", "counts every engine's runs; raises a step to code after enough passes, lowers it on misses; offers an engine an idea asks for"],
+  priority: ["orders the queue and holds the budget", "admits each engine's run; holds the calls and the money; prices a proposed engine, room or no room"],
+  coordination: ["keeps the timetable, the slots, the locks and the hand-offs", "gives every engine its slot; keeps the hand-off to the next; stops a chain at its limit; says who goes first among equals"],
+  audit: ["reads the record and the work against the brief; files what it found", "samples what an engine filed; checks it against the brief; files a finding Identity weighs; never touches the engine"] };
+const row = (label, note, dot) => `<div class="dprow"><span class="dpdot${dot ? " " + dot : ""}"></span><span>${label}${note ? '<div class="dpchk">' + note + '</div>' : ""}</span></div>`;
+/* what the templates say each function keeps and decides (function-templates/<fn>/product-build.json: floor, choices), in fewer words */
+const FN2 = { identity: { keeps: ["holds the goal, the done line, the rules, the budget and the owner", "judges every effect against the rules: go passes, ask waits for your stamp, refuse stops", "changes nothing itself: every change is an ask you stamp", "a promise to a user outside (a date, a price) is an ask"], decides: ["which effects to raise to you, which to let pass", "how to read the done line against the filed work"], set: ["Template: Product build", "Rules: 1 of yours, 7 of the template's"] },
+  adaptation: { keeps: ["counts every run and its check", "moves a step up the ladder after enough passes, down on misses", "proposes, never applies: an engine, a department, a step's rung is an ask"], decides: ["which idea to shape into an engine", "when a step has passed enough to climb"], set: ["Template: Product build", "Ladder: climbs after 40 runs, keeps 1 differing, trial 20, down after 3 misses (Details)"] },
+  priority: { keeps: ["admits each row into the queue with where it came from", "orders the queue; never runs work itself", "holds the budget: work beyond it waits and becomes an ask", "the next shippable slice comes first"], decides: ["the order of the queue", "which waiting item to raise first when the budget is short"], set: ["Template: Product build", "Budget: 30 calls, 6 USD a day (Set)"] },
+  coordination: { keeps: ["the timetable and each engine's slot", "the hand-off from one engine to the next", "one run per department at a time; a chain stops at 12"], decides: ["who goes first among equals", "when a lock is held and when it is freed"], set: ["Template: Product build", "Chain limit: 12"] },
+  audit: { keeps: ["samples what was filed and checks it against the brief", "files a finding; Identity weighs it", "never touches an engine or a version"], decides: ["what to sample", "what counts as a finding worth raising"], set: ["Template: Product build", "Sample: every version"] } };
+function showFn(name){ const k = name.toLowerCase(), f = FN[k], g = FN2[k]; $("#fnTitle").textContent = name;
+  $("#fnBody").innerHTML = row("What it is for", f[0], "ok") + row("Keeps", g.keeps.join("; "), "ok") + row("Decides", g.decides.join("; "), "ok") + row("With the engines", f[1], "ok") + row("Now", state.lastFn[k] || "nothing yet", state.lastFn[k] ? "ok" : "");
+  $("#fnSet").innerHTML = g.set.map(s => row(s.split(":")[0], s.split(":").slice(1).join(":").trim(), "")).join(""); showPane("fn", name); }
+const ENG = { plan: ["reads the brief and every ask in it, and plans the site's pages", "on a new Brief, unless a rule holds it, the budget is out, or the chain is at its limit", "Read the brief → Propose the pages → Fit the page list → File the plan", "code · a call \"plan a site from a brief\" · code · code; each with its check"],
+  write: ["writes each page the plan names, in your words", "on a new Site plan", "Read the plan → Write a page, per page → File the pages", "code · a call \"write this page in the owner's words\" · code"],
+  check: ["runs your rules and the template's checks on the pages", "on new Pages", "Read the rules → Check every page → Send back, or file the Build", "code · a call per rule · code"],
+  publish: ["puts the Build on the host", "on a new Build, unless the first publish is not yet stamped", "Read the build → Put it on the host → File the Live site", "code · code · code"] };
+const IX = { plan: ["lets it start when a new Brief lands and no rule holds it; files the plan's verdict", "admits the run; one call, inside the budget", "gives it the first slot of the line; hands the Site plan to Write", "counts its runs; raises 'Propose the pages' from a call to code after enough passes", "samples site plans against the brief"],
+  write: ["lets it start on a new Site plan; your rules about words apply to every page", "one call per page, inside the budget; waits if the budget is out", "waits for Plan's slot to free; hands the Pages to Check", "raises 'Write a page' to code where pages repeat; lowers it on misses", "samples pages against the brief"],
+  check: ["gives it the rules to run; a broken rule goes back to Write twice, then to you", "admits the run; a call per rule", "hands the Build to Publish; stops the chain at its limit", "counts sends-back per rule; a rule that never breaks moves to code", "reads what Check found; files what Check missed"],
+  publish: ["holds the first publish until you stamp; after that, by rule", "admits the run; no calls", "gives it the last slot; the Live site closes the chain", "counts publishes; nothing to raise, it is code", "reads the live site against the brief after each publish"] };
+function showEng(name){ const k = name.toLowerCase(), e = ENG[k], ix = IX[k]; $("#engName").textContent = name;
+  $("#engBody").innerHTML = row("Does", e[0], "ok") + row("Starts", e[1], "ok") + row("Workflow", e[2], "ok") + row("Skills", e[3], "ok") + row("Last run", state.lastRun[k] || "none yet", state.lastRun[k] ? "ok" : "") + row("Health", "clock ticking · ran once per slot · " + state.calls + " of 30 calls today", "ok");
+  $("#engIx").innerHTML = ["Identity", "Priority", "Coordination", "Adaptation", "Audit"].map((f, i) => row(f, ix[i], "ok")).join(""); showPane("eng", name); }
+
+// ---- Play: walks the journey with example answers
+$("#play").addEventListener("click", async () => {
+  if (!state.org){ const answers = ["Asawa", "We build Sutra, an operating system for small companies.", "A website: what we build, who we are, how to reach us.", "Never say 'operating system' on the first line.", "https://asawa.in", null];
+    for (const a of answers){ if (a === null){ const skip = $("#orgAsks").querySelector("button"); if (skip) skip.click(); } else { $("#orgSay").value = a; $("#orgSend").click(); } await wait(900); }
+    await wait(600); const yes = $("#orgAsks").querySelector("button"); if (yes) yes.click(); await wait(4800); }
+  if (state.born && !state.v.brief){ $("#orgSay").value = "Put " + state.org + " on the web: what we build, who we are, how to reach us."; $("#orgSend").click(); return; }
+  if (state.firstLive && !state.grown){ $("#orgSay").value = "we keep getting hiring questions on the site"; $("#orgSend").click(); } });
+board.innerHTML = '<div class="o2quiet dpq">Nothing has been said yet</div>';
+root("Name your organisation and I will set it up.");
+step("birth");
+})();
+</script>
+</body></html>

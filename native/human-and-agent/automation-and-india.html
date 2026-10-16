@@ -1,0 +1,243 @@
+<!doctype html>
+<!-- Automation and India: a subpage of Human and Agent. Pyramid style: the answer first, then the referenced estimates, the assumptions, India's structure, and a first-level model of the markets that open. Every number carries its source beside it; every assumption is boxed. Sidebar injected by _sidebar.py --apply. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Automation and India</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 8px}
+h3{font-size:17px;margin:14px 0 6px;letter-spacing:-.01em}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul,ol{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:10px;overflow-x:auto;background:#fff}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+details.why .body b{color:#111827}
+:root{--c-models:#5a56d6;--c-models-t:#e4e3f9;--c-harness:#0a9c96;--c-harness-t:#d6f1ef;--c-ao:#c9512e;--c-ao-t:#f9e1d8;--c-market:#8a3fb4;--c-market-t:#eddff5;--c-people:#3a7d2c;--c-people-t:#dcefd6;--c-hw:#5b6471;--c-hw-t:#e6e8ec}
+.lede{font-size:17px;line-height:1.45;max-width:62ch;margin:10px 0 14px}
+.exec{border:1px solid #e5e7eb;border-left:6px solid var(--c-market);padding:10px 14px;margin:10px 0}
+.exec ol{margin:4px 0}.exec li{margin:6px 0}
+.assume{border:1px solid var(--c-ao);border-left:5px solid var(--c-ao);background:#fff7f3;padding:7px 12px;font-size:13px;margin:10px 0}
+.assume b{color:var(--c-ao)}
+.tag{display:inline-block;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid #e5e7eb;border-radius:2px;margin-right:4px;font-weight:700}
+.tag.today{border-color:var(--c-harness);color:var(--c-harness)}.tag.proj{border-color:var(--c-ao);color:var(--c-ao)}.tag.inf{border-color:var(--c-models);color:var(--c-models)}
+.sowhat{border-left:4px solid var(--c-people);padding:7px 12px;background:var(--c-people-t);font-size:13.5px;margin:10px 0}
+.rank{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--c-market);color:#fff;text-align:center;font-weight:700;line-height:22px;font-size:12px;margin-right:4px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a class="sb-cur" href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &#8250; Business &#8250; <a href="../human-and-agent.html">Human and Agent</a> &#8250; Automation and India</div>
+<h1>Automation and India <span class="lvl">HUMAN AND AGENT &#183; research, level 1</span></h1>
+<p class="lede">How much of the economy the known references expect AI to automate, where they agree and disagree, the assumptions this document adopts, and a first-level model of the markets that open in India given how India's economy is built.</p>
+<p class="note">How to read: the answer comes first; every number has its source beside it; every assumption is in an orange box with a letter, so it can be argued with one at a time. <span class="tag proj">Projection</span> marks our own numbers. This is level 1: the frame, the references and the model's shape; the sizing is a first pass to be replaced by measured runs.</p>
+
+<h2>The answer</h2>
+<div class="exec"><ol>
+<li><b>The references agree on direction and disagree on size.</b> Between a quarter and two-fifths of today's jobs are exposed; the value runs from about 3 to 16 trillion USD a year by 2030 depending on what is counted.</li>
+<li><b>For India the published number is 1.2 to 1.5 trillion USD cumulative by FY30</b> (EY), with 69% of it in business services, finance, education, retail and health.</li>
+<li><b>India's structure is not the structure those global numbers assume.</b> Informal work is about 90% of employment, MSMEs are 31% of GDP, services are 55% of value added, software exports are 221 billion USD a year and 54% of them go to the United States. The first market that opens is not "automate the office": it is "give the firm an office for the first time".</li>
+<li><b>Five markets open first in India</b>: the office for the informal firm; the front door for the clinic, school and shop in the customer's language; the conversion of the IT-BPM sector's own work; agent orgs built on the digital public rails; and market linkage for the farm. Each is sized at first level below with its assumptions.</li>
+<li><b>The exposed sector is also the opportunity.</b> India's 221 billion USD of software exports is the most exposed line in the country and the most able to sell the replacement.</li>
+</ol></div>
+
+<h2>1. What the references say</h2>
+<h3>The estimates cluster on direction, not on size</h3>
+<table>
+<tr><th>Source</th><th>Year</th><th>What is measured</th><th>Number</th><th>Scope</th></tr>
+<tr><td><a href="https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent">Goldman Sachs Research</a></td><td class="n">2023</td><td>full-time jobs exposed to automation by generative AI; GDP lift over ten years</td><td class="n">300 million jobs; +7% GDP</td><td>world</td></tr>
+<tr><td><a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">McKinsey Global Institute</a></td><td class="n">2023</td><td>annual value from generative AI across 63 use cases, 16 functions</td><td class="n">2.6 to 4.4 trillion USD a year</td><td>world</td></tr>
+<tr><td><a href="https://www.pwc.com/gx/en/issues/analytics/assets/pwc-ai-analysis-sizing-the-prize-report.pdf">PwC, Sizing the Prize</a></td><td class="n">2017</td><td>contribution of AI to world GDP by 2030</td><td class="n">15.7 trillion USD; +14% GDP</td><td>world, all AI</td></tr>
+<tr><td><a href="https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/01/14/Gen-AI-Artificial-Intelligence-and-the-Future-of-Work-542379">IMF</a></td><td class="n">2024</td><td>share of jobs exposed to AI</td><td class="n">40% world; 60% advanced; 40% emerging; 26% low-income</td><td>by income group</td></tr>
+<tr><td><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/">WEF, Future of Jobs 2025</a></td><td class="n">2025</td><td>jobs created and displaced by 2030; share of jobs disrupted</td><td class="n">170 million created, 92 million displaced, net +78 million; 22% churn</td><td>world, employer survey</td></tr>
+<tr><td><a href="https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america">McKinsey Global Institute</a></td><td class="n">2023</td><td>share of US work hours automatable by 2030</td><td class="n">29.5% with generative AI; 21.5% without</td><td>United States</td></tr>
+<tr><td><a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025.">Gartner</a></td><td class="n">2025</td><td>enterprise apps with task-specific agents; agentic share of app software revenue</td><td class="n">40% by end 2026; 30% of revenue by 2035, over 450 billion USD</td><td>enterprise software</td></tr>
+<tr><td><a href="https://www.ey.com/en_in/services/ai/generative-ai-india-report">EY India, The AIdea of India</a></td><td class="n">2024</td><td>cumulative GDP added by generative AI by FY30; FY30 alone</td><td class="n">1.2 to 1.5 trillion USD cumulative; 359 to 438 billion USD in FY30, +5.9 to 7.2%</td><td>India</td></tr>
+</table>
+<figure>
+<svg viewBox="0 0 760 250" role="img" aria-label="Two rows of dots: the share of jobs exposed by source, from 22 to 66 percent; and the annual value by source, from 2.6 to 15.7 trillion USD, on separate scales.">
+<g font-size="11.5" fill="#111827">
+<text x="20" y="26" font-weight="700">Share of jobs exposed or disrupted</text>
+<line x1="120" y1="60" x2="700" y2="60" stroke="#9ca3af"/>
+<g font-size="10" fill="#6b7280"><text x="120" y="78" text-anchor="middle">0%</text><text x="265" y="78" text-anchor="middle">25%</text><text x="410" y="78" text-anchor="middle">50%</text><text x="555" y="78" text-anchor="middle">75%</text><text x="700" y="78" text-anchor="middle">100%</text></g>
+<circle cx="248" cy="60" r="7" fill="var(--c-models)"/><text x="248" y="48" text-anchor="middle" font-size="10">WEF 22%</text>
+<circle cx="271" cy="60" r="7" fill="var(--c-models)"/><text x="283" y="98" text-anchor="middle" font-size="10">IMF low-income 26%</text>
+<circle cx="291" cy="60" r="7" fill="var(--c-harness)"/><text x="320" y="48" text-anchor="middle" font-size="10">McKinsey US hours 29.5%</text>
+<circle cx="352" cy="60" r="7" fill="var(--c-ao)"/><text x="410" y="98" text-anchor="middle" font-size="10">IMF world and emerging 40%</text>
+<circle cx="468" cy="60" r="7" fill="var(--c-market)"/><text x="468" y="48" text-anchor="middle" font-size="10">IMF advanced 60%</text>
+<circle cx="507" cy="60" r="7" fill="var(--c-people)"/><text x="560" y="98" text-anchor="middle" font-size="10">Goldman: two-thirds of US jobs exposed to some degree</text>
+<text x="20" y="146" font-weight="700">Value a year, trillion USD (different definitions)</text>
+<line x1="120" y1="180" x2="700" y2="180" stroke="#9ca3af"/>
+<g font-size="10" fill="#6b7280"><text x="120" y="198" text-anchor="middle">0</text><text x="265" y="198" text-anchor="middle">4</text><text x="410" y="198" text-anchor="middle">8</text><text x="555" y="198" text-anchor="middle">12</text><text x="700" y="198" text-anchor="middle">16</text></g>
+<rect x="214" y="173" width="66" height="14" rx="7" fill="var(--c-harness)"/><text x="247" y="168" text-anchor="middle" font-size="10">McKinsey gen AI 2.6 to 4.4</text>
+<circle cx="374" cy="180" r="7" fill="var(--c-ao)"/><text x="374" y="218" text-anchor="middle" font-size="10">Goldman +7% of world GDP, about 7</text>
+<circle cx="689" cy="180" r="7" fill="var(--c-market)"/><text x="660" y="168" text-anchor="middle" font-size="10">PwC all AI by 2030, 15.7</text>
+<text x="20" y="240" font-size="10" fill="#6b7280">Each dot is one reference; see the table for what each one counts.</text>
+</g></svg>
+<p class="figcap">The references on two scales. The spread on the top row is mostly the definition of "exposed"; the spread on the bottom row is mostly what kind of AI is counted and whether consumption effects are included.</p>
+</figure>
+<details class="why"><summary>Why this chart: why the dots spread, and what we take from them</summary><div class="body">
+<ul><li><b>Claim.</b> The references do not disagree about whether; they disagree about the yardstick.</li>
+<li><b>Top row.</b> "Exposed" (IMF, Goldman) means some tasks of the job can be done by AI; "disrupted" (WEF) means the job changes or goes; "automatable hours" (McKinsey) counts time. The same economy gives 22% to 66% depending on the word.</li>
+<li><b>Bottom row.</b> McKinsey counts generative AI productivity in 63 use cases; Goldman counts the GDP lift over a decade; PwC counts all AI and adds 9.1 trillion of consumption effects to 6.6 trillion of productivity. Not one number three ways; three questions.</li>
+<li><b>What we take.</b> For a market model the useful line is McKinsey's: a share of hours, by function, that a machine can do. That is the same sorting the <a href="futures-h1.html">share chapter</a> uses: can a machine check it, does it need a body, must someone be liable.</li>
+<li><b>What would change it.</b> A measured number from a real deployment at scale replacing the surveys and task models all of these rest on.</li></ul></div></details>
+
+<h2>2. Where they agree, where they do not, and our reading</h2>
+<table>
+<tr><th>Agreed across sources</th><th>Not agreed</th><th>Our reading for this document</th></tr>
+<tr><td>Exposure is highest in advanced economies and in office work: business services, finance, education, retail, health (IMF; EY for India)</td><td>Whether exposure means loss: WEF nets to +78 million jobs; Goldman says 300 million exposed with a quarter to half of workload replaceable</td><td>Exposure is a share of hours, not a count of people. Hours leave; people stay in the seat. That is the frame of the <a href="future-organisation.html">future organisation</a>.</td></tr>
+<tr><td>The value is large relative to GDP: 3 to 16 trillion a year</td><td>The split between productivity and new consumption</td><td>We use productivity only. New consumption is real but belongs to the <a href="futures-h1.html">next wants</a>, not to this sizing.</td></tr>
+<tr><td>India's exposure is lower than the advanced economies' (IMF 40% emerging vs 60%)</td><td>Whether lower exposure is lower opportunity</td><td>Lower exposure means the work is not yet in an office to be automated. The market in India is to put it in one. Assumption A3.</td></tr>
+</table>
+
+<h2>3. The assumptions this document adopts</h2>
+<div class="assume"><b>A1. Hours, not jobs.</b> We model work as hours that a machine can check (McKinsey's 29.5% of US hours is the anchor). A job is a bundle of hours; the person keeps the bundle's seat.</div>
+<div class="assume"><b>A2. India at the IMF emerging-economy level.</b> 40% of jobs exposed, adjusted down for the informal share: we assume only formal, recorded work can be automated in a first wave, so the first addressable base is the formal tenth of employment plus the recorded part of MSME output.</div>
+<div class="assume"><b>A3. Low exposure is a market, not a ceiling.</b> Where no office exists, the first product is the office itself: records, orders, bills, a site, a front door. This is the organic department on Sutra (run 5) sold to a firm that never had one.</div>
+<div class="assume"><b>A4. The rails exist.</b> UPI (21.6 billion transactions in December 2025), Udyam registration (8.7 crore), Account Aggregator and ONDC are assumed available to an agent org as data and payment rails without a new integration per firm.</div>
+<div class="assume"><b>A5. Price per seat, not per licence.</b> An agent org is paid as a small monthly seat plus tokens, so the addressable count is firms and clinics and shops, not employees.</div>
+<div class="assume"><b>A6. Language is not a barrier by H1.</b> The customer-facing part of an agent org works in the customer's language; the EY readiness gap (75% of C-suite low to moderate readiness) is a sales cost, not a technical one.</div>
+<div class="assume"><b>A7. Software exports are the exposed line.</b> BPO services, the dominant part of ITES exports, are the Indian work most like McKinsey's automatable hours. We treat the 221 billion USD as both at risk and as the sales force for the replacement.</div>
+<div class="assume"><b>A8. Sizing is first level.</b> Each market below is base times share times price, with the share an assumption until rung 5 of <a href="experiment-and-seat.html">the experiment</a> measures it.</div>
+
+<h2>4. The global market structure, in one line</h2>
+<p>Four layers settle: models (a few vendors), harnesses (a handful), agent orgs (millions), and markets between agent orgs (late in the shift). The money sits at the top and the bottom; the control sits in the agent org layer. The argument is on <a href="futures-h1.html">Futures at H1</a>; Gartner's 40% of enterprise apps with agents by end 2026 and 450 billion USD of agentic software revenue by 2035 are the layer below agent orgs growing.</p>
+
+<h2>5. India's structure</h2>
+<h3>Services-heavy, informal, rail-rich, export-exposed</h3>
+<table>
+<tr><th>Measure</th><th>Number</th><th>Source</th><th>Why it matters for agent orgs</th></tr>
+<tr><td>Informal employment</td><td class="n">about 90% of all workers informal (Periodic Labour Force Survey); 69% of services employment informal when wage jobs without social security are counted</td><td><a href="https://www.niti.gov.in/node/2028">NITI Aayog, India's Services Sector: Insights from Employment Trends, Oct 2025</a></td><td>the office does not exist yet; the first product is the office (A3)</td></tr>
+<tr><td>Services share of GVA</td><td class="n">about 55% (2024-25); 188 million workers</td><td><a href="https://www.niti.gov.in/node/2028">NITI Aayog, Oct 2025</a></td><td>services are where hours are checkable; the exposure and the opportunity</td></tr>
+<tr><td>MSMEs</td><td class="n">31.1% of GDP; 48.6% of exports; 38.9 crore jobs; 8.7 crore Udyam registrations</td><td><a href="https://udyamregistration.gov.in/Default.aspx">Ministry of MSME, Udyam factsheet, 2026</a></td><td>the count of firms that could hold an agent org; the base for market 1</td></tr>
+<tr><td>Software services exports</td><td class="n">221.4 billion USD in 2025-26, +8.2%; 54.1% to the US, 31.8% to Europe; BPO the dominant ITES part</td><td><a href="https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63625">RBI, 2026</a></td><td>the most exposed line in the economy and the most able to sell the replacement (A7)</td></tr>
+<tr><td>Digital payments</td><td class="n">21.63 billion UPI transactions in December 2025, +29%; about 49% of world real-time payments by volume</td><td><a href="https://www.npci.org.in/what-we-do/upi/product-statistics">NPCI, 2026</a></td><td>the payment rail an agent org can use on day one (A4)</td></tr>
+<tr><td>Generative AI impact, India</td><td class="n">1.2 to 1.5 trillion USD cumulative by FY30; 69% in business services, finance, education, retail, health</td><td><a href="https://www.ey.com/en_in/services/ai/generative-ai-india-report">EY India, 2024</a></td><td>the sectors the first five markets sit in</td></tr>
+</table>
+<figure>
+<svg viewBox="0 0 760 200" role="img" aria-label="Three bars: India's employment, about 90 percent informal and 10 percent formal; value added, 55 percent services, 29 percent industry, 16 percent primary; software exports, 54 percent to the United States, 32 percent to Europe.">
+<g font-size="11.5" fill="#111827">
+<text x="20" y="28" font-weight="700">Employment</text>
+<rect x="150" y="14" width="531" height="22" fill="var(--c-hw-t)" stroke="var(--c-hw)"/><text x="415" y="29" text-anchor="middle" font-size="11">informal about 90%: no office, no record, no bill</text>
+<rect x="681" y="14" width="59" height="22" fill="var(--c-people)"/><text x="710" y="29" text-anchor="middle" font-size="10" fill="#fff">10%</text>
+<text x="20" y="80" font-weight="700">Value added</text>
+<rect x="150" y="66" width="325" height="22" fill="var(--c-ao)"/><text x="312" y="81" text-anchor="middle" font-size="11" fill="#fff">services 55%</text>
+<rect x="475" y="66" width="171" height="22" fill="var(--c-hw)"/><text x="560" y="81" text-anchor="middle" font-size="11" fill="#fff">industry 29%</text>
+<rect x="646" y="66" width="94" height="22" fill="var(--c-people)"/><text x="693" y="81" text-anchor="middle" font-size="11" fill="#fff">primary 16%</text>
+<text x="20" y="132" font-weight="700">Software exports</text>
+<rect x="150" y="118" width="319" height="22" fill="var(--c-models)"/><text x="309" y="133" text-anchor="middle" font-size="11" fill="#fff">United States 54%</text>
+<rect x="469" y="118" width="188" height="22" fill="var(--c-models)" opacity="0.7"/><text x="563" y="133" text-anchor="middle" font-size="11" fill="#fff">Europe 32%</text>
+<rect x="657" y="118" width="83" height="22" fill="var(--c-models)" opacity="0.45"/><text x="698" y="133" text-anchor="middle" font-size="10" fill="#fff">other 14%</text>
+<text x="20" y="178" font-size="10" fill="#6b7280">Sources in the table above. The grey bar is the market no global estimate counts.</text>
+</g></svg>
+<p class="figcap">India in three bars. The first bar is the point: the work the global estimates call "exposed" is the formal tenth; the rest has nothing to expose yet.</p>
+</figure>
+<details class="why"><summary>Why this chart: the informal bar is the market, not the obstacle</summary><div class="body">
+<ul><li><b>Claim.</b> The usual reading, that India is less exposed and so less of a market, is backwards for agent orgs.</li>
+<li><b>Why.</b> The IMF's exposure counts tasks already done in offices. In India most work is done without a record, an order book or a bill. An agent org does not replace those; it is the first time they exist. That is what the website department did for a tailor and an organic farm in the Human Simulation runs.</li>
+<li><b>Evidence.</b> about 90% informal employment (PLFS); 69% within services (NITI Aayog); 8.7 crore Udyam registrations, so the firms are countable; UPI at 21.6 billion transactions a month, so they can be paid.</li>
+<li><b>What would change it.</b> If informal firms will not pay a monthly seat (assumption A5 fails), the market is the formal tenth only and the first-level sizes below shrink by an order of magnitude.</li></ul></div></details>
+
+<h2>6. The markets that open in India, level 1</h2>
+<h3>Five markets, ranked by how soon they can be measured</h3>
+<table>
+<tr><th>#</th><th>Market</th><th>The need it serves</th><th>The India structure that makes it</th><th>Base (sourced)</th><th>Share and price (assumption)</th><th>First-level size a year</th><th>What to test first</th></tr>
+<tr><td><span class="rank">1</span></td><td><b>The office for the informal firm</b></td><td>participation, work; freedom, money</td><td>about 90% informal; 8.7 crore registered MSMEs; UPI as the bill rail</td><td>8.7 crore registrations; 31% of GDP</td><td>A5: 5% of registered MSMEs take a seat by H1 at INR 500 a month</td><td class="n">about 2,600 crore INR (about 0.3 bn USD) at 5%; ten times that at 50%</td><td>a tailor's and a farm's department kept for 90 days by its owner (N-023 return line)</td></tr>
+<tr><td><span class="rank">2</span></td><td><b>The front door for the clinic, school and shop</b></td><td>health, understanding, creation</td><td>services 55% of GVA; EY: health, education, retail in the 69%</td><td>services employ 188 million</td><td>A6: the customer-facing part in the customer's language; 1 in 20 service establishments by H1</td><td class="n">first level only: the count of establishments is not on record here; sized after rung 5</td><td>the dermatology department of run 3 sold to one real clinic</td></tr>
+<tr><td><span class="rank">3</span></td><td><b>The IT-BPM sector's own conversion</b></td><td>participation, work</td><td>221 bn USD exports, 54% to the US, BPO dominant in ITES</td><td>221.4 bn USD (RBI)</td><td>A7: 30% of BPO hours automatable in the McKinsey sense by H1 (29.5% US anchor)</td><td class="n">tens of billions USD of exposed revenue; the replacement captured by whoever sells the agent org, Indian or not</td><td>one BPO process run as a department end to end with the client's stamp</td></tr>
+<tr><td><span class="rank">4</span></td><td><b>Agent orgs on the public rails</b></td><td>freedom, money; participation</td><td>UPI, Udyam, Account Aggregator, ONDC: data and payment without integration</td><td>21.6 bn UPI transactions a month</td><td>A4: the rails are open to agent orgs; a per-transaction fee of 0.1% on a 1% slice of volume</td><td class="n">a few hundred crore INR at first level; the rail, not the fee, is the asset</td><td>a lender's department reading a shop's books with consent (the Paisa goal)</td></tr>
+<tr><td><span class="rank">5</span></td><td><b>Market linkage for the farm</b></td><td>food, shelter</td><td>primary sector 16% of GVA; MSMEs 48.6% of exports; cold chain and route companies</td><td>not sized here</td><td>A3: the farm's first order book; a buyer's agent org on the other side (rung 3)</td><td class="n">not sized at level 1; depends on rung 3</td><td>Kriti Organics' department selling to a shop's department (the first AO-to-AO trade)</td></tr>
+</table>
+<div class="assume"><b>A9. The rank is by measurability, not by size.</b> Market 3 is the largest in money and the slowest to measure because it needs an enterprise client; market 1 is the smallest per seat and the fastest, because a Sutra department already does it.</div>
+<p class="sowhat"><span class="tag proj">Projection</span> So what: the markets that open in India are the office that never existed (1), the front door in the customer's language (2), and the conversion of India's own export work (3). The rails (4) make the first two cheap to reach; the farm (5) is where agent orgs first need each other. The global estimates size the hours in offices that exist; India's size is in the offices that do not.</p>
+<figure>
+<svg viewBox="0 0 760 230" role="img" aria-label="A two-by-two: markets placed by how soon they can be measured against how large they are in money; the office for the informal firm is fast and small per seat, the IT-BPM conversion is slow and large, the front door is in between.">
+<g font-size="11.5" fill="#111827">
+<line x1="110" y1="190" x2="720" y2="190" stroke="#9ca3af"/><line x1="110" y1="190" x2="110" y2="20" stroke="#9ca3af"/>
+<text x="415" y="215" text-anchor="middle" font-size="10.5" fill="#6b7280">how soon it can be measured on Sutra: now, to needs an enterprise client</text>
+<text x="30" y="105" text-anchor="middle" font-size="10.5" fill="#6b7280" transform="rotate(-90 30 105)">money, first level</text>
+<circle cx="190" cy="150" r="16" fill="var(--c-ao)"/><text x="190" y="154" text-anchor="middle" fill="#fff" font-weight="700">1</text><text x="190" y="180" text-anchor="middle" font-size="10">the office for the informal firm</text>
+<circle cx="340" cy="110" r="16" fill="var(--c-ao)"/><text x="340" y="114" text-anchor="middle" fill="#fff" font-weight="700">2</text><text x="340" y="140" text-anchor="middle" font-size="10">the front door</text>
+<circle cx="640" cy="50" r="16" fill="var(--c-models)"/><text x="640" y="54" text-anchor="middle" fill="#fff" font-weight="700">3</text><text x="640" y="80" text-anchor="middle" font-size="10">IT-BPM conversion</text>
+<circle cx="420" cy="160" r="16" fill="var(--c-market)"/><text x="420" y="164" text-anchor="middle" fill="#fff" font-weight="700">4</text><text x="420" y="188" text-anchor="middle" font-size="10">on the public rails</text>
+<circle cx="520" cy="130" r="16" fill="var(--c-people)"/><text x="520" y="134" text-anchor="middle" fill="#fff" font-weight="700">5</text><text x="520" y="160" text-anchor="middle" font-size="10">farm market linkage</text>
+<text x="120" y="36" font-size="10" fill="#9ca3af">Projection: positions are the document's judgement, not measurements.</text>
+</g></svg>
+<p class="figcap">The five markets on two axes. Start bottom-left, where a department already does the work; the top-right is where the money is and where the enterprise client is.</p>
+</figure>
+<details class="why"><summary>Why this chart: why start bottom-left when the money is top-right</summary><div class="body">
+<ul><li><b>Claim.</b> The order to enter is the order of measurability, because every size above is an assumption until a run measures it.</li>
+<li><b>Why.</b> Market 1 can be measured this month: the website department exists, the goal files exist, the return line (N-023) is the test. Market 3 needs a BPO client's stamp on a live process and a contract; a year at least.</li>
+<li><b>Evidence.</b> The Human Simulation runs: a tailor, a farm, a clinic's listing, a trip, each a department in minutes. None yet with a paying owner, which is the first measurement.</li>
+<li><b>What would change it.</b> A BPO client who wants market 3 first and will stamp the process: then the order flips and the money arrives before the measurements.</li></ul></div></details>
+
+<h2>7. What we do not know</h2>
+<table>
+<tr><th>Unknown</th><th>Why it matters</th><th>How we find out</th></tr>
+<tr><td>Whether an informal firm pays a monthly seat</td><td>markets 1 and 2 collapse to the formal tenth if not</td><td>five real owners on the Beta with a price (N-023 rung 3)</td></tr>
+<tr><td>The count of service establishments that could hold a front door</td><td>market 2 cannot be sized without it</td><td>MoSPI and NITI Aayog establishment counts, next pass</td></tr>
+<tr><td>How fast US clients move BPO work to agent orgs of their own</td><td>market 3's revenue may leave before it converts</td><td>watch the first public BPO contract replaced by an agent org; a trigger, not a forecast</td></tr>
+<tr><td>Whether the rails stay open to agent orgs</td><td>A4 is a regulatory assumption</td><td>NPCI and RBI rules on agent-initiated transactions</td></tr>
+</table>
+
+<h2>8. Sources</h2>
+<ul>
+<li><a href="https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent">Goldman Sachs Research (2023)</a>. McKinsey Global Institute (2023), generative AI value, <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">the report</a>; US work hours: <a href="https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america">Generative AI and the future of work in America</a>. PwC, <a href="https://www.pwc.com/gx/en/issues/analytics/assets/pwc-ai-analysis-sizing-the-prize-report.pdf">Sizing the Prize</a> (2017). <a href="https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/01/14/Gen-AI-Artificial-Intelligence-and-the-Future-of-Work-542379">IMF Staff Discussion Note (2024)</a>. <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/">WEF, Future of Jobs Report 2025</a>. <a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025.">Gartner (2025)</a>.</li>
+<li><a href="https://www.ey.com/en_in/services/ai/generative-ai-india-report">EY India, The AIdea of India (2024)</a>. <a href="https://www.niti.gov.in/node/2028">NITI Aayog, India's Services Sector: Insights from Employment Trends (2025)</a>. <a href="https://udyamregistration.gov.in/Default.aspx">Ministry of MSME, Udyam registration factsheet (2026)</a>. <a href="https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63625">RBI, survey on software and ITES exports 2025-26</a>. <a href="https://www.npci.org.in/what-we-do/upi/product-statistics">NPCI, UPI product statistics</a>.</li>
+<li>Method: the pyramid principle (Minto), answer first; MECE sections; one assumption per box; a chart per claim with its reasons; the sorting rule of <a href="futures-h1.html">Futures at H1</a>.</li>
+</ul>
+<p class="figcap">provenance: written 2026-10-08 by Claude Fable 5.1, session b215028c, atom a-b215028c-10, on the founder's ask for a referenced, assumption-tagged, McKinsey-style first level ending in the markets that open in India. Every link goes to the publisher's own page or report. <span class="pill DRAFT">DRAFT</span> until the founder marks it.</p>
+</div></div></body></html>

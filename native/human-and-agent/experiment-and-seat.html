@@ -1,0 +1,270 @@
+<!doctype html>
+<!-- The experiment and the seat: a subpage of Human and Agent, split from the long page of 2026-10-07 by the split script. Sidebar injected by _sidebar.py --apply. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — Proof and the experiment</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:28px 0 8px}
+h3{font-size:17px;margin:14px 0 6px;letter-spacing:-.01em}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul,ol{margin:6px 0;padding-left:22px}li{margin:4px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:10px;overflow-x:auto;background:#fff}
+figure.map svg{min-width:640px}
+figure.lanes svg{min-width:760px}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+details.why .body b{color:#111827}
+/* the five hues of the AO pages, light only (the Native site is light) */
+:root{--c-models:#5a56d6;--c-models-t:#e4e3f9;--c-harness:#0a9c96;--c-harness-t:#d6f1ef;--c-ao:#c9512e;--c-ao-t:#f9e1d8;--c-market:#8a3fb4;--c-market-t:#eddff5;--c-people:#3a7d2c;--c-people-t:#dcefd6;--c-hw:#5b6471;--c-hw-t:#e6e8ec;--c-gray:#8a919b;--c-gray-t:#e6e8ec;--s1:#fbe6dd;--s2:#f3b99f;--s3:#e58a63;--s4:#c9512e}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:#6b7280;align-items:center;margin:6px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}.legend i.line{height:3px;width:18px;border-radius:0}
+.tag{display:inline-block;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid #e5e7eb;border-radius:2px;margin-right:4px;font-weight:700}
+.tag.today{border-color:var(--c-harness);color:var(--c-harness)}.tag.proj{border-color:var(--c-ao);color:var(--c-ao)}.tag.dec{background:var(--c-people-t);border-color:var(--c-people)}.tag.inf{border-color:var(--c-models);color:var(--c-models)}
+.means{border-left:4px solid var(--c-people);padding:7px 12px;background:var(--c-people-t);font-size:13.5px;margin:10px 0}
+.means.ao{border-left-color:var(--c-ao);background:var(--c-ao-t)}
+.futures{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 4px}
+.future{border:1px solid #e5e7eb;border-top:4px solid #9ca3af;padding:10px 12px;font-size:13px}
+.future.f1{border-top-color:var(--c-harness)}.future.f2{border-top-color:var(--c-people)}.future.f3{border-top-color:var(--c-models)}
+.future b{display:block;font-size:14px;margin-bottom:3px}.future .trig{color:#6b7280}
+.bar{display:inline-block;height:10px;vertical-align:middle;margin-right:6px;border-radius:2px;background:var(--s3)}
+.bar.s1{background:var(--s1);border:1px solid var(--s2)}.bar.s2{background:var(--s2)}.bar.s3{background:var(--s3)}.bar.s4{background:var(--s4)}
+.who{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px}.who.p{background:var(--c-people)}.who.a{background:var(--c-ao)}.who.h{background:var(--c-hw)}.who.m{background:var(--c-market)}
+td.P{background:var(--c-people-t)}td.A{background:var(--c-ao-t)}td.B{background:linear-gradient(90deg,var(--c-ao-t),var(--c-people-t))}
+.answers{display:grid;gap:6px;margin:8px 0}
+.ans{display:grid;grid-template-columns:30px 1fr;gap:10px;border:1px solid #e5e7eb;padding:8px 10px;font-size:13.5px;align-items:start}
+.ans .k{color:#fff;border-radius:3px;text-align:center;font-weight:700;padding:3px 0}
+.steps{display:grid;gap:5px;margin:8px 0 4px}
+.step{display:grid;grid-template-columns:1fr 1fr;border:1px solid #e5e7eb;font-size:13px}
+.step .from{color:#6b7280;padding:6px 10px;border-left:4px solid var(--c-ao)}.step .to{padding:6px 10px;border-left:4px solid var(--c-people)}
+.toc{columns:2;font-size:13px;margin:8px 0 4px}.toc li{break-inside:avoid}
+@media (max-width:640px){.step{grid-template-columns:1fr}.toc{columns:1}}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+figure.wide svg{min-width:720px}
+.assume{border:1px solid #c9512e;border-left:5px solid #c9512e;background:#fff7f3;padding:7px 12px;font-size:13px;margin:10px 0}
+.assume b{color:#c9512e}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a class="sb-cur" href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &#8250; Business &#8250; <a href="../human-and-agent.html">Human and Agent</a> &#8250; Proof and the experiment</div>
+<h1>Proof and the experiment <span class="lvl">HUMAN AND AGENT</span></h1>
+<p class="lede" style="font-size:17px;line-height:1.45;max-width:62ch;margin:10px 0 14px">What is proven today, one real run traced step by step; the five rungs that test the rest; the human seat measured; and the calls that are the founder's.</p>
+<section id="instance">
+<h2>Proof today: one want, one instance, in Sutra's own words</h2>
+<p>The labels above (AO, the seat, a stamp, a function) are abstractions. This section is one instance of them, taken from a real run on the Sutra Beta: <b>run 3 of the Human Simulation, 2026-09-29, 15:10 to 15:54</b>. The founder's want, in his words: "Best dermatologists in Bangalore as an example of a department." Forty-four minutes later a site was live, four versions in, with a source line under every fact. The run is on record in <code>qa/sim/runs/dermatologists-bangalore-20260929-1509</code> (24 ledger rows, findings 34 to 46).</p>
+<h3>First, the department as departments of departments: where memory and understanding live</h3>
+<p>A department on Sutra is not one agent. It is a small organisation of five functions (<a href="../platform/model/internal-system.html">the five functions</a>), each a role that owns engines, plus a record. The founder's verbs from over the months map onto them like this:</p>
+<table>
+<tr><th>The founder's word</th><th>The Sutra part it is</th><th>What it did in this run</th></tr>
+<tr><td>understanding</td><td><a href="../platform/comprehension.html">Comprehension</a>: intent read into a goal, and <b>Identity</b>, the function that knows what the department is and what its goal needs</td><td>read "best dermatologists in Bangalore" as a department with a goal; saw that the goal needs the internet and that no engine of the department reaches it</td></tr>
+<tr><td>memory</td><td>the <b>Record</b>: the Brief and its versions, every engine's filings, the rules, and the <b>Library</b> of engines</td><td>held Brief v1 to v4, "Source Reader v1" with its URLs and read dates, the stamped rule, the Source Reader engine itself</td></tr>
+<tr><td>adapting, shaping</td><td><b>Adaptation</b>: the function that shapes the line of engines from the words</td><td>shaped a Source Reader engine, in the department's own words, when Identity said one was missing</td></tr>
+<tr><td>prioritising, ordering</td><td><b>Priority</b>: the function that orders the work and takes the owner's "first" and "drop"</td><td>took "Put the top three first." and reordered the site</td></tr>
+<tr><td>coordinating, running the line</td><td><b>Coordination</b>: the function that runs engines in their line and files what each one makes</td><td>ran Source Reader, then Plan, Write, Publish; filed each version</td></tr>
+<tr><td>auditing, checking</td><td><b>Audit</b>: the function that reads what was filed against the Brief and the rules</td><td>asked about facts (finding 41) and checked the source-line rule on v4</td></tr>
+<tr><td>stamping, founding, taking a rule</td><td>the <b>asks</b> a person answers: Found, the setup ask, the engine ask, the publish ask, the rule ask</td><td>five stamps by the person, listed below</td></tr>
+<tr><td>engines, workflows, atoms</td><td><a href="../platform/the-model.html">levels 2 and 3</a>: an engine is a worker with a brief and a line of steps; each step a work-atom with a check</td><td>Source Reader (search, read, file); Plan; Write; Publish; each step checked against a closed list</td></tr>
+</table>
+<h3>The run as lanes: who did what, in order</h3>
+<figure class="lanes">
+<svg viewBox="0 0 900 470" role="img" aria-label="Swimlanes for run 3: the person, Identity, Adaptation, Priority, Coordination with engines, Audit, the Record, and the world; twelve numbered steps from the founder's words to a site v4 with a source line under every fact.">
+<defs><marker id="sl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker></defs>
+<g font-size="11" fill="#111827">
+<!-- lanes -->
+<rect x="0" y="20" width="900" height="54" fill="var(--c-people-t)" opacity="0.6"/><text x="6" y="52" font-weight="700" font-size="10.5">THE PERSON</text>
+<rect x="0" y="76" width="900" height="50" fill="var(--c-ao-t)" opacity="0.35"/><text x="6" y="106" font-weight="700" font-size="10.5">IDENTITY</text>
+<rect x="0" y="128" width="900" height="50" fill="var(--c-ao-t)" opacity="0.55"/><text x="6" y="158" font-weight="700" font-size="10.5">ADAPTATION</text>
+<rect x="0" y="180" width="900" height="50" fill="var(--c-ao-t)" opacity="0.35"/><text x="6" y="210" font-weight="700" font-size="10.5">PRIORITY</text>
+<rect x="0" y="232" width="900" height="62" fill="var(--c-ao-t)" opacity="0.55"/><text x="6" y="258" font-weight="700" font-size="10.5">COORDINATION</text><text x="6" y="272" font-size="9.5">+ engines</text>
+<rect x="0" y="296" width="900" height="50" fill="var(--c-ao-t)" opacity="0.35"/><text x="6" y="326" font-weight="700" font-size="10.5">AUDIT</text>
+<rect x="0" y="348" width="900" height="54" fill="var(--c-harness-t)" opacity="0.6"/><text x="6" y="372" font-weight="700" font-size="10.5">THE RECORD</text><text x="6" y="386" font-size="9.5">Brief, filings, rules, Library</text>
+<rect x="0" y="404" width="900" height="54" fill="var(--c-hw-t)" opacity="0.6"/><text x="6" y="436" font-weight="700" font-size="10.5">THE WORLD</text>
+<!-- step boxes: x positions -->
+<g>
+<rect x="110" y="28" width="92" height="38" rx="4" fill="var(--c-people)"/><text x="156" y="44" text-anchor="middle" fill="#fff" font-size="10">1 says the want</text><text x="156" y="57" text-anchor="middle" fill="#fff" font-size="9">"best dermatologists..."</text>
+<rect x="110" y="84" width="92" height="34" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="156" y="98" text-anchor="middle" font-size="10">2 reads it as a</text><text x="156" y="110" text-anchor="middle" font-size="10">department + goal</text>
+<rect x="212" y="28" width="80" height="38" rx="4" fill="var(--c-people)"/><text x="252" y="44" text-anchor="middle" fill="#fff" font-size="10">3 stamps</text><text x="252" y="57" text-anchor="middle" fill="#fff" font-size="9">the setup ask</text>
+<rect x="302" y="84" width="118" height="34" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="361" y="98" text-anchor="middle" font-size="10">4 "no engine of mine</text><text x="361" y="110" text-anchor="middle" font-size="10">reaches the internet"</text>
+<rect x="302" y="136" width="118" height="34" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="361" y="150" text-anchor="middle" font-size="10">5 shapes Source Reader</text><text x="361" y="162" text-anchor="middle" font-size="10">in the dept's words</text>
+<rect x="430" y="28" width="80" height="38" rx="4" fill="var(--c-people)"/><text x="470" y="44" text-anchor="middle" fill="#fff" font-size="10">6 stamps</text><text x="470" y="57" text-anchor="middle" fill="#fff" font-size="9">the engine ask</text>
+<rect x="430" y="240" width="118" height="46" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="489" y="256" text-anchor="middle" font-size="10">7 runs Source Reader:</text><text x="489" y="268" text-anchor="middle" font-size="10">a real web search,</text><text x="489" y="280" text-anchor="middle" font-size="10">files "Source Reader v1"</text>
+<rect x="430" y="412" width="118" height="38" rx="4" fill="#fff" stroke="var(--c-hw)" stroke-width="1.5"/><text x="489" y="428" text-anchor="middle" font-size="10">the web: names,</text><text x="489" y="441" text-anchor="middle" font-size="10">URLs, read dates</text>
+<rect x="430" y="356" width="118" height="38" rx="4" fill="#fff" stroke="var(--c-harness)" stroke-width="1.5"/><text x="489" y="372" text-anchor="middle" font-size="10">filing: 37 facts,</text><text x="489" y="385" text-anchor="middle" font-size="10">single-source marks</text>
+<rect x="560" y="28" width="92" height="38" rx="4" fill="var(--c-people)"/><text x="606" y="44" text-anchor="middle" fill="#fff" font-size="10">8 "Build the site</text><text x="606" y="57" text-anchor="middle" fill="#fff" font-size="9">from what you found."</text>
+<rect x="560" y="240" width="92" height="46" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="606" y="256" text-anchor="middle" font-size="10">9 Plan, Write,</text><text x="606" y="268" text-anchor="middle" font-size="10">Publish: site v1</text><text x="606" y="280" text-anchor="middle" font-size="10">9 pages, 12 addresses</text>
+<rect x="560" y="412" width="92" height="38" rx="4" fill="#fff" stroke="var(--c-hw)" stroke-width="1.5"/><text x="606" y="428" text-anchor="middle" font-size="10">the live site</text><text x="606" y="441" text-anchor="middle" font-size="10">v1 .. v4</text>
+<rect x="664" y="28" width="104" height="38" rx="4" fill="var(--c-people)"/><text x="716" y="44" text-anchor="middle" fill="#fff" font-size="10">10 "Put the top three</text><text x="716" y="57" text-anchor="middle" fill="#fff" font-size="9">first." / "Take ... out."</text>
+<rect x="664" y="188" width="104" height="34" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="716" y="202" text-anchor="middle" font-size="10">reorders, drops;</text><text x="716" y="214" text-anchor="middle" font-size="10">v2, v3</text>
+<rect x="780" y="28" width="112" height="38" rx="4" fill="var(--c-people)"/><text x="836" y="44" text-anchor="middle" fill="#fff" font-size="10">11 stamps the rule</text><text x="836" y="57" text-anchor="middle" fill="#fff" font-size="9">"nothing without a source"</text>
+<rect x="780" y="304" width="112" height="34" rx="4" fill="#fff" stroke="var(--c-ao)" stroke-width="1.5"/><text x="836" y="318" text-anchor="middle" font-size="10">12 checks v4 against</text><text x="836" y="330" text-anchor="middle" font-size="10">the rule; asks on facts</text>
+<rect x="780" y="356" width="112" height="38" rx="4" fill="#fff" stroke="var(--c-harness)" stroke-width="1.5"/><text x="836" y="372" text-anchor="middle" font-size="10">rule filed; Brief v4;</text><text x="836" y="385" text-anchor="middle" font-size="10">Source Reader in Library</text>
+</g>
+<!-- arrows -->
+<g stroke="#334155" stroke-width="1.3" fill="none">
+<path d="M156,66 L156,84" marker-end="url(#sl)"/>
+<path d="M202,101 L212,101 L252,101 L252,66" marker-end="url(#sl)"/>
+<path d="M292,47 L302,47 L361,47 L361,84" marker-end="url(#sl)"/>
+<path d="M361,118 L361,136" marker-end="url(#sl)"/>
+<path d="M420,153 L470,153 L470,66" marker-end="url(#sl)"/>
+<path d="M489,66 L489,240" stroke-dasharray="3 3" marker-end="url(#sl)"/>
+<path d="M489,286 L489,412" marker-end="url(#sl)"/>
+<path d="M548,431 L548,375 L548,375" />
+<path d="M489,394 L489,356" marker-end="url(#sl)"/>
+<path d="M606,66 L606,240" stroke-dasharray="3 3" marker-end="url(#sl)"/>
+<path d="M606,286 L606,412" marker-end="url(#sl)"/>
+<path d="M716,66 L716,188" stroke-dasharray="3 3" marker-end="url(#sl)"/>
+<path d="M716,222 L716,431 L652,431" marker-end="url(#sl)"/>
+<path d="M836,66 L836,304" stroke-dasharray="3 3" marker-end="url(#sl)"/>
+<path d="M836,338 L836,356" marker-end="url(#sl)"/>
+</g>
+<text x="110" y="464" font-size="10" fill="#6b7280">green boxes = the person's acts (5 stamps, 3 sentences); white boxes = the department's functions and engines; dashed = an ask answered by a stamp</text>
+</g></svg>
+<p class="figcap">Run 3 as lanes. Everything the person did is in the top lane: one want, five stamps, three sentences. Everything else was the department: five functions, four engines, a record, and the web.</p>
+</figure>
+<details class="why"><summary>Why this picture: it is the record, not a design; and why the person's lane is so thin</summary><div class="body">
+<ul><li><b>Claim.</b> A real want was satisfied by a department on Sutra with the person doing eight small acts, and every other act is attributable to a named function or engine.</li>
+<li><b>Evidence.</b> The 24 ledger rows and captures of <code>runs/dermatologists-bangalore-20260929-1509</code>; the findings 34 to 46 filed from it; the fixes shipped in v2.306.17. Nothing in the lanes is invented; the two misses the run also showed (a site built before the engine existed, 34; the engine searching four times for one ask, 38) are in the table below.</li>
+<li><b>Why the lanes are functions, not agents.</b> The founder's "departments of departments": a department is five roles that own engines, with a record between them. Drawing it as one agent would hide where memory (the Record) and understanding (Comprehension, Identity) live.</li>
+<li><b>Why the person's lane is thin.</b> The three sorting questions (3.4): the person acts only where no machine can check (the want, the rule, the taste in "top three first") or where someone must be liable (the stamps on what goes out).</li>
+<li><b>What would change it.</b> If the next run needs a human to do an engine's work by hand (finding 56's "by hand" step), the lane is not thin and the label "AO solves the want" is not earned for that department.</li></ul></div></details>
+<h3>The same run as a table: abstraction, instance, and who</h3>
+<table>
+<tr><th>#</th><th>Abstraction (the label)</th><th>Instance (what actually happened, 2026-09-29)</th><th>Who</th><th>Exactly what the person did</th></tr>
+<tr><td>1</td><td>A human want, in words</td><td>"Best dermatologists in Bangalore as an example of a department."</td><td class="P">person</td><td>typed one sentence in the pencil menu, Found</td></tr>
+<tr><td>2</td><td>Comprehension: intent to goal; Identity knows the department</td><td>a department "Dermatologists Bangalore" proposed, with a goal and a one-line setup ask</td><td class="A">AO</td><td>nothing</td></tr>
+<tr><td>3</td><td>A stamp (the seat; liability for what the department is)</td><td>the setup ask stamped</td><td class="P">person</td><td>read five lines, clicked stamp</td></tr>
+<tr><td>4</td><td>The AO's want (the wants loop, second box)</td><td>Identity: "no engine of mine reaches the internet yet, so Adaptation is shaping one"</td><td class="A">AO</td><td>nothing</td></tr>
+<tr><td>5</td><td>Adaptation shapes an engine (level 3: an engine born from words)</td><td>the engine ask: Source Reader, described in the department's own words</td><td class="A">AO</td><td>nothing</td></tr>
+<tr><td>6</td><td>A stamp on what reaches outside (the Library's "what goes out asks first")</td><td>the engine ask stamped</td><td class="P">person</td><td>read the engine's description, clicked stamp</td></tr>
+<tr><td>7</td><td>Coordination runs the line; a work-atom per step with a check</td><td>Source Reader ran a real web search; "Source Reader v1 is filed." with names, URLs, read dates, single-source marks (37 checks PASS)</td><td class="A">AO</td><td>nothing; about 2 USD of tokens</td></tr>
+<tr><td>8</td><td>A sentence to the department (direction, not a stamp)</td><td>"Build the site from what you found." (the line had refused a publish before the engine filed, finding 34)</td><td class="P">person</td><td>typed one sentence</td></tr>
+<tr><td>9</td><td>Plan, Write, Publish engines; a filing per version</td><td>site v1 live: 9 pages, 12 addresses</td><td class="A">AO</td><td>nothing</td></tr>
+<tr><td>10</td><td>Priority takes order and drop words; versions in the Record</td><td>"Put the top three first." in Priority's chat (v2); "Take Dr. Rasya Dixit out everywhere." (v3, with a Stop/Start mid-write and no trace left)</td><td class="B">both</td><td>typed two sentences; the taste was the person's, the work the AO's</td></tr>
+<tr><td>11</td><td>A rule, stamped and filed (provenance, the first next want)</td><td>"Nothing goes on the site without a source line under it." stamped; v4 published with a source line under every fact</td><td class="P">person</td><td>typed the rule, clicked stamp</td></tr>
+<tr><td>12</td><td>Audit reads the filed work against the Brief and the rules</td><td>Audit checked v4; asked the person about facts an engine could have found (finding 41, since fixed: the facts question goes to the engine first)</td><td class="A">AO</td><td>answered one question it should not have been asked</td></tr>
+</table>
+<details class="why"><summary>Why this table: what the labels mean once they have an instance, and where the run fell short</summary><div class="body">
+<ul><li><b>"AO solves the want" means</b> steps 2, 4, 5, 7, 9, 12: reading, deciding an engine is missing, shaping it, searching, building, checking. Six of twelve steps, and all the minutes.</li>
+<li><b>"The human seat" means</b> steps 1, 3, 6, 8, 11: the want, three stamps, one direction, one rule. Five acts, each under a minute. Step 10 is the mixed case: the person's taste, the AO's work.</li>
+<li><b>"Memory" means</b> the Record's rows in this run: Brief v1 to v4, the Source Reader v1 filing, the rule, the engine in the Library. Nothing the person had to remember.</li>
+<li><b>"Understanding" means</b> step 2 and step 4: the words read into a department with a goal, and the goal read for what it needs. That is Comprehension plus Identity, not a model's general knowledge.</li>
+<li><b>Where it fell short.</b> The line tried to publish before the engine had filed (34); the engine searched four times when one was asked (38, about 2 USD each); Audit asked the person for facts (41); a re-search shrank the sources (46). All four became rows N-024 to N-027 and were fixed in 2.306.17. The labels are earned only because the misses are on the record too.</li>
+<li><b>What would change it.</b> A run where a step marked AO needs a person to finish it by hand. Then that step moves to the person's lane and the share in 3.4 for this industry is lower than drawn.</li></ul></div></details>
+<p class="means"><span class="tag today">Today</span> This is one department, one want, one person: rung 2 of the experiment. The AO on the H2 map (section 4) is this department with ten more like it under one person, each able to ask another person's department for a filing. That hop is rung 3, and it has not run yet.</p>
+</section>
+<section id="experiment">
+<h2>The experiment: five rungs</h2>
+<p>Reuse the <a href="../human-simulation.html">Human Simulation program</a> as is and add one thing per rung: a second AO. Each rung is a claim with a kill line, to be filed in the Native ideas ledger the way N-020 to N-028 are.</p>
+<table>
+<tr><th>#</th><th>Rung</th><th>What runs</th><th>What we read</th><th>Kill line</th><th>Impact (who/what changes)</th><th>Effort (time, files)</th></tr>
+<tr><td>1</td><td>Paper: this page</td><td>The pictures</td><td>The founder's marks</td><td>He cannot place his own question on a picture</td><td>The frame for the line</td><td>done</td></tr>
+<tr><td>2</td><td>One AO, one human (exists)</td><td>Runs 1 to 5 on the Beta; section 9 is run 3</td><td>Outcomes, stamps, minutes, USD</td><td>Already read: a site in 4 min, one stamp</td><td>Baseline numbers for money and the seat</td><td>0, reuse the runs</td></tr>
+<tr><td>3</td><td>Two AOs that need each other (next)</td><td>Department A's engine needs a filing only department B makes; A asks B through the one front door; B's owner stamps</td><td>Did A wait for B; the hop count; who stamped what; USD per AO</td><td>A hand-made bridge is needed, or A fakes B's filing</td><td>First AO-to-AO want; the EDGE family at the AO level</td><td>2 days: a goal file with two persons, a run script on run 5's pattern, the N-024 wait gate lifted to another department's filing</td></tr>
+<tr><td>4</td><td>Three AOs and a price</td><td>Rung 3 plus a token price B states and A's owner accepts or declines</td><td>Trades made, declined, re-priced; the ledger</td><td>No trade clears without a human on both sides</td><td>First AO money between AOs</td><td>3 days: a trade ask kind, a ledger per department</td></tr>
+<tr><td>5</td><td>N AOs, one week</td><td>5 to 10 departments across 3 persons, left on for a week, stamps batched daily</td><td>What formed: a market, a queue, a monopoly, idle AOs; stamps per owner per day</td><td>Owners give over 30 min a day and still block the line</td><td>The civilization picture read on real data</td><td>1 week wall-clock, 1 day build</td></tr>
+</table>
+<details class="why"><summary>Why five rungs, and why rung 3 is next</summary><div class="body">
+<ul><li><b>Why rungs.</b> Each adds exactly one new thing to a run that already works: a second AO, then a price, then many. One new thing per rung is what makes a miss attributable.</li>
+<li><b>Why rung 3 first.</b> It is the cheapest test of the page's central claim (AOs will need each other) and needs no new party: two website departments, two persons, one wait gate lifted from N-024.</li>
+<li><b>Why kill lines.</b> A rung without a kill line is a demo. Each line names the result that would refute the claim, so the founder can read the outcome without the author in the room.</li>
+<li><b>Evidence.</b> The program's shape (person + goal, every miss a row, fix, release, rerun) is the one that produced findings 1 to 64 across runs 1 to 5.</li></ul></div></details>
+<p class="figcap">Output kinds an AO can create, a closed list from the runs so far: artifacts (a site, a report, a page); decisions (an ask answered); rules (stamped, filed); engines (born from words); records (filings, versions); and in rung 4, trades (a price stated and accepted). Open: a seventh kind, a promise with a date, held by the meta-AO.</p>
+</section>
+<section id="seat">
+<h2>The human seat</h2>
+<p>From the runs, the human's acts are few and of one shape: a stamp on a line, a sentence in a chat, a rule, a decline. This is the April 2026 vision's autonomy slider (<a href="../direction.html">long-term direction</a>) read per act instead of per function. Section 9 shows every one of these acts in one run.</p>
+<table>
+<tr><th>Seat act</th><th>Skill it needs</th><th>Effort seen</th><th>Where in the loop</th></tr>
+<tr><td>Say the want in words</td><td>Knowing what you want; plain words</td><td>1 line (run 5)</td><td>start</td></tr>
+<tr><td>Stamp the line or the engine</td><td>Trust the proposal, read 5 lines</td><td>1 stamp per line (N-028)</td><td>before the first run</td></tr>
+<tr><td>Answer what the engines cannot</td><td>Facts only the owner holds</td><td>0 to 2 per run (N-026)</td><td>mid-run</td></tr>
+<tr><td>Say a rule</td><td>Taste, judgement</td><td>1 per run when it mattered (run 3)</td><td>any time</td></tr>
+<tr><td>Accept a price from another AO</td><td>Money judgement</td><td>rung 4, untested</td><td>trade</td></tr>
+<tr><td>Carry the liability</td><td>Trust, relationships, law</td><td>not in the runs; the seat the AO cannot hold</td><td>always</td></tr>
+</table>
+<details class="why"><summary>Why the seat is taste, money and liability, and why 5 to 10 minutes</summary><div class="body">
+<ul><li><b>Why these acts.</b> They are every act a person took in runs 1 to 5, listed from the ledgers. Nothing is added from theory.</li>
+<li><b>Why the time.</b> One stamp per line, zero to two answers, one rule when it mattered: at the runs' pace that is minutes, not hours, per department per day.</li>
+<li><b>Why liability is the floor.</b> It is the only row an AO cannot take under any of the three sorting questions, so it is what the seat is for once everything else moves.</li>
+<li><b>What would change it.</b> Rung 5: if owners of 5 to 10 departments give over 30 minutes a day and still block the line, the seat is a bottleneck and the product must batch it.</li></ul></div></details>
+<p class="means"><span class="tag inf">Inference</span> The seat is taste, money and liability, about 5 to 10 minutes per department per day at rungs 2 and 3. Rung 5 reads whether that holds at 5 to 10 departments; the kill line is 30 minutes a day.</p>
+</section>
+<section id="sutra">
+<h2>What it means for Sutra, and the open calls</h2>
+<table>
+<tr><th>If this holds</th><th>Then Sutra's product is</th><th>What to test first</th></tr>
+<tr><td>The seat is the scarce thing (3.2)</td><td>the human seat: stamps, rules, money, liability, on one screen across departments (N-021)</td><td>stamps per owner per day at 5 to 10 departments (rung 5)</td></tr>
+<tr><td>AOs will need each other (3.4, 3.5, the map)</td><td>the trade between two owners' AOs, then the market</td><td>two departments that need each other (rung 3)</td></tr>
+<tr><td>Provenance and curation are the next wants (3.5)</td><td>the source line under every fact, already a stamped rule in run 3, grown into a product</td><td>whether a visitor pays more for a sourced site (needs real owners)</td></tr>
+</table>
+<table>
+<tr><th>#</th><th>Layer</th><th>The buyer gets</th><th>The buyer hands over</th><th>State</th></tr>
+<tr><td>1</td><td>A department</td><td>A site that returns messages (N-023)</td><td>Words, one stamp, a token budget</td><td>shipped</td></tr>
+<tr><td>2</td><td>An AO</td><td>Several departments, one main screen (N-021, N-022)</td><td>The seat: 10 min a day</td><td>in design</td></tr>
+<tr><td>3</td><td>AO to AO</td><td>Work bought from another owner's AO</td><td>A price accepted, a trade ledger</td><td>rungs 3 and 4</td></tr>
+<tr><td>4</td><td>Meta-AO</td><td>A place where AOs find each other, prices, disputes</td><td>Registration, a fee, rules</td><td>rung 5 reads whether it forms</td></tr>
+</table>
+<p class="means"><span class="tag dec">Decision for the founder</span> The niche ruling of 2026-09-29 stands: the website department is the first place to build all three, because a site is where provenance, trade and the seat all show up on one screen. Health on the map is the fifteen-year picture; every website department on Sutra is already the small version of Asha's AO. April 2026 named Model A (employees for hire) and Model B (a CoS per person): layer 2 is Model B at one person, layer 3 is where Model A starts to be sold between people; two layers of one ladder, not two products.</p>
+<div class="note"><b>Open calls, defaults standing until the founder rules:</b>
+<ol>
+<li>Department name and parent. Default: AO Research, under the holding.</li>
+<li>Does an AO ever hold money, or does the human seat always. Default: the seat always; rung 4 reads it.</li>
+<li>The privatized product: AO to AO, or meta-AO. Default: AO to AO first, it needs no new party.</li>
+<li>Which of the three futures to bet on. Default: Teams for hire.</li>
+<li>Which industry gets the next deep map. Default: food, Kriti Organics.</li>
+</ol>
+The one next line: <code>start a department called AO Research under the holding, goal: run rung 3 (two departments that need each other on the Beta, read the hop count and the stamps)</code></div>
+</section>
+<p class="figcap">Terms, labels, colours and the full source list are on the <a href="../human-and-agent.html">hub</a>. <span class="pill DRAFT">DRAFT</span> until the founder marks it.</p>
+</div></div></body></html>

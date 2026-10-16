@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sutra v2 — Complete Problem Flow</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    padding: 40px;
+    min-width: 1400px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 48px;
+  }
+
+  .flow-section {
+    margin-bottom: 64px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .section-number {
+    background: #1a1a2e;
+    color: #7c7cff;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    border: 1px solid #2a2a4e;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .section-desc {
+    color: #888;
+    font-size: 12px;
+    margin-left: 48px;
+    margin-bottom: 20px;
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  /* Flow blocks */
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    margin-left: 48px;
+    margin-bottom: 16px;
+  }
+
+  .block {
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 16px 20px;
+    background: #111;
+    min-width: 200px;
+    position: relative;
+  }
+
+  .block-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+
+  .block-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .block-detail {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  .block-detail code {
+    background: #1a1a1a;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #aaa;
+    font-size: 10px;
+  }
+
+  /* Domain colors */
+  .domain-gate { border-color: #7c7cff; background: #0d0d1a; }
+  .domain-gate .block-label { color: #7c7cff; }
+
+  .clear { border-color: #2dd4bf; background: #0a1a18; }
+  .clear .block-label { color: #2dd4bf; }
+  .clear .block-title { color: #2dd4bf; }
+
+  .complicated { border-color: #f59e0b; background: #1a1508; }
+  .complicated .block-label { color: #f59e0b; }
+  .complicated .block-title { color: #f59e0b; }
+
+  .complex { border-color: #ec4899; background: #1a0a14; }
+  .complex .block-label { color: #ec4899; }
+  .complex .block-title { color: #ec4899; }
+
+  .chaotic { border-color: #ef4444; background: #1a0a0a; }
+  .chaotic .block-label { color: #ef4444; }
+  .chaotic .block-title { color: #ef4444; }
+
+  .disorder { border-color: #a78bfa; background: #120d1a; }
+  .disorder .block-label { color: #a78bfa; }
+  .disorder .block-title { color: #a78bfa; }
+
+  .terminal { border-color: #22c55e; background: #0a1a0d; }
+  .terminal .block-label { color: #22c55e; }
+  .terminal .block-title { color: #22c55e; }
+
+  .learn { border-color: #06b6d4; background: #0a161a; }
+  .learn .block-label { color: #06b6d4; }
+
+  .precision { border-color: #f97316; background: #1a120a; }
+  .precision .block-label { color: #f97316; }
+
+  /* Arrows */
+  .arrow-down {
+    margin-left: 48px;
+    margin-bottom: 16px;
+    padding-left: 20px;
+  }
+
+  .arrow-down::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 24px;
+    background: #333;
+    margin-left: 80px;
+  }
+
+  .arrow-right {
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 20px;
+    padding: 0 4px;
+  }
+
+  /* Branch indicator */
+  .branch {
+    display: flex;
+    gap: 12px;
+    margin-left: 48px;
+    margin-bottom: 16px;
+  }
+
+  .branch-line {
+    width: 2px;
+    background: #333;
+    min-height: 40px;
+    margin-left: 80px;
+  }
+
+  .branch-paths {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .branch-label {
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 48px;
+    margin-bottom: 8px;
+  }
+
+  /* Inside-node detail */
+  .node-steps {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #222;
+  }
+
+  .node-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .step-num {
+    color: #555;
+    font-size: 10px;
+    min-width: 16px;
+    padding-top: 1px;
+  }
+
+  .step-text {
+    font-size: 11px;
+    color: #999;
+    line-height: 1.4;
+  }
+
+  /* Wide block */
+  .block.wide {
+    flex: 1;
+    max-width: 800px;
+  }
+
+  .block.narrow {
+    min-width: 160px;
+    max-width: 220px;
+  }
+
+  /* Loop indicator */
+  .loop-container {
+    border: 1px dashed #333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-left: 48px;
+    margin-bottom: 16px;
+    max-width: 1200px;
+    position: relative;
+  }
+
+  .loop-label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #0a0a0a;
+    padding: 0 8px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+  }
+
+  /* Tag pills */
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #777;
+    border: 1px solid #222;
+  }
+
+  .tag.new {
+    background: #1a1a0a;
+    color: #f59e0b;
+    border-color: #3a3a1a;
+  }
+
+  .tag.existing {
+    background: #0a1a0a;
+    color: #22c55e;
+    border-color: #1a3a1a;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 48px 0;
+  }
+
+  /* Two-column for patterns */
+  .patterns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-left: 48px;
+    max-width: 1200px;
+  }
+
+  .pattern-card {
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 20px;
+    background: #111;
+  }
+
+  .pattern-card h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .pattern-card .flow-text {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.6;
+    font-family: 'SF Mono', monospace;
+  }
+
+  .highlight {
+    color: #f59e0b;
+  }
+
+  /* Terminal check detail */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .check-item {
+    border: 1px solid #1a2a1a;
+    border-radius: 8px;
+    padding: 12px;
+    background: #0a120a;
+  }
+
+  .check-item.fail-action {
+    border-color: #2a1a1a;
+    background: #120a0a;
+  }
+
+  .check-item .check-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #22c55e;
+    margin-bottom: 4px;
+  }
+
+  .check-item.fail-action .check-name {
+    color: #ef4444;
+  }
+
+  .check-item .check-desc {
+    font-size: 10px;
+    color: #777;
+    line-height: 1.4;
+  }
+
+  .connector {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    padding: 8px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Sutra v2 -- Complete Problem Flow</h1>
+<p class="subtitle">When a new problem statement arrives, this is everything that happens. Each block is a processing step.</p>
+
+<!-- ============================================ -->
+<!-- SECTION 1: PROBLEM ARRIVES -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div class="section-title">Problem Arrives</div>
+  </div>
+  <p class="section-desc">Any input: founder task, TODO item, upstream node output, verbal instruction. Before anything else happens.</p>
+
+  <div class="flow-row">
+    <div class="block wide" style="border-color: #444; background: #0f0f0f;">
+      <div class="block-label">Input</div>
+      <div class="block-title">Problem Statement</div>
+      <div class="block-detail">
+        Raw input. Could be "fix this bug", "why aren't we growing", "build auth system", or "the site is down."
+        No classification yet. No process yet. Just the problem.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">|</div>
+
+<!-- ============================================ -->
+<!-- SECTION 2: DOMAIN GATE -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div class="section-title">Domain Gate</div>
+  </div>
+  <p class="section-desc">
+    The PRIMARY gate. Fires before any scoring, estimation, or process selection.
+    One question: "Is the cause-effect relationship known, discoverable, emergent, absent, or unclear?"
+  </p>
+
+  <div class="flow-row">
+    <div class="block wide domain-gate">
+      <div class="block-label">Domain Classification</div>
+      <div class="block-title">Cynefin Gate</div>
+      <div class="block-detail">
+        Classify the problem domain. This determines the RESPONSE PATTERN, not depth.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num">1.</span><span class="step-text">Ask: "Is the path from input to solution known, discoverable, emergent, absent, or unclear?"</span></div>
+        <div class="node-step"><span class="step-num">2.</span><span class="step-text">Score resource intensity (ESI): how many systems, people, dependencies? (1-5)</span></div>
+        <div class="node-step"><span class="step-num">3.</span><span class="step-text">OODA tempo cap: must classify in &lt;30 seconds. If stuck, default to DISORDER.</span></div>
+        <div class="node-step"><span class="step-num">4.</span><span class="step-text">If Cynefin ambiguous: fall back to Rumsfeld (known/unknown/unknown-unknown)</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag existing">Cynefin (existing, promoted)</span>
+        <span class="tag new">ESI resource scoring (new)</span>
+        <span class="tag new">OODA tempo cap (new)</span>
+        <span class="tag new">Rumsfeld fallback (new)</span>
+      </div>
+    </div>
+
+    <div class="arrow-right">&rarr;</div>
+
+    <div class="block narrow" style="border-color: #444;">
+      <div class="block-label">Output</div>
+      <div class="block-title">Two Signals</div>
+      <div class="block-detail">
+        <code>DOMAIN: Clear | Complicated | Complex | Chaotic | Disorder</code><br><br>
+        <code>RESOURCE: 1-5</code><br><br>
+        <code>PATTERN: Encode | Traverse | Probe | Stabilize | Decompose</code>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-desc" style="margin-top: 16px;">
+    After domain gate, existing 10-parameter scoring still runs. But it no longer produces depth.
+    It feeds: appetite (budget), verification intensity, practice routing breadth.
+  </p>
+</div>
+
+<div class="connector">|<br><span style="font-size: 11px; color: #555;">routes to one of five patterns</span><br>|</div>
+
+<!-- ============================================ -->
+<!-- SECTION 3: FIVE PATTERNS -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div class="section-title">Five Response Patterns</div>
+  </div>
+  <p class="section-desc">
+    Each domain gets a fundamentally different execution shape. Not different depth of the same process -- different process entirely.
+  </p>
+
+  <!-- CLEAR -->
+  <div class="flow-row">
+    <div class="block wide clear">
+      <div class="block-label">Pattern A -- Clear</div>
+      <div class="block-title">ENCODE</div>
+      <div class="block-detail">
+        Cause-effect known. Pattern exists. LLM encodes solution into a mechanism. Mechanism executes. LLM exits execution loop.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num">1.</span><span class="step-text">Load existing pattern (protocol store, prior code, known formula)</span></div>
+        <div class="node-step"><span class="step-num">2.</span><span class="step-text">Pick encoding mechanism: code / SQL / spreadsheet / checklist / direct</span></div>
+        <div class="node-step"><span class="step-num">3.</span><span class="step-text">LLM designs mechanism (function + tests + assertions)</span></div>
+        <div class="node-step"><span class="step-num">4.</span><span class="step-text">Mechanism runs (not LLM). Tests pass/fail = verification.</span></div>
+        <div class="node-step"><span class="step-num">5.</span><span class="step-text">If domain shifts mid-execution (node needs judgment) &rarr; pause, reclassify that node as Complicated, resolve, re-enter</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag">Precision: temp=0, schema, external tool, assertions</span>
+        <span class="tag">Terminal: immediate (test pass/fail)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLICATED -->
+  <div class="flow-row" style="margin-top: 12px;">
+    <div class="block wide complicated">
+      <div class="block-label">Pattern B -- Complicated</div>
+      <div class="block-title">TRAVERSE (DAG)</div>
+      <div class="block-detail">
+        Cause-effect discoverable. Traverse node by node. Each node loads its own context. Depth is the node count, discovered retrospectively.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num"></span><span class="step-text" style="color: #f59e0b;">See Section 4 below for per-node detail &darr;</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag">Precision: per-node, matched to failure mode</span>
+        <span class="tag">Terminal: "can a person act without further analysis?"</span>
+        <span class="tag new">Socratic questioning per node</span>
+        <span class="tag new">Working paper (anytime artifact)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLEX -->
+  <div class="flow-row" style="margin-top: 12px;">
+    <div class="block wide complex">
+      <div class="block-label">Pattern C -- Complex</div>
+      <div class="block-title">PROBE</div>
+      <div class="block-detail">
+        Cause-effect emergent. No analysis will find the answer. Design a probe. Human runs it. Signal comes back. Interpret. Repeat until terminal.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num">1.</span><span class="step-text">Frame what is UNKNOWN (not what to build)</span></div>
+        <div class="node-step"><span class="step-num">2.</span><span class="step-text">Design PROBE: hypothesis, method, signal, cost, reversal, observe-by</span></div>
+        <div class="node-step"><span class="step-num">3.</span><span class="step-text">HANDOFF: human runs probe. LLM cannot.</span></div>
+        <div class="node-step"><span class="step-num">4.</span><span class="step-text">Signal returns &rarr; interpret PROBE-RESULT</span></div>
+        <div class="node-step"><span class="step-num">5.</span><span class="step-text">Terminal = decision with reversal conditions. NOT a confident answer.</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag new">PROBE artifact (new)</span>
+        <span class="tag new">PROBE-RESULT artifact (new)</span>
+        <span class="tag">Constraint: LLM NEVER produces confident answer for Complex</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAOTIC + DISORDER -->
+  <div class="flow-row" style="margin-top: 12px; gap: 12px;">
+    <div class="block chaotic" style="flex: 1;">
+      <div class="block-label">Pattern D -- Chaotic</div>
+      <div class="block-title">STABILIZE</div>
+      <div class="block-detail">
+        System in crisis. Act first. Don't analyze.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num">1.</span><span class="step-text">ACT: pick most contained action, do it now</span></div>
+        <div class="node-step"><span class="step-num">2.</span><span class="step-text">OBSERVE: what's the state after?</span></div>
+        <div class="node-step"><span class="step-num">3.</span><span class="step-text">RE-CLASSIFY: domain gate runs again</span></div>
+        <div class="node-step"><span class="step-num">4.</span><span class="step-text">Route to appropriate pattern</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag existing">INCIDENT-RESPONSE.md</span>
+        <span class="tag new">Mandatory re-classification (new)</span>
+      </div>
+    </div>
+
+    <div class="block disorder" style="flex: 1;">
+      <div class="block-label">Pattern E -- Disorder</div>
+      <div class="block-title">DECOMPOSE</div>
+      <div class="block-detail">
+        Can't classify. Break apart, classify each piece.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num">1.</span><span class="step-text">Decompose into sub-problems</span></div>
+        <div class="node-step"><span class="step-num">2.</span><span class="step-text">Each sub-problem &rarr; domain gate independently</span></div>
+        <div class="node-step"><span class="step-num">3.</span><span class="step-text">If child re-enters Disorder &rarr; parent decomposition was bad</span></div>
+        <div class="node-step"><span class="step-num">4.</span><span class="step-text">Track decomposition accuracy over time</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag new">Decomposition quality tracking (new)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- SECTION 4: INSIDE A COMPLICATED NODE -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <div class="section-title">Inside a Complicated Node (DAG Traversal Detail)</div>
+  </div>
+  <p class="section-desc">
+    This is the most common pattern. Each node in the DAG follows this micro-process.
+    The loop repeats until terminal check passes or appetite budget is exhausted.
+  </p>
+
+  <div class="loop-container" style="border-color: #f59e0b;">
+    <div class="loop-label" style="color: #f59e0b;">Repeat until terminal or budget exhausted</div>
+
+    <!-- OBSERVE -->
+    <div class="flow-row" style="margin-left: 0;">
+      <div class="block complicated" style="flex: 1; max-width: 380px;">
+        <div class="block-label">Step A -- Observe</div>
+        <div class="block-title">Load Context for THIS Node</div>
+        <div class="block-detail">
+          Not front-loaded. 2-3 hops of context specific to THIS node's question.
+          Previous context retained but new context scoped to current question.
+        </div>
+        <div class="node-steps">
+          <div class="node-step"><span class="step-num"></span><span class="step-text">Classify THIS node's domain (may differ from parent)</span></div>
+          <div class="node-step"><span class="step-num"></span><span class="step-text">Bloom's classifier: Apply? Analyze? Evaluate? Create?</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag new">Per-node context (new)</span>
+          <span class="tag new">Bloom's classifier (new)</span>
+        </div>
+      </div>
+
+      <div class="arrow-right">&rarr;</div>
+
+      <!-- SHAPE -->
+      <div class="block complicated" style="flex: 1; max-width: 380px;">
+        <div class="block-label">Step B -- Shape</div>
+        <div class="block-title">Pick ONE Branch</div>
+        <div class="block-detail">
+          Multiple branches visible. Follow exactly ONE -- highest (leverage x confidence).
+          Park others in TODO. Breadth control.
+        </div>
+        <div class="node-steps">
+          <div class="node-step"><span class="step-num"></span><span class="step-text">MCTS estimate: "If I follow this branch, what's the likely terminal?" (1 sentence)</span></div>
+          <div class="node-step"><span class="step-num"></span><span class="step-text">Socratic: "What's the ONE thing I need to know to make this terminal?"</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag new">MCTS branch estimate (new)</span>
+          <span class="tag new">Socratic questioning (new)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">|</div>
+
+    <div class="flow-row" style="margin-left: 0;">
+      <!-- PLAN/ESTIMATE -->
+      <div class="block complicated" style="flex: 1; max-width: 250px;">
+        <div class="block-label">Step C -- Plan</div>
+        <div class="block-title">Node Estimate</div>
+        <div class="block-detail">
+          Lightweight per-node:<br>
+          <code>~3K tokens, ~$0.05, ~5min</code><br>
+          <code>Cumulative: 4 nodes, $0.20</code><br>
+          <code>Budget remaining: $1.80</code>
+        </div>
+        <div class="tags">
+          <span class="tag existing">Estimation Engine (adapted)</span>
+        </div>
+      </div>
+
+      <div class="arrow-right">&rarr;</div>
+
+      <!-- EXECUTE -->
+      <div class="block complicated" style="flex: 1; max-width: 250px;">
+        <div class="block-label">Step D -- Execute</div>
+        <div class="block-title">Produce ONE Artifact</div>
+        <div class="block-detail">
+          One conclusion, one spec, one piece of code.
+          NOT a list. NOT options.
+          If output is multiple things, split into sub-nodes.
+        </div>
+        <div class="tags">
+          <span class="tag">Working paper entry</span>
+        </div>
+      </div>
+
+      <div class="arrow-right">&rarr;</div>
+
+      <!-- PRECISION -->
+      <div class="block precision" style="flex: 1; max-width: 250px;">
+        <div class="block-label">Step E -- Precision</div>
+        <div class="block-title">Enforce Per Node</div>
+        <div class="block-detail">
+          Matched to failure mode risk:<br>
+          Calculation &rarr; external tool<br>
+          Drift &rarr; constraint pre-declaration<br>
+          Confabulation &rarr; citation grounding<br>
+          Ambiguity &rarr; confidence gating
+        </div>
+        <div class="tags">
+          <span class="tag new">14-mechanism catalog</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector">|</div>
+
+    <!-- TERMINAL CHECK -->
+    <div class="flow-row" style="margin-left: 0;">
+      <div class="block terminal" style="flex: 1; max-width: 1100px;">
+        <div class="block-label">Step F -- Terminal Check</div>
+        <div class="block-title">Is This Output Terminal?</div>
+        <div class="block-detail" style="margin-bottom: 12px;">
+          Six free checks. Three conditional checks (fire only on failure). All must pass.
+        </div>
+
+        <div class="check-grid">
+          <div class="check-item">
+            <div class="check-name">1. Output Type</div>
+            <div class="check-desc">Declare: Decision / Artifact / Probe / Decomposition / Action Items / Intermediate. Action items blocked unless task = planning.</div>
+          </div>
+          <div class="check-item">
+            <div class="check-name">2. "Who Does This?"</div>
+            <div class="check-desc">Who takes this and acts? Do they need to think first? YES = not terminal. NO = terminal.</div>
+          </div>
+          <div class="check-item">
+            <div class="check-name">3. Convergence Detection</div>
+            <div class="check-desc">3+ items, verb-led (investigate, analyze, review...), no specific values? Convergence signal.</div>
+          </div>
+          <div class="check-item">
+            <div class="check-name" style="color: #f59e0b;">4. Specificity Threshold</div>
+            <div class="check-desc">Count concrete nouns: file paths, numbers, names, dates, commands. Must have 3+. <span style="color: #f59e0b;">(NEW)</span></div>
+          </div>
+          <div class="check-item">
+            <div class="check-name" style="color: #f59e0b;">5. Output Inversion</div>
+            <div class="check-desc">Can output be expressed as delta? before&rarr;after, old&rarr;new? If not, may be too abstract. <span style="color: #f59e0b;">(NEW)</span></div>
+          </div>
+          <div class="check-item">
+            <div class="check-name" style="color: #f59e0b;">6. Schema Fill</div>
+            <div class="check-desc">Can output fill domain schema? Code={file,line,old,new}. Decision={choice,rationale,reversal}. <span style="color: #f59e0b;">(NEW)</span></div>
+          </div>
+        </div>
+
+        <div class="connector" style="color: #ef4444;">any fail?</div>
+
+        <div class="check-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="check-item fail-action">
+            <div class="check-name">7. Beam Search</div>
+            <div class="check-desc">Branch into 2-3 alternative continuations. Pick the one that reaches terminal. (2-3x cost, this node only) <span style="color: #f59e0b;">(NEW)</span></div>
+          </div>
+          <div class="check-item fail-action">
+            <div class="check-name">8. Adversarial Check</div>
+            <div class="check-desc">"Prove this is NOT terminal. Find what the next person would need to figure out." (2x cost) <span style="color: #f59e0b;">(NEW)</span></div>
+          </div>
+          <div class="check-item fail-action">
+            <div class="check-name">9. Exemplar Compare</div>
+            <div class="check-desc">Compare against known terminal outputs for this problem type. From TRIAGE history. <span style="color: #f59e0b;">(NEW)</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid #1a2a1a; display: flex; gap: 24px;">
+          <div>
+            <span style="color: #22c55e; font-weight: 600; font-size: 12px;">ALL PASS &rarr;</span>
+            <span style="color: #888; font-size: 11px;"> TERMINAL. Surface output. Enter Measure.</span>
+          </div>
+          <div>
+            <span style="color: #ef4444; font-weight: 600; font-size: 12px;">ANY FAIL &rarr;</span>
+            <span style="color: #888; font-size: 11px;"> Output becomes input for next node. Loop back to Step A.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- SECTION 5: AFTER TERMINAL -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <div class="section-title">After Terminal -- Measure + Learn</div>
+  </div>
+  <p class="section-desc">
+    Terminal reached. Output surfaced to founder. Now close the loop.
+  </p>
+
+  <div class="flow-row">
+    <div class="block" style="border-color: #666; flex: 1; max-width: 380px;">
+      <div class="block-label">Measure</div>
+      <div class="block-title">Extended TRIAGE</div>
+      <div class="block-detail">
+        Log everything. Retrospective depth is counted here, not declared upfront.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>domain_selected: Complicated</code></span></div>
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>nodes_traversed: 5</code></span></div>
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>terminal_reached: yes</code></span></div>
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>convergence_detected: 1 (at node 3)</code></span></div>
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>solution.hypothesis: "..."</code></span></div>
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>solution.observe_by: 2026-04-23</code></span></div>
+        <div class="node-step"><span class="step-num"></span><span class="step-text"><code>solution.accurate: pending</code></span></div>
+      </div>
+      <div class="tags">
+        <span class="tag new">Solution accuracy (new)</span>
+        <span class="tag new">Pending verification queue (new)</span>
+        <span class="tag existing">Estimation accuracy (existing)</span>
+      </div>
+    </div>
+
+    <div class="arrow-right">&rarr;</div>
+
+    <div class="block learn" style="flex: 1; max-width: 540px;">
+      <div class="block-label">Learn</div>
+      <div class="block-title">Self-Improving System</div>
+      <div class="block-detail">
+        Five mechanisms that make the system faster and more accurate over time.
+      </div>
+      <div class="node-steps">
+        <div class="node-step"><span class="step-num">A.</span><span class="step-text"><b>RL on depth:</b> after 10+ tasks in category, auto-predict node count. "SEO = 5 nodes."</span></div>
+        <div class="node-step"><span class="step-num">B.</span><span class="step-text"><b>Exemplar library:</b> terminal_reached=yes + accurate=yes &rarr; positive exemplar. convergence_detected>0 &rarr; negative exemplar.</span></div>
+        <div class="node-step"><span class="step-num">C.</span><span class="step-text"><b>Production rules:</b> locked Clear protocols (10+ uses, 90%+ accuracy) &rarr; convert to rule-based. LLM exits entirely.</span></div>
+        <div class="node-step"><span class="step-num">D.</span><span class="step-text"><b>Output shape capture:</b> store not just process but terminal output FORMAT per problem type.</span></div>
+        <div class="node-step"><span class="step-num">E.</span><span class="step-text"><b>Confidence calibration:</b> track LLM confidence vs actual accuracy. Auto-adjust precision enforcement intensity.</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag new">RL on depth (new)</span>
+        <span class="tag new">Exemplar library (new)</span>
+        <span class="tag new">Production rule conversion (new)</span>
+        <span class="tag new">Output shape capture (new)</span>
+        <span class="tag new">Confidence calibration (new)</span>
+        <span class="tag existing">Protocol extraction (existing)</span>
+        <span class="tag existing">Estimation calibration (existing)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- SECTION 6: LEGEND -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">&bull;</div>
+    <div class="section-title">Legend</div>
+  </div>
+
+  <div class="flow-row" style="gap: 24px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 16px; height: 16px; border: 2px solid #2dd4bf; border-radius: 3px;"></div>
+      <span style="font-size: 12px; color: #888;">Clear (encode)</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 16px; height: 16px; border: 2px solid #f59e0b; border-radius: 3px;"></div>
+      <span style="font-size: 12px; color: #888;">Complicated (traverse)</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 16px; height: 16px; border: 2px solid #ec4899; border-radius: 3px;"></div>
+      <span style="font-size: 12px; color: #888;">Complex (probe)</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 16px; height: 16px; border: 2px solid #ef4444; border-radius: 3px;"></div>
+      <span style="font-size: 12px; color: #888;">Chaotic (stabilize)</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 16px; height: 16px; border: 2px solid #a78bfa; border-radius: 3px;"></div>
+      <span style="font-size: 12px; color: #888;">Disorder (decompose)</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 16px; height: 16px; border: 2px solid #22c55e; border-radius: 3px;"></div>
+      <span style="font-size: 12px; color: #888;">Terminal check</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="tag new" style="margin: 0;">NEW</span>
+      <span style="font-size: 12px; color: #888;">Addition from research</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="tag existing" style="margin: 0;">EXISTING</span>
+      <span style="font-size: 12px; color: #888;">Already in Sutra v1.7</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- SECTION 7: SUMMARY STATS -->
+<!-- ============================================ -->
+
+<div class="flow-section">
+  <div class="section-header">
+    <div class="section-number">&bull;</div>
+    <div class="section-title">What's New vs What's Existing</div>
+  </div>
+
+  <div class="flow-row" style="gap: 24px;">
+    <div class="block" style="border-color: #333; flex: 1;">
+      <div class="block-label" style="color: #22c55e;">Stays from v1.7</div>
+      <div class="block-detail" style="line-height: 2;">
+        Task Lifecycle phases (OBJECTIVE thru LEARN)<br>
+        Estimation Engine (tokens, cost, time, calibration)<br>
+        10-parameter scoring (feeds appetite, not depth)<br>
+        Triage loop (undertriage/overtriage/correct)<br>
+        Protocol store + task-to-protocol conversion<br>
+        Enforcement hooks + compliance checks<br>
+        Cross-practice routing table<br>
+        Pre-scoring gates (auth/PII/payments)
+      </div>
+    </div>
+
+    <div class="block" style="border-color: #333; flex: 1;">
+      <div class="block-label" style="color: #f59e0b;">New in v2</div>
+      <div class="block-detail" style="line-height: 2;">
+        Domain Gate as primary (Cynefin promoted)<br>
+        5 response patterns (not 5 depth levels)<br>
+        Terminal check (6 free + 3 conditional layers)<br>
+        PROBE + PROBE-RESULT artifacts<br>
+        Clear encoding (LLM exits execution loop)<br>
+        Per-node context loading (2-3 hops)<br>
+        Per-node estimation + appetite budget<br>
+        Socratic questioning per node<br>
+        14-mechanism precision catalog<br>
+        Solution accuracy per domain<br>
+        Pending verification queue<br>
+        Exemplar library (from TRIAGE data)<br>
+        RL on depth (auto-predict node count)<br>
+        Production rule conversion (locked protocols)<br>
+        Disorder pattern + decomposition quality tracking<br>
+        Convergence prevention (specificity, inversion, schema, beam, adversarial)
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

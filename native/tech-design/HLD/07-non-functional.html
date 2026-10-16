@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>07 — Non-Functional — Native Tech Design</title><link rel="stylesheet" href="../shared.css"></head>
+<body>
+<div style="background:#7c2d12;color:#fff;padding:12px 18px;font:13px/1.5 -apple-system,sans-serif"><b>SUPERSEDED 2026-06-13.</b> This scaffold stub is replaced by the engineering band's cross-cutting views + per-part pages. See <a href="../../engineering/index.html" style="color:#fed7aa">engineering/</a>. Archive retained for provenance.</div>
+<nav class="topnav"><a href="../index.html">← Tech Design Hub</a> · <a href="../../product-prd-native-v1.html">PRD</a> · Layer: <strong>HLD</strong> · Doc: <strong>07 — Non-Functional</strong></nav>
+<header><h1>07 — Non-Functional Requirements</h1><p class="subtitle">Performance budgets (latency · token cost · throughput), security (HS-3 boundary + DecisionProvenance), observability (3-channel audit + metrics), accuracy contract (test-before-conclude + KPIs).</p></header>
+<div class="scaffold-banner"><span class="fill-me">SCAFFOLD</span> — fill-in pending. FQ2 Accuracy KPIs are an open question (founder ratification pending — see PRD §C.6).</div>
+<section><h2>Scope</h2><p>Cross-cutting quality attributes — what Native promises beyond just "does the function." Engineers consult this for SLOs, capacity planning, and CI gates.</p></section>
+<div class="canon-pointer"><strong>Canon authority</strong>:<ul><li><a href="../../product-prd-native-v1.html#section-6-observability">PRD §7 Observability</a></li><li><a href="../../../../../sutra/os/charters/SECURITY.md">SECURITY charter</a></li><li><a href="../../../../../sutra/os/charters/SPEED.md">SPEED charter</a></li><li><a href="../../../../../sutra/os/charters/TOKENS.md">TOKENS charter</a></li></ul></div>
+<section><h2>Planned sections</h2><div class="section-list"><ol><li>Performance budgets — latency per surface, per-pillar token budgets</li><li>Throughput targets — OHS/wk per operator (≥3 within 14d, ≥20 mature)</li><li>Security — HS-3 tenant boundary + key isolation + audit append-only</li><li>Observability — 3-channel DecisionProvenance + EngineEvents + metrics</li><li>Accuracy contract — test-before-conclude (§4.5) + KPIs per tier T0-T3 (FQ2 pending)</li><li>Reliability — HS-4 silent fail-open detection + retry contracts</li><li>Cost model — per-Tenant subscription v1; outcome-based v2</li><li>Operator-visible failure behavior (resilience contract §4.10)</li></ol></div></section>
+<section><h2>Back-references</h2><p>PRD §7 · §4.5 · §4.10 · C.6 FQ2</p></section>
+<footer>Scaffold 2026-05-20. <a href="../index.html">↑ Hub</a></footer>
+</body></html>

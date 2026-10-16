@@ -1,0 +1,164 @@
+SHAPE FAMILY: THE AXES ON THE NATIVE PAGE, AND HOW GOALS GET CUT ALONG THEM
+============================================================================
+Scratchpad note, 2026-10-12, revised: only what holding/website/native/axes.html writes under SHAPE.
+Sources on that page: the SHAPE card (section 3), the folded SHAPE functional spec (catalog paragraph,
+"One axis, walked"), the attach matrix, and the LENS P1-P5 rows.
+
+1. THE FAMILY, DRAWN
+--------------------
+
+  intent arrives ("collect this month's EMIs")
+        |
+  +-----v----------------- SHAPE: reads the input, fresh every run -----------------------+
+  |                                                                                       |
+  |  TYPE          what kind of ask?            task | question | direction               |
+  |                                             runs first; the kind colours all after it |
+  |  CERTAINTY     how known is the ground?     do | analyze | probe | stabilize           |
+  |                                             upstream of the cut; decides which cut fits|
+  |  LENS          where are the natural seams? REALIZATION (recommended) |               |
+  |                                             by deliverable, parallel, many actors |    |
+  |                                             one thread, sequential, one actor          |
+  |                                             decides where to cut and how children wire |
+  |  IMPACT        what must the work move?     a measure on one dimension of the goal,    |
+  |                                             set before, read back at close             |
+  |                                             (ruled 2026-09-25, not built)              |
+  |  finer         control-flow pattern         parallel | sequence                        |
+  |                depth of effort              how hard the run tries                     |
+  |                pace                         how fast it runs                           |
+  |                                                                                       |
+  +-----+---------------------------------------------------------------------------------+
+        |   the whole box is one realization step: a wish becomes a plan with a shape
+        v
+  RUN: the children, each one goal + one check
+
+  Order inside the family (from the page's interaction table): TYPE gates, CERTAINTY staggers, LENS cuts,
+  IMPACT states the measure the cut pieces carry down. The department screen draws SHAPE as
+  "an engine's steps": Adaptation draws every engine's steps (2.293.0).
+
+2. FIVE LENDING GOALS, CUT ALONG THE SHAPE AXES
+-----------------------------------------------
+
+  Goal                        TYPE       CERTAINTY  LENS                      IMPACT                         control-flow     depth   pace
+  --------------------------  ---------  ---------  ------------------------  -----------------------------  ---------------  ------  -------------
+  Collect this month's EMIs   task       do         by customer: one child    collected / due, up to 100%    parallel         low     daily until
+                                                    per borrower                                                                      due day
+  Why did defaults rise in    question   analyze    by cohort: one child per  one cause named, with the      sequence         high    once
+  September?                                        borrower group            number behind it
+  Start lending to gig        direction  probe      REALIZATION: department   first 20 loans out, defaults   sequence, then   high    weeks
+  workers                                           -> functions -> engines   under 5 percent                parallel
+  Approve loan 4812           task       do         no seam: one atom         one stamp: disbursed or        one piece        low     now
+                                                                              refused
+  Put up the borrower         task       stabilize  by deliverable: one       site served, every page        parallel         medium  one sitting
+  website                                           child per page            answers
+
+  Read across a row: TYPE and CERTAINTY set the posture. LENS decides what the children are.
+  IMPACT gives every child its number. Control-flow, depth and pace say how the children run.
+  LENS alone changes the children; it is the knife, the rest hold the board.
+
+3. ONE GOAL, THE LENS VALUES ON THE PAGE
+----------------------------------------
+  "Collect this month's EMIs"
+
+  LENS value                           The children                                                    Count
+  -----------------------------------  --------------------------------------------------------------  --------------
+  REALIZATION (down the ladder)        goal -> engine Collections -> workflow remind, collect,         3 rungs
+                                       reconcile -> atoms, one goal + one check each
+  by deliverable, parallel, many       one child per thing delivered: the reminder batch, the           3 children
+  actors                               collection run, the reconciliation report; wired to coordinate
+  one thread, sequential, one actor    no seam worth cutting: one piece, done in order                  1
+
+  Same goal, three different sets of children. Only the knife changed.
+  REALIZATION is the lens whose children are the next rung down; the other values cut across one rung.
+  A real run stacks two: REALIZATION down to the workflow, then by deliverable to get the atoms.
+  How the knife is chosen climbs its own ladder on the page: L0 leaf (no cut), L1 one pattern,
+  L2 hybrid, L3 adaptive (the pattern picked per input).
+
+4. HOW: HOW EACH AXIS IS READ AND APPLIED
+-----------------------------------------
+  Every SHAPE axis works the same way: someone reads the ask, writes one small reading, and the reading
+  constrains the next axis. Nothing is carried over from the last run.
+
+  Axis          Reads                      Who reads it            Writes                           Where it lives today (Core)
+  ------------  -------------------------  ----------------------  -------------------------------  ---------------------------------------
+  TYPE          the words of the ask       the turn classifier     one word: task | question |      every turn is classified before any
+                                                                   direction                        work (the header line of each turn)
+  CERTAINTY     how known the ground is    the agent, per turn     a Cynefin reading: clear |       a cynefin reading is written every turn
+                                                                   complicated | complex | chaotic  (the turn's cynefin file)
+  LENS          where the seams are,       the agent, per turn     the cut: which lens, the         a lens reading is written every turn;
+                plus prior cuts of this                            children, how they wire; written  it reads prior decomposition history
+                kind                                               onto each child's goal line       and writes the chosen pattern to the
+                                                                                                    step's goal constraint (LENS P4)
+  IMPACT        the goal's dimension       the owner, with the     one measure with a direction,    ruled 2026-09-25, not built; today the
+                                           agent                   set before, read back at close   done line on the charter stands in
+  control-flow  the children's dependence  the agent               parallel | sequence              the engine's steps, drawn by Adaptation
+  depth         how much the ask deserves  the agent               a depth 1-5                      the depth line of each turn
+  pace          how fast it must go        the owner               a cadence or "now"               the cadence on every engine
+
+  The order is fixed: TYPE gates (a question is never cut like a task), CERTAINTY staggers (a probe is
+  not cut at all, a do is cut at once), LENS cuts, IMPACT numbers the pieces, the finer three set how
+  the pieces run. Then the plan is handed to RUN.
+
+4b. THE PROCEDURE: HOW A READING IS PRODUCED
+--------------------------------------------
+  Each axis is one question, one rule that turns the answer into a value, and a tie-break.
+  Today the agent runs these in its head each turn; only the LENS ladder and the sorting test are
+  written on the page, the rest are the rules the lens and cynefin steps run with.
+
+  Axis          ask:                                  rule                                              on "collect this month's EMIs"
+  ------------  ------------------------------------  ------------------------------------------------  ----------------------------------
+  TYPE          ask: what is the first word doing?    a question mark, or why/what/how at the front ->  verb + deliverable -> task
+                                                      question; a verb and a deliverable -> task;
+                                                      "from now on", "always", "never" -> direction
+  CERTAINTY     ask: is there a known recipe?         yes -> clear, do. No, but an expert can find      done every month, same recipe
+                                                      one by analysis -> complicated, analyze. No,      -> clear, do
+                                                      only a trial will tell -> complex, probe. It is
+                                                      on fire -> chaotic, stabilize
+  LENS          ask: along which noun do the pieces   1 list the nouns in the goal: deliverables,       nouns: borrowers, days, the report.
+                come apart on their own?              customers, actors, days, stages. 2 for each,      by borrower: 50 pieces, each own
+                                                      cut once and look at the pieces: does each have   check, no dependence -> pick.
+                                                      its own goal and its own check, and can it        by day: pieces depend on each
+                                                      finish without the others? 3 keep the nouns       other -> drop. Ladder: L1, one
+                                                      that pass, drop the rest. 4 if the ask is bigger   pattern, same every month
+                                                      than one engine, cut REALIZATION first, one rung
+                                                      down, and ask again. 5 if no noun passes, one
+                                                      thread. Tie-break: the noun that gives the fewest
+                                                      pieces with a readable check
+  IMPACT        ask: which noun in the done line      give it a direction (up, down, to a value) and a   money collected -> collected / due
+                moves?                                number; name the day it is read back              to 100 percent, read on day 30
+  control-flow  ask: does any piece need another      none -> parallel; a chain -> sequence; a mix ->    none -> parallel
+                piece's result?                       parallel inside sequence
+  depth         ask: how new is this, and what does   new x costly -> 5; routine x cheap -> 1;           routine, cheap to redo -> 2
+                a wrong answer cost?                  the rest between
+  pace          ask: when does the result stop being  that day sets the end; the cadence is how often    due dates across the month ->
+                useful?                               the check can change its answer                   daily until the due day
+
+  Then the sorting test on the result: did every reading come from this ask, fresh? If a reading came
+  from last month's plan instead, it is a GROW value wearing SHAPE's clothes; re-read.
+
+5. HOW: ONE GOAL WALKED, "COLLECT THIS MONTH'S EMIS"
+----------------------------------------------------
+  Step  Axis          What is read                              What is written
+  ----  ------------  ----------------------------------------  ------------------------------------------------
+  1     TYPE          "collect this month's EMIs": a verb,      task
+                      a deliverable, no question mark
+  2     CERTAINTY     done every month, the ground is known     do (clear); cut at once, no probe
+  3     LENS          seams: one per borrower; prior months     by customer: one child per borrower, parallel;
+                      were cut the same way                     each child's goal line reads "this borrower paid"
+  4     IMPACT        the goal's dimension is money collected   collected / due, target 100 percent, read back
+                                                                on the last day of the month
+  5     control-flow  the children do not depend on each other  parallel
+  6     depth         routine, nothing new in the ask           2 of 5
+  7     pace          due dates fall across the month           daily until the due day, then stop
+  ->    the plan: N children, each one goal + one check, each carrying its share of the measure,
+        handed to RUN. Next month the same seven steps run again from the fresh ask.
+
+  The same seven steps on "Start lending to gig workers" give a different plan at step 2 already:
+  CERTAINTY reads probe, so step 3 does not cut into borrowers; LENS reads REALIZATION and cuts the
+  department into functions, the functions into engines, and only then does a child look like an EMI run.
+
+6. WHAT THE PAGE SAYS THESE AXES ARE NOT
+----------------------------------------
+  Which shape worked best over many runs    -> GROW (Codify writes the proven practice, SHAPE reads it)
+  Whether the chosen shape may proceed      -> GOVERN (authority over the shaping transition)
+  Pace that becomes motion over the loop    -> TIME (dynamics)
+  The sorting test is the referee: only read-the-input-fresh stays in SHAPE.

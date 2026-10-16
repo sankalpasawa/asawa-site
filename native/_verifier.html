@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verifier Layer — declaration · binding · execution · judgment</title>
+<style>
+  body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;background:#fff;margin:0}
+  .page{max-width:760px;margin:0 auto;padding:38px 26px 60px}
+  h1{font-size:24px;font-weight:700;margin:0 0 2px;letter-spacing:-.01em}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:26px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 10px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{border:1px solid #e5e7eb;padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-weight:600}
+  code{background:#f3f4f6;border-radius:4px;padding:1px 5px;font-size:12.5px}
+  .num{font-variant-numeric:tabular-nums}
+  .ok{color:#047857}.warn{color:#b45309}.dim{color:#6b7280}
+  pre{background:#0f172a;color:#e2e8f0;border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.5;overflow-x:auto}
+  .foot{color:#9ca3af;font-size:11.5px;margin-top:28px;border-top:1px solid #eee;padding-top:12px}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Verifier Layer</h1>
+  <div class="sub">Verification disaggregated from the Work-Atom · shipped 2026-08-08 · ADR-032</div>
+
+  <h2>The four-way split</h2>
+  <table>
+    <tr><th>Layer</th><th>What it owns</th><th>Where it lives</th></tr>
+    <tr><td><b>Declaration</b></td><td>check spec + scope: <code>unit</code> / <code>invariant</code> / <code>capability</code></td><td>check registry (<code>registry.jsonl</code>)</td></tr>
+    <tr><td><b>Binding</b></td><td><code>{attach, mode: gate|observe, life}</code> — when we ask, what a failure does</td><td>registry rows + <code>sutra-verify bind</code></td></tr>
+    <tr><td><b>Execution</b></td><td>one shared runner, zero context</td><td><code>verify-runner.sh</code> + docker sandbox lane</td></tr>
+    <tr><td><b>Judgment</b></td><td>mechanical / model-graded (3-epoch majority) / agent-redo</td><td>decay · grader · capability lanes</td></tr>
+  </table>
+
+  <h2>Lifecycle as data flow</h2>
+  <pre>atom close ----\                             /--> nightly decay lane (observe, never gates)
+invariants.json --> CHECK REGISTRY --> pack -+--> grader lane (check-quality, 3 epochs)
+sutra-verify declare /   |                    \--> capability lane (agent redo, on-demand)
+                         +--> sutra-verify run --attach deploy.pre --gate
+                         +--> workflow.close bindings</pre>
+
+  <h2>Cutover result (2026-08-08)</h2>
+  <table>
+    <tr><th>Metric</th><th class="num">Before</th><th class="num">After</th></tr>
+    <tr><td>Registry rows</td><td class="num dim">141 flat cases</td><td class="num">243+ typed checks</td></tr>
+    <tr><td>Standing nightly fails</td><td class="num warn">10 (stale snapshots)</td><td class="num ok">1 (real decay)</td></tr>
+    <tr><td>Superseded (typed out)</td><td class="num dim">0</td><td class="num">108</td></tr>
+    <tr><td>Hand-declared invariants</td><td class="num dim">0</td><td class="num">5</td></tr>
+    <tr><td>Scored nightly</td><td class="num">141</td><td class="num">92 (87 unit + 5 invariant), 91 pass</td></tr>
+  </table>
+
+  <h2>Rules with force</h2>
+  <table>
+    <tr><td>Supersede is the type system — unit checks on the same target collapse to the latest close; losers carry <code>superseded_by</code></td></tr>
+    <tr><td>Invariants are hand-declared only (<code>invariants.json</code> or <code>promote --reason</code>) — never inferred</td></tr>
+    <tr><td>The nightly never gates; gate bindings live at <code>atom.close</code>, <code>deploy.pre</code>, <code>workflow.close</code></td></tr>
+    <tr><td>Outcomes <code>pass|fail|skip|error|stale_binding</code> carry full provenance (commit, runner version, duration, exit)</td></tr>
+  </table>
+
+  <div class="foot">Runtime lives in the sutra repo (linked per D54, never copied):
+    ADR-032-verifier-layer · program ledger <code>holding/plans/eval-program/VERIFIER-LEDGER.md</code> ·
+    desktop surface: sutra-ui Evals screen. Reviews: codex round-2 PASS (DIRECTIVE-ID 1786173107) + deepseek folds.
+    Page authored 2026-08-08, session b33bbd62.</div>
+</div>
+</body>
+</html>

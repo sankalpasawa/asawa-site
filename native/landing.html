@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Native Design Hub — landing</title>
+<link rel="stylesheet" href="prd-shared.css">
+<style>
+  body { padding: 24px 32px 80px; max-width: 1000px; margin: 0 auto; }
+  .hub-intro { background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 1px solid #d4d8dd; border-radius: 4px; padding: 20px 26px; margin: 20px 0; }
+  .hub-intro h1 { margin-top: 0; }
+  .hub-section { background: #fff; border: 1px solid #d4d8dd; border-radius: 4px; padding: 16px 20px; margin: 14px 0; }
+  .hub-section h2 { margin-top: 0; font-size: 16px; }
+  .hub-section h2 span.tag { display:inline-block; font-size: 10px; padding: 2px 8px; border-radius: 2px; background:#e5e7eb; color:#374151; text-transform:uppercase; letter-spacing:0.06em; margin-right:8px; vertical-align: middle; font-weight: 600; }
+  .hub-section.what h2 span.tag { background: #dbeafe; color: #1d4ed8; }
+  .hub-section.how h2 span.tag { background: #d1fae5; color: #047857; }
+  .hub-section.why h2 span.tag { background: #fef3c7; color: #b45309; }
+  .hub-section.canon h2 span.tag { background: #ede9fe; color: #6d28d9; }
+  .hub-section ul { margin: 8px 0 0 22px; font-size: 14px; }
+  .hub-meta { font-size: 13px; color: #6b7280; margin: 16px 0; font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="hub-intro">
+<h1>Native Design Hub</h1>
+<p class="hub-meta">Click any item in the left sidebar to load that document here. Sidebar stays; pages swap in this pane.</p>
+<p>Three pillars of the design corpus:</p>
+<ul>
+<li><strong>📄 PRD</strong> — what we are building (operator-facing capability contract). Hub + 10 readability spokes.</li>
+<li><strong>🛠 Tech Design Hub</strong> — how we build it (engineering-handoff: HLD + LLD scaffolds).</li>
+<li><strong>📋 ADR catalog</strong> — why each architectural choice (001-020).</li>
+</ul>
+<p>Authoritative source of truth = <strong>canon</strong> at <code>sutra/os/native/**</code> + <code>sutra/os/decisions/</code> + <code>sutra/os/engines/</code>. Everything in PRD + Tech Design is a curated view. If they disagree with canon, canon wins.</p>
+</div>
+
+<section class="hub-section what">
+<h2><span class="tag">PRD</span> Product Requirements — WHAT</h2>
+<p>Operator-facing capability contract. Per Cagan: PRD body = WHAT; engine HOW lives in canon. Pin operator voice on needs. STOP-AT-3-RING per pillar (Surface · Contract · Mechanism).</p>
+<p><strong>Status</strong>: v3 canonical scaffold shipped (3,192 lines). 23 inline marker pills surface remaining gaps. 104-row §C.7 Backlog indexes every atomic task. <em>15 Ring 1 cells awaiting founder voice.</em></p>
+<ul>
+<li><strong>Entry</strong>: <a href="product-prd-native-v1.html">full PRD hub</a></li>
+<li><strong>Spokes</strong>: <a href="prd/01-architecture.html">§1</a> · <a href="prd/02-cos.html">§2</a> · <a href="prd/03-how-methodology.html">§3</a> · <a href="prd/04-native-platform.html">§4</a> · <a href="prd/05-connector.html">§5</a> · <a href="prd/06-distribution.html">§6</a> · <a href="prd/07-observability.html">§7</a> · <a href="prd/08-roadmap.html">§8</a> · <a href="prd/09-meta.html">§9</a> · <a href="prd/10-research-foundations.html">§10</a></li>
+</ul>
+</section>
+
+<section class="hub-section how">
+<h2><span class="tag">Tech</span> Engineering Handoff — HOW</h2>
+<p>Curated view of canon for the team building Native. HLD = system architecture; LLD = component design. Each doc has scope + canon-authority pointer + section headers. Fill-in pending — engineering authors per §C.7 G8 backlog rows.</p>
+<ul>
+<li><strong>Entry</strong>: <a href="tech-design/index.html">Tech Design Hub</a></li>
+<li><strong>HLD</strong>: 01-07 (system overview · data model · control flow · interfaces · governance · deployment · NFR)</li>
+<li><strong>LLD</strong>: B1-B5 pillars + 4 catalogs (primitives · hardstops · surfaces · interfaces)</li>
+</ul>
+</section>
+
+<section class="hub-section why">
+<h2><span class="tag">ADR</span> Decisions — WHY</h2>
+<p>Architectural Decision Records. ADR-018 carries SHARED invariant across all Layer-B products; per-product specialization in <code>ADR-NNN-&lt;product&gt;-pattern.md</code>.</p>
+<p><strong>Status</strong>: 20 ADRs (001-019 ratified, 020 PROPOSED — codex r19 CHANGES-REQUIRED with 5 findings).</p>
+<ul>
+<li><a href="tech-design/decisions.html">Full ADR catalog (001-020)</a></li>
+</ul>
+</section>
+
+<section class="hub-section canon">
+<h2><span class="tag">Canon</span> Source of truth</h2>
+<p>Normative truth lives in canon. PRD + Tech Design are curated views; if they disagree, canon wins.</p>
+<ul>
+<li><a href="https://github.com/sankalpasawa/asawa-holding/tree/main/sutra/os/native" target="_blank"><code>sutra/os/native/</code></a> — primitives · blocks · pillars · hardstops · events · surfaces · doc-layers</li>
+<li><a href="https://github.com/sankalpasawa/asawa-holding/tree/main/sutra/os/decisions" target="_blank"><code>sutra/os/decisions/</code></a> — ADR-001 through ADR-020</li>
+<li><a href="https://github.com/sankalpasawa/asawa-holding/tree/main/sutra/os/engines" target="_blank"><code>sutra/os/engines/</code></a> — NATIVE-ENGINE · BLUEPRINT-ENGINE · others</li>
+<li><a href="https://github.com/sankalpasawa/asawa-holding/tree/main/sutra/os/charters" target="_blank"><code>sutra/os/charters/</code></a> — 11 governance charters</li>
+</ul>
+</section>
+
+<section>
+<h2>How to read (tech department entry path)</h2>
+<ol>
+<li>Start with PRD §ES Executive Summary (2-3 pages, no prior context) — open from sidebar</li>
+<li>Then §0 Tuesday narratives — operator-voice picture</li>
+<li>Then §1 Architecture spoke (canonical operating model)</li>
+<li>Then §2 CoS Product spoke (pillars B1-B5)</li>
+<li>Engineering pass: 7 HLD docs in order</li>
+<li>Per-component: pick LLD pillar/catalog; cross-reference to canon</li>
+<li>When stuck: search ADR catalog by topic</li>
+</ol>
+</section>
+
+<section>
+<h2>Status snapshot (2026-05-20)</h2>
+<table>
+<tr><th>Pillar</th><th>State</th><th>Blocking</th></tr>
+<tr><td>PRD scaffold</td><td>v3 canonical (3,192 lines)</td><td>15 Ring 1 cells awaiting founder voice</td></tr>
+<tr><td>§C.7 Backlog</td><td>122 atomic rows (G0-G8)</td><td>operating doc</td></tr>
+<tr><td>Tech Design Hub</td><td>18 scaffolds landed</td><td>Engineering authors fill content</td></tr>
+<tr><td>ADR catalog</td><td>001-019 ratified · 020 PROPOSED</td><td>ADR-020 codex r19 CHANGES-REQUIRED</td></tr>
+<tr><td>Native runtime</td><td>v0 dogfood at <code>~/.sutra-native/</code></td><td>v1 production path TBD</td></tr>
+</table>
+</section>
+
+<footer style="margin-top:60px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;">
+Native Design Hub landing — scaffolded 2026-05-20. Use left sidebar to navigate.
+</footer>
+
+</body>
+</html>

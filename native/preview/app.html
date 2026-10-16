@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Sutra — Desktop (DS UI v2.0)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* layout-only; every visual decision lives in tokens.css (the DS) */
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#e9e6e0;padding:20px}
+  .window{width:1300px;max-width:100%;height:780px;background:var(--bg);border:1px solid #ddd8cf;border-radius:14px;box-shadow:0 22px 64px rgba(12,10,8,.18);overflow:hidden;display:flex;position:relative}
+  .tag{position:absolute;top:12px;right:16px;font-size:10px;letter-spacing:.14em;color:var(--gold);z-index:20}
+  .pane{flex:1;overflow:auto;display:none}
+  .pane.on{display:block}
+  .homecol{max-width:660px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;min-height:100%}
+  .stack{display:flex;flex-direction:column;gap:var(--s3);margin-top:var(--s5)}
+  .chwrap{padding:20px 24px}
+  h2.pg{font-family:var(--font-display);font-size:20px;font-weight:500;margin-bottom:2px}
+  .pgsub{font-size:11.5px;color:var(--stone);margin-bottom:12px}
+  .slist{display:flex;gap:var(--s2);margin-bottom:var(--s3);flex-wrap:wrap}
+  .sit{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:11px;cursor:pointer}
+  .sit.on{border-color:var(--gold);background:#fdfaf4}
+  .sit .tt{font-weight:600;font-size:11.5px}
+  .sit .mm{font-size:9px;color:var(--stone)}
+  .panes2{display:flex;height:560px;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--panel)}
+  .ctx{width:295px;border-right:1px solid var(--line);padding:13px;overflow:auto;background:#fbfaf7;font-size:11px}
+  .crumb{font-size:10px;color:var(--stone);margin-bottom:9px}
+  .crumb b{color:var(--gold)}
+  .cc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:9px}
+  .cc .k{font-size:9px;letter-spacing:var(--ls-label);font-weight:700;color:var(--gold)}
+  .cc .nm{font-family:var(--font-display);font-size:13px;margin:2px 0}
+  .chatcol{flex:1;display:flex;flex-direction:column;min-width:0}
+  .stream{flex:1;padding:14px 18px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+  .mu{align-self:flex-end;max-width:72%;background:#f0ede5;border:1px solid var(--line);border-radius:11px 11px 3px 11px;padding:8px 12px;font-size:12.5px}
+  .ma{align-self:flex-start;max-width:86%;background:var(--bg);border:1px solid var(--line);border-radius:11px 11px 11px 3px;padding:10px 13px;font-size:12.5px}
+  .chips{display:flex;gap:5px;margin-bottom:7px;flex-wrap:wrap}
+  .bp{display:none;border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:9px;background:#fdfaf4;padding:9px 12px;font:10.5px var(--font-mono);white-space:pre-line;margin:6px 0}
+  .bp.open{display:block}
+  .depbar{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);font-size:11.5px}
+  .depframe{width:100%;height:calc(100% - 42px);border:0;background:#fff}
+  .bwrap{padding:20px 24px;display:flex;flex-direction:column;height:100%}
+  .bstat{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:11px;margin-bottom:var(--s3)}
+  .bmain{display:flex;gap:var(--s3);flex:1;min-height:0}
+  .bfeed{flex:1;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);background:var(--panel);min-width:0}
+  .bside{width:270px;display:flex;flex-direction:column;gap:var(--s3);overflow:auto;flex-shrink:0}
+  .bnote{font:10.5px var(--font-mono);color:var(--stone);border:1px dashed var(--line);border-radius:9px;padding:7px 10px;align-self:flex-start}
+  .aid{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;padding:4px 0;cursor:pointer}
+  .aid .cb{width:13px;height:13px;border:1.5px solid var(--stone);border-radius:4px;flex-shrink:0;margin-top:1px}
+  .aid.done .cb{background:var(--done);border-color:var(--done)}
+  .aid.done .tx{text-decoration:line-through;color:var(--faint)}
+  .iwrap{max-width:720px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;height:100%}
+  .icard{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:10px 13px;margin-top:8px;font-size:11.5px}
+  .icard .k{font-size:9px;letter-spacing:.1em;font-weight:700;color:var(--gold);text-transform:uppercase;margin-bottom:5px}
+  .istrip{display:flex;gap:2px;margin-top:6px}
+  .istrip i{flex:1;height:14px;border-radius:2px;background:var(--cream)}
+  .istrip i.st{background:#dfe8df}.istrip i.str{background:#f0e4cf}.istrip i.sp{background:#ecd7e2}
+  .iwidgets{display:flex;gap:8px;margin-top:14px}
+  .iw{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-size:11.5px;box-shadow:var(--shadow-rest);cursor:pointer}
+  .iw:hover{box-shadow:var(--shadow-hover)}
+  .iw-type{font-size:8.5px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;margin-bottom:5px;display:block}
+  .iw.aw .iw-type{color:var(--review)}
+  .iw.un .iw-type{color:var(--gold)}
+  .iw.ac .iw-type{color:var(--decide)}
+  .setwrap{padding:20px 24px}
+  .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+  .sc{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
+  .sc .k{font-size:var(--fs-label);letter-spacing:var(--ls-label);font-weight:700;color:var(--stone);margin-bottom:7px}
+  .srow{display:flex;align-items:center;gap:9px;font-size:12px;padding:3.5px 0}
+  .sm{font-size:10px;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="tag">DS UI v2.0 &middot; tokens.css &middot; 2026-08-05</div>
+
+  <nav class="ds-rail">
+    <div style="margin:0 0 16px 6px"><span class="ds-dot" style="background:var(--line)"></span> <span class="ds-dot" style="background:var(--line)"></span> <span class="ds-dot" style="background:var(--line)"></span></div>
+    <div class="brand">Sutra</div>
+    <div class="item on" data-t="home">&#9678; Right Now <span class="badge">3</span></div>
+    <div class="item" data-t="chats">&#9998; Chats</div>
+    <div class="item" data-t="billu">&#9673; Billu</div>
+    <div class="item" data-t="evals">&#10003; Evals</div>
+    <div class="item" data-t="balance">&#10047; Balance</div>
+    <div class="item" data-t="depts">&#9639; Departments</div>
+    <div class="item" data-t="set">&#9881; Settings<span class="reddot" title="1 connection needs attention"></span></div>
+    <div class="foot">CEO of Asawa &middot; maker day<br>context 64% &middot; $8.40 today</div>
+  </nav>
+
+  <!-- RIGHT NOW -->
+  <section class="pane on" id="p-home"><div class="homecol">
+    <div class="ds-greet" style="margin-top:64px">Good morning, Sankalp.</div>
+    <div class="ds-sub" style="margin-top:8px"><b>3 decisions</b> are waiting on you. Everything else is handled.</div>
+
+    <div class="stack">
+      <div class="ds-decision" id="d1" onclick="openSession()"><span class="dot"></span><span class="t">Commit the Experience department<small>9 files, all local &middot; reversible &middot; 40 min</small></span><span class="act" onclick="approve(event,'d1')">Approve</span><span class="act q" onclick="event.stopPropagation()">diff</span></div>
+      <div class="ds-decision" id="d2" onclick="openSession()"><span class="dot"></span><span class="t">Ratify the Cockpit charter + V1 cut<small>5-min read &middot; reversible &middot; 35 min</small></span><span class="act" onclick="approve(event,'d2')">Approve</span><span class="act q" onclick="event.stopPropagation()">open</span></div>
+      <div class="ds-decision" id="d3" onclick="openSession()"><span class="dot"></span><span class="t">Unpause the "Why?" layer (D36)<small>direction change &middot; reversible &middot; 30 min</small></span><span class="act" onclick="approve(event,'d3')">Yes</span><span class="act q" onclick="event.stopPropagation()">later</span></div>
+    </div>
+
+    <div class="ds-composer" style="margin:32px 0 20px"><span class="ph">Ask or command Sutra&hellip;</span><span class="key">&#8984;K</span></div>
+
+    <div class="ds-quiet" style="padding-bottom:40px">
+      <span class="tok review" data-t="chats">review 2</span>
+      <span class="tok" data-t="chats">fyi 4</span>
+      <span class="tok done" data-t="depts">done 3 &#10003;</span>
+      <span class="tok" data-t="chats">radar 2</span>
+      <span class="tok alert" data-t="set">workflow registry unavailable &middot; refresh actions may be stale</span>
+    </div>
+  </div></section>
+
+  <!-- CHATS -->
+  <section class="pane" id="p-chats"><div class="chwrap">
+    <h2 class="pg">Chats</h2>
+    <div class="pgsub">Every card is a session &middot; context left, chat right (FIXED)</div>
+    <div class="slist">
+      <div class="sit on"><div class="tt">Cockpit build — DS UI</div><div class="mm">live now</div></div>
+      <div class="sit"><div class="tt">Native build S3</div><div class="mm">closed</div></div>
+      <div class="sit"><div class="tt">Nio follow-up</div><div class="mm">prep ready</div></div>
+      <div class="sit"><div class="tt">resume: caas deck</div><div class="mm">pinned</div></div>
+    </div>
+    <div class="panes2">
+      <aside class="ctx">
+        <div class="crumb">Asawa &rsaquo; <a data-t="depts" style="cursor:pointer">Departments</a> &rsaquo; <b><a data-t="depts" style="cursor:pointer;color:var(--gold)">#14 Experience</a></b> &rsaquo; desktop-app</div>
+        <div class="cc"><div class="k">CHARTER</div><div class="nm">Founder Cockpit</div><div style="font-size:10px;color:var(--alert);font-weight:700">DRAFT &middot; A1 A6 pending &middot; A5 RESOLVED</div></div>
+        <div class="cc" style="border-left:4px solid var(--decide)"><div class="k" style="color:var(--decide)">KEY DECISIONS</div><div style="padding:2px 0">DS UI v2.0: approve</div><div style="padding:2px 0">"code it" &rarr; T15 sutra-ui wiring</div></div>
+        <div class="cc" style="border-left:4px solid var(--done)"><div class="k" style="color:var(--done)">DONE &middot; PROOF</div><div style="padding:2px 0">tokens.css + app.html &#10003; &middot; DS published &#10003;</div></div>
+      </aside>
+      <div class="chatcol">
+        <div class="stream">
+          <div class="ds-atom"><span class="k">ATOM OPEN</span> &middot; Goal: DS UI running &middot; Done when: app.html consumes tokens.css, all rail tabs live</div>
+          <div class="mu">Go and make the UI of this design system, and then show me the HTML version.</div>
+          <div class="ma">
+            <div class="chips">
+              <span class="ds-chip">INBOUND&middot;DIRECT</span>
+              <span class="ds-chip" style="color:var(--done)">RISK low</span>
+              <span class="ds-chip plan" onclick="this.classList.toggle('open');document.getElementById('bp1').classList.toggle('open')">Plan &middot; 4 steps &middot; verify 4/4</span>
+            </div>
+            <div class="bp" id="bp1">Doing: DS UI — tokens.css (T1) + app.html
+1) atom+dispatch bind        [PASS]
+2) codex consult             [PASS — stable class names for T15]
+3) write tokens.css+app.html [PASS]
+4) open in Chrome            [PASS]</div>
+            This is the design system running: every visual rule you see comes from tokens.css — the same file the real app imports at T15. Click things.
+            <div class="ds-work"><b>&#10003; codex</b> — css-first seam approved; class names frozen for sutra-ui import</div>
+          </div>
+        </div>
+        <div class="ds-composer" style="margin:10px 14px 12px"><span class="ph">Continue this session&hellip;</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- BILLU -->
+  <section class="pane" id="p-billu"><div class="bwrap">
+    <h2 class="pg">Billu</h2>
+    <div class="pgsub">One conversational surface across the portfolio &middot; persistent threads &middot; state at ~/.billu</div>
+    <div class="bstat">
+      <span class="ds-dot warn"></span> daemon: not running on this Mac <span class="sm">&middot; migration Phase 3 awaits go &middot; turns queue locally until then</span>
+      <span style="margin-left:auto;font-size:10.5px;color:var(--review);font-weight:600;cursor:pointer" onclick="go('set')">install &rsaquo;</span>
+    </div>
+    <div class="slist" id="bthreads"></div>
+    <div class="bmain">
+      <div class="bfeed">
+        <div class="stream" id="bstream"></div>
+        <div class="ds-composer" style="margin:10px 14px 12px;cursor:text" onclick="bfocus()">
+          <input id="binput" placeholder="Message Billu&hellip; (@company routes to that thread)" style="flex:1;border:0;background:transparent;outline:none;font:inherit;font-size:12.5px;color:var(--fg)" onkeydown="if(event.key==='Enter')bsend()">
+          <span class="key" onclick="bsend()" style="cursor:pointer">&#8629;</span>
+        </div>
+      </div>
+      <div class="bside">
+        <div class="sc"><div class="k">ACTION ITEMS <span class="sm" style="font-weight:400">sample &middot; persists via daemon after Phase 3</span></div>
+          <div class="aid" onclick="this.classList.toggle('done')"><span class="cb"></span><span class="tx">Billu migration Phase 3 — give go, install billu/billud on this Mac</span></div>
+          <div class="aid" onclick="this.classList.toggle('done')"><span class="cb"></span><span class="tx">Load launchd agent com.billu.daemon after install</span></div>
+        </div>
+        <div class="sc"><div class="k">COMPANIES</div>
+          <div class="srow"><span class="ds-dot"></span> dayflow &middot; maze &middot; ppr &middot; sutra &middot; billu <span class="sm">config/companies.toml</span></div>
+        </div>
+        <div class="sc"><div class="k">CLI</div>
+          <div class="srow sm" style="font-family:var(--font-mono)">billu &lt;text&gt; &middot; billu status &middot; billu todos</div>
+          <div class="srow sm" style="font-family:var(--font-mono)">billu @&lt;company&gt; &lt;prompt&gt; &middot; billu threads</div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- EVALS (static snapshot — founder-directed 6th tab 2026-08-07; live wiring at T15) -->
+  <section class="pane" id="p-evals"><div class="bwrap">
+    <h2 class="pg">Evals</h2>
+    <div class="pgsub">Every finished piece of work keeps its check &middot; all checks re-run nightly &middot; the score tells you what rotted</div>
+    <div class="bstat">
+      <span class="ds-dot warn"></span> STATIC SNAPSHOT &middot; as of 2026-08-07 <span class="sm">&middot; nothing here reads live state &middot; live wiring at T15</span>
+    </div>
+    <div class="bmain">
+      <div class="bfeed" style="padding:14px">
+        <div class="sc"><div class="k">NIGHTLY SCORE <span class="sm" style="font-weight:400">decay-sensitive checks vs current repo</span></div>
+          <div class="srow" style="font-size:22px;font-weight:700">131 / 141 <span class="sm" style="font-size:11px">92.9% pass</span></div>
+          <div class="srow sm">excluded &amp; printed honestly: 37 frozen &middot; 12 env-bound &middot; 6 sandbox-required</div>
+        </div>
+        <div class="sc"><div class="k">WATCHDOG <span class="sm" style="font-weight:400">the checker gets checked at 07:00</span></div>
+          <div class="srow"><span class="ds-dot"></span> 6 / 6 probes passing <span class="sm">&middot; precheck-refusal &middot; atom suite &middot; freshness &middot; scheduler &middot; audit C19 &middot; plugin</span></div>
+        </div>
+        <div class="sc"><div class="k">SCHEDULE</div>
+          <div class="srow sm" style="font-family:var(--font-mono)">03:30 nightly decay run &middot; ~06:00 audit C19 row &middot; 07:00 healthcheck</div>
+        </div>
+      </div>
+      <div class="bside">
+        <div class="sc"><div class="k">AWAITING YOU <span class="sm" style="font-weight:400">standing decay &middot; founder triage</span></div>
+          <div class="aid"><span class="cb"></span><span class="tx">10 decayed atoms incl. deck/index.html DELETED (archive-never-delete candidate)</span></div>
+          <div class="aid"><span class="cb"></span><span class="tx">Label 20 calibration cases for the judge lane</span></div>
+        </div>
+        <div class="sc"><div class="k">HARD CONSTRAINT</div>
+          <div class="srow sm">a check that already passes cannot open an atom &middot; refusals audited</div>
+        </div>
+        <div class="sc"><div class="k">REGRESSIONS</div>
+          <div class="srow"><span class="ds-dot"></span> 0 today <span class="sm">&middot; a new pass&rarr;fail is CRITICAL and names the atom</span></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- BALANCE (Insights module 1) -->
+  <section class="pane" id="p-insights"><div class="iwrap">
+    <div class="ds-greet" style="margin-top:36px;font-size:24px">Balance</div>
+    <div class="ds-sub" style="margin-top:4px">Key takeaways first, then talk. <span style="color:var(--faint)">&middot; sample data &middot; production shows whichever exist, up to three &middot; daemon offline</span></div>
+
+    <div class="iwidgets">
+      <div class="iw aw" onclick="iask('Tell me more about the pace')"><span class="iw-type">Awareness</span>
+        Heavy shipping day — 6 units closed by mid-afternoon. Steady, not spiking.
+        <div class="istrip"><i></i><i></i><i class="st"></i><i class="st"></i><i class="st"></i><i class="str"></i><i class="sp"></i><i class="st"></i><i class="st"></i><i class="st"></i></div>
+      </div>
+      <div class="iw un" onclick="iask('Why do the blocks cluster?')"><span class="iw-type">Understanding</span>
+        The late-morning friction isn't spread out — 8 gate blocks cluster on one path, not many.
+      </div>
+      <div class="iw ac" onclick="iask('Plan the 30 minutes')"><span class="iw-type">Actionable</span>
+        Worth considering: 30 focused minutes on the recurring gap, once — cheaper than paying it per turn.
+      </div>
+    </div>
+
+    <div class="stream" id="istream" style="flex:1;padding:14px 0;overflow:auto;display:flex;flex-direction:column;gap:10px;margin-top:6px">
+      <div class="ma"><div style="font-size:9px;letter-spacing:.1em;color:var(--faint);margin-bottom:4px">SAMPLE &middot; COACH REGISTER</div>Tap a takeaway or just ask — each one opens a conversation.</div>
+    </div>
+
+    <div class="ds-composer" style="margin:0 0 20px;cursor:text" onclick="document.getElementById('iinput').focus()">
+      <input id="iinput" placeholder="Ask Balance&hellip;" style="flex:1;border:0;background:transparent;outline:none;font:inherit;font-size:12.5px;color:var(--fg)" onkeydown="if(event.key==='Enter')isend()">
+      <span class="key" onclick="isend()" style="cursor:pointer">&#8629;</span>
+    </div>
+  </div></section>
+
+  <!-- DEPARTMENTS -->
+  <section class="pane" id="p-depts">
+    <div class="depbar"><span style="font-weight:600">Departments &amp; Charters</span><span style="color:var(--stone);font-size:10.5px">Asawa Inc. &middot; Departments — the published domains site, exactly as on the web</span><a style="margin-left:auto;color:var(--review);cursor:pointer" href="../../../../sutra/website/domains/index.html" target="_blank">open in browser &#8599;</a></div>
+    <iframe class="depframe" src="https://sankalpasawa.github.io/sutra/domains/index.html" title="Asawa Inc. Departments — published domains site"></iframe>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="pane" id="p-set"><div class="setwrap">
+    <h2 class="pg">Settings</h2>
+    <div class="pgsub">Connections live here (moved off Home 2026-08-05)</div>
+    <div class="sgrid">
+      <div class="sc"><div class="k">CONNECTIONS</div>
+        <div class="srow"><span class="ds-dot warn"></span> Native workflows <span class="sm">registry empty &middot; refresh actions may be stale</span><span style="margin-left:auto;font-size:10.5px;color:var(--review);font-weight:600;cursor:pointer">fix</span></div>
+        <div class="srow"><span class="ds-dot ok"></span> Slack &middot; Gmail &middot; Calendar &middot; Drive <span class="sm">live</span></div>
+        <div class="srow"><span class="ds-dot ok"></span> GitHub &middot; Vercel &middot; DeepSeek &middot; Sheets <span class="sm">live</span></div>
+      </div>
+      <div class="sc"><div class="k">DAY RHYTHM</div>
+        <div class="srow">Maker day &middot; windows 11:30 + 16:00</div>
+        <div class="srow">GTD inbox pre-review &middot; escalation: irreversible + urgent only</div>
+      </div>
+      <div class="sc"><div class="k">TONE &amp; TRUST</div>
+        <div class="srow">Terse &middot; Straight-talk &middot; Auto-approve routine &middot; Autonomous push</div>
+      </div>
+      <div class="sc"><div class="k">KILL-SWITCHES</div>
+        <div class="srow">All governance gates &middot; 0 overrides active <span class="sm" style="margin-left:auto">audit log &rsaquo;</span></div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<script>
+  const tabs={home:'p-home',chats:'p-chats',billu:'p-billu',evals:'p-evals',balance:'p-insights',depts:'p-depts',set:'p-set'};
+  function go(t){
+    document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+    document.getElementById(tabs[t]).classList.add('on');
+    document.querySelectorAll('.ds-rail .item').forEach(n=>n.classList.toggle('on',n.dataset.t===t));
+  }
+  document.querySelectorAll('[data-t]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();go(el.dataset.t)}));
+  function openSession(){ go('chats'); }
+
+  // Billu tab — mock thread views (daemon not installed on this Mac; nothing here reads live ~/.billu state)
+  const bThreads=['default','company:dayflow','company:maze','company:ppr','company:sutra','company:billu'];
+  const bTurns={}; bThreads.forEach(t=>bTurns[t]=[]);
+  let bCur='default';
+  function bRenderThreads(){
+    document.getElementById('bthreads').innerHTML=bThreads.map(t=>
+      `<div class="sit${t===bCur?' on':''}" onclick="bSwitch('${t}')"><div class="tt">${t}</div><div class="mm">mock view &middot; ${bTurns[t].length} queued</div></div>`).join('');
+  }
+  function bRenderStream(){
+    const s=document.getElementById('bstream');
+    s.innerHTML=`<div class="ds-atom"><span class="k">THREAD ${bCur}</span> &middot; mock view &middot; no live state on this Mac &middot; daemon installs at migration Phase 3</div>`
+      +bTurns[bCur].map(m=>m.who==='u'
+        ?`<div class="mu">${m.tx}</div>`
+        :`<div class="ma">${m.tx}</div>`).join('');
+    s.scrollTop=s.scrollHeight;
+  }
+  function bSwitch(t){bCur=t;bRenderThreads();bRenderStream();}
+  function bfocus(){document.getElementById('binput').focus();}
+  function bsend(){
+    const el=document.getElementById('binput');const v=el.value.trim();if(!v)return;el.value='';
+    const m=v.match(/^@(\w+)\s+/); if(m&&bThreads.includes('company:'+m[1])){bCur='company:'+m[1];}
+    bTurns[bCur].push({who:'u',tx:v.replace(/</g,'&lt;')});
+    bTurns[bCur].push({who:'a',tx:'daemon offline &mdash; queued for Billu. Runs when billud is installed (migration Phase 3).'});
+    bRenderThreads();bRenderStream();
+  }
+  bRenderThreads();bRenderStream();
+
+  // Balance chat — sample mode; live inference gated at Stage 1 (state contract) + Stage 2 (/ws/chat wiring)
+  function iask(q){go('balance');document.getElementById('iinput').value=q;isend();}
+  function isend(){
+    const el=document.getElementById('iinput');const v=el.value.trim();if(!v)return;el.value='';
+    const s=document.getElementById('istream');
+    s.insertAdjacentHTML('beforeend','<div class="mu">'+v.replace(/</g,'&lt;')+'</div>');
+    s.insertAdjacentHTML('beforeend','<div class="ma"><div style="font-size:9px;letter-spacing:.1em;color:var(--faint);margin-bottom:4px">SAMPLE MODE</div>Live inference isn&rsquo;t wired yet &mdash; this surface goes live at Stage 1 (state contract) and answers over /ws/chat at Stage 2 (T15).</div>');
+    s.scrollTop=s.scrollHeight;
+  }
+  function approve(e,id){
+    e.stopPropagation();
+    const el=document.getElementById(id); el.classList.add('approved');
+    el.querySelectorAll('.act').forEach(b=>b.remove());
+    el.querySelector('.t').insertAdjacentHTML('beforeend',' <b style="color:var(--done)">approved &#10003; (audit logged)</b>');
+    const badge=document.querySelector('.ds-rail .badge');
+    badge.textContent=Math.max(0,parseInt(badge.textContent)-1);
+    const sub=document.querySelector('.ds-sub b');
+    sub.textContent=badge.textContent+' decisions';
+  }
+</script>
+</body>
+</html>

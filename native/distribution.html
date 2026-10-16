@@ -1,0 +1,563 @@
+<!doctype html>
+<!-- PAGE: distribution (world-evolution-v2, 2026-08-18). REWRITTEN per founder direction as the reader/investor-facing
+     story of how companies and the world evolve on Sutra. Operational machinery (tiers/channels/pricing/onboarding/
+     module distribution) preserved unchanged at distribution-ops.html. Thesis labeled as thesis; provision list from
+     the 2026-08-18 story spine; thresholds from PROBLEM-STYLES.md; fencing per codex consult (8 P1s). -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Distribution — how companies change, and how this spreads</title>
+<style>
+body{font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 80px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+.lead{font-size:17px;color:#374151;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:34px 0 8px;border-top:1px solid #eef2f7;padding-top:18px}
+h3{font-size:16px;margin:20px 0 4px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:9px 13px;font-size:13px;margin:12px 0}
+.key{background:#ecfdf5;border-left:3px solid #047857;padding:11px 14px;font-size:14px;margin:14px 0}
+.fence{background:#fffbeb;border-left:3px solid #b45309;padding:9px 13px;font-size:12.5px;margin:10px 0;color:#78350f}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:6px 0;padding-left:22px}li{margin:5px 0}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+svg{width:100%;height:auto;display:block;margin:12px 0}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="current-state.html">Current state</a></div><div style="padding-left:17px"><a href="index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="market.html">Market and people</a></div><div style="padding-left:17px"><a href="platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="system/department.html">A department</a></div><div style="padding-left:28px"><a href="platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="platform/model/assembly-system.html">Assembly and system</a></div><div style="padding-left:28px"><a href="axes.html">The compass: axes and families</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+
+<div class="crumb"><a href="index.html">Native hub</a> &#8250; distribution</div>
+<h1>How companies change, and how this spreads</h1>
+<p class="lead">A model can write anything for you — and it will write the same thing for everyone. Output has become rented. What stays ownable is <b>judgment</b>: knowing what to ask for, what good looks like, and what to refuse. Sutra&#8217;s wager is that the companies that win the next decade will be the ones whose judgment is written down, enforced, and compounding — not the ones with the biggest headcount or the best prompts.</p>
+<div class="fence">This page states a thesis about how work evolves — labeled as such throughout. What a customer receives today is listed at the bottom, and it is deliberately the only part written in the present tense.</div>
+
+<h2 id="company">How one company changes</h2>
+<p>Nothing is installed as a big bang. A company on Sutra changes the way a habit forms — one repeated piece of work at a time, on evidence:</p>
+
+<svg viewBox="0 0 880 190" role="img" aria-label="The arc of one company adopting: weeks 0 to 9 and beyond">
+<defs><marker id="darr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+<line x1="30" y1="120" x2="860" y2="120" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#darr)"/>
+<g font-size="12">
+<circle cx="80" cy="120" r="6" fill="#047857"/>
+<text x="80" y="98" text-anchor="middle" font-weight="700">Week 0</text>
+<text x="80" y="148" text-anchor="middle" font-size="11" fill="#6b7280">name the work</text>
+<text x="80" y="163" text-anchor="middle" font-size="10" fill="#9ca3af">that repeats and hurts</text>
+<circle cx="260" cy="120" r="6" fill="#1d4ed8"/>
+<text x="260" y="98" text-anchor="middle" font-weight="700">Week 1</text>
+<text x="260" y="148" text-anchor="middle" font-size="11" fill="#6b7280">write it down</text>
+<text x="260" y="163" text-anchor="middle" font-size="10" fill="#9ca3af">as it is actually done</text>
+<circle cx="440" cy="120" r="6" fill="#4338ca"/>
+<text x="440" y="98" text-anchor="middle" font-weight="700">Weeks 2-3</text>
+<text x="440" y="148" text-anchor="middle" font-size="11" fill="#6b7280">run 5 low-risk trials</text>
+<text x="440" y="163" text-anchor="middle" font-size="10" fill="#9ca3af">pass/fail declared up front</text>
+<circle cx="620" cy="120" r="6" fill="#a21caf"/>
+<text x="620" y="98" text-anchor="middle" font-weight="700">Weeks 4-8</text>
+<text x="620" y="148" text-anchor="middle" font-size="11" fill="#6b7280">expand what worked</text>
+<text x="620" y="163" text-anchor="middle" font-size="10" fill="#9ca3af">drop what did not</text>
+<circle cx="790" cy="120" r="6" fill="#c2410c"/>
+<text x="790" y="98" text-anchor="middle" font-weight="700">Week 9+</text>
+<text x="790" y="148" text-anchor="middle" font-size="11" fill="#6b7280">steady state</text>
+<text x="790" y="163" text-anchor="middle" font-size="10" fill="#9ca3af">the record does the arguing</text>
+</g>
+<text x="440" y="30" text-anchor="middle" font-size="11.5" fill="#6b7280">acceptance bar: by expansion&#8217;s end, operator confidence AND measured accuracy both at 80% or better &#8212; else it does not advance</text>
+</svg>
+
+<p>Then the structure itself starts to earn its changes — on thresholds, not on taste:</p>
+<table>
+<tr><th>When this happens</th><th>The company changes like this</th></tr>
+<tr><td>The same exchange between two teams repeats roughly monthly or more, and both sides know its shape</td><td>It gets a <b>written agreement</b> — what goes in, what comes back, by when. The hallway stops being the protocol.</td></tr>
+<tr><td>The same class of problem returns about three times in a year and keeps coming</td><td>It gets a <b>standing owner</b> — a person or team whose written job is that class of problem, instead of whoever noticed it this time.</td></tr>
+<tr><td>Work drifts more than 15% from its written form</td><td>The drift is surfaced for review — the written form is corrected, or the work is. Silence is not an option the system offers.</td></tr>
+</table>
+<div class="fence">These thresholds come from our design work and simulation, not from a customer study. The simulation&#8217;s honest edge: structure helped most on recurring cross-team work, least on genuine novelty — a company on Sutra should expect its creative work to stay human-shaped.</div>
+
+<h2 id="world">How it spreads between companies</h2>
+<div class="key"><b>The distribution rule, in one line: playbooks travel, your business never does.</b> What ships between companies is the written <em>shape</em> of work — templates, checks, structures. What a company fills those shapes with — its customers, numbers, decisions, records — stays on its own machines, by construction.</div>
+<p>That rule makes a specific kind of network possible:</p>
+<ul>
+<li><b>The fleet learns without sharing data.</b> When the same pattern shows up independently in four separate companies, it is reviewed and — if it holds — rolled into the product for everyone. The pattern travels; the four companies&#8217; data does not.</li>
+<li><b>Opening happens in stages.</b> First we author every playbook ourselves. Then operators assemble their own from an approved catalog. Only after that do third-party authors enter — gated by review and audit, because a playbook is a piece of someone&#8217;s company.</li>
+<li><b>Adoption runs in rings.</b> We run it on ourselves first; then on companies we own; then on client projects where the client keeps the IP; then the open market. Each ring is a harder test of the same claim — by the time a stranger installs it, the failure modes have been paid for in-house.</li>
+</ul>
+
+<h2 id="deploy">How we deploy — the four release rings</h2>
+<p>One hard sentence first: <b>a release is how code moves; a chapter is how capability is proven.</b> Small releases ship continuously through the rings below; the five chapters of the <a href="roadmap/index.html">Roadmap</a> are never &#8220;released&#8221; — they are earned on evidence. Everything that ships travels through four rings, each with a real gate before the next:</p>
+
+<svg viewBox="0 0 880 240" role="img" aria-label="Four release rings, each with a promotion gate before the next">
+<defs><marker id="rgarr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker></defs>
+<g font-size="12.5">
+<rect x="20" y="60" width="180" height="92" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+<text x="110" y="86" text-anchor="middle" font-weight="800" fill="#047857">RING 1 &#183; OURSELVES</text>
+<text x="110" y="107" text-anchor="middle" font-size="10.5" fill="#065f46">our own operation runs</text>
+<text x="110" y="122" text-anchor="middle" font-size="10.5" fill="#065f46">every release, daily</text>
+<text x="110" y="141" text-anchor="middle" font-size="9.5" fill="#94a3b8">live today</text>
+<rect x="243" y="60" width="180" height="92" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+<text x="333" y="86" text-anchor="middle" font-weight="800" fill="#1d4ed8">RING 2 &#183; OUR COMPANIES</text>
+<text x="333" y="107" text-anchor="middle" font-size="10.5" fill="#1e40af">the portfolio installs next &#8212;</text>
+<text x="333" y="122" text-anchor="middle" font-size="10.5" fill="#1e40af">breakage costs us, not customers</text>
+<text x="333" y="141" text-anchor="middle" font-size="9.5" fill="#94a3b8">live today</text>
+<rect x="466" y="60" width="180" height="92" rx="10" fill="#eef2ff" stroke="#4338ca" stroke-width="1.6"/>
+<text x="556" y="86" text-anchor="middle" font-weight="800" fill="#4338ca">RING 3 &#183; CLIENT WORK</text>
+<text x="556" y="107" text-anchor="middle" font-size="10.5" fill="#3730a3">client keeps the IP;</text>
+<text x="556" y="122" text-anchor="middle" font-size="10.5" fill="#3730a3">our people run the install</text>
+<text x="556" y="141" text-anchor="middle" font-size="9.5" fill="#94a3b8">live today</text>
+<rect x="689" y="60" width="172" height="92" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="775" y="86" text-anchor="middle" font-weight="800" fill="#c2410c">RING 4 &#183; THE MARKET</text>
+<text x="775" y="107" text-anchor="middle" font-size="10.5" fill="#9a3412">self-serve install by</text>
+<text x="775" y="122" text-anchor="middle" font-size="10.5" fill="#9a3412">people we never meet</text>
+<text x="775" y="141" text-anchor="middle" font-size="9.5" fill="#c2410c">the boundary &#8212; not yet claimed</text>
+</g>
+<g font-size="9.5" fill="#6b7280">
+<line x1="200" y1="106" x2="243" y2="106" stroke="#6b7280" stroke-width="1.5" marker-end="url(#rgarr)"/>
+<text x="221" y="95" text-anchor="middle">survives our</text>
+<text x="221" y="176" text-anchor="middle" font-size="9">gate: a release that breaks Ring 1 never leaves it</text>
+<line x1="423" y1="106" x2="466" y2="106" stroke="#6b7280" stroke-width="1.5" marker-end="url(#rgarr)"/>
+<text x="444" y="95" text-anchor="middle">portfolio-stable</text>
+<line x1="646" y1="106" x2="689" y2="106" stroke="#6b7280" stroke-width="1.5" marker-end="url(#rgarr)"/>
+<text x="667" y="95" text-anchor="middle">install repeatable</text>
+</g>
+<text x="440" y="222" text-anchor="middle" font-size="10.5" fill="#9ca3af">each ring is a harder test of the same claim &#8212; by the time a stranger installs it, the failure modes were paid for in-house</text>
+</svg>
+
+<p>Three different things move through those rings — different channels, one discipline:</p>
+<table>
+<tr><th>What moves</th><th>How</th><th>The discipline it follows</th></tr>
+<tr><td>The plugin (the governance core)</td><td>free, MIT, versioned releases &#8212; an update reaches every installed company</td><td rowspan="3">nothing advances a ring until the previous ring has run it; every release is reversible; and <b>no channel ever carries a company&#8217;s data</b> &#8212; playbook shapes travel, instances stay home</td></tr>
+<tr><td>The desktop app</td><td>signed Mac builds</td></tr>
+<tr><td>Playbook templates</td><td>shipped as shapes; each company fills them with its own record</td></tr>
+</table>
+<div class="fence"><b>Ring 4, honestly.</b> The marketplace ring is the distribution boundary as designed, not evidence of market use — no external adopter is claimed on this site. Rings 1-3 run today; ring 4 opens when chapter 5 of the roadmap earns it (one install on a computer we never touched).</div>
+
+<h2 id="people">What this could mean for a professional</h2>
+<p>This is built for anyone whose week is full of work that repeats — not only founders. The trade on offer: the parts of your job that are structure (sorting, routing, checking, remembering, chasing) become software you supervise; the parts that are judgment stay yours, and start compounding, because every decision you make teaches a system you own. The dependency runs the right way — the more it does, the more legible your work becomes to you, not less.</p>
+<div class="fence">Phrased as "could mean" deliberately: adoption across that audience is a bet we are making, not a result we have measured.</div>
+
+<h2 id="today">What exists today</h2>
+<table>
+<tr><th>Fact</th><th>Detail</th></tr>
+<tr><td>A working desktop app</td><td>One signed Mac download; runs on your existing Claude subscription; shows you its read of every request before work starts; shows cost and scope before spend; every check is allowed to fail and stops work rather than passing it on; everything a plain local file.</td></tr>
+<tr><td>A free plugin</td><td>MIT-licensed; the governance core that the app rides on.</td></tr>
+<tr><td>A real operation running on it</td><td>One operator runs six companies&#8217; operations through it daily. <b>A load test, not a customer count</b> — the claim is not that AI replaces a team; it is that a company can be small and still be properly run.</td></tr>
+<tr><td>Privacy as product limits</td><td>Three things it cannot do: start on a raw API key, capture your prompts or file contents by default, or ship your instances anywhere. Limits, not settings.</td></tr>
+</table>
+
+<h2 id="deeper">For the operational reader</h2>
+<table>
+<tr><th>You want</th><th>Go to</th></tr>
+<tr><td>Tiers, channels, pricing scaffold, onboarding mechanics, lifecycle, module distribution — the full machinery</td><td><a href="distribution-ops.html">Distribution Ops</a></td></tr>
+<tr><td>What arrives when — the five chapters</td><td><a href="roadmap/index.html">Roadmap</a></td></tr>
+<tr><td>The product a customer sees</td><td><a href="products/cos/index.html">Chief of Staff</a></td></tr>
+</table>
+
+<h2>Provenance</h2>
+<p style="font-size:12px;color:#6b7280">Rewritten 2026-08-18 as the reader/investor-facing evolution story (founder direction). Sources: story-spine research 2026-08-18 (thesis, provision list, fencing language, audience correction); PROBLEM-STYLES.md (thresholds + simulation limits); the transformation-cycle windows and acceptance bars from the prior distribution page, preserved in full at <a href="distribution-ops.html">distribution-ops.html</a>. Structure reviewed against 8 codex objections (thesis-vs-fact labeling, load-test fencing, determinism risk).</p>
+
+
+<h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:30px 0 8px;border-top:1px solid #eef2f7;padding-top:16px">Folded here</h2>
+<p style="font-size:13px;color:#6b7280">Pages on the same subject, kept whole under their own titles (the consolidation of 2026-09-29).</p>
+<details class="folded-from" id="folded-distribution-ops-html" data-folded-from="distribution-ops.html"><summary style="cursor:pointer;font-weight:700;margin:22px 0 6px">Distribution Ops <span style="font-size:10px;font-weight:800;border-radius:4px;padding:1px 6px;background:#f3f4f6;color:#4b5563;margin-left:6px">folded from distribution-ops.html on 2026-09-29</span></summary>
+<div style="background:#f8fafc;border-left:3px solid #64748b;padding:10px 13px;font-size:13px;margin:12px 0"><b>Operational reference.</b> This page preserves the full distribution machinery &#8212; tiers, channels, pricing scaffold (price points still TBD), onboarding mechanics, lifecycle, module distribution. The reader-facing story of how companies and the fleet evolve is at <a href="distribution.html">Distribution</a>.</div>
+
+<h2>Where this page sits &#8212; the company map (highlight moves, map never changes)</h2>
+<!-- YOU-ARE-HERE label coordinates per box id (text-anchor=middle, font-size 9.5, weight 800, fill #b45309):
+     map-hub               x=160 y=22   | map-roadmap           x=390 y=22   | map-distribution        x=620 y=22
+     map-needs             x=265 y=98   | map-needs-research    x=540 y=98
+     map-product-cos       x=180 y=174  | map-product-cos-design x=395 y=174 | map-product-senior-expert x=615 y=174
+     map-platform          x=145 y=250  | map-platform-matrix   x=300 y=250  | map-platform-runtime    x=440 y=250
+     map-platform-how      x=575 y=250  | map-platform-observability x=690 y=250
+     map-engineering       x=390 y=326  | map-runtime-canon     x=390 y=402  | map-governance(wrap)    x=560 y=480 -->
+<svg viewBox="0 0 896 600" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Native company map — business, products, platform, engineering, code">
+<defs><marker id="cmah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<a href="governance/index.html" xlink:href="governance/index.html"><rect id="map-governance" x="2" y="12" width="800" height="576" rx="14" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="8 5"/></a>
+<rect x="12" y="3" width="770" height="16" fill="#fff"/>
+<text x="18" y="15" font-size="9.5" font-weight="700" fill="#7c3aed">GOVERNANCE WRAP &#8212; doctrine &#183; D-directions &#183; charters &#8212; gates every row &#8594; governance/ (+ parity)</text>
+<!-- BUSINESS -->
+<a href="index.html" xlink:href="index.html"><rect id="map-hub" x="60" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="160" y="47" text-anchor="middle" font-size="10.5" font-weight="700">HUB</text>
+<text x="160" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">company map + status board</text>
+<a href="roadmap/index.html" xlink:href="roadmap/index.html"><rect id="map-roadmap" x="290" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="47" text-anchor="middle" font-size="10.5" font-weight="700">ROADMAP</text>
+<text x="390" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">versions &#183; phases &#183; backlog &#183; risks</text>
+<a href="distribution.html" xlink:href="distribution.html"><rect id="map-distribution" x="520" y="28" width="200" height="44" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="620" y="47" text-anchor="middle" font-size="10.5" font-weight="700">DISTRIBUTION</text>
+<text x="620" y="61" text-anchor="middle" font-size="8.5" fill="#6b7280">tiers &#183; channels &#183; pricing &#183; onboarding</text>
+<!-- PRODUCTS -->
+<a href="products/cos/index.html" xlink:href="products/cos/index.html"><rect id="map-product-cos" x="100" y="108" width="250" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="225" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS</text>
+<text x="225" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">idea &#183; persona &#183; pillars B1-B5</text>
+<a href="products/senior-expert/index.html" xlink:href="products/senior-expert/index.html"><rect id="map-product-senior-expert" x="440" y="108" width="230" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/></a>
+<text x="555" y="127" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: SENIOR EXPERT</text>
+<text x="555" y="141" text-anchor="middle" font-size="8.5" fill="#6b7280">v2 &#183; ADR-020 gated</text>
+<a href="products/cos/needs.html" xlink:href="products/cos/needs.html"><rect id="map-needs" x="70" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="140" y="201" text-anchor="middle" font-size="9.5" font-weight="700">NEEDS</text>
+<text x="140" y="214" text-anchor="middle" font-size="8" fill="#6b7280">why &#183; N1-N41 (docs)</text>
+<a href="products/cos/product-design.html" xlink:href="products/cos/product-design.html"><rect id="map-product-cos-design" x="225" y="184" width="140" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="295" y="201" text-anchor="middle" font-size="9.5" font-weight="700">DESIGN</text>
+<text x="295" y="214" text-anchor="middle" font-size="8" fill="#6b7280">consumer-facing &#183; &#167;2.F</text>
+<a href="products/cos/matrix.html" xlink:href="products/cos/matrix.html"><rect id="map-matrix" x="380" y="184" width="160" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="460" y="201" text-anchor="middle" font-size="9.5" font-weight="700">MATRIX</text>
+<text x="460" y="214" text-anchor="middle" font-size="8" fill="#6b7280">platform adapted to CoS needs</text>
+<!-- PLATFORM container -->
+<a href="platform/index.html" xlink:href="platform/index.html"><rect id="map-platform" x="60" y="256" width="700" height="204" rx="10" fill="#fcfcfd" stroke="#334155" stroke-width="1.8"/></a>
+<text x="74" y="276" font-size="10.5" font-weight="700">PLATFORM &#8212; the horizontal product (&#167;1.0 machine)</text>
+<a href="platform/observability.html" xlink:href="platform/observability.html"><rect id="map-platform-observability" x="70" y="284" width="600" height="160" rx="9" fill="none" stroke="#0e7490" stroke-width="1.3" stroke-dasharray="2 5"/></a>
+<text x="664" y="297" text-anchor="end" font-size="8" font-weight="700" fill="#0e7490">OBSERVABILITY &#167;7 &#8212; watches everything</text>
+<a href="platform/authority-tenancy.html" xlink:href="platform/authority-tenancy.html"><rect id="map-at" x="80" y="302" width="570" height="96" rx="8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="6 4"/></a>
+<text x="88" y="315" font-size="8" font-weight="700" fill="#6b7280">AUTHORITY + TENANCY &#8212; gates every access</text>
+<a href="platform/ui.html" xlink:href="platform/ui.html"><rect id="map-ui" x="88" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="119" y="339" text-anchor="middle" font-size="9" font-weight="700">UI</text>
+<text x="119" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">operator</text>
+<a href="platform/host.html" xlink:href="platform/host.html"><rect id="map-host" x="158" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="189" y="339" text-anchor="middle" font-size="9" font-weight="700">HOST</text>
+<text x="189" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">Claude CLI</text>
+<a href="platform/runtime.html" xlink:href="platform/runtime.html"><rect id="map-platform-runtime" x="228" y="314" width="172" height="56" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.3"/></a>
+<text x="314" y="326" text-anchor="middle" font-size="7.5" font-weight="700" fill="#475569">DAEMON &#8212; RUNTIME &#167;4</text>
+<a href="platform/orchestration.html" xlink:href="platform/orchestration.html"><rect id="map-orch" x="236" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="272" y="345" text-anchor="middle" font-size="8.5" font-weight="700">ORCH</text>
+<text x="272" y="356" text-anchor="middle" font-size="7" fill="#6b7280">route intent</text>
+<a href="platform/system-of-process.html" xlink:href="platform/system-of-process.html"><rect id="map-sop" x="316" y="330" width="72" height="34" rx="5" fill="#fff" stroke="#334155" stroke-width="1.3"/></a>
+<text x="352" y="345" text-anchor="middle" font-size="8.5" font-weight="700">SoP</text>
+<text x="352" y="356" text-anchor="middle" font-size="7" fill="#6b7280">process &#183; method &#167;3</text>
+<a href="platform/system-of-record.html" xlink:href="platform/system-of-record.html"><rect id="map-sor" x="408" y="322" width="62" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="439" y="339" text-anchor="middle" font-size="9" font-weight="700">SoR</text>
+<text x="439" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">record</text>
+<a href="platform/connector.html" xlink:href="platform/connector.html"><rect id="map-conn" x="478" y="322" width="76" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="516" y="339" text-anchor="middle" font-size="9" font-weight="700">CONNECT</text>
+<text x="516" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">transport</text>
+<a href="platform/external-world.html" xlink:href="platform/external-world.html"><rect id="map-ext" x="562" y="322" width="80" height="40" rx="6" fill="#fff" stroke="#334155" stroke-width="1.4"/></a>
+<text x="602" y="339" text-anchor="middle" font-size="9" font-weight="700">EXT WORLD</text>
+<text x="602" y="352" text-anchor="middle" font-size="7.5" fill="#6b7280">counterparties</text>
+<path d="M150,342 L158,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M220,342 L228,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M308,347 L316,347" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M400,342 L408,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M554,342 L562,342" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<a href="platform/compute.html" xlink:href="platform/compute.html"><rect id="map-compute" x="80" y="410" width="570" height="22" rx="5" fill="#fff" stroke="#334155" stroke-width="1.2"/></a>
+<text x="365" y="425" text-anchor="middle" font-size="8.5" font-weight="700">COMPUTE &#8212; base layer</text>
+<!-- ENGINEERING -->
+<a href="engineering/index.html" xlink:href="engineering/index.html"><rect id="map-engineering" x="290" y="492" width="200" height="40" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/></a>
+<text x="390" y="509" text-anchor="middle" font-size="10.5" font-weight="700">ENGINEERING &#167;11 + &#167;12</text>
+<text x="390" y="523" text-anchor="middle" font-size="8.5" fill="#6b7280">tech design per platform part</text>
+<!-- CODE -->
+<rect id="map-runtime-canon" x="290" y="550" width="200" height="30" rx="8" fill="#fff" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="390" y="569" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">CODE &#8212; sutra repo (linked, D54)</text>
+<!-- FLOW -->
+<path d="M160,72 L160,88 L225,88 L225,108" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="170" y="86" font-size="8.5" fill="#475569">sells</text>
+<path d="M140,154 L140,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M295,154 L295,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M340,154 L340,168 L460,168 L460,184" stroke="#334155" stroke-width="1.3" fill="none" marker-end="url(#cmah)"/>
+<path d="M460,224 L460,240 L240,240 L240,256" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#cmah)"/>
+<text x="250" y="238" font-size="8.5" fill="#475569">demands, per part</text>
+<path d="M580,460 L580,476 L490,476 L490,510" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="498" y="484" font-size="8.5" fill="#475569">build contract &#8212; gated on LOCK</text>
+<path d="M390,532 L390,550" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#cmah)"/>
+<text x="396" y="546" font-size="8.5" fill="#475569">cites (D54)</text>
+<path d="M820,540 L820,60" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="836" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(-90 836 300)" text-anchor="middle">UPSTREAM &#8212; toward WHY</text>
+<path d="M862,60 L862,540" stroke="#9ca3af" stroke-width="1.6" fill="none" marker-end="url(#cmah)"/>
+<text x="878" y="300" font-size="10" font-weight="700" fill="#6b7280" transform="rotate(90 878 300)" text-anchor="middle">DOWNSTREAM &#8212; toward HOW</text>
+<text x="620" y="22" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309">YOU ARE HERE &#8212; Distribution</text>
+</svg>
+<p class="figcap">Same map on every page; only the highlight moves. Up = abstract (WHY) &#183; down = concrete (HOW). Solid arrows = contracts flowing downstream. Purple dashed border = the governance wrap &#8212; it gates every zoom and has its own page (<a href="governance/index.html">governance/</a>). Status colors render on the hub map only; page maps are structural. Full frozen reference: <a href="master/index.html">master</a>.</p>
+
+<h2>Work-order header</h2>
+<table>
+<tr><th>id</th><th>band / parent</th><th>status</th><th>version</th><th>owner</th></tr>
+<tr><td><code>distribution</code></td><td>COMPANY / <a href="index.html">hub</a></td><td><span class="pill VERIFIED">VERIFIED</span></td><td>v1</td><td>claude</td></tr>
+<tr><th colspan="2">contract</th><th colspan="3">acceptance</th></tr>
+<tr><td colspan="2">How CoS reaches operators &#8212; the business layer: channels, pricing, onboarding, lifecycle, feedback loop, module distribution. Owns the T1-T4 client-tier taxonomy and per-tier install/update policy. Does NOT own product surface, runtime behavior, or transport (per master &#167;6 6-block table).</td><td colspan="3">&#167;6.0-&#167;6.7 carried over incl. N33 PULL-default resolution + &#167;6.2 pricing placeholder flagged as founder gap; module-distribution + CSM touchpoints drawn as projections</td></tr>
+</table>
+
+<h2>This page's own diagram</h2>
+<svg viewBox="0 0 880 360" role="img" aria-label="Distribution internal parts and neighbor edges">
+<defs><marker id="dah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#334155"/></marker></defs>
+<!-- upstream dashed neighbor -->
+<rect x="20" y="10" width="190" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="115" y="29" text-anchor="middle" font-size="10.5" font-weight="700">PRODUCT: CoS (&#167;2)</text>
+<text x="115" y="43" text-anchor="middle" font-size="8.5" fill="#6b7280">own page: products/cos/</text>
+<path d="M110,56 L110,86" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#dah)"/>
+<text x="118" y="76" font-size="8.5" fill="#475569">&#167;2 product readiness gates ship</text>
+<!-- row A: pipeline -->
+<rect x="20" y="86" width="140" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="90" y="105" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.0 TIERS T1-T4</text>
+<text x="90" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">client taxonomy (D34)</text>
+<rect x="220" y="86" width="140" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="290" y="105" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.1 CHANNELS</text>
+<text x="290" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">plugin &#183; direct &#183; cloud v2+</text>
+<rect x="420" y="86" width="150" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="495" y="105" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.3 ONBOARDING</text>
+<text x="495" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">5 stages + per-tier matrix</text>
+<rect x="630" y="86" width="170" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="715" y="105" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.5 TRANSFORMATION</text>
+<text x="715" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">5-stage cycle &#183; week 0 &#8594; 9+</text>
+<path d="M160,109 L220,109" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="166" y="103" font-size="8.5" fill="#475569">per tier</text>
+<path d="M360,109 L420,109" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="368" y="103" font-size="8.5" fill="#475569">install</text>
+<path d="M570,109 L630,109" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="576" y="103" font-size="8.5" fill="#475569">beyond</text>
+<!-- row B -->
+<rect x="20" y="196" width="140" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="90" y="215" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.2 PRICING</text>
+<text x="90" y="229" text-anchor="middle" font-size="8.5" fill="#6b7280">placeholder &#8212; founder gap</text>
+<rect x="220" y="196" width="140" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="290" y="215" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.4 LIFECYCLE</text>
+<text x="290" y="229" text-anchor="middle" font-size="8.5" fill="#6b7280">updates &#183; pinning &#183; changelog</text>
+<rect x="420" y="196" width="150" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="495" y="215" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.7 MODULE DIST</text>
+<text x="495" y="229" text-anchor="middle" font-size="8.5" fill="#6b7280">PULL-default (N33 resolved)</text>
+<rect x="630" y="196" width="170" height="46" rx="8" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<text x="715" y="215" text-anchor="middle" font-size="10.5" font-weight="700">&#167;6.6 FEEDBACK ENGINE</text>
+<text x="715" y="229" text-anchor="middle" font-size="8.5" fill="#6b7280">PROTO-024 fan-in &#183; a Module</text>
+<path d="M90,132 L90,196" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="96" y="168" font-size="8.5" fill="#475569">packaging A/B/C (&#167;6.2)</text>
+<path d="M290,132 L290,196" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="296" y="168" font-size="8.5" fill="#475569">updates ride plugin channel (&#167;6.4)</text>
+<path d="M360,219 L420,219" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="364" y="213" font-size="8.5" fill="#475569">modules &#167;6.7</text>
+<path d="M715,132 L715,196" stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#dah)"/>
+<text x="721" y="168" font-size="8.5" fill="#475569">workshops feed in (&#167;6.6.1)</text>
+<!-- row C: downstream dashed neighbors -->
+<rect x="370" y="300" width="250" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="495" y="319" text-anchor="middle" font-size="10.5" font-weight="700">PLATFORM RUNTIME &#167;4 &#8212; CSM &#167;4.8</text>
+<text x="495" y="333" text-anchor="middle" font-size="8.5" fill="#6b7280">own page: platform/runtime.html</text>
+<rect x="640" y="300" width="180" height="46" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="730" y="319" text-anchor="middle" font-size="10.5" font-weight="700">OBSERVABILITY &#167;7</text>
+<text x="730" y="333" text-anchor="middle" font-size="8.5" fill="#6b7280">own page: platform/observability.html</text>
+<path d="M470,242 L470,300" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#dah)"/>
+<text x="476" y="275" font-size="8.5" fill="#475569">catalog source of truth = CSM (&#167;4.8)</text>
+<path d="M680,242 L680,270 L560,270 L560,300" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#dah)"/>
+<text x="566" y="266" font-size="8.5" fill="#475569">fan-in &#8594; CSM cap-NNN updates</text>
+<path d="M745,300 L745,242" stroke="#334155" stroke-width="1.4" fill="none" stroke-dasharray="5 4" marker-end="url(#dah)"/>
+<text x="751" y="275" font-size="8.5" fill="#475569">Daily Pulse drift signals</text>
+</svg>
+<p class="figcap">Solid boxes = internal parts of THIS page's subject. Dashed boxes = neighbors (their internals live on their own pages). Every box has &#8805;1 labeled edge. Dashed edges to PRODUCT: CoS and PLATFORM RUNTIME &#167;4 are the manifest projections (<code>projects_to: product-cos, platform-runtime</code>).</p>
+
+<h2>&#167;6 Distribution &#8212; the same content as tables</h2>
+<table>
+<tr><td><strong>Purpose</strong></td><td>How CoS reaches operators. Business-layer concerns: channel, pricing, onboarding, lifecycle.</td></tr>
+<tr><td><strong>Owns</strong></td><td>Channels (Sutra plugin &#183; direct install &#183; cloud) &#183; pricing tiers &#183; onboarding flow &#183; update/upgrade lifecycle &#183; feedback loop.</td></tr>
+<tr><td><strong>Depends on</strong></td><td>&#167;2 CoS product readiness; &#167;4 Native platform stability; &#167;7 Observability (acquisition + activation metrics).</td></tr>
+<tr><td><strong>Does NOT own</strong></td><td>Product surface; runtime behavior; transport.</td></tr>
+</table>
+
+<h3 id="s6-0">&#167;6.0 Asawa Client Taxonomy &#8212; T1-T4 distribution tiers</h3>
+<p>Distribution depends on which tier of client Native is serving. Per founder direction (D34, 2026-04-24), 4 tiers exist with uniform governance but different identity / ownership / onboarding paths.</p>
+<table>
+<tr><th>Tier</th><th>Name</th><th>Who</th><th>Onboarding path</th><th>Plugin distribution</th></tr>
+<tr><td><strong>T1</strong></td><td>Asawa (the holding co)</td><td>Sankalp Asawa, founder &#183; CEO of Asawa Inc.</td><td>Direct &#8212; Asawa runs Native on its own infrastructure; full authority access</td><td>Plugin embedded; auto-update</td></tr>
+<tr><td><strong>T2</strong></td><td>Owned portfolio</td><td>Asawa-owned products: DayFlow &#183; Billu &#183; Paisa &#183; PPR &#183; Maze</td><td>Sutra-onboard 8-phase playbook; founder is principal at each</td><td>Plugin auto-update; pinned per company</td></tr>
+<tr><td><strong>T3</strong></td><td>Projects (client-owned IP)</td><td>Asawa does the work but client owns IP: Testlify &#183; Dharmik</td><td>Sutra-onboard playbook adapted; client retains commercial product; Asawa runs delivery</td><td>Plugin distributed; client may pin to specific version</td></tr>
+<tr><td><strong>T4</strong></td><td>Sutra Users (external)</td><td>Operators in the wider market who adopt the Sutra plugin themselves</td><td>Self-onboard via Sutra plugin; tracked via <code>holding/departments/analytics/fleet.sh</code></td><td>Plugin marketplace; opt-in updates</td></tr>
+</table>
+<div class="note">Why this matters for Native: each tier has different governance scope (T1 full authority &#183; T4 plugin-policy-only). Charter scope + Authority Model thresholds (<a href="master/index.html#d6-authority">D.6</a>) default differently per tier. <strong>Source</strong>: <code>holding/ASAWA-AS-CLIENT.md</code> &#183; <code>CLAUDE.md</code> identity section &#183; founder direction D34.</div>
+
+<h3 id="s6-1">&#167;6.1 Channels (v1)</h3>
+<table>
+<tr><th>Channel</th><th>Audience</th><th>Status v1</th></tr>
+<tr><td>Sutra plugin (T2 + T4 fleet)</td><td>Existing Sutra users / Asawa portfolio</td><td>Primary v1 channel</td></tr>
+<tr><td>Direct install (terminal-fluent)</td><td>Operator-types with own setup</td><td>v1</td></tr>
+<tr><td>Cloud (hosted)</td><td>Operator-types who don't want infra</td><td>v2+</td></tr>
+<tr><td>Partner-deployed (e.g. accelerators)</td><td>Operators in cohort programs</td><td>v2+</td></tr>
+</table>
+
+<h3 id="s6-2">&#167;6.2 Pricing + packaging (placeholder v1) &#8212; FOUNDER GAP</h3>
+<ul>
+  <li>Tier A &#8212; Solo founder (1-2 companies)</li>
+  <li>Tier B &#8212; Portfolio operator (3-7 companies)</li>
+  <li>Tier C &#8212; Enterprise / partner-deployed</li>
+  <li>Pricing TBD; placeholder pending operator-economics data.</li>
+</ul>
+<div class="gap">This section is a v1 placeholder by design &#8212; see Open gaps below. Tier names exist; price points await founder operator-economics input.</div>
+
+<h3 id="s6-3">&#167;6.3 Onboarding flow</h3>
+<p>Per the Sutra-onboard 8-phase playbook (intake &#8594; market &#8594; shape &#8594; decide &#8594; architect &#8594; configure &#8594; deploy &#8594; activate). New CoS operator goes through:</p>
+<table>
+<tr><th>Stage</th><th>What happens</th></tr>
+<tr><td><strong>STAGE 1</strong> Install</td><td>Sutra plugin / direct install</td></tr>
+<tr><td><strong>STAGE 2</strong> Charter setup</td><td>Operator declares fixed Charters for each company in portfolio</td></tr>
+<tr><td><strong>STAGE 3</strong> Connect</td><td>Slack &#183; email &#183; tools per Charter</td></tr>
+<tr><td><strong>STAGE 4</strong> First-turn</td><td>Operator types intent; CoS responds; Authority gate dialed conservative by default</td></tr>
+<tr><td><strong>STAGE 5</strong> Ongoing</td><td>Operator dials autonomy + feeds patterns; B5.d learns; CoS becomes faster per company</td></tr>
+</table>
+
+<h3 id="s6-3-1">&#167;6.3.1 Install + onboard responsibility per tier</h3>
+<p>Per <a href="#s6-0">&#167;6.0 Asawa Client Taxonomy</a>, install/onboard responsibility differs per tier. The <a href="master/index.html#a2-persona">&#167;A.2.2 zero-terminal post-onboarding</a> rule means SOMEONE handles the one-time technical setup; this matrix names who, per tier.</p>
+<table>
+<tr><th>Tier</th><th>Who installs Native + CoS</th><th>Onboarding channel</th><th>Operator terminal exposure</th></tr>
+<tr><td><strong>T1 Asawa Inc.</strong></td><td>Asawa Forge self-installs (we are the platform)</td><td>Internal &#8212; Forge engineers + founder</td><td>Founder is terminal-fluent; uses terminal for governance + canon work</td></tr>
+<tr><td><strong>T2 Owned (DayFlow &#183; Billu &#183; Paisa &#183; PPR &#183; Maze)</strong></td><td>Asawa/Sutra Forge installs + maintains</td><td>Forge-led &#8212; Forge engineers set up per company; Charter created with company-specific context</td><td>None post-onboarding &#8212; operator (T2 founder) uses CoS surface only</td></tr>
+<tr><td><strong>T3 Projects (Testlify &#183; Dharmik)</strong></td><td>Asawa Forge installs into client environment; client owns the deployment + IP</td><td>Forge-led intake &#8594; Sutra-onboard 8-phase playbook &#8594; handoff to client operator</td><td>None post-handoff &#8212; client operator uses CoS surface only</td></tr>
+<tr><td><strong>T4 Fleet (external Sutra plugin adopters)</strong></td><td>Operator self-installs via Sutra plugin marketplace (<code>claude plugin install sutra</code>)</td><td>Plugin auto-onboarding &#8212; <code>/core:start</code> command guides setup</td><td>One-time terminal use for plugin install; post-install CoS surface in their Claude Code session (zero terminal beyond install)</td></tr>
+</table>
+<div class="note"><strong>Tier transition path</strong>: T4 adopters who want managed install (less terminal exposure) can graduate to T3 (Forge-led install) on request. T3 clients who internalize the platform can stay T3 or migrate to T2-owned with operator-led ongoing. Per <a href="master/index.html#a2-persona">&#167;A.2.2</a>: <em>regardless of tier, the operator never sees terminal commands during ongoing operation</em> &#8212; the matrix above names who handles the one-time setup that the constraint factors out.</div>
+
+<h3 id="s6-4">&#167;6.4 Lifecycle + updates</h3>
+<ul>
+  <li>Sutra plugin auto-update path; CoS-product updates ride the plugin channel for T2/T4.</li>
+  <li>Operator can pin a CoS version per company (Charter-scoped).</li>
+  <li>Breaking changes flagged in operator-facing changelog before push.</li>
+</ul>
+
+<h3 id="s6-5">&#167;6.5 Transformation Cycle &#8212; customer onboarding journey beyond install</h3>
+<p>New CoS operators come from existing organizational contexts. The transformation cycle is the structured path from "I have an existing workflow" to "CoS-on-Native runs my workflow." Workshops + sessions + co-working &#8212; not just install.</p>
+
+<h3 id="s6-5-1">&#167;6.5.1 Five-stage transformation cycle</h3>
+<p class="figcap">Stage labels T1-T5 below are transformation-cycle stages (as in master), distinct from the T1-T4 client tiers of &#167;6.0.</p>
+<table>
+<tr><th>Stage</th><th>Window</th><th>What happens</th></tr>
+<tr><td><strong>T1 DISCOVERY</strong></td><td>week 0</td><td>1-on-1 session: founder/operator articulates portfolio &#183; existing workflow inventory &#183; pain-point mapping &#183; skill mode baseline detection &#183; Charter sketch per company</td></tr>
+<tr><td><strong>T2 ARTICULATION</strong></td><td>week 1</td><td>Workshop: founder + Asawa Forge writes ratified Charters per company (fixed-vs-flexible scope) &#183; Connector setup per Charter (Slack/email/tools) &#183; First 5 trial tasks identified (low-risk T0/T1)</td></tr>
+<tr><td><strong>T3 PILOT</strong></td><td>weeks 2-3</td><td>Operator runs 5 trial tasks &#183; CoS executes &#183; operator dials autonomy + feeds correction signals &#183; Daily Pulse surfaces what CoS got right + drifted on &#183; B5.d learned patterns seeded</td></tr>
+<tr><td><strong>T4 EXPANSION</strong></td><td>weeks 4-8</td><td>Charter scope widens &#183; more tasks routed to CoS &#183; T2/T3 tasks introduced (iterative + Charter-tier) &#183; Autonomy thresholds tuned &#183; skill mode mix refined &#183; Operator-facing CoS voice converges</td></tr>
+<tr><td><strong>T5 STEADY STATE</strong></td><td>week 9+</td><td>S4 engagement state per company stabilizes &#183; Operator transitions to "I just type intent" mode &#183; Quarterly review: drift check &#183; Charter audit &#183; workforce health &#183; re-onboard new domains as needed</td></tr>
+</table>
+
+<h3 id="s6-5-2">&#167;6.5.2 Delivery modes for &#167;4.7 workforce-built deliverables</h3>
+<p>References <a href="master/index.html#section-4-native-platform">&#167;4.7 Workforce outputs as deliverables</a> &#8212; platform CAPABILITY lives there; &#167;6 owns the delivery PIPELINE.</p>
+<table>
+<tr><th>Delivery mode</th><th>Trigger</th><th>Owner</th><th>Lifecycle</th></tr>
+<tr><td>D1 Client-ship</td><td>Native-built tool/script reaches usefulness threshold for a client company</td><td>Asawa Forge handover team</td><td>Build &#8594; handover ceremony &#8594; client owns + maintains; Native deletes copy</td></tr>
+<tr><td>D2 Sutra-ratify</td><td>Reusable pattern emerges across operators (k=4 instances)</td><td>Sutra plugin core team</td><td>Ratification review &#8594; roll into next plugin release &#8594; fleet distribution per <a href="#s6-1">&#167;6 channels</a></td></tr>
+<tr><td>D3 Operator-local</td><td>Operator's own portfolio-specific tool</td><td>Operator (in their own Native workspace)</td><td>Auto-maintained by Native; versioned per <a href="master/index.html#d12-artifact-governance">D.12 Artifact Governance</a></td></tr>
+</table>
+
+<h3 id="s6-5-3">&#167;6.5.3 Acceptance criteria (Transformation Cycle v1)</h3>
+<ul>
+  <li>Discovery &#8594; Articulation in &#8804;1 week per operator.</li>
+  <li>Pilot tasks have explicit success/fail criteria (per &#167;4.5 Test-before-conclude).</li>
+  <li>Steady-state target: operator confidence + CoS accuracy KPI both &#8805;80% by end of Expansion stage.</li>
+  <li>Quarterly review surfaces drift signals from &#167;7 Observability; re-onboard triggered if drift &gt;15%.</li>
+</ul>
+
+<h3 id="s6-6">&#167;6.6 Feedback Engine &#8212; operator + customer voice loop</h3>
+<p>Per <code>FEEDBACK</code> charter + PROTO-024 Client&#8594;Team Fan-in. Closes the loop between operator/customer experience and product team decisions. Every channel sanitized for PII before fan-in.</p>
+
+<h3 id="s6-6-1">&#167;6.6.1 Feedback channels (v1)</h3>
+<table>
+<tr><th>Channel</th><th>Who uses it</th><th>Where it lands</th><th>How team consumes</th></tr>
+<tr><td><strong>/feedback</strong> command</td><td>Operators in-session</td><td>Local feedback inbox &#8594; fan-in to GitHub issues at <code>sankalpasawa/sutra</code></td><td>Product team triage; tagged by Charter scope</td></tr>
+<tr><td><strong>GitHub issues</strong></td><td>External T4 fleet &#183; technical operators</td><td>Canonical channel: <code>github.com/sankalpasawa/sutra/issues</code></td><td>Local mirror at <code>sutra/marketplace/feedback-inbox/</code>; <code>sync-feedback-from-gh.sh</code> on demand</td></tr>
+<tr><td><strong>Daily Pulse signal</strong></td><td>Operator's own behavior (overrides, corrections, retries)</td><td>Auto-captured via <a href="master/index.html#section-7-observability">&#167;7 Observability</a> drift signals</td><td>B5.d learned patterns adapt; aggregated trend &#8594; product team</td></tr>
+<tr><td><strong>Workshop sessions</strong></td><td>T2/T3 operators during Transformation Cycle</td><td>1-on-1 sessions during <a href="#s6-5">&#167;6.5</a> Articulation + quarterly review</td><td>Founder + Asawa Forge synthesize; manual product-team brief</td></tr>
+<tr><td><strong>founder-360-review</strong> skill</td><td>Founder retrospective (8-angle review)</td><td>Time-windowed evidence-anchored review</td><td>Founder feeds product priorities</td></tr>
+</table>
+
+<h3 id="s6-6-2">&#167;6.6.2 Fan-in flow (PROTO-024)</h3>
+<table>
+<tr><th>Step</th><th>Actor</th><th>What happens</th></tr>
+<tr><td>1 Submit</td><td>OPERATOR (T1-T4)</td><td>One of: /feedback &#183; gh issue &#183; Daily Pulse drift &#183; workshop</td></tr>
+<tr><td>2 Artifact</td><td>&#167;4 Native &#8212; feedback artifact created</td><td><code>privacy-sanitize.sh</code> strips PII &#183; tagged: Charter &#183; tier &#183; task tier &#183; pillar &#183; audit-row written (B5.c)</td></tr>
+<tr><td>3 Fan-in (async)</td><td>ASAWA / SUTRA PRODUCT TEAM</td><td>Weekly triage &#8594; CSM cap-NNN updates &#183; aggregated patterns &#8594; &#167;3 HOW evolution &#183; bug fixes &#8594; &#167;4.5 test cases added</td></tr>
+<tr><td>4 Loop closes</td><td>FEEDBACK LOOP CLOSES</td><td>Operator gets release-note in plugin update; CSM banner shows feature shipped that addresses their feedback</td></tr>
+</table>
+
+<h3 id="s6-6-3">&#167;6.6.3 Acceptance criteria (Feedback Engine v1)</h3>
+<ul>
+  <li>Every feedback artifact emits DecisionProvenance row (per <a href="master/index.html#d12-artifact-governance">D.12 Artifact Governance</a>).</li>
+  <li>PII-sanitization 100% before any cross-tenant fan-in (HS-2 fires on violation).</li>
+  <li>Operator can trace own feedback from submission &#8594; product decision &#8594; release (closed loop visible).</li>
+  <li>Weekly aggregate signal surfaces in Daily Pulse for founder.</li>
+</ul>
+<div class="note"><strong>Sources</strong>: <code>sutra/os/charters/FEEDBACK.md</code> &#183; <code>sutra/marketplace/plugin/commands/feedback.md</code> &#183; <code>holding/scripts/sync-feedback-from-gh.sh</code> &#183; PROTO-024 &#183; founder-360-review skill. <strong>Hierarchy tag</strong>: Feedback Engine is a <strong>Module</strong> per <a href="master/index.html#section-1-architecture">&#167;1.4</a> &#8212; composes cap-Connector + cap-Privacy-Sanitize + cap-Audit; has independent lifecycle, per-Deployment binding, own runtime state.</div>
+
+<h3 id="s6-7">&#167;6.7 Module distribution + lifecycle</h3>
+<p>How Modules (per <a href="master/index.html#section-1-architecture">&#167;1.4 Product Hierarchy</a>) reach operators. &#167;6.0-&#167;6.6 cover Product-level distribution; &#167;6.7 covers Module-level distribution within an operator's existing CoS install.</p>
+
+<h3 id="s6-7-1">&#167;6.7.1 Module lifecycle (cradle to retire)</h3>
+<table>
+<tr><th>Stage</th><th>What happens</th><th>Authority</th></tr>
+<tr><td><strong>Proposed</strong></td><td>Capability already exists in CSM (cap-NNN); composing it into a Module candidate</td><td>Asawa Forge proposes</td></tr>
+<tr><td><strong>Designed</strong></td><td>Module SPEC drafted; binding schema declared; codex+deepseek review (per <a href="master/index.html#section-4-native-platform">&#167;4.5</a> test gate)</td><td>Asawa Forge designs; Sutra plugin core approves</td></tr>
+<tr><td><strong>Built + Shipped</strong></td><td>SPEC merged to plugin and PUBLISHED to the catalog; installs receive an "update available" signal &#8212; the update lands when the OPERATOR pulls it (PULL-default per founder doctrine D22, resolved N33 2026-06-12). PUSH (forced auto-roll) is reserved for security/foundational fixes only, and announces itself</td><td>Native platform publishes; operator pulls (push = security exception)</td></tr>
+<tr><td><strong>Operator-installed</strong></td><td>Operator chooses Module from approved catalog (v1.5+); creates BINDING for a Charter</td><td>Operator (per &#167;1.4.3 phase)</td></tr>
+<tr><td><strong>Active</strong></td><td>RUNTIME STATE accumulates; observability metrics tracked; drift detected</td><td>Native runtime</td></tr>
+<tr><td><strong>Deprecated</strong></td><td>Module marked end-of-life in CSM; sunset window announced; operators notified via feedback channel</td><td>Native platform + operator-affecting notification</td></tr>
+<tr><td><strong>Retired</strong></td><td>SPEC archived; existing BINDINGs frozen-readable; RUNTIME STATE preserved for replay window per <a href="master/index.html#d12-artifact-governance">D.12</a></td><td>Native platform</td></tr>
+</table>
+<div class="note"><strong>Update policy (N33 resolution, 2026-06-12)</strong>: PULL is the default for every behavior-affecting Module update &#8212; operators choose when their company's setup changes (doctrine D22). PUSH is the override, reserved for security and foundational fixes, always operator-visible (release-note callout + audit row). This matches how the Sutra plugin behaves today (<code>/core:update</code> is a manual pull).</div>
+
+<h3 id="s6-7-2">&#167;6.7.2 v1 distribution scope (per R7 reviewer convergence)</h3>
+<ul>
+  <li><strong>v1</strong> &#8212; Native platform + Asawa Forge author + ship Modules; operators consume passively (bound by Forge for them)</li>
+  <li><strong>v1.5</strong> &#8212; operator self-serve <em>binding</em> from approved Module catalog (still no author-new-Module privilege)</li>
+  <li><strong>v2+</strong> &#8212; third-party developers gated by review + permissioning + audit (marketplace concern)</li>
+</ul>
+
+<h3 id="s6-7-3">&#167;6.7.3 Acceptance criteria (Module distribution v1)</h3>
+<ul>
+  <li>Module catalog is operator-discoverable via <code>sutra-capability</code> skill (single source of truth: <a href="master/index.html#section-4-native-platform">&#167;4.8 CSM</a>).</li>
+  <li>Module retirement preserves replay capability for operator-held BINDINGs (per <a href="master/index.html#d12-artifact-governance">D.12</a>).</li>
+  <li>Cross-Product Module reuse is <strong>designed for, not guaranteed in v1</strong> &#8212; interfaces stay clean enough to extract later when 2nd Product exists.</li>
+</ul>
+
+<h2>Cross-band projections (manifest <code>projects_to</code>)</h2>
+<table>
+<tr><th>Projection (dashed)</th><th>Target page</th><th>Touchpoint</th></tr>
+<tr><td><code>product-cos</code></td><td><a href="products/cos/index.html">products/cos/index.html</a></td><td>&#167;6 depends on &#167;2 CoS product readiness; onboarding (&#167;6.3) produces CoS operators; operator <code>/feedback</code> arrives from CoS sessions (&#167;6.6.1)</td></tr>
+<tr><td><code>platform-runtime</code></td><td><a href="platform/runtime.html">platform/runtime.html</a></td><td>Module catalog single source of truth = CSM &#167;4.8 (&#167;6.7.3); &#167;4.7 workforce deliverables ship through &#167;6.5.2 delivery modes; fan-in updates CSM cap-NNN rows (&#167;6.6.2)</td></tr>
+</table>
+
+<h2>Prose &#8212; what this page is</h2>
+<p>Distribution is the COMPANY-band business layer of Native: it names WHO Native serves (the T1-T4 client taxonomy, D34), HOW the product reaches them (channels &#167;6.1), what they pay (pricing &#167;6.2 &#8212; placeholder), how they start (onboarding &#167;6.3 + the per-tier install matrix &#167;6.3.1), how installs stay current (lifecycle &#167;6.4), how an operator's existing workflow becomes a CoS-run workflow (transformation cycle &#167;6.5), how their voice reaches the product team (feedback engine &#167;6.6, PROTO-024), and how Modules &#8212; not just the Product &#8212; reach existing installs (&#167;6.7, PULL-default per the N33 resolution of 2026-06-12). It owns policy, not mechanics: product surface lives on the PRODUCTS band, runtime behavior on the PLATFORM band, transport on the connector page.</p>
+
+<h2>Open gaps &#8212; founder queue</h2>
+<ul class="gaps">
+<li class="gap"><strong>&#167;6.2 Pricing + packaging (placeholder v1) &#8212; founder gap.</strong> Verbatim from master: <em>"Pricing TBD; placeholder pending operator-economics data."</em> Tier names exist (A solo &#183; B portfolio &#183; C enterprise / partner-deployed); price points + packaging await founder operator-economics input. Source: <a href="master/index.html#section-6-2-pricing">master &#167;6.2</a>.</li>
+</ul>
+
+<h2>Children / downstream</h2>
+<ul>
+<li>None &#8212; <code>distribution</code> is a leaf COMPANY page in manifest v1 (no page declares it as parent).</li>
+<li>Cross-band projections (dashed, not children): <a href="products/cos/index.html">product-cos</a> &#183; <a href="platform/runtime.html">platform-runtime</a> &#8212; see projections table above.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li>Primary slice: <a href="master/index.html#section-6-distribution">master &#167;6 Distribution</a> (frozen archive) &#8212; sub-anchors <a href="master/index.html#section-6-0-taxonomy">&#167;6.0</a> &#183; <a href="master/index.html#section-6-1-channels">&#167;6.1</a> &#183; <a href="master/index.html#section-6-2-pricing">&#167;6.2</a> &#183; <a href="master/index.html#section-6-3-onboarding">&#167;6.3</a> &#183; <a href="master/index.html#section-6-3-1-install-tier-matrix">&#167;6.3.1</a> &#183; <a href="master/index.html#section-6-4-lifecycle">&#167;6.4</a> &#183; <a href="master/index.html#section-6-5-transformation">&#167;6.5</a> &#183; <a href="master/index.html#section-6-6-feedback">&#167;6.6</a> &#183; <a href="master/index.html#section-6-7-module-distribution">&#167;6.7</a></li>
+<li>&#167;6.0 taxonomy: <code>holding/ASAWA-AS-CLIENT.md</code> &#183; <code>CLAUDE.md</code> identity section &#183; founder direction D34 (2026-04-24) &#183; T4 tracking via <code>holding/departments/analytics/fleet.sh</code></li>
+<li>&#167;6.6 feedback (D54 &#8212; linked, never copied): <code>sutra/os/charters/FEEDBACK.md</code> &#183; <code>sutra/marketplace/plugin/commands/feedback.md</code> &#183; <code>holding/scripts/sync-feedback-from-gh.sh</code> &#183; PROTO-024 &#183; founder-360-review skill</li>
+<li>&#167;6.7 N33 PULL-default resolution (RESOLVED 2026-06-12): parity ledger <code>holding/SUTRA-NATIVE-PARITY.md</code> &#183; founder doctrine D22 &#183; carried verbatim in &#167;6.7.1 Built + Shipped row + update-policy callout above</li>
+</ul>
+</details>
+</div></div></body></html>

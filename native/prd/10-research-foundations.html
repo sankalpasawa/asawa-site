@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>§10 — Research Foundations (geology under §1-§9) — Native PRD spoke</title>
+<link rel="stylesheet" href="../prd-shared.css">
+<style>
+body { padding: 24px 28px 80px; max-width: 960px; margin: 0 auto; }
+.spoke-topnav { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 16px; margin: 0 0 24px; font-size: 13px; border-radius: 3px; }
+.spoke-topnav a { margin: 0 4px; }
+.spoke-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 10px 14px; margin: 14px 0; font-size: 13px; }
+.spoke-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+.spoke-footer a { color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<nav class="spoke-topnav">
+↑ <a href="../product-prd-native-v1.html">PRD Hub</a> · 
+<a href="../tech-design/index.html">Tech Design Hub</a> · 
+← <a href="09-meta.html">prev: 09 meta</a> · <strong>§10 — Research Foundations (geology under §1-§9)</strong>
+</nav>
+
+<div class="spoke-banner">
+<strong>Readability spoke</strong> — this page shows only <em>§10 — Research Foundations (geology under §1-§9)</em>. For full PRD navigation, return to <a href="../product-prd-native-v1.html">PRD Hub</a>. Engineering deep-dive: <a href="../tech-design/index.html">Tech Design Hub</a>. All in-page anchors below link back to the hub (where the full content lives).
+</div>
+
+<section id="section-10-research-foundations">
+<h2>§10 Research Foundations <a href="../product-prd-native-v1.html#section-10-research-foundations" class="anchor">#</a></h2>
+<p class="callout"><strong>How to read this section</strong>: §10 is the load-bearing geology under §1-§9. ~105 concluded findings across 7 source directories, categorized into 11 sub-sections (§10.0–§10.10). Each sub-section condenses 5-20 findings into rationale + key-findings table + citations. Use citations as jump-points. If a §1-§9 requirement seems arbitrary, trace its §10 finding. If you want to challenge a requirement, challenge the finding. Sources: <code>holding/research/</code> + <code>holding/research/_archive/native-v1.x/</code> + <code>sutra/layer1-abstraction/</code> + <code>sutra/os/decisions/</code> (20 ADRs) + <code>holding/FOUNDER-DIRECTIONS.md</code> (D1-D55) + <code>.enforcement/codex-reviews/</code> + <code>.enforcement/deepseek-reviews/</code> + project memory. Per D54 native canon-only writes; per founder ask 2026-05-13. Convergence: Codex Lane B (source-organized 6 categories) + DeepSeek Lane B (concept-organized 7 categories, both ADVISORY 2026-05-13).</p>
+
+<h3 id="section-10-0-how-to-read">§10.0 How to read this section</h3>
+<p>Reading order: top-to-bottom once for context, then citations as jump-index. Each finding row carries source path; load-bearing rank in §10.9 shows which findings MUST be understood vs which are reference. Convergence note: §10 structure merges DeepSeek Lane B's thematic spine (concept categories) with Codex Lane B's split between general doctrine vs Native-specific directives. Verdict files at <code>.enforcement/codex-reviews/2026-05-13-research-scrape.md</code> and <code>.enforcement/deepseek-reviews/2026-05-13-research-scrape.md</code>.</p>
+
+<h3 id="section-10-1-primitives-and-unit-theory">§10.1 Operating System Primitives &amp; Unit Theory</h3>
+<p><strong>Rationale</strong>: Native is an operating system, not an application. Every requirement in §1-§4 rests on a small set of OS primitives (Unit · Kernel · Hook · Registry · Effector · Signal · Cadence) plus the Unit theory (bounded work with A/E/K substrate + C coordination + M authority + 8 lifecycle phases + governance envelope + Cynefin gate + 9 informational dimensions + 7 VSM-mapped roles). Get these wrong → foundation rebuild. Get them right → product features become thin shells over proven primitives.</p>
+<table>
+<tr><th>Finding</th><th>Source</th></tr>
+<tr><td>Native V2 four-primitives (Domain · Charter · Workflow · Execution) + 5 transformation laws + machine-checkable routing/gating fields</td><td><code>holding/research/_archive/native-v1.x/.../2026-04-28-v2-architecture-spec.md</code></td></tr>
+<tr><td>Unit = bounded work · A-axis abstraction · E-axis evolution · K-axis executor</td><td><code>holding/research/2026-04-24-core-unit-science-synthesis.md</code></td></tr>
+<tr><td>8 lifecycle phases: OBJECTIVE → OBSERVE → ORIENT → SHAPE → PLAN → EXECUTE → MEASURE → OPERATIONALIZE → LEARN</td><td>same</td></tr>
+<tr><td>Governance envelope: RECEIVE → CLASSIFY → ROUTE → [lifecycle] → FEEDBACK-UPSTREAM</td><td>same</td></tr>
+<tr><td>Fractal inner node-loop per phase: Observe → Shape → Execute → terminal-check (6 tests)</td><td>same</td></tr>
+<tr><td>Cynefin domain gate classifier before each node-loop iteration</td><td>same</td></tr>
+<tr><td>9 informational dimensions: Identity · Declaration · Execution · Observation · Decision · Review · Closure · Memory · Lineage</td><td>same</td></tr>
+<tr><td>7 operational roles (VSM S1-S5 mapped): Router · Doer · Observer · Reviewer · Abstractor · Auditor · Archivist</td><td>same</td></tr>
+<tr><td>9 Kernel primitives: state-store · event-journal · handoff-contract · provenance · merge-policy · budget-ownership · failure-attribution · rollback-semantics · capability-boundaries</td><td>same</td></tr>
+<tr><td>Codification ladder: TASK → PROCESS → PROTOCOL → CHARTER → DIRECTION → DOCTRINE (4 promotion tests: Recurrence · Stability · Cost · Intent)</td><td>same</td></tr>
+<tr><td>A×E Grid + productization ladder: Doctrine → Direction → Charter → Department → Protocol → Unit → Hook; founder meta-pattern (notice recurrence → extract shape → mandatory → instrument → kill-switch → hour-cadence → propagate)</td><td><code>holding/research/2026-04-22-unit-foundation-AE-grid.md</code></td></tr>
+<tr><td>Fractal-shape across 8 time-scales: Atom (sec) → Task (min) → Decision (days) → Phase/Protocol (weeks) → Charter (months) → Company (years) → Doctrine (permanent)</td><td>same</td></tr>
+<tr><td>Native v1.0 8 falsifiable Problem Statements (PS-1 install · PS-2 per-company duplication · PS-6 agent identity · PS-7 tenant isolation · PS-9 markdown-vs-code · PS-10 policy-evidence · PS-13 time-to-value ≤30min · PS-14 governance overhead ≤15% tokens)</td><td><code>holding/research/_archive/native-v1.x/.../2026-04-29-native-v1.0-final-architecture.md</code></td></tr>
+<tr><td>Sutra V1 5-block deployment architecture: workflow · context · artifact · operating-system · governance (P0 TRIAGE, not P0 CLASSIFY)</td><td><code>memory/project_sutra_v1_5blocks.md</code></td></tr>
+</table>
+<p><strong>Scientific anchors</strong>: Wardley Mapping (E-axis) · VSM Beer (7 roles + fractal recursion) · Cynefin Snowden (domain gate) · OODA Boyd (lifecycle phases) · Marr's 3 levels (A-axis) · ACT-R Anderson (Context Engine + depth-as-weighting) · Alexander Pattern Language (PROTO-000) · Argyris (3 learning loops as questions) · IBM MAPE-K (persistence across Units) · Hollnagel CSE (authority mode M) · Sheridan/Parasuraman (fine-grain automation levels under M).</p>
+
+<h3 id="section-10-2-governance-authority-method">§10.2 Governance, Authority &amp; Method Discipline</h3>
+<p><strong>Rationale</strong>: Native is a constitutional operating system, not just a workflow engine. Decisions are typed, attributable, replayable artifacts. The Architecture-as-Discipline method runs BEFORE design: Situation → Sovereignty → Invariants/Posture → Semantics → Structure → Proof. ADR-001 through ADR-020 ratify the decision-provenance system, approval-gate primitive, and organic-emergence propose/approve pattern.</p>
+<table>
+<tr><th>Finding</th><th>Source</th></tr>
+<tr><td>Architecture-as-Discipline 6-step method (Situation → Sovereignty → Invariants/Posture → Semantics → Structure → Proof); reusable rubric for every Sutra system design; Native v1.0 is first user; 8-step expansion documented</td><td><code>holding/research/2026-04-29-architecture-method.md</code></td></tr>
+<tr><td>Sovereignty discipline: authority chain · delegation · temporary authority · revocation propagation · authority-to-enforcement mapping</td><td><code>holding/research/_archive/native-v1.x/.../2026-04-29-native-d1-authority-map.md</code></td></tr>
+<tr><td>Invariants &amp; Posture: must-always-hold predicates · graceful-degrade · HARD-STOP · blast radius · recovery contract</td><td><code>holding/research/_archive/native-v1.x/.../2026-04-29-native-d5-invariant-register.md</code></td></tr>
+<tr><td>Proof discipline: constitutional legitimacy + typed decision-provenance schema + replay protocol + contest path + human-legibility surfaces (observability alone insufficient)</td><td><code>holding/research/_archive/native-v1.x/.../2026-04-29-native-d2-decision-provenance-spec.md</code></td></tr>
+<tr><td>20 ratified ADRs (ADR-001 H-Sutra 9-cell · ADR-002 OUT-DIRECT 3-check · ADR-003 permissions+MCP · ADR-004 registry-effector split · ADR-005 host-LLM selection · ADR-006 tenant-isolation domain-field · ADR-007 decision-provenance schema · ADR-008 markdown-vs-code authoritative-state · ADR-009 approval-gate primitive · ADR-010 organic-emergence propose-approve · ADR-011 failure policy 5-set · ADR-012 PnC typed parser over prose · ADR-013 telemetry-sink fsync JSONL · ADR-014 depth-router via workflow · ADR-015 standalone H-Sutra · ADR-016 replica isolated user-kit · ADR-017 cron-daemon cadence tick · ADR-018 agentic-systems pattern · ADR-019 design↔product↔tech bridge · ADR-020 Layer-B product authoring template)</td><td><code>sutra/os/decisions/ADR-001..ADR-020.md</code></td></tr>
+<tr><td>Per-node 3-layer verification stack: BLUEPRINT per-step Verify (L1) + PHASE-EXIT-VERIFY method (L2) + VERIFY-* family (L3); D3+ requires per-step Verify in BLUEPRINT Steps</td><td><code>memory/project_per_node_verification_layers.md</code> · D48</td></tr>
+<tr><td>SOFT → HARD enforcement flip: every Edit/Write requires .claude/{input-routed · blueprint-registered · depth-registered} markers per-turn</td><td><code>memory/project_soft_hooks_hard_flipped.md</code></td></tr>
+<tr><td>Codex review productized as first-party Sutra primitive (codex-sutra v1.0.0; 15-min hard cap; standardized verdict files)</td><td><code>memory/project_sutra_codex_canonical.md</code></td></tr>
+<tr><td>15 operating principles distilled from 45+ sources: shared consciousness · advice process · PR/FAQ before build · principles-as-code · single-threaded human leadership · peacetime/wartime mode switching · 6-week appetite-shaped cycles · flywheel-driven focus (max 3 ventures)</td><td><code>sutra/layer1-abstraction/RESEARCH-SYNTHESIS.md</code></td></tr>
+<tr><td>Phase 1 + Phase 2 cross-source synthesis (universal principles): make work visible · constrain to accelerate · feedback loops dominate health · tune loops to reversibility · separate things that change at different rates · start simple · align by intent · give decisions a named owner</td><td><code>sutra/layer1-abstraction/RESEARCH-PHASE1-SUMMARY.md · PHASE2-SYNTHESIS.md</code></td></tr>
+</table>
+
+<h3 id="section-10-3-holding-company-operating-model">§10.3 Holding Company Operating Model</h3>
+<p><strong>Rationale</strong>: Sutra is not a product FOR companies — Asawa is a company that CONTAINS other companies. Holding-company research concluded Asawa is closer to LVMH/Tata than Berkshire/Alphabet: centralized shared infrastructure + decentralized brand autonomy + portfolio-level capital allocation. Exactly 3 functions must be owned at holding level: Governance Office · Portfolio Office · Shared Infrastructure. Everything else is Unit-scoped.</p>
+<table>
+<tr><th>Finding</th><th>Source</th></tr>
+<tr><td>Asawa Inc. = programmable holding company; 3 novelties: culture-is-code · governance-automated · infrastructure-is-the-moat</td><td><code>sutra/layer1-abstraction/RESEARCH-SYNTHESIS.md</code></td></tr>
+<tr><td>VSM-mapped holding structure: S5 Identity · S4 Intelligence · S2 Shared Infrastructure · S3 Oversight · S1 Portfolio Companies</td><td>same</td></tr>
+<tr><td>Asawa owns 3 functions: Governance Office · Portfolio Office · Shared Infrastructure (everything else Unit-scoped)</td><td><code>holding/research/HOLDING-COMPANY-RESEARCH.md</code></td></tr>
+<tr><td>LVMH/Tata model closest fit — not Berkshire (because portfolio companies SHARE OS/hooks/protocols, not just capital)</td><td>same</td></tr>
+<tr><td>Universal holdco pattern: capital allocation · CEO selection · brand/standards · shared services · strategic direction</td><td>same</td></tr>
+<tr><td>Cross-functional ops research (Amazon · Apple · Stripe · Spotify): converge on written coordination artifacts + explicit ownership + constrained focus + interface-based collaboration; steal mechanisms not mythology</td><td><code>sutra/layer1-abstraction/CROSS-FUNCTIONAL-OPS-RESEARCH.md</code></td></tr>
+<tr><td>D34 4-tier client taxonomy: T1 Asawa · T2 Owned (DayFlow/Billu/Paisa/PPR/Maze) · T3 Projects (Testlify/Dharmik) · T4 Sutra Users (external fleet)</td><td><code>memory/project_asawa_client_taxonomy.md</code> · D34</td></tr>
+<tr><td>D15 70/20/10 allocation: products 70% · OS 20% · evolution infrastructure 10%</td><td>D15</td></tr>
+<tr><td>D35 priority order: incoming clients + T4 plugin users first · implementation for them · design last (≤60 min daily cap)</td><td>D35</td></tr>
+</table>
+
+<h3 id="section-10-4-runtime-stack">§10.4 Runtime Stack &amp; Infrastructure Decisions</h3>
+<p><strong>Rationale</strong>: Concrete technology choices flowed from Architecture-as-Discipline. 8-layer OSS Spine; Inngest (Apache 2.0) as L4 durable execution backbone; ≤1700 LoC net-new glue budget as forcing function for simplicity. Build-Layer Protocol PROTO-021 defines plugin-first default.</p>
+<table>
+<tr><th>Finding</th><th>Source</th></tr>
+<tr><td>8-layer OSS Spine: L7 Wire (MCP) · L6 Integrations (Composio + Activepieces) · L5 OAuth (simple-oauth2 + Infisical) · L4 Runtime Spine (Inngest primary / DBOS fallback) · L3 Policy (OPA + Cedar + Charter→Rego) · L2 Audit (JSONL + OTel) · L1 Observability (OTel + LGTM deferred) · L0 Substrate (TypeScript + Node + Postgres)</td><td><code>holding/research/2026-04-30-oss-spine-v1-research.md</code></td></tr>
+<tr><td>L4 durable execution = backbone shared by Native runtime AND connector orchestration</td><td>same</td></tr>
+<tr><td>v1 NO-GO list: Kubernetes · Temporal · Keycloak · Hydra · n8n · Apache Camel · full LGTM self-host</td><td>same</td></tr>
+<tr><td>Build-Layer Protocol PROTO-021: L0 PLUGIN (universal) · L1 STAGING (post-promotion, PROMOTE-TO + BY date required) · L2 INSTANCE (forever company-specific); plugin-first default per D38</td><td><code>holding/research/2026-04-23-build-layer-protocol-design.md</code> · D38</td></tr>
+<tr><td>≤1700 LoC net-new Sutra-owned glue budget; 5.5-6 week timeline target</td><td><code>holding/research/_archive/native-v1.x/.../2026-04-29-native-v1.0-final-architecture.md</code></td></tr>
+<tr><td>v1.0 non-goals: multi-tenant SPIRE/SPIFFE · cross-process A2A · LLMSubstrate adapter · MCP gateway/sandbox · constitutional veto Safety predicate (all deferred to v2+ per D39)</td><td>same · D39</td></tr>
+<tr><td>RTK (token-compression CLI): −68.7% measured on git-status output; lazy-load skill descriptions (~100 skills × ~100 tok)</td><td><code>holding/research/2026-04-20-rtk-mode-a-before-after.md</code> · <code>holding/research/2026-04-23-skills-architecture-audit.md</code></td></tr>
+<tr><td>Skills architecture audit: descriptions in boot prompt ~1536 chars/skill; runtime mandate fires ~9% of sessions vs &gt;80% target; biggest levers are behavioral hooks, not structural refactors</td><td><code>holding/research/2026-04-23-skills-architecture-audit.md</code></td></tr>
+</table>
+
+<h3 id="section-10-5-identity-tenant-capability-boundaries">§10.5 Identity, Tenant &amp; Capability Boundaries</h3>
+<p><strong>Rationale</strong>: A multi-tenant programmable holding company cannot function without hard boundaries. Tenant isolation as a first-class field on Domain (ADR-006) + 4-tier client taxonomy (D34) + PERMISSIONS Tier 1/2/3 + identity-on-wire opt-in (D50) + caveman default (D51) collectively define where one entity ends and another begins.</p>
+<table>
+<tr><th>Finding</th><th>Source</th></tr>
+<tr><td>Tenant isolation via Domain.tenant_id (first-class field) — convention-level repo separation insufficient (ADR-006)</td><td><code>sutra/os/decisions/ADR-006-tenant-isolation-domain-field.md</code></td></tr>
+<tr><td>D33 External clients firewalled from Asawa: standalone at <code>~/Claude/&lt;name&gt;/</code> · bidirectional <code>settings.json</code> deny · plugin-only channel</td><td>D33</td></tr>
+<tr><td>PERMISSIONS Tier 1/2/3 charter + PermissionRequest hook auto-approves Sutra-scope (target ≤2 first-session prompts)</td><td><code>memory/project_sutra_permissions_charter.md</code> · D47</td></tr>
+<tr><td>ADR-003: MCP reads + first-time in-cwd edits auto-approve; mutators · sends · secret-bearing files · deploy surfaces · repo metadata stay gated</td><td><code>sutra/os/decisions/ADR-003-permissions-mcp-and-first-time-edit.md</code></td></tr>
+<tr><td>D43 Capability Surface Split: every capability declares client-shippable / Asawa-only / Sutra-internal · lifecycle + evidence fields prevent phantom surfaces</td><td>D43</td></tr>
+<tr><td>D50 Identity-on-wire: opt-in 4-field collaborator allowlist behind re-consent (replaces anonymous-only telemetry)</td><td>D50</td></tr>
+<tr><td>D31 Sutra owns authority; clients execute, never skip — per-client enablement centrally controlled</td><td>D31</td></tr>
+<tr><td>D32 Hot-reloadable hooks, default-off — hook catalogs + per-client enable switches centrally declared</td><td>D32</td></tr>
+</table>
+
+<h3 id="section-10-6-shipped-governance-learnings">§10.6 Shipped Governance &amp; Productization Learnings</h3>
+<p><strong>Rationale</strong>: Findings that moved from research → shipped mechanisms. Each entry is a live system, not a proposal. These are the proof the operating model can actually be operationalized.</p>
+<table>
+<tr><th>Shipped mechanism</th><th>Source</th></tr>
+<tr><td>PERMISSIONS Charter + Meta-Permission Gate (target ≤2 first-session prompts)</td><td><code>memory/project_sutra_permissions_charter.md</code></td></tr>
+<tr><td>Feedback Canonical Channel — single source: gh issues sankalpasawa/sutra · local mirror at sutra/marketplace/feedback-inbox/ · sync-feedback-from-gh.sh routine</td><td><code>memory/project_feedback_canonical_channel.md</code></td></tr>
+<tr><td>codex-sutra v1.0.0 + DeepSeek consult (peer-review lanes; 15-min hard cap; verdict files at <code>.enforcement/{codex,deepseek}-reviews/</code>)</td><td><code>memory/project_sutra_codex_canonical.md</code></td></tr>
+<tr><td>Sutra Delivery OS — 4 first-party Generative skills (test-strategy · architect · deterministic-testing · incremental-architect); idea-to-delivery wrapper cut per codex</td><td><code>memory/project_sutra_delivery_os.md</code></td></tr>
+<tr><td>Per-Node 3-Layer Verification Stack (BLUEPRINT V2.1 per-step Verify + PHASE-EXIT-VERIFY + VERIFY-* family)</td><td><code>memory/project_per_node_verification_layers.md</code></td></tr>
+<tr><td>SOFT → HARD enforcement flip (every Edit/Write requires markers per-turn)</td><td><code>memory/project_soft_hooks_hard_flipped.md</code></td></tr>
+<tr><td>Capability Surface Map (CSM) — single-source CAPABILITY-MAP.md + audit jsonl + sutra-capability skill</td><td>D43 · <a href="../product-prd-native-v1.html#section-4-8-csm">§4.8</a></td></tr>
+<tr><td>Sutra Slack connector live (verified Testlify 2026-04-30); xoxb token at <code>~/.sutra-connectors/oauth/slack.json</code></td><td><code>memory/project_connectors_slack_live.md</code></td></tr>
+<tr><td>Asawa Native Replica isolated user-kit at <code>$HOME/.sutra-native-asawa-replica/</code></td><td><code>memory/project_asawa_native_replica.md</code></td></tr>
+<tr><td>CI-watcher remote routine (ci-watcher-asawa, hourly UTC, auto-fix whitelist)</td><td><code>memory/project_ci_watcher_routine.md</code></td></tr>
+</table>
+
+<h3 id="section-10-7-founder-doctrine">§10.7 Founder Operating Doctrine (D1-D55)</h3>
+<p><strong>Rationale</strong>: 55 ratified Founder Directions form a behavioral ABI. D1-D37 are general operating doctrine (how Sutra thinks, decides, prioritizes); D38-D55 are Native + fleet-specific directives (rollout order, capability boundaries, operator interaction, canon discipline). Per D6 — directions are executable with regression tests; per D55 — every direction triggers Survey → Reorg → Simplify → Surface on add.</p>
+
+<h4>§10.7.A General Operating Doctrine — selected entries from D1-D37</h4>
+<p><em>This sub-section enumerates a <strong>selected slice</strong> of D1-D37 (not the full set). For the complete + authoritative list with audit trail, see <code>holding/FOUNDER-DIRECTIONS.md</code>.</em></p>
+<table>
+<tr><th>D#</th><th>Direction</th></tr>
+<tr><td>D1</td><td>Simplicity through human confidence — few decisive signals over exhaustive detail</td></tr>
+<tr><td>D2</td><td>Thoroughness scales with the change — lifecycle constant, depth varies</td></tr>
+<tr><td>D3</td><td>Every task has a Sutra path — absorb new path, never bypass</td></tr>
+<tr><td>D4</td><td>Model directions as living forces — model downstream consequences</td></tr>
+<tr><td>D5</td><td>External research at every level</td></tr>
+<tr><td>D6</td><td>Directions are executable with regression tests</td></tr>
+<tr><td>D7</td><td>Expand then contract — growth → simplification cycles</td></tr>
+<tr><td>D8</td><td>Output-driven metrics everywhere</td></tr>
+<tr><td>D9</td><td>Recursive estimation engine (estimate-before · measure-after · feedback-compress)</td></tr>
+<tr><td>D11</td><td>Fix the process, not just the instance</td></tr>
+<tr><td>D13</td><td>Cascade downstream immediately</td></tr>
+<tr><td>D14</td><td>Don't stop — default to continued execution</td></tr>
+<tr><td>D15</td><td>70/20/10 products first</td></tr>
+<tr><td>D17</td><td>Don't miss parallel statements — capture multi-statement turns completely</td></tr>
+<tr><td>D21</td><td>Speed of building is a factor</td></tr>
+<tr><td>D24</td><td>Parallelization while evolving</td></tr>
+<tr><td>D26</td><td>Gear = decomposition granularity</td></tr>
+<tr><td>D27</td><td>Sutra→company deploys run at Depth 5</td></tr>
+<tr><td>D28</td><td>Per-turn routing and depth enforcement</td></tr>
+<tr><td>D29</td><td>Sutra plugin is Sutra; Asawa hidden in marketplace</td></tr>
+<tr><td>D30a/b</td><td>Ship is not done — operationalize every build; policy ships with mechanism</td></tr>
+<tr><td>D33</td><td>External clients firewalled from Asawa</td></tr>
+</table>
+
+<h4>§10.7.B Native + Fleet Directives (D38-D55)</h4>
+<table>
+<tr><th>D#</th><th>Directive</th></tr>
+<tr><td>D38</td><td>Plugin-first implementation — canonical = distributed + activation-wired + L0</td></tr>
+<tr><td>D39</td><td>Native v1.0 build-vs-buy advisories deferred to v2</td></tr>
+<tr><td>D40</td><td>Governance parity by default — fleet inherits Asawa governance behavior</td></tr>
+<tr><td>D41</td><td>Native Phase 3 cohort pivot — validate on new external clients first</td></tr>
+<tr><td>D42</td><td>Visibility before influence — H↔Sutra v1.0 instruments before optimizing</td></tr>
+<tr><td>D43</td><td>Capability Surface Split — client-shippable / Asawa-only / Sutra-internal lifecycle</td></tr>
+<tr><td>D44</td><td>Native workflow personalization for T4 (client-stated · observed · co-created)</td></tr>
+<tr><td>D45</td><td>Native organic emergence for T0/T2</td></tr>
+<tr><td>D46</td><td>OUT-DIRECT 3-check — Sutra self-executes by default</td></tr>
+<tr><td>D47</td><td>PERMISSIONS extension — auto-approve under low-risk rules</td></tr>
+<tr><td>D48</td><td>BLUEPRINT extension — pre-declare output + runnable verify + bounded fix loop</td></tr>
+<tr><td>D49</td><td>Native standalone H-Sutra — fresh client operational without core Sutra dependency</td></tr>
+<tr><td>D50</td><td>Identity-on-wire — opt-in 4-field allowlist</td></tr>
+<tr><td>D51</td><td>Caveman mode default — compressed founder-facing prose</td></tr>
+<tr><td>D52</td><td>Autonomous git push — destructive ops still gated</td></tr>
+<tr><td>D53</td><td>Context7 default for library/SDK questions</td></tr>
+<tr><td>D54</td><td>Native canon-only writes — single canon triad</td></tr>
+<tr><td>D55</td><td>Structure-First default + Restructure-on-Add (4 steps per add)</td></tr>
+</table>
+<p><strong>Full list</strong>: <code>holding/FOUNDER-DIRECTIONS.md</code> (append-only D1-D55+ with audit trail for retired/superseded entries).</p>
+
+<h3 id="section-10-8-cross-cutting-threads">§10.8 Cross-cutting threads</h3>
+<p><em>Citations added 2026-05-13 per R12 DeepSeek P2 — each thread now traces to its source documents.</em></p>
+<ul>
+  <li><strong>Fractal-shape across scales</strong> — Unit structure repeats at holding → portfolio → project → task level; governance envelope nests identically at every depth. <em>Sources: <code>holding/research/2026-04-22-unit-foundation-AE-grid.md</code> · <code>holding/research/2026-04-24-core-unit-science-synthesis.md</code> · ADR-016 replica-as-isolated-user-kit.</em></li>
+  <li><strong>Input-driven, not output-driven</strong> — Cynefin gate · Architecture-as-Discipline · codification ladder demand situation analysis before pattern selection. <em>Sources: <code>holding/research/2026-04-29-architecture-method.md</code> · <code>holding/research/2026-04-24-core-unit-science-synthesis.md</code> (Cynefin gate).</em></li>
+  <li><strong>Codify → enforce → promote</strong> — founder meta-pattern (notice → extract → mandatory → instrument → propagate) appears in every sub-section from primitives to permissions. <em>Sources: <code>holding/research/2026-04-22-unit-foundation-AE-grid.md</code> · D6 · D55.</em></li>
+  <li><strong>Plugin-first default</strong> — every capability, including Native itself, starts at L0 before earning L1 or L2 (PROTO-021 + D38). <em>Sources: <code>holding/research/2026-04-23-build-layer-protocol-design.md</code> · D38.</em></li>
+  <li><strong>Questions before patterns</strong> — 6-discipline method + 12 forced questions reject solutionism; every finding starts with a Problem Statement (PS-1 through PS-22). <em>Sources: <code>holding/research/2026-04-29-architecture-method.md</code> · <code>holding/research/_archive/native-v1.x/.../2026-04-29-native-v1.0-final-architecture.md</code>.</em></li>
+  <li><strong>Provenance over authority</strong> — ADRs · codex rounds · founder directions all carry explicit provenance; decisions never opaque. <em>Sources: ADR-007 decision-provenance-schema · ADR-009 approval-gate-primitive · <code>holding/FOUNDER-DIRECTIONS.md</code> (append-only audit trail).</em></li>
+  <li><strong>≤1700 LoC discipline</strong> — net-new glue constraint as forcing function for simplicity; threads through stack · skills · connector decisions. <em>Source: <code>holding/research/_archive/native-v1.x/.../2026-04-29-native-v1.0-final-architecture.md</code> (budget constraint section).</em></li>
+</ul>
+
+<h3 id="section-10-9-top-10">§10.9 Top 10 load-bearing findings (converged ranking)</h3>
+<table>
+<tr><th>Rank</th><th>Finding</th><th>Why load-bearing</th></tr>
+<tr><td>1</td><td>Native V2 Four-Primitives + Unit Theory</td><td>Atomic building block of Sutra OS. Codex Lane B #1 + DeepSeek Lane B #1 (Core Unit Framework). Without the Unit model, nothing composes.</td></tr>
+<tr><td>2</td><td>Architecture-as-Discipline Method (6 disciplines)</td><td>Reusable rubric for every future Sutra system design. Codex #2 + DeepSeek #3. Without it, every project reinvents its own process.</td></tr>
+<tr><td>3</td><td>15 Operating Principles (45+ org-design sources distilled)</td><td>Axioms beneath the programmable-holding-co concept. DeepSeek #2. Defines the 3 functions Asawa owns + principles-as-code stance.</td></tr>
+<tr><td>4</td><td>Native v1.0 Final Architecture (8 PS · 12 forced questions · ≤1700 LoC budget)</td><td>The implementation target. Without it, Native is a whiteboard concept. DeepSeek #4.</td></tr>
+<tr><td>5</td><td>20 Ratified ADRs (ADR-001..020)</td><td>The decision system. Codex Top 3 includes ADR-004/007/006; DeepSeek #6. Decisions decay without provenance.</td></tr>
+<tr><td>6</td><td>ADR-004 Registry-and-Effector Split</td><td>Load-bearing runtime fact of Native today. Codex #3. Reader will misunderstand execution if PRD misses this.</td></tr>
+<tr><td>7</td><td>ADR-007 Decision-Provenance Schema</td><td>What makes Native constitutional, not just automated. Typed/replayable/contestable. Codex #4.</td></tr>
+<tr><td>8</td><td>ADR-006 Tenant Isolation via Domain.tenant_id</td><td>Multi-company legitimacy depends on this. Codex #5. Without it, D33 is social policy not runtime truth.</td></tr>
+<tr><td>9</td><td>8-Layer OSS Spine + Inngest L4 Backbone</td><td>Runtime substrate. DeepSeek #5. Wrong choice → rebuild on different queue/durability primitive.</td></tr>
+<tr><td>10</td><td>D38 Plugin-First Implementation + Build-Layer Protocol PROTO-021</td><td>Anti-phantom-feature rule. Codex #7 + DeepSeek #7. Closes gap between research, dogfood, what users receive.</td></tr>
+</table>
+<p class="callout"><strong>Convergence note</strong>: ranking blends Codex Lane B (source-organized) + DeepSeek Lane B (concept-organized) verdict files at <code>.enforcement/codex-reviews/2026-05-13-research-scrape.md</code> + <code>.enforcement/deepseek-reviews/2026-05-13-research-scrape.md</code>. Cross-cutting threads (§10.8) appear in 5+ discrete source documents each. <strong>Confidence buckets (corrected 2026-05-13 per R12 DeepSeek P2)</strong>: ranks 1-4 = HIGH (direct codex+deepseek convergence); rank 5 (ADRs as a set) = HIGH; ranks 6-10 = MODERATE (single-lane primary citation with cross-lane corroboration, NOT full convergence). <strong>§10.10 row 2 cadence-drift</strong> is codex-only (DeepSeek did not flag) — HIGH-confidence evidence base, but NOT a converged finding; should not be read as "ranks 1-3 converged".</p>
+
+<h3 id="section-10-10-impl-vs-docs-audit">§10.10 Implementation-vs-Documentation Audit (2026-05-13)</h3>
+<p><strong>Rationale</strong>: Founder ask 2026-05-13 — "make a list of all the things which we have implemented...check whether the document contains those or not." Codex Lane A + DeepSeek Lane A ran independently against the same brief. Each enumerated ~72-250 features across hooks · scripts · skills · commands · ADRs · primitives · blocks · events · surfaces · hardstops · charters · plugins, then bucketed: (A) implemented but not in PRD · (B) in PRD not implemented · (C) both but skew · (D) recommendations. Total findings: Codex 12+10+8+8 = 38 rows · DeepSeek 8+6+4+8 = 26 rows. Convergent gaps drive the highest-impact follow-up. Full verdict files: <code>.enforcement/codex-reviews/2026-05-13-impl-vs-docs-audit.md</code> + <code>.enforcement/deepseek-reviews/2026-05-13-impl-vs-docs-audit.md</code>.</p>
+<table>
+<tr><th>#</th><th>Convergent gap</th><th>Codex finding</th><th>DeepSeek finding</th><th>Action</th></tr>
+<tr><td>1</td><td><strong>Hardstops HS-4..HS-8 canonized without live mechanisms</strong></td><td>(B) HS-5/6/7/8 doc-only — no rollback executor, no per-turn hook aggregator, no queue store, no canary evaluator</td><td>(B) HS-4 + HS-7 no tripper — no fsync-fail detector, no stale-queue monitor</td><td>P0 — either ship missing detectors/executors OR downgrade HS canon entries to "doctrine, mechanism pending"</td></tr>
+<tr><td>2</td><td><strong>Cadence model drift (ADR-017 ↔ shipped code)</strong></td><td>(C) #1 — docs say daemon setInterval, code says host-driven tick() — explicit no-background-timer at v1.0</td><td>—</td><td>P0 — pick one truth; either ADR-017 amendment or PRD §4.0 + trigger.md rewrite</td></tr>
+<tr><td>3</td><td><strong>B16 / B17 / B18 documented as v1-shipped but not implemented</strong></td><td>(B) #1-3 — A2A envelope/logger absent, no connector_id step, no Person primitive schema</td><td>(B) #2 — full connector inventory (Webflow/Asana/Notion/etc.) missing</td><td>P1 — downgrade canon blocks to "deferred" OR ship minimal stubs with tests</td></tr>
+<tr><td>4</td><td><strong>PRD §4.11 missing plugin skill inventory</strong></td><td>(A) #12 — anti-glaze-tone, architect, incremental-architect, test-strategy + more not enumerated</td><td>(A) #7 — 5 skills (anti-glaze-tone, caveman, deepseek, founder-360-review, sutra-learn) absent from §4.11</td><td>P2 — extend §4.11.A registry with new <code>&lt;details&gt;</code> family "Plugin skills" enumerating shipped skill inventory</td></tr>
+<tr><td>5</td><td><strong>HOW Methodology (§3) has zero runtime enforcement</strong></td><td>(implicit — codex Top 3 doesn't address directly)</td><td>(B) #1 — 6-dimension methodology exists only as prose; no PreToolUse hook or skill forces adherence</td><td>P0 — ship how-methodology-*.sh PreToolUse hook OR re-scope §3 from "engine" to "doctrine"</td></tr>
+<tr><td>6</td><td><strong>Native runtime path drift</strong></td><td>(C) #3 — PRD points to <code>sutra/marketplace/plugin/bin/sutra-native</code>; shipped runtime lives in <code>sutra/marketplace/native/</code></td><td>—</td><td>P1 — PRD §4.0 path correction (S effort)</td></tr>
+<tr><td>7</td><td><strong>Multiple shipped hooks undocumented</strong></td><td>(A) #5/6/7/8 — external-client-firewall, dispatcher-pretool, native-connectedness-audit, claude coverage harness</td><td>(A) #1-6 — god-mode, keys-in-env-vars, narration-not-artifact, time-allocation-tracker, posttool-mcp-compress, bash-summary-pretool</td><td>P2 — add "Governance machinery" sub-section to §4.11.A registry OR fold into §1.5 tech-parts overlay</td></tr>
+<tr><td>8</td><td><strong>Module-deployment + Daily Pulse promise vs holding-script reality</strong></td><td>(B) #8-9 — Daily Pulse exists as holding scripts not Native module; no module manifest/deployer in Native code</td><td>(C) #1 — CSM is static lint not dynamic surface as PRD §4.8 promises</td><td>P1 — either build Native module runtime OR re-classify Daily Pulse + CSM as "Asawa-holding instrumentation" not "Native module"</td></tr>
+</table>
+<p class="callout"><strong>Total convergent surface</strong>: 8 high-priority gaps (3 P0 · 3 P1 · 2 P2). Non-convergent findings (codex-only or deepseek-only) live in their respective verdict files — read both for full surface. Confidence: ranks 1-3 are HIGH (both lanes converged); ranks 4-8 are MODERATE (single-lane primary with cross-lane corroboration). Per D14 "don't stop" — these become the next wave's input, not a stopping point.</p>
+</section>
+
+<p class="meta-strip" style="margin-top:60px;border-top:1px solid #e4e7eb;border-bottom:none;padding-top:14px;">
+  Authored 2026-05-12. <strong>Project Native — Design Document v1</strong> · canonical · evolution-friendly · zero dependencies. <strong>4-level product hierarchy</strong> (§1.4): Platform (Native) → Product (CoS) → Module (Daily Pulse · Feedback Engine · ...) → Deployment (per-operator/Charter). 5-section system: <strong>§3 HOW Methodology</strong> (Native's epistemic core) + <strong>§4 Native Platform</strong> (workforce-deployment substrate · §4.5 test-before-conclude · §4.7 workforce outputs as deliverables · §4.8 CSM · §4.9 Module deployment 3-artifact contract) + <strong>§2 Chief of Staff</strong> (first product · PRD · 5 pillars + 24 needs + 3 Customer Skill Modes + §2.E 5-state User Journey) + <strong>§5 Connector</strong> (transport) + <strong>§6 Distribution</strong> (go-to-market · §6.0 T1-T4 taxonomy · §6.5 Transformation Cycle · §6.6 Feedback Engine Module · §6.7 Module distribution+lifecycle) · §7 Observability cross-cutting (§7.1.A Accuracy KPI · §7.5 Daily Pulse Module). 4 customer types · zero-terminal constraint · 4 stage actors. 8 cross-cutting overlays (D.6-D.13). R6 audit: 5 core promotions landed. R7 hierarchy: 3 sections landed. Phase 2 design detail forthcoming at <code>design-v2-deep-doc.html</code>. Tech-parts (domain models · hooks · agentic-systems-connection) queued for next session via R8 consult. Single source of truth for the entire Project Native system v1.
+</p>
+
+</main>
+</div>
+
+</body>
+
+<footer class="spoke-footer">
+← <a href="../product-prd-native-v1.html">Back to PRD Hub</a> · 
+Engineering deep-dive: <a href="../tech-design/index.html">Tech Design Hub</a> · 
+This spoke is a readability view; PRD hub is authoritative.
+</footer>
+
+</body>
+</html>
