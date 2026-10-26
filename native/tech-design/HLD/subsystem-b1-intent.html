@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>S1 — Intent (B1) — 4-Viewpoint HLD — Native Tech Design</title><link rel="stylesheet" href="../shared.css"></head>
+<body>
+<nav class="topnav"><a href="../index.html">← Tech Design Hub</a> · <a href="../../product-prd-native-v1.html">PRD</a> · Layer: <strong>HLD</strong> · Doc: <strong>S1 — Intent (B1) · 4 viewpoints</strong></nav>
+<header><h1>S1 — Intent (B1)</h1><p class="subtitle">Per-subsystem High-Level Design, shown from four viewpoints — <strong>User · System · AI · Everything</strong>. This is the PATTERN SAMPLE for the subsystem-HLD matrix; every other subsystem (S2–S6) follows this exact 5-block shape.</p></header>
+
+<div class="scaffold-banner"><span class="fill-me">PATTERN SAMPLE</span> — landed 2026-05-27 to validate the 4-viewpoint shape before the other 6 subsystems are generated. Diagrams are ASCII block diagrams (house convention). Canon authority below.</div>
+
+<section><h2>Why 4 viewpoints</h2><p class="callout">One block, four lenses. <strong>User</strong> = what the operator types/sees. <strong>System</strong> = runtime mechanics (capture → classify → gate → log → route). <strong>AI</strong> = the agentic layer (LLM reasoning, HOW-dimension, eval gate, no-fabricate). <strong>Everything</strong> = the integrated view + how this block connects to the rest of Native. Read top-to-bottom; the 4th view stitches the first 3 together.</p></section>
+
+<!-- ============ VIEWPOINT 0: SYSTEM CONNECT-MAP (context) ============ -->
+<section><h2>Where B1 sits — System Connect-Map</h2>
+<p>B1 is the front door. Every operator turn enters here, then fans out across the subsystems. (This whole-system map is HLD/00 — repeated here for context.)</p>
+<pre>
+  OPERATOR  (types raw words, no command, no syntax)
+     |
+     v
+ +--------------------------------------------------------------+
+ |                  NATIVE PLATFORM  (daemon)                   |
+ |     runtime substrate: registry . audit . state envelope     |
+ +--------------------------------------------------------------+
+     |          |           |            |             |
+     v          v           v            v             v
+ +-------+  +--------+  +---------+  +-----------+  +------------+
+ |  B1   |->|  B2    |->|  B3     |->|  B4       |  |  B5        |
+ |Intent |  |Context |  |Action   |  |Connector  |  |Governance  |
+ |(here) |  |Retrieve|  |Engine   |  |/ Comms    |  |Substrate   |
+ +-------+  +--------+  +---------+  +-----------+  +------------+
+     |          |           |            |             |
+     +----------+-----------+------------+-------------+
+                            |
+              +------------------+        +-----------------+
+              | HOW Methodology  |        | Observability   |
+              | (epistemic core) |        | (audit+metrics) |
+              +------------------+        +-----------------+
+                            |
+                            v
+                   +-----------------+
+                   |  Distribution   |
+                   |  (T1 -> T4)      |
+                   +-----------------+
+</pre></section>
+
+<!-- ============ VIEWPOINT 1: USER ============ -->
+<section><h2>Viewpoint 1 — User</h2>
+<p>What the operator experiences. No syntax, no slash command. If B1 is unsure, it asks <em>one</em> question — it never guesses wrong silently.</p>
+<pre>
+ operator:  "remind me to check the deploy at 5pm"
+     |
+     v
+ [ plain words in -- no command, no schema, no form ]
+     |
+     v
+ Native:    "Got it -- TASK, routing to your Action engine.
+             Confidence 0.81. Also ping you on Slack at 5pm? (y/n)"
+     |
+     v
+ [ if unclear (conf < 0.6) -> ONE clarifying question ]
+ [ never fabricates an intent the operator did not mean ]
+</pre></section>
+
+<!-- ============ VIEWPOINT 2: SYSTEM ============ -->
+<section><h2>Viewpoint 2 — System</h2>
+<p>Runtime mechanics. Capture is append-only and fsync'd; classification gates on confidence; every turn emits one audit row.</p>
+<pre>
+ raw_text --> [Intake Capture] --> .tmp/native-utterance.txt
+                    |
+                    v
+              [Classifier]  (single LLM call)
+                    |
+                    v
+       { intent, confidence, routed_to, clarify }
+                    |
+                    +--> intake_log.jsonl   (fsync, append-only, ADR-013)
+                    |
+            conf >= 0.6 ? --no--> [Clarify loop] --back to operator
+                    | yes
+                    v
+       EngineEvent: intake.classified --> routed_to subsystem (B2/B3...)
+</pre>
+<p><strong>Contract</strong> (frozen before code): <code>in:{raw_text,operator_id,ts}</code> → <code>out:{intent,confidence,routed_to,clarify}</code>. Invariant: never mutates other subsystem state.</p></section>
+
+<!-- ============ VIEWPOINT 3: AI ============ -->
+<section><h2>Viewpoint 3 — AI</h2>
+<p>The agentic layer. Classification is one LLM call shaped by the HOW dimensions; the eval gate — not unit tests — is the acceptance bar for an agentic block.</p>
+<pre>
+ prompt = system(role + HOW dims) + utterance + trusted-names
+     |
+     v
+ [ LLM classify ] -> intent_type in {ask,task,direction,feedback}
+     |               + sub-intents + confidence
+     v
+ HOW dimension selected:  "decompose" vs "direct" vs "consult"
+     |
+     v
+ EVAL GATE: golden set (50 utterances) >= 90% correct-route
+     |        <-- this is the agentic acceptance bar, not unit tests
+     v
+ low-conf -> clarify   [test-before-conclude: never assert a guess]
+</pre></section>
+
+<!-- ============ VIEWPOINT 4: EVERYTHING ============ -->
+<section><h2>Viewpoint 4 — Everything</h2>
+<p>The three lenses stitched together, plus every connection B1 has to the rest of Native.</p>
+<pre>
+ +------------------------ B1 INTENT (integrated) ---------------------+
+ | USER:    plain words in        ->  confirm / 1 clarify out          |
+ | SYSTEM:  capture -> classify -> conf gate -> log -> route           |
+ | AI:      LLM intent + HOW-dim  -> eval gate -> no-fabricate         |
+ +--------------------------------------------------------------------+
+        |              |               |                |
+        v              v               v                v
+   runs inside     routes to        gated by        every turn
+   NATIVE          B2 Context /      B5 Governance   logged to
+   PLATFORM        B3 Action         (authority +    OBSERVABILITY
+   (daemon)        by intent_type    hardstops)      (audit + metric)
+</pre>
+<p class="callout"><strong>Connects to:</strong> Platform (executes inside the daemon) · B2/B3 (routes by intent_type) · B5 (governance gate before any action fires) · Observability (emits <code>intake.classified</code> + latency metric).</p></section>
+
+<div class="canon-pointer"><strong>Canon authority</strong> (source of truth — if this doc disagrees, canon wins):<ul>
+<li><a href="../../../../../sutra/os/engines/NATIVE-ENGINE.md"><code>sutra/os/engines/NATIVE-ENGINE.md</code></a></li>
+<li><a href="../../product-prd-native-v1.html#pillar-b1">PRD §2.B B1 — "Let me ask in my own words"</a></li>
+<li><a href="../../../../../sutra/os/decisions/ADR-012-pnc-typed-parser-over-prose.md">ADR-012 — typed parser over prose</a></li>
+<li><a href="../../../../../sutra/os/decisions/ADR-013-telemetry-sink-fsync-jsonl.md">ADR-013 — fsync JSONL telemetry sink</a></li>
+</ul></div>
+
+<section><h2>How the other 6 subsystems reuse this shape</h2><div class="section-list"><ol>
+<li>System Connect-Map (HLD/00) — same map above, all 4 viewpoints at system scope</li>
+<li>S2 Context Retrieval (B2) — user / system / AI / everything</li>
+<li>S3 Action Engine (B3) — user / system / AI / everything</li>
+<li>S4 Connector / Comms (B4) — user / system / AI / everything</li>
+<li>S5 Governance Substrate (B5) — user / system / AI / everything</li>
+<li>S6 Native Platform (runtime) — user / system / AI / everything</li>
+</ol></div><p><span class="fill-me">Next</span> — once this shape is approved, the remaining 6 subsystem docs are generated to match, and §11.1 nav in the master index is wired to all of them.</p></section>
+
+<footer>Pattern sample landed 2026-05-27 per founder direction. Target audience: engineering team + founder design review. <a href="../index.html">↑ back to Tech Design Hub</a>.</footer>
+</body></html>

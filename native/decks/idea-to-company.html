@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>From one line to a working company</title>
+<style>
+@page{size:13.333in 7.5in;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff}
+body{font:17px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111827}
+.slide{width:13.333in;height:7.5in;padding:0.55in 0.7in 0.5in 0.7in;position:relative;overflow:hidden;page-break-after:always;background:#fff}
+.slide:last-child{page-break-after:auto}
+.slide.dark{background:#0f172a;color:#fff}
+.num{position:absolute;right:0.7in;bottom:0.32in;font-size:12px;color:#9ca3af}
+.note{position:absolute;left:0.7in;bottom:0.32in;font-size:12.5px;color:#6b7280;max-width:10.8in}
+.dark .note,.dark .num{color:#94a3b8}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6b7280;margin:0 0 6px}
+.dark .eyebrow{color:#93c5fd}
+h1{font-size:46px;line-height:1.1;margin:0 0 14px;letter-spacing:-.01em}
+h2{font-size:32px;line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
+.sub{font-size:19px;color:#4b5563;margin:0 0 18px;max-width:10.6in}
+.dark .sub{color:#cbd5e1}
+.part{position:absolute;top:0.42in;right:0.7in;display:flex;gap:6px}
+.part span{font-size:11px;font-weight:800;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:#f3f4f6;color:#b0b6bf}
+.part span.lit{background:#111827;color:#fff}
+.part span.done{color:#374151;background:#e5e7eb}
+mark{background:#fde047;color:#111827;padding:0 4px;border-radius:3px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.card{border:1.5px solid #e5e7eb;border-radius:12px;padding:16px 18px}
+.card b{display:block;font-size:13px;letter-spacing:.1em;margin-bottom:6px}
+.card .q{font-size:22px;font-weight:700;line-height:1.2;margin-bottom:8px}
+.card p{margin:0;font-size:14px;color:#4b5563}
+.two{display:flex;gap:0.5in;align-items:flex-start}
+.two>div{flex:1}
+.callout{border:2px solid #111827;border-radius:12px;padding:14px 18px;margin:0 0 12px;font-size:15px}
+.callout b{display:block;font-size:12px;letter-spacing:.1em;margin-bottom:4px}
+.assume{border-left:6px solid #f59e0b;background:#fffbeb;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin-top:10px}
+.assume b{display:inline-block;width:22px;height:22px;border-radius:50%;background:#f59e0b;color:#fff;text-align:center;line-height:22px;font-size:12px;margin-right:8px}
+table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
+table.t th{background:#f3f4f6;text-align:left;padding:8px 10px;font-size:12.5px;letter-spacing:.04em}
+table.t td{padding:9px 10px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+table.t tr.pick td{background:#fef9c3;font-weight:700}
+.bar{display:inline-block;height:10px;border-radius:5px;background:#111827;vertical-align:middle}
+ol.moves{margin:0;padding-left:0;list-style:none;counter-reset:m}
+ol.moves li{counter-increment:m;display:flex;gap:12px;margin:0 0 9px;font-size:15px;line-height:1.35}
+ol.moves li::before{content:counter(m);flex:0 0 30px;height:30px;border-radius:50%;background:#111827;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+ol.moves li b{display:block}
+ol.moves li.r::before{background:#f59e0b}
+table.grid{border-collapse:separate;border-spacing:4px;width:100%;table-layout:fixed}
+table.grid th{font-size:12px;text-align:left;padding:4px 8px;color:#374151;font-weight:700}
+table.grid th.row{width:1.45in;vertical-align:top;padding-top:6px}
+table.grid th.row small{display:block;font-weight:400;color:#6b7280;font-size:11px}
+table.grid th.col{background:#f3f4f6;border-radius:6px;padding:5px 8px}
+table.grid th.col small{display:block;font-weight:700;font-size:11px;color:#0e7490}
+table.grid td{vertical-align:top;padding:4px 7px;border-radius:8px;border:1.5px solid #e5e7eb;background:#fff;font-size:10.5px;height:0.56in;line-height:1.25}
+table.grid td.empty{background:#fafafa;border-style:dashed;color:#c4c8cf;font-size:10.5px;text-align:center;vertical-align:middle}
+.sg{font-weight:700;display:block;line-height:1.25;margin-bottom:2px}
+.ck{display:block;font-size:9.5px;color:#6b7280;line-height:1.3}
+.tag{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:4px;margin:3px 4px 0 0;color:#fff;line-height:1.3}
+.o-cust{background:#f59e0b}.o-off{background:#2563eb}.o-sys{background:#64748b}.o-desk{background:#7c3aed}.o-fin{background:#059669}
+.auto{background:#15803d}.ask{background:#b45309}.deny{background:#b91c1c}
+.spend{display:block;font-size:10.5px;color:#6d28d9;font-weight:800;margin-top:3px}
+.fam{font-weight:800}
+.f-shape{color:#c2410c}.f-time{color:#0e7490}.f-edge{color:#1d4ed8}.f-govern{color:#b91c1c}.f-resource{color:#6d28d9}.f-grow{color:#15803d}
+.built{display:inline-block;font-size:10px;font-weight:800;padding:1px 7px;border-radius:4px;color:#fff;background:#15803d;vertical-align:1px}
+.partly{background:#b45309}.designed{background:#6b7280}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+</style></head><body>
+
+<!-- 1 TITLE -->
+<div class="slide dark">
+  <div style="position:absolute;left:0.7in;top:1.9in;max-width:7in">
+    <p class="eyebrow">Native: from research to the work atom</p>
+    <h1 style="font-size:58px">From one line<br>to a working company</h1>
+    <p class="sub" style="font-size:21px;max-width:6.6in">Where to look, which goal, how to cut it, how it runs, and how it gets cheaper. One small lending company, top to bottom and back up.</p>
+  </div>
+  <svg style="position:absolute;right:0.6in;top:0.9in" width="470" height="520" viewBox="0 0 470 520">
+    <g font-size="13" font-weight="800" fill="#fff">
+      <rect x="60" y="20" width="350" height="54" rx="10" fill="#f59e0b"/><text x="235" y="52" text-anchor="middle">RESEARCH: who, what must move, which first</text>
+      <rect x="90" y="100" width="290" height="46" rx="9" fill="#1e293b" stroke="#64748b"/><text x="235" y="129" text-anchor="middle">organisation</text>
+      <rect x="110" y="166" width="250" height="46" rx="9" fill="#1e293b" stroke="#64748b"/><text x="235" y="195" text-anchor="middle">department</text>
+      <rect x="130" y="232" width="210" height="46" rx="9" fill="#1e293b" stroke="#64748b"/><text x="235" y="261" text-anchor="middle">engine</text>
+      <rect x="150" y="298" width="170" height="46" rx="9" fill="#1e293b" stroke="#64748b"/><text x="235" y="327" text-anchor="middle">workflow</text>
+      <rect x="170" y="364" width="130" height="46" rx="9" fill="#fff"/><text x="235" y="393" text-anchor="middle" fill="#0f172a">work atom</text>
+    </g>
+    <g stroke="#94a3b8" stroke-width="2" fill="none"><path d="M235 74 L235 100"/><path d="M235 146 L235 166"/><path d="M235 212 L235 232"/><path d="M235 278 L235 298"/><path d="M235 344 L235 364"/></g>
+    <path d="M30 400 L30 110" stroke="#c2410c" stroke-width="3" fill="none"/><text x="18" y="255" fill="#fb923c" font-size="11" font-weight="800" transform="rotate(-90 18 255)">THE CUT, DOWN</text>
+    <path d="M440 110 L440 400" stroke="#15803d" stroke-width="3" fill="none"/><text x="455" y="255" fill="#4ade80" font-size="11" font-weight="800" transform="rotate(90 455 255)">GROW, BACK UP</text>
+    <text x="235" y="450" text-anchor="middle" fill="#cbd5e1" font-size="12">at every rung, the same six questions: the compass</text>
+    <text x="235" y="472" text-anchor="middle" fill="#cbd5e1" font-size="12">SHAPE . TIME . EDGE . GOVERN . RESOURCE . GROW</text>
+  </svg>
+  <div class="note">Draft for the founder's read, 2026-10-12. Figures in the research part are examples, marked as such.</div>
+  <div class="num">1</div>
+</div>
+
+<!-- 2 THE LADDER -->
+<div class="slide">
+  <div class="part"><span class="lit">THE MAP</span><span>RESEARCH</span><span>THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow">The map of this deck</p>
+  <h2>One ladder, walked down and then back up</h2>
+  <p class="sub">Research sits above the ladder and decides where the first cut points. The cut goes down, rung by rung, to the smallest piece of work. The record climbs back up and changes the cut.</p>
+  <svg width="1130" height="330" viewBox="0 0 1130 330" style="margin-top:4px">
+    <g font-size="13.5" font-weight="700">
+      <rect x="10" y="40" width="200" height="70" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5"/><text x="110" y="68" text-anchor="middle" fill="#b45309">RESEARCH</text><text x="110" y="90" text-anchor="middle" fill="#6b7280" font-weight="400" font-size="12">who . what must move . which first</text>
+      <rect x="240" y="40" width="160" height="70" rx="12" fill="#fff" stroke="#111827" stroke-width="2"/><text x="320" y="68" text-anchor="middle">organisation</text><text x="320" y="90" text-anchor="middle" fill="#6b7280" font-weight="400" font-size="12">one line, one number</text>
+      <rect x="430" y="40" width="160" height="70" rx="12" fill="#fff" stroke="#111827" stroke-width="2"/><text x="510" y="68" text-anchor="middle">department</text><text x="510" y="90" text-anchor="middle" fill="#6b7280" font-weight="400" font-size="12">one goal, five functions</text>
+      <rect x="620" y="40" width="160" height="70" rx="12" fill="#fff" stroke="#111827" stroke-width="2"/><text x="700" y="68" text-anchor="middle">engine</text><text x="700" y="90" text-anchor="middle" fill="#6b7280" font-weight="400" font-size="12">does one kind of work</text>
+      <rect x="810" y="40" width="160" height="70" rx="12" fill="#fff" stroke="#111827" stroke-width="2"/><text x="890" y="68" text-anchor="middle">workflow</text><text x="890" y="90" text-anchor="middle" fill="#6b7280" font-weight="400" font-size="12">the grid of subgoals</text>
+      <rect x="1000" y="40" width="120" height="70" rx="12" fill="#111827"/><text x="1060" y="68" text-anchor="middle" fill="#fff">work atom</text><text x="1060" y="90" text-anchor="middle" fill="#cbd5e1" font-weight="400" font-size="12">one goal, one check</text>
+    </g>
+    <g stroke="#c2410c" stroke-width="3" fill="none"><path d="M210 75 L240 75"/><path d="M400 75 L430 75"/><path d="M590 75 L620 75"/><path d="M780 75 L810 75"/><path d="M970 75 L1000 75"/></g>
+    <text x="640" y="135" text-anchor="middle" fill="#c2410c" font-size="12.5" font-weight="800">THE CUT: the same move at every rung, a goal cut into pieces, each with its own check</text>
+    <path d="M1060 150 L1060 190 L320 190 L320 150" stroke="#15803d" stroke-width="3" fill="none"/>
+    <text x="690" y="210" text-anchor="middle" fill="#15803d" font-size="12.5" font-weight="800">GROW: what the record of runs teaches climbs back up, as a frozen step, a rule, a changed goal, or a re-opened research question</text>
+    <g font-size="12" fill="#374151">
+      <rect x="240" y="240" width="880" height="70" rx="10" fill="#f9fafb" stroke="#e5e7eb"/>
+      <text x="680" y="265" text-anchor="middle" font-weight="800">AT EVERY RUNG, THE SAME SIX QUESTIONS</text>
+      <text x="680" y="290" text-anchor="middle"><tspan fill="#c2410c" font-weight="800">SHAPE</tspan> what pieces  .  <tspan fill="#0e7490" font-weight="800">TIME</tspan> when  .  <tspan fill="#1d4ed8" font-weight="800">EDGE</tspan> who hands to whom  .  <tspan fill="#b91c1c" font-weight="800">GOVERN</tspan> may it go  .  <tspan fill="#6d28d9" font-weight="800">RESOURCE</tspan> what it spends  .  <tspan fill="#15803d" font-weight="800">GROW</tspan> what it learned</text>
+    </g>
+  </svg>
+  <div class="note">The first deck walked the last two rungs. This one starts above the ladder and comes all the way down, then up.</div>
+  <div class="num">2</div>
+</div>
+
+<!-- 3 RESEARCH: THREE QUESTIONS -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="lit">RESEARCH</span><span>THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#b45309">Part I, research</p>
+  <h2>Before you cut anything, answer three questions</h2>
+  <p class="sub">Research is not a report. It is three answers that decide where the first cut points. Without them the compass cuts the wrong goal, neatly.</p>
+  <div class="cards">
+    <div class="card" style="border-color:#f59e0b"><b style="color:#b45309">QUESTION A</b><div class="q">Who is it for?</div><p>One kind of person, their pain, what they do about it today, and what they would pay to make it go away.</p></div>
+    <div class="card" style="border-color:#f59e0b"><b style="color:#b45309">QUESTION B</b><div class="q">What must move?</div><p>The one number the company exists to move. It becomes the check on the company's goal, and every subgoal inherits it.</p></div>
+    <div class="card" style="border-color:#f59e0b"><b style="color:#b45309">QUESTION C</b><div class="q">Which first?</div><p>Of all the goals that would move the number, the one with the most impact and the firmest ground. That is where the first cut points.</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px;border-color:#f59e0b;background:#fffbeb"><b style="color:#b45309">THE RULE FOR RESEARCH</b>Every answer is a sentence with a number and a source beside it. A number without a source is an assumption, and assumptions get a letter so they can be checked later.</div>
+  <div class="note">In the compass these three live in SHAPE (the lens: where to cut) and in Priority (the impact axis: what must move). On the Native site, Market and people and Long-term direction are still to be written.</div>
+  <div class="num">3</div>
+</div>
+
+<!-- 4 WHO -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="lit">RESEARCH</span><span>THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#b45309">Question A</p>
+  <h2>Who is it for?</h2>
+  <p class="sub">One person, drawn sharply enough that you could recognise them in a queue. Example answer for a small lending company; the figures are examples, to be replaced by your findings.</p>
+  <div class="two">
+    <div>
+      <table class="t">
+        <tr><th>Ask</th><th>Example answer</th><th>Source</th></tr>
+        <tr><td>Who</td><td>Salaried people earning 25,000 to 60,000 a month, in cities of 1 to 5 million</td><td>example, A</td></tr>
+        <tr><td>Their pain</td><td>A sudden need of 1 to 3 lakh: a hospital bill, a school fee, a wedding</td><td>example, A</td></tr>
+        <tr><td>What they do today</td><td>Banks refuse under 5 lakh or take 2 weeks; they borrow from a relative or a lender at 3 to 5 percent a month</td><td>example, B</td></tr>
+        <tr><td>What they would pay</td><td>A fair rate for money in hand within 2 days and no humiliation</td><td>example, B</td></tr>
+        <tr><td>How many</td><td>Enough in one city to lend to 100 a month in year one</td><td>example, C</td></tr>
+      </table>
+    </div>
+    <div style="flex:0 0 4.2in">
+      <div class="assume"><b>A</b>The income band and city size are assumed; check against one month of applications.</div>
+      <div class="assume"><b>B</b>The informal rate and the 2-day wish come from conversations, not a survey; ask 30 people.</div>
+      <div class="assume"><b>C</b>The 100-a-month volume is a target, not a finding; the first 90 days will say.</div>
+      <div class="callout" style="margin-top:14px"><b>WHAT THIS DECIDES</b>The customer sets the first cut: "paid out in 2 days" is a phase deadline on every grid below, and "refused by banks" makes identity and income checks the heart of the work.</div>
+    </div>
+  </div>
+  <div class="num">4</div>
+</div>
+
+<!-- 5 WHAT MUST MOVE -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="lit">RESEARCH</span><span>THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#b45309">Question B</p>
+  <h2>What must move?</h2>
+  <p class="sub">One number the company exists to move, readable from its own record. It becomes the check on the company's goal, and every department, engine and subgoal below inherits a piece of it.</p>
+  <div class="two">
+    <div>
+      <div class="callout" style="border-width:3px"><b>THE COMPANY'S GOAL, WITH ITS CHECK</b><span style="font-size:24px;font-weight:700;line-height:1.25;display:block;margin:4px 0 8px">Give small loans to salaried people the banks turn away.</span><span style="font-size:17px">Done, every month, when: <mark>money in hand within 2 working days</mark> for 9 of 10 approved, and <mark>97 of 100 repay on time</mark>.</span></div>
+      <p style="font-size:14px;color:#4b5563;margin:0">Two numbers, because one alone can be gamed: pay out fast by lending to anyone, or repay well by lending to nobody. Together they describe the company.</p>
+    </div>
+    <div style="flex:0 0 4.6in">
+      <table class="t">
+        <tr><th>Candidate number</th><th>Readable from the record?</th><th>Keep?</th></tr>
+        <tr><td>loans paid out within 2 days</td><td>yes, every payout has a date</td><td>yes</td></tr>
+        <tr><td>on-time repayment</td><td>yes, every EMI has a date</td><td>yes</td></tr>
+        <tr><td>customer happiness</td><td>no, not without asking them</td><td>later</td></tr>
+        <tr><td>market share</td><td>no, needs outside data</td><td>no</td></tr>
+      </table>
+      <div class="assume" style="margin-top:12px"><b>D</b>The 97 of 100 is assumed for small salaried loans; replace with your own after 200 loans.</div>
+    </div>
+  </div>
+  <div class="note">In Native this is the impact axis: what the work must move, set before it runs and read back when it closes. Ruled 2026-09-25, not yet built.</div>
+  <div class="num">5</div>
+</div>
+
+<!-- 6 WHICH FIRST -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="lit">RESEARCH</span><span>THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#b45309">Question C</p>
+  <h2>Which first?</h2>
+  <p class="sub">List the goals that would move the number. Score each on impact (how much it moves) and ground (how well you know how). Pick the one with the most impact on the firmest ground. That is where the first cut points.</p>
+  <table class="t" style="font-size:15px">
+    <tr><th style="width:3.4in">Candidate goal</th><th>Moves the number by</th><th>Impact</th><th>Ground</th><th>Pick</th></tr>
+    <tr class="pick"><td>Give one customer a small loan, end to end, in 2 days</td><td>the whole number; nothing else counts until this works</td><td><span class="bar" style="width:140px"></span> high</td><td><span class="bar" style="width:120px"></span> known</td><td>FIRST</td></tr>
+    <tr><td>Collect this month's EMIs on time</td><td>the repayment half; needs loans to exist</td><td><span class="bar" style="width:120px"></span> high</td><td><span class="bar" style="width:110px"></span> known</td><td>second</td></tr>
+    <tr><td>Find 100 customers a month</td><td>volume, not the number itself</td><td><span class="bar" style="width:80px"></span> medium</td><td><span class="bar" style="width:50px"></span> unknown</td><td>later</td></tr>
+    <tr><td>Partner with an employer for salary-linked loans</td><td>repayment, maybe; a bet</td><td><span class="bar" style="width:90px"></span> medium</td><td><span class="bar" style="width:30px"></span> unknown</td><td>later</td></tr>
+    <tr><td>Build an app</td><td>nothing by itself</td><td><span class="bar" style="width:20px"></span> low</td><td><span class="bar" style="width:100px"></span> known</td><td>no</td></tr>
+  </table>
+  <div class="note">In Native this is Priority's job, ranking by impact. A goal without a number cannot be ranked; that is why question B comes before C.</div>
+  <div class="num">6</div>
+</div>
+
+<!-- 7 TRANSITION -->
+<div class="slide dark">
+  <div style="position:absolute;left:0.7in;top:2.6in;max-width:11in">
+    <p class="eyebrow">The hinge</p>
+    <h1 style="font-size:44px;line-height:1.2">Research decides <span style="color:#fbbf24">where the lens points</span>.<br>The compass decides <span style="color:#fb923c">how the work is cut</span>.</h1>
+    <p class="sub" style="margin-top:18px">From here on, the same move at every rung: take a goal with its check, ask one question, cut, give every piece its own check.</p>
+  </div>
+  <div class="num">7</div>
+</div>
+
+<!-- 8 COMPANY CUT -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="done">RESEARCH</span><span class="lit">THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#c2410c">Part II, the cut: rung 1, the organisation</p>
+  <h2>The company's goal, cut into departments</h2>
+  <p class="sub">First question, SHAPE: what pieces does the company's goal have? Follow the seams of the work. Each department gets one goal and one check, inherited from the company's number.</p>
+  <svg width="1130" height="300" viewBox="0 0 1130 300">
+    <rect x="365" y="4" width="400" height="58" rx="10" fill="#111827"/>
+    <text x="565" y="28" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Small loans to salaried people the banks turn away</text>
+    <text x="565" y="48" text-anchor="middle" fill="#cbd5e1" font-size="11.5">paid out in 2 days for 9 of 10 . 97 of 100 repay on time</text>
+    <g stroke="#c2410c" stroke-width="2.5" fill="none"><path d="M565 62 L565 92 L115 92 L115 120"/><path d="M565 92 L340 92 L340 120"/><path d="M565 92 L565 120"/><path d="M565 92 L790 92 L790 120"/><path d="M565 92 L1015 92 L1015 120"/></g>
+    <g font-size="13">
+      <rect x="10" y="120" width="210" height="160" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/><text x="115" y="148" text-anchor="middle" font-weight="700" font-size="15">Origination</text><text x="115" y="172" text-anchor="middle" fill="#374151">from an application to</text><text x="115" y="190" text-anchor="middle" fill="#374151">money in hand</text><text x="115" y="226" text-anchor="middle" fill="#b45309" font-size="11.5" font-weight="700">check: paid out in 2 days, 9 of 10</text>
+      <rect x="235" y="120" width="210" height="160" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/><text x="340" y="148" text-anchor="middle" font-weight="700" font-size="15">Collections</text><text x="340" y="172" text-anchor="middle" fill="#374151">every EMI, on time,</text><text x="340" y="190" text-anchor="middle" fill="#374151">without shouting</text><text x="340" y="226" text-anchor="middle" fill="#b45309" font-size="11.5" font-weight="700">check: 97 of 100 on time</text>
+      <rect x="460" y="120" width="210" height="160" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/><text x="565" y="148" text-anchor="middle" font-weight="700" font-size="15">Finance</text><text x="565" y="172" text-anchor="middle" fill="#374151">the money is there</text><text x="565" y="190" text-anchor="middle" fill="#374151">to lend, and accounted</text><text x="565" y="226" text-anchor="middle" fill="#b45309" font-size="11.5" font-weight="700">check: no payout waits for cash</text>
+      <rect x="685" y="120" width="210" height="160" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/><text x="790" y="148" text-anchor="middle" font-weight="700" font-size="15">Customer care</text><text x="790" y="172" text-anchor="middle" fill="#374151">every question answered</text><text x="790" y="190" text-anchor="middle" fill="#374151">the same day</text><text x="790" y="226" text-anchor="middle" fill="#b45309" font-size="11.5" font-weight="700">check: answered within 1 day</text>
+      <rect x="910" y="120" width="210" height="160" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/><text x="1015" y="148" text-anchor="middle" font-weight="700" font-size="15">Finding customers</text><text x="1015" y="172" text-anchor="middle" fill="#374151">100 good applications</text><text x="1015" y="190" text-anchor="middle" fill="#374151">a month</text><text x="1015" y="226" text-anchor="middle" fill="#b45309" font-size="11.5" font-weight="700">check: 100 a month; later</text>
+    </g>
+  </svg>
+  <div class="note">Research chose the first department: Origination, because question C picked "one loan, end to end". The others are drawn now and started later, when their pain appears.</div>
+  <div class="num">8</div>
+</div>
+
+<!-- 9 SAME SHAPE EVERY LEVEL -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="done">RESEARCH</span><span class="lit">THE CUT</span><span>THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#c2410c">Rung 2, the department</p>
+  <h2>Every department is born the same way</h2>
+  <p class="sub">A department is one goal with its check, five functions that keep it honest, and the engines that do its work. The same shape at every level; that is what lets one rule grow the whole company.</p>
+  <div class="two">
+    <div>
+      <svg width="600" height="300" viewBox="0 0 600 300">
+        <rect x="10" y="10" width="580" height="280" rx="14" fill="#fff" stroke="#111827" stroke-width="2.5"/>
+        <text x="300" y="40" text-anchor="middle" font-size="16" font-weight="800">ORIGINATION</text>
+        <text x="300" y="60" text-anchor="middle" font-size="12" fill="#6b7280">goal: from application to money in hand . check: 2 days, 9 of 10</text>
+        <g font-size="11.5" font-weight="700" fill="#fff">
+          <rect x="30" y="80" width="100" height="40" rx="8" fill="#0f172a"/><text x="80" y="104" text-anchor="middle">Identity</text>
+          <rect x="140" y="80" width="100" height="40" rx="8" fill="#0f172a"/><text x="190" y="104" text-anchor="middle">Adaptation</text>
+          <rect x="250" y="80" width="100" height="40" rx="8" fill="#0f172a"/><text x="300" y="104" text-anchor="middle">Priority</text>
+          <rect x="360" y="80" width="100" height="40" rx="8" fill="#0f172a"/><text x="410" y="104" text-anchor="middle">Coordination</text>
+          <rect x="470" y="80" width="100" height="40" rx="8" fill="#0f172a"/><text x="520" y="104" text-anchor="middle">Audit</text>
+        </g>
+        <g font-size="10" fill="#6b7280"><text x="80" y="135" text-anchor="middle">what we are</text><text x="190" y="135" text-anchor="middle">senses, learns</text><text x="300" y="135" text-anchor="middle">what first</text><text x="410" y="135" text-anchor="middle">who goes when</text><text x="520" y="135" text-anchor="middle">is it healthy</text></g>
+        <text x="300" y="170" text-anchor="middle" font-size="12" font-weight="800" fill="#c2410c">ENGINES: each does one kind of work</text>
+        <g font-size="11.5" font-weight="700">
+          <rect x="30" y="185" width="100" height="60" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/><text x="80" y="220" text-anchor="middle">Application</text>
+          <rect x="140" y="185" width="100" height="60" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/><text x="190" y="220" text-anchor="middle">Identity check</text>
+          <rect x="250" y="185" width="100" height="60" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/><text x="300" y="214" text-anchor="middle">Income and</text><text x="300" y="230" text-anchor="middle">credit</text>
+          <rect x="360" y="185" width="100" height="60" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/><text x="410" y="220" text-anchor="middle">Decision</text>
+          <rect x="470" y="185" width="100" height="60" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/><text x="520" y="220" text-anchor="middle">Payout</text>
+        </g>
+        <text x="300" y="275" text-anchor="middle" font-size="11" fill="#6b7280">the record: everything every engine did, with its check</text>
+      </svg>
+    </div>
+    <div style="flex:0 0 4.4in">
+      <div class="callout"><b>THE FIVE FUNCTIONS, IN PLAIN WORDS</b>Identity says what the department is for and what it never does. Adaptation watches the record and proposes changes. Priority says what comes first. Coordination keeps two engines from tripping over each other. Audit asks whether the whole is healthy.</div>
+      <div class="callout" style="border-color:#c2410c"><b style="color:#c2410c">THE SAME CUT, ONE RUNG DOWN</b>Origination's goal cut on SHAPE gives the five engines on the left. These are the five pieces from the first deck.</div>
+    </div>
+  </div>
+  <div class="note">Collections, Finance and the others get the same five functions on their first day, mostly empty, and fill as their pain appears.</div>
+  <div class="num">9</div>
+</div>
+
+<!-- 10 THE GRID -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="done">RESEARCH</span><span class="done">THE CUT</span><span class="lit">THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow">Part III, rungs 3 to 5: engine, workflow, work atom</p>
+  <h2 style="font-size:28px">One loan, all six questions asked</h2>
+  <p class="sub" style="font-size:15.5px;margin-bottom:8px">The five engines, crossed with four phases, read on all six questions. Eleven subgoals, each with one goal and one check. This is the grid the first deck built one question at a time.</p>
+  <div id="g-all"></div>
+  <div class="note">One line from the owner, three research answers, and two cuts became this. The owner only stamped two asks.</div>
+  <div class="num">10</div>
+</div>
+
+<!-- 11 WORK ATOM -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="done">RESEARCH</span><span class="done">THE CUT</span><span class="lit">THE GRID</span><span>BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow">The bottom of the ladder</p>
+  <h2>The work atom: where the cut stops</h2>
+  <p class="sub">A piece that cannot be split and still be work. One goal, one check, every run on record. Everything above it is made of these.</p>
+  <div class="two">
+    <div>
+      <div class="callout" style="border-width:3px;background:#f9fafb"><b>WORK ATOM C2</b><span style="font-size:22px;font-weight:700;display:block;margin:4px 0 8px">Read the bank statements, pull the credit score.</span><span style="font-size:15px;color:#4b5563">done when: 6 months of income on file and a score, or a named reason why not</span></div>
+      <table class="t" style="font-size:13.5px">
+        <tr><td class="fam f-shape">SHAPE</td><td>a piece of Income and credit; the ground is not simple, so the system looks closer</td></tr>
+        <tr><td class="fam f-time">TIME</td><td>phase 2 of 4; within 4 hours of the documents arriving</td></tr>
+        <tr><td class="fam f-edge">EDGE</td><td>receives statements from the customer; hands income and score to the decision</td></tr>
+        <tr><td class="fam f-govern">GOVERN</td><td>auto; stops the goal if no score can be pulled</td></tr>
+        <tr><td class="fam f-resource">RESOURCE</td><td>0 person-minutes, 6 system calls</td></tr>
+        <tr><td class="fam f-grow">GROW</td><td>after 40 runs: steady for salaried customers, so a split is proposed</td></tr>
+      </table>
+    </div>
+    <div style="flex:0 0 4.3in">
+      <div class="callout"><b>WHY THE ATOM MATTERS</b>Every number in the research part is finally read here. "Paid out in 2 days" is true or false because of atoms like this one and their recorded times. The company's number is the sum of its atoms' checks.</div>
+      <div class="callout" style="border-color:#15803d"><b style="color:#15803d">WHAT COMES NEXT</b>The atom's record is what climbs back up the ladder. Part IV.</div>
+    </div>
+  </div>
+  <div class="num">11</div>
+</div>
+
+<!-- 12 GROW BACK UP -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="done">RESEARCH</span><span class="done">THE CUT</span><span class="done">THE GRID</span><span class="lit">BACK UP</span><span>NATIVE</span></div>
+  <p class="eyebrow" style="color:#15803d">Part IV, back up the ladder</p>
+  <h2>After 40 loans, the record climbs back up</h2>
+  <p class="sub">GROW does not cut. It reads the record and lifts what repeated one rung up at a time, until it reaches the research questions and re-opens one of them.</p>
+  <svg width="1130" height="330" viewBox="0 0 1130 330">
+    <g font-size="13" font-weight="700">
+      <rect x="10" y="250" width="250" height="66" rx="10" fill="#111827"/><text x="135" y="276" text-anchor="middle" fill="#fff">work atom C2, 40 runs</text><text x="135" y="298" text-anchor="middle" fill="#cbd5e1" font-weight="400" font-size="11.5">same result 40 of 40 for salaried</text>
+      <rect x="290" y="190" width="280" height="66" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/><text x="430" y="216" text-anchor="middle" fill="#15803d">engine: a step freezes</text><text x="430" y="238" text-anchor="middle" fill="#374151" font-weight="400" font-size="11">statement reading becomes code for salaried</text>
+      <rect x="585" y="130" width="280" height="66" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/><text x="725" y="156" text-anchor="middle" fill="#15803d">department: a rule</text><text x="725" y="178" text-anchor="middle" fill="#374151" font-weight="400" font-size="11">under 1 lakh and score above 750: auto</text>
+      <rect x="880" y="70" width="240" height="66" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/><text x="1000" y="96" text-anchor="middle" fill="#15803d">organisation: the goal moves</text><text x="1000" y="118" text-anchor="middle" fill="#374151" font-weight="400" font-size="11.5">self-employed default at 8 of 100, not 3</text>
+      <rect x="880" y="4" width="240" height="50" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5"/><text x="1000" y="24" text-anchor="middle" fill="#b45309">research re-opened: who is it for?</text><text x="1000" y="42" text-anchor="middle" fill="#374151" font-weight="400" font-size="11.5">salaried only, or price self-employed higher</text>
+    </g>
+    <g stroke="#15803d" stroke-width="3" fill="none"><path d="M260 270 L300 240"/><path d="M570 210 L585 180"/><path d="M865 150 L880 120"/><path d="M1000 70 L1000 54"/></g>
+    <text x="560" y="305" text-anchor="middle" fill="#15803d" font-size="12.5" font-weight="800">each step up is the same move: a line in the record, lifted into the rule it is an instance of</text>
+  </svg>
+  <div class="note">This is why research is not a one-time report. The record answers the research questions better than the first interviews did, and the loop runs again.</div>
+  <div class="num">12</div>
+</div>
+
+<!-- 13 HOW NATIVE MAKES IT -->
+<div class="slide">
+  <div class="part"><span class="done">THE MAP</span><span class="done">RESEARCH</span><span class="done">THE CUT</span><span class="done">THE GRID</span><span class="done">BACK UP</span><span class="lit">NATIVE</span></div>
+  <p class="eyebrow">Part V, in the product</p>
+  <h2>How Native makes this from one line</h2>
+  <p class="sub">What the owner does, what the system does, and what is built today. Marks from the department page of the Native site, 2026-09-29.</p>
+  <table class="t" style="font-size:14px">
+    <tr><th style="width:0.5in">#</th><th style="width:3.2in">The owner</th><th>The system</th><th style="width:1.6in">Today</th></tr>
+    <tr><td>1</td><td>types the organisation's name and one line of intent</td><td>Root asks until the intent is clear, decides the first department, builds it with its five functions from the template that fits</td><td><span class="built partly">PARTLY BUILT</span></td></tr>
+    <tr><td>2</td><td>stamps the department's identity when it is good enough</td><td>Identity writes the goal, the rules and the done line; asks itself questions until they meet the standard</td><td><span class="built partly">PARTLY BUILT</span></td></tr>
+    <tr><td>3</td><td>nothing</td><td>the first engine is made from the goal; it runs; it files its work with its check</td><td><span class="built">BUILT IN CORE</span></td></tr>
+    <tr><td>4</td><td>stamps the two asks</td><td>every step runs auto, ask or deny as set; nothing leaves the record without a stamp</td><td><span class="built">BUILT IN CORE</span></td></tr>
+    <tr><td>5</td><td>says an idea in words</td><td>Adaptation shapes it, prices it, asks "add an engine?"; on a stamp the line grows</td><td><span class="built partly">PARTLY BUILT</span></td></tr>
+    <tr><td>6</td><td>nothing</td><td>a stamp given the same way again and again becomes a rule; a steady step freezes to code</td><td><span class="built partly">PARTLY BUILT</span></td></tr>
+    <tr><td>7</td><td>speaks to Root again</td><td>a second department is born the same way; coordination appears when two clash</td><td><span class="built partly">PARTLY BUILT</span></td></tr>
+    <tr><td>8</td><td>answers the three research questions</td><td>reads them as the lens and the impact number; ranks goals by impact</td><td><span class="built designed">DESIGNED ONLY</span></td></tr>
+  </table>
+  <div class="note">Row 8 is the gap this deck points at: the research part has no home in the product yet, and no page on the site. Everything below it has at least a partial build.</div>
+  <div class="num">13</div>
+</div>
+
+<!-- 14 WHOLE PICTURE -->
+<div class="slide">
+  <p class="eyebrow">All of it in one picture</p>
+  <h2>Research above, the compass at every rung, the record climbing back</h2>
+  <svg width="1130" height="380" viewBox="0 0 1130 380" style="margin-top:6px">
+    <rect x="315" y="4" width="500" height="50" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5"/><text x="565" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">RESEARCH: who is it for . what must move . which first</text><text x="565" y="43" text-anchor="middle" font-size="11" fill="#6b7280">three sentences with numbers and sources; assumptions lettered</text>
+    <g font-size="13" font-weight="700">
+      <rect x="365" y="74" width="400" height="44" rx="9" fill="#fff" stroke="#111827" stroke-width="2"/><text x="565" y="101" text-anchor="middle">organisation: one line, two numbers</text>
+      <rect x="390" y="134" width="350" height="44" rx="9" fill="#fff" stroke="#111827" stroke-width="2"/><text x="565" y="161" text-anchor="middle">department: one goal, five functions</text>
+      <rect x="415" y="194" width="300" height="44" rx="9" fill="#fff" stroke="#111827" stroke-width="2"/><text x="565" y="221" text-anchor="middle">engine: one kind of work</text>
+      <rect x="440" y="254" width="250" height="44" rx="9" fill="#fff" stroke="#111827" stroke-width="2"/><text x="565" y="281" text-anchor="middle">workflow: the grid</text>
+      <rect x="465" y="314" width="200" height="44" rx="9" fill="#111827"/><text x="565" y="341" text-anchor="middle" fill="#fff">work atom</text>
+    </g>
+    <g stroke="#9ca3af" stroke-width="2" fill="none"><path d="M565 54 L565 74"/><path d="M565 118 L565 134"/><path d="M565 178 L565 194"/><path d="M565 238 L565 254"/><path d="M565 298 L565 314"/></g>
+    <path d="M330 100 L330 340" stroke="#c2410c" stroke-width="3" fill="none"/><text x="318" y="220" fill="#c2410c" font-size="12" font-weight="800" transform="rotate(-90 318 220)">THE CUT, DOWN</text>
+    <path d="M800 340 L800 60" stroke="#15803d" stroke-width="3" fill="none"/><text x="815" y="200" fill="#15803d" font-size="12" font-weight="800" transform="rotate(90 815 200)">GROW, BACK UP</text>
+    <g font-size="12" font-weight="800">
+      <text x="150" y="110" text-anchor="middle" fill="#c2410c">SHAPE</text><text x="150" y="128" text-anchor="middle" fill="#6b7280" font-weight="400">what pieces</text>
+      <text x="150" y="170" text-anchor="middle" fill="#0e7490">TIME</text><text x="150" y="188" text-anchor="middle" fill="#6b7280" font-weight="400">when</text>
+      <text x="150" y="230" text-anchor="middle" fill="#1d4ed8">EDGE</text><text x="150" y="248" text-anchor="middle" fill="#6b7280" font-weight="400">who hands to whom</text>
+      <text x="980" y="110" text-anchor="middle" fill="#b91c1c">GOVERN</text><text x="980" y="128" text-anchor="middle" fill="#6b7280" font-weight="400">may it go</text>
+      <text x="980" y="170" text-anchor="middle" fill="#6d28d9">RESOURCE</text><text x="980" y="188" text-anchor="middle" fill="#6b7280" font-weight="400">what it spends</text>
+      <text x="980" y="230" text-anchor="middle" fill="#15803d">GROW</text><text x="980" y="248" text-anchor="middle" fill="#6b7280" font-weight="400">what it learned</text>
+      <text x="150" y="300" text-anchor="middle" fill="#374151" font-size="11">asked of every rung,</text><text x="150" y="316" text-anchor="middle" fill="#374151" font-size="11">on every run</text>
+      <text x="980" y="300" text-anchor="middle" fill="#374151" font-size="11">the owner writes the line</text><text x="980" y="316" text-anchor="middle" fill="#374151" font-size="11">and stamps the asks</text>
+    </g>
+  </svg>
+  <div class="num">14</div>
+</div>
+
+<!-- 15 DO IT YOURSELF -->
+<div class="slide">
+  <p class="eyebrow">Do it yourself</p>
+  <h2>From an idea to a company, in eight moves</h2>
+  <div class="two" style="margin-top:0.1in">
+    <div style="flex:1.25">
+      <ol class="moves">
+        <li class="r"><div><b>Who is it for?</b>One person, their pain, what they do today, what they would pay. Numbers with sources; assumptions lettered.</div></li>
+        <li class="r"><div><b>What must move?</b>One or two numbers readable from your own record. They become the company's check.</div></li>
+        <li class="r"><div><b>Which first?</b>Rank the goals by impact and firmness of ground. The first cut points there.</div></li>
+        <li><div><b>Write the company's goal in one line, with its check.</b></div></li>
+        <li><div><b>Cut on SHAPE into departments, then into engines.</b>One goal and one check per piece, at every rung. Draw the other departments; start only the first.</div></li>
+        <li><div><b>Cut on TIME; add EDGE, GOVERN, RESOURCE.</b>The grid of subgoals, down to the work atom. Empty cells stay empty.</div></li>
+        <li><div><b>Run it. Stamp only the asks.</b></div></li>
+        <li><div><b>Let GROW climb.</b>Frozen steps, rules, a moved goal, a re-opened research question. Then go to move 1 again.</div></li>
+      </ol>
+    </div>
+    <div>
+      <div class="callout" style="border-color:#f59e0b;background:#fffbeb"><b style="color:#b45309">THE THREE RESEARCH MOVES</b>They are the only moves that need the outside world. Everything after them reads the company's own record.</div>
+      <div class="callout"><b>THE SAME MOVE, EVERY RUNG</b>Company to department, department to engine, engine to subgoal: take a goal with its check, ask one question, cut, give each piece its check. Nothing else is needed to grow the tree.</div>
+      <div class="callout" style="border-color:#15803d"><b style="color:#15803d">THE PROMISE</b>First loan expensive, hundredth loan cheap, and the hundredth loan tells you who your customer really is.</div>
+    </div>
+  </div>
+  <div class="num">15</div>
+</div>
+
+<!-- 16 THE CASE QUESTION -->
+<div class="slide">
+  <p class="eyebrow">Try it on someone</p>
+  <h2>A case question that leads a person to this system</h2>
+  <p class="sub">Give this to someone who has never seen the compass. Then ask the follow-ups in order, only when they stall. A strong answer rebuilds the first deck on its own.</p>
+  <div class="two">
+    <div style="flex:1.2">
+      <div class="callout" style="border-width:3px;font-size:15.5px;line-height:1.45"><b>THE QUESTION</b>A friend has just started a small lending company. One product: personal loans of 1 to 5 lakh for salaried people the banks turn away. She has three staff, a laptop, and no process. She wants a company that can give out a loan without her touching it.<br><br>Organise her work so that: (a) a loan is paid out within two working days; (b) she only looks at the things that truly need her; (c) the hundredth loan costs less to process than the first; and (d) after a hundred loans she knows better than today whom to lend to.<br><br>Draw it. You may ask me anything about her business.</div>
+    </div>
+    <div>
+      <table class="t" style="font-size:13.5px">
+        <tr><th>If they stall, ask</th><th>It leads to</th></tr>
+        <tr><td>Whom should she lend to, and what one number should she watch?</td><td>research: who, what must move</td></tr>
+        <tr><td>How would she know one loan is done?</td><td>one goal, one check</td></tr>
+        <tr><td>What are the pieces of one loan?</td><td class="f-shape fam">SHAPE</td></tr>
+        <tr><td>When does each piece happen, and by when?</td><td class="f-time fam">TIME</td></tr>
+        <tr><td>Who does each piece, and who hands to whom?</td><td class="f-edge fam">EDGE</td></tr>
+        <tr><td>Which pieces may run without her?</td><td class="f-govern fam">GOVERN</td></tr>
+        <tr><td>What does each piece cost her, in minutes?</td><td class="f-resource fam">RESOURCE</td></tr>
+        <tr><td>What should change after a hundred loans, and how would she know?</td><td class="f-grow fam">GROW</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="note">Scoring: a check on the goal; pieces with their own checks; a grid with honest empty cells; named hand-offs; auto versus ask; a cost per piece; a learning loop that changes the cut. Six of seven is the compass, found alone.</div>
+  <div class="num">16</div>
+</div>
+
+<!-- 17 CLOSE -->
+<div class="slide dark">
+  <div style="position:absolute;left:0.7in;top:2.2in;max-width:11in">
+    <p class="eyebrow">In one sentence</p>
+    <h1 style="font-size:42px;line-height:1.2">Research says where to look. The compass cuts the goal down to the work atom. The record climbs back up and changes where to look. The owner writes one line and stamps the asks.</h1>
+    <p class="sub" style="margin-top:18px">That loop, run at every rung, is a company.</p>
+  </div>
+  <div class="note">Source: Native, the compass (axes and families); the department page and its journeys J1 to J7; the first deck, One goal, many subgoals. Draft, 2026-10-12.</div>
+  <div class="num">17</div>
+</div>
+
+<script>
+(function(){
+var rows=[["A. Application","take the form and documents"],["B. Identity check","the person is who they say"],["C. Income and credit","can they repay"],["D. Decision","yes or no, on what terms"],["E. Payout","money sent, account opened"]];
+var cols=["1. Apply","2. Check","3. Decide","4. Pay out"];
+var dl=["day 0","within 4 hours","within 1 working day","within 2 working days"];
+var C={
+ "A1":{s:"Take the form and the documents",c:"form complete, 3 documents in",o:"o-off",on:"officer",a:"auto",r:"4 min, 1 call"},
+ "A2":{s:"Ask for anything missing",c:"the missing item named, customer told",o:"o-off",on:"officer",a:"auto",r:"2 min, 1 call"},
+ "B1":{s:"Customer uploads an ID",c:"a readable ID on file",o:"o-cust",on:"customer",a:"auto",r:"0 min, 0 calls"},
+ "B2":{s:"Match the ID to the photo and the registry",c:"match confirmed, or mismatch named",o:"o-sys",on:"system",a:"deny",r:"0 min, 2 calls"},
+ "C1":{s:"Customer gives bank statements",c:"6 months on file",o:"o-cust",on:"customer",a:"auto",r:"0 min, 0 calls"},
+ "C2":{s:"Read the statements, pull the credit score",c:"income and score on file, or a reason",o:"o-sys",on:"system",a:"auto",r:"0 min, 6 calls"},
+ "D3":{s:"Compare with policy; set amount, rate, tenure",c:"terms within policy",o:"o-desk",on:"credit desk",a:"ask",r:"8 min, 1 call"},
+ "E3":{s:"Draft the agreement",c:"agreement matches the terms",o:"o-sys",on:"system",a:"auto",r:"0 min, 2 calls"},
+ "E4":{s:"Send the money, open the account, tell the customer",c:"the bank confirms the credit",o:"o-fin",on:"finance",a:"ask",r:"5 min, 1 call"}
+};
+var h='<table class="grid"><tr><th class="row"></th>';
+cols.forEach(function(c,i){h+='<th class="col">'+c+'<small>'+dl[i]+'</small></th>'});
+h+='</tr>';
+rows.forEach(function(r,ri){
+ var L="ABCDE"[ri]; h+='<tr><th class="row">'+r[0]+'<small>'+r[1]+'</small></th>';
+ for(var ci=1;ci<=4;ci++){
+  var k=L+ci,v=C[k];
+  if(!v){h+='<td class="empty">no work here</td>';continue}
+  h+='<td><span class="sg">'+k+'. '+v.s+'</span><span class="ck">done when: '+v.c+'</span><span class="tag '+v.o+'">'+v.on+'</span><span class="tag '+v.a+'">'+v.a+'</span><span class="spend">'+v.r+'</span></td>';
+ }
+ h+='</tr>';
+});
+h+='</table>';
+document.getElementById('g-all').innerHTML=h;
+})();
+</script>
+</body></html>

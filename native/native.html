@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Native v1.0 — Final Architecture</title>
+<meta name="description" content="Locked architecture for Sutra Native v1.0 — 9 capabilities, 5 tools, 4 standards, single-tenant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --bg-elev: #ffffff;
+    --bg-code: #f3f0eb;
+    --text: #1a1d20;
+    --text-muted: #5a5f66;
+    --text-faint: #8a8f96;
+    --border: #e5e3df;
+    --border-strong: #c8c5bf;
+    --accent: #0d4f8c;
+    --accent-soft: #d8e7f5;
+    --warn: #8c5a0d;
+    --warn-soft: #f5ebd8;
+    --ok: #2d6e3e;
+    --ok-soft: #dceadf;
+    --content-max: 760px;
+    --toc-w: 240px;
+    --gutter: 32px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --bg-elev: #1d2024;
+      --bg-code: #1d2024;
+      --text: #e6e8eb;
+      --text-muted: #a8acb1;
+      --text-faint: #7a7f86;
+      --border: #2a2d31;
+      --border-strong: #3a3d41;
+      --accent: #5ea3e0;
+      --accent-soft: #1c2c3d;
+      --warn: #d4a44a;
+      --warn-soft: #2d2419;
+      --ok: #6cbf80;
+      --ok-soft: #1a2a1f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    gap: var(--gutter);
+  }
+  @media (min-width: 1024px) {
+    .layout {
+      grid-template-columns: var(--toc-w) minmax(0, 1fr);
+      padding: 64px 32px 120px;
+    }
+  }
+  /* ==== TOC ==== */
+  .toc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  @media (min-width: 1024px) {
+    .toc {
+      position: sticky;
+      top: 32px;
+      align-self: start;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      padding-right: 12px;
+      border-right: 1px solid var(--border);
+    }
+  }
+  .toc-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 12px;
+  }
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .toc li { margin: 4px 0; }
+  .toc a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 2px 0;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc a:hover { color: var(--text); border-left-color: var(--border-strong); }
+  .toc a.active { color: var(--accent); border-left-color: var(--accent); }
+  .toc .section-num {
+    color: var(--text-faint);
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px;
+    font-size: 11px;
+  }
+  /* ==== Main ==== */
+  main { max-width: var(--content-max); min-width: 0; }
+  h1, h2, h3 {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.011em;
+    line-height: 1.25;
+    color: var(--text);
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 56px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 24px;
+  }
+  h2 .anchor-num {
+    color: var(--text-faint);
+    font-weight: 500;
+    margin-right: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  h3 {
+    font-size: 16px;
+    margin: 28px 0 10px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  p { margin: 0 0 14px; color: var(--text); }
+  p.lede { font-size: 17px; color: var(--text); margin-bottom: 24px; }
+  p.muted { color: var(--text-muted); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--accent); }
+  strong { font-weight: 600; }
+  code {
+    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 0.875em;
+    background: var(--bg-code);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  pre {
+    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    background: var(--bg-code);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 16px 0 24px;
+  }
+  pre code { background: transparent; padding: 0; border: 0; font-size: 1em; }
+  ul, ol { margin: 8px 0 18px; padding-left: 22px; color: var(--text); }
+  li { margin: 4px 0; }
+  /* ==== Header block ==== */
+  .header-block {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    background: var(--bg-elev);
+    margin-bottom: 32px;
+  }
+  .header-block .vision {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 4px 0 16px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px 24px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    font-size: 13px;
+  }
+  .meta-grid .meta-k {
+    color: var(--text-faint);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .meta-grid .meta-v { color: var(--text); font-variant-numeric: tabular-nums; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .badge.locked { background: var(--ok-soft); color: var(--ok); }
+  .badge.advisory { background: var(--accent-soft); color: var(--accent); }
+  .badge.deferred { background: var(--warn-soft); color: var(--warn); }
+  /* ==== Stack at a glance ==== */
+  .stack-glance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    margin: 24px 0 32px;
+  }
+  .stack-glance .pill {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: var(--bg-elev);
+    font-size: 12.5px;
+  }
+  .stack-glance .pill .k {
+    color: var(--text-faint);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .stack-glance .pill .v {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+  /* ==== Tables ==== */
+  .table-wrap { overflow-x: auto; margin: 12px 0 28px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--bg-code);
+    font-weight: 600;
+    color: var(--text);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  tr:last-child td { border-bottom: none; }
+  td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.tool { font-weight: 600; }
+  td .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--bg-code);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  td .tag.ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+  td .tag.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+  td .tag.cite { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+  /* ==== Footer ==== */
+  footer {
+    margin-top: 96px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  footer code { font-size: 12px; }
+  footer ul { margin-top: 8px; }
+  /* ==== Misc ==== */
+  hr { border: 0; border-top: 1px solid var(--border); margin: 36px 0; }
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 12px 16px;
+    margin: 16px 0 24px;
+    font-size: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout strong { color: var(--accent); }
+  .total-row td { font-weight: 700; background: var(--bg-code); }
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- ===================== TOC ===================== -->
+<nav class="toc" aria-label="Table of contents">
+  <p class="toc-title">Native v1.0</p>
+  <ol>
+    <li><a href="#summary"><span class="section-num">·</span>At a glance</a></li>
+    <li><a href="#s1"><span class="section-num">§1</span>Capabilities</a></li>
+    <li><a href="#s2"><span class="section-num">§2</span>Stack (locked)</a></li>
+    <li><a href="#s3"><span class="section-num">§3</span>Build vs Invoke</a></li>
+    <li><a href="#s4"><span class="section-num">§4</span>Sutra-owned glue</a></li>
+    <li><a href="#s5"><span class="section-num">§5</span>One-turn wire flow</a></li>
+    <li><a href="#s6"><span class="section-num">§6</span>Deferred to v1.x</a></li>
+    <li><a href="#s7"><span class="section-num">§7</span>Cross-references</a></li>
+  </ol>
+</nav>
+
+<!-- ===================== MAIN ===================== -->
+<main>
+
+  <!-- Header block -->
+  <section class="header-block" aria-label="Document header">
+    <h1>Native v1.0 &mdash; Final Architecture</h1>
+    <p class="vision">1 founder + 1 LLM = a whole company runs autonomously. Multi-company is a future install, not a feature.</p>
+    <p data-pretext class="muted">Canonical reference for the locked v1.0 stack. Derived from architecture-method v1.1 (5 steps) and 8 rounds of codex review (r1&ndash;r8). All capability picks are organization-first, vendor-second.</p>
+
+    <div class="meta-grid">
+      <div>
+        <div class="meta-k">Status</div>
+        <div class="meta-v"><span class="badge locked">Locked</span> for v1.0 build</div>
+      </div>
+      <div>
+        <div class="meta-k">Locked on</div>
+        <div class="meta-v">2026-04-29</div>
+      </div>
+      <div>
+        <div class="meta-k">Codex verdict</div>
+        <div class="meta-v"><span class="badge advisory">Advisory</span> r8 P1 fixes folded</div>
+      </div>
+      <div>
+        <div class="meta-k">Directive</div>
+        <div class="meta-v"><code>1777449339</code></div>
+      </div>
+      <div>
+        <div class="meta-k">Capabilities</div>
+        <div class="meta-v">10 total &middot; 8 in v1.0</div>
+      </div>
+      <div>
+        <div class="meta-k">Net new code</div>
+        <div class="meta-v">~1500&ndash;1700 LOC (Sutra glue)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack at a glance -->
+  <section id="summary" aria-label="Stack at a glance">
+    <h3 style="margin-top:0">At a glance &mdash; 5 tools + 4 standards = 9 picks</h3>
+    <div class="stack-glance">
+      <div class="pill"><span class="k">Authority</span><span class="v">OPA + Rego</span></div>
+      <div class="pill"><span class="k">Workflow</span><span class="v">Temporal OSS</span></div>
+      <div class="pill"><span class="k">Telemetry</span><span class="v">OpenTelemetry</span></div>
+      <div class="pill"><span class="k">LLM</span><span class="v">Claude SDK</span></div>
+      <div class="pill"><span class="k">Tool calls</span><span class="v">MCP</span></div>
+      <div class="pill"><span class="k">Skills</span><span class="v">SKILL.md</span></div>
+      <div class="pill"><span class="k">Repo conv.</span><span class="v">AGENTS.md</span></div>
+      <div class="pill"><span class="k">Identity</span><span class="v">Process owner</span></div>
+      <div class="pill"><span class="k">Coordination</span><span class="v">Temporal child wf</span></div>
+    </div>
+  </section>
+
+  <!-- ===================== §1 ===================== -->
+  <section id="s1">
+    <h2><span class="anchor-num">§1</span>Architectural capabilities</h2>
+    <p>Ten organization-first capabilities. Each answers a plain question. v1.0 ships eight; cross-process coordination is deferred to v1.1.</p>
+    <div class="table-wrap">
+      <table aria-label="Capability map">
+        <thead>
+          <tr><th class="num">#</th><th>Capability</th><th>Plain question</th><th>v1.0?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Identity</td><td>Who is acting now?</td><td><span class="tag ok">Yes</span> single-tenant: process owner</td></tr>
+          <tr><td class="num">2</td><td>Authority</td><td>May this identity do this?</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">3</td><td>Workflow durability</td><td>Run multi-step process; survive crashes</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">4</td><td>In-process coordination</td><td>Workflow &rarr; workflow within one process</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">5</td><td>Tool invocation</td><td>Workflow step calls external tool</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">6</td><td>Cross-process comm</td><td>Workflow &rarr; workflow across processes</td><td><span class="tag warn">Deferred v1.1</span></td></tr>
+          <tr><td class="num">7</td><td>Telemetry</td><td>Logs + metrics + traces</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">8</td><td>Skill packaging</td><td>Bundle reusable capability</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">9</td><td>Repo convention</td><td>Static guidance file</td><td><span class="tag ok">Yes</span></td></tr>
+          <tr><td class="num">10</td><td>LLM access</td><td>Talk to the model</td><td><span class="tag ok">Yes</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted"><strong>8 of 10 ship in v1.0.</strong> Cross-process is deliberately deferred until a real cross-process workflow exists.</p>
+  </section>
+
+  <!-- ===================== §2 ===================== -->
+  <section id="s2">
+    <h2><span class="anchor-num">§2</span>v1.0 stack &mdash; one tool per capability</h2>
+    <p>One pick per capability. No second alternates carried for &ldquo;optionality.&rdquo; Codex round 7 over-ruled 8 of 16 of Claude&rsquo;s draft picks; final picks below survived round 8.</p>
+    <div class="table-wrap">
+      <table aria-label="Locked stack">
+        <thead>
+          <tr><th class="num">#</th><th>Capability</th><th>Tool / standard</th><th>Type</th><th>Justification</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Identity</td><td class="tool">OS process owner</td><td><span class="tag">code</span></td><td>Single-tenant deploy; SPIRE deferred to v1.1</td></tr>
+          <tr><td class="num">2</td><td>Authority</td><td class="tool">OPA + Rego</td><td><span class="tag">runtime + language</span></td><td>Production-proven; Charter compiles to Rego</td></tr>
+          <tr><td class="num">3</td><td>Workflow durability</td><td class="tool">Temporal OSS</td><td><span class="tag">runtime</span></td><td>Crash-resilient; battle-tested</td></tr>
+          <tr><td class="num">4</td><td>In-process coordination</td><td class="tool">Temporal child workflows</td><td><span class="tag">runtime feature</span></td><td>Already in Temporal &mdash; no separate tool</td></tr>
+          <tr><td class="num">5</td><td>Tool invocation</td><td class="tool">MCP</td><td><span class="tag">wire format</span></td><td>Anthropic standard; SDK accepts <code>mcp_servers</code></td></tr>
+          <tr><td class="num">6</td><td>Cross-process comm</td><td><span class="tag warn">Deferred v1.1</span> A2A</td><td><span class="tag">format</span></td><td>Single-process v1.0</td></tr>
+          <tr><td class="num">7</td><td>Telemetry</td><td class="tool">OpenTelemetry</td><td><span class="tag">runtime + format</span></td><td>Logs + metrics + traces; Pino dropped (redundant)</td></tr>
+          <tr><td class="num">8</td><td>Skill packaging</td><td class="tool">SKILL.md</td><td><span class="tag">file format</span></td><td>Anthropic emerging standard</td></tr>
+          <tr><td class="num">9</td><td>Repo convention</td><td class="tool">AGENTS.md</td><td><span class="tag">file format</span></td><td>OpenAI / AAIF / LF standard</td></tr>
+          <tr><td class="num">10</td><td>LLM access</td><td class="tool">Anthropic Claude SDK</td><td><span class="tag">runtime + service</span></td><td>Founder direction: Claude direct, no LLMSubstrate wrapper in v1.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>5 tools we run/use</strong> (Temporal, OPA, OpenTelemetry, Anthropic SDK, Sutra glue) +
+      <strong>4 standards we adopt</strong> (MCP, SKILL.md, AGENTS.md, Rego) = 9 total.
+    </div>
+  </section>
+
+  <!-- ===================== §3 ===================== -->
+  <section id="s3">
+    <h2><span class="anchor-num">§3</span>Build vs Invoke decision workflow</h2>
+    <p>Every new capability requirement runs this gate before any code is written. Bias is toward invoke, not build.</p>
+<pre>For any new capability requirement:
+
+   1. Check the 9-capability map. Already there?
+        YES &rarr; invoke existing tool/standard.
+        NO  &rarr; continue.
+
+   2. Check Sutra-glue (Charter&rarr;Rego compiler, Default Composition,
+      etc.). Covers it?
+        YES &rarr; invoke existing Sutra-glue.
+        NO  &rarr; continue.
+
+   3. Load-bearing for current Workflow?
+        NO  &rarr; defer (don&rsquo;t build speculatively).
+        YES &rarr; continue.
+
+   4. Met by EXTENDING via 5 extension seams (metadata /
+      schema_version / required_capabilities[] / extension_ref /
+      discipline-tag)?
+        YES &rarr; use the seam (no new build).
+        NO  &rarr; continue.
+
+   5. Build new component. Codex review. Apply Sutra-glue patterns.
+</pre>
+    <div class="callout"><strong>Bias toward INVOKE, not BUILD.</strong></div>
+  </section>
+
+  <!-- ===================== §4 ===================== -->
+  <section id="s4">
+    <h2><span class="anchor-num">§4</span>Sutra-owned glue (~1500&ndash;1700 LOC for v1.0)</h2>
+    <p>Sutra writes the glue between commodity infrastructure and the company-runs-itself behavior. Anthropic provides LLM substrate; Temporal/OPA/OTel provide runtimes; Sutra provides governance, composition, and decision provenance.</p>
+    <div class="table-wrap">
+      <table aria-label="Sutra-owned glue">
+        <thead>
+          <tr><th>Component</th><th class="num">LOC</th><th>Job</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4 primitives + 6 laws (M1&ndash;M3)</td><td class="num"><span class="tag ok">shipped</span></td><td>Already done</td></tr>
+          <tr><td>5 extension seams</td><td class="num">~100</td><td>Future-proofing without speculative builds</td></tr>
+          <tr><td>Tenant schema (single-tenant default)</td><td class="num">~50</td><td>OS-of-companies primitive</td></tr>
+          <tr><td>Decision-Provenance schema</td><td class="num">~80</td><td>Constitutional decision shape</td></tr>
+          <tr><td>Charter &rarr; Rego compiler</td><td class="num">~200</td><td>Charter contracts compile to Rego policies</td></tr>
+          <tr><td>OPA bundle service</td><td class="num">~200</td><td>Codex r8 P1.4 fix &mdash; distribute Rego to OPA</td></tr>
+          <tr><td>Default Composition</td><td class="num">~300</td><td>Solo-founder bootstrap workflow set</td></tr>
+          <tr><td>Skill registry: cache + commit-pin + signature verify</td><td class="num">~150</td><td>Trusted skill loading</td></tr>
+          <tr><td>Activity wrappers</td><td class="num">~150</td><td>Codex r8 P1.1 fix &mdash; OPA + Provenance run in <em>Activities</em>, not Workflow code (preserves determinism)</td></tr>
+          <tr><td>OTel Collector queue/WAL config</td><td class="num">~50</td><td>Audit-grade telemetry</td></tr>
+          <tr><td>Adapter shells</td><td class="num">~300</td><td>Future tool-swap insurance</td></tr>
+          <tr><td>Hooks + universal evidence-emit</td><td class="num"><span class="tag ok">shipped</span> + upgrades</td><td>Native plugin governance</td></tr>
+          <tr><td>Tests + property tests</td><td class="num">~500</td><td>Quality gates</td></tr>
+          <tr class="total-row"><td>TOTAL net new</td><td class="num">~1500&ndash;1700</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== §5 ===================== -->
+  <section id="s5">
+    <h2><span class="anchor-num">§5</span>One-turn wire flow</h2>
+    <p>End-to-end, what happens when the founder asks Sutra to do something. Each tool has one job. Workflow code stays deterministic (no I/O).</p>
+<pre>USER: &ldquo;Track Paisa loan application X status.&rdquo;
+   |
+   v
+[1] Default Composition matches &rarr; Workflow                  (Sutra glue)
+    &ldquo;track-loan-app&rdquo;
+   |
+   v
+[2] Temporal starts Workflow execution; assigns to worker      (Temporal)
+   |
+   v
+[3] Activity loads Charter &ldquo;loan-tracking&rdquo;                    (OPA &mdash; in
+    &rarr; Rego policy compiled                                     Activity)
+    &rarr; OPA evaluates allow/deny
+   |
+   v
+[4] Activity calls Anthropic Messages API                      (Anthropic
+    body: prompt + mcp_servers=[paisa-tool, sheet-tool]         SDK + MCP)
+    Claude reasons + calls MCP servers; returns output
+   |
+   v
+[5] Activity emits DecisionProvenance via OTel SDK             (OpenTelemetry)
+    OTel Collector queues + persists
+   |
+   v
+[6] Workflow continues OR terminates per V2.4 §A12 T1&ndash;T6        (Temporal)
+   |
+   v
+[7] Result + provenance trail returned to user                 (Sutra &rarr; user)
+</pre>
+    <p class="muted">Determinism stays in the Workflow. All I/O (OPA evaluation, LLM calls, MCP tool invocation, provenance emission) lives in Activities. This is the codex r8 P1.1 fix folded in.</p>
+  </section>
+
+  <!-- ===================== §6 ===================== -->
+  <section id="s6">
+    <h2><span class="anchor-num">§6</span>Deferred to v1.x</h2>
+    <p>Each deferral has a re-trigger condition. We don&rsquo;t build for hypothetical futures.</p>
+    <div class="table-wrap">
+      <table aria-label="Deferred items">
+        <thead>
+          <tr><th>Component</th><th>Re-trigger condition</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>LLMSubstrate adapter</td><td>First non-Claude use case</td></tr>
+          <tr><td>MCP gateway / sandbox / allowlist</td><td>First production incident, OR pre-T4-fleet scale</td></tr>
+          <tr><td>SPIFFE / SPIRE</td><td>First multi-tenant deployment</td></tr>
+          <tr><td>A2A cross-process</td><td>First cross-process workflow</td></tr>
+          <tr><td>MS Agent Framework / Governance Toolkit</td><td>Production-mature beyond pilot</td></tr>
+          <tr><td>LangGraph leaf orchestration</td><td>Specific workflow benefits</td></tr>
+          <tr><td>Constitutional veto Safety predicate</td><td>First &ldquo;authorized but unsafe&rdquo; decision</td></tr>
+          <tr><td>Learning / reflection / auto-retire</td><td>v1.x case-by-case</td></tr>
+          <tr><td>Coverage templates per business function</td><td>T4 user demand</td></tr>
+          <tr><td>HTML publish via <code>/design-html</code></td><td><span class="tag ok">This session</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== §7 ===================== -->
+  <section id="s7">
+    <h2><span class="anchor-num">§7</span>Cross-references</h2>
+    <ul>
+      <li>Method &mdash; <code>holding/research/2026-04-29-architecture-method.md</code> v1.1</li>
+      <li>Problem state &mdash; <code>holding/research/2026-04-29-native-problem-state.md</code> v1.1</li>
+      <li>Gap audit &mdash; <code>holding/research/2026-04-29-native-gap-audit.md</code> v1.1</li>
+      <li>Patch list &mdash; <code>holding/research/2026-04-29-native-patch-list.md</code> v1.1</li>
+      <li>D1 Authority Map &mdash; <code>holding/research/2026-04-29-native-d1-authority-map.md</code></li>
+      <li>D2 Decision-Provenance spec &mdash; <code>holding/research/2026-04-29-native-d2-decision-provenance-spec.md</code></li>
+      <li>D3 Ontology &amp; state machine &mdash; <code>holding/research/2026-04-29-native-d3-ontology-state-machine.md</code></li>
+      <li>D4 Primitives + composition spec &mdash; <code>holding/research/2026-04-29-native-d4-primitives-composition-spec.md</code></li>
+      <li>D5 Invariant register &mdash; <code>holding/research/2026-04-29-native-d5-invariant-register.md</code></li>
+      <li>Step-5 entry &mdash; <code>holding/research/2026-04-29-native-step-5-entry.md</code></li>
+      <li>Roadmap &mdash; <code>holding/research/2026-04-29-native-v1.0-roadmap.md</code></li>
+      <li>V2.4 spec &mdash; <code>holding/research/2026-04-28-v2-architecture-spec.md</code></li>
+      <li>Charter &mdash; <code>holding/research/2026-04-28-sutra-engine-charter.md</code></li>
+      <li>Resume entry &mdash; <code>holding/RESUME-NATIVE-CHARTER.md</code></li>
+      <li>Codex verdicts &mdash; <code>.enforcement/codex-reviews/2026-04-29-*.md</code> (rounds 4&ndash;8 + final-architecture)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Native v1.0 &middot; locked 2026-04-29 &middot; codex final verdict ADVISORY (DIRECTIVE-ID 1777449339) &middot; ready for M4 build.</p>
+    <p class="muted">Source: <code>holding/research/2026-04-29-native-v1.0-final-architecture.md</code> &middot; rendered with Pretext-native layout.</p>
+  </footer>
+
+</main>
+</div>
+
+<!-- Pretext wiring: prose paragraphs only (data-pretext); tables and pre blocks render natively -->
+<script type="module">
+  import { prepare, layout } from './pretext.js';
+
+  async function run() {
+    try { await document.fonts.ready; } catch (_) {}
+
+    const els = Array.from(document.querySelectorAll('[data-pretext]'));
+    if (!els.length) return;
+    const prepared = new Map();
+
+    function prep(el) {
+      const cs = getComputedStyle(el);
+      const font = cs.font || `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      try { prepared.set(el, prepare(el.textContent || '', font)); } catch (_) {}
+    }
+    for (const el of els) prep(el);
+
+    function relayout() {
+      for (const [el, handle] of prepared) {
+        try {
+          const lh = parseFloat(getComputedStyle(el).lineHeight) || 24;
+          const w = el.clientWidth;
+          if (w > 0) {
+            const { height } = layout(handle, w, lh);
+            el.style.minHeight = `${height}px`;
+          }
+        } catch (_) {}
+      }
+    }
+
+    const ro = new ResizeObserver(() => relayout());
+    ro.observe(document.body);
+    relayout();
+  }
+  run();
+
+  // TOC active-section highlighting
+  (function tocSpy() {
+    const links = document.querySelectorAll('.toc a');
+    const map = new Map();
+    for (const a of links) {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) map.set(el, a);
+    }
+    if (!map.size) return;
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          for (const a of links) a.classList.remove('active');
+          const a = map.get(e.target);
+          if (a) a.classList.add('active');
+        }
+      }
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    for (const el of map.keys()) obs.observe(el);
+  })();
+</script>
+</body>
+</html>

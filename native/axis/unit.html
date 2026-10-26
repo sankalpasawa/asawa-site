@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Native — What a unit looks like</title>
+<style>
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#111827;margin:0;background:#fff}
+.page{max-width:920px;margin:0 auto;padding:34px 24px 60px}
+.crumb{font-size:12.5px;color:#6b7280;margin-bottom:6px}
+.crumb a{color:#1d4ed8;text-decoration:none}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.lvl{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:2px 7px;background:#eef2ff;color:#3730a3;vertical-align:middle;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f9fafb;font-size:11px;text-transform:uppercase;color:#6b7280}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.DRAFT{background:#fef2f2;color:#b91c1c}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:34px 0 8px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:8px 12px;font-size:13px;margin:14px 0}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}
+.figcap{font-size:11.5px;color:#9ca3af;margin:0 0 8px}
+figure{margin:12px 0 4px;border:1px solid #e5e7eb;padding:14px;overflow-x:auto;background:#fff}
+details.why{margin:0 0 14px;border:1px solid #e5e7eb;border-top:0;background:#f9fafb;font-size:13px}
+details.why summary{cursor:pointer;padding:6px 12px;font-weight:700;color:#374151;list-style:none}
+details.why summary::before{content:"\25B8 ";color:#9ca3af}details.why[open] summary::before{content:"\25BE "}
+details.why summary::-webkit-details-marker{display:none}
+details.why .body{padding:2px 14px 10px}
+.lede{font-size:19px;line-height:1.45;max-width:62ch;margin:10px 0 14px}
+.one{max-width:72ch;margin:0 0 10px}
+ol.key{font-size:13px;margin:8px 0 4px;padding-left:0;list-style:none;columns:2;column-gap:28px}
+ol.key li{margin:0 0 5px;break-inside:avoid;padding-left:26px;position:relative}
+ol.key li b{position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:#111827;color:#fff;font-size:11px;text-align:center;line-height:18px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:#6b7280;margin:8px 2px 0}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.controls{display:flex;align-items:center;gap:10px;margin:6px 0 8px;flex-wrap:wrap}
+button{font:inherit;font-size:13px;padding:5px 14px;border:1px solid #d1d5db;background:#fff;border-radius:7px;cursor:pointer;color:#111827}
+button:hover{border-color:#111827}
+button.on{background:#111827;color:#fff;border-color:#111827}
+.caption{font-size:15px;min-height:48px;margin:0 0 4px;display:flex;align-items:baseline;gap:12px}
+.caption b{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#fff;background:#111827;border-radius:6px;padding:2px 8px;flex:none}
+.hidden{opacity:0;pointer-events:none}
+[data-frames]{transition:opacity .4s ease}
+.gap{display:inline-block;font-size:11px;color:#9a3412;background:#fff7ed;border:1px solid #fed7aa;border-radius:4px;padding:0 6px;font-weight:700}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+td.src{width:150px;font-size:11.5px;color:#4b7c5a}
+td.src a{color:#166534;font-weight:600}
+.layout{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+.sidebar{width:212px;min-width:212px;border-right:1px solid #e5e7eb;padding:22px 12px 40px 16px;font-size:12px;line-height:1.85;position:sticky;top:0;max-height:100vh;overflow:auto}
+.sidebar a{color:#374151;text-decoration:none}.sidebar a:hover{color:#1d4ed8}
+.sb-cur{font-weight:800;color:#b45309 !important}
+.sb-band{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#9ca3af;margin-top:9px}
+.sb-title{font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin-bottom:4px}
+@media print{.sidebar{display:none}.layout{display:block}figure{break-inside:avoid}}
+</style>
+</head>
+<body><div class="layout"><nav class="sidebar"><div class="sb-title">NATIVE &#8212; INDEX</div><div style="padding-left:17px"><a href="../current-state.html">Current state</a></div><div style="padding-left:17px"><a href="../index.html">Hub</a></div><div class="sb-band">BUSINESS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">why we do it, for whom</div><div style="padding-left:17px"><a href="../direction.html">Long-term direction</a></div><div style="padding-left:17px"><a href="../market.html">Market and people</a></div><div style="padding-left:17px"><a href="../platform/model/platform-journeys.html">Who it is for</a></div><div style="padding-left:17px"><a href="../structure-and-terms.html">Positioning and the words</a></div><div style="padding-left:17px"><a href="../what-is-native.html">What is Native</a></div><div style="padding-left:17px"><a href="../company-map.html">The company map</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">HUMAN AND AGENT</div><div style="padding-left:28px"><a href="../human-and-agent.html">The long view: start here</a></div><div style="padding-left:28px"><a href="../human-and-agent/future-organisation.html">The future organisation</a></div><div style="padding-left:28px"><a href="../human-and-agent/futures-h1.html">Futures at H1</a></div><div style="padding-left:28px"><a href="../human-and-agent/market-map-h2.html">Market map at H2</a></div><div style="padding-left:28px"><a href="../human-and-agent/automation-and-india.html">Automation and India</a></div><div style="padding-left:28px"><a href="../human-and-agent/lifecycle-and-transition.html">Lifecycle and transition</a></div><div style="padding-left:28px"><a href="../human-and-agent/experiment-and-seat.html">Proof and the experiment</a></div><div style="padding-left:28px"><a href="../human-and-agent/questions-and-ideas.html">Questions and ideas</a></div><div class="sb-band">PRODUCT</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what we sell, line by line</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">USE CASES</div><div style="padding-left:28px"><a href="../platform/model/consumer-product.html">The first use case: a website for my organisation</a></div><div style="padding-left:28px"><a href="../system/first-build.html">PRD: the first build</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SUTRA DESKTOP</div><div style="padding-left:28px"><a href="../platform/model/desktop-app.html">The desktop app</a></div><div style="padding-left:28px"><a href="../preview/org.html">Prototype</a></div><div class="sb-band">DESIGN</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it looks and feels, across products</div><div style="padding-left:17px"><a href="../design-system.html">Design system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">SCREENS, ALL IN ONE PLACE</div><div style="padding-left:28px"><a href="../platform/model/screens.html">All screens, mapped to their components</a></div><div style="padding-left:28px"><a href="../platform/model/department-screen.html">The department screens</a></div><div style="padding-left:28px"><a href="../platform/model/screens-before-now-new.html">Before, now, new</a></div><div style="padding-left:39px"><a href="../platform/model/screens-1-chat.html">1 Chat</a></div><div style="padding-left:39px"><a href="../platform/model/screens-2-map.html">2 Map</a></div><div style="padding-left:39px"><a href="../platform/model/screens-3-messages.html">3 Internal messages</a></div><div style="padding-left:39px"><a href="../platform/model/screens-big.html">All three, big</a></div><div style="padding-left:17px"><a href="../human-simulation.html">Testing as a person: Human Simulation</a></div><div class="sb-band">ENGINEERING</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">how it is built</div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">QUALITY, TESTING, SHIPPING</div><div style="padding-left:28px"><a href="../engineering/non-functional.html">Non-functional qualities</a></div><div class="sb-band">AXIS</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">the ways of looking, and what complete means</div><div style="padding-left:17px"><a href="../axis/completeness.html">Completeness of thought: start here</a></div><div style="padding-left:17px"><a class="sb-cur" href="../axis/unit.html">What a unit looks like: the pictures</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">THEORY</div><div style="padding-left:28px"><a href="../axes.html">The compass: axes and families</a></div><div style="padding-left:28px"><a href="../platform/how-methodology.html">Method &#167;3: the lens, Realization and Reflection</a></div><div style="padding-left:28px"><a href="../axes.html#folded-spec-shape-html">One spec per family</a></div><div style="padding-left:28px"><a href="../axes.html#folded-axis-productization-html">Making an axis, the open-axis rule</a></div><div style="padding-left:28px"><a href="../units-and-artifacts.html">Artifacts and work</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">IMPLEMENTATION</div><div style="padding-left:28px"><a href="../axes.html#folded-axis-materialization-html">The families as workflows</a></div><div class="sb-band">PLATFORM</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">what everything runs on</div><div style="padding-left:17px"><a href="../platform/structure.html">The structure: a system, three faces, six levels</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: THE ORGANISATION</div><div style="padding-left:28px"><a href="../platform/model/root-lifecycle.html">Root and the organisation</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: OBJECTS</div><div style="padding-left:28px"><a href="../system/department.html">A department</a></div><div style="padding-left:28px"><a href="../platform/model/internal-system.html">The five functions</a></div><div style="padding-left:39px"><a href="../platform/model/functions/identity.html">Identity</a></div><div style="padding-left:39px"><a href="../platform/model/functions/adaptation.html">Adaptation</a></div><div style="padding-left:39px"><a href="../platform/model/functions/priority.html">Priority</a></div><div style="padding-left:39px"><a href="../platform/model/functions/coordination.html">Coordination</a></div><div style="padding-left:39px"><a href="../platform/model/functions/audit.html">Audit</a></div><div style="padding-left:28px"><a href="../system/engines.html">Engines, workflows, skills</a></div><div style="padding-left:28px"><a href="../platform/model/versions.html">Artifacts and versions</a></div><div style="padding-left:39px"><a href="../platform/model/particles.html">Particles</a></div><div style="padding-left:39px"><a href="../platform/model/work-atom.html">Work-atom</a></div><div style="padding-left:39px"><a href="../platform/model/assembly-system.html">Assembly and system</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">PARTS: TEMPLATES</div><div style="padding-left:28px"><a href="../platform/model/type-system.html">Type system</a></div><div style="padding-left:28px"><a href="../platform/model/builders.html">Builders</a></div><div style="padding-left:28px"><a href="../platform/model/research/vsm-five-units.html">Research: VSM, the five units</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">LIFE: ONE SYSTEM</div><div style="padding-left:28px"><a href="../platform/model/system-lifecycle.html">One system, born to retired</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">MEETINGS: JOURNEYS AND GOALS</div><div style="padding-left:28px"><a href="../system/department.html#journeys">With the system: J1, J2, ...</a></div><div style="padding-left:28px"><a href="../platform/model/use-cases.html">Of the customers: the use cases</a></div><div class="sb-band" style="padding-left:6px;font-size:9px;color:#b0b6bf">FOUNDATIONS</div><div style="padding-left:28px"><a href="../platform/the-model.html">The model (the words)</a></div><div style="padding-left:28px"><a href="../bootstrap.html">The bootstrap (method)</a></div><div style="padding-left:28px"><a href="../capability-priorities.html">What comes first</a></div><div class="sb-band">FUTURE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">designed for later, kept findable</div><div style="padding-left:17px"><a href="../future/index.html">Future: the three groups</a></div><div class="sb-band">GOVERNANCE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">checks every band above</div><div style="padding-left:17px"><a href="../governance/index.html">Governance</a></div><div style="padding-left:17px"><a href="../governance/parity.html">Parity</a></div><div class="sb-band">ARCHIVE</div><div style="font-size:8.5px;color:#b8bec7;letter-spacing:.04em;margin:-3px 0 3px 0">superseded, parked, set aside</div><div style="padding-left:17px"><a href="../archive/index.html">The archive index</a></div><div class="sb-band">CODE</div><div style="padding:2px 0 2px 17px;color:#9ca3af"><code>sutra/</code> repo (D54)</div><style media="print">.sidebar div{display:block!important}</style><script>(function(){try{
+var nav=document.currentScript.closest("nav");if(!nav)return;
+var KEY="sutra.native.sidebar.v2",st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+var kids=Array.prototype.slice.call(nav.children);
+var isBand=function(el){return el.classList&&el.classList.contains("sb-band")};
+var isTop=function(el){return isBand(el)&&!(el.getAttribute("style")||"").match(/padding-left/)};
+var tops=[];var cur=null;var sb=null;
+kids.forEach(function(el){
+ if(isTop(el)){cur={band:el,items:[],subs:[]};tops.push(cur);sb=null}
+ else if(cur){cur.items.push(el);if(isBand(el)){sb={band:el,items:[]};cur.subs.push(sb)}else if(sb){sb.items.push(el)}}
+});
+var hasCur=function(items){return items.some(function(el){return el.querySelector&&el.querySelector(".sb-cur")})};
+var mk=function(g,key,dflt,after){
+ var arrow=document.createElement("span");arrow.style.marginRight="4px";g.band.insertBefore(arrow,g.band.firstChild);
+ g.band.style.cursor="pointer";g.band.setAttribute("role","button");g.band.setAttribute("tabindex","0");
+ g.set=function(c){g.items.forEach(function(el){el.style.display=c?"none":""});arrow.textContent=c?"\u25B8 ":"\u25BE ";g.band.setAttribute("aria-expanded",c?"false":"true");if(after)after(c)};
+ var init=hasCur(g.items)?false:(st[key]===undefined?dflt:st[key]===true);
+ g.set(init);
+ var toggle=function(){var c=g.band.getAttribute("aria-expanded")==="true";g.set(c);st[key]=c;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+ g.band.addEventListener("click",function(ev){ev.stopPropagation();toggle()});
+ g.band.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle()}});
+};
+tops.forEach(function(t){
+ var name=t.band.textContent.trim();if(!t.items.length)return;
+ t.subs.forEach(function(s){s.key="sub:"+name+"/"+s.band.textContent.trim()});
+ t.subs.forEach(function(s){mk(s,s.key,true,null)});
+ mk(t,"top:"+name,false,function(c){if(!c){t.subs.forEach(function(s){if(s.band.getAttribute("aria-expanded")==="false"){s.items.forEach(function(el){el.style.display="none"})}})}});
+});
+}catch(e){}})();</script></nav><div class="page">
+<div class="crumb"><a href="../index.html">Native</a> &rsaquo; <a href="completeness.html">Axis</a> &rsaquo; What a unit looks like</div>
+<h1>What a unit looks like <span class="lvl">AXIS &#183; pictures</span> <span class="pill DRAFT">DRAFT v1</span></h1>
+<p class="lede">One primitive: value and axis. A unit is one value on every axis, at one version. Every picture below is drawn from that, in the site's own words.</p>
+<p class="note"><b>Read with</b> <a href="completeness.html">Completeness of thought</a> (the questions) and <a href="../axes.html">Axes and families</a> (the frame, the sorting test, every named axis). The nine lines of the theory this page draws were ruled on 2026-10-26; the sources are named under every picture.</p>
+
+<!-- ============ 0. THE AXIS ============ -->
+<h2>0 &#183; The axis: where it comes from</h2>
+<p class="one">A value seen once is a point in the record. Seen again and again, the points line up. Reflection lifts that line into an axis and names its answers. The sorting test then says which family the axis belongs to.</p>
+<figure id="f0"></figure>
+<ol class="key">
+<li><b>1</b>Values in the record: the same answers keep recurring (here: who may let a transition pass).</li>
+<li><b>2</b>Reflection lifts them into one line, the axis, and names its answers: auto, ask, deny. The answers must be mutually exclusive and collectively exhaustive.</li>
+<li><b>3</b>The sorting test asks what the axis reads and places it in one family: this one gates a transition, so GOVERN.</li>
+<li><b>4</b>Every unit now carries one more row and holds one value on it. A minted axis then passes the retention gate or is retired.</li>
+</ol>
+<details class="why"><summary>The named axes and their values, as the site has them today</summary><div class="body">
+<table>
+<tr><th>Family</th><th>Reads</th><th>Named axes</th><th>Values the site names</th></tr>
+<tr><td><b style="color:#2b6cb0">SHAPE</b></td><td>the input, fresh every run</td><td>type, certainty, lens, impact</td><td>type: direction, task, feedback, new concept, question. certainty: clear, complicated, complex, chaotic</td></tr>
+<tr><td><b style="color:#1f8f7a">GROW</b></td><td>what accumulates on the unit across runs</td><td>substance, scale, cross-unit, codify, fit</td><td>codify, the rungs: person, improvised call, checklist, code. scale: tick, asks, spend</td></tr>
+<tr><td><b style="color:#b5342f">GOVERN</b></td><td>every transition</td><td>authority, compliance rule, owner and budget authority, term of a stamp</td><td>authority: auto, ask, deny. A stamp: go, ask, refuse, always</td></tr>
+<tr><td><b style="color:#d9822b">EDGE</b></td><td>the link between two atoms</td><td>handoff, shared resource, must-cohere</td><td>no closed list <span class="gap">work needs to be done</span></td></tr>
+<tr><td><b style="color:#6d4fc2">RESOURCE</b></td><td>a finite stock the work spends</td><td>spend, token budget</td><td>a number per kind, e.g. 50k tokens and 60 calls a run</td></tr>
+<tr><td><b style="color:#5a6b7a">TIME</b></td><td>when, and over time</td><td>schedule, cadence, dynamics, lateness, cadence-health</td><td>cadence: manual, daily, weekly</td></tr>
+</table>
+<p>The founder's factors sit on these axes: authority is GOVERN's authority; resources and compute are RESOURCE's spend and token budget; when it starts is TIME's schedule; who it interacts with is an EDGE handoff; when it escalates is GOVERN's ask; knowledge is the input SHAPE reads fresh; who runs it is GROW's codify rung. "How far it has run" has no named axis yet <span class="gap">work needs to be done</span>. Source: <a href="../axes.html">Axes and families</a>, section 3 "Every named axis".</p>
+</div></details>
+
+<!-- ============ 1. ONE UNIT ============ -->
+<h2>1 &#183; One unit</h2>
+<p class="one">A unit is one value on every named axis, at one version. The six families are the bands, the named axes are the rows, the lit dot is the value this unit holds now.</p>
+<figure id="f1"></figure>
+<ol class="key">
+<li><b>1</b>The unit: one list of values across all axes, at one time. The smallest unit is the work atom: one goal, one check.</li>
+<li><b>2</b>A band is a family: what the axis reads, by the sorting test. A minted axis is sorted into a band and adds one row to every unit.</li>
+<li><b>3</b>A row is a named axis: one question.</li>
+<li><b>4</b>A lit dot is the value held now. Where the site names the values they are written out; where it does not, the dot stands alone.</li>
+<li><b>5</b>Two lit dots on one row: several values at once, if they do not contradict. The rule for which may co-occur is open.</li>
+<li><b>6</b>The corner tag is time. Versions are kept by supersedes: the new one written, the old one kept, never overwritten.</li>
+</ol>
+<details class="why"><summary>Why it is drawn this way</summary><div class="body">
+<table>
+<tr><td>Claim</td><td>A unit is one list of values across all axes, at one time (the founder's line 2, 2026-10-26).</td></tr>
+<tr><td>Why bands</td><td>The families are not rows of their own; they group the axes by what the axis reads. One primitive, six families: <a href="../axes.html">Axes and families</a>.</td></tr>
+<tr><td>Why supersedes</td><td>"A superseded rule version is kept, never overwritten (built in the record)": the moves table on the same page.</td></tr>
+<tr><td>Open</td><td>which values on one axis may be held together; whether values are ordered; the axis for how far a unit has run. <span class="gap">work needs to be done</span></td></tr>
+</table></div></details>
+
+<!-- ============ 2. KINDS ============ -->
+<h2>2 &#183; Kinds of units: the ladder</h2>
+<p class="one">Same unit, different values, at every rung of the ladder: base case, root, department, engine, workflow, work atom. A meta unit is a unit that holds units.</p>
+<figure id="f2"></figure>
+<div class="legend"><span style="--c:#d9822b">codify: person</span><span style="--c:#6d4fc2">codify: improvised call or checklist</span><span style="--c:#1f8f7a">codify: code</span><span style="--c:#b5342f">meta unit</span></div>
+<ol class="key">
+<li><b>1</b>The ladder: base case (a first stamp, recorded) &gt; root (makes departments) &gt; department (holds engines) &gt; engine (steps, drawn by Adaptation) &gt; workflow (work atoms in an order) &gt; work atom (one goal, one check).</li>
+<li><b>2</b>Kinds are not different shapes. They are different values on the same axes, chiefly GROW's codify rung, which tints the header.</li>
+<li><b>3</b>The founder's word "meta unit" is any rung above the atom. It holds units and is itself a unit, with its own values: the strip on its frame.</li>
+<li><b>4</b>Principle 2, one rule that recurses: at every level the same four things, a goal, an owner, rules, a budget. The rule that makes a department the same way at every level is proposed, not built.</li>
+</ol>
+<details class="why"><summary>Sources</summary><div class="body"><p>The ladder and the three principles: <a href="../axes.html">Axes and families</a>, "The frame, in one notation" and "Three principles from nature". The rungs: S-03 crystallization spectrum on <a href="../system/department.html">A department</a>. The levels organisation to atom: <a href="../platform/structure.html">The structure</a>.</p></div></details>
+
+<!-- ============ 3. INTERACTION ============ -->
+<h2>3 &#183; Units interact: edges, asks, stamps</h2>
+<p class="one">Units are atoms on a graph. An EDGE handoff carries an artifact. An ask goes up to the owner, a stamp comes down. The input a unit needs is read fresh over an edge.</p>
+<figure id="f3"></figure>
+<div class="legend"><span style="--c:#2b6cb0">artifact, on a handoff</span><span style="--c:#b5342f">ask up (Propose), stamp down (Decide, Delegate)</span><span style="--c:#1f8f7a">the record</span><span style="--c:#8a8a8a">external system</span></div>
+<ol class="key">
+<li><b>1</b>Who it interacts with is not an axis value. It is an EDGE between two atoms: handoff, shared resource, must-cohere.</li>
+<li><b>2</b>Only an artifact crosses an edge. A unit consumes artifacts and produces artifacts: "a company is artifacts and the work between them".</li>
+<li><b>3</b>Only an ask or a stamp crosses a level. The four stages: Decide, Delegate, Deliver, Propose. Top to bottom is Realization and Delegate; bottom to top is Reflection and Propose.</li>
+<li><b>4</b>The founder's "question to the meta unit" is an ask. The answer is a stamp: go, ask, refuse, always. An ask stamped the same way again and again becomes a go rule: the standing instruction.</li>
+<li><b>5</b>Knowledge is the input, read fresh every run (SHAPE), over an edge from an artifact or an external system.</li>
+<li><b>6</b>Deliver: the output leaves over an edge to the outside. The record keeps every version of every artifact.</li>
+</ol>
+<details class="why"><summary>Sources</summary><div class="body"><p>Edges: <a href="../axes.html#folded-edges-html">EDGE, the three kinds</a>. Artifacts: <a href="../units-and-artifacts.html">Artifacts and work</a>. The stages and actors: <a href="../axes.html#folded-the-frame-html">The frame</a>. The go rule: the GOVERN row of the moves table on <a href="../axes.html">Axes and families</a>.</p></div></details>
+
+<!-- ============ 4. TIME AND SPACE ============ -->
+<h2>4 &#183; Across time and space</h2>
+<p class="one">One scene, six moments. Rows are places, left to right is time. A value changes and the unit supersedes itself; a goal changes and a new work atom is minted.</p>
+<div class="controls"><button id="prev">Back</button><button id="next">Next</button><button id="play">Play</button><span id="dots" style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6b7280"></span></div>
+<p class="caption" id="cap"></p>
+<figure id="f4"></figure>
+<details class="why"><summary>Why each moment goes the way it does</summary><div class="body">
+<table>
+<tr><td>The rule</td><td>A situation arrives; the owner answers with one of two moves: change a value (same unit, next version by supersedes) or mint a new work atom (one goal, one check).</td></tr>
+<tr><td>t2</td><td>RESOURCE's token budget changed; the goal did not. Same unit, v2 supersedes v1.</td></tr>
+<tr><td>t3</td><td>A new goal. A goal is identity, so a new work atom is minted. The old one hands it an artifact on a handoff.</td></tr>
+<tr><td>t4</td><td>The new atom finds its goal contradicts a fact and raises an ask (Propose). The owner stamps "always": a go rule, lit on its GOVERN authority row.</td></tr>
+<tr><td>t5</td><td>The first atom delivers outside and retires; every version is kept. Unretire, a retire reversed from its manifest, is built in the record.</td></tr>
+<tr><td>What would change it</td><td>If constraints are identity too, t2 splits. If the goal is not identity, t3 is a value change and no atom is born. Founder's call.</td></tr>
+</table></div></details>
+
+<!-- ============ 5. RUNS AND VERSIONS ============ -->
+<h2>5 &#183; Runs across, versions down</h2>
+<p class="one">A version is the unit updated. A run is the unit executed at one version. Inside a run: steps, the artifacts they write, the output handed on. The record keeps every step and artifact of every run; Reflection reads it across runs and writes the next version.</p>
+<figure id="f5"></figure>
+<div class="legend"><span style="--c:#111827">step: an LLM call or a deterministic action, with a check</span><span style="--c:#2b6cb0">artifact written by a step</span><span style="--c:#1f8f7a">the record, read across runs</span></div>
+<ol class="key">
+<li><b>1</b>Across: runs. Anyone can start a run: a person, an AI, a rule, another piece of work. Each run reads the input fresh (SHAPE). The input differs, the unit does not.</li>
+<li><b>2</b>Inside a run: steps in an order, each with a check; some steps write artifacts; the last artifact handed on an edge is the output.</li>
+<li><b>3</b>A run whose check fails writes no output. The record still keeps its steps.</li>
+<li><b>4</b>Down: versions. What accumulates on the unit across runs (GROW) is lifted into the next version. A record line lifted to its rule is Reflection.</li>
+<li><b>5</b>The pointer: how far the current run has gone. The founder's "where in Realization is this unit". No named axis yet <span class="gap">work needs to be done</span>.</li>
+<li><b>6</b>A run never edits the unit; a version never runs. The output crosses an edge; the record stays on the unit and feeds the next version.</li>
+</ol>
+<details class="why"><summary>The correlation the founder asked for, and sources</summary><div class="body"><p>"Output, an accumulation of actions and artifacts" is two things on the site: the output (the artifact delivered, Deliver) and the record (every step and artifact, kept). Realization is the run: the goal cut into steps down to one goal, one check. Reflection is the version: the record lifted into a rule. Sources: the sorting test (SHAPE reads the input fresh every run; GROW accumulates on the unit across runs) and the moves table on <a href="../axes.html">Axes and families</a>; "anyone can start a run" on the TIME spec; steps as an LLM call or a deterministic action with a pre-declared output and a post-call check on <a href="../system/engines.html">Engines, workflows, skills</a>; versions by supersedes on <a href="../platform/model/versions.html">Artifacts and versions</a>.</p></div></details>
+
+<!-- ============ 6. HOW A VALUE IS SET ============ -->
+<h2>6 &#183; How a value is set by the situation</h2>
+<p class="one">Four ways, and every named axis uses at least one: cut from the parent, read from the input, stamped by the owner, lifted from the record.</p>
+<figure id="f6"></figure>
+<ol class="key">
+<li><b>1</b>Cut (Realization, down): the parent's value is split into the children's. A goal into child goals; a budget among the children; a deadline into step durations; a parent's rules into a child's tighter rules.</li>
+<li><b>2</b>Read (SHAPE, fresh each run): classified from the input every turn. Type, certainty, lens are written every turn before any work.</li>
+<li><b>3</b>Stamped (GOVERN): the owner sets it by hand. Go, ask, refuse, always; a cadence of manual, daily or weekly; a proposed child or engine stamped in.</li>
+<li><b>4</b>Lifted (Reflection, up): the record across runs becomes the next value. What was spent becomes the next budget line; the beats observed become the cadence; an ask stamped the same way again and again becomes a go rule.</li>
+</ol>
+<details class="why"><summary>Per family, from the moves table</summary><div class="body">
+<table>
+<tr><th>Family</th><th>Cut from the parent (Realization)</th><th>Read from the input (each run)</th><th>Stamped by the owner</th><th>Lifted from the record (Reflection)</th></tr>
+<tr><td><b style="color:#2b6cb0">SHAPE</b></td><td>the goal is cut into child goals, steps and atoms</td><td>type, certainty, lens: a reading written every turn</td><td>impact, set before it runs</td><td>a cut that keeps recurring becomes a template</td></tr>
+<tr><td><b style="color:#1f8f7a">GROW</b></td><td>a codified rule is applied to every new department</td><td></td><td>a proposed child or engine: the parent's owner stamps it</td><td>a record line is lifted to the rule it is an instance of; two meters over a month proposes a child</td></tr>
+<tr><td><b style="color:#b5342f">GOVERN</b></td><td>a parent's rules become a child's tighter rules</td><td></td><td>go, ask, refuse, always</td><td>an ask stamped the same way, again and again, becomes a go rule</td></tr>
+<tr><td><b style="color:#d9822b">EDGE</b></td><td>a link becomes concrete hand-offs between atoms</td><td></td><td></td><td>repeated hand-offs between two units become a standing link</td></tr>
+<tr><td><b style="color:#6d4fc2">RESOURCE</b></td><td>the budget is split among the children</td><td></td><td>the budget line, as text today</td><td>what was actually spent becomes the next budget line</td></tr>
+<tr><td><b style="color:#5a6b7a">TIME</b></td><td>a deadline is cut into step durations</td><td></td><td>cadence: manual, daily, weekly</td><td>the beats actually observed become the cadence</td></tr>
+</table>
+<p>Empty cells are empty on the site too. Source: "2 &#183; The moves, inside each family" and "3 &#183; Every named axis" on <a href="../axes.html">Axes and families</a>; the per-turn readings on <a href="../platform/how-methodology.html">Method</a>.</p>
+</div></details>
+
+<!-- ============ 7. HOW AN AXIS IS MINTED ============ -->
+<h2>7 &#183; How a new axis is minted</h2>
+<p class="one">Users mint axes freely; the family skeleton stays closed. A minted axis passes the pick test, then the five steps. Only escalate can change the families, and only the core author does that.</p>
+<figure id="f7"></figure>
+<ol class="key">
+<li><b>1</b>Mint: a user keeps hitting an unnamed dimension and names it as a value, via value and axis.</li>
+<li><b>2</b>The pick test: does it change what is built, or who reads? Five outcomes: keep, merge (overlaps an existing axis), rename (same axis, clearer label), reject (changes neither; dropped, logged, not silent), escalate (passes but fits no family).</li>
+<li><b>3</b>Keep runs the five steps. P1 name and define: the sorting test gives it one family. P2 show: need, advantage, how, one example. P3 thread: onto the page its family points to. P4 cross-link: which record it reads, which joint it writes back to. P5 ratify: a numbered D-direction or ADR.</li>
+<li><b>4</b>Escalate goes to the core author, who may rework the families: a new family, a split, a merge. Rare, governed, never on the fly.</li>
+</ol>
+<details class="why"><summary>One walked: "compliance", and the sources</summary><div class="body"><p>A user runs a regulated workflow and keeps hitting: does this action satisfy a binding external rule? They mint "compliance". P1 sorts it to GOVERN (it gates whether an action is allowed); P2 gives its ladder ok, review, blocked; P3 threads it onto the authority page as a new gate dimension; P4 cross-links it to the record it reads and the write-backs it gates; P5 ratifies it as an ADR. No re-architecting. Source: <a href="../axes.html#folded-axis-productization-html">Making an axis</a> (the five steps, a new axis walked, the retention gate) and <a href="../axes.html#folded-open-axis-html">the open-axis rule</a>. Pending on the site: ratifying the open-axis rule as a numbered D-direction.</p></div></details>
+
+<h2>What this page leaves open</h2>
+<table>
+<tr><th>#</th><th>Open</th><th>Where it bites</th><th>Live default</th></tr>
+<tr><td>1</td><td>the rule that makes the list of axes complete (collectively exhaustive)</td><td>picture 0, the sorting test</td><td>the six families stay; a seventh factor escalates to the core author</td></tr>
+<tr><td>2</td><td>which values on one axis may be held together</td><td>picture 1, two lit dots</td><td>allowed when they do not contradict; no rule yet</td></tr>
+<tr><td>3</td><td>whether values are ordered</td><td>pictures 0 and 1</td><td>only where the site orders them (the rungs, the cadences)</td></tr>
+<tr><td>4</td><td>the axis for how far a run has gone</td><td>picture 5, the pointer</td><td>drawn, not named</td></tr>
+<tr><td>5</td><td>which values carry identity</td><td>picture 4, t2 and t3</td><td>the goal only</td></tr>
+</table>
+
+<h2>Provenance</h2>
+<p style="font-size:12px;color:#6b7280">author: claude, session e0a8179d, 2026-10-26, on the founder's word ("formalize in this visual manner only, use the labels we are using"; "publish this work in the same part") &#183; drawn from the nine lines ruled the same day and from Axes and families, Method, Artifacts and work, Engines, Versions &#183; every label is a site word; the founder's words are marked as his &#183; review: none by a second model &#183; status: DRAFT v1.</p>
+
+<script>
+/* ---------- the site's axes ---------- */
+const FAM={SHAPE:'#2b6cb0',GROW:'#1f8f7a',GOVERN:'#b5342f',EDGE:'#d9822b',RESOURCE:'#6d4fc2',TIME:'#5a6b7a'};
+const C={ink:'#111827',muted:'#6b7280',line:'#d1d5db',track:'#e5e7eb',dot:'#d1d5db',card:'#fff',art:'#2b6cb0',meta:'#b5342f',ext:'#8a8a8a',grow:'#1f8f7a',shape:'#2b6cb0'};
+const FULL=[
+  {fam:'SHAPE',axis:'type',values:['direction','task','feedback','new concept','question']},
+  {fam:'SHAPE',axis:'certainty',values:['clear','complicated','complex','chaotic']},
+  {fam:'SHAPE',axis:'lens'},
+  {fam:'SHAPE',axis:'impact'},
+  {fam:'GROW',axis:'codify',values:['person','improvised call','checklist','code']},
+  {fam:'GROW',axis:'scale',values:['tick','asks','spend']},
+  {fam:'GOVERN',axis:'authority',values:['auto','ask','deny']},
+  {fam:'GOVERN',axis:'term of a stamp'},
+  {fam:'EDGE',axis:'handoff'},
+  {fam:'EDGE',axis:'must-cohere'},
+  {fam:'RESOURCE',axis:'token budget'},
+  {fam:'TIME',axis:'schedule'},
+  {fam:'TIME',axis:'cadence',values:['manual','daily','weekly']},
+];
+const COMPACT=[
+  {fam:'SHAPE',axis:'type',values:['direction','task','feedback','new concept','question']},
+  {fam:'GROW',axis:'codify',values:['person','improvised call','checklist','code']},
+  {fam:'GOVERN',axis:'authority',values:['auto','ask','deny']},
+  {fam:'EDGE',axis:'handoff'},
+  {fam:'RESOURCE',axis:'budget'},
+  {fam:'TIME',axis:'cadence',values:['manual','daily','weekly']},
+];
+const RUN_COLORS={0:'#d9822b',1:'#6d4fc2',2:'#6d4fc2',3:'#1f8f7a'};
+
+function unit(x,y,s,o){
+  o=o||{}; const rows=o.rows||COMPACT; const v=o.values||rows.map(()=>[0]);
+  const W=o.w||260, rowH=o.full?24:26, head=34, pad=10, H=head+rows.length*rowH+pad;
+  const labelW=o.labels===false?14:(o.full?150:128); const trackX0=labelW+6, trackX1=W-(o.full?96:16);
+  const codRow=rows.findIndex(r=>r.axis==='codify'); const cod=codRow>=0?(v[codRow]||[0])[0]:1;
+  const tint=o.tint||RUN_COLORS[cod]||C.muted;
+  let g=`<g transform="translate(${x},${y}) scale(${s})" ${o.frames?`data-frames="${o.frames}"`:''} ${o.dim?'opacity=".3"':''}>`;
+  g+=`<rect x="0" y="0" width="${W}" height="${H}" rx="12" fill="${C.card}" stroke="${C.line}" stroke-width="1.5"/>`;
+  g+=`<rect x="0" y="0" width="${W}" height="${head}" rx="12" fill="${tint}" opacity=".16"/>`;
+  g+=`<text x="12" y="22" font-size="13" font-weight="600" fill="${C.ink}">${o.name||'unit'}</text>`;
+  if(o.version) g+=`<text x="${W-10}" y="22" font-size="11" text-anchor="end" font-family="ui-monospace,Menlo,monospace" fill="${C.muted}">${o.version}</text>`;
+  let lastFam=null;
+  rows.forEach((r,i)=>{
+    const cy=head+rowH*i+rowH/2+2;
+    const n=r.values?r.values.length:5, step=(trackX1-trackX0)/(n-1);
+    if(r.fam!==lastFam){
+      const span=rows.filter(q=>q.fam===r.fam).length;
+      g+=`<rect x="1" y="${head+rowH*i}" width="${W-2}" height="${rowH*span}" fill="${FAM[r.fam]}" opacity=".05"/>`;
+      g+=`<rect x="1" y="${head+rowH*i}" width="4" height="${rowH*span}" fill="${FAM[r.fam]}"/>`;
+      if(o.labels!==false) g+=`<text x="11" y="${cy+4}" font-size="${o.full?9.5:10}" font-weight="700" fill="${FAM[r.fam]}">${r.fam}</text>`;
+      lastFam=r.fam;
+    }
+    if(o.labels!==false) g+=`<text x="${labelW-2}" y="${cy+4}" font-size="${o.full?10.5:10.5}" text-anchor="end" fill="${C.muted}">${r.axis}</text>`;
+    g+=`<line x1="${trackX0}" y1="${cy}" x2="${trackX1}" y2="${cy}" stroke="${C.track}" stroke-width="2"/>`;
+    const lit=v[i]||[];
+    for(let d=0;d<n;d++){
+      const cx=trackX0+d*step, on=lit.includes(d);
+      const col=r.axis==='codify'&&on?(RUN_COLORS[d]||tint):FAM[r.fam];
+      g+=`<circle cx="${cx}" cy="${cy}" r="${on?5.5:3}" fill="${on?col:C.dot}"/>`;
+      if(on) g+=`<circle cx="${cx}" cy="${cy}" r="9" fill="none" stroke="${col}" stroke-width="1.2" opacity=".5"/>`;
+    }
+    if(o.full && r.values && lit.length) g+=`<text x="${trackX1+10}" y="${cy+4}" font-size="10" fill="${C.ink}">${lit.map(d=>r.values[d]).join(', ')}</text>`;
+  });
+  if(o.note) g+=`<text x="${W/2}" y="${H+16}" font-size="11.5" text-anchor="middle" fill="${C.muted}">${o.note}</text>`;
+  g+='</g>'; return {svg:g,h:H*s,w:W*s};
+}
+function meta(x,y,o){
+  o=o||{}; const W=o.w||560,H=o.h||230;
+  let g=`<g transform="translate(${x},${y})" ${o.frames?`data-frames="${o.frames}"`:''}>`;
+  g+=`<rect x="0" y="0" width="${W}" height="${H}" rx="16" fill="none" stroke="${C.meta}" stroke-width="2.2" stroke-dasharray="9 6"/>`;
+  g+=`<text x="14" y="24" font-size="13.5" font-weight="600" fill="${C.meta}">${o.name||'meta unit'}</text>`;
+  const sx=W-6*22-14; const fams=Object.keys(FAM);
+  for(let i=0;i<6;i++){const cx=sx+i*22; g+=`<line x1="${cx-7}" y1="19" x2="${cx+7}" y2="19" stroke="${C.track}" stroke-width="2"/><circle cx="${cx-7+((i*5)%3)*7}" cy="19" r="3.2" fill="${FAM[fams[i]]}"/>`;}
+  g+=o.inner||''; g+='</g>'; return g;
+}
+function arrow(id,color){return `<marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="${color}"/></marker>`;}
+function defs(){return `<defs>${arrow('aArt',C.art)}${arrow('aMeta',C.meta)}${arrow('aExt',C.ext)}${arrow('aInk',C.ink)}${arrow('aGrow',C.grow)}${arrow('aShape',C.shape)}</defs>`;}
+function artifact(x,y,s,frames){return `<g ${frames?`data-frames="${frames}"`:''}><rect x="${x-8*s}" y="${y-8*s}" width="${16*s}" height="${16*s}" rx="${3*s}" fill="${C.art}"/><rect x="${x-4*s}" y="${y-4*s}" width="${8*s}" height="${2*s}" fill="#fff" opacity=".85"/><rect x="${x-4*s}" y="${y}" width="${8*s}" height="${2*s}" fill="#fff" opacity=".85"/></g>`;}
+function cloud(x,y,text,frames){return `<g transform="translate(${x},${y})" ${frames?`data-frames="${frames}"`:''}><path d="M20 40 a18 18 0 0 1 10-32 a22 22 0 0 1 40-6 a16 16 0 0 1 24 20 a14 14 0 0 1-6 26 z" fill="${C.card}" stroke="${C.ext}" stroke-width="2"/><text x="52" y="30" font-size="11.5" text-anchor="middle" fill="${C.muted}">${text}</text></g>`;}
+function label(x,y,t,o){o=o||{};return `<text x="${x}" y="${y}" font-size="${o.size||12}" fill="${o.fill||C.muted}" text-anchor="${o.anchor||'start'}" font-weight="${o.bold?'600':'normal'}" font-style="${o.italic?'italic':'normal'}" ${o.frames?`data-frames="${o.frames}"`:''}>${t}</text>`;}
+function num(x,y,n,frames){return `<g ${frames?`data-frames="${frames}"`:''}><circle cx="${x}" cy="${y}" r="9" fill="${C.ink}"/><text x="${x}" y="${y+3.5}" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">${n}</text></g>`;}
+function box(x,y,w,h,t,o){o=o||{};return `<g ${o.frames?`data-frames="${o.frames}"`:''}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${o.fill||C.card}" stroke="${o.stroke||C.line}" stroke-width="1.5" ${o.dash?'stroke-dasharray="5 4"':''}/><text x="${x+w/2}" y="${y+h/2+4}" font-size="${o.size||12}" font-weight="${o.bold?'600':'normal'}" text-anchor="middle" fill="${o.color||C.ink}">${t}</text></g>`;}
+
+/* ---------- 0. THE AXIS ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 900 300">${defs()}`;
+  // panel 1
+  s+=num(20,24,1); s+=label(36,28,'values in the record',{bold:true,fill:C.ink});
+  const pts=[[40,70,'ask'],[95,112,'ask'],[62,150,'auto'],[135,82,'ask'],[160,142,'deny'],[112,182,'ask'],[180,195,'auto'],[75,215,'ask']];
+  pts.forEach(([x,y,t])=>{s+=`<circle cx="${x}" cy="${y}" r="5" fill="${FAM.GOVERN}" opacity=".85"/>`;s+=label(x+9,y+4,t,{size:11});});
+  s+=`<path d="M230 140 L280 140" stroke="${C.grow}" stroke-width="2" marker-end="url(#aGrow)"/>`+label(255,128,'Reflection',{anchor:'middle',size:10.5,fill:C.grow});
+  // panel 2
+  s+=num(305,24,2); s+=label(321,28,'the axis, answers named',{bold:true,fill:C.ink});
+  s+=`<line x1="320" y1="140" x2="560" y2="140" stroke="${FAM.GOVERN}" stroke-width="3"/>`;
+  [['auto',320],['ask',440],['deny',560]].forEach(([t,x])=>{s+=`<circle cx="${x}" cy="140" r="7" fill="${FAM.GOVERN}"/>`;s+=label(x,166,t,{anchor:'middle',fill:C.ink,size:12.5});});
+  s+=label(440,112,'authority',{anchor:'middle',fill:FAM.GOVERN,size:13,bold:true});
+  s+=label(440,205,'one question, its answers',{anchor:'middle',size:11,italic:true});
+  s+=`<path d="M580 140 L620 140" stroke="${C.ink}" stroke-width="1.5" marker-end="url(#aInk)"/>`+label(600,128,'sort',{anchor:'middle',size:10.5});
+  // panel 3
+  s+=num(645,24,3); s+=label(661,28,'the sorting test',{bold:true,fill:C.ink});
+  const q=[['the input, fresh each run?','SHAPE'],['accumulates across runs?','GROW'],['gates a transition?','GOVERN'],['the link between atoms?','EDGE'],['a stock the work spends?','RESOURCE'],['when, over time?','TIME']];
+  q.forEach(([t,f],i)=>{const y=62+i*28; const hit=f==='GOVERN'; s+=`<rect x="640" y="${y-14}" width="250" height="23" rx="5" fill="${hit?FAM[f]:'none'}" opacity="${hit?'.12':'1'}"/>`; s+=label(648,y+1,t,{size:11,fill:hit?C.ink:C.muted}); s+=label(884,y+1,f,{anchor:'end',size:10.5,fill:FAM[f],bold:hit});});
+  // panel 4
+  s+=`<line x1="20" y1="262" x2="880" y2="262" stroke="${C.track}"/>`;
+  s+=num(20,284,4); s+=label(36,288,'every unit gets one more row:',{fill:C.ink,size:12});
+  s+=`<line x1="250" y1="284" x2="340" y2="284" stroke="${C.track}" stroke-width="2"/>`;
+  [250,295,340].forEach((x,i)=>{s+=`<circle cx="${x}" cy="284" r="${i===1?5.5:3}" fill="${i===1?FAM.GOVERN:C.dot}"/>`;});
+  s+=label(354,288,'authority = ask',{size:12,fill:C.ink});
+  s+='</svg>'; document.getElementById('f0').innerHTML=s;
+})();
+
+/* ---------- 1. ONE UNIT ---------- */
+(function(){
+  const vals=[[1,3],[1],[2],[1], [2],[1], [1],[0], [1],[2], [2], [1],[2]];
+  let s=`<svg viewBox="0 0 560 380">${defs()}`;
+  const u=unit(60,14,1,{rows:FULL,full:true,w:420,values:vals,name:'ship the pricing page',version:'v3 supersedes v2'});
+  s+=u.svg;
+  // markers
+  s+=num(36,30,1);                              // the unit (header)
+  s+=num(36,78,2);                              // band SHAPE (rows 0-3: y 48..144)
+  s+=`<path d="M45 78 L60 78" stroke="${C.line}"/>`;
+  s+=num(36,228,3);                             // row authority: head+rowH*6+rowH/2+2 = 34+144+14 = 192+14=206? compute: 14+34+6*24+12+2=206
+  s+=num(36,302,4);                             // lit dot row 10 token budget: 14+34+10*24+14 = 302
+  s+=num(36,62,5);                              // type row: 14+34+12+2 = 62 ; conflict with 2 -> shift 2 to 100
+  s+=num(505,30,6);                             // version tag
+  s+='</svg>';
+  // fix positions: marker 2 moved to the GROW band to avoid clashing with 5
+  s=s.replace(num(36,78,2),num(36,158,2)).replace(`<path d="M45 78 L60 78" stroke="${C.line}"/>`,`<path d="M45 158 L60 158" stroke="${C.line}"/>`);
+  s=s.replace(num(36,228,3),num(36,206,3));
+  document.getElementById('f1').innerHTML=s;
+})();
+
+/* ---------- 2. THE LADDER ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 900 430">${defs()}`;
+  const sc=.55, gap=148;
+  const rungs=[
+    ['base case','a first stamp',[[1],[0],[1],[0],[0],[0]]],
+    ['root','makes departments',[[0],[0],[1],[1],[2],[2]]],
+    ['department','holds engines',[[1],[1],[1],[1],[2],[2]]],
+    ['engine','its steps',[[1],[2],[1],[1],[3],[1]]],
+    ['workflow','atoms in an order',[[1],[2],[0],[2],[3],[1]]],
+    ['work atom','one goal, one check',[[1],[3],[0],[2],[4],[0]]],
+  ];
+  rungs.forEach(([n,note,v],i)=>{s+=unit(14+i*gap,36,sc,{values:v,name:n,version:'v'+(i+1),note}).svg;});
+  s+=num(20,20,1); s+=label(36,24,'the ladder',{bold:true,fill:C.ink});
+  s+=`<path d="M22 182 L876 182" stroke="${C.line}" stroke-width="1.5" marker-end="url(#aInk)"/>`;
+  s+=num(20,214,2); s+=label(36,218,'same unit, different values; the codify rung tints the header',{fill:C.ink,size:12});
+  // meta unit
+  const inner=unit(14,36,.36,{values:[[1],[3],[0],[2],[4],[0]],name:'atom a',labels:false}).svg
+             +unit(122,36,.36,{values:[[1],[2],[1],[2],[3],[1]],name:'atom b',labels:false}).svg
+             +unit(230,36,.36,{values:[[1],[3],[0],[2],[4],[0]],name:'atom c',labels:false}).svg
+             +`<path d="M109 72 L121 72" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/><path d="M217 72 L229 72" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/>`;
+  s+=meta(260,250,{w:340,h:130,name:'meta unit: a workflow',inner});
+  s+=num(240,250,3);
+  s+=label(620,290,'holds units',{size:12,fill:C.ink});
+  s+=label(620,308,'is a unit: its own values, the strip',{size:12,fill:C.ink});
+  s+=num(620,350,4); s+=label(636,354,'at every level: a goal, an owner, rules, a budget',{size:12,fill:C.ink});
+  s+=label(20,300,'open any unit above',{size:11.5});
+  s+=label(20,316,'the atom: it is a meta unit',{size:11.5});
+  s+=`<path d="M160 300 C 200 280, 230 280, 258 290" stroke="${C.line}" fill="none" stroke-dasharray="4 4" marker-end="url(#aInk)"/>`;
+  s+='</svg>'; document.getElementById('f2').innerHTML=s;
+})();
+
+/* ---------- 3. INTERACTION ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 900 540">${defs()}`;
+  s+=meta(250,20,{w:400,h:86,name:'owner: Decide, Delegate',inner:label(200,56,'goal changed: mint an atom',{anchor:'middle',size:11.5,fill:C.ink})+label(200,74,'otherwise: same unit, next version',{anchor:'middle',size:11.5,fill:C.ink})});
+  const sc=.55;
+  s+=unit(40,250,sc,{values:[[1],[0],[1],[1],[2],[2]],name:'A  gather facts',version:'v2'}).svg;
+  s+=unit(386,250,sc,{values:[[1],[2],[1],[1],[3],[2]],name:'B  write the draft',version:'v4'}).svg;
+  s+=unit(732,250,sc,{values:[[1],[3],[0],[2],[4],[1]],name:'C  publish',version:'v9'}).svg;
+  // handoffs
+  s+=`<path d="M185 305 L384 305" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/>`+artifact(284,305,1.1);
+  s+=label(284,290,'handoff',{anchor:'middle',size:11});
+  s+=`<path d="M531 305 L730 305" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/>`+artifact(630,305,1.1);
+  s+=label(630,290,'handoff',{anchor:'middle',size:11});
+  s+=num(284,330,1); s+=num(630,330,2);
+  // ask / stamp
+  s+=`<path d="M430 246 L430 112" stroke="${C.meta}" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aMeta)"/>`;
+  s+=label(422,182,'ask',{anchor:'end',fill:C.meta,size:12,bold:true});
+  s+=`<path d="M472 112 L472 246" stroke="${C.meta}" stroke-width="2" marker-end="url(#aMeta)"/>`;
+  s+=label(480,182,'stamp: always',{fill:C.meta,size:12,bold:true});
+  s+=num(451,210,4);
+  // delegate
+  s+=`<path d="M290 108 C 230 150, 170 190, 110 246" stroke="${C.meta}" stroke-width="1.2" fill="none" marker-end="url(#aMeta)"/>`;
+  s+=`<path d="M610 108 C 680 150, 760 190, 800 246" stroke="${C.meta}" stroke-width="1.2" fill="none" marker-end="url(#aMeta)"/>`;
+  s+=label(170,170,'Delegate',{anchor:'middle',size:11,fill:C.meta}); s+=label(740,170,'Delegate',{anchor:'middle',size:11,fill:C.meta});
+  s+=num(200,140,3);
+  // input from the web
+  s+=cloud(30,430,'the web');
+  s+=`<path d="M105 430 L105 392" stroke="${C.ext}" stroke-width="1.8" stroke-dasharray="3 4" marker-end="url(#aExt)"/>`;
+  s+=label(118,418,'input, read fresh',{size:11}); s+=num(150,458,5);
+  // deliver to customers
+  s+=cloud(770,430,'customers');
+  s+=`<path d="M800 392 L820 428" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/>`+artifact(790,412,.9);
+  s+=label(745,418,'Deliver',{anchor:'end',size:11,fill:C.ink});
+  // the record
+  s+=`<rect x="340" y="420" width="220" height="64" rx="10" fill="none" stroke="${C.grow}" stroke-dasharray="5 4"/>`;
+  s+=label(450,440,'the record',{anchor:'middle',fill:C.grow,size:12,bold:true});
+  s+=artifact(390,466,.9)+artifact(420,466,.9)+artifact(450,466,.9)+artifact(480,466,.9)+artifact(510,466,.9);
+  s+=`<path d="M430 392 L430 418" stroke="${C.grow}" stroke-width="1.2" marker-end="url(#aGrow)"/>`;
+  s+=`<path d="M472 418 L472 392" stroke="${C.grow}" stroke-width="1.2" marker-end="url(#aGrow)"/>`;
+  s+=num(590,452,6);
+  s+='</svg>'; document.getElementById('f3').innerHTML=s;
+})();
+
+/* ---------- 4. TIME AND SPACE ---------- */
+const CAPS=[
+  ['t0','Quiet. One work atom, U1, under its owner: goal "ship the pricing page", codify: checklist, cadence: weekly. Version 1.'],
+  ['t1','A situation arrives from outside: a customer asks for a yearly plan. It lands on U1 as input, read fresh, over an edge.'],
+  ['t2','The owner changes one value: RESOURCE token budget, one notch up. Same goal, same unit. v2 supersedes v1.'],
+  ['t3','A new goal: "price the yearly plan". A goal is identity, so a work atom U2 is minted: one goal, one check. U1 hands it an artifact on a handoff.'],
+  ['t4','U2 finds the goal contradicts a fact U1 gathered and raises an ask. The owner stamps "always": a go rule. U2 v2.'],
+  ['t5','U1 delivers its page outside and retires; every version is kept in the record. U2 runs on. Ready for the next situation.'],
+];
+(function(){
+  let s=`<svg viewBox="0 0 1000 560">${defs()}`;
+  const lanes=[[10,160,'owner (meta unit)'],[180,230,'work atoms'],[420,120,'outside: external systems']];
+  lanes.forEach(([y,h,t],i)=>{s+=`<rect x="0" y="${y}" width="1000" height="${h}" fill="${i===1?'#f9fafb':'none'}"/>`;s+=label(12,y+20,t,{size:11.5});});
+  s+=`<line x1="40" y1="548" x2="980" y2="548" stroke="${C.line}" marker-end="url(#aInk)"/>`;
+  for(let i=0;i<6;i++){const x=120+i*150;s+=`<line x1="${x}" y1="544" x2="${x}" y2="552" stroke="${C.muted}"/>`;s+=label(x,538,'t'+i,{anchor:'middle',size:11});}
+  s+=`<g id="tcursor"><circle cx="120" cy="548" r="6" fill="${C.ink}"/></g>`;
+  s+=meta(300,28,{w:400,h:120,name:'owner',inner:label(200,66,'goal changed: mint a work atom',{anchor:'middle',size:12,fill:C.ink})+label(200,86,'otherwise: same unit, next version',{anchor:'middle',size:12,fill:C.ink})+label(200,108,'the founder sits here for the root',{anchor:'middle',size:11})});
+  const sc=.62;
+  s+=unit(150,215,sc,{values:[[1],[2],[1],[1],[2],[2]],name:'U1  the pricing page',version:'v1',frames:'0-1'}).svg;
+  s+=unit(150,215,sc,{values:[[1],[2],[1],[1],[3],[2]],name:'U1  the pricing page',version:'v2',frames:'2-4'}).svg;
+  s+=unit(150,215,sc,{values:[[1],[2],[1],[1],[3],[2]],name:'U1  retired',version:'v3',frames:'5',dim:true}).svg;
+  s+=`<g data-frames="2"><circle cx="${150+sc*(134+3*27.5)}" cy="${215+sc*(34+4*26+15)}" r="15" fill="none" stroke="${C.ink}" stroke-width="1.5" stroke-dasharray="3 3"/>${label(150+sc*260+14,215+sc*(34+4*26+19),'budget, one notch up',{fill:C.ink,size:12})}${label(150+sc*260+14,215+sc*(34+4*26+37),'v2 supersedes v1',{size:11.5})}</g>`;
+  s+=unit(560,215,sc,{values:[[1],[2],[1],[1],[3],[0]],name:'U2  the yearly plan',version:'v1',frames:'3'}).svg;
+  s+=unit(560,215,sc,{values:[[1],[2],[0],[1],[3],[0]],name:'U2  the yearly plan',version:'v2',frames:'4-5'}).svg;
+  s+=`<g data-frames="3"><path d="M520 150 C 560 180, 600 190, 640 213" stroke="${C.meta}" stroke-width="2" fill="none" marker-end="url(#aMeta)"/>${label(660,182,'Delegate: a work atom minted',{fill:C.meta,size:12})}</g>`;
+  s+=`<g data-frames="3-5"><path d="M313 300 L558 300" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/>${artifact(435,300,1.1)}${label(435,284,'handoff',{anchor:'middle',size:11})}</g>`;
+  s+=`<g data-frames="4"><path d="M610 213 L610 150" stroke="${C.meta}" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aMeta)"/>${label(602,185,'ask',{anchor:'end',fill:C.meta,size:12,bold:true})}<path d="M650 150 L650 213" stroke="${C.meta}" stroke-width="2" marker-end="url(#aMeta)"/>${label(658,185,'stamp: always',{fill:C.meta,size:12,bold:true})}<circle cx="${560+sc*134}" cy="${215+sc*(34+2*26+15)}" r="15" fill="none" stroke="${C.meta}" stroke-width="1.5" stroke-dasharray="3 3"/></g>`;
+  s+=cloud(150,445,'a customer');
+  s+=`<g data-frames="1"><path d="M240 445 L255 382" stroke="${C.ext}" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#aExt)"/>${label(275,432,'"do you have a yearly plan?"',{size:12,fill:C.ink})}${label(275,450,'input, read fresh',{size:11.5})}</g>`;
+  s+=cloud(820,440,'customers');
+  s+=`<g data-frames="5"><path d="M280 380 C 500 420, 700 440, 860 450" stroke="${C.art}" stroke-width="2" fill="none" marker-end="url(#aArt)"/>${artifact(560,418,1.1)}${label(560,402,'Deliver',{anchor:'middle',size:11.5,fill:C.ink})}</g>`;
+  s+=`<g data-frames="5">${label(150,500,'kept in the record:',{size:11.5})}${unit(270,490,.12,{values:[[1],[2],[1],[1],[2],[2]],labels:false}).svg}${unit(305,490,.12,{values:[[1],[2],[1],[1],[3],[2]],labels:false}).svg}${unit(340,490,.12,{values:[[1],[2],[1],[1],[3],[2]],labels:false}).svg}${label(380,500,'v1  v2  v3',{size:11.5})}</g>`;
+  s+='</svg>'; document.getElementById('f4').innerHTML=s;
+
+  let f=0, timer=null;
+  function inRange(spec,f){return spec.split(',').some(p=>{const m=p.trim().split('-');return m.length===2?(f>=+m[0]&&f<=+m[1]):(+m[0]===f);});}
+  let first=true;
+  function show(n){
+    f=(n+6)%6;
+    document.querySelectorAll('#f4 [data-frames]').forEach(el=>{if(first)el.style.transition='none';el.classList.toggle('hidden',!inRange(el.dataset.frames,f));});
+    if(first){first=false;setTimeout(()=>document.querySelectorAll('#f4 [data-frames]').forEach(el=>el.style.transition=''),50);}
+    document.getElementById('tcursor').setAttribute('transform',`translate(${f*150},0)`);
+    document.getElementById('cap').innerHTML=`<b>${CAPS[f][0]}</b><span>${CAPS[f][1]}</span>`;
+    document.getElementById('dots').textContent=Array.from({length:6},(_,i)=>i===f?'#':'.').join(' ');
+  }
+  const play=document.getElementById('play');
+  function stop(){if(timer){clearInterval(timer);timer=null;play.textContent='Play';play.classList.remove('on');}}
+  document.getElementById('prev').onclick=()=>{stop();show(f-1);};
+  document.getElementById('next').onclick=()=>{stop();show(f+1);};
+  play.onclick=()=>{if(timer){stop();return;}play.textContent='Pause';play.classList.add('on');timer=setInterval(()=>show(f+1),2800);};
+  show(0);
+})();
+
+/* ---------- 5. RUNS AND VERSIONS ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 1000 700">${defs()}`;
+  const sc=.5, X0=40, Y=[46,266,486]; const RUNX=[330,550,770];
+  const versions=[['v1',[[1],[2],[1],[1],[2],[2]]],['v2 supersedes v1',[[1],[2],[1],[1],[3],[2]]],['v3 supersedes v2',[[1],[3],[0],[1],[3],[2]]]];
+  s+=num(20,22,4); s+=label(36,26,'versions, down',{bold:true,fill:C.grow,size:12});
+  s+=num(330,22,1); s+=label(346,26,'runs, across',{bold:true,fill:C.shape,size:12});
+  function run(x,y,n,o){
+    o=o||{}; const w=180,h=112;
+    let g=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${C.card}" stroke="${o.fail?FAM.GOVERN:C.line}" stroke-width="1.2" ${o.fail?'stroke-dasharray="4 3"':''}/>`;
+    g+=label(x+10,y+18,'run '+n,{size:11.5,fill:C.ink,bold:true}); g+=label(x+w-10,y+18,o.who,{size:10.5,anchor:'end'});
+    const steps=4; const sx=x+18, sw=(w-36)/(steps-1);
+    g+=`<line x1="${sx}" y1="${y+60}" x2="${sx+sw*(steps-1)}" y2="${y+60}" stroke="${C.track}" stroke-width="2"/>`;
+    for(let i=0;i<steps;i++){const cx=sx+i*sw; g+=`<rect x="${cx-4}" y="${y+52}" width="8" height="16" rx="2" fill="${C.ink}"/>`; if((o.arts||[1,3]).includes(i)) g+=artifact(cx,y+36,.8);}
+    if(o.fail){g+=label(x+w/2,y+96,'check failed: no output',{anchor:'middle',size:10.5,fill:FAM.GOVERN});}
+    else{g+=label(x+10,y+96,'output',{size:10.5});g+=`<path d="M${x+w-40} ${y+92} L${x+w-8} ${y+92}" stroke="${C.art}" stroke-width="2" marker-end="url(#aArt)"/>`;g+=artifact(x+w-48,y+92,.8);}
+    if(o.at!=null){const cx=sx+o.at*sw; g+=`<path d="M${cx} ${y+72} L${cx-5} ${y+80} L${cx+5} ${y+80} z" fill="${C.shape}"/>`;}
+    return g;
+  }
+  versions.forEach(([ver,v],r)=>{
+    const y=Y[r];
+    s+=unit(X0,y,sc,{values:v,name:'U1',version:ver}).svg;
+    const runs=[{who:'a person',arts:[1,3]},{who:'a rule',arts:[0,2,3]},{who:'another piece of work',arts:[1,3]}];
+    runs.forEach((o,i)=>{
+      const fail=(r===1&&i===1);
+      s+=run(RUNX[i],y+2,r*3+i+1,{who:o.who,arts:o.arts,fail,at:(r===2&&i===2)?2:null});
+      s+=`<path d="M${i===0?X0+132:RUNX[i-1]+182} ${y+60} L${RUNX[i]-3} ${y+60}" stroke="${C.shape}" stroke-width="1.4" marker-end="url(#aShape)"/>`;
+    });
+    s+=`<rect x="${RUNX[0]}" y="${y+126}" width="${RUNX[2]+180-RUNX[0]}" height="20" rx="4" fill="${C.grow}" opacity=".10"/>`;
+    s+=label(RUNX[0]+8,y+140,'the record: every step and artifact of runs '+(r*3+1)+' to '+(r*3+3)+', kept',{size:10.5,fill:C.grow});
+    if(r<2){
+      s+=`<path d="M${RUNX[0]-16} ${y+136} L ${X0+60} ${y+136} L ${X0+60} ${y+216}" stroke="${C.grow}" stroke-width="1.8" fill="none" marker-end="url(#aGrow)"/>`;
+      s+=label(X0+72,y+172,'Reflection',{size:11.5,fill:C.grow,bold:true});
+      s+=label(X0+72,y+187,r===0?'spent becomes the budget line':'repeated ask becomes a go rule',{size:10.5,fill:C.grow});
+    }
+  });
+  s+=num(RUNX[1]+90,Y[0]-10,2); s+=num(RUNX[1]+90,Y[1]+130,3); s+=num(RUNX[2]+194,Y[2]+78,5); s+=num(RUNX[0]-24,Y[2]+136,6);
+  s+='</svg>'; document.getElementById('f5').innerHTML=s;
+})();
+
+/* ---------- 6. HOW A VALUE IS SET ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 900 400">${defs()}`;
+  const u=unit(355,110,.8,{values:[[1],[2],[1],[1],[3],[2]],name:'the unit',version:'v2'});
+  // parent
+  s+=box(355,16,208,44,'the parent unit',{stroke:C.meta,dash:true,color:C.meta,bold:true});
+  s+=`<path d="M459 62 L459 106" stroke="${C.ink}" stroke-width="2" marker-end="url(#aInk)"/>`;
+  s+=label(470,88,'cut',{size:12,fill:C.ink,bold:true}); s+=num(448,84,1);
+  s+=u.svg;
+  // input from left
+  s+=cloud(40,150,'the input');
+  s+=`<path d="M150 180 L351 180" stroke="${C.shape}" stroke-width="2" marker-end="url(#aShape)"/>`;
+  s+=label(250,170,'read, fresh each run',{anchor:'middle',size:12,fill:C.shape,bold:true}); s+=num(250,200,2);
+  // owner from right
+  s+=box(720,160,150,44,'the owner',{stroke:C.meta,color:C.meta,bold:true});
+  s+=`<path d="M716 182 L567 182" stroke="${C.meta}" stroke-width="2" marker-end="url(#aMeta)"/>`;
+  s+=label(630,172,'stamped',{anchor:'middle',size:12,fill:C.meta,bold:true}); s+=num(630,202,3);
+  // record from below
+  s+=`<rect x="355" y="336" width="208" height="40" rx="8" fill="${C.grow}" opacity=".10"/>`;
+  s+=label(459,360,'the record, across runs',{anchor:'middle',size:12,fill:C.grow,bold:true});
+  s+=`<path d="M459 332 L459 ${110+u.h+4}" stroke="${C.grow}" stroke-width="2" marker-end="url(#aGrow)"/>`;
+  s+=label(470,318,'lifted',{size:12,fill:C.grow,bold:true}); s+=num(448,314,4);
+  s+='</svg>'; document.getElementById('f6').innerHTML=s;
+})();
+
+/* ---------- 7. HOW AN AXIS IS MINTED ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 900 360">${defs()}`;
+  s+=`<rect x="20" y="24" width="150" height="62" rx="8" fill="${C.card}" stroke="${C.line}" stroke-width="1.5"/>`;
+  s+=label(95,48,'mint',{anchor:'middle',size:12.5,fill:C.ink,bold:true}); s+=label(95,70,'a dimension, named as a value',{anchor:'middle',size:9.5}); s+=num(20,24,1);
+  s+=`<path d="M172 55 L206 55" stroke="${C.ink}" stroke-width="1.5" marker-end="url(#aInk)"/>`;
+  s+=`<rect x="210" y="24" width="250" height="62" rx="8" fill="${C.card}" stroke="${C.line}" stroke-width="1.5"/>`;
+  s+=label(335,48,'the pick test',{anchor:'middle',size:12.5,fill:C.ink,bold:true}); s+=label(335,70,'does it change what is built, or who reads?',{anchor:'middle',size:9.5}); s+=num(210,24,2);
+  const outs=[['keep',C.grow,'passes, no overlap'],['merge',C.muted,'overlaps: fold in'],['rename',C.muted,'same axis, clearer label'],['reject',C.muted,'changes neither: dropped, logged'],['escalate',C.meta,'fits no family']];
+  outs.forEach(([t,c,sub],i)=>{const x=20+i*175; s+=`<path d="M${i===0?95:335} 88 C ${i===0?95:335} 120, ${x+80} 112, ${x+80} 146" stroke="${c}" stroke-width="1.3" fill="none" marker-end="url(#${c===C.grow?'aGrow':c===C.meta?'aMeta':'aInk'})"/>`; s+=box(x,150,160,36,t,{stroke:c,color:c,bold:true,size:12}); if(i>0) s+=label(x+80,204,sub,{anchor:'middle',size:10.5,fill:c===C.meta?C.meta:C.muted});});
+  s+=label(896,222,'the core author may rework the families',{anchor:'end',size:10,fill:C.meta}); s+=num(690,219,4);
+  // keep -> five steps
+  s+=`<path d="M100 188 L100 246" stroke="${C.grow}" stroke-width="1.6" fill="none" marker-end="url(#aGrow)"/>`;
+  s+=label(108,220,'productize',{size:10.5,fill:C.grow}); s+=num(20,250,3);
+  const steps=[['P1  name + define','sort into one family'],['P2  show','need, advantage, how, example'],['P3  thread','onto the owning page'],['P4  cross-link','into the loop'],['P5  ratify','D-direction or ADR']];
+  steps.forEach(([t,sub],i)=>{const x=20+i*175; s+=box(x,250,160,46,t,{bold:true,size:11.5,stroke:C.grow}); s+=label(x+80,315,sub,{anchor:'middle',size:10.5}); if(i<4) s+=`<path d="M${x+162} 273 L${x+173} 273" stroke="${C.grow}" stroke-width="1.5" marker-end="url(#aGrow)"/>`;});
+  s+=label(450,348,'walked on the site: "compliance", minted, sorted to GOVERN, ratified; no re-architecting',{anchor:'middle',size:11,italic:true});
+  s+='</svg>'; document.getElementById('f7').innerHTML=s;
+})();
+</script>
+</div></div></body></html>

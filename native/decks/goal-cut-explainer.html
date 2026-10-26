@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>One goal, cut into subgoals</title>
+<style>
+@page{size:A4 landscape;margin:0}
+*{box-sizing:border-box}
+body{margin:0;font:13px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111827;background:#fff}
+.page{width:297mm;height:210mm;padding:14mm 16mm 12mm 16mm;page-break-after:always;position:relative;overflow:hidden}
+.page:last-child{page-break-after:auto}
+.k{font-size:10px;font-weight:800;letter-spacing:.09em;color:#6b7280;text-transform:uppercase}
+h1{font-size:30px;margin:4px 0 6px}
+h2{font-size:22px;margin:2px 0 4px}
+.lead{font-size:14.5px;color:#374151;max-width:235mm;margin:0 0 10px}
+.foot{position:absolute;left:16mm;right:16mm;bottom:8mm;font-size:9.5px;color:#9ca3af;display:flex;justify-content:space-between}
+.axisbar{display:flex;gap:6px;margin:0 0 10px}
+.axisbar span{font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;border:1px solid #e5e7eb;color:#9ca3af;background:#fafafa}
+.axisbar span.on{color:#fff;border-color:transparent}
+.axisbar span.sh{background:#b45309}.axisbar span.gr{background:#15803d}.axisbar span.go{background:#b91c1c}.axisbar span.ed{background:#1d4ed8}.axisbar span.re{background:#6d28d9}.axisbar span.ti{background:#0e7490}
+table.grid{border-collapse:collapse;width:100%;table-layout:fixed}
+table.grid th,table.grid td{border:1px solid #d1d5db;vertical-align:top;padding:6px 7px;height:26mm;font-size:11.5px}
+table.grid th{background:#f3f4f6;height:auto;font-size:11px;text-align:left}
+table.grid th.row{width:40mm;background:#f9fafb}
+table.grid td.empty{background:#fcfcfc;color:#c4c8cf;font-size:10px;text-align:center;vertical-align:middle}
+.sub{font-weight:700;display:block;margin-bottom:3px}
+.chk{display:block;font-size:10.5px;color:#4b5563}
+.tag{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:3px;margin:3px 3px 0 0;color:#fff}
+.o-cust{background:#f59e0b}.o-off{background:#2563eb}.o-sys{background:#6b7280}.o-desk{background:#7c3aed}.o-fin{background:#059669}
+.auto{background:#15803d}.ask{background:#b45309}.deny{background:#b91c1c}
+.res{display:block;font-size:10px;color:#6d28d9;margin-top:3px;font-weight:700}
+.tm{display:block;font-size:10px;color:#0e7490;margin-top:2px;font-weight:700}
+.frozen{background:#e5e7eb !important}.warm{background:#fef3c7 !important}.hot{background:#fee2e2 !important}
+.legend{display:flex;gap:14px;font-size:10.5px;color:#4b5563;margin:8px 0 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.two{display:flex;gap:16mm}
+.two>div{flex:1}
+.box{border:1.5px solid #111827;border-radius:6px;padding:10px 12px;margin:8px 0}
+.box b{display:block;font-size:12px;margin-bottom:4px}
+ol.steps{padding-left:18px;font-size:13px}
+ol.steps li{margin:0 0 6px}
+.six{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.six div{border:1px solid #d1d5db;border-radius:6px;padding:8px 10px;font-size:11.5px}
+.six div b{display:block;font-size:11px;letter-spacing:.06em;margin-bottom:3px}
+.dense table.grid td{height:19mm;font-size:10.5px;padding:3px 5px;line-height:1.3}
+.dense table.grid th{font-size:10px;padding:4px 5px}
+.dense .lead{margin-bottom:5px;font-size:13px}
+.dense h2{font-size:20px}
+.dense .chk{font-size:9.5px}
+.dense .tag{font-size:9px;margin-top:2px}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+</style></head><body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="k">Native, the compass, explained with one goal</div>
+  <h1>One goal, cut into subgoals</h1>
+  <p class="lead">How a company turns one line of intent into work it can run, check and improve. One small lending goal, cut along one axis at a time, until all six questions of the compass have been asked. Nothing here needs prior knowledge of the system.</p>
+  <svg width="900" height="330" viewBox="0 0 900 330">
+    <rect x="20" y="130" width="200" height="60" rx="8" fill="#111827"/>
+    <text x="120" y="156" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">ONE GOAL</text>
+    <text x="120" y="176" text-anchor="middle" fill="#d1d5db" font-size="11">give one customer a small loan</text>
+    <path d="M220 160 L300 160" stroke="#9ca3af" stroke-width="2" marker-end="url(#a)"/>
+    <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9ca3af"/></marker></defs>
+    <g font-size="11.5" font-weight="700">
+      <rect x="300" y="30" width="150" height="46" rx="6" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="375" y="50" text-anchor="middle" fill="#b45309">axis 1: PART</text><text x="375" y="66" text-anchor="middle" fill="#6b7280" font-weight="400">what pieces?</text>
+      <rect x="300" y="86" width="150" height="46" rx="6" fill="#fff" stroke="#0e7490" stroke-width="2"/><text x="375" y="106" text-anchor="middle" fill="#0e7490">axis 2: TIME</text><text x="375" y="122" text-anchor="middle" fill="#6b7280" font-weight="400">which phase?</text>
+      <rect x="300" y="142" width="150" height="46" rx="6" fill="#fff" stroke="#1d4ed8" stroke-width="2"/><text x="375" y="162" text-anchor="middle" fill="#1d4ed8">axis 3: OWNER</text><text x="375" y="178" text-anchor="middle" fill="#6b7280" font-weight="400">who hands to whom?</text>
+      <rect x="300" y="198" width="150" height="46" rx="6" fill="#fff" stroke="#b91c1c" stroke-width="2"/><text x="375" y="218" text-anchor="middle" fill="#b91c1c">axis 4: AUTHORITY</text><text x="375" y="234" text-anchor="middle" fill="#6b7280" font-weight="400">may it go: auto, ask, deny?</text>
+      <rect x="300" y="254" width="150" height="46" rx="6" fill="#fff" stroke="#6d28d9" stroke-width="2"/><text x="375" y="274" text-anchor="middle" fill="#6d28d9">axis 5: RESOURCE</text><text x="375" y="290" text-anchor="middle" fill="#6b7280" font-weight="400">what does it spend?</text>
+    </g>
+    <path d="M450 160 L530 160" stroke="#9ca3af" stroke-width="2" marker-end="url(#a)"/>
+    <g>
+      <rect x="530" y="60" width="330" height="200" rx="8" fill="#f9fafb" stroke="#d1d5db"/>
+      <text x="695" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">A GRID OF SUBGOALS</text>
+      <g stroke="#d1d5db"><line x1="560" y1="100" x2="830" y2="100"/><line x1="560" y1="130" x2="830" y2="130"/><line x1="560" y1="160" x2="830" y2="160"/><line x1="560" y1="190" x2="830" y2="190"/><line x1="560" y1="220" x2="830" y2="220"/><line x1="560" y1="100" x2="560" y2="220"/><line x1="628" y1="100" x2="628" y2="220"/><line x1="696" y1="100" x2="696" y2="220"/><line x1="764" y1="100" x2="764" y2="220"/><line x1="830" y1="100" x2="830" y2="220"/></g>
+      <g fill="#111827"><rect x="563" y="103" width="62" height="24" rx="3"/><rect x="631" y="103" width="62" height="24" rx="3" fill="#6b7280"/><rect x="563" y="133" width="62" height="24" rx="3" fill="#f59e0b"/><rect x="631" y="133" width="62" height="24" rx="3" fill="#6b7280"/><rect x="563" y="163" width="62" height="24" rx="3" fill="#f59e0b"/><rect x="631" y="163" width="62" height="24" rx="3" fill="#6b7280"/><rect x="699" y="193" width="62" height="24" rx="3" fill="#7c3aed"/><rect x="767" y="193" width="60" height="24" rx="3" fill="#059669"/></g>
+      <text x="695" y="245" text-anchor="middle" font-size="10.5" fill="#6b7280">every cell: one subgoal, one check, read on all six axes</text>
+      <text x="695" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">axis 6: GROW reads the grid after every run and improves the next cut</text>
+    </g>
+  </svg>
+  <div class="foot"><span>Draft for the founder's read, 2026-10-12</span><span>page 1 of 10</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="k">Step 0</div>
+  <h2>The goal, and the rule of the cut</h2>
+  <p class="lead">Everything starts from one line with its own check. The cut has one rule: keep cutting until each piece has one goal and one check and cannot be split and still be work. That smallest piece is a <b>work atom</b>.</p>
+  <div class="two">
+    <div>
+      <div class="box"><b>THE GOAL</b>Give one customer a small personal loan.<br><span class="chk">Check: the money is in the customer's account within 2 working days, and every step is on record.</span></div>
+      <div class="box"><b>THE RULE OF THE CUT</b>1. Choose an axis: the question you cut on.<br>2. Cut the goal into pieces along it.<br>3. Each piece gets one goal and one check.<br>4. Stop when a piece cannot be split and still be work.<br>5. Add the next axis; the pieces become a grid.</div>
+    </div>
+    <div>
+      <div class="box" style="border-color:#d1d5db"><b>THE SIX QUESTIONS (the compass)</b>
+        <span style="color:#b45309;font-weight:700">SHAPE</span> what pieces, cut fresh from this ask?<br>
+        <span style="color:#0e7490;font-weight:700">TIME</span> when, and on what beat?<br>
+        <span style="color:#1d4ed8;font-weight:700">EDGE</span> who hands what to whom?<br>
+        <span style="color:#b91c1c;font-weight:700">GOVERN</span> may this step go: auto, ask or deny?<br>
+        <span style="color:#6d28d9;font-weight:700">RESOURCE</span> what finite stock does it spend?<br>
+        <span style="color:#15803d;font-weight:700">GROW</span> what has the record taught, across runs?</div>
+      <p style="font-size:12px;color:#4b5563">We start with the two easiest to see, PART and TIME, because a person can draw them on paper. The other four are added one at a time on the same grid.</p>
+    </div>
+  </div>
+  <div class="foot"><span>The rule of the cut is the Realization move of the compass: down, until the atom.</span><span>page 2 of 10</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="k">Axis 1 of 6</div>
+  <h2>PART: what pieces does the goal have?</h2>
+  <div class="axisbar"><span class="on sh">SHAPE: part</span><span>TIME</span><span>EDGE</span><span>GOVERN</span><span>RESOURCE</span><span>GROW</span></div>
+  <p class="lead">The first cut follows the natural seams of the work. Five pieces, each with its own check. This is the cut a branch manager would make on a whiteboard.</p>
+  <svg width="980" height="300" viewBox="0 0 980 300">
+    <rect x="390" y="10" width="200" height="54" rx="8" fill="#111827"/>
+    <text x="490" y="33" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">Give one customer a small loan</text>
+    <text x="490" y="51" text-anchor="middle" fill="#d1d5db" font-size="10.5">money in account within 2 days</text>
+    <g stroke="#b45309" stroke-width="2" fill="none">
+      <path d="M490 64 L490 90 L100 90 L100 120"/><path d="M490 90 L295 90 L295 120"/><path d="M490 90 L490 120"/><path d="M490 90 L685 90 L685 120"/><path d="M490 90 L880 90 L880 120"/>
+    </g>
+    <g font-size="11.5">
+      <rect x="15" y="120" width="170" height="150" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="100" y="142" text-anchor="middle" font-weight="700">A. Application</text><text x="100" y="162" text-anchor="middle" fill="#374151">take the form and the</text><text x="100" y="177" text-anchor="middle" fill="#374151">documents</text><text x="100" y="205" text-anchor="middle" fill="#6b7280" font-size="10.5">check: nothing missing</text>
+      <rect x="210" y="120" width="170" height="150" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="295" y="142" text-anchor="middle" font-weight="700">B. Identity</text><text x="295" y="162" text-anchor="middle" fill="#374151">the person is who</text><text x="295" y="177" text-anchor="middle" fill="#374151">they say they are</text><text x="295" y="205" text-anchor="middle" fill="#6b7280" font-size="10.5">check: ID matches registry</text>
+      <rect x="405" y="120" width="170" height="150" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="490" y="142" text-anchor="middle" font-weight="700">C. Income and credit</text><text x="490" y="162" text-anchor="middle" fill="#374151">can they repay, and</text><text x="490" y="177" text-anchor="middle" fill="#374151">have they before</text><text x="490" y="205" text-anchor="middle" fill="#6b7280" font-size="10.5">check: score and income on file</text>
+      <rect x="600" y="120" width="170" height="150" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="685" y="142" text-anchor="middle" font-weight="700">D. Decision and terms</text><text x="685" y="162" text-anchor="middle" fill="#374151">yes or no; amount,</text><text x="685" y="177" text-anchor="middle" fill="#374151">rate, tenure</text><text x="685" y="205" text-anchor="middle" fill="#6b7280" font-size="10.5">check: terms within policy</text>
+      <rect x="795" y="120" width="170" height="150" rx="8" fill="#fff" stroke="#b45309" stroke-width="2"/><text x="880" y="142" text-anchor="middle" font-weight="700">E. Payout</text><text x="880" y="162" text-anchor="middle" fill="#374151">money sent, account</text><text x="880" y="177" text-anchor="middle" fill="#374151">opened, customer told</text><text x="880" y="205" text-anchor="middle" fill="#6b7280" font-size="10.5">check: credit confirmed by bank</text>
+    </g>
+    <text x="490" y="292" text-anchor="middle" font-size="11" fill="#6b7280">Each box is still too big to run: "Identity" is several actions. The next axis splits them further without inventing new pieces.</text>
+  </svg>
+  <div class="foot"><span>PART belongs to SHAPE: it is read fresh from this goal, every time. A different goal gets a different cut.</span><span>page 3 of 10</span></div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="k">Axis 2 of 6</div>
+  <h2>TIME: in which phase does each piece happen?</h2>
+  <div class="axisbar"><span class="on sh">SHAPE: part</span><span class="on ti">TIME: phase</span><span>EDGE</span><span>GOVERN</span><span>RESOURCE</span><span>GROW</span></div>
+  <p class="lead">Cross the five parts with four phases and the pieces become a grid of subgoals. Each filled cell is one subgoal with one check. Empty cells are honest: no work lives there.</p>
+  <div id="g1"></div>
+  <div class="foot"><span>11 subgoals, 9 empty cells. Two axes were enough to make the goal runnable.</span><span>page 4 of 10</span></div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="k">Axis 3 of 6</div>
+  <h2>OWNER: who does each cell, and who hands to whom?</h2>
+  <div class="axisbar"><span class="on sh">SHAPE: part</span><span class="on ti">TIME: phase</span><span class="on ed">EDGE: owner, hand-off</span><span>GOVERN</span><span>RESOURCE</span><span>GROW</span></div>
+  <p class="lead">Same grid, one colour added. Now every cell has a hand and every border between two colours is a hand-off the system must record.</p>
+  <div id="g2"></div>
+  <div class="legend"><span><i style="background:#f59e0b"></i>customer</span><span><i style="background:#2563eb"></i>branch officer</span><span><i style="background:#6b7280"></i>the system (an agent)</span><span><i style="background:#7c3aed"></i>credit desk</span><span><i style="background:#059669"></i>finance</span><span style="margin-left:auto">hand-offs on this grid: customer to officer, officer to system, system to credit desk, credit desk to finance</span></div>
+  <div class="foot"><span>EDGE reads the link between two cells, never the cell itself. Four links, four places work can get stuck.</span><span>page 5 of 10</span></div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="k">Axis 4 of 6</div>
+  <h2>AUTHORITY: may this cell go on its own, or must someone stamp it?</h2>
+  <div class="axisbar"><span class="on sh">SHAPE: part</span><span class="on ti">TIME: phase</span><span class="on ed">EDGE: owner</span><span class="on go">GOVERN: auto / ask / deny</span><span>RESOURCE</span><span>GROW</span></div>
+  <p class="lead">One more reading per cell. Most cells run on their own. Two cells ask for a stamp. One cell can stop the whole goal.</p>
+  <div id="g3"></div>
+  <div class="legend"><span><i style="background:#15803d"></i>auto: runs on its own</span><span><i style="background:#b45309"></i>ask: a person stamps first</span><span><i style="background:#b91c1c"></i>deny: the goal stops here if the check fails</span></div>
+  <div class="foot"><span>GOVERN gates a transition. The stamps are known before the run, so nobody is surprised by an ask.</span><span>page 6 of 10</span></div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page dense">
+  <div class="k">Axis 5 of 6</div>
+  <h2>RESOURCE and the beat: what each cell spends, and by when</h2>
+  <div class="axisbar"><span class="on sh">SHAPE: part</span><span class="on ti">TIME: phase, deadline</span><span class="on ed">EDGE: owner</span><span class="on go">GOVERN</span><span class="on re">RESOURCE: minutes, calls</span><span>GROW</span></div>
+  <p class="lead">Two numbers per cell: person-minutes and system calls. TIME returns with a deadline per phase. Now the goal has a cost and a clock, and both can be read back after the run.</p>
+  <div id="g4"></div>
+  <div class="legend"><span>Run total: 22 person-minutes, 14 system calls, 2 working days.</span><span style="margin-left:auto">The scarcest stock is the owner's attention: the two asks are where it goes.</span></div>
+  <div class="foot"><span>RESOURCE is a finite stock the work spends; TIME is when it must be spent by.</span><span>page 7 of 10</span></div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page dense">
+  <div class="k">Axis 6 of 6</div>
+  <h2>GROW: after 40 loans, the record changes the grid</h2>
+  <div class="axisbar"><span class="on sh">SHAPE</span><span class="on ti">TIME</span><span class="on ed">EDGE</span><span class="on go">GOVERN</span><span class="on re">RESOURCE</span><span class="on gr">GROW: what the record taught</span></div>
+  <p class="lead">GROW does not cut. It reads the 40 runs and lifts what repeated into a rule, a template or a frozen step. The next loan is cut the same way but runs cheaper and asks less.</p>
+  <div id="g5"></div>
+  <div class="legend"><span><i style="background:#e5e7eb"></i>frozen to code: same result 40 of 40 times, now near free</span><span><i style="background:#fef3c7"></i>warm: the system does it, a person watches</span><span><i style="background:#fee2e2"></i>hot: a person decides every time</span></div>
+  <div class="foot"><span>GROW accumulates on the unit across runs. Realization slid right: 2 of 5 system cells are code now. Reflection lifted one repeated stamp into a rule.</span><span>page 8 of 10</span></div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="k">All six at once</div>
+  <h2>One cell, read on all six axes</h2>
+  <p class="lead">Take one subgoal, "read the bank statements and pull the bureau score". It is not six things; it is one thing with six readings. This is what the system reads on every cell, every run.</p>
+  <div class="two">
+    <div>
+      <div class="box" style="border-color:#6b7280;background:#f9fafb"><b>SUBGOAL C2</b>Read the bank statements and pull the bureau score.<br><span class="chk">Check: 6 months of income on file and a score, or a named reason why not.</span></div>
+      <svg width="420" height="250" viewBox="0 0 420 250">
+        <circle cx="210" cy="125" r="46" fill="#111827"/><text x="210" y="121" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">C2</text><text x="210" y="136" text-anchor="middle" fill="#d1d5db" font-size="9.5">one goal, one check</text>
+        <g font-size="10.5" font-weight="700">
+          <line x1="210" y1="79" x2="210" y2="30" stroke="#b45309" stroke-width="2"/><text x="210" y="22" text-anchor="middle" fill="#b45309">SHAPE</text>
+          <line x1="250" y1="102" x2="330" y2="55" stroke="#0e7490" stroke-width="2"/><text x="350" y="50" text-anchor="middle" fill="#0e7490">TIME</text>
+          <line x1="250" y1="148" x2="330" y2="195" stroke="#1d4ed8" stroke-width="2"/><text x="350" y="212" text-anchor="middle" fill="#1d4ed8">EDGE</text>
+          <line x1="210" y1="171" x2="210" y2="220" stroke="#b91c1c" stroke-width="2"/><text x="210" y="236" text-anchor="middle" fill="#b91c1c">GOVERN</text>
+          <line x1="170" y1="148" x2="90" y2="195" stroke="#6d28d9" stroke-width="2"/><text x="70" y="212" text-anchor="middle" fill="#6d28d9">RESOURCE</text>
+          <line x1="170" y1="102" x2="90" y2="55" stroke="#15803d" stroke-width="2"/><text x="70" y="50" text-anchor="middle" fill="#15803d">GROW</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <div class="six" style="grid-template-columns:1fr 1fr">
+        <div><b style="color:#b45309">SHAPE</b>cut by part, phase Check; ground is complicated (partial payments need a closer look), so posture is analyze, not just do</div>
+        <div><b style="color:#0e7490">TIME</b>phase 2 of 4; within 4 hours of the documents arriving; the bureau sensor is re-tested nightly</div>
+        <div><b style="color:#1d4ed8">EDGE</b>receives the statements from the customer (C1); hands income and score to the decision (D3); a shared lock with any other loan for the same customer</div>
+        <div><b style="color:#b91c1c">GOVERN</b>auto; deny if no score can be pulled; a human never reads raw statements unless this cell asks</div>
+        <div><b style="color:#6d28d9">RESOURCE</b>0 person-minutes, 6 system calls; the costliest cell in the run until it freezes</div>
+        <div><b style="color:#15803d">GROW</b>warm after 40 runs; variance low on salaried customers, so a split is proposed: salaried freezes to code, self-employed stays warm</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Every cell on every grid carries these six readings. That is the whole compass, applied.</span><span>page 9 of 10</span></div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="k">Do it yourself</div>
+  <h2>How to cut any goal, in five moves</h2>
+  <div class="two">
+    <div>
+      <ol class="steps">
+        <li><b>Write the goal in one line, with its check.</b> If you cannot say how you would know it is done, it is a wish, not a goal.</li>
+        <li><b>Cut on PART.</b> Follow the natural seams. Give each piece one goal and one check. Stop when a piece cannot split and still be work.</li>
+        <li><b>Cut on TIME.</b> Put each piece in its phase. Leave empty cells empty.</li>
+        <li><b>Add one reading at a time:</b> OWNER (who, and the hand-offs), AUTHORITY (auto, ask, deny), RESOURCE (what it spends, by when).</li>
+        <li><b>Run it, read every cell, and let GROW change the next cut.</b> A step that never varies freezes. A stamp given the same way ten times becomes a rule. A pain that repeats grows a new management rung.</li>
+      </ol>
+    </div>
+    <div>
+      <div class="box"><b>WHY TWO AXES FIRST</b>PART and TIME are the two anyone can draw. They make the goal runnable on their own. The other four do not add pieces; they add readings to the pieces that exist.</div>
+      <div class="box"><b>WHY THE FAMILIES ARE SIX AND CLOSED</b>Every question you can ask of work sorts into one of them: reads the input fresh (SHAPE), accumulates on the unit (GROW), gates a step (GOVERN), reads a link (EDGE), spends a stock (RESOURCE), is about when (TIME). New axes are minted freely inside a family; the six do not change.</div>
+      <div class="box" style="border-color:#15803d"><b style="color:#15803d">THE PROMISE</b>First run expensive, every run cheaper. Not a hope: the grid records every cell, and GROW reads the record.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Source: Native, the compass (axes and families); the department PRD, "one workflow read along five axes". Draft, 2026-10-12.</span><span>page 10 of 10</span></div>
+</div>
+
+<script>
+(function(){
+var rows=[["A. Application","take the form and documents"],["B. Identity","the person is who they say"],["C. Income and credit","can they repay"],["D. Decision and terms","yes or no, and on what terms"],["E. Payout","money sent, account opened"]];
+var cols=["1. Apply (day 0)","2. Check (day 0 to 1)","3. Decide (day 1)","4. Pay out (day 1 to 2)"];
+var dl=["by end of day 0","within 4 hours","within 1 working day","within 2 working days"];
+var C={
+ "A1":{s:"Take the form and the documents",c:"form complete, 3 documents in",o:"o-off",on:"officer",a:"auto",r:"4 min, 1 call",g:"frozen"},
+ "A2":{s:"Ask for anything missing",c:"the missing item named, customer told",o:"o-off",on:"officer",a:"auto",r:"2 min, 1 call",g:"frozen",note:"template learned: the missing-document ask"},
+ "B1":{s:"Customer uploads an ID",c:"a readable ID on file",o:"o-cust",on:"customer",a:"auto",r:"0 min, 0 calls",g:"none"},
+ "B2":{s:"Match the ID to the photo and the registry",c:"match confirmed, or mismatch named",o:"o-sys",on:"system",a:"deny",r:"0 min, 2 calls",g:"frozen"},
+ "C1":{s:"Customer gives bank statements",c:"6 months on file",o:"o-cust",on:"customer",a:"auto",r:"0 min, 0 calls",g:"none"},
+ "C2":{s:"Read the statements, pull the bureau score",c:"income and score on file, or a reason",o:"o-sys",on:"system",a:"auto",r:"0 min, 6 calls",g:"warm"},
+ "D3":{s:"Compare with policy; set amount, rate, tenure",c:"terms within policy",o:"o-desk",on:"credit desk",a:"ask",r:"8 min, 1 call",g:"hot",note:"rule learned: under 1 lakh with score above 750 is auto"},
+ "E3":{s:"Draft the agreement",c:"agreement matches the terms",o:"o-sys",on:"system",a:"auto",r:"0 min, 2 calls",g:"warm"},
+ "E4":{s:"Send the money, open the account, tell the customer",c:"bank confirms the credit",o:"o-fin",on:"finance",a:"ask",r:"5 min, 1 call",g:"hot"},
+ "A3":0,"A4":0,"B3":0,"B4":0,"C3":0,"C4":0,"D1":0,"D2":0,"D4":0,"E1":0,"E2":0
+};
+function grid(id,layer){
+ var h='<table class="grid"><tr><th class="row">PART \\ TIME</th>';
+ cols.forEach(function(c,i){h+='<th>'+c+(layer>=4?'<br><span style="color:#0e7490;font-weight:700">'+dl[i]+'</span>':'')+'</th>'});
+ h+='</tr>';
+ rows.forEach(function(r,ri){
+  var L="ABCDE"[ri]; h+='<tr><th class="row"><b>'+r[0]+'</b><br><span style="font-weight:400;color:#6b7280">'+r[1]+'</span></th>';
+  for(var ci=1;ci<=4;ci++){
+   var k=L+ci, v=C[k];
+   if(!v){h+='<td class="empty">no work here</td>';continue}
+   var cls=(layer>=5?' '+v.g:'');
+   h+='<td class="'+cls+'"><span class="sub">'+k+'. '+v.s+'</span><span class="chk">check: '+v.c+'</span>';
+   if(layer>=2)h+='<span class="tag '+v.o+'">'+v.on+'</span>';
+   if(layer>=3)h+='<span class="tag '+v.a+'">'+v.a+'</span>';
+   if(layer>=4)h+='<span class="res">'+v.r+'</span>';
+   if(layer>=5&&v.note)h+='<span class="tm" style="color:#15803d">'+v.note+'</span>';
+   h+='</td>';
+  }
+  h+='</tr>';
+ });
+ h+='</table>';
+ document.getElementById(id).innerHTML=h;
+}
+grid("g1",1);grid("g2",2);grid("g3",3);grid("g4",4);grid("g5",5);
+})();
+</script>
+</body></html>

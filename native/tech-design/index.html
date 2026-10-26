@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Native — Tech Design Hub</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <strong>Native Tech Design Hub</strong> ·
+  <a href="../product-prd-native-v1.html">↑ Native PRD (WHAT)</a> ·
+  <a href="../product-prd-native-v1.html#c7-backlog">§C.7 Backlog</a> ·
+  Audience: <em>engineering team building Native</em>
+</nav>
+
+<header>
+<h1>Native — Tech Design Hub</h1>
+<p class="subtitle">Engineering-handoff curated view of Native architecture. PRD describes WHAT operator observes; this hub describes HOW we build it. Canon authority lives at <code>sutra/os/native/**</code> + <code>sutra/os/decisions/</code> + <code>sutra/os/engines/</code>; this tree curates for engineering audience.</p>
+</header>
+
+<div class="scaffold-banner">
+<strong>SCAFFOLD STATE 2026-05-20</strong> — skeleton structure landed; each doc has scope + canon pointer + section headers. Content fill-in pending. Founder direction: "Start creating the scaffolding for that, and later on we can fill it in." Tracked in PRD §C.7 G8 backlog rows.
+</div>
+
+<div class="canon-pointer" style="background:#fef3c7;border-left-color:#f59e0b;">
+<strong>📖 Read the PRD first</strong> — this Tech Design Hub is the engineering-handoff. PRD is the source of WHAT we're building. Pick a spoke (multi-page split) or the whole hub:
+<ul style="margin:6px 0 0 18px;font-size:13px;">
+<li><a href="../product-prd-native-v1.html">Full PRD hub</a> — Executive Summary + §0 narrative + TOC sidebar to all sections</li>
+<li>Spokes (one per section): <a href="../prd/01-architecture.html">§1 Architecture</a> · <a href="../prd/02-cos.html">§2 CoS</a> · <a href="../prd/03-how-methodology.html">§3 HOW</a> · <a href="../prd/04-native-platform.html">§4 Native Platform</a> · <a href="../prd/05-connector.html">§5 Connector</a> · <a href="../prd/06-distribution.html">§6 Distribution</a> · <a href="../prd/07-observability.html">§7 Observability</a> · <a href="../prd/08-roadmap.html">§8 Roadmap</a> · <a href="../prd/09-meta.html">§9 Meta</a> · <a href="../prd/10-research-foundations.html">§10 Research</a></li>
+</ul>
+</div>
+
+<section>
+<h2>How to read this hub</h2>
+<ol>
+<li><strong>PRD first</strong> (<a href="../product-prd-native-v1.html">parent doc</a>) — read §1 Architecture + §2.B Pillars + §4 Native Platform. Then come back here.</li>
+<li><strong>HLD pass</strong> — read all 7 HLD docs top-to-bottom for system-level understanding.</li>
+<li><strong>LLD per-component</strong> — open the LLD doc matching the component you're building. Cross-reference to canon source-of-truth files.</li>
+<li><strong>ADR back-references</strong> — every architectural decision traces to a numbered ADR. Decisions table at bottom.</li>
+</ol>
+<p>If a fact disagrees between this hub and canon, <strong>canon wins</strong> (per <a href="../product-prd-native-v1.html#d14-prd-authoring">D.14 Authoring rule 1</a> — Cagan WHAT/HOW separation; this hub is curated view, canon is normative).</p>
+</section>
+
+<section>
+<h2>Layer map</h2>
+<table>
+<tr><th>Layer</th><th>What it answers</th><th>Audience</th><th>Lives at</th></tr>
+<tr><td><strong>PRD</strong></td><td>WHAT the operator observes (capability contract)</td><td>Founder · product reviewers · operators</td><td><a href="../product-prd-native-v1.html"><code>holding/website/native/product-prd-native-v1.html</code></a></td></tr>
+<tr><td><strong>HLD</strong> (this hub)</td><td>HOW the system is structured (architecture, data flow, interfaces)</td><td>Engineering team · onboarding new engineers</td><td><code>holding/website/native/tech-design/HLD/</code></td></tr>
+<tr><td><strong>LLD</strong> (this hub)</td><td>HOW each component is built (algorithms, schemas, sequences)</td><td>Implementers of specific blocks</td><td><code>holding/website/native/tech-design/LLD/</code></td></tr>
+<tr><td><strong>Canon</strong></td><td>Normative truth (primitives · ADRs · engines · hardstops · events)</td><td>Anyone needing source-of-truth verification</td><td><code>sutra/os/native/** · sutra/os/decisions/ · sutra/os/engines/</code></td></tr>
+<tr><td><strong>Implementation</strong></td><td>Working code + tests</td><td>Engineers · CI</td><td>(future) Native runtime daemon at <code>~/.sutra-native/</code> ships v0 dogfood; production v1 path TBD</td></tr>
+</table>
+</section>
+
+<section>
+<h2>Tech-design tree</h2>
+
+<div class="hub-grid">
+
+<div class="hub-card hld">
+<span class="layer-tag">HLD</span>
+<h3>High-Level Design</h3>
+<p>System architecture for engineering onboarding.</p>
+<ul>
+<li><a href="HLD/01-system-overview.html">01 — System overview</a> · 5-layer architecture + primitives + surfaces</li>
+<li><a href="HLD/02-data-model.html">02 — Data model</a> · 10 primitives + DecisionProvenance schema</li>
+<li><a href="HLD/03-control-flow.html">03 — Control flow</a> · workflow lifecycle + state machines</li>
+<li><a href="HLD/04-interfaces.html">04 — Interfaces</a> · Connector protocol + 26 EngineEvents + A2A</li>
+<li><a href="HLD/05-governance.html">05 — Governance</a> · Authority Model + 8 hardstops + tenant boundaries</li>
+<li><a href="HLD/06-deployment.html">06 — Deployment</a> · runtime daemon + L0/L1/L2 + Vercel + tier onboarding</li>
+<li><a href="HLD/07-non-functional.html">07 — Non-functional</a> · performance · security · observability · accuracy</li>
+</ul>
+</div>
+
+<div class="hub-card lld">
+<span class="layer-tag">LLD — pillars</span>
+<h3>Pillar Mechanism Specs</h3>
+<p>Per-pillar deep design (matches §C.7 G3 backlog rows).</p>
+<ul>
+<li><a href="LLD/pillars/B1-intent-layer.html">B1 — Intent Layer</a> · freeform→typed intent compile (T-G3-01)</li>
+<li><a href="LLD/pillars/B2-context-retrieval.html">B2 — Context Retrieval</a> · ranking + budget allocator (T-G3-02)</li>
+<li><a href="LLD/pillars/B3-action-engine.html">B3 — Action Engine</a> · method routing + escalation (T-G3-03)</li>
+<li><a href="LLD/pillars/B4-connector-comms.html">B4 — Connector Comms</a> · transport semantics (T-G3-04)</li>
+<li><a href="LLD/pillars/B5-governance-substrate.html">B5 — Governance Substrate</a> · multi-tenant state + audit (T-G3-05)</li>
+</ul>
+</div>
+
+<div class="hub-card lld">
+<span class="layer-tag">LLD — canon indexes</span>
+<h3>Component Catalogs</h3>
+<p>Indexed views into canon directories.</p>
+<ul>
+<li><a href="LLD/primitives.html">Primitives</a> · 10 canon types (Domain · Charter · Workflow · Step · Trigger · ExecutionResult · EngineEvent · Tenant · Approval · DecisionProvenance)</li>
+<li><a href="LLD/hardstops.html">Hardstops</a> · 8 hard limits (HS-1 .. HS-8)</li>
+<li><a href="LLD/surfaces.html">Surfaces</a> · 6 surfaces (ROUTE · RUN · GATE · EMERGE · AUDIT · TENANT)</li>
+<li><a href="LLD/interfaces.html">Interfaces</a> · Connector protocol + 26 EngineEvents + A2A (v2+)</li>
+</ul>
+</div>
+
+<div class="hub-card dec">
+<span class="layer-tag">decisions</span>
+<h3>Architectural Decision Records</h3>
+<p>Why each architectural choice was made.</p>
+<ul>
+<li><a href="decisions.html">ADR table (001-020)</a> · all decisions with one-line summary + canon link</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>What's NOT here (intentional)</h2>
+<ul>
+<li><strong>Implementation code</strong> — lives in <code>~/.sutra-native/</code> (runtime daemon, v0 dogfood) + future production tree. Not in this hub.</li>
+<li><strong>Operator-facing capability descriptions</strong> — lives in the PRD body. Not duplicated here.</li>
+<li><strong>Test plans / CI configs</strong> — separate engineering concern. May add a <code>QA/</code> sibling tree later.</li>
+<li><strong>Per-deployment configs</strong> — per-tenant BINDING + per-Module BINDING templates live in canon + runtime configuration.</li>
+</ul>
+</section>
+
+<section>
+<h2>Open questions for tech leadership</h2>
+<ol>
+<li><strong>HLD audience</strong> — is the target reader a senior engineer onboarding (needs structure) or a Staff+ designing the system (needs tradeoffs)? Current scaffold targets onboarding; pivot if Staff+ needs deeper rationale.</li>
+<li><strong>LLD coverage cutoff</strong> — do we author LLD only for v1 components (B1-B5 + 10 primitives + 8 hardstops) or also v2+ federation / A2A? Current scaffold v1-only; v2+ marked as <code>pending-design</code>.</li>
+<li><strong>Code samples</strong> — should LLD docs include illustrative TypeScript/Go pseudocode, or stay language-agnostic? Defer to engineering lead.</li>
+<li><strong>Diagrams</strong> — should this hub include sequence diagrams (Mermaid in HTML or PNG)? PRD uses ASCII; consistency suggests ASCII here too.</li>
+</ol>
+</section>
+
+<footer>
+Native Tech Design Hub — scaffolded 2026-05-20 per founder direction. Canon authority at <code>sutra/os/native/**</code> + <code>sutra/os/decisions/</code> + <code>sutra/os/engines/</code>. This tree is a curated view; canon wins on disagreement.
+</footer>
+
+</body>
+</html>

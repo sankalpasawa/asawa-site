@@ -1,0 +1,222 @@
+<!doctype html>
+<!-- PROTOTYPE: preview/department.html (v1, 2026-09-29). A working prototype of a department's first four screens in Sutra
+     Desktop: Chat, Map, Status, Work. Not the app: a scripted department (Asawa Website) in the app's layout. The person can type.
+     Founder 2026-09-29: "take the first 4 screens of the department and create a workable prototype ... messages coming in, then
+     going, and then new things are getting added ... multi-screen animations ... very, very user-friendly".
+     Design plan (artifact-design): the Design System's tokens (design-system.html) on :root, dark redefinition; Playfair Display
+     for the one display line, Inter for the rest; layout = the app's own three columns (rail 64, tree 200, pane), four tabs;
+     one accent (gold) for the active tab and the ask cards; forest for done and live; clay for what needs the person. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Asawa Website, a department running</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAFAF7;--panel:#FFFFFF;--ink:#1A1714;--stone:#6B6560;--faint:#B8B2A6;--line:#E8E3DB;--cream:#F5F0E8;--gold:#B8945F;--clay:#8B6B4A;--steel:#4A6B8B;--forest:#2D5A3E;--rose:#8B4A6B;--ok:#2D5A3E;--warn:#B8945F;--block:#8B4A6B;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17150F;--panel:#1F1C15;--ink:#F1ECE2;--stone:#A59E92;--faint:#6B655B;--line:#2E2A22;--cream:#2A2619;--gold:#C9A468;--clay:#B58C66;--steel:#7C9BBA;--forest:#6FAF87;--rose:#B77C9A;--ok:#6FAF87;--warn:#C9A468;--block:#B77C9A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17150F;--panel:#1F1C15;--ink:#F1ECE2;--stone:#A59E92;--faint:#6B655B;--line:#2E2A22;--cream:#2A2619;--gold:#C9A468;--clay:#B58C66;--steel:#7C9BBA;--forest:#6FAF87;--rose:#B77C9A;--ok:#6FAF87;--warn:#C9A468;--block:#B77C9A;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{display:grid;grid-template-columns:64px 200px 1fr;height:100%;min-height:600px}
+@media (max-width:820px){.app{grid-template-columns:1fr}.rail,.tree{display:none}}
+.rail{border-right:1px solid var(--line);padding:16px 0;display:flex;flex-direction:column;align-items:center;gap:18px;font-size:9.5px;color:var(--stone)}
+.rail div{text-align:center}.rail .on{color:var(--clay);font-weight:700;background:var(--cream);border-radius:10px;padding:8px 10px}
+.tree{border-right:1px solid var(--line);padding:16px 10px;font-size:12.5px}
+.tree .s{color:var(--faint);border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin-bottom:12px;background:var(--panel)}
+.tree .r{padding:4px 8px;border-radius:8px;cursor:default}.tree .r.sel{background:var(--cream)}.tree .l1{padding-left:20px}.tree .l2{padding-left:34px}.tree .serif{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:13.5px}
+.pane{display:flex;flex-direction:column;min-width:0;background:var(--bg)}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px 10px;border-bottom:1px solid var(--line);background:var(--panel)}
+.hd .name{font-family:"Playfair Display",Georgia,serif;font-size:20px;font-weight:500}
+.hd .st{font-size:12px;color:var(--stone);margin-top:2px}.hd .st b{color:var(--forest);font-weight:600}.hd .need{color:var(--clay);font-weight:600}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--stone);border-radius:99px;padding:6px 12px;font:600 12px Inter,sans-serif;cursor:pointer}
+.btn.p{background:var(--forest);color:#fff;border-color:var(--forest)}.btn.g{background:var(--gold);color:#fff;border-color:var(--gold)}.btn:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+.tabs{display:flex;gap:4px;padding:8px 20px 0;border-bottom:1px solid var(--line);background:var(--panel)}
+.tabs button{border:0;background:none;color:var(--stone);font:500 12.5px Inter,sans-serif;padding:8px 10px;border-bottom:2px solid transparent;cursor:pointer;position:relative}
+.tabs button[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--gold)}
+.tabs button .pip{position:absolute;top:6px;right:2px;width:7px;height:7px;border-radius:99px;background:var(--clay);display:none}.tabs button.needs .pip{display:block}
+.tabs button.later{color:var(--faint)}
+.screen{display:none;flex:1;min-height:0;overflow:auto}.screen.on{display:flex;flex-direction:column}
+/* chat */
+.turns{flex:1;padding:16px 20px;display:flex;flex-direction:column;gap:10px;overflow:auto}
+.you{align-self:flex-end;background:var(--cream);border-radius:14px;padding:8px 12px;max-width:70%}
+.t{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:9px 12px;max-width:78%}
+.t .who{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stone);margin-bottom:2px}
+.t.ask{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 15%,transparent)}
+.t.ask .act{display:flex;gap:8px;margin-top:8px}
+.t.ask.done{border-color:var(--line);box-shadow:none}.t.ask.done .act{display:none}.t.ask.done .ans{display:block}.t .ans{display:none;color:var(--stone);margin-top:4px;font-size:12px}
+.t.work{display:flex;align-items:center;gap:10px}.t.work .pages{display:flex;gap:4px;flex:1;min-width:90px}.t.work .pages i{flex:1;height:5px;border-radius:99px;background:var(--line);transition:background .3s}.t.work .pages i.on{background:var(--forest)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:99px;background:var(--forest);animation:br 1.6s ease-in-out infinite}
+@keyframes br{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+.land{animation:land .35s ease-out}@keyframes land{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.dot,.land,.node.run{animation:none}}
+.quiet{font-size:11px;color:var(--faint)}
+.foot{padding:10px 20px 14px;border-top:1px solid var(--line);background:var(--panel)}
+.rules{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;min-height:0}.rules span{font-size:11px;border:1px solid var(--gold);color:var(--clay);border-radius:99px;padding:2px 9px}
+.box{display:flex;gap:8px;align-items:flex-end}.box textarea{flex:1;resize:none;border:1px solid var(--line);border-radius:15px;padding:10px 14px;font:13px Inter,sans-serif;background:var(--bg);color:var(--ink);min-height:42px}
+.box textarea:focus-visible{outline:2px solid var(--steel)}
+.hint{font-size:11px;color:var(--faint);margin-top:6px}
+/* map */
+.map{padding:20px}.map .k{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stone);margin:14px 0 6px}
+.line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.node{border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:var(--panel);font-size:12px;transition:all .3s}
+.node.art{background:var(--cream)}.node.art.on{outline:2px solid var(--forest)}.node.art.off{opacity:.45}
+.node.eng{border-radius:99px;color:var(--stone)}.node.eng.run{border-color:var(--forest);color:var(--forest);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--forest) 30%,transparent)}50%{box-shadow:0 0 0 6px transparent}}
+.node.fn{border-color:var(--gold)}.node.fn.on{background:color-mix(in srgb,var(--gold) 12%,var(--panel))}
+.arrow{color:var(--faint)}.node small{display:block;color:var(--stone);font-size:10.5px}
+/* status */
+.status{padding:20px;display:flex;flex-direction:column;gap:14px}
+.counts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}@media (max-width:820px){.counts{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.card .k{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stone)}.card .n{font-family:"Playfair Display",Georgia,serif;font-size:26px;font-variant-numeric:tabular-nums}.card.need .n{color:var(--clay)}
+.checks .row{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--line)}.checks .row:first-of-type{border-top:0}
+.m{display:inline-block;width:8px;height:8px;border-radius:99px;margin-right:8px;vertical-align:middle;background:var(--ok)}.m.warn{background:var(--warn)}.m.off{background:var(--faint)}
+/* work */
+.work{padding:20px;display:flex;flex-direction:column;gap:14px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line);font-size:12.5px}.kv:first-of-type{border-top:0}.kv span:last-child{color:var(--stone);text-align:right}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.wk{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.wk b{display:block}.wk.empty{opacity:.4;border-style:dashed}.wk .v{color:var(--stone);font-size:11.5px}
+.bar{display:flex;gap:10px;align-items:center;padding:8px 20px;background:var(--cream);border-bottom:1px solid var(--line);font-size:12px;color:var(--stone)}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="rail"><div>Now</div><div>Focus</div><div>Chats</div><div>Market</div><div class="on">Org</div></div>
+<div class="tree"><div class="s">Search</div><div class="r serif">Sutra</div><div class="r l1 serif">Asawa</div><div class="r l2 sel" id="treeDept">Asawa Website</div><div class="r l1 serif">City Care Hospital</div></div>
+<div class="pane">
+<div class="bar"><span>Prototype. Not the app. Press Play, or type into the box at any time.</span><button class="btn" id="play">Play</button><button class="btn" id="reset">Start over</button></div>
+<div class="hd"><div><div class="name">Asawa Website</div><div class="st" id="hdst"><b>On</b> · from the Website template · <span id="hdlast">nothing made yet</span><span class="need" id="hdneed"></span></div></div><div><button class="btn" id="stop">Stop</button></div></div>
+<div class="tabs" role="tablist">
+<button role="tab" data-tab="chat" aria-selected="true">Chat<span class="pip"></span></button>
+<button role="tab" data-tab="map" aria-selected="false">Map<span class="pip"></span></button>
+<button role="tab" data-tab="status" aria-selected="false">Status<span class="pip"></span></button>
+<button role="tab" data-tab="work" aria-selected="false">Work<span class="pip"></span></button>
+<button role="tab" class="later" aria-selected="false" disabled>Functions</button><button role="tab" class="later" aria-selected="false" disabled>Settings</button>
+</div>
+
+<section class="screen on" id="s-chat">
+<div class="turns" id="turns"></div>
+<div class="foot"><div class="rules" id="rules"></div><div class="box"><textarea id="say" rows="1" placeholder="Say it to Asawa Website" aria-label="Say it to Asawa Website"></textarea><button class="btn p" id="send">Send</button></div><div class="hint" id="hint">Answer a question, give a change, or a rule.</div></div>
+</section>
+
+<section class="screen" id="s-map"><div class="map">
+<div class="k">People</div><div class="line"><span class="node">You</span></div>
+<div class="k">Functions</div><div class="line"><span class="node fn" id="fn-identity">Identity</span><span class="node fn">Adaptation</span><span class="node fn">Priority</span><span class="node fn">Coordination</span><span class="node fn" id="fn-audit">Audit</span></div>
+<div class="k">Work</div><div class="line" id="mapline">
+<span class="node art off" data-art="brief">Brief<small>none</small></span><span class="arrow">&#8594;</span><span class="node eng" data-eng="plan">Plan</span><span class="arrow">&#8594;</span>
+<span class="node art off" data-art="siteplan">Site plan<small>none</small></span><span class="arrow">&#8594;</span><span class="node eng" data-eng="write">Write</span><span class="arrow">&#8594;</span>
+<span class="node art off" data-art="pages">Pages<small>none</small></span><span class="arrow">&#8594;</span><span class="node eng" data-eng="check">Check</span><span class="arrow">&#8594;</span>
+<span class="node art off" data-art="build">Build<small>none</small></span><span class="arrow">&#8594;</span><span class="node eng" data-eng="publish">Publish</span><span class="arrow">&#8594;</span>
+<span class="node art off" data-art="live">Live site<small>none</small></span></div>
+<div class="k">Knows</div><div class="line"><span class="node">Template <small>Website</small></span><span class="node" id="mapRules">Rules <small>0</small></span><span class="node">Host <small>this app</small></span></div>
+<p class="quiet" style="margin-top:16px">Click a thing to open it. Colour says state: green outline = filed and checked, pulsing = running now, faded = not made yet.</p>
+</div></section>
+
+<section class="screen" id="s-status"><div class="status">
+<div class="counts"><div class="card need"><div class="k">Needs you</div><div class="n" id="cNeed">0</div></div><div class="card"><div class="k">Waiting</div><div class="n" id="cWait">0</div></div><div class="card"><div class="k">Running</div><div class="n" id="cRun">0</div></div><div class="card"><div class="k">Escalated</div><div class="n">0</div></div></div>
+<div class="card"><div class="k">Now</div><div id="stNow">Nothing is running. Next: when the brief lands.</div></div>
+<div class="card checks"><div class="k" style="margin-bottom:6px">Checks</div>
+<div class="row"><span><span class="m"></span>Motor ticking</span><span class="quiet">ok</span></div>
+<div class="row"><span><span class="m"></span>Each slot ran once</span><span class="quiet">ok</span></div>
+<div class="row"><span><span class="m"></span>Every version has its run and its check</span><span class="quiet">ok</span></div>
+<div class="row"><span><span class="m"></span>Inside every budget</span><span class="quiet" id="budget">0 of 30 calls today</span></div>
+<div class="row"><span><span class="m off" id="doneMark"></span>Done: the site is live</span><span class="quiet" id="doneTxt">not yet</span></div></div>
+</div></section>
+
+<section class="screen" id="s-work"><div class="work">
+<div class="k" style="font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stone)">Made</div>
+<div class="works" id="works">
+<div class="wk empty" data-w="brief"><b>Brief</b><span class="v">not yet</span></div><div class="wk empty" data-w="siteplan"><b>Site plan</b><span class="v">not yet</span></div><div class="wk empty" data-w="pages"><b>Pages</b><span class="v">not yet</span></div><div class="wk empty" data-w="build"><b>Build</b><span class="v">not yet</span></div><div class="wk empty" data-w="live"><b>Live site</b><span class="v">not yet</span></div>
+</div>
+<div class="k" style="font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stone)">Engines, and what each uses</div>
+<div class="card"><div class="kv"><span><b>Plan</b> reads the brief and every ask in it, plans the pages</span><span>starts on a new Brief · template Website · Plan</span></div><div class="kv"><span>Workflow</span><span>Read the brief &#8594; Propose the pages &#8594; Fit the page list &#8594; File the plan</span></div><div class="kv"><span>Skills</span><span>code · a call "plan a site from a brief" · code · code; each with its check</span></div><div class="kv"><span>Last run</span><span id="planLast">none</span></div></div>
+<div class="card"><div class="kv"><span><b>Write</b> writes each page the plan names</span><span>starts on a new Site plan</span></div><div class="kv"><span>Workflow</span><span>Read the plan &#8594; Write a page (per page) &#8594; File the pages</span></div><div class="kv"><span>Skills</span><span>code · a call "write this page in the owner's words" · code</span></div><div class="kv"><span>Last run</span><span id="writeLast">none</span></div></div>
+<div class="card"><div class="kv"><span><b>Check</b> runs the owner's rules and the template's checks on the pages</span><span>starts on new Pages</span></div><div class="kv"><span>Workflow</span><span>Read the rules &#8594; Check every page &#8594; Send back or file the Build</span></div><div class="kv"><span>Skills</span><span>code · a call per rule · code</span></div><div class="kv"><span>Last run</span><span id="checkLast">none</span></div></div>
+<div class="card"><div class="kv"><span><b>Publish</b> puts the Build on the host</span><span>starts on a new Build, unless the first publish is not yet stamped</span></div><div class="kv"><span>Workflow</span><span>Read the build &#8594; Put it on the host &#8594; File the Live site</span></div><div class="kv"><span>Skills</span><span>code · code · code</span></div><div class="kv"><span>Last run</span><span id="pubLast">none</span></div></div>
+</div></section>
+</div></div>
+
+<script>
+(function(){
+"use strict";
+const $ = s => document.querySelector(s);
+const turns = $("#turns"), say = $("#say"), hint = $("#hint");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait = ms => new Promise(r => setTimeout(r, reduced ? Math.min(ms, 200) : ms));
+const state = { need: 0, running: 0, calls: 0, rules: [], versions: { brief: 0, siteplan: 0, pages: 0, build: 0, live: 0 }, pending: null, playing: false, stopped: false, firstLive: false };
+const now = () => new Date().toTimeString().slice(0, 5);
+
+// ---- tabs
+document.querySelectorAll(".tabs [data-tab]").forEach(b => b.addEventListener("click", () => show(b.dataset.tab)));
+function show(tab){ document.querySelectorAll(".tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab)); document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === "s-" + tab)); }
+function pip(tab, on){ const b = document.querySelector('.tabs [data-tab="' + tab + '"]'); if (b) b.classList.toggle("needs", !!on); }
+
+// ---- chat primitives
+function you(text){ const d = document.createElement("div"); d.className = "you land"; d.textContent = text; turns.appendChild(d); turns.scrollTop = turns.scrollHeight; }
+function turn(text, who){ const d = document.createElement("div"); d.className = "t land"; d.innerHTML = '<div class="who">' + (who || "Asawa Website") + '</div>' + text; turns.appendChild(d); turns.scrollTop = turns.scrollHeight; return d; }
+function ask(text, opts){ const d = document.createElement("div"); d.className = "t ask land";
+  d.innerHTML = '<div class="who">Asawa Website asks</div>' + text + '<div class="act">' + opts.map((o, i) => '<button class="btn ' + (i ? "" : "g") + '">' + o + '</button>').join("") + '</div><div class="ans"></div>';
+  turns.appendChild(d); turns.scrollTop = turns.scrollHeight; state.need++; counts(); pip("chat", true); pip("status", true);
+  return new Promise(res => { const btns = d.querySelectorAll("button"); btns.forEach((b, i) => b.addEventListener("click", () => settle(i, o(i)))); const o = i => opts[i];
+    state.pending = { resolve: v => settle(-1, v) };
+    function settle(i, v){ if (!state.pending) return; state.pending = null; d.classList.add("done"); d.querySelector(".ans").textContent = "You: " + v; state.need--; counts(); pip("chat", false); pip("status", false); res({ i, v }); } }); }
+let workEl = null;
+async function working(engine, label, pages){ state.running = 1; counts(); $("#stNow").textContent = engine + " is running: " + label; eng(engine, true);
+  workEl = document.createElement("div"); workEl.className = "t work land"; workEl.innerHTML = '<span class="dot"></span><b>' + engine + '</b><span class="quiet" id="wl">' + label + '</span>' + (pages ? '<span class="pages">' + "<i></i>".repeat(pages) + "</span>" : "") + '<button class="btn" style="padding:3px 9px">Stop</button>';
+  workEl.querySelector("button").addEventListener("click", () => { state.stopped = true; });
+  turns.appendChild(workEl); turns.scrollTop = turns.scrollHeight;
+  if (pages){ const ps = workEl.querySelectorAll(".pages i"); for (let i = 0; i < pages; i++){ if (state.stopped) break; workEl.querySelector("#wl").textContent = "page " + (i + 1) + " of " + pages; ps[i].classList.add("on"); state.calls++; $("#budget").textContent = state.calls + " of 30 calls today"; await wait(700); } }
+  else { state.calls++; $("#budget").textContent = state.calls + " of 30 calls today"; await wait(1600); }
+  workEl.remove(); workEl = null; state.running = 0; counts(); eng(engine, false); $("#stNow").textContent = "Nothing is running. Next: when a new version lands."; }
+function eng(name, on){ const n = document.querySelector('.node[data-eng="' + name.toLowerCase() + '"]'); if (n) n.classList.toggle("run", on); }
+function file(art, label, note){ state.versions[art]++; const v = "v" + state.versions[art];
+  const n = document.querySelector('.node[data-art="' + art + '"]'); n.classList.remove("off"); document.querySelectorAll(".node.art").forEach(x => x.classList.remove("on")); n.classList.add("on"); n.querySelector("small").textContent = v;
+  const w = document.querySelector('.wk[data-w="' + art + '"]'); w.classList.remove("empty"); w.classList.add("land"); w.querySelector(".v").textContent = v + " · " + note + " · " + now();
+  $("#hdlast").textContent = "last made " + label + " " + v + ", " + now(); pip("work", true); pip("map", true); setTimeout(() => { pip("work", false); pip("map", false); }, 4000); return v; }
+function counts(){ $("#cNeed").textContent = state.need; $("#cRun").textContent = state.running; $("#cWait").textContent = state.pending && !state.need ? 1 : 0; $("#hdneed").textContent = state.need ? " · " + state.need + " thing" + (state.need > 1 ? "s" : "") + " need" + (state.need > 1 ? "" : "s") + " you" : ""; }
+function rule(text){ state.rules.push(text); const s = document.createElement("span"); s.textContent = text; s.className = "land"; $("#rules").appendChild(s); $("#mapRules small").textContent = state.rules.length; }
+function last(id){ $("#" + id).textContent = now() + " · passed"; }
+
+// ---- the scripted run
+async function run(){ if (state.playing) return; state.playing = true; $("#play").disabled = true;
+  you("Put Asawa on the web: what we build, who we are, how to reach us. Bengaluru. hello@asawa.in.");
+  await wait(900); turn("Filed your words in the Brief."); file("brief", "Brief", "your words"); $("#fn-identity").classList.add("on");
+  await wait(900);
+  const a1 = await ask("One thing I still need: <b>who do you serve?</b> One line is enough.", ["That's all I know"]);
+  if (a1.i === -1){ turn("Noted: " + a1.v + ". Filed in the Brief."); file("brief", "Brief", "who you serve"); } else turn("I will say it as you said it, and mark what I do not know for you to confirm.");
+  await working("Plan", "planning the pages"); last("planLast"); turn("Planned 6 pages: Home, What we build, Who we are, Sutra, Contact, Careers. Say which to drop or add."); file("siteplan", "Site plan", "6 pages");
+  await wait(1200);
+  await working("Write", "", 6); last("writeLast"); if (state.stopped){ turn("Stopped at your word. Say Start when you want me to go on."); state.playing = false; $("#play").disabled = false; return; }
+  file("pages", "Pages", "6 pages, your words"); turn("Wrote the 6 pages in your words.");
+  await working("Check", "your rules, the template's checks"); last("checkLast"); $("#fn-audit").classList.add("on");
+  turn("One thing is <b>to be confirmed</b>: the phone number on Contact. Tell me here and I will put it in.");
+  const a2 = await ask("What is the phone number for Contact?", ["No phone, use the email"]);
+  if (a2.i === -1) turn("Contact now says " + a2.v + "."); else turn("Contact shows the email only.");
+  await working("Write", "", 1); file("pages", "Pages", "Contact updated"); await working("Check", "again"); file("build", "Build", "6 pages, checks passed");
+  const a3 = await ask("May the site go live for the first time, from this app's own server?", ["Yes, go live", "Not yet"]);
+  if (a3.i === 0 || a3.i === -1){ await working("Publish", "putting it on the host"); last("pubLast"); const v = file("live", "Live site", "6 pages"); state.firstLive = true; $("#doneMark").classList.remove("off"); $("#doneTxt").textContent = "live"; turn("<b>Live site " + v + " is live.</b> <a href=\"#\" onclick=\"return false\" style=\"color:var(--steel)\">Open the live site</a>"); hint.textContent = "Try a change: type \"say 'we build Sutra' on the first line\"."; }
+  else turn("Holding the Build. Say when.");
+  state.playing = false; $("#play").disabled = false; }
+
+// ---- what a typed line does
+async function heard(text){ you(text);
+  if (state.pending){ state.pending.resolve(text); return; }
+  const isRule = /^(never|always|don't|do not|from now on)/i.test(text) || /never|always/i.test(text);
+  await wait(700);
+  if (isRule){ rule(text); turn("Kept as a rule. Check will run it on every version."); return; }
+  if (state.versions.pages){ turn("Changing that."); await working("Write", "", 1); file("pages", "Pages", "your change"); await working("Check", "your rules"); file("build", "Build", "checks passed");
+    if (state.firstLive){ await working("Publish", "putting it on the host"); const v = file("live", "Live site", "your change"); turn("Changed, and <b>Live site " + v + " is live.</b>"); if (/first line|say/i.test(text)) rule(text.replace(/^say\s*/i, "")); }
+    else turn("Changed. It goes live when you say."); }
+  else { turn("Noted, and filed in the Brief."); file("brief", "Brief", "your words"); if (!state.playing) run(); } }
+$("#send").addEventListener("click", () => { const t = say.value.trim(); if (!t) return; say.value = ""; heard(t); });
+say.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); $("#send").click(); } });
+$("#play").addEventListener("click", run);
+$("#reset").addEventListener("click", () => location.reload());
+$("#stop").addEventListener("click", () => { state.stopped = true; turn("Stopping at your word. Say Start to go on."); });
+document.querySelectorAll(".node.art").forEach(n => n.addEventListener("click", () => show("work")));
+document.querySelectorAll(".node.eng").forEach(n => n.addEventListener("click", () => show("work")));
+// at rest: the department has the brief and is ready
+turn("I am Asawa Website. Say what the site should say, in your words, and I will make it.");
+})();
+</script>
+</body></html>

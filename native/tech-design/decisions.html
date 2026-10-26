@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Decisions — Native ADR Catalog</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav class="topnav">
+<a href="index.html">← Tech Design Hub</a> ·
+<a href="../product-prd-native-v1.html">PRD</a> ·
+Layer: <strong>decisions</strong> · Doc: <strong>ADR catalog</strong>
+</nav>
+
+<header>
+<h1>Architectural Decision Records — Catalog</h1>
+<p class="subtitle">One row per canonical ADR. Each ADR records the why behind an architectural choice. Authoritative source: <code>sutra/os/decisions/ADR-NNN-*.md</code>.</p>
+</header>
+
+<div class="scaffold-banner">
+<span class="fill-me">SCAFFOLD</span> — auto-indexed from <code>sutra/os/decisions/</code>. One-line summaries pending engineering review.
+</div>
+
+<section>
+<h2>ADR catalog (canon dir: <code>sutra/os/decisions/</code>)</h2>
+<table>
+<tr><th>ADR</th><th>Title</th><th>Status</th><th>One-line summary</th></tr>
+<tr><td>001</td><td>h-sutra-9cell-grid</td><td>ratified</td><td>9-cell × 3-tag classification schema for every founder input</td></tr>
+<tr><td>002</td><td>out-direct-3check</td><td>ratified</td><td>Output trace + direct execution + 3-check governance pattern</td></tr>
+<tr><td>003</td><td>permissions-mcp-and-first-time-edit</td><td>ratified</td><td>Permission model for MCP servers + first-time edit gate</td></tr>
+<tr><td>004</td><td>registry-and-effector-split</td><td>ratified</td><td>Registry (audit) vs effector (mutator) separation in Native</td></tr>
+<tr><td>005</td><td>host-llm-host-selection</td><td>ratified</td><td>Per-workflow host LLM selection (claude · codex · deepseek)</td></tr>
+<tr><td>006</td><td>tenant-isolation-domain-field</td><td>ratified</td><td>Tenant isolation enforced via Domain field on every primitive</td></tr>
+<tr><td>007</td><td>decision-provenance-schema</td><td>ratified</td><td>3-channel append-only audit row per decision</td></tr>
+<tr><td>008</td><td>markdown-vs-code-authoritative-state</td><td>ratified</td><td>Markdown is doctrine; code is runtime; which wins when they disagree</td></tr>
+<tr><td>009</td><td>approval-gate-primitive</td><td>ratified</td><td>Approval as a first-class primitive (not a hook)</td></tr>
+<tr><td>010</td><td>organic-emergence-propose-approve</td><td>ratified</td><td>Pattern detection proposes; operator approves; never silent automation</td></tr>
+<tr><td>011</td><td>on-failure-policy-five-set</td><td>ratified</td><td>5-set failure policy enumeration (retry · escalate · skip · ask · halt)</td></tr>
+<tr><td>012</td><td>pnc-typed-parser-over-prose</td><td>ratified</td><td>Pre-call schema + post-call validation over prose-only LLM contract</td></tr>
+<tr><td>013</td><td>telemetry-sink-fsync-jsonl</td><td>ratified</td><td>JSONL + fsync as telemetry sink (no silent loss)</td></tr>
+<tr><td>014</td><td>depth-router-via-workflow</td><td>ratified</td><td>Depth (token budget) routed via workflow primitive</td></tr>
+<tr><td>015</td><td>standalone-h-sutra-in-native</td><td>ratified</td><td>H-Sutra layer as standalone primitive within Native</td></tr>
+<tr><td>016</td><td>replica-as-isolated-user-kit</td><td>ratified</td><td>Asawa replica isolated under user-kit for dogfood</td></tr>
+<tr><td>017</td><td>cron-daemon-cadence-tick</td><td>ratified</td><td>Cron-style daemon cadence for periodic surfaces</td></tr>
+<tr><td>018</td><td>agentic-systems-pattern</td><td>ratified</td><td>Operator-in-loop on consequential decisions; deterministic guardrails around stochastic core (SHARED across all Layer-B products)</td></tr>
+<tr><td>019</td><td>design-product-tech-bridge</td><td>ratified</td><td>Bridge contract — design ↔ product ↔ tech traceability table</td></tr>
+<tr><td>020</td><td>layer-b-product-authoring-template</td><td>PROPOSED 2026-05-13</td><td>Section set + canon additions every new Layer-B Product PRD must include (R11 review pending — T-G6-01 backlog)</td></tr>
+</table>
+</section>
+
+<section>
+<h2>How to use this catalog</h2>
+<ol>
+<li>Read an ADR when an architectural choice surprises you or you want to challenge a constraint.</li>
+<li>Per ADR-008 — markdown is doctrine; if you find code that disagrees with an ADR, ADR wins until renegotiated.</li>
+<li>To add a new ADR: branch + author <code>sutra/os/decisions/ADR-021-*.md</code> + PROTO-019 codex + deepseek review + merge.</li>
+<li>ADR-018 is the SHARED invariant across all Layer-B products; per-product specialization goes in <code>ADR-NNN-&lt;product&gt;-pattern.md</code> (per ADR-020 layering).</li>
+</ol>
+</section>
+
+<footer>
+ADR catalog scaffolded 2026-05-20. Source of truth: <code>sutra/os/decisions/</code>. Each ADR is the why behind an architectural choice. <a href="index.html">↑ Tech Design Hub</a>.
+</footer>
+
+</body>
+</html>
